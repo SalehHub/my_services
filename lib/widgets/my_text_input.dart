@@ -18,6 +18,8 @@ class MyTextInput extends StatelessWidget {
     this.keyboardType,
     this.radius = 10,
     this.controller,
+    this.focusNode,
+    this.onFieldSubmitted,
   }) : super(key: key);
 
   final String? value;
@@ -33,11 +35,12 @@ class MyTextInput extends StatelessWidget {
   final TextInputType? keyboardType;
   final double radius;
   final TextEditingController? controller;
-
+  final FocusNode? focusNode;
+  final Function(String value)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller ?? TextEditingController(text: value),
+      controller: controller ?? (value != null ? TextEditingController(text: value) : null),
       enableSuggestions: !isPassword,
       validator: validator,
       textDirection: textDirection,
@@ -55,6 +58,8 @@ class MyTextInput extends StatelessWidget {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
       ),
       onChanged: onChanged,
+      focusNode: focusNode,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 }
