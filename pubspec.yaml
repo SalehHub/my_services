@@ -16,3 +16,9 @@ dependencies:
   firebase_crashlytics: ^2.0.6
   logger: ^1.0.0
   url_launcher: ^6.0.7
+  intl: ^0.17.0
+  device_info: ^2.0.2
+  package_info: ^2.0.2
+  path_provider: ^2.0.2
+  app_settings: ^4.1.1
+  mdi: "^5.0.0-nullsafety.0"

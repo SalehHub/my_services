@@ -28,3 +28,44 @@ class MyNavigatorObserver extends NavigatorObserver {
     ServiceNav.currentRoute = name;
   }
 }
+
+////Helpers
+void pop() {
+  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  if (nav != null) {
+    return nav.pop();
+  }
+}
+
+Future<dynamic> push({Widget? page, bool goToFirstRoute = false, bool replacement = false}) {
+  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  if (nav != null) {
+    final String name = page.runtimeType.toString();
+    if (goToFirstRoute == false) {
+      if (replacement == true) {
+        return nav.pushReplacement(
+          MaterialPageRoute<dynamic>(
+            settings: RouteSettings(name: name),
+            builder: (BuildContext c) => page!,
+          ),
+        );
+      }
+
+      return nav.push<dynamic>(
+        MaterialPageRoute<dynamic>(
+          settings: RouteSettings(name: name),
+          builder: (BuildContext c) => page!,
+        ),
+      );
+    } else {
+      nav.popUntil((Route<dynamic> route) => route.isFirst);
+      return nav.pushReplacement(
+        MaterialPageRoute<dynamic>(
+          settings: RouteSettings(name: name),
+          builder: (BuildContext c) => page!,
+        ),
+      );
+    }
+  }
+  return Future<void>.value();
+}
