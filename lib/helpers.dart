@@ -9,6 +9,7 @@ import 'package:intl/intl.dart' hide TextDirection;
 import 'package:logger/logger.dart';
 import 'package:package_info/package_info.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:timeago/timeago.dart';
 
 final Logger logger = Logger();
 
@@ -120,6 +121,17 @@ Future<String?> getApplicationDocumentsPath() async {
     printed = true;
   }
   return _applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
+}
+
+String getTimeAgo(String langCode, DateTime time) {
+  try {
+    setLocaleMessages(langCode, langCode == 'ar' ? ArMessages() : EnMessages());
+    final String timeAgo = format(time, locale: langCode);
+    return timeAgo;
+  } catch (e) {
+    logger.e(e);
+  }
+  return '';
 }
 
 //////
