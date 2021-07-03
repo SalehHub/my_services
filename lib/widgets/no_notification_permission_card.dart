@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../icons.dart';
+import '../localization.dart';
 
 class NoNotificationPermissionCard extends StatefulWidget {
   const NoNotificationPermissionCard({Key? key}) : super(key: key);
@@ -54,6 +55,8 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
   @override
   Widget build(BuildContext context) {
     if (settings.authorizationStatus == AuthorizationStatus.denied) {
+      final labels = getLabels(context);
+
       return GestureDetector(
         onTap: AppSettings.openNotificationSettings,
         child: Container(
@@ -66,15 +69,15 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
             color: Colors.blue.shade600,
           ),
           child: Row(
-            children: const <Widget>[
+            children: <Widget>[
               Expanded(
                 child: Text(
-                  'الاشعارات للتطبيق معطلة من إعدادات الجهاز',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  labels.notificationsAreDisabledForThisApp,
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 20),
-              IconButton(
+              const SizedBox(height: 20),
+              const IconButton(
                 color: Colors.white,
                 onPressed: AppSettings.openNotificationSettings,
                 icon: Icon(iconSettings),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../localization.dart';
 import '../snack_bar.dart';
 import 'yes_snack_bar_message.dart';
 
@@ -11,14 +12,16 @@ class WillPopScopeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final labels = getLabels(context);
+
     return WillPopScope(
       onWillPop: () {
         hideSnackBar();
         showSnackBar(
           elevation: 2,
           seconds: 2,
-          content: const YesSnackBarMessage(
-            text: 'هل تريد الخروج من التطبيق؟',
+          content: YesSnackBarMessage(
+            text: labels.areYouSureYouWantToCloseTheApp,
             onYes: SystemNavigator.pop,
           ),
         );

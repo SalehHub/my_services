@@ -51,14 +51,14 @@ Future<dynamic> push({Widget? page, bool goToFirstRoute = false, bool replacemen
       builder: (BuildContext c) => page!,
     );
 
-    if (goToFirstRoute == false) {
-      if (replacement == true) {
-        return nav.pushReplacement(transparent ? transparentPageRoute : pageRoute);
-      }
-      return nav.push<dynamic>(transparent ? transparentPageRoute : pageRoute);
-    } else {
+    if (goToFirstRoute == true) {
       nav.popUntil((Route<dynamic> route) => route.isFirst);
+    }
+
+    if (replacement == true) {
       return nav.pushReplacement(transparent ? transparentPageRoute : pageRoute);
+    } else {
+      return nav.push<dynamic>(transparent ? transparentPageRoute : pageRoute);
     }
   }
   return Future<void>.value();

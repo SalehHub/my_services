@@ -66,11 +66,7 @@ class MyDialog extends StatelessWidget {
               side: BorderSide(color: borderColor ?? Colors.transparent, width: borderWidth ?? 0),
               borderRadius: const BorderRadius.all(Radius.circular(15)),
             ),
-            title: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: titleStyle,
-            ),
+            title: Text(title, textAlign: TextAlign.center, style: titleStyle),
             titleTextStyle: getTextTheme(context).headline6,
             children: children,
           ),
