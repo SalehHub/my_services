@@ -11,6 +11,8 @@ import 'package:package_info/package_info.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:timeago/timeago.dart';
 
+import 'my_services.dart';
+
 final Logger logger = Logger();
 
 TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
@@ -102,6 +104,7 @@ String getFileSize(String filepath, [int decimals = 3]) {
 //////////
 
 Future<void> waitForSeconds([int seconds = 2]) => Future<void>.delayed(Duration(seconds: seconds));
+
 Future<void> waitForMilliseconds([int milliseconds = 200]) => Future<void>.delayed(Duration(milliseconds: milliseconds));
 
 ///////
@@ -123,10 +126,42 @@ Future<String?> getApplicationDocumentsPath() async {
   return _applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
 }
 
-String getTimeAgo(String langCode, DateTime time) {
+Map<String, LookupMessages> _lookupMessagesMap = {
+  'ar': ArMessages(),
+  'ar_short': ArShortMessages(),
+  //
+  'en': EnMessages(),
+  'en_short': EnShortMessages(),
+  //
+  'es': EsMessages(),
+  'es_short': EsShortMessages(),
+  //
+  'fr': FrMessages(),
+  'fr_short': FrShortMessages(),
+  //
+  'tr': TrMessages(),
+};
+
+String getTimeAgo(DateTime time, [String? langCode]) {
+  String? _langCode = langCode;
+
+  if (_langCode == null) {
+    final BuildContext? context = ServiceNav.navigatorKey.currentContext;
+    Locale? locale;
+    if (context != null) {
+      locale = Localizations.localeOf(context);
+    }
+
+    print('getTimeAgo:$locale');
+
+    _langCode = locale?.languageCode.toLowerCase() ?? 'en';
+  }
+
+  final LookupMessages lookupMessages = _lookupMessagesMap[_langCode] ?? EnMessages();
+
   try {
-    setLocaleMessages(langCode, langCode == 'ar' ? ArMessages() : EnMessages());
-    final String timeAgo = format(time, locale: langCode);
+    setLocaleMessages(_langCode, lookupMessages);
+    final String timeAgo = format(time, locale: _langCode);
     return timeAgo;
   } catch (e) {
     logger.e(e);
