@@ -1,5 +1,8 @@
+export 'package:flutter_blurhash/flutter_blurhash.dart';
+
 export 'helpers.dart';
 export 'icons.dart';
+export 'service_app_badger.dart';
 export 'service_firebase_crashlytics.dart';
 export 'service_firebase_messaging.dart';
 export 'service_locales.dart';
