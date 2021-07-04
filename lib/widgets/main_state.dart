@@ -65,7 +65,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool showAppBar = true;
 
   Widget get appBarTitle {
-    return Text(title, textDirection: getTextDirection(title));
+    return Text(title, textDirection: Helpers.getTextDirection(title));
   }
 
   //tab view

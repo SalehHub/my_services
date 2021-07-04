@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../helpers.dart';
-import '../snack_bar.dart';
 
 /// A widget that unfocus everything when tapped.
 /// This implements the "Unfocus when tapping in empty space" behavior for the
@@ -15,8 +14,8 @@ class Unfocus extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        hideKeyboard();
-        hideSnackBar();
+        Helpers.hideKeyboard();
+        Helpers.hideSnackBar();
       },
       child: child,
     );

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../icons.dart';
 import '../localization.dart';
-import '../service_url_launcher.dart';
+import '../services/service_url_launcher.dart';
 import 'main_state.dart';
 
 class PageNewAppVersion extends ConsumerStatefulWidget {

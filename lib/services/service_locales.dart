@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'localization.dart';
+import '../localization.dart';
 
 class ServiceLocale {
   ///Arabic added by default

@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'helpers.dart';
-import 'snack_bar.dart';
+import '../helpers.dart';
 
 class ServiceURLLauncher {
   static Future<bool> launchUniversalLinkIos(String url) async {
@@ -48,7 +47,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos(url);
 
     if (result == false) {
-      showTextSnackBar(text: url);
+      Helpers.showTextSnackBar(text: url);
     }
   }
 
@@ -63,7 +62,7 @@ class ServiceURLLauncher {
       if (nativeAppLaunchSucceeded == false) {
         final bool urlLaunch = await launch(url);
         if (urlLaunch == false) {
-          showTextSnackBar(text: num);
+          Helpers.showTextSnackBar(text: num);
         }
       }
     }
@@ -73,7 +72,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos('tel:$num');
 
     if (result == false) {
-      showTextSnackBar(text: num);
+      Helpers.showTextSnackBar(text: num);
     }
   }
 
@@ -81,7 +80,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos('mailto:$email');
 
     if (result == false) {
-      showTextSnackBar(text: email);
+      Helpers.showTextSnackBar(text: email);
     }
   }
 

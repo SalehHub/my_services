@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../helpers.dart';
 import '../localization.dart';
-import '../snack_bar.dart';
 import 'yes_snack_bar_message.dart';
 
 class WillPopScopeWidget extends StatelessWidget {
@@ -16,8 +16,8 @@ class WillPopScopeWidget extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () {
-        hideSnackBar();
-        showSnackBar(
+        Helpers.hideSnackBar();
+        Helpers.showSnackBar(
           elevation: 2,
           seconds: 2,
           content: YesSnackBarMessage(

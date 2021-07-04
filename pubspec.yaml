@@ -29,7 +29,12 @@ dependencies:
   flutter_riverpod: ^1.0.0-dev.2
   flutter_app_badger: ^1.2.0
   flutter_sheet_localization: ^5.1.1
+  freezed_annotation: ^0.14.2
+  sqflite: ^2.0.0+3
+
 
 dev_dependencies:
   flutter_sheet_localization_generator: ^5.1.7
-  build_runner:
+  build_runner: ^2.0.5
+  freezed: ^0.14.2
+  json_serializable: ^4.1.3
