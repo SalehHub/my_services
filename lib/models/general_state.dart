@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,19 +21,6 @@ class GeneralState with _$GeneralState {
   }) = _GeneralState;
 
   factory GeneralState.fromJson(Map<String, dynamic> json) => _$GeneralStateFromJson(json);
-
-  Map<String, dynamic> get appStateAsMap => <String, dynamic>{
-        'notification_token': notificationToken,
-        'device_id': appDeviceData?.deviceID,
-        'access_token': accessToken,
-        'lang': locale?.languageCode,
-        'appBuild': appDeviceData?.appBuild,
-        'deviceModel': appDeviceData?.deviceModel,
-        'themeMode': themeMode.toString(),
-        'isFirstAppRun': isFirstAppRun,
-        'isFirstAppBuildRun': isFirstAppBuildRun,
-        'deviceOS': Platform.operatingSystem.toLowerCase(),
-      };
 }
 
 class LocaleConverter implements JsonConverter<Locale?, String?> {

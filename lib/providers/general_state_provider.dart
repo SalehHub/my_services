@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -24,6 +26,25 @@ final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, General
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
   GeneralStateNotifier(GeneralState state, this.ref) : super(state);
   final ProviderRefBase ref;
+
+  Map<String, dynamic> get asMap => <String, dynamic>{
+        'notification_token': state.notificationToken,
+        'device_id': state.appDeviceData?.deviceID,
+        'access_token': state.accessToken,
+        'lang': state.locale?.languageCode,
+        'appBuild': state.appDeviceData?.appBuild,
+        'deviceModel': state.appDeviceData?.deviceModel,
+        'themeMode': state.themeMode.toString(),
+        'isFirstAppRun': state.isFirstAppRun,
+        'isFirstAppBuildRun': state.isFirstAppBuildRun,
+        'deviceOS': Platform.operatingSystem.toLowerCase(),
+      };
+
+  ///app
+  void setAccessToken(String? value) {
+    state = state.copyWith(accessToken: value);
+    GeneralKeyValueDatabase.setAccessToken(value);
+  }
 
   ///app
   void setThemeMode(BuildContext context, ThemeMode value) {
@@ -81,7 +102,7 @@ Future<GeneralState> getInitGeneralState(Locale defaultLocale, List<Locale> supp
     ],
   );
 
-  final GeneralState appState = GeneralState(
+  final GeneralState generalState = GeneralState(
     accessToken: accessToken,
     notificationToken: notificationToken,
     appDeviceData: appDeviceData,
@@ -95,7 +116,5 @@ Future<GeneralState> getInitGeneralState(Locale defaultLocale, List<Locale> supp
     //
   );
 
-  logger.i(appState.appStateAsMap);
-
-  return appState;
+  return generalState;
 }
