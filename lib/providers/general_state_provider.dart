@@ -41,9 +41,10 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
       };
 
   ///app
-  void setAccessToken(String? value) {
+
+  Future<void> setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
-    GeneralKeyValueDatabase.setAccessToken(value);
+    await GeneralKeyValueDatabase.setAccessToken(value);
   }
 
   ///app
