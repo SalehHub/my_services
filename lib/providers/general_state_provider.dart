@@ -14,18 +14,19 @@ ThemeMode watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select
 ThemeMode readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
 
 bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstAppRun;
-bool watchIsFirstAppRun(ref) => ref.watch(generalStateProvider.select((value) => value.isFirstAppRun));
 
 Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
+
 String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
 //-----------------------//
 
-GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
+// GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
 GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
-GeneralState watchGeneralState(WidgetRef ref) => ref.watch(generalStateProvider);
+// GeneralState watchGeneralState(WidgetRef ref) => ref.watch(generalStateProvider);
 
 final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
 
+//------------------------------------------------------------------//
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
   GeneralStateNotifier(GeneralState state, this.ref) : super(state);
   final ProviderRefBase ref;

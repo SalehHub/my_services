@@ -264,18 +264,3 @@ class Helpers {
     }
   }
 }
-
-// class PackageDeviceData {
-//   PackageDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.osVersion, this.deviceModel});
-//
-//   final String appVersion;
-//   final String appBuild;
-//   final String? deviceID;
-//   final String? osVersion;
-//   final String? deviceModel;
-//
-//   @override
-//   String toString() {
-//     return 'PackageDeviceData{appVersion: $appVersion, appBuild: $appBuild, deviceID: $deviceID, osVersion: $osVersion, deviceModel: $deviceModel}';
-//   }
-// }
