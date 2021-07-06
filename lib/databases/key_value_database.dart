@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:my_services/my_services.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../helpers.dart';
@@ -110,17 +111,23 @@ class GeneralKeyValueDatabase {
     return query(accessTokenKey);
   }
 
-  static Future<Locale> getLocale(Locale defaultLocale, List<Locale> supportedLocales) async {
-    final String? value = await query(localeKey);
-    if (value != null) {
-      final List<String> supportedLanguageCode = supportedLocales.map((Locale locale) => locale.languageCode).toList();
-      if (supportedLanguageCode.contains(value)) {
-        return Locale(value);
+  static Future<Locale> getLocale() async {
+    try {
+      final String? value = await query(localeKey);
+      if (value == null) {
+        final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
+        if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
+          return Locale(deviceLocale.languageCode);
+        }
       } else {
-        return defaultLocale;
+        if (ServiceLocale.isSupportedLocale(Locale(value))) {
+          return Locale(value);
+        }
       }
+    } catch (e, s) {
+      logger.e(e, e, s);
     }
-    return defaultLocale;
+    return ServiceLocale.defaultLocale;
   }
 
   static Future<ThemeMode> getThemeMode() async {

@@ -15,7 +15,7 @@ ThemeMode readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMo
 
 bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstAppRun;
 
-Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
+Locale watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale)) ?? ServiceLocale.defaultLocale;
 
 String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
 //-----------------------//
@@ -67,17 +67,21 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
   }
 
   void setLocale(Locale value) {
-    state = state.copyWith(locale: value);
+    setLocaleWithoutSaving(value);
     GeneralKeyValueDatabase.setLocale(value);
+  }
+
+  void setLocaleWithoutSaving(Locale value) {
+    state = state.copyWith(locale: value);
   }
 }
 
-Future<GeneralState> getInitGeneralState(Locale defaultLocale, List<Locale> supportedLocales) async {
+Future<GeneralState> getInitGeneralState() async {
   logger.wtf('getInitGeneralState initialized');
 
   String? notificationToken;
   String? accessToken;
-  Locale locale = defaultLocale;
+  Locale locale = ServiceLocale.defaultLocale;
   ThemeMode themeMode = ThemeMode.system;
   bool isFirstAppRun = false;
   bool isFirstAppBuildRun = false;
@@ -95,7 +99,8 @@ Future<GeneralState> getInitGeneralState(Locale defaultLocale, List<Locale> supp
         //
         accessToken = await GeneralKeyValueDatabase.getAccessToken();
         //
-        locale = await GeneralKeyValueDatabase.getLocale(defaultLocale, supportedLocales);
+        locale = await GeneralKeyValueDatabase.getLocale();
+
         themeMode = await GeneralKeyValueDatabase.getThemeMode();
         //
       }),
