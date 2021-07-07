@@ -53,16 +53,17 @@ class ServiceTheme {
   static TextTheme _modifyTextHeight(TextTheme textTheme) {
     // return textTheme;
     const double height = 1.8;
-    final TextStyle? bodyText1 = textTheme.bodyText1?.copyWith(height: height);
-    final TextStyle? bodyText2 = textTheme.bodyText2?.copyWith(height: height);
-    final TextStyle? caption = textTheme.caption?.copyWith(height: height);
-    final TextStyle? overline = textTheme.overline?.copyWith(height: height);
-    final TextStyle? headline1 = textTheme.headline1?.copyWith(height: height);
-    final TextStyle? headline2 = textTheme.headline2?.copyWith(height: height);
-    final TextStyle? headline3 = textTheme.headline3?.copyWith(height: height);
-    final TextStyle? headline4 = textTheme.headline4?.copyWith(height: height);
-    final TextStyle? headline5 = textTheme.headline5?.copyWith(height: height);
-    final TextStyle? headline6 = textTheme.headline6?.copyWith(height: height);
+    const double letterSpacing = 0.1;
+    final TextStyle? bodyText1 = textTheme.bodyText1?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? bodyText2 = textTheme.bodyText2?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? caption = textTheme.caption?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? overline = textTheme.overline?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline1 = textTheme.headline1?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline2 = textTheme.headline2?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline3 = textTheme.headline3?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline4 = textTheme.headline4?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline5 = textTheme.headline5?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline6 = textTheme.headline6?.copyWith(height: height, letterSpacing: letterSpacing);
     return textTheme.copyWith(
       bodyText1: bodyText1,
       bodyText2: bodyText2,
@@ -133,4 +134,5 @@ bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.
 
 bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
 
-Color getTextColor(BuildContext context, [Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black]) => isDark(context) ? colorWhenDark : colorWhenLight;
+Color getTextColor(BuildContext context, [Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black]) =>
+    isDark(context) ? colorWhenDark : colorWhenLight;
