@@ -7,6 +7,19 @@ class ServiceLocale {
   static Locale defaultLocale = const Locale('ar');
   static List<Locale> supportedLocales = [defaultLocale];
 
+  //we can not use ServiceNav.navigatorKey.currentContext in here
+  static String currentLocaleLangCode(BuildContext context) {
+    return currentLocale(context).languageCode;
+  }
+
+  //we can not use ServiceNav.navigatorKey.currentContext in here
+  static Locale currentLocale(BuildContext context) {
+    return Localizations.localeOf(context);
+  }
+  // static Locale? localeResolutionCallback(Locale? locale, Iterable<Locale> supportedLocales) {
+  //   return locale != null && isSupportedLocale(locale) ? Locale(locale.languageCode) : defaultLocale;
+  // }
+
   // static void setDefaultLocale(Locale locale) {
   //   defaultLocale = locale;
   // }

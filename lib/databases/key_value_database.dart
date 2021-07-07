@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_services/my_services.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../helpers.dart';
+import '../services/service_locales.dart';
 
 Database? _database;
 

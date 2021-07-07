@@ -20,10 +20,6 @@ class MyServicesLocalizationsDelegate extends LocalizationsDelegate<MyServicesLo
   bool shouldReload(MyServicesLocalizationsDelegate old) => false;
 }
 
-MyServicesLocalizationsData getLabels(BuildContext context) => context.localizations;
-
-extension AppLocalizationsExtensions on BuildContext {
-  MyServicesLocalizationsData get localizations {
-    return Localizations.of<MyServicesLocalizationsData>(this, MyServicesLocalizationsData)!;
-  }
+MyServicesLocalizationsData getLabels(BuildContext context) {
+  return Localizations.of<MyServicesLocalizationsData>(context, MyServicesLocalizationsData)!;
 }
