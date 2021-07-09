@@ -25,7 +25,7 @@ class _$GeneralStateTearOff {
       String? notificationToken,
       AppDeviceData? appDeviceData,
       @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode themeMode = ThemeMode.system,
+      @ThemeModeConverter() ThemeMode? themeMode,
       bool isFirstAppRun = false,
       bool isFirstAppBuildRun = false}) {
     return _GeneralState(
@@ -55,7 +55,7 @@ mixin _$GeneralState {
   @LocaleConverter()
   Locale? get locale => throw _privateConstructorUsedError;
   @ThemeModeConverter()
-  ThemeMode get themeMode => throw _privateConstructorUsedError;
+  ThemeMode? get themeMode => throw _privateConstructorUsedError;
   bool get isFirstAppRun => throw _privateConstructorUsedError;
   bool get isFirstAppBuildRun => throw _privateConstructorUsedError;
 
@@ -72,7 +72,7 @@ abstract class $GeneralStateCopyWith<$Res> {
       String? notificationToken,
       AppDeviceData? appDeviceData,
       @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode themeMode,
+      @ThemeModeConverter() ThemeMode? themeMode,
       bool isFirstAppRun,
       bool isFirstAppBuildRun});
 
@@ -117,7 +117,7 @@ class _$GeneralStateCopyWithImpl<$Res> implements $GeneralStateCopyWith<$Res> {
       themeMode: themeMode == freezed
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
+              as ThemeMode?,
       isFirstAppRun: isFirstAppRun == freezed
           ? _value.isFirstAppRun
           : isFirstAppRun // ignore: cast_nullable_to_non_nullable
@@ -150,7 +150,7 @@ abstract class _$GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Re
       String? notificationToken,
       AppDeviceData? appDeviceData,
       @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode themeMode,
+      @ThemeModeConverter() ThemeMode? themeMode,
       bool isFirstAppRun,
       bool isFirstAppBuildRun});
 
@@ -195,7 +195,7 @@ class __$GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res>
       themeMode: themeMode == freezed
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
-              as ThemeMode,
+              as ThemeMode?,
       isFirstAppRun: isFirstAppRun == freezed
           ? _value.isFirstAppRun
           : isFirstAppRun // ignore: cast_nullable_to_non_nullable
@@ -212,13 +212,7 @@ class __$GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_GeneralState extends _GeneralState {
   _$_GeneralState(
-      {this.accessToken,
-      this.notificationToken,
-      this.appDeviceData,
-      @LocaleConverter() this.locale,
-      @ThemeModeConverter() this.themeMode = ThemeMode.system,
-      this.isFirstAppRun = false,
-      this.isFirstAppBuildRun = false})
+      {this.accessToken, this.notificationToken, this.appDeviceData, @LocaleConverter() this.locale, @ThemeModeConverter() this.themeMode, this.isFirstAppRun = false, this.isFirstAppBuildRun = false})
       : super._();
 
   factory _$_GeneralState.fromJson(Map<String, dynamic> json) => _$_$_GeneralStateFromJson(json);
@@ -232,10 +226,9 @@ class _$_GeneralState extends _GeneralState {
   @override
   @LocaleConverter()
   final Locale? locale;
-  @JsonKey(defaultValue: ThemeMode.system)
   @override
   @ThemeModeConverter()
-  final ThemeMode themeMode;
+  final ThemeMode? themeMode;
   @JsonKey(defaultValue: false)
   @override
   final bool isFirstAppRun;
@@ -288,7 +281,7 @@ abstract class _GeneralState extends GeneralState {
       String? notificationToken,
       AppDeviceData? appDeviceData,
       @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode themeMode,
+      @ThemeModeConverter() ThemeMode? themeMode,
       bool isFirstAppRun,
       bool isFirstAppBuildRun}) = _$_GeneralState;
   _GeneralState._() : super._();
@@ -306,7 +299,7 @@ abstract class _GeneralState extends GeneralState {
   Locale? get locale => throw _privateConstructorUsedError;
   @override
   @ThemeModeConverter()
-  ThemeMode get themeMode => throw _privateConstructorUsedError;
+  ThemeMode? get themeMode => throw _privateConstructorUsedError;
   @override
   bool get isFirstAppRun => throw _privateConstructorUsedError;
   @override

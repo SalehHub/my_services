@@ -15,7 +15,7 @@ class GeneralState with _$GeneralState {
     String? notificationToken,
     AppDeviceData? appDeviceData,
     @LocaleConverter() Locale? locale,
-    @ThemeModeConverter() @Default(ThemeMode.system) ThemeMode themeMode,
+    @ThemeModeConverter() ThemeMode? themeMode,
     @Default(false) bool isFirstAppRun,
     @Default(false) bool isFirstAppBuildRun,
   }) = _GeneralState;

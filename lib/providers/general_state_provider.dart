@@ -10,12 +10,13 @@ import '../models/general_state.dart';
 import '../services/exports.dart';
 
 //-----------------------//
-ThemeMode watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
-ThemeMode readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
+ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
+
+ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
 
 bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstAppRun;
 
-Locale watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale)) ?? ServiceLocale.defaultLocale;
+Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
 
 String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
 //-----------------------//

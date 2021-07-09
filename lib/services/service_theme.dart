@@ -34,7 +34,7 @@ class ServiceTheme {
     );
   }
 
-  static void setSystemUiOverlayStyle(ThemeMode value, BuildContext context) {
+  static void setSystemUiOverlayStyle(ThemeMode? value, BuildContext context) {
     if (value == ThemeMode.dark) {
       SystemChrome.setSystemUIOverlayStyle(_lightSystemUiOverlayStyle);
     } else if (value == ThemeMode.light) {
@@ -80,20 +80,23 @@ class ServiceTheme {
 
   static ThemeData _getThemeData(ThemeData mainThemeData, [Color? accentColor]) {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
-    final TextTheme textThemeLight = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
+    final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
-    final ThemeData lightTheme = mainThemeData.copyWith(
+    final Color? primaryColor = isDark ? null : Colors.white;
+    final Color iconColor = !isDark ? Colors.black : Colors.white;
+
+    final ThemeData themeData = mainThemeData.copyWith(
       toggleableActiveColor: accentColor,
-      textTheme: textThemeLight,
+      textTheme: textTheme,
       colorScheme: mainThemeData.colorScheme.copyWith(primary: accentColor),
-      primaryTextTheme: textThemeLight,
-      primaryColor: isDark ? null : Colors.white,
+      primaryTextTheme: textTheme,
+      primaryColor: primaryColor,
       iconTheme: mainThemeData.iconTheme.copyWith(color: accentColor),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(textStyle: textThemeLight.bodyText1, primary: accentColor),
+        style: ElevatedButton.styleFrom(textStyle: textTheme.bodyText1, primary: accentColor),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(textStyle: textThemeLight.bodyText1, primary: accentColor),
+        style: OutlinedButton.styleFrom(textStyle: textTheme.bodyText1, primary: accentColor),
       ),
       tabBarTheme: mainThemeData.tabBarTheme.copyWith(
         labelColor: accentColor,
@@ -106,9 +109,9 @@ class ServiceTheme {
         elevation: 15,
       ),
       appBarTheme: mainThemeData.appBarTheme.copyWith(
-        textTheme: textThemeLight,
+        textTheme: textTheme,
         elevation: 2,
-        iconTheme: IconThemeData(color: !isDark ? Colors.black : Colors.white),
+        iconTheme: IconThemeData(color: iconColor),
       ),
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
         contentTextStyle: GoogleFonts.tajawal(),
@@ -116,7 +119,7 @@ class ServiceTheme {
       ),
     );
 
-    return lightTheme;
+    return themeData;
   }
 
   static ThemeData lightTheme([Color? accentColor = const Color(0xf000b050)]) => _getThemeData(ThemeData.light(), accentColor);
@@ -134,5 +137,4 @@ bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.
 
 bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
 
-Color getTextColor(BuildContext context, [Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black]) =>
-    isDark(context) ? colorWhenDark : colorWhenLight;
+Color getTextColor(BuildContext context, [Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black]) => isDark(context) ? colorWhenDark : colorWhenLight;
