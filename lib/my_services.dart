@@ -2,6 +2,7 @@
 
 export 'package:flutter_riverpod/flutter_riverpod.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
+export 'package:intl/intl.dart' hide TextDirection;
 
 export 'databases/key_value_database.dart';
 export 'helpers.dart';
