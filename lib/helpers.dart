@@ -117,15 +117,15 @@ class Helpers {
     return null;
   }
 
-  static String? _applicationDocumentsDirectoryPath;
+  static String? applicationDocumentsDirectoryPath;
   static bool printed = false;
 
   static Future<String?> getApplicationDocumentsPath() async {
-    if (printed == false && _applicationDocumentsDirectoryPath != null) {
-      logger.i(_applicationDocumentsDirectoryPath);
+    if (printed == false && applicationDocumentsDirectoryPath != null) {
+      logger.i(applicationDocumentsDirectoryPath);
       printed = true;
     }
-    return _applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
+    return applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
   }
 
   static final Map<String, LookupMessages> _lookupMessagesMap = {
