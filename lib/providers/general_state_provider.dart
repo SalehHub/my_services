@@ -22,6 +22,8 @@ String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s
 
 //------------------------------------------------------------------//
 GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
+GeneralState readGeneralStater(WidgetRef ref) => ref.read(generalStateProvider);
+
 final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
 //------------------------------------------------------------------//
 
