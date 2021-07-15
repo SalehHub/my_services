@@ -1,5 +1,7 @@
 // export 'package:flutter_blurhash/flutter_blurhash.dart';
 
+export 'package:flutter_riverpod/flutter_riverpod.dart';
+
 export 'databases/key_value_database.dart';
 export 'helpers.dart';
 export 'icons.dart';
