@@ -64,6 +64,7 @@ const IconData iconEmail = Mdi.email;
 
 const IconData iconImagePlus = Mdi.imagePlus;
 const IconData iconCamera = Mdi.camera;
+const IconData iconCameraOutline = Mdi.cameraOutline;
 
 const IconData iconCircle = Mdi.circle;
 const IconData iconDelete = Mdi.delete;
