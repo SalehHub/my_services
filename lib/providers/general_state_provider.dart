@@ -9,7 +9,7 @@ import '../models/app_device_data.dart';
 import '../models/general_state.dart';
 import '../services/exports.dart';
 
-//-----------------------//
+//------------------------------------------------------------------//
 ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
 
 ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
@@ -19,15 +19,12 @@ bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstA
 Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
 
 String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
-//-----------------------//
-
-// GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
-GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
-// GeneralState watchGeneralState(WidgetRef ref) => ref.watch(generalStateProvider);
-
-final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
 
 //------------------------------------------------------------------//
+GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
+final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
+//------------------------------------------------------------------//
+
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
   GeneralStateNotifier(GeneralState state, this.ref) : super(state);
   final ProviderRefBase ref;
