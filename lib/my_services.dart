@@ -30,3 +30,4 @@ export 'models/general_state.dart';
 export 'providers/general_state_provider.dart';
 export 'services/exports.dart';
 export 'widgets/exports.dart';
+export 'widgets/main_state_error_widget.dart';
