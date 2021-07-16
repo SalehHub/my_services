@@ -8,6 +8,7 @@ export 'dart:typed_data';
 
 export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
+export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/foundation.dart' hide binarySearch, mergeSort;
