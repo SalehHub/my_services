@@ -1,16 +1,20 @@
 import '../my_services.dart';
 
+typedef Overrides = List<Override> Function();
+
 Future<void> myServicesMain({
   required Locale defaultLocale,
   required List<Locale> supportedLocales,
   required String title,
   required Widget homePage,
-  List<Override> overrides = const [],
+  Overrides? overrides,
   List<LocalizationsDelegate<dynamic>> delegates = const [],
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+
   ServiceLocale.defaultLocale = defaultLocale;
   ServiceLocale.supportedLocales = supportedLocales;
+
   await Firebase.initializeApp();
   await ServiceFirebaseCrashlytics.register();
   final GeneralState generalState = await getInitGeneralState();
@@ -21,7 +25,7 @@ Future<void> myServicesMain({
         generalStateProvider.overrideWithProvider(
           StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(generalState, ref)),
         ),
-        ...overrides,
+        if (overrides != null) ...overrides(),
       ],
       child: AppStart(
         title: title,
