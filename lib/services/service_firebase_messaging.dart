@@ -8,7 +8,7 @@ enum FirebaseMessagingPlace {
   onMessage,
 }
 
-typedef OnFirebaseNotification = Function(RemoteMessage? message, FirebaseMessagingPlace s, {WidgetRef ref});
+typedef OnFirebaseNotification = Function(WidgetRef ref, RemoteMessage? message, FirebaseMessagingPlace s);
 
 class ServiceFirebaseMessaging {
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
@@ -19,14 +19,14 @@ class ServiceFirebaseMessaging {
 
   static Future<void> registerFirebaseMessaging(WidgetRef ref, {required OnFirebaseNotification onFirebaseNotification}) async {
     final RemoteMessage? message = await _firebaseMessaging.getInitialMessage();
-    await onFirebaseNotification(message, FirebaseMessagingPlace.getInitialMessage, ref: ref);
+    await onFirebaseNotification(ref, message, FirebaseMessagingPlace.getInitialMessage);
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      onFirebaseNotification(message, FirebaseMessagingPlace.onMessageOpenedApp, ref: ref);
+      onFirebaseNotification(ref, message, FirebaseMessagingPlace.onMessageOpenedApp);
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      onFirebaseNotification(message, FirebaseMessagingPlace.onMessage, ref: ref);
+      onFirebaseNotification(ref, message, FirebaseMessagingPlace.onMessage);
     });
   }
 }
