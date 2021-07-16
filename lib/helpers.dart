@@ -33,6 +33,11 @@ class Helpers {
     return mediaQueryData.size.width;
   }
 
+  static double getPageHeight(BuildContext context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return mediaQueryData.size.height;
+  }
+
   static List<Shadow> getTextStroke(double strokeWidth, Color strokeColor) {
     return [
       // bottomLeft
