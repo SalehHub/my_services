@@ -20,6 +20,7 @@ export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError;
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 export 'package:octo_image/octo_image.dart';
+export 'package:sqflite/sqflite.dart';
 
 export 'databases/key_value_database.dart';
 export 'helpers.dart';
