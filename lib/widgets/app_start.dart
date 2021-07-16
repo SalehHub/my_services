@@ -1,6 +1,8 @@
 import '../my_services.dart';
 
-typedef Overrides = List<Override> Function();
+// typedef Overrides = List<Override> Function();
+
+typedef Overrides = Future<List<Override>> Function();
 
 Future<void> myServicesMain({
   required Locale defaultLocale,
@@ -25,7 +27,7 @@ Future<void> myServicesMain({
         generalStateProvider.overrideWithProvider(
           StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(generalState, ref)),
         ),
-        if (overrides != null) ...overrides(),
+        if (overrides != null) ...await overrides(),
       ],
       child: AppStart(
         title: title,
