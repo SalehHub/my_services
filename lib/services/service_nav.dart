@@ -30,10 +30,10 @@ class MyNavigatorObserver extends NavigatorObserver {
 }
 
 ////Helpers
-void pop() {
+void pop<T extends Object?>([T? result]) {
   final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
   if (nav != null) {
-    return nav.pop();
+    return nav.pop<T>(result);
   }
 }
 
