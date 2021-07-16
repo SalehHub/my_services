@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/widgets.dart';
+
+import '../my_services.dart';
 
 enum FirebaseMessagingPlace {
   getInitialMessage,
@@ -7,7 +8,7 @@ enum FirebaseMessagingPlace {
   onMessage,
 }
 
-typedef OnFirebaseNotification = Function(BuildContext context, RemoteMessage? message, FirebaseMessagingPlace s);
+typedef OnFirebaseNotification = Function(RemoteMessage? message, FirebaseMessagingPlace s, {WidgetRef ref});
 
 class ServiceFirebaseMessaging {
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
@@ -16,16 +17,16 @@ class ServiceFirebaseMessaging {
 
   static Future<NotificationSettings> requestPermission() => _firebaseMessaging.requestPermission();
 
-  static Future<void> registerFirebaseMessaging(BuildContext context, {required OnFirebaseNotification onFirebaseNotification}) async {
+  static Future<void> registerFirebaseMessaging(WidgetRef ref, {required OnFirebaseNotification onFirebaseNotification}) async {
     final RemoteMessage? message = await _firebaseMessaging.getInitialMessage();
-    await onFirebaseNotification(context, message, FirebaseMessagingPlace.getInitialMessage);
+    await onFirebaseNotification(message, FirebaseMessagingPlace.getInitialMessage, ref: ref);
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      onFirebaseNotification(context, message, FirebaseMessagingPlace.onMessageOpenedApp);
+      onFirebaseNotification(message, FirebaseMessagingPlace.onMessageOpenedApp, ref: ref);
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      onFirebaseNotification(context, message, FirebaseMessagingPlace.onMessage);
+      onFirebaseNotification(message, FirebaseMessagingPlace.onMessage, ref: ref);
     });
   }
 }
