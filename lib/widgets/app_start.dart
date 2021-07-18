@@ -9,10 +9,15 @@ Future<void> myServicesMain({
   required List<Locale> supportedLocales,
   required String title,
   required Widget homePage,
+  Color? lightAccentColor,
+  Color? darkAccentColor,
   Overrides? overrides,
   List<LocalizationsDelegate<dynamic>> delegates = const [],
 }) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  ServiceTheme.lightAccentColor = lightAccentColor;
+  ServiceTheme.darkAccentColor = darkAccentColor;
 
   ServiceLocale.defaultLocale = defaultLocale;
   ServiceLocale.supportedLocales = supportedLocales;
@@ -65,8 +70,8 @@ class AppStart extends StatelessWidget {
         locale: locale,
         //
         themeMode: themeMode,
-        theme: ServiceTheme.lightTheme(Colors.amber.shade900),
-        darkTheme: ServiceTheme.darkTheme(Colors.amber),
+        theme: ServiceTheme.lightTheme(),
+        darkTheme: ServiceTheme.darkTheme(),
         //
         home: homePage,
         builder: (BuildContext context, Widget? child) => Unfocus(child: child),

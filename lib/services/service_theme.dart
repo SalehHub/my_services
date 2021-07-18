@@ -5,6 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ServiceTheme {
+  static Color? lightAccentColor = const Color(0xf000b050);
+  static Color? darkAccentColor = const Color(0xf000b050);
+
   static final Color _darkScaffoldBackgroundColor = ThemeData.dark().scaffoldBackgroundColor;
   static final Color _lightScaffoldBackgroundColor = ThemeData.light().scaffoldBackgroundColor;
 
@@ -122,9 +125,9 @@ class ServiceTheme {
     return themeData;
   }
 
-  static ThemeData lightTheme([Color? accentColor = const Color(0xf000b050)]) => _getThemeData(ThemeData.light(), accentColor);
+  static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor);
 
-  static ThemeData darkTheme([Color accentColor = const Color(0xf000b050)]) => _getThemeData(ThemeData.dark(), accentColor);
+  static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor);
 }
 
 //////Theme Helpers
