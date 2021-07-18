@@ -11,7 +11,7 @@ class YesSnackBarMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labels = getLabels(context);
+    final labels = getMyServicesLabels(context);
 
     return Padding(
       padding: const EdgeInsets.all(10),

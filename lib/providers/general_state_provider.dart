@@ -91,7 +91,6 @@ Future<GeneralState> getInitGeneralState() async {
     <Future<dynamic>>[
       //-----------------------------------------------------------------//
       Helpers.getApplicationDocumentsPath().then<dynamic>((String? applicationDocumentsDirectoryPath) async {
-        //
         appDeviceData = await Helpers.getAppAndDeviceData();
         //
         isFirstAppRun = await GeneralKeyValueDatabase.getIsFirstAppRun();
@@ -102,7 +101,6 @@ Future<GeneralState> getInitGeneralState() async {
         locale = await GeneralKeyValueDatabase.getLocale();
 
         themeMode = await GeneralKeyValueDatabase.getThemeMode();
-        //
       }),
       //-----------------------------------------------------------------//
 
@@ -122,8 +120,6 @@ Future<GeneralState> getInitGeneralState() async {
     //
     isFirstAppRun: isFirstAppRun,
     isFirstAppBuildRun: isFirstAppBuildRun,
-
-    //
   );
 
   return generalState;

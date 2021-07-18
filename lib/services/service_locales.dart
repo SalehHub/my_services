@@ -16,6 +16,7 @@ class ServiceLocale {
   static Locale currentLocale(BuildContext context) {
     return Localizations.localeOf(context);
   }
+
   // static Locale? localeResolutionCallback(Locale? locale, Iterable<Locale> supportedLocales) {
   //   return locale != null && isSupportedLocale(locale) ? Locale(locale.languageCode) : defaultLocale;
   // }
@@ -45,5 +46,13 @@ class ServiceLocale {
 
   static bool isSupportedLocale(Locale locale) {
     return supportedLocales.where((l) => l.languageCode == locale.languageCode).isNotEmpty;
+  }
+
+  static bool isAr(BuildContext context) {
+    return currentLocaleLangCode(context) == 'ar';
+  }
+
+  static bool isEn(BuildContext context) {
+    return currentLocaleLangCode(context) == 'en';
   }
 }

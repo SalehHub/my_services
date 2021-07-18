@@ -16,7 +16,7 @@ class PageNewAppVersion extends ConsumerStatefulWidget {
 }
 
 class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
-  MyServicesLocalizationsData get labels => getLabels(context);
+  MyServicesLocalizationsData get labels => getMyServicesLabels(context);
 
   @override
   bool get hideTopAdBanner => true;

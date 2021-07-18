@@ -55,7 +55,7 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
   @override
   Widget build(BuildContext context) {
     if (settings.authorizationStatus == AuthorizationStatus.denied) {
-      final labels = getLabels(context);
+      final labels = getMyServicesLabels(context);
 
       return GestureDetector(
         onTap: AppSettings.openNotificationSettings,

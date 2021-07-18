@@ -12,7 +12,7 @@ class WillPopScopeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labels = getLabels(context);
+    final labels = getMyServicesLabels(context);
 
     return WillPopScope(
       onWillPop: () {
