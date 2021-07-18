@@ -35,14 +35,19 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 
 abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> {
   List<Widget> bodyChildren = <Widget>[];
+  Widget? drawer;
 
   @protected
   bool get emptyData => bodyChildren.isEmpty;
 
   List<Widget> get appBarActions => <Widget>[];
 
-  List<Widget> get _appBarActionsWithProgress =>
-      <Widget>[if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions];
+  List<Widget> get _appBarActionsWithProgress => <Widget>[
+        if (!emptyData && actionBarLoading)
+          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
+        else
+          ...appBarActions
+      ];
 
   String title = '';
 
@@ -196,6 +201,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       child: SafeArea(
         bottom: false,
         child: Scaffold(
+          drawer: drawer,
           body: NestedScrollView(
             floatHeaderSlivers: true,
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {

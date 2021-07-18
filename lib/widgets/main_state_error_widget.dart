@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../localization.dart';
 
 class FutureErrorWidget extends StatelessWidget {
-  const FutureErrorWidget({Key? key, this.err}) : super(key: key);
+  const FutureErrorWidget({Key? key, this.err, this.contactUS}) : super(key: key);
 
   final Object? err;
+
+  final Widget? contactUS;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class FutureErrorWidget extends StatelessWidget {
           const SizedBox(height: 20),
           if (err != null) Text(err.toString(), textAlign: TextAlign.center),
           const SizedBox(height: 20),
-          //  const ContactUsWidget()
+          if (contactUS != null) contactUS!,
         ],
       ),
     );
