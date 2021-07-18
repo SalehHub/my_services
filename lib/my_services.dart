@@ -21,6 +21,7 @@ export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError;
 export 'package:flutter_sheet_localization/flutter_sheet_localization.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:intl/intl.dart' hide TextDirection;
+export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
 export 'package:sqflite/sqflite.dart';
 
