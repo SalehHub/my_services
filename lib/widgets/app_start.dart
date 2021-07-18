@@ -43,7 +43,7 @@ Future<void> myServicesMain({
   );
 }
 
-class AppStart extends StatefulWidget {
+class AppStart extends StatelessWidget {
   const AppStart({
     Key? key,
     required this.delegates,
@@ -56,17 +56,6 @@ class AppStart extends StatefulWidget {
   final Widget homePage;
 
   @override
-  _AppStartState createState() => _AppStartState();
-}
-
-class _AppStartState extends State<AppStart> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
       final ThemeMode? themeMode = watchThemeMode(ref);
@@ -74,9 +63,9 @@ class _AppStartState extends State<AppStart> {
 
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: widget.title,
+        title: title,
         //
-        localizationsDelegates: ServiceLocale.localizationsDelegates(widget.delegates),
+        localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,
         locale: locale,
         //
@@ -84,7 +73,7 @@ class _AppStartState extends State<AppStart> {
         theme: ServiceTheme.lightTheme(),
         darkTheme: ServiceTheme.darkTheme(),
         //
-        home: widget.homePage,
+        home: homePage,
         builder: (BuildContext context, Widget? child) => Unfocus(child: child),
         //
         initialRoute: '/',
