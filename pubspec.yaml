@@ -11,6 +11,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  cupertino_icons: ^1.0.3
+
   google_fonts: ^2.1.0
 
   firebase_core: ^1.4.0
@@ -38,6 +40,6 @@ dependencies:
 
 dev_dependencies:
   flutter_sheet_localization_generator: ^5.1.7
-  build_runner: ^2.0.5
+  build_runner: ^2.0.6
   freezed: ^0.14.2
   json_serializable: ^4.1.3
