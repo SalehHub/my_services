@@ -1,9 +1,4 @@
-import 'package:app_settings/app_settings.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
-
-import '../icons.dart';
-import '../localization.dart';
+import '../my_services.dart';
 
 class NoNotificationPermissionCard extends StatefulWidget {
   const NoNotificationPermissionCard({Key? key}) : super(key: key);

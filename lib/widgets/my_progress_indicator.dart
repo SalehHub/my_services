@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../services/exports.dart';
+import '../my_services.dart';
 
 class MyProgressIndicator extends StatelessWidget {
   const MyProgressIndicator({Key? key, this.margin = EdgeInsets.zero}) : super(key: key);

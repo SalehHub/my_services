@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'app_device_data.dart';
+import '../my_services.dart';
 
 part 'general_state.freezed.dart';
 part 'general_state.g.dart';

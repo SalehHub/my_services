@@ -1,15 +1,7 @@
-import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../databases/key_value_database.dart';
-import '../helpers.dart';
-import '../models/app_device_data.dart';
-import '../models/general_state.dart';
-import '../services/exports.dart';
+import '../my_services.dart';
 
 //------------------------------------------------------------------//
+
 ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
 
 ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;

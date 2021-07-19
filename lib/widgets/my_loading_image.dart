@@ -1,10 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:flutter_image/network.dart';
-import 'package:octo_image/octo_image.dart';
-
-import 'my_ink.dart';
+import '../my_services.dart';
 
 class MyLoadingImage extends StatelessWidget {
   const MyLoadingImage({

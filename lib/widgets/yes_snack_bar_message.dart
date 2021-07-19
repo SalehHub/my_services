@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../localization.dart';
+import '../my_services.dart';
 
 class YesSnackBarMessage extends StatelessWidget {
   const YesSnackBarMessage({Key? key, this.text = '', this.onYes}) : super(key: key);

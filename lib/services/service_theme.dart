@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../my_services.dart';
 
 class ServiceTheme {
   static Color? lightAccentColor = const Color(0xf000b050);

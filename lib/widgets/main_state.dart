@@ -1,13 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../helpers.dart';
-import '../icons.dart';
-import 'main_state_empty_widget.dart';
-import 'main_state_error_widget.dart';
-import 'my_progress_indicator.dart';
+import '../my_services.dart';
 
 abstract class _MainStateData<T extends ConsumerStatefulWidget> extends ConsumerState<T> {
   /////Theme

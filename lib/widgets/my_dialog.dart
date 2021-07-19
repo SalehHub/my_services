@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../services/exports.dart';
+import '../my_services.dart';
 
 dynamic showMyDialog({
   required BuildContext context,

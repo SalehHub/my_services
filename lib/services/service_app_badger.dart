@@ -1,7 +1,4 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
-
-import '../helpers.dart';
+import '../my_services.dart';
 
 class ServiceAppBadger {
   static Future<void> updateBadgeCount(int count) async {

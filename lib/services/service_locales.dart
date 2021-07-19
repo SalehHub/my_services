@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-
-import '../localization.dart';
+import '../my_services.dart';
 
 class ServiceLocale {
   static Locale defaultLocale = const Locale('ar');

@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../icons.dart';
-import '../localization.dart';
-import '../services/service_url_launcher.dart';
-import 'main_state.dart';
+import '../my_services.dart';
 
 class PageNewAppVersion extends ConsumerStatefulWidget {
   const PageNewAppVersion({Key? key, required this.iosAppStoreUrl, required this.androidPlayStoreUrl}) : super(key: key);

@@ -1,17 +1,3 @@
-import 'dart:io';
-import 'dart:math';
-import 'dart:ui';
-
-import 'package:device_info/device_info.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart' hide TextDirection;
-import 'package:logger/logger.dart';
-import 'package:package_info/package_info.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:timeago/timeago.dart';
-
-import 'models/app_device_data.dart';
 import 'my_services.dart';
 
 final Logger logger = Logger();

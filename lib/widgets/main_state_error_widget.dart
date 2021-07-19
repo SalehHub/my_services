@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../localization.dart';
+import '../my_services.dart';
 
 class FutureErrorWidget extends StatelessWidget {
   const FutureErrorWidget({Key? key, this.err, this.contactUS}) : super(key: key);

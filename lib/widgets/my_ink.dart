@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../my_services.dart';
 
 class MyInk extends StatelessWidget {
   const MyInk({Key? key, required this.child, this.onTap, this.radius, this.borderRadius}) : super(key: key);
