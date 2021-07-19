@@ -36,6 +36,7 @@ dependencies:
   flutter_sheet_localization: ^5.1.1
   freezed_annotation: ^0.14.2
   sqflite: ^2.0.0+3
+  dio: ^4.0.0
 
 
 dev_dependencies:
