@@ -13,10 +13,10 @@ class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
   MyServicesLocalizationsData get labels => getMyServicesLabels(context);
 
   @override
-  bool get hideTopAdBanner => true;
+  bool get hideTopBanner => true;
 
   @override
-  bool get hideBottomAdBanner => true;
+  bool get hideBottomBanner => true;
 
   @override
   String get title => labels.newVersion;

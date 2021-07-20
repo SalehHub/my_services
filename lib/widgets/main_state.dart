@@ -33,15 +33,19 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   List<Widget> get appBarActions => <Widget>[];
 
-  List<Widget> get _appBarActionsWithProgress =>
-      <Widget>[if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions];
+  List<Widget> get _appBarActionsWithProgress => <Widget>[
+        if (!emptyData && actionBarLoading)
+          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
+        else
+          ...appBarActions,
+      ];
 
   String title = '';
 
   bool pageLoading = false;
 
-  bool hideTopAdBanner = false;
-  bool hideBottomAdBanner = false;
+  bool hideTopBanner = false;
+  bool hideBottomBanner = false;
   Widget topBanner = const SizedBox();
   Widget bottomBanner = const SizedBox();
 
@@ -182,7 +186,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   @override
   Widget build(BuildContext context) {
-    // ref.watch(appStateProvider);
     return Container(
       color: theme.scaffoldBackgroundColor,
       child: SafeArea(
@@ -247,7 +250,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
           if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
           //top banner
-          if (!hideTopAdBanner) SliverToBoxAdapter(child: topBanner),
+          if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),
 
           //show loading
           if (pageLoading)
@@ -265,7 +268,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
           const SliverPadding(padding: EdgeInsets.only(top: 50)),
 
           //bottom banner
-          if (!hideBottomAdBanner) SliverToBoxAdapter(child: bottomBanner),
+          if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
 
           const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
         ],
