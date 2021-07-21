@@ -147,7 +147,7 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppDeviceData extends _AppDeviceData {
+class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
   _$_AppDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.osVersion, this.deviceModel}) : super._();
 
   factory _$_AppDeviceData.fromJson(Map<String, dynamic> json) => _$_$_AppDeviceDataFromJson(json);
@@ -164,8 +164,20 @@ class _$_AppDeviceData extends _AppDeviceData {
   final String? deviceModel;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'AppDeviceData(appVersion: $appVersion, appBuild: $appBuild, deviceID: $deviceID, osVersion: $osVersion, deviceModel: $deviceModel)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppDeviceData'))
+      ..add(DiagnosticsProperty('appVersion', appVersion))
+      ..add(DiagnosticsProperty('appBuild', appBuild))
+      ..add(DiagnosticsProperty('deviceID', deviceID))
+      ..add(DiagnosticsProperty('osVersion', osVersion))
+      ..add(DiagnosticsProperty('deviceModel', deviceModel));
   }
 
   @override
