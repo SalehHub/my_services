@@ -1,10 +1,11 @@
 export 'dart:async';
-export 'dart:convert';
+export 'dart:convert' hide Codec;
 export 'dart:io';
 export 'dart:isolate';
 export 'dart:math' show cos, sqrt, asin;
 export 'dart:math';
 export 'dart:typed_data';
+export 'dart:ui' show ImageFilter;
 
 export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
