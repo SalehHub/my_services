@@ -22,7 +22,7 @@ Future<void> myServicesMain({
 
   await Firebase.initializeApp();
   await ServiceFirebaseCrashlytics.register();
-  final GeneralState generalState = await getInitGeneralState();
+  final GeneralState generalState = await getGeneralState();
 
   runApp(
     ProviderScope(

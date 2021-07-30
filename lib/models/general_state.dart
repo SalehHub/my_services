@@ -40,10 +40,6 @@ class ThemeModeConverter implements JsonConverter<ThemeMode, String?> {
 
   @override
   ThemeMode fromJson(String? json) {
-    if (json == null) {
-      return ThemeMode.system;
-    }
-
     if (json == ThemeMode.light.toString()) {
       return ThemeMode.light;
     } else if (json == ThemeMode.dark.toString()) {

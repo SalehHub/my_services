@@ -37,13 +37,11 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
       };
 
   ///app
-
   Future<void> setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
     await GeneralKeyValueDatabase.setAccessToken(value);
   }
 
-  ///app
   void setThemeMode(BuildContext context, ThemeMode value) {
     state = state.copyWith(themeMode: value);
     ServiceTheme.setSystemUiOverlayStyle(value, context);
@@ -68,13 +66,13 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
   }
 }
 
-Future<GeneralState> getInitGeneralState() async {
-  logger.wtf('getInitGeneralState initialized');
+Future<GeneralState> getGeneralState() async {
+  logger.w('Getting GeneralState ...');
 
   String? notificationToken;
   String? accessToken;
-  Locale locale = ServiceLocale.defaultLocale;
-  ThemeMode themeMode = ThemeMode.system;
+  Locale? locale;
+  ThemeMode? themeMode;
   bool isFirstAppRun = false;
   bool isFirstAppBuildRun = false;
   late AppDeviceData appDeviceData;
@@ -82,7 +80,7 @@ Future<GeneralState> getInitGeneralState() async {
   await Future.wait<dynamic>(
     <Future<dynamic>>[
       //-----------------------------------------------------------------//
-      Helpers.getApplicationDocumentsPath().then<dynamic>((String? applicationDocumentsDirectoryPath) async {
+      Helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
         appDeviceData = await Helpers.getAppAndDeviceData();
         //
         isFirstAppRun = await GeneralKeyValueDatabase.getIsFirstAppRun();
@@ -91,7 +89,7 @@ Future<GeneralState> getInitGeneralState() async {
         accessToken = await GeneralKeyValueDatabase.getAccessToken();
         //
         locale = await GeneralKeyValueDatabase.getLocale();
-
+        //
         themeMode = await GeneralKeyValueDatabase.getThemeMode();
       }),
       //-----------------------------------------------------------------//

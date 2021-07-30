@@ -31,7 +31,7 @@ dependencies:
   octo_image: ^1.0.0+1
   flutter_image: ^4.1.0
   cached_network_image: ^3.1.0
-  flutter_riverpod: ^1.0.0-dev.5
+  flutter_riverpod: ^1.0.0-dev.6
   flutter_app_badger: ^1.2.0
   flutter_sheet_localization: ^5.1.1
   freezed_annotation: ^0.14.2

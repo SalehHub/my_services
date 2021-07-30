@@ -1,8 +1,8 @@
 import '../my_services.dart';
 
-Database? _database;
-
 class GeneralKeyValueDatabase {
+  static Database? _database;
+
   static Future<Database> getDatabase() async {
     if (_database == null) {
       final applicationDocumentsDirectoryPath = await Helpers.getApplicationDocumentsPath();
@@ -17,11 +17,6 @@ class GeneralKeyValueDatabase {
     }
     return _database!;
   }
-
-  // static const String tableName = 'GeneralKeyValue';
-  // static const String databaseCreatingQuery = 'CREATE TABLE $tableName (key TEXT PRIMARY KEY, value TEXT, createdAt INTEGER)';
-  // static const int databaseVersion = 1;
-  // static const String databaseName = '${tableName}DB.db';
 
   static const String tableName = 'keyValue';
   static const String databaseCreatingQuery = 'CREATE TABLE $tableName (key TEXT PRIMARY KEY, value TEXT, createdAt INTEGER)';
@@ -60,11 +55,11 @@ class GeneralKeyValueDatabase {
   }
 
   static Future<int> setLocale(Locale locale, {bool replaceExist = true}) {
-    return set(localeKey, locale.languageCode);
+    return set(localeKey, locale.languageCode, replaceExist: replaceExist);
   }
 
   static Future<int> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
-    return set(themeModeKey, themeMode.toString());
+    return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
   }
 
   static Future<dynamic> get(String key) async {
@@ -87,9 +82,7 @@ class GeneralKeyValueDatabase {
   }
 
   static Future<bool> getIsFirstAppBuildRun(String build) async {
-    //final String build = readAppState(context).appDeviceData.appBuild;
     final String _key = isFirstAppBuildRun + build;
-
     final String? data = await query(_key);
 
     if (data == null) {
@@ -125,18 +118,15 @@ class GeneralKeyValueDatabase {
 
   static Future<ThemeMode> getThemeMode() async {
     final String? value = await query(themeModeKey);
-    if (value != null) {
-      if (value == ThemeMode.light.toString()) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-        return ThemeMode.light;
-      } else if (value == ThemeMode.dark.toString()) {
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-        return ThemeMode.dark;
-      } else {
-        return ThemeMode.system;
-      }
+    if (value == ThemeMode.light.toString()) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+      return ThemeMode.light;
+    } else if (value == ThemeMode.dark.toString()) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+      return ThemeMode.dark;
+    } else {
+      return ThemeMode.system;
     }
-    return ThemeMode.system;
   }
 
   static Future<String?> query(String key) async {

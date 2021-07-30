@@ -2,7 +2,6 @@ export 'dart:async';
 export 'dart:convert' hide Codec;
 export 'dart:io';
 export 'dart:isolate';
-export 'dart:math' show cos, sqrt, asin;
 export 'dart:math';
 export 'dart:typed_data';
 export 'dart:ui' show ImageFilter;
@@ -37,6 +36,7 @@ export 'package:path_provider/path_provider.dart';
 export 'package:sqflite/sqflite.dart';
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';
+export 'package:uuid/uuid.dart';
 
 export 'databases/general_key_value_database.dart';
 export 'helpers.dart';
