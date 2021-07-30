@@ -100,15 +100,13 @@ class GeneralKeyValueDatabase {
   static Future<Locale> getLocale() async {
     try {
       final String? value = await query(localeKey);
-      if (value == null) {
-        final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
-        if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
-          return Locale(deviceLocale.languageCode);
-        }
-      } else {
-        if (ServiceLocale.isSupportedLocale(Locale(value))) {
-          return Locale(value);
-        }
+      if (value != null && ServiceLocale.isSupportedLocale(Locale(value))) {
+        return Locale(value);
+      }
+      //if no stored locale then try to get device locale if it is supported
+      final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
+      if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
+        return Locale(deviceLocale.languageCode);
       }
     } catch (e, s) {
       logger.e(e, e, s);
