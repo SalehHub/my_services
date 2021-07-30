@@ -30,6 +30,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
         'lang': state.locale?.languageCode,
         'appBuild': state.appDeviceData?.appBuild,
         'deviceModel': state.appDeviceData?.deviceModel,
+        'deviceOsVersion': state.appDeviceData?.osVersion,
         'themeMode': state.themeMode.toString(),
         'isFirstAppRun': state.isFirstAppRun,
         'isFirstAppBuildRun': state.isFirstAppBuildRun,
