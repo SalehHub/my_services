@@ -20,13 +20,14 @@ AppDeviceData _$AppDeviceDataFromJson(Map<String, dynamic> json) {
 class _$AppDeviceDataTearOff {
   const _$AppDeviceDataTearOff();
 
-  _AppDeviceData call({required String appVersion, required String appBuild, String? deviceID, String? osVersion, String? deviceModel}) {
+  _AppDeviceData call({required String appVersion, required String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS}) {
     return _AppDeviceData(
       appVersion: appVersion,
       appBuild: appBuild,
       deviceID: deviceID,
-      osVersion: osVersion,
+      deviceOSVersion: deviceOSVersion,
       deviceModel: deviceModel,
+      deviceOS: deviceOS,
     );
   }
 
@@ -43,8 +44,9 @@ mixin _$AppDeviceData {
   String get appVersion => throw _privateConstructorUsedError;
   String get appBuild => throw _privateConstructorUsedError;
   String? get deviceID => throw _privateConstructorUsedError;
-  String? get osVersion => throw _privateConstructorUsedError;
+  String? get deviceOSVersion => throw _privateConstructorUsedError;
   String? get deviceModel => throw _privateConstructorUsedError;
+  String? get deviceOS => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +56,7 @@ mixin _$AppDeviceData {
 /// @nodoc
 abstract class $AppDeviceDataCopyWith<$Res> {
   factory $AppDeviceDataCopyWith(AppDeviceData value, $Res Function(AppDeviceData) then) = _$AppDeviceDataCopyWithImpl<$Res>;
-  $Res call({String appVersion, String appBuild, String? deviceID, String? osVersion, String? deviceModel});
+  $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
@@ -70,8 +72,9 @@ class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> 
     Object? appVersion = freezed,
     Object? appBuild = freezed,
     Object? deviceID = freezed,
-    Object? osVersion = freezed,
+    Object? deviceOSVersion = freezed,
     Object? deviceModel = freezed,
+    Object? deviceOS = freezed,
   }) {
     return _then(_value.copyWith(
       appVersion: appVersion == freezed
@@ -86,13 +89,17 @@ class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> 
           ? _value.deviceID
           : deviceID // ignore: cast_nullable_to_non_nullable
               as String?,
-      osVersion: osVersion == freezed
-          ? _value.osVersion
-          : osVersion // ignore: cast_nullable_to_non_nullable
+      deviceOSVersion: deviceOSVersion == freezed
+          ? _value.deviceOSVersion
+          : deviceOSVersion // ignore: cast_nullable_to_non_nullable
               as String?,
       deviceModel: deviceModel == freezed
           ? _value.deviceModel
           : deviceModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceOS: deviceOS == freezed
+          ? _value.deviceOS
+          : deviceOS // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -102,7 +109,7 @@ class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> 
 abstract class _$AppDeviceDataCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
   factory _$AppDeviceDataCopyWith(_AppDeviceData value, $Res Function(_AppDeviceData) then) = __$AppDeviceDataCopyWithImpl<$Res>;
   @override
-  $Res call({String appVersion, String appBuild, String? deviceID, String? osVersion, String? deviceModel});
+  $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
@@ -117,8 +124,9 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
     Object? appVersion = freezed,
     Object? appBuild = freezed,
     Object? deviceID = freezed,
-    Object? osVersion = freezed,
+    Object? deviceOSVersion = freezed,
     Object? deviceModel = freezed,
+    Object? deviceOS = freezed,
   }) {
     return _then(_AppDeviceData(
       appVersion: appVersion == freezed
@@ -133,13 +141,17 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
           ? _value.deviceID
           : deviceID // ignore: cast_nullable_to_non_nullable
               as String?,
-      osVersion: osVersion == freezed
-          ? _value.osVersion
-          : osVersion // ignore: cast_nullable_to_non_nullable
+      deviceOSVersion: deviceOSVersion == freezed
+          ? _value.deviceOSVersion
+          : deviceOSVersion // ignore: cast_nullable_to_non_nullable
               as String?,
       deviceModel: deviceModel == freezed
           ? _value.deviceModel
           : deviceModel // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deviceOS: deviceOS == freezed
+          ? _value.deviceOS
+          : deviceOS // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -148,7 +160,7 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
 /// @nodoc
 @JsonSerializable()
 class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
-  _$_AppDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.osVersion, this.deviceModel}) : super._();
+  _$_AppDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.deviceOSVersion, this.deviceModel, this.deviceOS}) : super._();
 
   factory _$_AppDeviceData.fromJson(Map<String, dynamic> json) => _$_$_AppDeviceDataFromJson(json);
 
@@ -159,13 +171,15 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
   @override
   final String? deviceID;
   @override
-  final String? osVersion;
+  final String? deviceOSVersion;
   @override
   final String? deviceModel;
+  @override
+  final String? deviceOS;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppDeviceData(appVersion: $appVersion, appBuild: $appBuild, deviceID: $deviceID, osVersion: $osVersion, deviceModel: $deviceModel)';
+    return 'AppDeviceData(appVersion: $appVersion, appBuild: $appBuild, deviceID: $deviceID, deviceOSVersion: $deviceOSVersion, deviceModel: $deviceModel, deviceOS: $deviceOS)';
   }
 
   @override
@@ -176,8 +190,9 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('appVersion', appVersion))
       ..add(DiagnosticsProperty('appBuild', appBuild))
       ..add(DiagnosticsProperty('deviceID', deviceID))
-      ..add(DiagnosticsProperty('osVersion', osVersion))
-      ..add(DiagnosticsProperty('deviceModel', deviceModel));
+      ..add(DiagnosticsProperty('deviceOSVersion', deviceOSVersion))
+      ..add(DiagnosticsProperty('deviceModel', deviceModel))
+      ..add(DiagnosticsProperty('deviceOS', deviceOS));
   }
 
   @override
@@ -187,8 +202,9 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
             (identical(other.appVersion, appVersion) || const DeepCollectionEquality().equals(other.appVersion, appVersion)) &&
             (identical(other.appBuild, appBuild) || const DeepCollectionEquality().equals(other.appBuild, appBuild)) &&
             (identical(other.deviceID, deviceID) || const DeepCollectionEquality().equals(other.deviceID, deviceID)) &&
-            (identical(other.osVersion, osVersion) || const DeepCollectionEquality().equals(other.osVersion, osVersion)) &&
-            (identical(other.deviceModel, deviceModel) || const DeepCollectionEquality().equals(other.deviceModel, deviceModel)));
+            (identical(other.deviceOSVersion, deviceOSVersion) || const DeepCollectionEquality().equals(other.deviceOSVersion, deviceOSVersion)) &&
+            (identical(other.deviceModel, deviceModel) || const DeepCollectionEquality().equals(other.deviceModel, deviceModel)) &&
+            (identical(other.deviceOS, deviceOS) || const DeepCollectionEquality().equals(other.deviceOS, deviceOS)));
   }
 
   @override
@@ -197,8 +213,9 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(appVersion) ^
       const DeepCollectionEquality().hash(appBuild) ^
       const DeepCollectionEquality().hash(deviceID) ^
-      const DeepCollectionEquality().hash(osVersion) ^
-      const DeepCollectionEquality().hash(deviceModel);
+      const DeepCollectionEquality().hash(deviceOSVersion) ^
+      const DeepCollectionEquality().hash(deviceModel) ^
+      const DeepCollectionEquality().hash(deviceOS);
 
   @JsonKey(ignore: true)
   @override
@@ -211,7 +228,7 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
 }
 
 abstract class _AppDeviceData extends AppDeviceData {
-  factory _AppDeviceData({required String appVersion, required String appBuild, String? deviceID, String? osVersion, String? deviceModel}) = _$_AppDeviceData;
+  factory _AppDeviceData({required String appVersion, required String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS}) = _$_AppDeviceData;
   _AppDeviceData._() : super._();
 
   factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$_AppDeviceData.fromJson;
@@ -223,9 +240,11 @@ abstract class _AppDeviceData extends AppDeviceData {
   @override
   String? get deviceID => throw _privateConstructorUsedError;
   @override
-  String? get osVersion => throw _privateConstructorUsedError;
+  String? get deviceOSVersion => throw _privateConstructorUsedError;
   @override
   String? get deviceModel => throw _privateConstructorUsedError;
+  @override
+  String? get deviceOS => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AppDeviceDataCopyWith<_AppDeviceData> get copyWith => throw _privateConstructorUsedError;

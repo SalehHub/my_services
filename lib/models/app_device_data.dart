@@ -13,8 +13,9 @@ class AppDeviceData with _$AppDeviceData {
     required String appVersion,
     required String appBuild,
     String? deviceID,
-    String? osVersion,
+    String? deviceOSVersion,
     String? deviceModel,
+    String? deviceOS,
   }) = _AppDeviceData;
 
   factory AppDeviceData.fromJson(Map<String, dynamic> json) => _$AppDeviceDataFromJson(json);

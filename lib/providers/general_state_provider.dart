@@ -30,11 +30,11 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
         'lang': state.locale?.languageCode,
         'appBuild': state.appDeviceData?.appBuild,
         'deviceModel': state.appDeviceData?.deviceModel,
-        'deviceOsVersion': state.appDeviceData?.osVersion,
+        'deviceOSVersion': state.appDeviceData?.deviceOSVersion,
+        'deviceOS': state.appDeviceData?.deviceOS,
         'themeMode': state.themeMode.toString(),
         'isFirstAppRun': state.isFirstAppRun,
         'isFirstAppBuildRun': state.isFirstAppBuildRun,
-        'deviceOS': Platform.operatingSystem.toLowerCase(),
       };
 
   ///app

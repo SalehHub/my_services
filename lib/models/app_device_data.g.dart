@@ -11,8 +11,9 @@ _$_AppDeviceData _$_$_AppDeviceDataFromJson(Map<String, dynamic> json) {
     appVersion: json['appVersion'] as String,
     appBuild: json['appBuild'] as String,
     deviceID: json['deviceID'] as String?,
-    osVersion: json['osVersion'] as String?,
+    deviceOSVersion: json['deviceOSVersion'] as String?,
     deviceModel: json['deviceModel'] as String?,
+    deviceOS: json['deviceOS'] as String?,
   );
 }
 
@@ -20,6 +21,7 @@ Map<String, dynamic> _$_$_AppDeviceDataToJson(_$_AppDeviceData instance) => <Str
       'appVersion': instance.appVersion,
       'appBuild': instance.appBuild,
       'deviceID': instance.deviceID,
-      'osVersion': instance.osVersion,
+      'deviceOSVersion': instance.deviceOSVersion,
       'deviceModel': instance.deviceModel,
+      'deviceOS': instance.deviceOS,
     };
