@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'app_device_data.dart';
 
@@ -162,7 +162,7 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
 class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
   _$_AppDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.deviceOSVersion, this.deviceModel, this.deviceOS}) : super._();
 
-  factory _$_AppDeviceData.fromJson(Map<String, dynamic> json) => _$_$_AppDeviceDataFromJson(json);
+  factory _$_AppDeviceData.fromJson(Map<String, dynamic> json) => _$$_AppDeviceDataFromJson(json);
 
   @override
   final String appVersion;
@@ -223,7 +223,7 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_AppDeviceDataToJson(this);
+    return _$$_AppDeviceDataToJson(this);
   }
 }
 

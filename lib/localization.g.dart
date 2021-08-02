@@ -61,7 +61,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     dependsOnSystem: 'Dépend du système',
     appTheme: 'Thème de l\'application',
     turkish: 'turc',
-    spanish: 'Espanol',
+    spanish: 'Espagnol',
     french: 'français',
     english: 'Anglais',
     arabic: 'arabe',
@@ -97,7 +97,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yes: 'sí',
     areYouSureYouWantToCloseTheApp: '¿Estás seguro de que quieres cerrar la aplicación?',
     notificationsAreDisabledForThisApp: 'Las notificaciones están deshabilitadas para esta aplicación.',
-    anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y en contacto con nosotros',
+    anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
     thereAreNoDataYet: 'Henüz veri yok',

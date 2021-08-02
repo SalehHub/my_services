@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'general_state.dart';
 
@@ -215,7 +215,7 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
       {this.accessToken, this.notificationToken, this.appDeviceData, @LocaleConverter() this.locale, @ThemeModeConverter() this.themeMode, this.isFirstAppRun = false, this.isFirstAppBuildRun = false})
       : super._();
 
-  factory _$_GeneralState.fromJson(Map<String, dynamic> json) => _$_$_GeneralStateFromJson(json);
+  factory _$_GeneralState.fromJson(Map<String, dynamic> json) => _$$_GeneralStateFromJson(json);
 
   @override
   final String? accessToken;
@@ -285,7 +285,7 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_GeneralStateToJson(this);
+    return _$$_GeneralStateToJson(this);
   }
 }
 
