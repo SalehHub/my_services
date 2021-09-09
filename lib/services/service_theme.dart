@@ -108,8 +108,10 @@ class ServiceTheme {
         elevation: 15,
       ),
       appBarTheme: mainThemeData.appBarTheme.copyWith(
+        backgroundColor: primaryColor,
         textTheme: textTheme,
         elevation: 2,
+        titleTextStyle: textTheme.bodyText2,
         iconTheme: IconThemeData(color: iconColor),
       ),
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
