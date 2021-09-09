@@ -4,8 +4,7 @@ include: package:lints/recommended.yaml
 
 analyzer:
   exclude:
-    - "lib/localization.g.dart"
-    - "lib/generated_plugin_registrant.dart"
+    - "**/generated_plugin_registrant.dart"
     - "**/*.g.dart"
     - "**/*.freezed.dart"
 
