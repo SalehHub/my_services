@@ -16,7 +16,12 @@ String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s
 GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
 GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
 
-final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
+final initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
+final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) {
+  return GeneralStateNotifier(ref.watch(initialGeneralStateProvider), ref);
+});
+
+// final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
 //------------------------------------------------------------------//
 
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
