@@ -1,3 +1,4 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
@@ -39,7 +40,7 @@ class _$GeneralStateTearOff {
     );
   }
 
-  GeneralState fromJson(Map<String, Object> json) {
+  GeneralState fromJson(Map<String, Object?> json) {
     return GeneralState.fromJson(json);
   }
 }
@@ -258,26 +259,19 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GeneralState &&
-            (identical(other.accessToken, accessToken) || const DeepCollectionEquality().equals(other.accessToken, accessToken)) &&
-            (identical(other.notificationToken, notificationToken) || const DeepCollectionEquality().equals(other.notificationToken, notificationToken)) &&
-            (identical(other.appDeviceData, appDeviceData) || const DeepCollectionEquality().equals(other.appDeviceData, appDeviceData)) &&
-            (identical(other.locale, locale) || const DeepCollectionEquality().equals(other.locale, locale)) &&
-            (identical(other.themeMode, themeMode) || const DeepCollectionEquality().equals(other.themeMode, themeMode)) &&
-            (identical(other.isFirstAppRun, isFirstAppRun) || const DeepCollectionEquality().equals(other.isFirstAppRun, isFirstAppRun)) &&
-            (identical(other.isFirstAppBuildRun, isFirstAppBuildRun) || const DeepCollectionEquality().equals(other.isFirstAppBuildRun, isFirstAppBuildRun)));
+        (other.runtimeType == runtimeType &&
+            other is _GeneralState &&
+            (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
+            (identical(other.notificationToken, notificationToken) || other.notificationToken == notificationToken) &&
+            (identical(other.appDeviceData, appDeviceData) || other.appDeviceData == appDeviceData) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
+            (identical(other.isFirstAppRun, isFirstAppRun) || other.isFirstAppRun == isFirstAppRun) &&
+            (identical(other.isFirstAppBuildRun, isFirstAppBuildRun) || other.isFirstAppBuildRun == isFirstAppBuildRun));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(accessToken) ^
-      const DeepCollectionEquality().hash(notificationToken) ^
-      const DeepCollectionEquality().hash(appDeviceData) ^
-      const DeepCollectionEquality().hash(locale) ^
-      const DeepCollectionEquality().hash(themeMode) ^
-      const DeepCollectionEquality().hash(isFirstAppRun) ^
-      const DeepCollectionEquality().hash(isFirstAppBuildRun);
+  int get hashCode => Object.hash(runtimeType, accessToken, notificationToken, appDeviceData, locale, themeMode, isFirstAppRun, isFirstAppBuildRun);
 
   @JsonKey(ignore: true)
   @override
@@ -303,21 +297,21 @@ abstract class _GeneralState extends GeneralState {
   factory _GeneralState.fromJson(Map<String, dynamic> json) = _$_GeneralState.fromJson;
 
   @override
-  String? get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken;
   @override
-  String? get notificationToken => throw _privateConstructorUsedError;
+  String? get notificationToken;
   @override
-  AppDeviceData? get appDeviceData => throw _privateConstructorUsedError;
+  AppDeviceData? get appDeviceData;
   @override
   @LocaleConverter()
-  Locale? get locale => throw _privateConstructorUsedError;
+  Locale? get locale;
   @override
   @ThemeModeConverter()
-  ThemeMode? get themeMode => throw _privateConstructorUsedError;
+  ThemeMode? get themeMode;
   @override
-  bool get isFirstAppRun => throw _privateConstructorUsedError;
+  bool get isFirstAppRun;
   @override
-  bool get isFirstAppBuildRun => throw _privateConstructorUsedError;
+  bool get isFirstAppBuildRun;
   @override
   @JsonKey(ignore: true)
   _$GeneralStateCopyWith<_GeneralState> get copyWith => throw _privateConstructorUsedError;

@@ -1,3 +1,4 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
@@ -31,7 +32,7 @@ class _$AppDeviceDataTearOff {
     );
   }
 
-  AppDeviceData fromJson(Map<String, Object> json) {
+  AppDeviceData fromJson(Map<String, Object?> json) {
     return AppDeviceData.fromJson(json);
   }
 }
@@ -198,24 +199,18 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppDeviceData &&
-            (identical(other.appVersion, appVersion) || const DeepCollectionEquality().equals(other.appVersion, appVersion)) &&
-            (identical(other.appBuild, appBuild) || const DeepCollectionEquality().equals(other.appBuild, appBuild)) &&
-            (identical(other.deviceID, deviceID) || const DeepCollectionEquality().equals(other.deviceID, deviceID)) &&
-            (identical(other.deviceOSVersion, deviceOSVersion) || const DeepCollectionEquality().equals(other.deviceOSVersion, deviceOSVersion)) &&
-            (identical(other.deviceModel, deviceModel) || const DeepCollectionEquality().equals(other.deviceModel, deviceModel)) &&
-            (identical(other.deviceOS, deviceOS) || const DeepCollectionEquality().equals(other.deviceOS, deviceOS)));
+        (other.runtimeType == runtimeType &&
+            other is _AppDeviceData &&
+            (identical(other.appVersion, appVersion) || other.appVersion == appVersion) &&
+            (identical(other.appBuild, appBuild) || other.appBuild == appBuild) &&
+            (identical(other.deviceID, deviceID) || other.deviceID == deviceID) &&
+            (identical(other.deviceOSVersion, deviceOSVersion) || other.deviceOSVersion == deviceOSVersion) &&
+            (identical(other.deviceModel, deviceModel) || other.deviceModel == deviceModel) &&
+            (identical(other.deviceOS, deviceOS) || other.deviceOS == deviceOS));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(appVersion) ^
-      const DeepCollectionEquality().hash(appBuild) ^
-      const DeepCollectionEquality().hash(deviceID) ^
-      const DeepCollectionEquality().hash(deviceOSVersion) ^
-      const DeepCollectionEquality().hash(deviceModel) ^
-      const DeepCollectionEquality().hash(deviceOS);
+  int get hashCode => Object.hash(runtimeType, appVersion, appBuild, deviceID, deviceOSVersion, deviceModel, deviceOS);
 
   @JsonKey(ignore: true)
   @override
@@ -234,17 +229,17 @@ abstract class _AppDeviceData extends AppDeviceData {
   factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$_AppDeviceData.fromJson;
 
   @override
-  String get appVersion => throw _privateConstructorUsedError;
+  String get appVersion;
   @override
-  String get appBuild => throw _privateConstructorUsedError;
+  String get appBuild;
   @override
-  String? get deviceID => throw _privateConstructorUsedError;
+  String? get deviceID;
   @override
-  String? get deviceOSVersion => throw _privateConstructorUsedError;
+  String? get deviceOSVersion;
   @override
-  String? get deviceModel => throw _privateConstructorUsedError;
+  String? get deviceModel;
   @override
-  String? get deviceOS => throw _privateConstructorUsedError;
+  String? get deviceOS;
   @override
   @JsonKey(ignore: true)
   _$AppDeviceDataCopyWith<_AppDeviceData> get copyWith => throw _privateConstructorUsedError;
