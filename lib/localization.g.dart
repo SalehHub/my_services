@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    avatar: 'Avatar',
     changeProfileImage: 'Change profile image',
     theAppDoesntHavePhotoAccessPermission: 'The app doesn\'t have photo access permission',
     stillDidntReceiveTheVerificationCode: 'Still didn\'t receive the verification code?',
@@ -70,6 +71,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    avatar: 'صورة الملف الشخصي',
     changeProfileImage: 'تغيير صورة الملف الشخصي',
     theAppDoesntHavePhotoAccessPermission: 'ليس لدى التطبيق صلاحيات الوصول الصور',
     stillDidntReceiveTheVerificationCode: 'لم يصلك رمز التحقق حتى الآن؟',
@@ -132,6 +134,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    avatar: 'Avatar',
     changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
@@ -194,6 +197,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    avatar: 'Avatar',
     changeProfileImage: 'Cambiar imagen de perfil',
     theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso fotográfico.',
     stillDidntReceiveTheVerificationCode: '¿Todavía no recibí el código de verificación?',
@@ -256,6 +260,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    avatar: 'Avatar',
     changeProfileImage: 'Profil görüntüsünü değiştir',
     theAppDoesntHavePhotoAccessPermission: 'Uygulamanın fotoğraf erişim izni yok',
     stillDidntReceiveTheVerificationCode: 'Hala doğrulama kodunu almadınız mı?',
@@ -321,6 +326,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.avatar,
     required this.changeProfileImage,
     required this.theAppDoesntHavePhotoAccessPermission,
     required this.stillDidntReceiveTheVerificationCode,
@@ -383,6 +389,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String avatar;
   final String changeProfileImage;
   final String theAppDoesntHavePhotoAccessPermission;
   final String stillDidntReceiveTheVerificationCode;
@@ -444,6 +451,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        avatar: map['avatar']! as String,
         changeProfileImage: map['changeProfileImage']! as String,
         theAppDoesntHavePhotoAccessPermission: map['theAppDoesntHavePhotoAccessPermission']! as String,
         stillDidntReceiveTheVerificationCode: map['stillDidntReceiveTheVerificationCode']! as String,
@@ -507,6 +515,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? avatar,
     String? changeProfileImage,
     String? theAppDoesntHavePhotoAccessPermission,
     String? stillDidntReceiveTheVerificationCode,
@@ -569,6 +578,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        avatar: avatar ?? this.avatar,
         changeProfileImage: changeProfileImage ?? this.changeProfileImage,
         theAppDoesntHavePhotoAccessPermission: theAppDoesntHavePhotoAccessPermission ?? this.theAppDoesntHavePhotoAccessPermission,
         stillDidntReceiveTheVerificationCode: stillDidntReceiveTheVerificationCode ?? this.stillDidntReceiveTheVerificationCode,
@@ -635,6 +645,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          avatar == other.avatar &&
           changeProfileImage == other.changeProfileImage &&
           theAppDoesntHavePhotoAccessPermission == other.theAppDoesntHavePhotoAccessPermission &&
           stillDidntReceiveTheVerificationCode == other.stillDidntReceiveTheVerificationCode &&
@@ -698,6 +709,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      avatar.hashCode ^
       changeProfileImage.hashCode ^
       theAppDoesntHavePhotoAccessPermission.hashCode ^
       stillDidntReceiveTheVerificationCode.hashCode ^
