@@ -8,6 +8,12 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    theAppDoesntHavePhotoAccessPermission: 'The app doesn\'t have photo access permission',
+    stillDidntReceiveTheVerificationCode: 'Still didn\'t receive the verification code?',
+    resendVerificationCode: 'Resend verification code',
+    changeEmailAddress: 'Change email address',
+    newEmailAddress: 'New email address',
+    currentEmailAddress: 'Current email address',
     checkYourJunkOrSpamFolder: 'Check your junk or spam folder',
     enterTheCodeSentToYourEmail: 'Enter the code sent to your email',
     verifyYourEmail: 'Verify your e-mail',
@@ -20,21 +26,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     makeSureItIsCorrectWeWillSendARecoveryCodeToIt: 'Make sure it is correct, we will send a recovery code to it',
     invalidRecoveryCode: 'Invalid recovery code',
     hello: 'Hello',
-    thankYouForSupportingTheApp: 'Thank you for supporting the app',
     yourNotifications: 'Your notifications',
     logout: 'Logout',
     yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Your email address is not confirmed, click here to confirm it',
     restorePassword: 'Restore password',
     createNewAccount: 'Create new account',
-    currentPassword: 'Current password',
-    password: 'Password',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Make sure it is correct. We will ask you to confirm it by sending a code to it',
     email: 'E-mail',
     name: 'Name',
     enterTheNameCorrectly: 'Enter the name correctly',
     passwordLengthMustBeAtLeastCharacters: 'Password length must be at least 6 characters',
+    enterANewPassword: 'Enter a new password',
     enterTheCurrentPassword: 'Enter the current password',
     enterAPassword: 'Enter a password',
+    currentPassword: 'Current password',
+    password: 'Password',
     incorrectEmail: 'Incorrect email',
     login: 'Login',
     newAccount: 'New Account',
@@ -52,6 +58,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'Arabic',
     appLanguage: 'App Language',
     settings: 'Settings',
+    updated: 'Updated',
     updateNow: 'Update Now',
     toEnjoyLatestFeaturesPleaseUpdate: 'To enjoy latest features please update ',
     newAppVersionIsAvailable: 'New app version is available',
@@ -62,6 +69,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    theAppDoesntHavePhotoAccessPermission: 'ليس لدى التطبيق صلاحيات الوصول الصور',
+    stillDidntReceiveTheVerificationCode: 'لم يصلك رمز التحقق حتى الآن؟',
+    resendVerificationCode: 'إعادة ارسال الرمز على بريدك',
+    changeEmailAddress: 'تغيير البريد الالكتروني',
+    newEmailAddress: 'البريد الالكتروني الجديد',
+    currentEmailAddress: 'البريد الالكتروني الحالي',
     checkYourJunkOrSpamFolder: 'تأكد من مجلد البريد المهمل او Spam',
     enterTheCodeSentToYourEmail: 'ادخل الرمز المرسل الى بريدك الالكتروني',
     verifyYourEmail: 'تأكيد البريد الالكتروني',
@@ -74,21 +87,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     makeSureItIsCorrectWeWillSendARecoveryCodeToIt: 'تأكد من صحته سنرسل رمز الاستعادة اليه',
     invalidRecoveryCode: 'رمز الاستعادة غير صحيح',
     hello: 'مرحبا بك',
-    thankYouForSupportingTheApp: 'شكرا لدعمك للتطبيق',
     yourNotifications: 'إشعاراتك',
     logout: 'تسجيل الخروج',
     yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'بريدك الالكتروني غير مؤكد، اضغط هنا لتأكيدة',
     restorePassword: 'إستعادة كلمة المرور',
     createNewAccount: 'إنشاء حساب جديد',
-    currentPassword: 'كلمة المرور الحالية',
-    password: 'كلمة المرور',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'تأكد من صحته سنطلب منك تأكيده بأرسال رمز اليه',
     email: 'البريد الالكتروني',
     name: 'الاسم',
     enterTheNameCorrectly: 'أدخل الاسم بشكل صحيح',
     passwordLengthMustBeAtLeastCharacters: 'يجب ان يكون طول كلمة المرور ٦ احرف على الاقل',
+    enterANewPassword: 'أدخل كلمة المرور الجديدة',
     enterTheCurrentPassword: 'أدخل كلمة المرور الحالية',
     enterAPassword: 'أدخل كلمة المرور',
+    currentPassword: 'كلمة المرور الحالية',
+    password: 'كلمة المرور',
     incorrectEmail: 'البريد الالكتروني غير صحيح',
     login: 'تسجيل الدخول',
     newAccount: 'تسجيل جديد',
@@ -106,6 +119,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'العربية',
     appLanguage: 'لغة التطبيق',
     settings: 'الاعدادات',
+    updated: 'تم التحديث',
     updateNow: 'التحديث الآن',
     toEnjoyLatestFeaturesPleaseUpdate: 'لتستمتع بآخر المميزات قم بالتحديث',
     newAppVersionIsAvailable: 'نسخة جديدة متوفرة من التطبيق',
@@ -116,6 +130,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
+    stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
+    resendVerificationCode: 'Renvoyer le code de vérification',
+    changeEmailAddress: 'Changer l\'adresse email',
+    newEmailAddress: 'Nouvelle adresse courriel',
+    currentEmailAddress: 'Adresse e-mail actuelle',
     checkYourJunkOrSpamFolder: 'Vérifiez votre dossier indésirable ou spam',
     enterTheCodeSentToYourEmail: 'Entrez le code envoyé à votre email',
     verifyYourEmail: 'Vérifiez votre e-mail',
@@ -128,21 +148,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     makeSureItIsCorrectWeWillSendARecoveryCodeToIt: 'Assurez-vous qu\'il est correct, nous vous enverrons un code de récupération',
     invalidRecoveryCode: 'Code de récupération non valide',
     hello: 'Bonjour',
-    thankYouForSupportingTheApp: 'Merci d\'avoir soutenu l\'application',
     yourNotifications: 'Vos notifications',
     logout: 'Se déconnecter',
     yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Votre adresse e-mail n\'est pas confirmée, cliquez ici pour le confirmer.',
     restorePassword: 'Restaurer le mot de passe',
     createNewAccount: 'Créer un nouveau compte',
-    currentPassword: 'Mot de passe actuel',
-    password: 'Mot de passe',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Assurez-vous qu\'il est correct. Nous vous demanderons de le confirmer en envoyant un code à celui-ci.',
     email: 'E-mail',
     name: 'Nom',
     enterTheNameCorrectly: 'Entrez le nom correctement',
     passwordLengthMustBeAtLeastCharacters: 'La longueur du mot de passe doit comporter au moins 6 caractères',
+    enterANewPassword: 'entrer un nouveau mot de passe',
     enterTheCurrentPassword: 'Entrez le mot de passe actuel',
     enterAPassword: 'Entrer un mot de passe',
+    currentPassword: 'Mot de passe actuel',
+    password: 'Mot de passe',
     incorrectEmail: 'Adresse Email incorrecte',
     login: 'Connexion',
     newAccount: 'Nouveau compte',
@@ -160,6 +180,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'arabe',
     appLanguage: 'Langage de l\'application',
     settings: 'Paramètres',
+    updated: 'Mis à jour',
     updateNow: 'Mettez à jour maintenant',
     toEnjoyLatestFeaturesPleaseUpdate: 'Pour profiter des dernières fonctionnalités, veuillez mettre à jour',
     newAppVersionIsAvailable: 'La nouvelle version d\'application est disponible',
@@ -170,6 +191,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso fotográfico.',
+    stillDidntReceiveTheVerificationCode: '¿Todavía no recibí el código de verificación?',
+    resendVerificationCode: 'Vuelva a enviar el código de verificación',
+    changeEmailAddress: 'Cambiar la dirección de correo electrónico',
+    newEmailAddress: 'Nueva dirección de correo electrónico',
+    currentEmailAddress: 'Dirección de email actual',
     checkYourJunkOrSpamFolder: 'Revisa tu carpeta de basura o spam',
     enterTheCodeSentToYourEmail: 'Ingrese el código enviado a su correo electrónico',
     verifyYourEmail: 'Verifique su correo electrónico',
@@ -182,21 +209,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     makeSureItIsCorrectWeWillSendARecoveryCodeToIt: 'Asegúrate de que sea correcto, le enviaremos un código de recuperación.',
     invalidRecoveryCode: 'Código de recuperación no válido',
     hello: 'Hola',
-    thankYouForSupportingTheApp: 'Gracias por apoyar la aplicación',
     yourNotifications: 'Tus notificaciones',
     logout: 'Cerrar sesión',
     yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Su dirección de correo electrónico no está confirmada, haga clic aquí para confirmarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    currentPassword: 'Contraseña actual',
-    password: 'Contraseña',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
     passwordLengthMustBeAtLeastCharacters: 'La longitud de la contraseña debe tener al menos 6 caracteres',
+    enterANewPassword: 'Introduzca una nueva contraseña',
     enterTheCurrentPassword: 'Ingrese la contraseña actual',
     enterAPassword: 'Ingrese una contraseña',
+    currentPassword: 'Contraseña actual',
+    password: 'Contraseña',
     incorrectEmail: 'Email incorrecto',
     login: 'Acceso',
     newAccount: 'Nueva cuenta',
@@ -214,6 +241,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'Arábica',
     appLanguage: 'Lengua de aplicación',
     settings: 'Ajustes',
+    updated: 'Actualizado',
     updateNow: 'Actualizar ahora',
     toEnjoyLatestFeaturesPleaseUpdate: 'Para disfrutar de las últimas características por favor actualizar',
     newAppVersionIsAvailable: 'La nueva versión de la aplicación está disponible',
@@ -224,6 +252,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    theAppDoesntHavePhotoAccessPermission: 'Uygulamanın fotoğraf erişim izni yok',
+    stillDidntReceiveTheVerificationCode: 'Hala doğrulama kodunu almadınız mı?',
+    resendVerificationCode: 'Doğrulama kodunu tekrar gönder',
+    changeEmailAddress: 'e-posta adresini değiştir',
+    newEmailAddress: 'Yeni email adresi',
+    currentEmailAddress: 'Geçerli eposta adresi',
     checkYourJunkOrSpamFolder: 'Önemsiz veya spam klasörünüzü kontrol edin',
     enterTheCodeSentToYourEmail: 'E-postanıza gönderilen kodu girin',
     verifyYourEmail: 'Eposta adresinizi doğrulayın',
@@ -236,21 +270,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     makeSureItIsCorrectWeWillSendARecoveryCodeToIt: 'Doğru olduğundan emin olun, ona bir kurtarma kodu göndereceğiz.',
     invalidRecoveryCode: 'Geçersiz kurtarma kodu',
     hello: 'Merhaba',
-    thankYouForSupportingTheApp: 'Uygulamayı desteklediğiniz için teşekkür ederiz',
     yourNotifications: 'Senin Bildirimlerin',
     logout: 'Çıkış Yap',
     yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'E-posta adresiniz onaylanmadı, onaylamak için buraya tıklayın.',
     restorePassword: 'Parola Yenile',
     createNewAccount: 'Yeni hesap oluştur',
-    currentPassword: 'Şimdiki Şifre',
-    password: 'Parola',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Doğru olduğundan emin olun. Sizden bir kod göndererek onaylamanızı isteyeceğiz.',
     email: 'E-posta',
     name: 'İsim',
     enterTheNameCorrectly: 'Adı doğru girin',
     passwordLengthMustBeAtLeastCharacters: 'Parola uzunluğu en az 6 karakter olmalıdır',
+    enterANewPassword: 'yeni bir şifre gir',
     enterTheCurrentPassword: 'Geçerli şifreyi girin',
     enterAPassword: 'Bir parola girin',
+    currentPassword: 'Şimdiki Şifre',
+    password: 'Parola',
     incorrectEmail: 'Yanlış E-posta',
     login: 'Giriş yapmak',
     newAccount: 'Yeni hesap',
@@ -268,6 +302,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'Arapça',
     appLanguage: 'App dili',
     settings: 'Ayarlar',
+    updated: 'Güncellenmiş',
     updateNow: 'Şimdi güncelle',
     toEnjoyLatestFeaturesPleaseUpdate: 'Son özelliklerin tadını çıkarmak için lütfen güncelleyin',
     newAppVersionIsAvailable: 'Yeni uygulama sürümü mevcuttur',
@@ -281,6 +316,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.theAppDoesntHavePhotoAccessPermission,
+    required this.stillDidntReceiveTheVerificationCode,
+    required this.resendVerificationCode,
+    required this.changeEmailAddress,
+    required this.newEmailAddress,
+    required this.currentEmailAddress,
     required this.checkYourJunkOrSpamFolder,
     required this.enterTheCodeSentToYourEmail,
     required this.verifyYourEmail,
@@ -293,21 +334,21 @@ class MyServicesLocalizationsData {
     required this.makeSureItIsCorrectWeWillSendARecoveryCodeToIt,
     required this.invalidRecoveryCode,
     required this.hello,
-    required this.thankYouForSupportingTheApp,
     required this.yourNotifications,
     required this.logout,
     required this.yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
     required this.restorePassword,
     required this.createNewAccount,
-    required this.currentPassword,
-    required this.password,
     required this.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
     required this.email,
     required this.name,
     required this.enterTheNameCorrectly,
     required this.passwordLengthMustBeAtLeastCharacters,
+    required this.enterANewPassword,
     required this.enterTheCurrentPassword,
     required this.enterAPassword,
+    required this.currentPassword,
+    required this.password,
     required this.incorrectEmail,
     required this.login,
     required this.newAccount,
@@ -325,6 +366,7 @@ class MyServicesLocalizationsData {
     required this.arabic,
     required this.appLanguage,
     required this.settings,
+    required this.updated,
     required this.updateNow,
     required this.toEnjoyLatestFeaturesPleaseUpdate,
     required this.newAppVersionIsAvailable,
@@ -335,6 +377,12 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String theAppDoesntHavePhotoAccessPermission;
+  final String stillDidntReceiveTheVerificationCode;
+  final String resendVerificationCode;
+  final String changeEmailAddress;
+  final String newEmailAddress;
+  final String currentEmailAddress;
   final String checkYourJunkOrSpamFolder;
   final String enterTheCodeSentToYourEmail;
   final String verifyYourEmail;
@@ -347,21 +395,21 @@ class MyServicesLocalizationsData {
   final String makeSureItIsCorrectWeWillSendARecoveryCodeToIt;
   final String invalidRecoveryCode;
   final String hello;
-  final String thankYouForSupportingTheApp;
   final String yourNotifications;
   final String logout;
   final String yourEmailAddressIsNotConfirmedClickHereToConfirmIt;
   final String restorePassword;
   final String createNewAccount;
-  final String currentPassword;
-  final String password;
   final String makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt;
   final String email;
   final String name;
   final String enterTheNameCorrectly;
   final String passwordLengthMustBeAtLeastCharacters;
+  final String enterANewPassword;
   final String enterTheCurrentPassword;
   final String enterAPassword;
+  final String currentPassword;
+  final String password;
   final String incorrectEmail;
   final String login;
   final String newAccount;
@@ -379,6 +427,7 @@ class MyServicesLocalizationsData {
   final String arabic;
   final String appLanguage;
   final String settings;
+  final String updated;
   final String updateNow;
   final String toEnjoyLatestFeaturesPleaseUpdate;
   final String newAppVersionIsAvailable;
@@ -388,6 +437,12 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        theAppDoesntHavePhotoAccessPermission: map['theAppDoesntHavePhotoAccessPermission']! as String,
+        stillDidntReceiveTheVerificationCode: map['stillDidntReceiveTheVerificationCode']! as String,
+        resendVerificationCode: map['resendVerificationCode']! as String,
+        changeEmailAddress: map['changeEmailAddress']! as String,
+        newEmailAddress: map['newEmailAddress']! as String,
+        currentEmailAddress: map['currentEmailAddress']! as String,
         checkYourJunkOrSpamFolder: map['checkYourJunkOrSpamFolder']! as String,
         enterTheCodeSentToYourEmail: map['enterTheCodeSentToYourEmail']! as String,
         verifyYourEmail: map['verifyYourEmail']! as String,
@@ -400,21 +455,21 @@ class MyServicesLocalizationsData {
         makeSureItIsCorrectWeWillSendARecoveryCodeToIt: map['makeSureItIsCorrectWeWillSendARecoveryCodeToIt']! as String,
         invalidRecoveryCode: map['invalidRecoveryCode']! as String,
         hello: map['hello']! as String,
-        thankYouForSupportingTheApp: map['thankYouForSupportingTheApp']! as String,
         yourNotifications: map['yourNotifications']! as String,
         logout: map['logout']! as String,
         yourEmailAddressIsNotConfirmedClickHereToConfirmIt: map['yourEmailAddressIsNotConfirmedClickHereToConfirmIt']! as String,
         restorePassword: map['restorePassword']! as String,
         createNewAccount: map['createNewAccount']! as String,
-        currentPassword: map['currentPassword']! as String,
-        password: map['password']! as String,
         makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: map['makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt']! as String,
         email: map['email']! as String,
         name: map['name']! as String,
         enterTheNameCorrectly: map['enterTheNameCorrectly']! as String,
         passwordLengthMustBeAtLeastCharacters: map['passwordLengthMustBeAtLeastCharacters']! as String,
+        enterANewPassword: map['enterANewPassword']! as String,
         enterTheCurrentPassword: map['enterTheCurrentPassword']! as String,
         enterAPassword: map['enterAPassword']! as String,
+        currentPassword: map['currentPassword']! as String,
+        password: map['password']! as String,
         incorrectEmail: map['incorrectEmail']! as String,
         login: map['login']! as String,
         newAccount: map['newAccount']! as String,
@@ -432,6 +487,7 @@ class MyServicesLocalizationsData {
         arabic: map['arabic']! as String,
         appLanguage: map['appLanguage']! as String,
         settings: map['settings']! as String,
+        updated: map['updated']! as String,
         updateNow: map['updateNow']! as String,
         toEnjoyLatestFeaturesPleaseUpdate: map['toEnjoyLatestFeaturesPleaseUpdate']! as String,
         newAppVersionIsAvailable: map['newAppVersionIsAvailable']! as String,
@@ -443,6 +499,12 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? theAppDoesntHavePhotoAccessPermission,
+    String? stillDidntReceiveTheVerificationCode,
+    String? resendVerificationCode,
+    String? changeEmailAddress,
+    String? newEmailAddress,
+    String? currentEmailAddress,
     String? checkYourJunkOrSpamFolder,
     String? enterTheCodeSentToYourEmail,
     String? verifyYourEmail,
@@ -455,21 +517,21 @@ class MyServicesLocalizationsData {
     String? makeSureItIsCorrectWeWillSendARecoveryCodeToIt,
     String? invalidRecoveryCode,
     String? hello,
-    String? thankYouForSupportingTheApp,
     String? yourNotifications,
     String? logout,
     String? yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
     String? restorePassword,
     String? createNewAccount,
-    String? currentPassword,
-    String? password,
     String? makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
     String? email,
     String? name,
     String? enterTheNameCorrectly,
     String? passwordLengthMustBeAtLeastCharacters,
+    String? enterANewPassword,
     String? enterTheCurrentPassword,
     String? enterAPassword,
+    String? currentPassword,
+    String? password,
     String? incorrectEmail,
     String? login,
     String? newAccount,
@@ -487,6 +549,7 @@ class MyServicesLocalizationsData {
     String? arabic,
     String? appLanguage,
     String? settings,
+    String? updated,
     String? updateNow,
     String? toEnjoyLatestFeaturesPleaseUpdate,
     String? newAppVersionIsAvailable,
@@ -497,6 +560,12 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        theAppDoesntHavePhotoAccessPermission: theAppDoesntHavePhotoAccessPermission ?? this.theAppDoesntHavePhotoAccessPermission,
+        stillDidntReceiveTheVerificationCode: stillDidntReceiveTheVerificationCode ?? this.stillDidntReceiveTheVerificationCode,
+        resendVerificationCode: resendVerificationCode ?? this.resendVerificationCode,
+        changeEmailAddress: changeEmailAddress ?? this.changeEmailAddress,
+        newEmailAddress: newEmailAddress ?? this.newEmailAddress,
+        currentEmailAddress: currentEmailAddress ?? this.currentEmailAddress,
         checkYourJunkOrSpamFolder: checkYourJunkOrSpamFolder ?? this.checkYourJunkOrSpamFolder,
         enterTheCodeSentToYourEmail: enterTheCodeSentToYourEmail ?? this.enterTheCodeSentToYourEmail,
         verifyYourEmail: verifyYourEmail ?? this.verifyYourEmail,
@@ -509,21 +578,21 @@ class MyServicesLocalizationsData {
         makeSureItIsCorrectWeWillSendARecoveryCodeToIt: makeSureItIsCorrectWeWillSendARecoveryCodeToIt ?? this.makeSureItIsCorrectWeWillSendARecoveryCodeToIt,
         invalidRecoveryCode: invalidRecoveryCode ?? this.invalidRecoveryCode,
         hello: hello ?? this.hello,
-        thankYouForSupportingTheApp: thankYouForSupportingTheApp ?? this.thankYouForSupportingTheApp,
         yourNotifications: yourNotifications ?? this.yourNotifications,
         logout: logout ?? this.logout,
         yourEmailAddressIsNotConfirmedClickHereToConfirmIt: yourEmailAddressIsNotConfirmedClickHereToConfirmIt ?? this.yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
         restorePassword: restorePassword ?? this.restorePassword,
         createNewAccount: createNewAccount ?? this.createNewAccount,
-        currentPassword: currentPassword ?? this.currentPassword,
-        password: password ?? this.password,
         makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt ?? this.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
         email: email ?? this.email,
         name: name ?? this.name,
         enterTheNameCorrectly: enterTheNameCorrectly ?? this.enterTheNameCorrectly,
         passwordLengthMustBeAtLeastCharacters: passwordLengthMustBeAtLeastCharacters ?? this.passwordLengthMustBeAtLeastCharacters,
+        enterANewPassword: enterANewPassword ?? this.enterANewPassword,
         enterTheCurrentPassword: enterTheCurrentPassword ?? this.enterTheCurrentPassword,
         enterAPassword: enterAPassword ?? this.enterAPassword,
+        currentPassword: currentPassword ?? this.currentPassword,
+        password: password ?? this.password,
         incorrectEmail: incorrectEmail ?? this.incorrectEmail,
         login: login ?? this.login,
         newAccount: newAccount ?? this.newAccount,
@@ -541,6 +610,7 @@ class MyServicesLocalizationsData {
         arabic: arabic ?? this.arabic,
         appLanguage: appLanguage ?? this.appLanguage,
         settings: settings ?? this.settings,
+        updated: updated ?? this.updated,
         updateNow: updateNow ?? this.updateNow,
         toEnjoyLatestFeaturesPleaseUpdate: toEnjoyLatestFeaturesPleaseUpdate ?? this.toEnjoyLatestFeaturesPleaseUpdate,
         newAppVersionIsAvailable: newAppVersionIsAvailable ?? this.newAppVersionIsAvailable,
@@ -555,6 +625,12 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          theAppDoesntHavePhotoAccessPermission == other.theAppDoesntHavePhotoAccessPermission &&
+          stillDidntReceiveTheVerificationCode == other.stillDidntReceiveTheVerificationCode &&
+          resendVerificationCode == other.resendVerificationCode &&
+          changeEmailAddress == other.changeEmailAddress &&
+          newEmailAddress == other.newEmailAddress &&
+          currentEmailAddress == other.currentEmailAddress &&
           checkYourJunkOrSpamFolder == other.checkYourJunkOrSpamFolder &&
           enterTheCodeSentToYourEmail == other.enterTheCodeSentToYourEmail &&
           verifyYourEmail == other.verifyYourEmail &&
@@ -567,21 +643,21 @@ class MyServicesLocalizationsData {
           makeSureItIsCorrectWeWillSendARecoveryCodeToIt == other.makeSureItIsCorrectWeWillSendARecoveryCodeToIt &&
           invalidRecoveryCode == other.invalidRecoveryCode &&
           hello == other.hello &&
-          thankYouForSupportingTheApp == other.thankYouForSupportingTheApp &&
           yourNotifications == other.yourNotifications &&
           logout == other.logout &&
           yourEmailAddressIsNotConfirmedClickHereToConfirmIt == other.yourEmailAddressIsNotConfirmedClickHereToConfirmIt &&
           restorePassword == other.restorePassword &&
           createNewAccount == other.createNewAccount &&
-          currentPassword == other.currentPassword &&
-          password == other.password &&
           makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt == other.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt &&
           email == other.email &&
           name == other.name &&
           enterTheNameCorrectly == other.enterTheNameCorrectly &&
           passwordLengthMustBeAtLeastCharacters == other.passwordLengthMustBeAtLeastCharacters &&
+          enterANewPassword == other.enterANewPassword &&
           enterTheCurrentPassword == other.enterTheCurrentPassword &&
           enterAPassword == other.enterAPassword &&
+          currentPassword == other.currentPassword &&
+          password == other.password &&
           incorrectEmail == other.incorrectEmail &&
           login == other.login &&
           newAccount == other.newAccount &&
@@ -599,6 +675,7 @@ class MyServicesLocalizationsData {
           arabic == other.arabic &&
           appLanguage == other.appLanguage &&
           settings == other.settings &&
+          updated == other.updated &&
           updateNow == other.updateNow &&
           toEnjoyLatestFeaturesPleaseUpdate == other.toEnjoyLatestFeaturesPleaseUpdate &&
           newAppVersionIsAvailable == other.newAppVersionIsAvailable &&
@@ -610,6 +687,12 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      theAppDoesntHavePhotoAccessPermission.hashCode ^
+      stillDidntReceiveTheVerificationCode.hashCode ^
+      resendVerificationCode.hashCode ^
+      changeEmailAddress.hashCode ^
+      newEmailAddress.hashCode ^
+      currentEmailAddress.hashCode ^
       checkYourJunkOrSpamFolder.hashCode ^
       enterTheCodeSentToYourEmail.hashCode ^
       verifyYourEmail.hashCode ^
@@ -622,21 +705,21 @@ class MyServicesLocalizationsData {
       makeSureItIsCorrectWeWillSendARecoveryCodeToIt.hashCode ^
       invalidRecoveryCode.hashCode ^
       hello.hashCode ^
-      thankYouForSupportingTheApp.hashCode ^
       yourNotifications.hashCode ^
       logout.hashCode ^
       yourEmailAddressIsNotConfirmedClickHereToConfirmIt.hashCode ^
       restorePassword.hashCode ^
       createNewAccount.hashCode ^
-      currentPassword.hashCode ^
-      password.hashCode ^
       makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt.hashCode ^
       email.hashCode ^
       name.hashCode ^
       enterTheNameCorrectly.hashCode ^
       passwordLengthMustBeAtLeastCharacters.hashCode ^
+      enterANewPassword.hashCode ^
       enterTheCurrentPassword.hashCode ^
       enterAPassword.hashCode ^
+      currentPassword.hashCode ^
+      password.hashCode ^
       incorrectEmail.hashCode ^
       login.hashCode ^
       newAccount.hashCode ^
@@ -654,6 +737,7 @@ class MyServicesLocalizationsData {
       arabic.hashCode ^
       appLanguage.hashCode ^
       settings.hashCode ^
+      updated.hashCode ^
       updateNow.hashCode ^
       toEnjoyLatestFeaturesPleaseUpdate.hashCode ^
       newAppVersionIsAvailable.hashCode ^

@@ -22,10 +22,19 @@ class ServiceApi {
     );
   }
 
-  static Future<Response<Map<String, dynamic>>> postRequest(String url, Map<String, dynamic> formData, CancelToken? cancelToken) async {
-    logger.d(formData);
-    final String? accessToken = formData['access_token'] as String?;
-    final String? lang = formData['lang'] as String?;
+  static Future<Response<Map<String, dynamic>>> postRequest(String url, dynamic formData, CancelToken? cancelToken) async {
+    final String? accessToken;
+    final String? lang;
+    if (formData is FormData) {
+      accessToken = formData.fields.firstWhere((element) => element.key == 'access_token').value;
+      lang = formData.fields.firstWhere((element) => element.key == 'lang').value;
+      logger.d(formData.fields);
+    } else {
+      accessToken = formData['access_token'] as String?;
+      lang = formData['lang'] as String?;
+      logger.d(formData);
+    }
+
     logger.i('$domain$url');
     final Response<Map<String, dynamic>> data = await dio.postUri<Map<String, dynamic>>(
       Uri.parse('$domain$url'),
