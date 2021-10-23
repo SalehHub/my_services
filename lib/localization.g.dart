@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    changeProfileImage: 'Change profile image',
     theAppDoesntHavePhotoAccessPermission: 'The app doesn\'t have photo access permission',
     stillDidntReceiveTheVerificationCode: 'Still didn\'t receive the verification code?',
     resendVerificationCode: 'Resend verification code',
@@ -17,8 +18,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     checkYourJunkOrSpamFolder: 'Check your junk or spam folder',
     enterTheCodeSentToYourEmail: 'Enter the code sent to your email',
     verifyYourEmail: 'Verify your e-mail',
-    editYourProfile: 'Edit your profile',
-    changePassword: 'Change Password',
+    editProfile: 'Edit profile',
+    changePassword: 'Change password',
     newPassword: 'New password',
     sentToYourEmailCheckYourSpamFolder: 'Sent to your email (check your spam folder)',
     recoveryCode: 'Recovery code',
@@ -28,7 +29,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     hello: 'Hello',
     yourNotifications: 'Your notifications',
     logout: 'Logout',
-    yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Your email address is not confirmed, click here to confirm it',
+    yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Your email address is not verified, click here to verify it',
     restorePassword: 'Restore password',
     createNewAccount: 'Create new account',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Make sure it is correct. We will ask you to confirm it by sending a code to it',
@@ -69,6 +70,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    changeProfileImage: 'تغيير صورة الملف الشخصي',
     theAppDoesntHavePhotoAccessPermission: 'ليس لدى التطبيق صلاحيات الوصول الصور',
     stillDidntReceiveTheVerificationCode: 'لم يصلك رمز التحقق حتى الآن؟',
     resendVerificationCode: 'إعادة ارسال الرمز على بريدك',
@@ -78,7 +80,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     checkYourJunkOrSpamFolder: 'تأكد من مجلد البريد المهمل او Spam',
     enterTheCodeSentToYourEmail: 'ادخل الرمز المرسل الى بريدك الالكتروني',
     verifyYourEmail: 'تأكيد البريد الالكتروني',
-    editYourProfile: 'تعديل ملفك الشخصي',
+    editProfile: 'تعديل ملفك الشخصي',
     changePassword: 'تغيير كلمة المرور',
     newPassword: 'كلمة المرور الجديدة',
     sentToYourEmailCheckYourSpamFolder: 'المرسل الى بريدك الالكتروني (تأكد من مجلد المهملات)',
@@ -89,7 +91,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     hello: 'مرحبا بك',
     yourNotifications: 'إشعاراتك',
     logout: 'تسجيل الخروج',
-    yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'بريدك الالكتروني غير مؤكد، اضغط هنا لتأكيدة',
+    yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'بريدك الالكتروني غير مؤكد، اضغط هنا لتأكيده',
     restorePassword: 'إستعادة كلمة المرور',
     createNewAccount: 'إنشاء حساب جديد',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'تأكد من صحته سنطلب منك تأكيده بأرسال رمز اليه',
@@ -130,6 +132,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -139,7 +142,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     checkYourJunkOrSpamFolder: 'Vérifiez votre dossier indésirable ou spam',
     enterTheCodeSentToYourEmail: 'Entrez le code envoyé à votre email',
     verifyYourEmail: 'Vérifiez votre e-mail',
-    editYourProfile: 'Modifier votre profil',
+    editProfile: 'Editer le profil',
     changePassword: 'Changer le mot de passe',
     newPassword: 'Nouveau mot de passe',
     sentToYourEmailCheckYourSpamFolder: 'Envoyé à votre email (vérifiez votre dossier SPAM)',
@@ -150,7 +153,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     hello: 'Bonjour',
     yourNotifications: 'Vos notifications',
     logout: 'Se déconnecter',
-    yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Votre adresse e-mail n\'est pas confirmée, cliquez ici pour le confirmer.',
+    yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Votre adresse e-mail n\'est pas vérifiée, cliquez ici pour le vérifier',
     restorePassword: 'Restaurer le mot de passe',
     createNewAccount: 'Créer un nouveau compte',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Assurez-vous qu\'il est correct. Nous vous demanderons de le confirmer en envoyant un code à celui-ci.',
@@ -191,6 +194,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    changeProfileImage: 'Cambiar imagen de perfil',
     theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso fotográfico.',
     stillDidntReceiveTheVerificationCode: '¿Todavía no recibí el código de verificación?',
     resendVerificationCode: 'Vuelva a enviar el código de verificación',
@@ -200,7 +204,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     checkYourJunkOrSpamFolder: 'Revisa tu carpeta de basura o spam',
     enterTheCodeSentToYourEmail: 'Ingrese el código enviado a su correo electrónico',
     verifyYourEmail: 'Verifique su correo electrónico',
-    editYourProfile: 'Edite su perfil',
+    editProfile: 'Editar perfil',
     changePassword: 'Cambiar la contraseña',
     newPassword: 'Nueva contraseña',
     sentToYourEmailCheckYourSpamFolder: 'Enviado a su correo electrónico (revise su carpeta de spam)',
@@ -211,7 +215,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     hello: 'Hola',
     yourNotifications: 'Tus notificaciones',
     logout: 'Cerrar sesión',
-    yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'Su dirección de correo electrónico no está confirmada, haga clic aquí para confirmarlo',
+    yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
@@ -252,6 +256,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    changeProfileImage: 'Profil görüntüsünü değiştir',
     theAppDoesntHavePhotoAccessPermission: 'Uygulamanın fotoğraf erişim izni yok',
     stillDidntReceiveTheVerificationCode: 'Hala doğrulama kodunu almadınız mı?',
     resendVerificationCode: 'Doğrulama kodunu tekrar gönder',
@@ -261,7 +266,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     checkYourJunkOrSpamFolder: 'Önemsiz veya spam klasörünüzü kontrol edin',
     enterTheCodeSentToYourEmail: 'E-postanıza gönderilen kodu girin',
     verifyYourEmail: 'Eposta adresinizi doğrulayın',
-    editYourProfile: 'Profilinizi düzenleyin',
+    editProfile: 'Profili Düzenle',
     changePassword: 'Şifre değiştir',
     newPassword: 'Yeni Şifre',
     sentToYourEmailCheckYourSpamFolder: 'E-postanıza gönderildi (spam klasörünüzü kontrol edin)',
@@ -272,7 +277,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     hello: 'Merhaba',
     yourNotifications: 'Senin Bildirimlerin',
     logout: 'Çıkış Yap',
-    yourEmailAddressIsNotConfirmedClickHereToConfirmIt: 'E-posta adresiniz onaylanmadı, onaylamak için buraya tıklayın.',
+    yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'E-posta adresiniz doğrulanmadı, doğrulamak için buraya tıklayın.',
     restorePassword: 'Parola Yenile',
     createNewAccount: 'Yeni hesap oluştur',
     makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Doğru olduğundan emin olun. Sizden bir kod göndererek onaylamanızı isteyeceğiz.',
@@ -316,6 +321,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.changeProfileImage,
     required this.theAppDoesntHavePhotoAccessPermission,
     required this.stillDidntReceiveTheVerificationCode,
     required this.resendVerificationCode,
@@ -325,7 +331,7 @@ class MyServicesLocalizationsData {
     required this.checkYourJunkOrSpamFolder,
     required this.enterTheCodeSentToYourEmail,
     required this.verifyYourEmail,
-    required this.editYourProfile,
+    required this.editProfile,
     required this.changePassword,
     required this.newPassword,
     required this.sentToYourEmailCheckYourSpamFolder,
@@ -336,7 +342,7 @@ class MyServicesLocalizationsData {
     required this.hello,
     required this.yourNotifications,
     required this.logout,
-    required this.yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
+    required this.yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
     required this.restorePassword,
     required this.createNewAccount,
     required this.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
@@ -377,6 +383,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String changeProfileImage;
   final String theAppDoesntHavePhotoAccessPermission;
   final String stillDidntReceiveTheVerificationCode;
   final String resendVerificationCode;
@@ -386,7 +393,7 @@ class MyServicesLocalizationsData {
   final String checkYourJunkOrSpamFolder;
   final String enterTheCodeSentToYourEmail;
   final String verifyYourEmail;
-  final String editYourProfile;
+  final String editProfile;
   final String changePassword;
   final String newPassword;
   final String sentToYourEmailCheckYourSpamFolder;
@@ -397,7 +404,7 @@ class MyServicesLocalizationsData {
   final String hello;
   final String yourNotifications;
   final String logout;
-  final String yourEmailAddressIsNotConfirmedClickHereToConfirmIt;
+  final String yourEmailAddressIsNotVerifiedClickHereToVerifyIt;
   final String restorePassword;
   final String createNewAccount;
   final String makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt;
@@ -437,6 +444,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        changeProfileImage: map['changeProfileImage']! as String,
         theAppDoesntHavePhotoAccessPermission: map['theAppDoesntHavePhotoAccessPermission']! as String,
         stillDidntReceiveTheVerificationCode: map['stillDidntReceiveTheVerificationCode']! as String,
         resendVerificationCode: map['resendVerificationCode']! as String,
@@ -446,7 +454,7 @@ class MyServicesLocalizationsData {
         checkYourJunkOrSpamFolder: map['checkYourJunkOrSpamFolder']! as String,
         enterTheCodeSentToYourEmail: map['enterTheCodeSentToYourEmail']! as String,
         verifyYourEmail: map['verifyYourEmail']! as String,
-        editYourProfile: map['editYourProfile']! as String,
+        editProfile: map['editProfile']! as String,
         changePassword: map['changePassword']! as String,
         newPassword: map['newPassword']! as String,
         sentToYourEmailCheckYourSpamFolder: map['sentToYourEmailCheckYourSpamFolder']! as String,
@@ -457,7 +465,7 @@ class MyServicesLocalizationsData {
         hello: map['hello']! as String,
         yourNotifications: map['yourNotifications']! as String,
         logout: map['logout']! as String,
-        yourEmailAddressIsNotConfirmedClickHereToConfirmIt: map['yourEmailAddressIsNotConfirmedClickHereToConfirmIt']! as String,
+        yourEmailAddressIsNotVerifiedClickHereToVerifyIt: map['yourEmailAddressIsNotVerifiedClickHereToVerifyIt']! as String,
         restorePassword: map['restorePassword']! as String,
         createNewAccount: map['createNewAccount']! as String,
         makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: map['makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt']! as String,
@@ -499,6 +507,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? changeProfileImage,
     String? theAppDoesntHavePhotoAccessPermission,
     String? stillDidntReceiveTheVerificationCode,
     String? resendVerificationCode,
@@ -508,7 +517,7 @@ class MyServicesLocalizationsData {
     String? checkYourJunkOrSpamFolder,
     String? enterTheCodeSentToYourEmail,
     String? verifyYourEmail,
-    String? editYourProfile,
+    String? editProfile,
     String? changePassword,
     String? newPassword,
     String? sentToYourEmailCheckYourSpamFolder,
@@ -519,7 +528,7 @@ class MyServicesLocalizationsData {
     String? hello,
     String? yourNotifications,
     String? logout,
-    String? yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
+    String? yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
     String? restorePassword,
     String? createNewAccount,
     String? makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
@@ -560,6 +569,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        changeProfileImage: changeProfileImage ?? this.changeProfileImage,
         theAppDoesntHavePhotoAccessPermission: theAppDoesntHavePhotoAccessPermission ?? this.theAppDoesntHavePhotoAccessPermission,
         stillDidntReceiveTheVerificationCode: stillDidntReceiveTheVerificationCode ?? this.stillDidntReceiveTheVerificationCode,
         resendVerificationCode: resendVerificationCode ?? this.resendVerificationCode,
@@ -569,7 +579,7 @@ class MyServicesLocalizationsData {
         checkYourJunkOrSpamFolder: checkYourJunkOrSpamFolder ?? this.checkYourJunkOrSpamFolder,
         enterTheCodeSentToYourEmail: enterTheCodeSentToYourEmail ?? this.enterTheCodeSentToYourEmail,
         verifyYourEmail: verifyYourEmail ?? this.verifyYourEmail,
-        editYourProfile: editYourProfile ?? this.editYourProfile,
+        editProfile: editProfile ?? this.editProfile,
         changePassword: changePassword ?? this.changePassword,
         newPassword: newPassword ?? this.newPassword,
         sentToYourEmailCheckYourSpamFolder: sentToYourEmailCheckYourSpamFolder ?? this.sentToYourEmailCheckYourSpamFolder,
@@ -580,7 +590,7 @@ class MyServicesLocalizationsData {
         hello: hello ?? this.hello,
         yourNotifications: yourNotifications ?? this.yourNotifications,
         logout: logout ?? this.logout,
-        yourEmailAddressIsNotConfirmedClickHereToConfirmIt: yourEmailAddressIsNotConfirmedClickHereToConfirmIt ?? this.yourEmailAddressIsNotConfirmedClickHereToConfirmIt,
+        yourEmailAddressIsNotVerifiedClickHereToVerifyIt: yourEmailAddressIsNotVerifiedClickHereToVerifyIt ?? this.yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
         restorePassword: restorePassword ?? this.restorePassword,
         createNewAccount: createNewAccount ?? this.createNewAccount,
         makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt ?? this.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt,
@@ -625,6 +635,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          changeProfileImage == other.changeProfileImage &&
           theAppDoesntHavePhotoAccessPermission == other.theAppDoesntHavePhotoAccessPermission &&
           stillDidntReceiveTheVerificationCode == other.stillDidntReceiveTheVerificationCode &&
           resendVerificationCode == other.resendVerificationCode &&
@@ -634,7 +645,7 @@ class MyServicesLocalizationsData {
           checkYourJunkOrSpamFolder == other.checkYourJunkOrSpamFolder &&
           enterTheCodeSentToYourEmail == other.enterTheCodeSentToYourEmail &&
           verifyYourEmail == other.verifyYourEmail &&
-          editYourProfile == other.editYourProfile &&
+          editProfile == other.editProfile &&
           changePassword == other.changePassword &&
           newPassword == other.newPassword &&
           sentToYourEmailCheckYourSpamFolder == other.sentToYourEmailCheckYourSpamFolder &&
@@ -645,7 +656,7 @@ class MyServicesLocalizationsData {
           hello == other.hello &&
           yourNotifications == other.yourNotifications &&
           logout == other.logout &&
-          yourEmailAddressIsNotConfirmedClickHereToConfirmIt == other.yourEmailAddressIsNotConfirmedClickHereToConfirmIt &&
+          yourEmailAddressIsNotVerifiedClickHereToVerifyIt == other.yourEmailAddressIsNotVerifiedClickHereToVerifyIt &&
           restorePassword == other.restorePassword &&
           createNewAccount == other.createNewAccount &&
           makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt == other.makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt &&
@@ -687,6 +698,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      changeProfileImage.hashCode ^
       theAppDoesntHavePhotoAccessPermission.hashCode ^
       stillDidntReceiveTheVerificationCode.hashCode ^
       resendVerificationCode.hashCode ^
@@ -696,7 +708,7 @@ class MyServicesLocalizationsData {
       checkYourJunkOrSpamFolder.hashCode ^
       enterTheCodeSentToYourEmail.hashCode ^
       verifyYourEmail.hashCode ^
-      editYourProfile.hashCode ^
+      editProfile.hashCode ^
       changePassword.hashCode ^
       newPassword.hashCode ^
       sentToYourEmailCheckYourSpamFolder.hashCode ^
@@ -707,7 +719,7 @@ class MyServicesLocalizationsData {
       hello.hashCode ^
       yourNotifications.hashCode ^
       logout.hashCode ^
-      yourEmailAddressIsNotConfirmedClickHereToConfirmIt.hashCode ^
+      yourEmailAddressIsNotVerifiedClickHereToVerifyIt.hashCode ^
       restorePassword.hashCode ^
       createNewAccount.hashCode ^
       makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt.hashCode ^

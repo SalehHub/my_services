@@ -56,6 +56,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   StackTrace? stackTrace;
 
   bool showAppBar = true;
+  bool showRefreshIndicator = true;
 
   Widget get appBarTitle {
     return Text(title, textDirection: Helpers.getTextDirection(title));
@@ -229,48 +230,57 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       controller: _tabController,
       children: bodyChildren.map((e) {
         i++;
-        return RefreshIndicator(
-          displacement: 55,
-          onRefresh: i == 1 ? onRefresh : () async {},
-          child: e,
-        );
+        if (showRefreshIndicator) {
+          return RefreshIndicator(
+            displacement: 55,
+            onRefresh: i == 1 ? onRefresh : () async {},
+            child: e,
+          );
+        } else {
+          return e;
+        }
       }).toList(),
     );
   }
 
   Widget buildBody(BuildContext context) {
-    return RefreshIndicator(
-      displacement: 55,
-      onRefresh: onRefresh,
-      child: CustomScrollView(
-        slivers: <Widget>[
-          if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
+    var customScrollView = CustomScrollView(
+      slivers: <Widget>[
+        if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
-          //top banner
-          if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),
+        //top banner
+        if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),
 
-          //show loading
-          if (pageLoading)
-            SliverToBoxAdapter(child: MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3)))
+        //show loading
+        if (pageLoading)
+          SliverToBoxAdapter(child: MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3)))
 
-          //no data
-          else if (pageLoading == false && error == null && emptyData == true)
-            SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), noDataIcon: noDataIcon, noDataLabel: noDataLabel))
-          // error
-          else if (!pageLoading && error != null && emptyData)
-            SliverToBoxAdapter(child: FutureErrorWidget(err: error))
-          else
-            ...bodyChildren,
+        //no data
+        else if (pageLoading == false && error == null && emptyData == true)
+          SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), noDataIcon: noDataIcon, noDataLabel: noDataLabel))
+        // error
+        else if (!pageLoading && error != null && emptyData)
+          SliverToBoxAdapter(child: FutureErrorWidget(err: error))
+        else
+          ...bodyChildren,
 
-          const SliverPadding(padding: EdgeInsets.only(top: 50)),
+        const SliverPadding(padding: EdgeInsets.only(top: 50)),
 
-          //bottom banner
-          if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
+        //bottom banner
+        if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
 
-          const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
-        ],
-      ),
+        const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
+      ],
     );
+
+    if (showRefreshIndicator) {
+      return RefreshIndicator(
+        displacement: 55,
+        onRefresh: onRefresh,
+        child: customScrollView,
+      );
+    }
+    return customScrollView;
   }
 
   Future<void> loaderFunction(AsyncCallback fn) async {
