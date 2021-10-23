@@ -36,6 +36,8 @@ export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
 export 'package:package_info/package_info.dart';
 export 'package:path_provider/path_provider.dart';
+export 'package:photo_view/photo_view.dart';
+export 'package:photo_view/photo_view_gallery.dart';
 export 'package:sqflite/sqflite.dart';
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';

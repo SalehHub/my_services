@@ -8,6 +8,7 @@ export 'my_loading_image.dart';
 export 'my_progress_indicator.dart';
 export 'my_text_input.dart';
 export 'no_notification_permission_card.dart';
+export 'page_image_viewer.dart';
 export 'page_new_app_version.dart';
 export 'unfocus.dart';
 export 'will_pop_scope_widget.dart';
