@@ -15,14 +15,18 @@ class MyNavigatorObserver extends NavigatorObserver {
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final String? name = route.settings.name;
-    logger.i('Push: $name');
+    if (name != null) {
+      logger.i('Push: $name');
+    }
     ServiceNav.currentRoute = name;
   }
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final String? name = previousRoute?.settings.name;
-    logger.i('Pop: $name');
+    if (name != null) {
+      logger.i('Pop: $name');
+    }
     ServiceNav.currentRoute = name;
   }
 }

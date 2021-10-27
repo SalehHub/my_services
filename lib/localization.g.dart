@@ -8,6 +8,11 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    deleteAll: 'Delete all',
+    doYouWantToDeleteAllNotifications: 'Do you want to delete all notifications?',
+    youHaveNoNotificationsAtTheMoment: 'You have no notifications at the moment',
+    markAsRead: 'Mark as read',
+    delete: 'Delete',
     avatar: 'Avatar',
     changeProfileImage: 'Change profile image',
     theAppDoesntHavePhotoAccessPermission: 'The app doesn\'t have photo access permission',
@@ -71,6 +76,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    deleteAll: 'حذف الكل',
+    doYouWantToDeleteAllNotifications: 'هل تريد حذف جميع الإشعارات؟',
+    youHaveNoNotificationsAtTheMoment: 'لايوجد لديك إشعارات الآن',
+    markAsRead: 'تعليم كمقروء',
+    delete: 'حذف',
     avatar: 'صورة الملف الشخصي',
     changeProfileImage: 'تغيير صورة الملف الشخصي',
     theAppDoesntHavePhotoAccessPermission: 'ليس لدى التطبيق صلاحيات الوصول الصور',
@@ -134,6 +144,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    deleteAll: 'Supprimer tout',
+    doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
+    youHaveNoNotificationsAtTheMoment: 'Vous n\'avez aucune notification pour le moment',
+    markAsRead: 'Marquer comme lu',
+    delete: 'Effacer',
     avatar: 'Avatar',
     changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
@@ -197,6 +212,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    deleteAll: 'Eliminar todos',
+    doYouWantToDeleteAllNotifications: '¿Quieres eliminar todas las notificaciones?',
+    youHaveNoNotificationsAtTheMoment: 'No tienes notificaciones en este momento.',
+    markAsRead: 'Marcar como leído',
+    delete: 'Borrar',
     avatar: 'Avatar',
     changeProfileImage: 'Cambiar imagen de perfil',
     theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso fotográfico.',
@@ -260,6 +280,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    deleteAll: 'Hepsini sil',
+    doYouWantToDeleteAllNotifications: 'Tüm bildirimleri silmek ister misiniz?',
+    youHaveNoNotificationsAtTheMoment: 'Şu anda hiçbir bildiriminiz yok',
+    markAsRead: 'Okundu olarak işaretle',
+    delete: 'Silmek',
     avatar: 'Avatar',
     changeProfileImage: 'Profil görüntüsünü değiştir',
     theAppDoesntHavePhotoAccessPermission: 'Uygulamanın fotoğraf erişim izni yok',
@@ -326,6 +351,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.deleteAll,
+    required this.doYouWantToDeleteAllNotifications,
+    required this.youHaveNoNotificationsAtTheMoment,
+    required this.markAsRead,
+    required this.delete,
     required this.avatar,
     required this.changeProfileImage,
     required this.theAppDoesntHavePhotoAccessPermission,
@@ -389,6 +419,11 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String deleteAll;
+  final String doYouWantToDeleteAllNotifications;
+  final String youHaveNoNotificationsAtTheMoment;
+  final String markAsRead;
+  final String delete;
   final String avatar;
   final String changeProfileImage;
   final String theAppDoesntHavePhotoAccessPermission;
@@ -451,6 +486,11 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        deleteAll: map['deleteAll']! as String,
+        doYouWantToDeleteAllNotifications: map['doYouWantToDeleteAllNotifications']! as String,
+        youHaveNoNotificationsAtTheMoment: map['youHaveNoNotificationsAtTheMoment']! as String,
+        markAsRead: map['markAsRead']! as String,
+        delete: map['delete']! as String,
         avatar: map['avatar']! as String,
         changeProfileImage: map['changeProfileImage']! as String,
         theAppDoesntHavePhotoAccessPermission: map['theAppDoesntHavePhotoAccessPermission']! as String,
@@ -515,6 +555,11 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? deleteAll,
+    String? doYouWantToDeleteAllNotifications,
+    String? youHaveNoNotificationsAtTheMoment,
+    String? markAsRead,
+    String? delete,
     String? avatar,
     String? changeProfileImage,
     String? theAppDoesntHavePhotoAccessPermission,
@@ -578,6 +623,11 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        deleteAll: deleteAll ?? this.deleteAll,
+        doYouWantToDeleteAllNotifications: doYouWantToDeleteAllNotifications ?? this.doYouWantToDeleteAllNotifications,
+        youHaveNoNotificationsAtTheMoment: youHaveNoNotificationsAtTheMoment ?? this.youHaveNoNotificationsAtTheMoment,
+        markAsRead: markAsRead ?? this.markAsRead,
+        delete: delete ?? this.delete,
         avatar: avatar ?? this.avatar,
         changeProfileImage: changeProfileImage ?? this.changeProfileImage,
         theAppDoesntHavePhotoAccessPermission: theAppDoesntHavePhotoAccessPermission ?? this.theAppDoesntHavePhotoAccessPermission,
@@ -645,6 +695,11 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          deleteAll == other.deleteAll &&
+          doYouWantToDeleteAllNotifications == other.doYouWantToDeleteAllNotifications &&
+          youHaveNoNotificationsAtTheMoment == other.youHaveNoNotificationsAtTheMoment &&
+          markAsRead == other.markAsRead &&
+          delete == other.delete &&
           avatar == other.avatar &&
           changeProfileImage == other.changeProfileImage &&
           theAppDoesntHavePhotoAccessPermission == other.theAppDoesntHavePhotoAccessPermission &&
@@ -709,6 +764,11 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      deleteAll.hashCode ^
+      doYouWantToDeleteAllNotifications.hashCode ^
+      youHaveNoNotificationsAtTheMoment.hashCode ^
+      markAsRead.hashCode ^
+      delete.hashCode ^
       avatar.hashCode ^
       changeProfileImage.hashCode ^
       theAppDoesntHavePhotoAccessPermission.hashCode ^
