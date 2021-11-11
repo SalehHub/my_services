@@ -26,7 +26,7 @@ final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, General
 
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
   GeneralStateNotifier(GeneralState state, this.ref) : super(state);
-  final ProviderRefBase ref;
+  final Ref ref;
 
   Map<String, dynamic> get asMap => <String, dynamic>{
         'notification_token': state.notificationToken,
