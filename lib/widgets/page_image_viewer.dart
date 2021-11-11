@@ -1,8 +1,7 @@
 import '../my_services.dart';
 
 class PageImageViewer extends ConsumerStatefulWidget {
-  const PageImageViewer({Key? key, this.title = '', required this.image, this.imageList = const [], this.popupMenuButton})
-      : super(key: key);
+  const PageImageViewer({Key? key, this.title = '', required this.image, this.imageList = const [], this.popupMenuButton}) : super(key: key);
   final String title;
   final List<String> imageList;
   final String image;
