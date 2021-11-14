@@ -27,7 +27,7 @@ dependencies:
   device_info: ^2.0.3
   package_info: ^2.0.2
 
-  path_provider: ^2.0.6
+  path_provider: ^2.0.7
   app_settings: ^4.1.1
   mdi: ^5.0.0-nullsafety.0
   timeago: 3.0.2
@@ -42,7 +42,7 @@ dependencies:
   freezed_annotation: ^0.15.0
   json_annotation: ^4.3.0
   sqflite: ^2.0.0+4
-  dio: ^4.0.1
+  dio: ^4.0.3
 
   image_cropper: ^1.4.1
   image_picker: ^0.8.4+4

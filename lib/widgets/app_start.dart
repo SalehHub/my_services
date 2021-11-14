@@ -2,16 +2,30 @@ import '../my_services.dart';
 
 typedef Overrides = Future<List<Override>> Function();
 
+bool appWithFirebase = true;
+bool appWithCrashlytics = true;
+bool appInitGeneralState = true;
+bool appWithFCM = true;
+
 Future<void> myServicesRunApp({
   required Locale defaultLocale,
   required List<Locale> supportedLocales,
   required String title,
   required Widget homePage,
+  bool withFirebase = true,
+  bool withCrashlytics = true,
+  bool withFCM = true,
+  bool initGeneralState = true,
   Color? lightAccentColor,
   Color? darkAccentColor,
   Overrides? overrides,
   List<LocalizationsDelegate<dynamic>> delegates = const [],
 }) async {
+  appWithFirebase = withFirebase;
+  appWithCrashlytics = withCrashlytics;
+  appWithFCM = withFCM;
+  appInitGeneralState = initGeneralState;
+
   WidgetsFlutterBinding.ensureInitialized();
 
   ServiceTheme.lightAccentColor = lightAccentColor;
@@ -19,11 +33,17 @@ Future<void> myServicesRunApp({
 
   ServiceLocale.defaultLocale = defaultLocale;
   ServiceLocale.supportedLocales = supportedLocales;
+  GeneralState generalState = GeneralState();
 
-  await Firebase.initializeApp();
-  await ServiceFirebaseCrashlytics.register();
-  final GeneralState generalState = await getGeneralState();
-
+  if (withFirebase) {
+    await Firebase.initializeApp();
+  }
+  if (withFirebase && withCrashlytics) {
+    await ServiceFirebaseCrashlytics.register();
+  }
+  if (initGeneralState) {
+    generalState = await getGeneralState();
+  }
   runApp(
     ProviderScope(
       overrides: [

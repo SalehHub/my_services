@@ -100,7 +100,7 @@ Future<GeneralState> getGeneralState() async {
       }),
       //-----------------------------------------------------------------//
 
-      ServiceFirebaseMessaging.getToken().then<String?>((String? value) => notificationToken = value),
+      if (appWithFirebase && appWithFCM) ServiceFirebaseMessaging.getToken().then<String?>((String? value) => notificationToken = value),
 
       //-----------------------------------------------------------------//
     ],
