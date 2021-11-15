@@ -38,12 +38,15 @@ Future<void> myServicesRunApp({
   if (withFirebase) {
     await Firebase.initializeApp();
   }
+
   if (withFirebase && withCrashlytics) {
     await ServiceFirebaseCrashlytics.register();
   }
+
   if (initGeneralState) {
     generalState = await getGeneralState();
   }
+
   runApp(
     ProviderScope(
       overrides: [

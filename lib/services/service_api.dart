@@ -44,4 +44,26 @@ class ServiceApi {
     );
     return data;
   }
+
+  static Future<Response<Map<String, dynamic>>> getRequest(String url, dynamic formData, CancelToken? cancelToken) async {
+    final String? accessToken;
+    final String? lang;
+    if (formData is FormData) {
+      accessToken = formData.fields.firstWhere((element) => element.key == 'access_token').value;
+      lang = formData.fields.firstWhere((element) => element.key == 'lang').value;
+      logger.d(formData.fields);
+    } else {
+      accessToken = formData['access_token'] as String?;
+      lang = formData['lang'] as String?;
+      logger.d(formData);
+    }
+
+    logger.i('$domain$url');
+    final Response<Map<String, dynamic>> data = await dio.getUri<Map<String, dynamic>>(
+      Uri.parse('$domain$url'),
+      cancelToken: cancelToken,
+      options: _dioOptions(accessToken, lang),
+    );
+    return data;
+  }
 }

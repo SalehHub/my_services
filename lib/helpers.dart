@@ -14,6 +14,10 @@ class Helpers {
     return isPageOrientationLandScape;
   }
 
+  static String getMd5(String input) {
+    return md5.convert(utf8.encode(input)).toString();
+  }
+
   static List chunk(List list, int chunkSize) {
     List chunks = [];
     int len = list.length;
@@ -264,5 +268,37 @@ class Helpers {
     } catch (e, s) {
       logger.e(e, e, s);
     }
+  }
+
+  static void showSnackBarYesQuestion({String? questionText, String? buttonText, required VoidCallback buttonOnTap}) {
+    final BuildContext? context = ServiceNav.navigatorKey.currentContext;
+    final MyServicesLocalizationsData? labels = context != null ? getMyServicesLabels(context) : null;
+
+    showSnackBar(
+      backgroundColor: null,
+      content: Row(
+        children: [
+          Text(
+            questionText ?? labels?.areYouSure ?? "",
+            style: context != null
+                ? (getTextTheme(context).bodyText1?.copyWith(
+                      color: isDark(context) ? Colors.black : Colors.white,
+                    ))
+                : null,
+          ),
+          const Spacer(),
+          ElevatedButton(
+            onPressed: () {
+              hideSnackBar();
+              buttonOnTap();
+            },
+            child: Text(
+              labels?.yes ?? buttonText ?? "Yes",
+              style: context != null ? (getTextTheme(context).bodyText1?.copyWith(color: Colors.white)) : null,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

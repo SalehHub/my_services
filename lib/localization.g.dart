@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    areYouSure: 'Are you sure?',
     deleteAll: 'Delete all',
     doYouWantToDeleteAllNotifications: 'Do you want to delete all notifications?',
     youHaveNoNotificationsAtTheMoment: 'You have no notifications at the moment',
@@ -76,6 +77,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    areYouSure: 'هل انت متأكد؟',
     deleteAll: 'حذف الكل',
     doYouWantToDeleteAllNotifications: 'هل تريد حذف جميع الإشعارات؟',
     youHaveNoNotificationsAtTheMoment: 'لايوجد لديك إشعارات الآن',
@@ -144,6 +146,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    areYouSure: 'Es-tu sûr?',
     deleteAll: 'Supprimer tout',
     doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
     youHaveNoNotificationsAtTheMoment: 'Vous n\'avez aucune notification pour le moment',
@@ -212,6 +215,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    areYouSure: '¿Está seguro?',
     deleteAll: 'Eliminar todos',
     doYouWantToDeleteAllNotifications: '¿Quieres eliminar todas las notificaciones?',
     youHaveNoNotificationsAtTheMoment: 'No tienes notificaciones en este momento.',
@@ -242,7 +246,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
@@ -280,6 +284,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    areYouSure: 'Emin misin?',
     deleteAll: 'Hepsini sil',
     doYouWantToDeleteAllNotifications: 'Tüm bildirimleri silmek ister misiniz?',
     youHaveNoNotificationsAtTheMoment: 'Şu anda hiçbir bildiriminiz yok',
@@ -351,6 +356,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.areYouSure,
     required this.deleteAll,
     required this.doYouWantToDeleteAllNotifications,
     required this.youHaveNoNotificationsAtTheMoment,
@@ -419,6 +425,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String areYouSure;
   final String deleteAll;
   final String doYouWantToDeleteAllNotifications;
   final String youHaveNoNotificationsAtTheMoment;
@@ -486,6 +493,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        areYouSure: map['areYouSure']! as String,
         deleteAll: map['deleteAll']! as String,
         doYouWantToDeleteAllNotifications: map['doYouWantToDeleteAllNotifications']! as String,
         youHaveNoNotificationsAtTheMoment: map['youHaveNoNotificationsAtTheMoment']! as String,
@@ -555,6 +563,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? areYouSure,
     String? deleteAll,
     String? doYouWantToDeleteAllNotifications,
     String? youHaveNoNotificationsAtTheMoment,
@@ -623,6 +632,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        areYouSure: areYouSure ?? this.areYouSure,
         deleteAll: deleteAll ?? this.deleteAll,
         doYouWantToDeleteAllNotifications: doYouWantToDeleteAllNotifications ?? this.doYouWantToDeleteAllNotifications,
         youHaveNoNotificationsAtTheMoment: youHaveNoNotificationsAtTheMoment ?? this.youHaveNoNotificationsAtTheMoment,
@@ -695,6 +705,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          areYouSure == other.areYouSure &&
           deleteAll == other.deleteAll &&
           doYouWantToDeleteAllNotifications == other.doYouWantToDeleteAllNotifications &&
           youHaveNoNotificationsAtTheMoment == other.youHaveNoNotificationsAtTheMoment &&
@@ -764,6 +775,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      areYouSure.hashCode ^
       deleteAll.hashCode ^
       doYouWantToDeleteAllNotifications.hashCode ^
       youHaveNoNotificationsAtTheMoment.hashCode ^

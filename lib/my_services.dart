@@ -8,6 +8,7 @@ export 'dart:ui' show ImageFilter;
 
 export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
+export 'package:crypto/crypto.dart';
 export 'package:device_info/device_info.dart';
 export 'package:dio/dio.dart' hide VoidCallback;
 export 'package:firebase_core/firebase_core.dart';

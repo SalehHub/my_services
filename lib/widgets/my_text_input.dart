@@ -17,6 +17,7 @@ class MyTextInput extends StatelessWidget {
     this.onFieldSubmitted,
     this.isPassword = false,
     this.radius = 10,
+    this.maxLines = 1,
     this.textInputAction = TextInputAction.done,
     this.margin = EdgeInsets.zero,
   }) : super(key: key);
@@ -33,6 +34,7 @@ class MyTextInput extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
   final double radius;
+  final int maxLines;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final Function(String value)? onFieldSubmitted;
@@ -50,6 +52,7 @@ class MyTextInput extends StatelessWidget {
         obscureText: isPassword,
         textInputAction: textInputAction,
         keyboardType: keyboardType,
+        maxLines: maxLines,
         style: getTextTheme(context).bodyText1?.copyWith(height: 2.5),
         decoration: InputDecoration(
           labelStyle: getTextTheme(context).bodyText2,
