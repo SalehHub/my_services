@@ -45,7 +45,7 @@ class ServiceApi {
     return data;
   }
 
-  static Future<Response<Map<String, dynamic>>> getRequest(String url, dynamic formData, CancelToken? cancelToken) async {
+  static Future<Response<T>> getRequest<T>(String url, dynamic formData, CancelToken? cancelToken) async {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
@@ -59,7 +59,7 @@ class ServiceApi {
     }
 
     logger.i('$domain$url');
-    final Response<Map<String, dynamic>> data = await dio.getUri<Map<String, dynamic>>(
+    final Response<T> data = await dio.getUri<T>(
       Uri.parse('$domain$url'),
       cancelToken: cancelToken,
       options: _dioOptions(accessToken, lang),
