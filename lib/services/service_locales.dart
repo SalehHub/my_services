@@ -4,12 +4,12 @@ class ServiceLocale {
   static Locale defaultLocale = const Locale('ar');
   static List<Locale> supportedLocales = [defaultLocale];
 
-  //we can not use ServiceNav.navigatorKey.currentContext in here
+  //we can not use ServiceNav.context in here
   static String currentLocaleLangCode(BuildContext context) {
     return currentLocale(context).languageCode;
   }
 
-  //we can not use ServiceNav.navigatorKey.currentContext in here
+  //we can not use ServiceNav.context in here
   static Locale currentLocale(BuildContext context) {
     return Localizations.localeOf(context);
   }
