@@ -244,6 +244,7 @@ class Helpers {
 
   static void showSnackBar({
     required Widget content,
+    BuildContext? context,
     Color? backgroundColor = Colors.black,
     double elevation = 3.0,
     SnackBarBehavior behavior = SnackBarBehavior.floating,
@@ -251,10 +252,9 @@ class Helpers {
     int seconds = 3,
   }) {
     try {
-      final BuildContext? context = ServiceNav.navigatorKey.currentContext;
-      if (context != null) {
-        //Scaffold.of(context)
-        ScaffoldMessenger.of(context).showSnackBar(
+      final BuildContext? _context = context ?? ServiceNav.context;
+      if (_context != null) {
+        ScaffoldMessenger.of(_context).showSnackBar(
           SnackBar(
             duration: Duration(seconds: seconds),
             margin: margin,
