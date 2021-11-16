@@ -9,6 +9,7 @@ class ServiceNav {
   ];
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static BuildContext? get context => navigatorKey.currentContext;
 }
 
 class MyNavigatorObserver extends NavigatorObserver {
