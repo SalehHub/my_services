@@ -236,7 +236,7 @@ class Helpers {
   }
 
   static void hideSnackBar() {
-    final BuildContext? context = ServiceNav.navigatorKey.currentContext;
+    final BuildContext? context = ServiceNav.context;
     if (context != null) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
     }
