@@ -270,34 +270,16 @@ class Helpers {
     }
   }
 
-  static void showSnackBarYesQuestion({String? questionText, String? buttonText, required VoidCallback buttonOnTap}) {
-    final BuildContext? context = ServiceNav.navigatorKey.currentContext;
-    final MyServicesLocalizationsData? labels = context != null ? getMyServicesLabels(context) : null;
-
+  static void showSnackBarYesQuestion({String? questionText, String? buttonText, required VoidCallback onYes}) {
     showSnackBar(
       backgroundColor: null,
-      content: Row(
-        children: [
-          Text(
-            questionText ?? labels?.areYouSure ?? "",
-            style: context != null
-                ? (getTextTheme(context).bodyText1?.copyWith(
-                      color: isDark(context) ? Colors.black : Colors.white,
-                    ))
-                : null,
-          ),
-          const Spacer(),
-          ElevatedButton(
-            onPressed: () {
-              hideSnackBar();
-              buttonOnTap();
-            },
-            child: Text(
-              labels?.yes ?? buttonText ?? "Yes",
-              style: context != null ? (getTextTheme(context).bodyText1?.copyWith(color: Colors.white)) : null,
-            ),
-          ),
-        ],
+      content: yesSnackBarMessage(
+        text: questionText,
+        buttonText: buttonText,
+        onYes: () {
+          hideSnackBar();
+          onYes();
+        },
       ),
     );
   }

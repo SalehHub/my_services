@@ -15,7 +15,7 @@ class WillPopScopeWidget extends StatelessWidget {
         Helpers.showSnackBar(
           elevation: 2,
           seconds: 2,
-          content: YesSnackBarMessage(
+          content: yesSnackBarMessage(
             text: labels.areYouSureYouWantToCloseTheApp,
             onYes: SystemNavigator.pop,
           ),
