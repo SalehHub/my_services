@@ -153,7 +153,7 @@ class Helpers {
     String? _langCode = langCode;
 
     if (_langCode == null) {
-      final BuildContext? context = ServiceNav.navigatorKey.currentContext;
+      final BuildContext? context = ServiceNav.context;
       Locale? locale;
       if (context != null) {
         locale = Localizations.localeOf(context);
