@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    textHasBeenCopied: 'Text has been copied',
     areYouSure: 'Are you sure?',
     deleteAll: 'Delete all',
     doYouWantToDeleteAllNotifications: 'Do you want to delete all notifications?',
@@ -77,6 +78,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    textHasBeenCopied: 'تم نسخ البيانات',
     areYouSure: 'هل انت متأكد؟',
     deleteAll: 'حذف الكل',
     doYouWantToDeleteAllNotifications: 'هل تريد حذف جميع الإشعارات؟',
@@ -146,6 +148,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    textHasBeenCopied: 'Le texte a été copié',
     areYouSure: 'Es-tu sûr?',
     deleteAll: 'Supprimer tout',
     doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
@@ -153,7 +156,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Effacer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image de profil',
+    changeProfileImage: 'Changer l\'image du profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -215,6 +218,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    textHasBeenCopied: 'El texto ha sido copiado',
     areYouSure: '¿Está seguro?',
     deleteAll: 'Eliminar todos',
     doYouWantToDeleteAllNotifications: '¿Quieres eliminar todas las notificaciones?',
@@ -284,6 +288,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     deleteAll: 'Hepsini sil',
     doYouWantToDeleteAllNotifications: 'Tüm bildirimleri silmek ister misiniz?',
@@ -356,6 +361,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.textHasBeenCopied,
     required this.areYouSure,
     required this.deleteAll,
     required this.doYouWantToDeleteAllNotifications,
@@ -425,6 +431,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String textHasBeenCopied;
   final String areYouSure;
   final String deleteAll;
   final String doYouWantToDeleteAllNotifications;
@@ -493,6 +500,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        textHasBeenCopied: map['textHasBeenCopied']! as String,
         areYouSure: map['areYouSure']! as String,
         deleteAll: map['deleteAll']! as String,
         doYouWantToDeleteAllNotifications: map['doYouWantToDeleteAllNotifications']! as String,
@@ -563,6 +571,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? textHasBeenCopied,
     String? areYouSure,
     String? deleteAll,
     String? doYouWantToDeleteAllNotifications,
@@ -632,6 +641,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        textHasBeenCopied: textHasBeenCopied ?? this.textHasBeenCopied,
         areYouSure: areYouSure ?? this.areYouSure,
         deleteAll: deleteAll ?? this.deleteAll,
         doYouWantToDeleteAllNotifications: doYouWantToDeleteAllNotifications ?? this.doYouWantToDeleteAllNotifications,
@@ -705,6 +715,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          textHasBeenCopied == other.textHasBeenCopied &&
           areYouSure == other.areYouSure &&
           deleteAll == other.deleteAll &&
           doYouWantToDeleteAllNotifications == other.doYouWantToDeleteAllNotifications &&
@@ -775,6 +786,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      textHasBeenCopied.hashCode ^
       areYouSure.hashCode ^
       deleteAll.hashCode ^
       doYouWantToDeleteAllNotifications.hashCode ^
