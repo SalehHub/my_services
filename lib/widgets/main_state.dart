@@ -38,6 +38,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       ];
 
   String title = '';
+  TextStyle? titleStyle ;
 
   bool pageLoading = false;
 
@@ -59,7 +60,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool showRefreshIndicator = true;
 
   Widget get appBarTitle {
-    return Text(title, textDirection: Helpers.getTextDirection(title));
+    return Text(title, textDirection: Helpers.getTextDirection(title),style: titleStyle);
   }
 
   //tab view
