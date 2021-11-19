@@ -10,6 +10,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 
   //////PageSize
   MediaQueryData get mediaQueryData => MediaQuery.of(context);
+  MyServicesLocalizationsData get myServicesLabels => getMyServicesLabels(context);
 
   Orientation get pageOrientation => mediaQueryData.orientation;
 
@@ -38,7 +39,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       ];
 
   String title = '';
-  TextStyle? titleStyle ;
+  TextStyle? titleStyle;
 
   bool pageLoading = false;
 
@@ -50,17 +51,20 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool actionBarLoading = false;
   Widget? appBarLeading;
 
-  String noDataLabel = 'لايوجد بيانات';
+  String get noDataLabel => myServicesLabels.thereAreNoDataYet;
   IconData noDataIcon = iconNoData;
 
   Object? error;
   StackTrace? stackTrace;
 
+  bool showSearch = false;
+  ValueChanged<String>? onSearchChanged;
+
   bool showAppBar = true;
   bool showRefreshIndicator = true;
 
   Widget get appBarTitle {
-    return Text(title, textDirection: Helpers.getTextDirection(title),style: titleStyle);
+    return Text(title, textDirection: Helpers.getTextDirection(title), style: titleStyle);
   }
 
   //tab view
@@ -248,6 +252,20 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     var customScrollView = CustomScrollView(
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
+
+        if (showSearch)
+          SliverToBoxAdapter(
+            child: MyTextInput(
+              margin: const EdgeInsets.all(10),
+              prefixIcon: const Icon(iconSearch),
+              labelText: myServicesLabels.search,
+              onChanged: onSearchChanged,
+              // contentPadding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
+              // style: getTheme(context).inputDecorationTheme.labelStyle,
+              // labelStyle: getTextTheme(context).subtitle1,
+              // strutStyle: const StrutStyle(height: 1.5),
+            ),
+          ),
 
         //top banner
         if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),

@@ -20,6 +20,11 @@ class MyTextInput extends StatelessWidget {
     this.maxLines = 1,
     this.textInputAction = TextInputAction.done,
     this.margin = EdgeInsets.zero,
+    this.contentPadding,
+    this.labelStyle,
+    this.floatingLabelStyle,
+    this.strutStyle,
+    this.style,
   }) : super(key: key);
 
   final String? value;
@@ -39,6 +44,11 @@ class MyTextInput extends StatelessWidget {
   final FocusNode? focusNode;
   final Function(String value)? onFieldSubmitted;
   final EdgeInsetsGeometry margin;
+  final EdgeInsetsGeometry? contentPadding;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final TextStyle? floatingLabelStyle;
+  final StrutStyle? strutStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +63,15 @@ class MyTextInput extends StatelessWidget {
         textInputAction: textInputAction,
         keyboardType: keyboardType,
         maxLines: maxLines,
-        strutStyle: const StrutStyle(height: 2.2),
-        style: getTextTheme(context).headline6?.copyWith(height: 2.0),
+        strutStyle: strutStyle ?? const StrutStyle(height: 2),
+        style: style,
         decoration: InputDecoration(
           alignLabelWithHint: true,
-          // labelStyle: getTextTheme(context).bodyText2,
+          labelStyle: labelStyle,
+          floatingLabelStyle: floatingLabelStyle,
           labelText: labelText,
           helperText: helperText,
-          contentPadding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(12, 10, 12, 6),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
