@@ -63,7 +63,7 @@ class MyTextInput extends StatelessWidget {
         textInputAction: textInputAction,
         keyboardType: keyboardType,
         maxLines: maxLines,
-        strutStyle: strutStyle ?? const StrutStyle(height: 2),
+        strutStyle: strutStyle ?? const StrutStyle(height: 2.0),
         style: style,
         decoration: InputDecoration(
           alignLabelWithHint: true,
@@ -71,7 +71,7 @@ class MyTextInput extends StatelessWidget {
           floatingLabelStyle: floatingLabelStyle,
           labelText: labelText,
           helperText: helperText,
-          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(12, 10, 12, 6),
+          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(16, 10, 16, 10),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
