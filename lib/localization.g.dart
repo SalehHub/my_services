@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    search: 'Search',
     textHasBeenCopied: 'Text has been copied',
     areYouSure: 'Are you sure?',
     deleteAll: 'Delete all',
@@ -78,6 +79,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    search: 'بحث',
     textHasBeenCopied: 'تم نسخ البيانات',
     areYouSure: 'هل انت متأكد؟',
     deleteAll: 'حذف الكل',
@@ -148,6 +150,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    search: 'Chercher',
     textHasBeenCopied: 'Le texte a été copié',
     areYouSure: 'Es-tu sûr?',
     deleteAll: 'Supprimer tout',
@@ -218,6 +221,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    search: 'Buscar',
     textHasBeenCopied: 'El texto ha sido copiado',
     areYouSure: '¿Está seguro?',
     deleteAll: 'Eliminar todos',
@@ -250,7 +254,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
@@ -288,6 +292,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    search: 'Arama',
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     deleteAll: 'Hepsini sil',
@@ -361,6 +366,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.search,
     required this.textHasBeenCopied,
     required this.areYouSure,
     required this.deleteAll,
@@ -431,6 +437,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String search;
   final String textHasBeenCopied;
   final String areYouSure;
   final String deleteAll;
@@ -500,6 +507,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        search: map['search']! as String,
         textHasBeenCopied: map['textHasBeenCopied']! as String,
         areYouSure: map['areYouSure']! as String,
         deleteAll: map['deleteAll']! as String,
@@ -571,6 +579,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? search,
     String? textHasBeenCopied,
     String? areYouSure,
     String? deleteAll,
@@ -641,6 +650,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        search: search ?? this.search,
         textHasBeenCopied: textHasBeenCopied ?? this.textHasBeenCopied,
         areYouSure: areYouSure ?? this.areYouSure,
         deleteAll: deleteAll ?? this.deleteAll,
@@ -715,6 +725,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          search == other.search &&
           textHasBeenCopied == other.textHasBeenCopied &&
           areYouSure == other.areYouSure &&
           deleteAll == other.deleteAll &&
@@ -786,6 +797,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      search.hashCode ^
       textHasBeenCopied.hashCode ^
       areYouSure.hashCode ^
       deleteAll.hashCode ^
