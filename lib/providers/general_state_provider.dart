@@ -14,6 +14,7 @@ String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s
 
 //------------------------------------------------------------------//
 GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
+
 GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
 
 final initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
@@ -30,14 +31,24 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
 
   Map<String, dynamic> get asMap => <String, dynamic>{
         'notification_token': state.notificationToken,
+        // 'notificationToken': state.notificationToken,
+
         'device_id': state.appDeviceData?.deviceID,
+        // 'deviceID': state.appDeviceData?.deviceID,
+
         'access_token': state.accessToken,
-        'appLang': state.locale?.languageCode,
+
+        'lang': state.locale?.languageCode,
+        // 'appLang': state.locale?.languageCode,
+
         'appBuild': state.appDeviceData?.appBuild,
         'deviceModel': state.appDeviceData?.deviceModel,
         'deviceOSVersion': state.appDeviceData?.deviceOSVersion,
         'deviceOS': state.appDeviceData?.deviceOS,
+
         'themeMode': state.themeMode.toString(),
+        // 'appThemeMode': state.themeMode.toString(),
+
         'isFirstAppRun': state.isFirstAppRun,
         'isFirstAppBuildRun': state.isFirstAppBuildRun,
       };
