@@ -47,12 +47,21 @@ Widget yesSnackBarMessage({String? text, String? buttonText, required VoidCallba
       ),
       const Spacer(),
       ElevatedButton(
-        style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+        style: OutlinedButton.styleFrom(
+          backgroundColor: Colors.red,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
         onPressed: () {
           Helpers.hideSnackBar();
           onYes();
         },
-        child: Text(buttonText ?? labels?.yes ?? "Yes", style: context == null ? null : getTextTheme(context).bodyText1?.copyWith(color: Colors.white)),
+        child: Text(buttonText ?? labels?.yes ?? "Yes",
+            style: context == null
+                ? null
+                : getTextTheme(context).bodyText1?.copyWith(
+                      // shadows: Helpers.getTextStroke(0.1, Colors.black),
+                      color: Colors.white,
+                    )),
       )
     ],
   );
