@@ -32,7 +32,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
         'notification_token': state.notificationToken,
         'device_id': state.appDeviceData?.deviceID,
         'access_token': state.accessToken,
-        'lang': state.locale?.languageCode,
+        'appLang': state.locale?.languageCode,
         'appBuild': state.appDeviceData?.appBuild,
         'deviceModel': state.appDeviceData?.deviceModel,
         'deviceOSVersion': state.appDeviceData?.deviceOSVersion,
