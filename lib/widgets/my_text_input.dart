@@ -19,7 +19,7 @@ class MyTextInput extends StatelessWidget {
     this.radius = 10,
     this.maxLines = 1,
     this.textInputAction = TextInputAction.done,
-    this.margin = EdgeInsets.zero,
+    this.margin = const EdgeInsets.only(top: 5),
     this.contentPadding,
     this.labelStyle,
     this.floatingLabelStyle,
@@ -55,8 +55,9 @@ class MyTextInput extends StatelessWidget {
     return Padding(
       padding: margin,
       child: TextFormField(
-        controller: controller ?? (value != null ? TextEditingController(text: value) : null),
+        autocorrect: !isPassword,
         enableSuggestions: !isPassword,
+        controller: controller ?? (value != null ? TextEditingController(text: value) : null),
         validator: validator,
         textDirection: textDirection,
         obscureText: isPassword,
@@ -71,7 +72,7 @@ class MyTextInput extends StatelessWidget {
           floatingLabelStyle: floatingLabelStyle,
           labelText: labelText,
           helperText: helperText,
-          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(16, 10, 16, 10),
+          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(5, 10, 5, 10),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
