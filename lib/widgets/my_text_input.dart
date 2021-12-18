@@ -72,7 +72,7 @@ class MyTextInput extends StatelessWidget {
           floatingLabelStyle: floatingLabelStyle,
           labelText: labelText,
           helperText: helperText,
-          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(5, 10, 5, 10),
+          contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(10, 10, 10, 10),
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
