@@ -10,7 +10,7 @@ export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';
 export 'package:device_info/device_info.dart';
-export 'package:dio/dio.dart' hide VoidCallback;
+export 'package:dio/dio.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:firebase_crashlytics/firebase_crashlytics.dart';
 export 'package:firebase_messaging/firebase_messaging.dart';

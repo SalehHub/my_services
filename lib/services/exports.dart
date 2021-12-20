@@ -1,5 +1,6 @@
 export 'service_api.dart';
 export 'service_app_badger.dart';
+export 'service_debounce.dart';
 export 'service_file_picker.dart';
 export 'service_firebase_crashlytics.dart';
 export 'service_firebase_messaging.dart';
