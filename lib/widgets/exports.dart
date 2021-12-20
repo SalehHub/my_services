@@ -6,6 +6,7 @@ export 'main_state_error_widget.dart';
 export 'my_dialog.dart';
 export 'my_ink.dart';
 export 'my_loading_image.dart';
+export 'my_popup_menu.dart';
 export 'my_progress_indicator.dart';
 export 'my_stateless_widget.dart';
 export 'my_text_input.dart';

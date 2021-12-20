@@ -5,7 +5,7 @@ class PageImageViewer extends ConsumerStatefulWidget {
   final String title;
   final List<String> imageList;
   final String image;
-  final PopupMenuButton? popupMenuButton;
+  final MyPopupMenu? popupMenuButton;
 
   @override
   _PageImageViewerState createState() => _PageImageViewerState();
