@@ -43,6 +43,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   TextStyle? titleStyle;
 
   bool isHomePage = false;
+
   bool pageLoading = false;
 
   bool hideTopBanner = false;
@@ -149,10 +150,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   void _refreshThemeStyle() {
     ServiceDebounce.debounce(() {
-      if (isHomePage) {
-        logger.w("Service Theme Set System Ui Overlay Style");
-        ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
-      }
+      logger.w("Service Theme Set System Ui Overlay Style");
+      ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
     }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
   }
 
