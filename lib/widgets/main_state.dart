@@ -10,6 +10,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 
   //////PageSize
   MediaQueryData get mediaQueryData => MediaQuery.of(context);
+
   MyServicesLocalizationsData get myServicesLabels => getMyServicesLabels(context);
 
   Orientation get pageOrientation => mediaQueryData.orientation;
@@ -41,6 +42,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   String title = '';
   TextStyle? titleStyle;
 
+  bool isHomePage = false;
   bool pageLoading = false;
 
   bool hideTopBanner = false;
@@ -143,6 +145,22 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         tabs: tabs!,
       ),
     );
+  }
+
+  void _refreshThemeStyle() {
+    ServiceDebounce.debounce(() {
+      if (isHomePage) {
+        logger.w("Service Theme Set System Ui Overlay Style");
+        ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
+      }
+    }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
+  }
+
+  @override
+  @protected
+  void didChangeDependencies() {
+    _refreshThemeStyle();
+    super.didChangeDependencies();
   }
 
   @override
