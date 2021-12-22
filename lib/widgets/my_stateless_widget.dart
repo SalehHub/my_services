@@ -10,7 +10,9 @@ abstract class MyStatelessWidget extends StatelessWidget {
 
   /////Theme
   ThemeData get theme => Theme.of(context);
+
   TextTheme get textTheme => theme.textTheme;
+
   bool get isDarkTheme => theme.brightness == Brightness.dark;
 
   /////local
@@ -18,11 +20,17 @@ abstract class MyStatelessWidget extends StatelessWidget {
 
   //////Page Size & Orientation
   MediaQueryData get mediaQueryData => MediaQuery.of(context);
+
   Orientation get pageOrientation => mediaQueryData.orientation;
+
   bool get isPageOrientationLandScape => pageOrientation == Orientation.landscape;
+
   bool get isPageOrientationPortrait => pageOrientation == Orientation.portrait;
+
   Size get pageSize => mediaQueryData.size;
+
   double get pageHeight => pageSize.height;
+
   double get pageWidth => pageSize.width;
 
   @override

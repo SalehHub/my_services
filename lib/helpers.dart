@@ -114,7 +114,8 @@ class Helpers {
 
   static Future<void> waitForMilliseconds([int milliseconds = 200]) => Future<void>.delayed(Duration(milliseconds: milliseconds));
 
-///////
+  ///////
+
   static Future<Directory?> _getApplicationDocumentsDirectory() async {
     if (!kIsWeb) {
       return getApplicationDocumentsDirectory();
@@ -122,15 +123,15 @@ class Helpers {
     return null;
   }
 
-  static String? applicationDocumentsDirectoryPath;
-  static bool printed = false;
+  static String? _applicationDocumentsDirectoryPath;
+  static bool _printed = false;
 
   static Future<String?> getApplicationDocumentsPath() async {
-    if (printed == false && applicationDocumentsDirectoryPath != null) {
-      logger.i(applicationDocumentsDirectoryPath);
-      printed = true;
+    if (_printed == false && _applicationDocumentsDirectoryPath != null) {
+      logger.i(_applicationDocumentsDirectoryPath);
+      _printed = true;
     }
-    return applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
+    return _applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;
   }
 
   static final Map<String, LookupMessages> _lookupMessagesMap = {
@@ -174,8 +175,6 @@ class Helpers {
     return '';
   }
 
-//////
-
   static Future<AppDeviceData> getAppAndDeviceData() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
@@ -203,84 +202,6 @@ class Helpers {
       deviceOSVersion: deviceOSVersion,
       deviceModel: deviceModel,
       deviceOS: Platform.operatingSystem.toLowerCase(),
-    );
-  }
-
-  //////
-
-  static void showTextSnackBar({
-    String text = '',
-    Color? backgroundColor,
-    double elevation = 3.0,
-    SnackBarBehavior behavior = SnackBarBehavior.floating,
-    EdgeInsets margin = const EdgeInsets.all(10),
-    int seconds = 3,
-    GestureTapCallback? onTap,
-  }) {
-    //Scaffold.of(context)
-    showSnackBar(
-      margin: margin,
-      backgroundColor: backgroundColor ?? Colors.green.shade800,
-      elevation: elevation,
-      behavior: behavior,
-      seconds: seconds,
-      content: GestureDetector(
-        onTap: onTap,
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-  static void hideSnackBar() {
-    final BuildContext? context = ServiceNav.context;
-    if (context != null) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    }
-  }
-
-  static void showSnackBar({
-    required Widget content,
-    BuildContext? context,
-    Color? backgroundColor = Colors.black,
-    double elevation = 3.0,
-    SnackBarBehavior behavior = SnackBarBehavior.floating,
-    EdgeInsets margin = const EdgeInsets.all(10),
-    int seconds = 3,
-  }) {
-    try {
-      final BuildContext? _context = context ?? ServiceNav.context;
-      if (_context != null) {
-        ScaffoldMessenger.of(_context).showSnackBar(
-          SnackBar(
-            duration: Duration(seconds: seconds),
-            margin: margin,
-            backgroundColor: backgroundColor,
-            elevation: elevation,
-            behavior: behavior,
-            content: content,
-          ),
-        );
-      }
-    } catch (e, s) {
-      logger.e(e, e, s);
-    }
-  }
-
-  static void showSnackBarYesQuestion({String? questionText, String? buttonText, required VoidCallback onYes}) {
-    showSnackBar(
-      backgroundColor: null,
-      content: yesSnackBarMessage(
-        text: questionText,
-        buttonText: buttonText,
-        onYes: () {
-          hideSnackBar();
-          onYes();
-        },
-      ),
     );
   }
 }

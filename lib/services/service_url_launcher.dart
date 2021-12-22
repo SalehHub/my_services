@@ -42,7 +42,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos(url);
 
     if (result == false) {
-      Helpers.showTextSnackBar(text: url);
+      ServiceSnackBar.showTextSnackBar(text: url);
     }
   }
 
@@ -57,7 +57,7 @@ class ServiceURLLauncher {
       if (nativeAppLaunchSucceeded == false) {
         final bool urlLaunch = await launch(url);
         if (urlLaunch == false) {
-          Helpers.showTextSnackBar(text: num);
+          ServiceSnackBar.showTextSnackBar(text: num);
         }
       }
     }
@@ -67,7 +67,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos('tel:$num');
 
     if (result == false) {
-      Helpers.showTextSnackBar(text: num);
+      ServiceSnackBar.showTextSnackBar(text: num);
     }
   }
 
@@ -75,7 +75,7 @@ class ServiceURLLauncher {
     final bool result = await launchUniversalLinkIos('mailto:$email');
 
     if (result == false) {
-      Helpers.showTextSnackBar(text: email);
+      ServiceSnackBar.showTextSnackBar(text: email);
     }
   }
 

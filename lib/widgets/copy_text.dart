@@ -13,7 +13,7 @@ class CopyTextWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Clipboard.setData(ClipboardData(text: textToCopy));
-        Helpers.showTextSnackBar(text: labels.textHasBeenCopied);
+        ServiceSnackBar.showTextSnackBar(text: labels.textHasBeenCopied);
       },
       child: child,
     );

@@ -4,6 +4,7 @@ class MyProgressIndicator extends StatelessWidget {
   const MyProgressIndicator({Key? key, this.margin = EdgeInsets.zero}) : super(key: key);
 
   final EdgeInsets margin;
+
   @override
   Widget build(BuildContext context) {
     // if (Platform.isIOS) {

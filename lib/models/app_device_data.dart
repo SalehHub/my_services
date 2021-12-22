@@ -1,6 +1,7 @@
 import '../my_services.dart';
 
 part 'app_device_data.freezed.dart';
+
 part 'app_device_data.g.dart';
 
 @freezed

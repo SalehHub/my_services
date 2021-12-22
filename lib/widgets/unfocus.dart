@@ -10,7 +10,7 @@ class Unfocus extends StatelessWidget {
       behavior: HitTestBehavior.opaque,
       onTap: () {
         Helpers.hideKeyboard();
-        Helpers.hideSnackBar();
+        ServiceSnackBar.hideSnackBar();
       },
       child: child,
     );

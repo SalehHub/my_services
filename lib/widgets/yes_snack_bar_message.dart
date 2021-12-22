@@ -52,7 +52,7 @@ Widget yesSnackBarMessage({String? text, String? buttonText, required VoidCallba
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
         onPressed: () {
-          Helpers.hideSnackBar();
+          ServiceSnackBar.hideSnackBar();
           onYes();
         },
         child: Text(buttonText ?? labels?.yes ?? "Yes",

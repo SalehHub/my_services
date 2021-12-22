@@ -67,6 +67,7 @@ class MyLoadingImage extends StatelessWidget {
       );
 
   OctoPlaceholderBuilder get defaultPlaceholderBuilder => (BuildContext context) => placeHolder;
+
   OctoErrorBuilder get defaultErrorBuilder => (BuildContext context, Object error, StackTrace? stackTrace) => placeHolder;
 
   // PlaceholderWidgetBuilder get defaultPlaceholderBuilder => (BuildContext context, _) => placeHolder;
