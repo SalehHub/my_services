@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    thisFieldIsRequired: 'This field is required',
     price: 'Price',
     description: 'Description',
     addNewImage: 'Add new image',
@@ -82,6 +83,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    thisFieldIsRequired: 'يجب ادخال قيمة لهذا الحقل',
     price: 'السعر',
     description: 'الوصف',
     addNewImage: 'اضافة صورة جديدة',
@@ -156,6 +158,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    thisFieldIsRequired: 'Ce champ est requis',
     price: 'Prix',
     description: 'La description',
     addNewImage: 'Ajouter une nouvelle image',
@@ -230,6 +233,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    thisFieldIsRequired: 'Este campo es obligatorio',
     price: 'Precio',
     description: 'Descripción',
     addNewImage: 'Añadir nueva imagen',
@@ -304,6 +308,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    thisFieldIsRequired: 'Bu alan gereklidir',
     price: 'Fiyat',
     description: 'Açıklama',
     addNewImage: 'Yeni resim ekle',
@@ -381,6 +386,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.thisFieldIsRequired,
     required this.price,
     required this.description,
     required this.addNewImage,
@@ -455,6 +461,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String thisFieldIsRequired;
   final String price;
   final String description;
   final String addNewImage;
@@ -528,6 +535,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        thisFieldIsRequired: map['thisFieldIsRequired']! as String,
         price: map['price']! as String,
         description: map['description']! as String,
         addNewImage: map['addNewImage']! as String,
@@ -603,6 +611,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? thisFieldIsRequired,
     String? price,
     String? description,
     String? addNewImage,
@@ -677,6 +686,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        thisFieldIsRequired: thisFieldIsRequired ?? this.thisFieldIsRequired,
         price: price ?? this.price,
         description: description ?? this.description,
         addNewImage: addNewImage ?? this.addNewImage,
@@ -755,6 +765,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          thisFieldIsRequired == other.thisFieldIsRequired &&
           price == other.price &&
           description == other.description &&
           addNewImage == other.addNewImage &&
@@ -830,6 +841,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      thisFieldIsRequired.hashCode ^
       price.hashCode ^
       description.hashCode ^
       addNewImage.hashCode ^
