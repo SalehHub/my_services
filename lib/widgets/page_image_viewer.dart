@@ -1,21 +1,19 @@
 import '../my_services.dart';
 
+class ImageData {
+  final String url;
+  final Widget? footerWidget;
+  final Widget? popupMenu;
+
+  ImageData({required this.url, this.footerWidget, this.popupMenu});
+}
+
 class PageImageViewer extends ConsumerStatefulWidget {
-  const PageImageViewer({
-    Key? key,
-    this.title = '',
-    required this.image,
-    this.imageList = const [],
-    this.popupMenuButton,
-    this.showDotIndicators = true,
-    this.footerWidgetList,
-  }) : super(key: key);
+  const PageImageViewer({Key? key, this.title = '', required this.image, this.imageList = const [], this.showDotIndicators = true}) : super(key: key);
   final String title;
-  final List<String> imageList;
-  final String image;
-  final MyPopupMenu? popupMenuButton;
+  final List<ImageData> imageList;
+  final ImageData image;
   final bool showDotIndicators;
-  final List<Widget>? footerWidgetList;
 
   @override
   _PageImageViewerState createState() => _PageImageViewerState();
@@ -36,16 +34,25 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   @override
   String get title => widget.title;
 
-  List<String> imageList = [];
+  List<ImageData> imageList = [];
+  bool get hasImages => imageList.isNotEmpty;
 
-  String get selectedImage => imageList[index];
+  ImageData get selectedImage => imageList[index];
+
+  Widget? get popupMenu => hasImages ? imageList[index].popupMenu : null;
+  bool get hasPopupMenu => popupMenu != null;
+
+  Widget? get footerWidget => hasImages ? imageList[index].footerWidget : null;
+  bool get hasFooter => footerWidget != null;
 
   int index = 0;
   PageController pageController = PageController(initialPage: 0);
 
+  double get imageHeight => hasFooter ? pageHeight / 1.9 : pageHeight - 200;
+
   @override
   List<Widget> get appBarActions {
-    return widget.popupMenuButton != null ? [widget.popupMenuButton!] : [];
+    return hasPopupMenu ? [popupMenu!] : [];
   }
 
   @override
@@ -58,20 +65,16 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       imageList = [widget.image];
     } else {
       imageList = widget.imageList;
-      int f = imageList.indexWhere((element) => element == widget.image);
-      if (f == -1) {
+      int selectedIndex = imageList.indexWhere((element) => element.url == widget.image.url);
+      if (selectedIndex == -1) {
         index = 0;
       }
-      index = f;
+      index = selectedIndex;
       pageController = PageController(initialPage: index);
     }
 
     stopPageLoading();
   }
-
-  bool get hasFooter => widget.footerWidgetList?.isNotEmpty == true;
-
-  double get imageHeight => hasFooter ? pageHeight / 2 : pageHeight - 200;
 
   @override
   List<Widget> get bodyChildren => [
@@ -79,7 +82,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
         SliverToBoxAdapter(child: SizedBox(height: imageHeight, child: buildImages())),
         SliverToBoxAdapter(child: buildIndicators()),
         //
-        if (widget.footerWidgetList != null) SliverToBoxAdapter(child: widget.footerWidgetList![index]),
+        if (footerWidget != null) SliverToBoxAdapter(child: footerWidget),
         //
       ];
 
@@ -89,7 +92,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     }
 
     return Container(
-      margin: const EdgeInsets.only(left: 50, right: 50, top: 3, bottom: 3),
+      margin: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 3),
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
@@ -118,7 +121,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       onPageChanged: (i) => setState(() => index = i),
       builder: (context, index) {
         return PhotoViewGalleryPageOptions(
-          imageProvider: CachedNetworkImageProvider(imageList[index]),
+          imageProvider: CachedNetworkImageProvider(imageList[index].url),
           // Contained = the smallest possible size to fit one dimension of the screen
           minScale: PhotoViewComputedScale.contained * 0.8,
           // Covered = the smallest possible size to fit the whole screen
