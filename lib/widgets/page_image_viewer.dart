@@ -92,6 +92,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     }
 
     return Container(
+      alignment: Alignment.center,
       margin: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 3),
       padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
       decoration: BoxDecoration(
