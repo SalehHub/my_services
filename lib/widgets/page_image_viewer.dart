@@ -8,12 +8,14 @@ class PageImageViewer extends ConsumerStatefulWidget {
     this.imageList = const [],
     this.popupMenuButton,
     this.showDotIndicators = true,
+    this.footerWidgetList,
   }) : super(key: key);
   final String title;
   final List<String> imageList;
   final String image;
   final MyPopupMenu? popupMenuButton;
   final bool showDotIndicators;
+  final List<Widget>? footerWidgetList;
 
   @override
   _PageImageViewerState createState() => _PageImageViewerState();
@@ -67,13 +69,17 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     stopPageLoading();
   }
 
+  bool get hasFooter => widget.footerWidgetList?.isNotEmpty == true;
+  double get imageHeight => hasFooter ? pageHeight / 2 : pageHeight / 200;
+
   @override
   List<Widget> get bodyChildren => [
+        //
         SliverToBoxAdapter(child: buildIndicators()),
         //
-        SliverToBoxAdapter(
-          child: SizedBox(height: pageHeight - 100, child: buildImages()),
-        ),
+        SliverToBoxAdapter(child: SizedBox(height: imageHeight, child: buildImages())),
+        //
+        if (widget.footerWidgetList != null) SliverToBoxAdapter(child: widget.footerWidgetList![index]),
         //
       ];
 
@@ -84,7 +90,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
 
     return Container(
       height: 20,
-      clipBehavior: Clip.antiAlias,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       alignment: Alignment.center,
       margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
@@ -96,6 +102,9 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       child: AnimatedSmoothIndicator(
         count: imageList.length,
         activeIndex: index,
+        onDotClicked: (index) {
+          pageController.jumpToPage(index);
+        },
         effect: WormEffect(
           spacing: 1,
           dotWidth: 7,
