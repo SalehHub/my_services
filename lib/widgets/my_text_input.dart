@@ -64,8 +64,9 @@ class MyTextInput extends StatelessWidget {
         textInputAction: textInputAction,
         keyboardType: keyboardType,
         maxLines: maxLines,
-        strutStyle: strutStyle ?? const StrutStyle(height: 2.0),
+        strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
         style: style,
+        textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
         decoration: InputDecoration(
           alignLabelWithHint: true,
           labelStyle: labelStyle,
@@ -73,8 +74,18 @@ class MyTextInput extends StatelessWidget {
           labelText: labelText,
           helperText: helperText,
           contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(10, 10, 10, 10),
-          prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
+          prefixIcon: maxLines == 1
+              ? prefixIcon
+              : Padding(
+                  padding: EdgeInsets.only(top: 18),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    widthFactor: 1.0,
+                    heightFactor: 10.0,
+                    child: prefixIcon,
+                  ),
+                ),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
         ),
         onChanged: onChanged,
