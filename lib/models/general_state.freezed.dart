@@ -230,10 +230,10 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
   @override
   @ThemeModeConverter()
   final ThemeMode? themeMode;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isFirstAppRun;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isFirstAppBuildRun;
 
@@ -261,17 +261,25 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _GeneralState &&
-            (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
-            (identical(other.notificationToken, notificationToken) || other.notificationToken == notificationToken) &&
-            (identical(other.appDeviceData, appDeviceData) || other.appDeviceData == appDeviceData) &&
-            (identical(other.locale, locale) || other.locale == locale) &&
-            (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
-            (identical(other.isFirstAppRun, isFirstAppRun) || other.isFirstAppRun == isFirstAppRun) &&
-            (identical(other.isFirstAppBuildRun, isFirstAppBuildRun) || other.isFirstAppBuildRun == isFirstAppBuildRun));
+            const DeepCollectionEquality().equals(other.accessToken, accessToken) &&
+            const DeepCollectionEquality().equals(other.notificationToken, notificationToken) &&
+            const DeepCollectionEquality().equals(other.appDeviceData, appDeviceData) &&
+            const DeepCollectionEquality().equals(other.locale, locale) &&
+            const DeepCollectionEquality().equals(other.themeMode, themeMode) &&
+            const DeepCollectionEquality().equals(other.isFirstAppRun, isFirstAppRun) &&
+            const DeepCollectionEquality().equals(other.isFirstAppBuildRun, isFirstAppBuildRun));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, notificationToken, appDeviceData, locale, themeMode, isFirstAppRun, isFirstAppBuildRun);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(accessToken),
+      const DeepCollectionEquality().hash(notificationToken),
+      const DeepCollectionEquality().hash(appDeviceData),
+      const DeepCollectionEquality().hash(locale),
+      const DeepCollectionEquality().hash(themeMode),
+      const DeepCollectionEquality().hash(isFirstAppRun),
+      const DeepCollectionEquality().hash(isFirstAppBuildRun));
 
   @JsonKey(ignore: true)
   @override

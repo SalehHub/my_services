@@ -201,16 +201,17 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AppDeviceData &&
-            (identical(other.appVersion, appVersion) || other.appVersion == appVersion) &&
-            (identical(other.appBuild, appBuild) || other.appBuild == appBuild) &&
-            (identical(other.deviceID, deviceID) || other.deviceID == deviceID) &&
-            (identical(other.deviceOSVersion, deviceOSVersion) || other.deviceOSVersion == deviceOSVersion) &&
-            (identical(other.deviceModel, deviceModel) || other.deviceModel == deviceModel) &&
-            (identical(other.deviceOS, deviceOS) || other.deviceOS == deviceOS));
+            const DeepCollectionEquality().equals(other.appVersion, appVersion) &&
+            const DeepCollectionEquality().equals(other.appBuild, appBuild) &&
+            const DeepCollectionEquality().equals(other.deviceID, deviceID) &&
+            const DeepCollectionEquality().equals(other.deviceOSVersion, deviceOSVersion) &&
+            const DeepCollectionEquality().equals(other.deviceModel, deviceModel) &&
+            const DeepCollectionEquality().equals(other.deviceOS, deviceOS));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, appVersion, appBuild, deviceID, deviceOSVersion, deviceModel, deviceOS);
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(appVersion), const DeepCollectionEquality().hash(appBuild), const DeepCollectionEquality().hash(deviceID),
+      const DeepCollectionEquality().hash(deviceOSVersion), const DeepCollectionEquality().hash(deviceModel), const DeepCollectionEquality().hash(deviceOS));
 
   @JsonKey(ignore: true)
   @override
