@@ -104,32 +104,6 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
         ),
       ),
     );
-
-    return Container(
-      height: 20,
-      margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 5),
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      decoration: BoxDecoration(
-        boxShadow: [BoxShadow(offset: const Offset(0, 1), color: Colors.black.withOpacity(0.2))],
-        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Center(
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          children: imageList.map((e) {
-            Color? color = Colors.white;
-            double size = 8;
-            if (e == selectedImage) {
-              color = null;
-              size = 10;
-            }
-            return Icon(Mdi.circle, color: color, size: size);
-          }).toList(),
-        ),
-      ),
-    );
   }
 
   Widget buildImages() {

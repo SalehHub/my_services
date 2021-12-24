@@ -78,7 +78,7 @@ class MyTextInput extends StatelessWidget {
           prefixIcon: maxLines == 1
               ? prefixIcon
               : Padding(
-                  padding: EdgeInsets.only(top: 18),
+                  padding: const EdgeInsets.only(top: 18),
                   child: Align(
                     alignment: Alignment.topCenter,
                     widthFactor: 1.0,
