@@ -70,14 +70,14 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   }
 
   bool get hasFooter => widget.footerWidgetList?.isNotEmpty == true;
-  double get imageHeight => hasFooter ? pageHeight / 2 : pageHeight / 200;
+
+  double get imageHeight => hasFooter ? pageHeight / 2 : pageHeight - 200;
 
   @override
   List<Widget> get bodyChildren => [
         //
-        SliverToBoxAdapter(child: buildIndicators()),
-        //
         SliverToBoxAdapter(child: SizedBox(height: imageHeight, child: buildImages())),
+        SliverToBoxAdapter(child: buildIndicators()),
         //
         if (widget.footerWidgetList != null) SliverToBoxAdapter(child: widget.footerWidgetList![index]),
         //
@@ -89,27 +89,23 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     }
 
     return Container(
-      height: 20,
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      alignment: Alignment.center,
-      margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
-      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      margin: const EdgeInsets.only(left: 50, right: 50, top: 3, bottom: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
         color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: AnimatedSmoothIndicator(
-        count: imageList.length,
-        activeIndex: index,
-        onDotClicked: (index) {
-          pageController.jumpToPage(index);
-        },
-        effect: WormEffect(
-          spacing: 1,
-          dotWidth: 7,
-          dotHeight: 7,
-          activeDotColor: Theme.of(context).toggleableActiveColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 0),
+        child: ClipRect(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: AnimatedSmoothIndicator(
+            count: imageList.length,
+            activeIndex: index,
+            onDotClicked: (index) => pageController.jumpToPage(index),
+            effect: WormEffect(spacing: 1, dotWidth: 7, dotHeight: 7, activeDotColor: getTheme(context).toggleableActiveColor),
+          ),
         ),
       ),
     );
