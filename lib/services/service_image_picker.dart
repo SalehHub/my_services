@@ -1,10 +1,10 @@
 import '../my_services.dart';
 
 // ignore: avoid_classes_with_only_static_members
-class ServiceFilePicker {
+class ServiceImagePicker {
   static final ImagePicker _imagePicker = ImagePicker();
 
-  static Future<File?> pickImage(BuildContext context, {double sizeInMB = 1.0}) async {
+  static Future<File?> pickImage(BuildContext context, {double sizeInMB = 1.0, bool square = false, bool circle = false}) async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
@@ -25,6 +25,8 @@ class ServiceFilePicker {
       final File? croppedFile = await ImageCropper.cropImage(
         sourcePath: path,
         compressQuality: originalFileSizeInMB > sizeInMB ? 50 : 70,
+        aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
+        cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
       );
 
       if (croppedFile == null) {
