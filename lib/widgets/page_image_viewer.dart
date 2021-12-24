@@ -48,7 +48,12 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   int index = 0;
   PageController pageController = PageController(initialPage: 0);
 
-  double get imageHeight => hasFooter ? pageHeight / 1.9 : pageHeight - 200;
+  double get imageHeight {
+    if (isPageOrientationLandScape) {
+      return pageHeight - 100;
+    }
+    return hasFooter ? pageHeight / 1.9 : pageHeight - 200;
+  }
 
   @override
   List<Widget> get appBarActions {
