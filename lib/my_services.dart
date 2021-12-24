@@ -53,4 +53,5 @@ export 'models/app_device_data.dart';
 export 'models/general_state.dart';
 export 'providers/general_state_provider.dart';
 export 'services/exports.dart';
+export 'validators.dart';
 export 'widgets/exports.dart';
