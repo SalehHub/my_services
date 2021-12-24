@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    edit: 'Edit',
     thisFieldIsRequired: 'This field is required',
     price: 'Price',
     description: 'Description',
@@ -83,6 +84,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    edit: 'تعديل',
     thisFieldIsRequired: 'يجب ادخال قيمة لهذا الحقل',
     price: 'السعر',
     description: 'الوصف',
@@ -158,6 +160,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    edit: 'Éditer',
     thisFieldIsRequired: 'Ce champ est requis',
     price: 'Prix',
     description: 'La description',
@@ -171,7 +174,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image de profil',
+    changeProfileImage: 'Changer l\'image du profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -233,6 +236,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    edit: 'Editar',
     thisFieldIsRequired: 'Este campo es obligatorio',
     price: 'Precio',
     description: 'Descripción',
@@ -308,6 +312,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    edit: 'Düzenlemek',
     thisFieldIsRequired: 'Bu alan gereklidir',
     price: 'Fiyat',
     description: 'Açıklama',
@@ -386,6 +391,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.edit,
     required this.thisFieldIsRequired,
     required this.price,
     required this.description,
@@ -461,6 +467,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String edit;
   final String thisFieldIsRequired;
   final String price;
   final String description;
@@ -535,6 +542,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        edit: map['edit']! as String,
         thisFieldIsRequired: map['thisFieldIsRequired']! as String,
         price: map['price']! as String,
         description: map['description']! as String,
@@ -611,6 +619,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? edit,
     String? thisFieldIsRequired,
     String? price,
     String? description,
@@ -686,6 +695,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        edit: edit ?? this.edit,
         thisFieldIsRequired: thisFieldIsRequired ?? this.thisFieldIsRequired,
         price: price ?? this.price,
         description: description ?? this.description,
@@ -765,6 +775,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          edit == other.edit &&
           thisFieldIsRequired == other.thisFieldIsRequired &&
           price == other.price &&
           description == other.description &&
@@ -841,6 +852,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      edit.hashCode ^
       thisFieldIsRequired.hashCode ^
       price.hashCode ^
       description.hashCode ^
