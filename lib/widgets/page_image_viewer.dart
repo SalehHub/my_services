@@ -89,7 +89,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       decoration: BoxDecoration(
-        // boxShadow: [BoxShadow(offset: const Offset(0, 1), color: Colors.black.withOpacity(0.2))],
+        boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
         color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(20),
       ),
