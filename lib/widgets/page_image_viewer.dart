@@ -52,7 +52,12 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     if (isPageOrientationLandScape) {
       return pageHeight - 100;
     }
-    return hasFooter ? pageHeight / 1.9 : pageHeight - 200;
+
+    if (hasFooter) {
+      return pageWidth;
+    }
+
+    return pageHeight - 150;
   }
 
   @override
@@ -99,7 +104,8 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     return Container(
       alignment: Alignment.center,
       margin: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 3),
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 5),
+      width: 5.0 * imageList.length,
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
         color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
@@ -121,23 +127,29 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   }
 
   Widget buildImages() {
-    return PhotoViewGallery.builder(
-      itemCount: imageList.length,
-      pageController: pageController,
-      onPageChanged: (i) => setState(() => index = i),
-      builder: (context, index) {
-        return PhotoViewGalleryPageOptions(
-          imageProvider: CachedNetworkImageProvider(imageList[index].url),
-          // Contained = the smallest possible size to fit one dimension of the screen
-          minScale: PhotoViewComputedScale.contained * 0.8,
-          // Covered = the smallest possible size to fit the whole screen
-          maxScale: PhotoViewComputedScale.covered * 2,
-        );
-      },
-      scrollPhysics: const BouncingScrollPhysics(),
-      // Set the background color to the "classic white"
-      backgroundDecoration: BoxDecoration(color: getTheme(context).canvasColor),
-      loadingBuilder: (BuildContext context, ImageChunkEvent? event) => const MyProgressIndicator(),
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      margin: const EdgeInsets.all(5),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      child: PhotoViewGallery.builder(
+        itemCount: imageList.length,
+        pageController: pageController,
+        onPageChanged: (i) => setState(() => index = i),
+        builder: (context, index) {
+          return PhotoViewGalleryPageOptions(
+            heroAttributes: PhotoViewHeroAttributes(tag: imageList[index].url),
+            imageProvider: CachedNetworkImageProvider(imageList[index].url),
+            // Contained = the smallest possible size to fit one dimension of the screen
+            minScale: PhotoViewComputedScale.contained * 0.8,
+            // Covered = the smallest possible size to fit the whole screen
+            maxScale: PhotoViewComputedScale.covered * 2,
+          );
+        },
+        scrollPhysics: const BouncingScrollPhysics(),
+        // Set the background color to the "classic white"
+        backgroundDecoration: BoxDecoration(color: getTheme(context).canvasColor),
+        loadingBuilder: (BuildContext context, ImageChunkEvent? event) => const MyProgressIndicator(),
+      ),
     );
   }
 }
