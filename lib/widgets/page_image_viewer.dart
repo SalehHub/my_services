@@ -84,6 +84,29 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
 
     return Container(
       height: 20,
+      clipBehavior: Clip.antiAlias,
+      alignment: Alignment.center,
+      margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      decoration: BoxDecoration(
+        // boxShadow: [BoxShadow(offset: const Offset(0, 1), color: Colors.black.withOpacity(0.2))],
+        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: AnimatedSmoothIndicator(
+        count: imageList.length,
+        activeIndex: index,
+        effect: WormEffect(
+          spacing: 1,
+          dotWidth: 7,
+          dotHeight: 7,
+          activeDotColor: Theme.of(context).toggleableActiveColor,
+        ),
+      ),
+    );
+
+    return Container(
+      height: 20,
       margin: const EdgeInsets.only(left: 50, right: 50, top: 0, bottom: 5),
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
