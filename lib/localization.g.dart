@@ -8,6 +8,9 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    price: 'Price',
+    description: 'Description',
+    addNewImage: 'Add new image',
     search: 'Search',
     textHasBeenCopied: 'Text has been copied',
     areYouSure: 'Are you sure?',
@@ -79,6 +82,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    price: 'السعر',
+    description: 'الوصف',
+    addNewImage: 'اضافة صورة جديدة',
     search: 'بحث',
     textHasBeenCopied: 'تم نسخ البيانات',
     areYouSure: 'هل انت متأكد؟',
@@ -150,6 +156,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    price: 'Prix',
+    description: 'La description',
+    addNewImage: 'Ajouter une nouvelle image',
     search: 'Chercher',
     textHasBeenCopied: 'Le texte a été copié',
     areYouSure: 'Es-tu sûr?',
@@ -157,9 +166,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
     youHaveNoNotificationsAtTheMoment: 'Vous n\'avez aucune notification pour le moment',
     markAsRead: 'Marquer comme lu',
-    delete: 'Effacer',
+    delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image du profil',
+    changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -209,7 +218,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     english: 'Anglais',
     arabic: 'arabe',
     appLanguage: 'Langage de l\'application',
-    settings: 'Paramètres',
+    settings: 'Réglages',
     updated: 'Mis à jour',
     updateNow: 'Mettez à jour maintenant',
     toEnjoyLatestFeaturesPleaseUpdate: 'Pour profiter des dernières fonctionnalités, veuillez mettre à jour',
@@ -221,7 +230,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
-    search: 'Buscar',
+    price: 'Precio',
+    description: 'Descripción',
+    addNewImage: 'Añadir nueva imagen',
+    search: 'Búsqueda',
     textHasBeenCopied: 'El texto ha sido copiado',
     areYouSure: '¿Está seguro?',
     deleteAll: 'Eliminar todos',
@@ -239,9 +251,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     currentEmailAddress: 'Dirección de email actual',
     checkYourJunkOrSpamFolder: 'Revisa tu carpeta de basura o spam',
     enterTheCodeSentToYourEmail: 'Ingrese el código enviado a su correo electrónico',
-    verifyYourEmail: 'Verifique su correo electrónico',
+    verifyYourEmail: 'Verifica tu correo electrónico',
     editProfile: 'Editar perfil',
-    changePassword: 'Cambiar la contraseña',
+    changePassword: 'Cambia la contraseña',
     newPassword: 'Nueva contraseña',
     sentToYourEmailCheckYourSpamFolder: 'Enviado a su correo electrónico (revise su carpeta de spam)',
     recoveryCode: 'Código de recuperación',
@@ -275,7 +287,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     dependsOnSystem: 'Depende del sistema',
     appTheme: 'Tema de la aplicación',
     turkish: 'turco',
-    spanish: 'Español',
+    spanish: 'español',
     french: 'francés',
     english: 'inglés',
     arabic: 'Arábica',
@@ -292,7 +304,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
-    search: 'Arama',
+    price: 'Fiyat',
+    description: 'Açıklama',
+    addNewImage: 'Yeni resim ekle',
+    search: 'Aramak',
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     deleteAll: 'Hepsini sil',
@@ -333,7 +348,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     enterANewPassword: 'yeni bir şifre gir',
     enterTheCurrentPassword: 'Geçerli şifreyi girin',
     enterAPassword: 'Bir parola girin',
-    currentPassword: 'Şimdiki Şifre',
+    currentPassword: 'Mevcut Şifre',
     password: 'Parola',
     incorrectEmail: 'Yanlış E-posta',
     login: 'Giriş yapmak',
@@ -345,10 +360,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     lightMode: 'Işık modu',
     dependsOnSystem: 'Sisteme bağlı',
     appTheme: 'App teması',
-    turkish: 'Türk',
+    turkish: 'Türkçe',
     spanish: 'İspanyol',
     french: 'Fransızca',
-    english: 'İngilizce',
+    english: 'ingilizce',
     arabic: 'Arapça',
     appLanguage: 'App dili',
     settings: 'Ayarlar',
@@ -366,6 +381,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.price,
+    required this.description,
+    required this.addNewImage,
     required this.search,
     required this.textHasBeenCopied,
     required this.areYouSure,
@@ -437,6 +455,9 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String price;
+  final String description;
+  final String addNewImage;
   final String search;
   final String textHasBeenCopied;
   final String areYouSure;
@@ -507,6 +528,9 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        price: map['price']! as String,
+        description: map['description']! as String,
+        addNewImage: map['addNewImage']! as String,
         search: map['search']! as String,
         textHasBeenCopied: map['textHasBeenCopied']! as String,
         areYouSure: map['areYouSure']! as String,
@@ -579,6 +603,9 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? price,
+    String? description,
+    String? addNewImage,
     String? search,
     String? textHasBeenCopied,
     String? areYouSure,
@@ -650,6 +677,9 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        price: price ?? this.price,
+        description: description ?? this.description,
+        addNewImage: addNewImage ?? this.addNewImage,
         search: search ?? this.search,
         textHasBeenCopied: textHasBeenCopied ?? this.textHasBeenCopied,
         areYouSure: areYouSure ?? this.areYouSure,
@@ -725,6 +755,9 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          price == other.price &&
+          description == other.description &&
+          addNewImage == other.addNewImage &&
           search == other.search &&
           textHasBeenCopied == other.textHasBeenCopied &&
           areYouSure == other.areYouSure &&
@@ -797,6 +830,9 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      price.hashCode ^
+      description.hashCode ^
+      addNewImage.hashCode ^
       search.hashCode ^
       textHasBeenCopied.hashCode ^
       areYouSure.hashCode ^
