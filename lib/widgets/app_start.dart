@@ -2,64 +2,93 @@ import '../my_services.dart';
 
 typedef Overrides = Future<List<Override>> Function();
 
-bool appWithFirebase = true;
-bool appWithCrashlytics = true;
-bool appInitGeneralState = true;
-bool appWithFCM = true;
+class AppLauncher {
+  GeneralState _generalState = GeneralState();
+  List<Override> _readyOverrides = [];
 
-Future<void> myServicesRunApp({
-  required Locale defaultLocale,
-  required List<Locale> supportedLocales,
-  required String title,
-  required Widget homePage,
-  bool withFirebase = true,
-  bool withCrashlytics = true,
-  bool withFCM = true,
-  bool initGeneralState = true,
-  Color? lightAccentColor,
-  Color? darkAccentColor,
-  Overrides? overrides,
-  List<LocalizationsDelegate<dynamic>> delegates = const [],
-}) async {
-  appWithFirebase = withFirebase;
-  appWithCrashlytics = withCrashlytics;
-  appWithFCM = withFCM;
-  appInitGeneralState = initGeneralState;
+  static bool appWithFirebase = true;
+  static bool appWithCrashlytics = true;
+  static bool appWithFCM = true;
+  //static bool appInitGeneralState = true;
 
-  WidgetsFlutterBinding.ensureInitialized();
+  final bool testing;
 
-  ServiceTheme.lightAccentColor = lightAccentColor;
-  ServiceTheme.darkAccentColor = darkAccentColor;
+  final Locale defaultLocale;
+  final List<Locale> supportedLocales;
+  final List<LocalizationsDelegate<dynamic>> delegates;
 
-  ServiceLocale.defaultLocale = defaultLocale;
-  ServiceLocale.supportedLocales = supportedLocales;
-  GeneralState generalState = GeneralState();
+  final bool withFirebase;
+  final bool withCrashlytics;
+  final bool withFCM;
 
-  if (withFirebase) {
-    await Firebase.initializeApp();
+  final bool initGeneralState;
+
+  final Color? lightAccentColor;
+  final Color? darkAccentColor;
+
+  final Overrides? overrides;
+
+  AppLauncher({
+    this.defaultLocale = const Locale('ar'),
+    this.supportedLocales = const [Locale('ar'), Locale('en')],
+    this.delegates = const [],
+    this.withFirebase = true,
+    this.withCrashlytics = true,
+    this.withFCM = true,
+    this.initGeneralState = true,
+    this.testing = false,
+    this.lightAccentColor,
+    this.darkAccentColor,
+    this.overrides,
+  }) {
+    appWithFirebase = withFirebase;
+    appWithCrashlytics = withCrashlytics;
+    appWithFCM = withFCM;
+    //appInitGeneralState = initGeneralState;
+
+    ServiceTheme.lightAccentColor = lightAccentColor;
+    ServiceTheme.darkAccentColor = darkAccentColor;
+
+    ServiceLocale.defaultLocale = defaultLocale;
+    ServiceLocale.supportedLocales = supportedLocales;
   }
 
-  if (withFirebase && withCrashlytics) {
-    await ServiceFirebaseCrashlytics.register();
+  Future<void> prepare() async {
+    if (!testing) {
+      WidgetsFlutterBinding.ensureInitialized();
+    }
+
+    if (withFirebase) {
+      await Firebase.initializeApp();
+    }
+
+    if (withFirebase && withCrashlytics) {
+      await ServiceFirebaseCrashlytics.register();
+    }
+
+    if (initGeneralState) {
+      _generalState = await getGeneralState();
+    }
+
+    if (overrides != null) {
+      _readyOverrides = await overrides!();
+    }
   }
 
-  if (initGeneralState) {
-    generalState = await getGeneralState();
-  }
-
-  runApp(
-    ProviderScope(
+  //for testing
+  Widget mainWidget({required Widget homePage, String title = ''}) {
+    return ProviderScope(
       overrides: [
-        initialGeneralStateProvider.overrideWithValue(generalState),
-        if (overrides != null) ...await overrides(),
+        initialGeneralStateProvider.overrideWithValue(_generalState),
+        ..._readyOverrides,
       ],
-      child: AppStart(
-        title: title,
-        homePage: homePage,
-        delegates: delegates,
-      ),
-    ),
-  );
+      child: AppStart(title: title, homePage: homePage, delegates: delegates),
+    );
+  }
+
+  void run({required Widget homePage, String title = ''}) {
+    runApp(mainWidget(homePage: homePage, title: title));
+  }
 }
 
 class AppStart extends StatelessWidget {
@@ -102,3 +131,63 @@ class AppStart extends StatelessWidget {
     });
   }
 }
+
+// bool appWithFirebase = true;
+// bool appWithCrashlytics = true;
+// bool appInitGeneralState = true;
+// bool appWithFCM = true;
+//
+// Future<void> myServicesRunApp({
+//   required Locale defaultLocale,
+//   required List<Locale> supportedLocales,
+//   required String title,
+//   required Widget homePage,
+//   bool withFirebase = true,
+//   bool withCrashlytics = true,
+//   bool withFCM = true,
+//   bool initGeneralState = true,
+//   Color? lightAccentColor,
+//   Color? darkAccentColor,
+//   Overrides? overrides,
+//   List<LocalizationsDelegate<dynamic>> delegates = const [],
+// }) async {
+//   appWithFirebase = withFirebase;
+//   appWithCrashlytics = withCrashlytics;
+//   appWithFCM = withFCM;
+//   appInitGeneralState = initGeneralState;
+//
+//   WidgetsFlutterBinding.ensureInitialized();
+//
+//   ServiceTheme.lightAccentColor = lightAccentColor;
+//   ServiceTheme.darkAccentColor = darkAccentColor;
+//
+//   ServiceLocale.defaultLocale = defaultLocale;
+//   ServiceLocale.supportedLocales = supportedLocales;
+//   GeneralState generalState = GeneralState();
+//
+//   if (withFirebase) {
+//     await Firebase.initializeApp();
+//   }
+//
+//   if (withFirebase && withCrashlytics) {
+//     await ServiceFirebaseCrashlytics.register();
+//   }
+//
+//   if (initGeneralState) {
+//     generalState = await getGeneralState();
+//   }
+//
+//   runApp(
+//     ProviderScope(
+//       overrides: [
+//         initialGeneralStateProvider.overrideWithValue(generalState),
+//         if (overrides != null) ...await overrides(),
+//       ],
+//       child: AppStart(
+//         title: title,
+//         homePage: homePage,
+//         delegates: delegates,
+//       ),
+//     ),
+//   );
+// }
