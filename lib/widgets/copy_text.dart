@@ -11,6 +11,7 @@ class CopyTextWidget extends StatelessWidget {
     MyServicesLocalizationsData labels = getMyServicesLabels(context);
 
     return GestureDetector(
+      key: const ValueKey("copyBtn"),
       onTap: () {
         Clipboard.setData(ClipboardData(text: textToCopy));
         ServiceSnackBar.showTextSnackBar(text: labels.textHasBeenCopied);

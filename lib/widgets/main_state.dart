@@ -42,8 +42,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   String title = '';
   TextStyle? titleStyle;
 
-  bool isHomePage = false;
-
   bool pageLoading = false;
 
   bool hideTopBanner = false;
