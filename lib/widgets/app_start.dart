@@ -9,6 +9,7 @@ class AppLauncher {
   static bool appWithFirebase = true;
   static bool appWithCrashlytics = true;
   static bool appWithFCM = true;
+
   //static bool appInitGeneralState = true;
 
   final bool testing;
@@ -29,21 +30,26 @@ class AppLauncher {
   final Overrides? overrides;
 
   AppLauncher({
+    //locale
     this.defaultLocale = const Locale('ar'),
     this.supportedLocales = const [Locale('ar'), Locale('en')],
     this.delegates = const [],
+    //theme
+    this.lightAccentColor,
+    this.darkAccentColor,
+    //firebase
     this.withFirebase = true,
     this.withCrashlytics = true,
     this.withFCM = true,
+    //providers
     this.initGeneralState = true,
-    this.testing = false,
-    this.lightAccentColor,
-    this.darkAccentColor,
     this.overrides,
+    //testing
+    this.testing = false,
   }) {
     appWithFirebase = withFirebase;
-    appWithCrashlytics = withCrashlytics;
-    appWithFCM = withFCM;
+    appWithCrashlytics = withFirebase && withCrashlytics;
+    appWithFCM = withFirebase && withFCM;
     //appInitGeneralState = initGeneralState;
 
     ServiceTheme.lightAccentColor = lightAccentColor;
@@ -58,11 +64,11 @@ class AppLauncher {
       WidgetsFlutterBinding.ensureInitialized();
     }
 
-    if (withFirebase) {
+    if (appWithFirebase) {
       await Firebase.initializeApp();
     }
 
-    if (withFirebase && withCrashlytics) {
+    if (appWithCrashlytics) {
       await ServiceFirebaseCrashlytics.register();
     }
 
