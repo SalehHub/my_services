@@ -1,4 +1,5 @@
 import '../my_services.dart';
+import '../providers/general_state_provider.dart';
 
 class ServiceTheme {
   static Color? lightAccentColor = const Color(0xf000b050);
@@ -39,7 +40,7 @@ class ServiceTheme {
     } else if (value == ThemeMode.light) {
       SystemChrome.setSystemUIOverlayStyle(_darkSystemUiOverlayStyle);
     } else {
-      Future<void>.delayed(const Duration(milliseconds: 500), () {
+      Future<void>.delayed(const Duration(milliseconds: 400), () {
         if (isDark(context)) {
           SystemChrome.setSystemUIOverlayStyle(_lightSystemUiOverlayStyle);
         } else {
@@ -126,6 +127,11 @@ class ServiceTheme {
   static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor);
 
   static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor);
+
+  //provider
+  static ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
+  static ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
+  static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => ref.read(generalStateProvider.notifier).setThemeMode(context, value);
 }
 
 //////Theme Helpers
@@ -138,9 +144,4 @@ bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.
 
 bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
 
-Color getTextColor(
-  BuildContext context, {
-  Color colorWhenDark = Colors.white,
-  Color colorWhenLight = Colors.black,
-}) =>
-    isDark(context) ? colorWhenDark : colorWhenLight;
+Color getTextColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;

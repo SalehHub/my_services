@@ -6,12 +6,14 @@ typedef Overrides = Future<List<Override>> Function();
 class AppLauncher {
   GeneralState _generalState = GeneralState();
   List<Override> _readyOverrides = [];
-
-  static bool appWithFirebase = true;
-  static bool appWithCrashlytics = true;
-  static bool appWithFCM = true;
-
-  //static bool appInitGeneralState = true;
+  //
+  static bool _appWithFirebase = true;
+  static bool get appWithFirebase => _appWithFirebase;
+  static bool _appWithCrashlytics = true;
+  static bool get appWithCrashlytics => _appWithCrashlytics;
+  static bool _appWithFCM = true;
+  static bool get appWithFCM => _appWithFCM;
+  //
 
   final bool testing;
 
@@ -48,10 +50,9 @@ class AppLauncher {
     //testing
     this.testing = false,
   }) {
-    appWithFirebase = withFirebase;
-    appWithCrashlytics = withFirebase && withCrashlytics;
-    appWithFCM = withFirebase && withFCM;
-    //appInitGeneralState = initGeneralState;
+    _appWithFirebase = withFirebase;
+    _appWithCrashlytics = withFirebase && withCrashlytics;
+    _appWithFCM = withFirebase && withFCM;
 
     ServiceTheme.lightAccentColor = lightAccentColor;
     ServiceTheme.darkAccentColor = darkAccentColor;
@@ -114,9 +115,9 @@ class AppStart extends StatelessWidget {
         //
         localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,
-        locale: MyServices.watchLocale(ref),
+        locale: ServiceLocale.watchLocale(ref),
         //
-        themeMode: MyServices.watchThemeMode(ref),
+        themeMode: ServiceTheme.watchThemeMode(ref),
         theme: ServiceTheme.lightTheme(),
         darkTheme: ServiceTheme.darkTheme(),
         //
