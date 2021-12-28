@@ -1,4 +1,4 @@
-import 'my_services.dart';
+import '../my_services.dart';
 
 part 'localization.g.dart';
 

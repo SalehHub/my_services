@@ -1,4 +1,4 @@
-import 'my_services.dart';
+import '../my_services.dart';
 
 final Logger logger = Logger();
 
@@ -14,6 +14,16 @@ class Helpers {
     return isPageOrientationLandScape;
   }
 
+  static double getPageWidth(BuildContext context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return mediaQueryData.size.width;
+  }
+
+  static double getPageHeight(BuildContext context) {
+    final MediaQueryData mediaQueryData = MediaQuery.of(context);
+    return mediaQueryData.size.height;
+  }
+
   static String getMd5(String input) {
     return md5.convert(utf8.encode(input)).toString();
   }
@@ -26,16 +36,6 @@ class Helpers {
       chunks.add(list.sublist(i, size > len ? len : size));
     }
     return chunks;
-  }
-
-  static double getPageWidth(BuildContext context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return mediaQueryData.size.width;
-  }
-
-  static double getPageHeight(BuildContext context) {
-    final MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return mediaQueryData.size.height;
   }
 
   static List<Shadow> getTextStroke(double strokeWidth, Color strokeColor) {

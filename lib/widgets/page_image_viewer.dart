@@ -2,15 +2,15 @@ import '../my_services.dart';
 
 class ImageData {
   final String url;
+  final String? title;
   final Widget? footerWidget;
   final Widget? popupMenu;
 
-  ImageData({required this.url, this.footerWidget, this.popupMenu});
+  ImageData({required this.url, this.title, this.footerWidget, this.popupMenu});
 }
 
 class PageImageViewer extends ConsumerStatefulWidget {
-  const PageImageViewer({Key? key, this.title = '', required this.image, this.imageList = const [], this.showDotIndicators = true}) : super(key: key);
-  final String title;
+  const PageImageViewer({Key? key, required this.image, this.imageList = const [], this.showDotIndicators = true}) : super(key: key);
   final List<ImageData> imageList;
   final ImageData image;
   final bool showDotIndicators;
@@ -32,12 +32,12 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   bool get hideBottomBanner => true;
 
   @override
-  String get title => widget.title;
+  String get title => selectedImage?.title ?? "";
 
   List<ImageData> imageList = [];
   bool get hasImages => imageList.isNotEmpty;
 
-  ImageData get selectedImage => imageList[index];
+  ImageData? get selectedImage => (imageList == null || imageList.isEmpty) ? null : imageList[index];
 
   Widget? get popupMenu => hasImages ? imageList[index].popupMenu : null;
   bool get hasPopupMenu => popupMenu != null;
@@ -47,6 +47,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
 
   int index = 0;
   PageController pageController = PageController(initialPage: 0);
+  PhotoViewScaleStateController? scaleStateController = PhotoViewScaleStateController();
 
   double get imageHeight {
     if (isPageOrientationLandScape) {
@@ -139,14 +140,11 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
           return PhotoViewGalleryPageOptions(
             heroAttributes: PhotoViewHeroAttributes(tag: imageList[index].url),
             imageProvider: CachedNetworkImageProvider(imageList[index].url),
-            // Contained = the smallest possible size to fit one dimension of the screen
             minScale: PhotoViewComputedScale.contained * 0.8,
-            // Covered = the smallest possible size to fit the whole screen
             maxScale: PhotoViewComputedScale.covered * 2,
           );
         },
         scrollPhysics: const BouncingScrollPhysics(),
-        // Set the background color to the "classic white"
         backgroundDecoration: BoxDecoration(color: getTheme(context).canvasColor),
         loadingBuilder: (BuildContext context, ImageChunkEvent? event) => const MyProgressIndicator(),
       ),

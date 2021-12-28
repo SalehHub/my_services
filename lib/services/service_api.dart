@@ -26,12 +26,12 @@ class ServiceApi {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
-      accessToken = formData.fields.firstWhere((element) => element.key == 'access_token').value;
-      lang = formData.fields.firstWhere((element) => element.key == 'lang').value;
+      accessToken = formData.fields.firstWhere((element) => element.key == 'accessToken').value;
+      lang = formData.fields.firstWhere((element) => element.key == 'appLang').value;
       logger.d(formData.fields);
     } else {
-      accessToken = formData['access_token'] as String?;
-      lang = formData['lang'] as String?;
+      accessToken = formData['accessToken'] as String?;
+      lang = formData['appLang'] as String?;
       logger.d(formData);
     }
 
@@ -49,12 +49,12 @@ class ServiceApi {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
-      accessToken = formData.fields.firstWhere((element) => element.key == 'access_token').value;
-      lang = formData.fields.firstWhere((element) => element.key == 'lang').value;
+      accessToken = formData.fields.firstWhere((element) => element.key == 'accessToken').value;
+      lang = formData.fields.firstWhere((element) => element.key == 'appLang').value;
       logger.d(formData.fields);
     } else {
-      accessToken = formData['access_token'] as String?;
-      lang = formData['lang'] as String?;
+      accessToken = formData['accessToken'] as String?;
+      lang = formData['appLang'] as String?;
       logger.d(formData);
     }
 

@@ -1,4 +1,5 @@
 import '../my_services.dart';
+import '../providers/general_state_provider.dart';
 
 typedef Overrides = Future<List<Override>> Function();
 
@@ -112,8 +113,8 @@ class AppStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
-      final ThemeMode? themeMode = watchThemeMode(ref);
-      final Locale? locale = watchLocale(ref);
+      final ThemeMode? themeMode = MyServices.watchThemeMode(ref);
+      final Locale? locale = MyServices.watchLocale(ref);
 
       return MaterialApp(
         debugShowCheckedModeBanner: false,

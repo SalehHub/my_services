@@ -65,7 +65,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool showRefreshIndicator = true;
 
   Widget get appBarTitle {
-    return Text(title, textDirection: Helpers.getTextDirection(title), style: titleStyle);
+    return Text(title, textDirection: Helpers.getTextDirection(title), style: titleStyle, maxLines: 1);
   }
 
   //tab view
@@ -150,7 +150,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     ServiceDebounce.debounce(() {
       logger.w("Service Theme Set System Ui Overlay Style");
       ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
-    }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
+    }, 'changeDependenciesSetSystemUiOverlayStyle', 200);
   }
 
   @override

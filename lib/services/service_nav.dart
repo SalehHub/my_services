@@ -41,6 +41,13 @@ void pop<T extends Object?>([T? result]) {
   }
 }
 
+void popToHome() {
+  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  if (nav != null) {
+    return nav.popUntil((Route<dynamic> route) => route.isFirst);
+  }
+}
+
 Future<dynamic> push({Widget? page, bool goToFirstRoute = false, bool replacement = false, bool transparent = false}) {
   final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
   if (nav != null) {

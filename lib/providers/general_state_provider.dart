@@ -1,54 +1,30 @@
 import '../my_services.dart';
 
-//------------------------------------------------------------------//
-
-ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
-
-ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
-
-bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstAppRun;
-
-Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
-
-String? watchAppBuild(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
-
-//------------------------------------------------------------------//
-GeneralStateNotifier readGeneralStateNotifier(WidgetRef ref) => ref.read(generalStateProvider.notifier);
-
-GeneralState readGeneralState(WidgetRef ref) => ref.read(generalStateProvider);
-
 final initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
 final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) {
   return GeneralStateNotifier(ref.watch(initialGeneralStateProvider), ref);
 });
-
-// final generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) => GeneralStateNotifier(GeneralState(), ref));
-//------------------------------------------------------------------//
 
 class GeneralStateNotifier extends StateNotifier<GeneralState> {
   GeneralStateNotifier(GeneralState state, this.ref) : super(state);
   final Ref ref;
 
   Map<String, dynamic> get asMap => <String, dynamic>{
-        'notification_token': state.notificationToken,
-        // 'notificationToken': state.notificationToken,
-
-        'device_id': state.appDeviceData?.deviceID,
-        // 'deviceID': state.appDeviceData?.deviceID,
-
-        'access_token': state.accessToken,
-
-        'lang': state.locale?.languageCode,
-        // 'appLang': state.locale?.languageCode,
-
+        // 'notification_token': state.notificationToken,
+        'notificationToken': state.notificationToken,
+        // 'device_id': state.appDeviceData?.deviceID,
+        'deviceID': state.appDeviceData?.deviceID,
+        // 'access_token': state.accessToken,
+        'accessToken': state.accessToken,
+        // 'lang': state.locale?.languageCode,
+        'appLang': state.locale?.languageCode,
+        // 'themeMode': state.themeMode.toString(),
+        'appThemeMode': state.themeMode.toString(),
+        //
         'appBuild': state.appDeviceData?.appBuild,
         'deviceModel': state.appDeviceData?.deviceModel,
         'deviceOSVersion': state.appDeviceData?.deviceOSVersion,
         'deviceOS': state.appDeviceData?.deviceOS,
-
-        'themeMode': state.themeMode.toString(),
-        // 'appThemeMode': state.themeMode.toString(),
-
         'isFirstAppRun': state.isFirstAppRun,
         'isFirstAppBuildRun': state.isFirstAppBuildRun,
       };

@@ -13,6 +13,8 @@ class ServiceFirebaseMessaging {
 
   static Future<String?> getToken() => _firebaseMessaging.getToken();
 
+  static StreamSubscription<String> onTokenRefresh(Function(String) fun) => _firebaseMessaging.onTokenRefresh.listen(fun);
+
   static Future<NotificationSettings> requestPermission() => _firebaseMessaging.requestPermission();
 
   static Future<void> registerFirebaseMessaging(WidgetRef ref, {required OnFirebaseNotification onFirebaseNotification}) async {
