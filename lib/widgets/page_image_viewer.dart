@@ -37,7 +37,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   List<ImageData> imageList = [];
   bool get hasImages => imageList.isNotEmpty;
 
-  ImageData? get selectedImage => (imageList == null || imageList.isEmpty) ? null : imageList[index];
+  ImageData? get selectedImage => (imageList.isEmpty) ? null : imageList[index];
 
   Widget? get popupMenu => hasImages ? imageList[index].popupMenu : null;
   bool get hasPopupMenu => popupMenu != null;
@@ -67,10 +67,30 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   }
 
   @override
-  Future<void> init() async {
-    startPageLoading();
+  Widget get pageLoadingWidget => Center(
+      child: Hero(
+          tag: widget.image.url,
+          child: MyLoadingImage(
+            url: widget.image.url,
+            radius: 10,
+            width: double.infinity,
+            height: imageHeight / 2,
+          )));
 
-    await Helpers.waitForMilliseconds(20);
+  @override
+  bool pageLoading = true;
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   if (pageLoading) {
+  //     return Scaffold(body: Hero(tag: widget.image.url, child: MyLoadingImage(url: widget.image.url)));
+  //   }
+  //   return super.build(context);
+  // }
+
+  @override
+  Future<void> init() async {
+    // await Helpers.waitForMilliseconds(5000);
 
     if (widget.imageList.isEmpty) {
       imageList = [widget.image];
@@ -88,14 +108,16 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
   }
 
   @override
-  List<Widget> get bodyChildren => [
-        //
-        SliverToBoxAdapter(child: SizedBox(height: imageHeight, child: buildImages())),
-        SliverToBoxAdapter(child: buildIndicators()),
-        //
-        if (footerWidget != null) SliverToBoxAdapter(child: footerWidget),
-        //
-      ];
+  List<Widget> get bodyChildren {
+    return [
+      //
+      SliverToBoxAdapter(child: SizedBox(height: imageHeight, child: buildImages())),
+      SliverToBoxAdapter(child: buildIndicators()),
+      //
+      if (footerWidget != null) SliverToBoxAdapter(child: footerWidget),
+      //
+    ];
+  }
 
   Widget buildIndicators() {
     if (widget.showDotIndicators == false || imageList.length < 2) {

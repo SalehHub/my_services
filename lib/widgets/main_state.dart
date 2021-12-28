@@ -49,6 +49,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   Widget topBanner = const SizedBox();
   Widget bottomBanner = const SizedBox();
 
+  Widget get pageLoadingWidget => MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3));
+
   bool actionBarLoading = false;
   Widget? appBarLeading;
 
@@ -238,7 +240,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     }
 
     if (pageLoading || !_isValidTabView) {
-      return MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3));
+      return pageLoadingWidget;
     }
 
     if (!pageLoading && error != null && emptyData) {
@@ -287,7 +289,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
         //show loading
         if (pageLoading)
-          SliverToBoxAdapter(child: MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3)))
+          SliverToBoxAdapter(child: pageLoadingWidget)
 
         //no data
         else if (pageLoading == false && error == null && emptyData == true)
