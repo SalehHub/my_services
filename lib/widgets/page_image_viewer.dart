@@ -61,6 +61,18 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     return pageHeight - 150;
   }
 
+  double get loadingImageHeight {
+    if (isPageOrientationLandScape) {
+      return pageHeight - 100;
+    }
+
+    if (widget.image.footerWidget != null) {
+      return pageWidth;
+    }
+
+    return pageHeight - 150;
+  }
+
   @override
   List<Widget> get appBarActions {
     return hasPopupMenu ? [popupMenu!] : [];
@@ -68,25 +80,19 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
 
   @override
   Widget get pageLoadingWidget => Center(
-      child: Hero(
+        child: Hero(
           tag: widget.image.url,
           child: MyLoadingImage(
             url: widget.image.url,
             radius: 10,
             width: double.infinity,
-            height: imageHeight / 2,
-          )));
+            height: loadingImageHeight,
+          ),
+        ),
+      );
 
   @override
   bool pageLoading = true;
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   if (pageLoading) {
-  //     return Scaffold(body: Hero(tag: widget.image.url, child: MyLoadingImage(url: widget.image.url)));
-  //   }
-  //   return super.build(context);
-  // }
 
   @override
   Future<void> init() async {
