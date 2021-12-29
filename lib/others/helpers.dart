@@ -174,34 +174,4 @@ class Helpers {
     }
     return '';
   }
-
-  static Future<AppDeviceData> getAppAndDeviceData() async {
-    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-
-    late String deviceId;
-    late String deviceOSVersion;
-    late String deviceModel;
-
-    if (Platform.isAndroid) {
-      final AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
-      deviceId = androidInfo.androidId;
-      deviceOSVersion = androidInfo.version.release;
-      deviceModel = androidInfo.model;
-    } else if (Platform.isIOS) {
-      final IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
-      deviceId = iosInfo.identifierForVendor;
-      deviceOSVersion = iosInfo.systemVersion;
-      deviceModel = iosInfo.model;
-    }
-
-    return AppDeviceData(
-      appVersion: packageInfo.version,
-      appBuild: packageInfo.buildNumber,
-      deviceID: deviceId,
-      deviceOSVersion: deviceOSVersion,
-      deviceModel: deviceModel,
-      deviceOS: Platform.operatingSystem.toLowerCase(),
-    );
-  }
 }

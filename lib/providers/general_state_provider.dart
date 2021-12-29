@@ -74,7 +74,7 @@ Future<GeneralState> getGeneralState() async {
     <Future<dynamic>>[
       //-----------------------------------------------------------------//
       Helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
-        appDeviceData = await Helpers.getAppAndDeviceData();
+        appDeviceData = await ServiceAppDevice.getAppAndDeviceData();
         //
         isFirstAppRun = await GeneralKeyValueDatabase.getIsFirstAppRun();
         isFirstAppBuildRun = await GeneralKeyValueDatabase.getIsFirstAppBuildRun(appDeviceData.appBuild);
