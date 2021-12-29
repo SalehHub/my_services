@@ -83,6 +83,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
         child: Hero(
           tag: widget.image.url,
           child: MyLoadingImage(
+            fit: BoxFit.contain,
             url: widget.image.url,
             radius: 10,
             width: double.infinity,
@@ -92,6 +93,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       );
 
   @override
+  // ignore: overridden_fields
   bool pageLoading = true;
 
   @override

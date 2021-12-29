@@ -319,18 +319,18 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     return customScrollView;
   }
 
-  Future<void> loaderFunction(AsyncCallback fn) async {
+  Future<void> loaderFunction(AsyncCallback fn, {bool showPageLoading = true, bool showActionBarLoading = true}) async {
     try {
-      startPageLoading();
-      startActionBarLoading();
+      if (showPageLoading) startPageLoading();
+      if (showActionBarLoading) startActionBarLoading();
       await fn();
     } catch (e, s) {
       error = e;
       stackTrace = s;
       logger.e(e, e, s);
     } finally {
-      stopPageLoading();
-      stopActionBarLoading();
+      if (showPageLoading) stopPageLoading();
+      if (showActionBarLoading) stopActionBarLoading();
     }
   }
 }
