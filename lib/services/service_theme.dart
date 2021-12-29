@@ -117,7 +117,7 @@ class ServiceTheme {
       ),
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
         contentTextStyle: GoogleFonts.tajawal(),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
       ),
     );
 

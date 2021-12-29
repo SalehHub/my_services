@@ -104,7 +104,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         floating: true,
         snap: true,
         forceElevated: true,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       ),
     );
   }
@@ -114,7 +114,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       return Material(
         color: Colors.transparent,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         child: e,
       );
     }).toList();

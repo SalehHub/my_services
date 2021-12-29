@@ -140,7 +140,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
         color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 0),
@@ -161,7 +161,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
     return Container(
       clipBehavior: Clip.antiAlias,
       margin: const EdgeInsets.all(5),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+      decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10))),
       child: PhotoViewGallery.builder(
         itemCount: imageList.length,
         pageController: pageController,

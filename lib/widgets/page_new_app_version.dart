@@ -50,7 +50,7 @@ class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
                 Center(
                   child: TextButton(
                     style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                       backgroundColor: Colors.green[800],
                       padding: const EdgeInsets.all(20),
                     ),
