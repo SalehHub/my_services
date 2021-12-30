@@ -42,6 +42,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'Invalid recovery code',
     hello: 'Hello',
     yourNotifications: 'Your notifications',
+    logoutAllDevices: 'Logout all devices',
     logout: 'Logout',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Your email address is not verified, click here to verify it',
     restorePassword: 'Restore password',
@@ -118,6 +119,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'رمز الاستعادة غير صحيح',
     hello: 'مرحبا بك',
     yourNotifications: 'إشعاراتك',
+    logoutAllDevices: 'تسجيل خروج كل الاجهزة',
     logout: 'تسجيل الخروج',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'بريدك الالكتروني غير مؤكد، اضغط هنا لتأكيده',
     restorePassword: 'إستعادة كلمة المرور',
@@ -174,7 +176,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image du profil',
+    changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -194,6 +196,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'Code de récupération non valide',
     hello: 'Bonjour',
     yourNotifications: 'Vos notifications',
+    logoutAllDevices: 'Déconnectez tous les appareils',
     logout: 'Se déconnecter',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Votre adresse e-mail n\'est pas vérifiée, cliquez ici pour le vérifier',
     restorePassword: 'Restaurer le mot de passe',
@@ -270,11 +273,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'Código de recuperación no válido',
     hello: 'Hola',
     yourNotifications: 'Tus notificaciones',
+    logoutAllDevices: 'Cerrar sesión Todos los dispositivos',
     logout: 'Cerrar sesión',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
@@ -346,6 +350,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'Geçersiz kurtarma kodu',
     hello: 'Merhaba',
     yourNotifications: 'Senin Bildirimlerin',
+    logoutAllDevices: 'Tüm cihazlar çıkış',
     logout: 'Çıkış Yap',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'E-posta adresiniz doğrulanmadı, doğrulamak için buraya tıklayın.',
     restorePassword: 'Parola Yenile',
@@ -425,6 +430,7 @@ class MyServicesLocalizationsData {
     required this.invalidRecoveryCode,
     required this.hello,
     required this.yourNotifications,
+    required this.logoutAllDevices,
     required this.logout,
     required this.yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
     required this.restorePassword,
@@ -501,6 +507,7 @@ class MyServicesLocalizationsData {
   final String invalidRecoveryCode;
   final String hello;
   final String yourNotifications;
+  final String logoutAllDevices;
   final String logout;
   final String yourEmailAddressIsNotVerifiedClickHereToVerifyIt;
   final String restorePassword;
@@ -576,6 +583,7 @@ class MyServicesLocalizationsData {
         invalidRecoveryCode: map['invalidRecoveryCode']! as String,
         hello: map['hello']! as String,
         yourNotifications: map['yourNotifications']! as String,
+        logoutAllDevices: map['logoutAllDevices']! as String,
         logout: map['logout']! as String,
         yourEmailAddressIsNotVerifiedClickHereToVerifyIt: map['yourEmailAddressIsNotVerifiedClickHereToVerifyIt']! as String,
         restorePassword: map['restorePassword']! as String,
@@ -653,6 +661,7 @@ class MyServicesLocalizationsData {
     String? invalidRecoveryCode,
     String? hello,
     String? yourNotifications,
+    String? logoutAllDevices,
     String? logout,
     String? yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
     String? restorePassword,
@@ -729,6 +738,7 @@ class MyServicesLocalizationsData {
         invalidRecoveryCode: invalidRecoveryCode ?? this.invalidRecoveryCode,
         hello: hello ?? this.hello,
         yourNotifications: yourNotifications ?? this.yourNotifications,
+        logoutAllDevices: logoutAllDevices ?? this.logoutAllDevices,
         logout: logout ?? this.logout,
         yourEmailAddressIsNotVerifiedClickHereToVerifyIt: yourEmailAddressIsNotVerifiedClickHereToVerifyIt ?? this.yourEmailAddressIsNotVerifiedClickHereToVerifyIt,
         restorePassword: restorePassword ?? this.restorePassword,
@@ -809,6 +819,7 @@ class MyServicesLocalizationsData {
           invalidRecoveryCode == other.invalidRecoveryCode &&
           hello == other.hello &&
           yourNotifications == other.yourNotifications &&
+          logoutAllDevices == other.logoutAllDevices &&
           logout == other.logout &&
           yourEmailAddressIsNotVerifiedClickHereToVerifyIt == other.yourEmailAddressIsNotVerifiedClickHereToVerifyIt &&
           restorePassword == other.restorePassword &&
@@ -886,6 +897,7 @@ class MyServicesLocalizationsData {
       invalidRecoveryCode.hashCode ^
       hello.hashCode ^
       yourNotifications.hashCode ^
+      logoutAllDevices.hashCode ^
       logout.hashCode ^
       yourEmailAddressIsNotVerifiedClickHereToVerifyIt.hashCode ^
       restorePassword.hashCode ^
