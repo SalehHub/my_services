@@ -2,11 +2,18 @@ import '../my_services.dart';
 import '../providers/general_state_provider.dart';
 
 class ServiceTheme {
-  static Color? lightAccentColor = const Color(0xf000b050);
-  static Color? darkAccentColor = const Color(0xf000b050);
+  static Color? lightAccentColor;
+  static Color? darkAccentColor;
 
-  static final Color _darkScaffoldBackgroundColor = ThemeData.dark().scaffoldBackgroundColor;
-  static final Color _lightScaffoldBackgroundColor = ThemeData.light().scaffoldBackgroundColor;
+  static Color? lightBgColor;
+  static Color? darkBgColor;
+
+  static const double elevation = 2;
+  static const BorderRadius borderRadius = BorderRadius.all(Radius.circular(15));
+  static const RoundedRectangleBorder circularBorderRadius10 = RoundedRectangleBorder(borderRadius: borderRadius);
+
+  static final Color _darkScaffoldBackgroundColor = darkBgColor ?? ThemeData.dark().scaffoldBackgroundColor;
+  static final Color _lightScaffoldBackgroundColor = lightBgColor ?? ThemeData.light().scaffoldBackgroundColor;
 
   static SystemUiOverlayStyle get _lightSystemUiOverlayStyle {
     if (Platform.isIOS) {
@@ -40,7 +47,7 @@ class ServiceTheme {
     } else if (value == ThemeMode.light) {
       SystemChrome.setSystemUIOverlayStyle(_darkSystemUiOverlayStyle);
     } else {
-      Future<void>.delayed(const Duration(milliseconds: 400), () {
+      Future<void>.delayed(const Duration(milliseconds: 300), () {
         if (isDark(context)) {
           SystemChrome.setSystemUIOverlayStyle(_lightSystemUiOverlayStyle);
         } else {
@@ -78,7 +85,7 @@ class ServiceTheme {
     );
   }
 
-  static ThemeData _getThemeData(ThemeData mainThemeData, [Color? accentColor]) {
+  static ThemeData _getThemeData(ThemeData mainThemeData, [Color? accentColor, Color? bgColor]) {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
@@ -86,47 +93,94 @@ class ServiceTheme {
     final Color iconColor = !isDark ? Colors.black : Colors.white;
 
     final ThemeData themeData = mainThemeData.copyWith(
+      scaffoldBackgroundColor: bgColor,
       toggleableActiveColor: accentColor,
       textTheme: textTheme,
-      colorScheme: mainThemeData.colorScheme.copyWith(primary: accentColor),
       primaryTextTheme: textTheme,
-      primaryColor: primaryColor,
+      // primaryColor: primaryColor,
+      //
+      colorScheme: mainThemeData.colorScheme.copyWith(primary: accentColor),
       iconTheme: mainThemeData.iconTheme.copyWith(color: accentColor),
+      //
+      checkboxTheme: mainThemeData.checkboxTheme.copyWith(
+        shape: circularBorderRadius10,
+      ),
+      dialogTheme: mainThemeData.dialogTheme.copyWith(
+        backgroundColor: bgColor,
+        elevation: elevation,
+        shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
+      ),
+      cardTheme: mainThemeData.cardTheme.copyWith(
+        shape: circularBorderRadius10,
+        color: bgColor,
+        elevation: elevation,
+        clipBehavior: Clip.antiAlias,
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      ),
+      drawerTheme: mainThemeData.drawerTheme.copyWith(
+        backgroundColor: bgColor,
+        shape: circularBorderRadius10,
+        elevation: elevation,
+      ),
+      popupMenuTheme: mainThemeData.popupMenuTheme.copyWith(
+        color: bgColor,
+        shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
+        elevation: elevation,
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          textStyle: textTheme.bodyText1,
+          primary: accentColor,
+          shape: circularBorderRadius10,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(textStyle: textTheme.bodyText1, primary: accentColor),
+        style: ElevatedButton.styleFrom(
+          textStyle: textTheme.bodyText1,
+          primary: accentColor,
+          shape: circularBorderRadius10,
+        ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(textStyle: textTheme.bodyText1, primary: accentColor),
+        style: OutlinedButton.styleFrom(
+          textStyle: textTheme.bodyText1,
+          primary: accentColor,
+          shape: circularBorderRadius10,
+        ),
       ),
       tabBarTheme: mainThemeData.tabBarTheme.copyWith(
-        labelColor: accentColor,
-        unselectedLabelColor: accentColor?.withOpacity(0.7),
         indicator: UnderlineTabIndicator(borderSide: BorderSide(width: 2, color: accentColor ?? const Color(0xFF000000))),
       ),
       floatingActionButtonTheme: mainThemeData.floatingActionButtonTheme.copyWith(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        elevation: 15,
+        elevation: elevation,
       ),
       appBarTheme: mainThemeData.appBarTheme.copyWith(
-        backgroundColor: primaryColor,
-        // textTheme: textTheme,
-        elevation: 2,
+        backgroundColor: bgColor ?? primaryColor,
+        elevation: elevation,
         titleTextStyle: textTheme.bodyText2,
         iconTheme: IconThemeData(color: iconColor),
+        shape: circularBorderRadius10, //.copyWith(side: const BorderSide(width: 0.1, color: Colors.grey)),
+      ),
+      progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
+        refreshBackgroundColor: bgColor,
       ),
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: bgColor,
         contentTextStyle: GoogleFonts.tajawal(),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+        elevation: elevation,
+        shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
       ),
     );
 
     return themeData;
   }
 
-  static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor);
+  static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor, lightBgColor);
 
-  static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor);
+  static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor, darkBgColor);
 
   //provider
   static ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
@@ -145,3 +199,5 @@ bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.
 bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
 
 Color getTextColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;
+Color whiteWhenDarkBlackWhenLight(BuildContext context) => getTextColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
+Color blackWhenDarkWhiteWhenLight(BuildContext context) => getTextColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);

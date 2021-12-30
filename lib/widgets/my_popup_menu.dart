@@ -13,8 +13,8 @@ class MyPopupMenu<T> extends StatefulWidget {
 class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
   @override
   Widget build(BuildContext context) {
+    /// theme from [ServiceTheme] popupMenuTheme
     return PopupMenuButton<T>(
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       onSelected: widget.onSelected,
       itemBuilder: (BuildContext context) => <PopupMenuEntry<T>>[
         ...widget.items.map((e) {

@@ -64,7 +64,7 @@ class ServiceImagePicker {
 
       if (e.toString().toLowerCase().contains('photo_access_denied')) {
         MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.context!);
-        ServiceSnackBar.showTextSnackBar(
+        ServiceSnackBar.showText(
           text: myServicesLabels.theAppDoesntHavePhotoAccessPermission,
           backgroundColor: Colors.red.shade900,
         );

@@ -139,7 +139,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
       width: 5.0 * imageList.length,
       decoration: BoxDecoration(
         boxShadow: [BoxShadow(offset: const Offset(0, 0), color: Colors.black.withOpacity(0.1))],
-        color: Theme.of(context).scaffoldBackgroundColor.withOpacity(0.1),
+        color: getTheme(context).scaffoldBackgroundColor.withOpacity(0.1),
         borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       child: Padding(
@@ -175,7 +175,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
           );
         },
         scrollPhysics: const BouncingScrollPhysics(),
-        backgroundDecoration: BoxDecoration(color: getTheme(context).canvasColor),
+        backgroundDecoration: BoxDecoration(color: getTheme(context).scaffoldBackgroundColor),
         loadingBuilder: (BuildContext context, ImageChunkEvent? event) => const MyProgressIndicator(),
       ),
     );

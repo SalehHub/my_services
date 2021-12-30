@@ -11,11 +11,10 @@ class WillPopScopeWidget extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () {
-        ServiceSnackBar.showSnackBar(
-          elevation: 2,
+        ServiceSnackBar.show(
           seconds: 2,
           hideShownSnackBars: true,
-          content: yesSnackBarMessage(
+          content: YesSnackBarMessage(
             text: labels.areYouSureYouWantToCloseTheApp,
             onYes: SystemNavigator.pop,
           ),

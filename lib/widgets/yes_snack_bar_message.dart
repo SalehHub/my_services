@@ -1,33 +1,35 @@
 import '../my_services.dart';
 
-Widget yesSnackBarMessage({String? text, String? buttonText, required VoidCallback onYes}) {
-  final BuildContext? context = ServiceNav.context;
-  final MyServicesLocalizationsData? labels = context != null ? getMyServicesLabels(context) : null;
+class YesSnackBarMessage extends StatelessWidget {
+  const YesSnackBarMessage({Key? key, this.text, this.buttonText, required this.onYes, this.icon}) : super(key: key);
+  final String? text;
+  final String? buttonText;
+  final VoidCallback onYes;
+  final IconData? icon;
 
-  return Row(
-    children: <Widget>[
-      Text(
-        text ?? labels?.areYouSure ?? "",
-        style: context == null ? null : getTextTheme(context).bodyText1?.copyWith(color: isDark(context) ? Colors.black : Colors.white),
-      ),
-      const Spacer(),
-      ElevatedButton(
-        style: OutlinedButton.styleFrom(
-          backgroundColor: Colors.red,
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+  @override
+  Widget build(BuildContext context) {
+    final MyServicesLocalizationsData? labels = getMyServicesLabels(context);
+    return Row(
+      children: <Widget>[
+        if (icon != null) ...[
+          Icon(icon),
+          const SizedBox(width: 5),
+        ],
+        Text(
+          text ?? labels?.areYouSure ?? "",
+          style: getTextTheme(context).bodyText1?.copyWith(color: isDark(context) ? Colors.black : Colors.white),
         ),
-        onPressed: () {
-          ServiceSnackBar.hideSnackBar();
-          onYes();
-        },
-        child: Text(buttonText ?? labels?.yes ?? "Yes",
-            style: context == null
-                ? null
-                : getTextTheme(context).bodyText1?.copyWith(
-                      // shadows: Helpers.getTextStroke(0.1, Colors.black),
-                      color: Colors.white,
-                    )),
-      )
-    ],
-  );
+        const Spacer(),
+        ElevatedButton(
+          style: OutlinedButton.styleFrom(backgroundColor: Colors.red),
+          onPressed: () {
+            ServiceSnackBar.hide();
+            onYes();
+          },
+          child: Text(buttonText ?? labels?.yes ?? "Yes", style: getTextTheme(context).bodyText1?.copyWith(color: Colors.white)),
+        )
+      ],
+    );
+  }
 }

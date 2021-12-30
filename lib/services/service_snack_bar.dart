@@ -1,55 +1,48 @@
 import '../my_services.dart';
 
 class ServiceSnackBar {
-  static void showTextSnackBar({
+  ServiceSnackBar._();
+
+  static const EdgeInsets margin = EdgeInsets.symmetric(vertical: 10, horizontal: 15);
+
+  static void showText({
     String text = '',
     Color? backgroundColor,
-    double elevation = 3.0,
-    SnackBarBehavior behavior = SnackBarBehavior.floating,
-    EdgeInsets margin = const EdgeInsets.all(10),
+    EdgeInsets margin = margin,
     int seconds = 3,
     GestureTapCallback? onTap,
     bool hideShownSnackBars = false,
   }) {
-    //Scaffold.of(context)
-    showSnackBar(
+    show(
       margin: margin,
-      backgroundColor: backgroundColor ?? Colors.green.shade800,
-      elevation: elevation,
-      behavior: behavior,
+      backgroundColor: backgroundColor,
       seconds: seconds,
       hideShownSnackBars: hideShownSnackBars,
       content: GestureDetector(
         onTap: onTap,
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 20),
-        ),
+        child: Text(text, textAlign: TextAlign.center),
       ),
     );
   }
 
-  static void hideSnackBar() {
+  static void hide() {
     final BuildContext? context = ServiceNav.context;
     if (context != null) {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
     }
   }
 
-  static void showSnackBar({
+  static void show({
     required Widget content,
     BuildContext? context,
-    Color? backgroundColor = Colors.black,
-    double elevation = 3.0,
-    SnackBarBehavior behavior = SnackBarBehavior.floating,
-    EdgeInsets margin = const EdgeInsets.all(10),
+    Color? backgroundColor,
+    EdgeInsets margin = margin,
     int seconds = 3,
     bool hideShownSnackBars = false,
   }) {
     try {
       if (hideShownSnackBars) {
-        ServiceSnackBar.hideSnackBar();
+        hide();
       }
 
       final BuildContext? _context = context ?? ServiceNav.context;
@@ -57,10 +50,8 @@ class ServiceSnackBar {
         ScaffoldMessenger.of(_context).showSnackBar(
           SnackBar(
             duration: Duration(seconds: seconds),
-            margin: margin,
             backgroundColor: backgroundColor,
-            elevation: elevation,
-            behavior: behavior,
+            margin: margin,
             content: content,
           ),
         );
@@ -71,14 +62,13 @@ class ServiceSnackBar {
   }
 
   static void showSnackBarYesQuestion({String? questionText, String? buttonText, required VoidCallback onYes, bool hideShownSnackBars = false}) {
-    showSnackBar(
+    show(
       hideShownSnackBars: hideShownSnackBars,
-      backgroundColor: null,
-      content: yesSnackBarMessage(
+      content: YesSnackBarMessage(
         text: questionText,
         buttonText: buttonText,
         onYes: () {
-          hideSnackBar();
+          hide();
           onYes();
         },
       ),

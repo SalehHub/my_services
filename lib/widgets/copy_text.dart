@@ -14,7 +14,7 @@ class CopyTextWidget extends StatelessWidget {
       key: const ValueKey("copyBtn"),
       onTap: () {
         Clipboard.setData(ClipboardData(text: textToCopy));
-        ServiceSnackBar.showTextSnackBar(text: labels.textHasBeenCopied);
+        ServiceSnackBar.showText(text: labels.textHasBeenCopied);
       },
       child: child,
     );
