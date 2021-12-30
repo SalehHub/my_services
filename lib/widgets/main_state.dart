@@ -91,11 +91,11 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool get _isValidTabView => isTabView && _tabController != null;
 
   Widget appBar(bool innerBoxIsScrolled) {
+    /// theme from [ServiceTheme] appBarTheme
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       sliver: SliverAppBar(
         toolbarHeight: 50,
-        elevation: 2,
         centerTitle: true,
         bottom: _isValidTabBar ? _buildAppBarBottom() : null,
         title: appBarTitle,
@@ -104,7 +104,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         floating: true,
         snap: true,
         forceElevated: true,
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       ),
     );
   }
