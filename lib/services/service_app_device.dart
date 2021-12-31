@@ -25,7 +25,19 @@ class ServiceAppDevice {
       final IosDeviceInfo iosInfo = _iosInfo ?? (await _deviceInfoPlugin.iosInfo);
       deviceId = iosInfo.identifierForVendor;
       deviceOSVersion = iosInfo.systemVersion;
-      deviceModel = iosInfo.model;
+      deviceModel = iosInfo.utsname.machine;
+
+      // print(iosInfo.name);
+      // print(iosInfo.localizedModel);
+      // print(iosInfo.systemName);
+      // print(iosInfo.systemVersion);
+      // print(iosInfo.model);
+      //
+      // print(iosInfo.utsname.nodename);
+      // print(iosInfo.utsname.machine);
+      // print(iosInfo.utsname.release);
+      // print(iosInfo.utsname.sysname);
+      // print(iosInfo.utsname.version);
     }
 
     return AppDeviceData(
@@ -40,8 +52,10 @@ class ServiceAppDevice {
 
   //providers
   static String? watchAppBuild(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
+
   static bool watchIsFirstAppRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
 
   static String? readAppBuild(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appBuild;
+
   static bool readIsFirstAppRun(WidgetRef ref) => ref.read(generalStateProvider).isFirstAppRun;
 }
