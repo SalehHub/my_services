@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    yourDevices: 'Your devices',
     edit: 'Edit',
     thisFieldIsRequired: 'This field is required',
     price: 'Price',
@@ -85,6 +86,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    yourDevices: 'اجهزتك',
     edit: 'تعديل',
     thisFieldIsRequired: 'يجب ادخال قيمة لهذا الحقل',
     price: 'السعر',
@@ -162,6 +164,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    yourDevices: 'Vos appareils',
     edit: 'Éditer',
     thisFieldIsRequired: 'Ce champ est requis',
     price: 'Prix',
@@ -239,6 +242,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    yourDevices: 'Tus dispositivos',
     edit: 'Editar',
     thisFieldIsRequired: 'Este campo es obligatorio',
     price: 'Precio',
@@ -316,6 +320,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    yourDevices: 'Cihazlarınız',
     edit: 'Düzenlemek',
     thisFieldIsRequired: 'Bu alan gereklidir',
     price: 'Fiyat',
@@ -396,6 +401,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.yourDevices,
     required this.edit,
     required this.thisFieldIsRequired,
     required this.price,
@@ -473,6 +479,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String yourDevices;
   final String edit;
   final String thisFieldIsRequired;
   final String price;
@@ -549,6 +556,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        yourDevices: map['yourDevices']! as String,
         edit: map['edit']! as String,
         thisFieldIsRequired: map['thisFieldIsRequired']! as String,
         price: map['price']! as String,
@@ -627,6 +635,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? yourDevices,
     String? edit,
     String? thisFieldIsRequired,
     String? price,
@@ -704,6 +713,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        yourDevices: yourDevices ?? this.yourDevices,
         edit: edit ?? this.edit,
         thisFieldIsRequired: thisFieldIsRequired ?? this.thisFieldIsRequired,
         price: price ?? this.price,
@@ -785,6 +795,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          yourDevices == other.yourDevices &&
           edit == other.edit &&
           thisFieldIsRequired == other.thisFieldIsRequired &&
           price == other.price &&
@@ -863,6 +874,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      yourDevices.hashCode ^
       edit.hashCode ^
       thisFieldIsRequired.hashCode ^
       price.hashCode ^
