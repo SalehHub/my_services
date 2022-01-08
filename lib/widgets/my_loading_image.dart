@@ -9,7 +9,7 @@ class MyLoadingImage extends StatelessWidget {
     this.height = 150,
     this.radius = 0,
     this.onTap,
-    this.borderColor = Colors.transparent,
+    this.borderColor,
     this.borderWidth = 0,
     this.circle = false,
     this.useCacheImage = false,
@@ -24,7 +24,7 @@ class MyLoadingImage extends StatelessWidget {
   final String? blurHash;
   final double width;
   final double height;
-  final Color borderColor;
+  final Color? borderColor;
   final double borderWidth;
   final double radius;
   final bool circle;
@@ -80,7 +80,7 @@ class MyLoadingImage extends StatelessWidget {
       decoration: BoxDecoration(
         color: borderColor,
         borderRadius: circle == true ? circleBorderRadius : borderRadius,
-        border: Border.all(color: borderColor, width: borderWidth),
+        border: Border.all(color: borderColor ?? Colors.transparent, width: borderWidth),
       ),
       child: MyInk(
         onTap: onTap,

@@ -33,6 +33,9 @@ class AppLauncher {
   final Color? lightBgColor;
   final Color? darkBgColor;
 
+  final Color? lightCardColor;
+  final Color? darkCardColor;
+
   final Overrides? overrides;
 
   AppLauncher({
@@ -43,8 +46,12 @@ class AppLauncher {
     //theme
     this.lightAccentColor = const Color(0xff219ebc),
     this.darkAccentColor = const Color(0xff219ebc),
+    //
     this.lightBgColor = const Color(0xffffffff),
     this.darkBgColor = const Color(0xff161B1F),
+    //
+    this.darkCardColor = const Color(0xff161B1F),
+    this.lightCardColor = const Color(0xffffffff),
     //firebase
     this.withFirebase = true,
     this.withCrashlytics = true,
@@ -64,6 +71,9 @@ class AppLauncher {
 
     ServiceTheme.lightBgColor = lightBgColor;
     ServiceTheme.darkBgColor = darkBgColor;
+
+    ServiceTheme.lightCardColor = lightCardColor;
+    ServiceTheme.darkCardColor = darkCardColor;
 
     ServiceLocale.defaultLocale = defaultLocale;
     ServiceLocale.supportedLocales = supportedLocales;

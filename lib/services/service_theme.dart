@@ -7,6 +7,8 @@ class ServiceTheme {
 
   static Color? lightBgColor;
   static Color? darkBgColor;
+  static Color? lightCardColor;
+  static Color? darkCardColor;
 
   static const double elevation = 2;
   static const BorderRadius borderRadius = BorderRadius.all(Radius.circular(15));
@@ -85,7 +87,7 @@ class ServiceTheme {
     );
   }
 
-  static ThemeData _getThemeData(ThemeData mainThemeData, [Color? accentColor, Color? bgColor]) {
+  static ThemeData _getThemeData(ThemeData mainThemeData, [Color? accentColor, Color? bgColor, Color? cardColor]) {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
@@ -112,7 +114,7 @@ class ServiceTheme {
       ),
       cardTheme: mainThemeData.cardTheme.copyWith(
         shape: circularBorderRadius10,
-        color: bgColor,
+        color: cardColor ?? bgColor,
         elevation: elevation,
         clipBehavior: Clip.antiAlias,
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -157,11 +159,11 @@ class ServiceTheme {
         elevation: elevation,
       ),
       appBarTheme: mainThemeData.appBarTheme.copyWith(
-        backgroundColor: bgColor ?? primaryColor,
+        backgroundColor: cardColor ?? bgColor ?? primaryColor,
         elevation: elevation,
         titleTextStyle: textTheme.bodyText2,
         iconTheme: IconThemeData(color: iconColor),
-        shape: circularBorderRadius10, //.copyWith(side: const BorderSide(width: 0.1, color: Colors.grey)),
+        shape: circularBorderRadius10, //.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
       ),
       progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
         refreshBackgroundColor: bgColor,
@@ -178,9 +180,9 @@ class ServiceTheme {
     return themeData;
   }
 
-  static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor, lightBgColor);
+  static ThemeData lightTheme() => _getThemeData(ThemeData.light(), lightAccentColor, lightBgColor, lightCardColor);
 
-  static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor, darkBgColor);
+  static ThemeData darkTheme() => _getThemeData(ThemeData.dark(), darkAccentColor, darkBgColor, darkCardColor);
 
   //provider
   static ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
@@ -198,6 +200,6 @@ bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.
 
 bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
 
-Color getTextColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;
-Color whiteWhenDarkBlackWhenLight(BuildContext context) => getTextColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
-Color blackWhenDarkWhiteWhenLight(BuildContext context) => getTextColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);
+Color getColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;
+Color whiteWhenDarkBlackWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
+Color blackWhenDarkWhiteWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);

@@ -16,11 +16,12 @@ class YesSnackBarMessage extends StatelessWidget {
           Icon(icon),
           const SizedBox(width: 5),
         ],
-        Text(
-          text ?? labels?.areYouSure ?? "",
-          style: getTextTheme(context).bodyText1?.copyWith(color: isDark(context) ? Colors.black : Colors.white),
+        Expanded(
+          child: Text(
+            text ?? labels?.areYouSure ?? "",
+            style: getTextTheme(context).bodyText1?.copyWith(color: isDark(context) ? Colors.black : Colors.white),
+          ),
         ),
-        const Spacer(),
         ElevatedButton(
           style: OutlinedButton.styleFrom(backgroundColor: Colors.red),
           onPressed: () {
