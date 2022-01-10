@@ -37,6 +37,7 @@ class AppLauncher {
   final Color? darkCardColor;
 
   final Overrides? overrides;
+  final List<ProviderObserver>? observers;
 
   AppLauncher({
     //locale
@@ -59,6 +60,7 @@ class AppLauncher {
     //providers
     this.initGeneralState = true,
     this.overrides,
+    this.observers,
     //testing
     this.testing = false,
   }) {
@@ -104,6 +106,7 @@ class AppLauncher {
   //for testing
   Widget mainWidget({required Widget homePage, String title = ''}) {
     return ProviderScope(
+      observers: this.observers,
       overrides: [
         initialGeneralStateProvider.overrideWithValue(_generalState),
         ..._readyOverrides,
