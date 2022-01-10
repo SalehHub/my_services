@@ -14,6 +14,7 @@ class MyContainer extends StatelessWidget {
   final Gradient? gradient;
   final BorderRadius? borderRadius;
   final double? bgImageOpacity;
+  final double? elevation;
 
   const MyContainer({
     Key? key,
@@ -30,10 +31,12 @@ class MyContainer extends StatelessWidget {
     this.borderRadius,
     this.bgImageOpacity,
     this.bgImageBlurHash,
+    this.elevation,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var boxDec = (borderRadius == null && borderWidth == null && borderColor == null && elevation != null);
     return MyInk(
       onTap: onTap,
       margin: margin ?? EdgeInsets.zero,
@@ -41,9 +44,18 @@ class MyContainer extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        decoration: (borderRadius == null && borderWidth == null && borderColor == null)
+        decoration: boxDec
             ? null
             : BoxDecoration(
+                boxShadow: [
+                  if (elevation != null)
+                    BoxShadow(
+                      color: Colors.black87,
+                      offset: const Offset(0.0, 0.5),
+                      blurRadius: elevation!,
+                      spreadRadius: 0,
+                    ),
+                ],
                 borderRadius: borderRadius,
                 border: (borderWidth == null && borderColor == null) ? null : Border.all(width: borderWidth ?? 0, color: borderColor ?? Colors.transparent),
               ),
@@ -56,7 +68,15 @@ class MyContainer extends StatelessWidget {
               if (bgImageUrl != null && bgImageUrl?.trim() != "")
                 Opacity(
                   opacity: bgImageOpacity ?? 1,
-                  child: MyLoadingImage(url: bgImageUrl!, blurHash: bgImageBlurHash, width: double.infinity, height: double.infinity),
+                  child: MyLoadingImage(
+                    // bgImageUrl!,
+                    url: bgImageUrl!,
+                    blurHash: bgImageBlurHash,
+                    width: double.infinity,
+                    height: double.infinity,
+                    // fit: BoxFit.cover,
+                    useCacheImage: true,
+                  ),
                 ),
 
               //gradient

@@ -5,6 +5,8 @@ class MyServices {
   MyServices._();
 
   static String? readAccessToken(dynamic ref) => _readGeneralState(ref).accessToken;
+  static String? watchAccessToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.accessToken));
+
   static Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
 
   static Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
