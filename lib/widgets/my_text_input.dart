@@ -16,7 +16,7 @@ class MyTextInput extends StatelessWidget {
     this.focusNode,
     this.onFieldSubmitted,
     this.isPassword = false,
-    this.radius = 10,
+    this.borderRadius,
     this.maxLines = 1,
     this.textInputAction = TextInputAction.done,
     this.margin = const EdgeInsets.only(top: 5),
@@ -38,7 +38,7 @@ class MyTextInput extends StatelessWidget {
   final TextDirection? textDirection;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
-  final double radius;
+  final BorderRadius? borderRadius;
   final int maxLines;
   final TextEditingController? controller;
   final FocusNode? focusNode;
@@ -86,7 +86,7 @@ class MyTextInput extends StatelessWidget {
                     child: prefixIcon,
                   ),
                 ),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius)),
+          border: OutlineInputBorder(borderRadius: borderRadius ?? ServiceTheme.borderRadius),
         ),
         onChanged: onChanged,
         focusNode: focusNode,
