@@ -65,6 +65,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   bool showAppBar = true;
   bool showRefreshIndicator = true;
+  final TextEditingController searchController = TextEditingController();
 
   Widget get appBarTitle {
     return Text(title, textDirection: Helpers.getTextDirection(title), style: titleStyle, maxLines: 1);
@@ -272,6 +273,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         if (showSearch)
           SliverToBoxAdapter(
             child: MyTextInput(
+              controller: searchController,
               margin: const EdgeInsets.all(10),
               prefixIcon: const Icon(iconSearch),
               labelText: myServicesLabels.search,
