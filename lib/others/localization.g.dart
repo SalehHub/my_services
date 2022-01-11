@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    noResultTryWithDifferentWords: 'No result, try with different words.',
     yourDevices: 'Your devices',
     edit: 'Edit',
     thisFieldIsRequired: 'This field is required',
@@ -86,6 +87,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    noResultTryWithDifferentWords: 'لايوجد نتائج لبحثك حاول بكلمات مختلفة',
     yourDevices: 'اجهزتك',
     edit: 'تعديل',
     thisFieldIsRequired: 'يجب ادخال قيمة لهذا الحقل',
@@ -164,6 +166,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    noResultTryWithDifferentWords: 'Pas de résultat, essayez avec différents mots.',
     yourDevices: 'Vos appareils',
     edit: 'Éditer',
     thisFieldIsRequired: 'Ce champ est requis',
@@ -179,7 +182,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image de profil',
+    changeProfileImage: 'Changer l\'image du profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -242,6 +245,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    noResultTryWithDifferentWords: 'No hay resultado, intente con palabras diferentes.',
     yourDevices: 'Tus dispositivos',
     edit: 'Editar',
     thisFieldIsRequired: 'Este campo es obligatorio',
@@ -320,6 +324,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    noResultTryWithDifferentWords: 'Sonuç yok, farklı kelimelerle deneyin.',
     yourDevices: 'Cihazlarınız',
     edit: 'Düzenlemek',
     thisFieldIsRequired: 'Bu alan gereklidir',
@@ -401,6 +406,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.noResultTryWithDifferentWords,
     required this.yourDevices,
     required this.edit,
     required this.thisFieldIsRequired,
@@ -479,6 +485,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String noResultTryWithDifferentWords;
   final String yourDevices;
   final String edit;
   final String thisFieldIsRequired;
@@ -556,6 +563,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        noResultTryWithDifferentWords: map['noResultTryWithDifferentWords']! as String,
         yourDevices: map['yourDevices']! as String,
         edit: map['edit']! as String,
         thisFieldIsRequired: map['thisFieldIsRequired']! as String,
@@ -635,6 +643,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? noResultTryWithDifferentWords,
     String? yourDevices,
     String? edit,
     String? thisFieldIsRequired,
@@ -713,6 +722,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        noResultTryWithDifferentWords: noResultTryWithDifferentWords ?? this.noResultTryWithDifferentWords,
         yourDevices: yourDevices ?? this.yourDevices,
         edit: edit ?? this.edit,
         thisFieldIsRequired: thisFieldIsRequired ?? this.thisFieldIsRequired,
@@ -795,6 +805,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          noResultTryWithDifferentWords == other.noResultTryWithDifferentWords &&
           yourDevices == other.yourDevices &&
           edit == other.edit &&
           thisFieldIsRequired == other.thisFieldIsRequired &&
@@ -874,6 +885,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      noResultTryWithDifferentWords.hashCode ^
       yourDevices.hashCode ^
       edit.hashCode ^
       thisFieldIsRequired.hashCode ^
