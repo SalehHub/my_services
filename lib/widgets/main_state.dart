@@ -62,6 +62,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   bool showSearch = false;
   ValueChanged<String>? onSearchChanged;
+  GestureTapCallback? onSearchClear;
 
   bool showAppBar = true;
   bool showRefreshIndicator = true;
@@ -275,7 +276,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
             child: MyTextInput(
               controller: searchController,
               margin: const EdgeInsets.all(10),
-              prefixIcon: const Icon(iconSearch),
+              prefixIcon: const BackButton(),
+              suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
               labelText: myServicesLabels.search,
               onChanged: onSearchChanged,
               // contentPadding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
