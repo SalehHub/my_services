@@ -174,4 +174,46 @@ class Helpers {
     }
     return '';
   }
+
+  //
+  static Future<void> openMap(double lat, double lng, String? title, [BuildContext? context]) async {
+    final Coords coords = Coords(lat, lng);
+    final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;
+
+    if (availableMaps.length == 1) {
+      return await availableMaps.first.showMarker(coords: coords, title: title ?? "");
+    }
+
+    MyServicesLocalizationsData labels = getMyServicesLabels((ServiceNav.context ?? context)!);
+
+    ServiceDialog.show(
+        title: labels.chooseMapApp,
+        children: availableMaps.map((map) {
+          String mapName = "";
+
+          if (map.mapType == MapType.apple) {
+            mapName = labels.appleMaps;
+          } else if (map.mapType == MapType.google) {
+            mapName = labels.googleMaps;
+          } else {
+            mapName = map.mapName;
+          }
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
+            child: ListTile(
+              shape: ServiceTheme.circularBorderRadius10,
+              leading: ClipRRect(
+                borderRadius: ServiceTheme.borderRadius,
+                child: SvgPicture.asset(map.icon, fit: BoxFit.cover, height: 30, width: 30),
+              ),
+              title: Text(mapName),
+              onTap: () => map.showMarker(coords: coords, title: title ?? ""),
+            ),
+          );
+        }).toList());
+  }
+
+  //
+
 }

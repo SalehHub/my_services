@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    openInMap: 'Open in Map',
+    appleMaps: 'Apple Maps',
+    googleMaps: 'Google Maps',
+    chooseMapApp: 'Choose Map App',
     noResultTryWithDifferentWords: 'No result, try with different words.',
     yourDevices: 'Your devices',
     edit: 'Edit',
@@ -87,6 +91,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    openInMap: 'فتح على الخريطة',
+    appleMaps: 'خرائط أبل',
+    googleMaps: 'خرائط قوقل',
+    chooseMapApp: 'اختر الخريطة',
     noResultTryWithDifferentWords: 'لايوجد نتائج لبحثك حاول بكلمات مختلفة',
     yourDevices: 'اجهزتك',
     edit: 'تعديل',
@@ -166,6 +174,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    openInMap: 'Ouvert sur la carte',
+    appleMaps: 'Apple Maps',
+    googleMaps: 'Google Maps',
+    chooseMapApp: 'Choisissez une application carte',
     noResultTryWithDifferentWords: 'Pas de résultat, essayez avec différents mots.',
     yourDevices: 'Vos appareils',
     edit: 'Éditer',
@@ -245,6 +257,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    openInMap: 'Abierto en mapa',
+    appleMaps: 'Mapas de Apple',
+    googleMaps: 'mapas de Google',
+    chooseMapApp: 'Elija la aplicación de mapas',
     noResultTryWithDifferentWords: 'No hay resultado, intente con palabras diferentes.',
     yourDevices: 'Tus dispositivos',
     edit: 'Editar',
@@ -324,6 +340,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    openInMap: 'Haritada aç',
+    appleMaps: 'Elma haritaları',
+    googleMaps: 'Google Haritalar',
+    chooseMapApp: 'Harita uygulamasını seçin',
     noResultTryWithDifferentWords: 'Sonuç yok, farklı kelimelerle deneyin.',
     yourDevices: 'Cihazlarınız',
     edit: 'Düzenlemek',
@@ -406,6 +426,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.openInMap,
+    required this.appleMaps,
+    required this.googleMaps,
+    required this.chooseMapApp,
     required this.noResultTryWithDifferentWords,
     required this.yourDevices,
     required this.edit,
@@ -485,6 +509,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String openInMap;
+  final String appleMaps;
+  final String googleMaps;
+  final String chooseMapApp;
   final String noResultTryWithDifferentWords;
   final String yourDevices;
   final String edit;
@@ -563,6 +591,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        openInMap: map['openInMap']! as String,
+        appleMaps: map['appleMaps']! as String,
+        googleMaps: map['googleMaps']! as String,
+        chooseMapApp: map['chooseMapApp']! as String,
         noResultTryWithDifferentWords: map['noResultTryWithDifferentWords']! as String,
         yourDevices: map['yourDevices']! as String,
         edit: map['edit']! as String,
@@ -643,6 +675,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? openInMap,
+    String? appleMaps,
+    String? googleMaps,
+    String? chooseMapApp,
     String? noResultTryWithDifferentWords,
     String? yourDevices,
     String? edit,
@@ -722,6 +758,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        openInMap: openInMap ?? this.openInMap,
+        appleMaps: appleMaps ?? this.appleMaps,
+        googleMaps: googleMaps ?? this.googleMaps,
+        chooseMapApp: chooseMapApp ?? this.chooseMapApp,
         noResultTryWithDifferentWords: noResultTryWithDifferentWords ?? this.noResultTryWithDifferentWords,
         yourDevices: yourDevices ?? this.yourDevices,
         edit: edit ?? this.edit,
@@ -805,6 +845,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          openInMap == other.openInMap &&
+          appleMaps == other.appleMaps &&
+          googleMaps == other.googleMaps &&
+          chooseMapApp == other.chooseMapApp &&
           noResultTryWithDifferentWords == other.noResultTryWithDifferentWords &&
           yourDevices == other.yourDevices &&
           edit == other.edit &&
@@ -885,6 +929,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      openInMap.hashCode ^
+      appleMaps.hashCode ^
+      googleMaps.hashCode ^
+      chooseMapApp.hashCode ^
       noResultTryWithDifferentWords.hashCode ^
       yourDevices.hashCode ^
       edit.hashCode ^
