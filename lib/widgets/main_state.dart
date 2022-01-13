@@ -64,20 +64,16 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool showSearch = false;
   ValueChanged<String>? onSearchChanged;
   GestureTapCallback? onSearchClear;
-  // String? searchTerm;
+
   Widget get searchInput => SliverToBoxAdapter(
         child: MyTextInput(
           controller: searchController,
-          // value: searchTerm,
+          textInputAction: TextInputAction.search,
           margin: const EdgeInsets.all(10),
           prefixIcon: const BackButton(),
           suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
           labelText: myServicesLabels.search,
           onChanged: onSearchChanged,
-          // contentPadding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
-          // style: getTheme(context).inputDecorationTheme.labelStyle,
-          // labelStyle: getTextTheme(context).subtitle1,
-          // strutStyle: const StrutStyle(height: 1.5),
         ),
       );
 
@@ -110,6 +106,10 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool get _isValidTabView => isTabView && _tabController != null;
 
   Widget appBar(bool innerBoxIsScrolled) {
+    if (showSearch == true) {
+      return searchInput;
+    }
+
     /// theme from [ServiceTheme] appBarTheme
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -170,7 +170,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     ServiceDebounce.debounce(() {
       logger.w("Service Theme Set System Ui Overlay Style");
       ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
-    }, 'changeDependenciesSetSystemUiOverlayStyle', 200);
+    }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
   }
 
   @override
@@ -288,7 +288,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
-        if (showSearch) searchInput,
         if (underAppBarWidget != null) underAppBarWidget!,
 
         //top banner
