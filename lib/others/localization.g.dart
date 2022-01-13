@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    city: 'City',
+    country: 'Country',
     openInMap: 'Open in Map',
     appleMaps: 'Apple Maps',
     googleMaps: 'Google Maps',
@@ -91,6 +93,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    city: 'المدينة',
+    country: 'الدولة',
     openInMap: 'فتح على الخريطة',
     appleMaps: 'خرائط أبل',
     googleMaps: 'خرائط قوقل',
@@ -174,6 +178,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    city: 'Ville',
+    country: 'Pays',
     openInMap: 'Ouvert sur la carte',
     appleMaps: 'Apple Maps',
     googleMaps: 'Google Maps',
@@ -194,7 +200,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image du profil',
+    changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -257,6 +263,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    city: 'Ciudad',
+    country: 'País',
     openInMap: 'Abierto en mapa',
     appleMaps: 'Mapas de Apple',
     googleMaps: 'mapas de Google',
@@ -340,6 +348,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    city: 'Şehir',
+    country: 'Ülke',
     openInMap: 'Haritada aç',
     appleMaps: 'Elma haritaları',
     googleMaps: 'Google Haritalar',
@@ -426,6 +436,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.city,
+    required this.country,
     required this.openInMap,
     required this.appleMaps,
     required this.googleMaps,
@@ -509,6 +521,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String city;
+  final String country;
   final String openInMap;
   final String appleMaps;
   final String googleMaps;
@@ -591,6 +605,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        city: map['city']! as String,
+        country: map['country']! as String,
         openInMap: map['openInMap']! as String,
         appleMaps: map['appleMaps']! as String,
         googleMaps: map['googleMaps']! as String,
@@ -675,6 +691,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? city,
+    String? country,
     String? openInMap,
     String? appleMaps,
     String? googleMaps,
@@ -758,6 +776,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        city: city ?? this.city,
+        country: country ?? this.country,
         openInMap: openInMap ?? this.openInMap,
         appleMaps: appleMaps ?? this.appleMaps,
         googleMaps: googleMaps ?? this.googleMaps,
@@ -845,6 +865,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          city == other.city &&
+          country == other.country &&
           openInMap == other.openInMap &&
           appleMaps == other.appleMaps &&
           googleMaps == other.googleMaps &&
@@ -929,6 +951,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      city.hashCode ^
+      country.hashCode ^
       openInMap.hashCode ^
       appleMaps.hashCode ^
       googleMaps.hashCode ^

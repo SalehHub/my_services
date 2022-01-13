@@ -36,10 +36,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   List<Widget> get appBarActions => <Widget>[];
 
   List<Widget> get _appBarActionsWithProgress => <Widget>[
-        if (!emptyData && actionBarLoading)
-          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
-        else
-          ...appBarActions,
+        if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions,
       ];
 
   String title = '';
@@ -69,20 +66,20 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   GestureTapCallback? onSearchClear;
   // String? searchTerm;
   Widget get searchInput => SliverToBoxAdapter(
-    child: MyTextInput(
-      controller: searchController,
-      // value: searchTerm,
-      margin: const EdgeInsets.all(10),
-      prefixIcon: const BackButton(),
-      suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
-      labelText: myServicesLabels.search,
-      onChanged: onSearchChanged,
-      // contentPadding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
-      // style: getTheme(context).inputDecorationTheme.labelStyle,
-      // labelStyle: getTextTheme(context).subtitle1,
-      // strutStyle: const StrutStyle(height: 1.5),
-    ),
-  );
+        child: MyTextInput(
+          controller: searchController,
+          // value: searchTerm,
+          margin: const EdgeInsets.all(10),
+          prefixIcon: const BackButton(),
+          suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
+          labelText: myServicesLabels.search,
+          onChanged: onSearchChanged,
+          // contentPadding: const EdgeInsets.fromLTRB(8, 6, 8, 4),
+          // style: getTheme(context).inputDecorationTheme.labelStyle,
+          // labelStyle: getTextTheme(context).subtitle1,
+          // strutStyle: const StrutStyle(height: 1.5),
+        ),
+      );
 
   bool showAppBar = true;
   bool showRefreshIndicator = true;
@@ -292,7 +289,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
         if (showSearch) searchInput,
-        if (underAppBarWidget!=null) underAppBarWidget!,
+        if (underAppBarWidget != null) underAppBarWidget!,
 
         //top banner
         if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),
