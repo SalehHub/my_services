@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    shareTheProfile: 'Share the profile',
+    shareYourProfile: 'Share your profile',
     city: 'City',
     country: 'Country',
     openInMap: 'Open in Map',
@@ -93,6 +95,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    shareTheProfile: 'مشاركة الملف الشخصي',
+    shareYourProfile: 'مشاركة ملفك الشخصي',
     city: 'المدينة',
     country: 'الدولة',
     openInMap: 'فتح على الخريطة',
@@ -178,6 +182,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    shareTheProfile: 'Partager le profil',
+    shareYourProfile: 'Partagez votre profil',
     city: 'Ville',
     country: 'Pays',
     openInMap: 'Ouvert sur la carte',
@@ -263,6 +269,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    shareTheProfile: 'Comparte el perfil',
+    shareYourProfile: 'Comparte tu perfil',
     city: 'Ciudad',
     country: 'País',
     openInMap: 'Abierto en mapa',
@@ -348,6 +356,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    shareTheProfile: 'Profili paylaş',
+    shareYourProfile: 'Profilini paylaş',
     city: 'Şehir',
     country: 'Ülke',
     openInMap: 'Haritada aç',
@@ -436,6 +446,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.shareTheProfile,
+    required this.shareYourProfile,
     required this.city,
     required this.country,
     required this.openInMap,
@@ -521,6 +533,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String shareTheProfile;
+  final String shareYourProfile;
   final String city;
   final String country;
   final String openInMap;
@@ -605,6 +619,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        shareTheProfile: map['shareTheProfile']! as String,
+        shareYourProfile: map['shareYourProfile']! as String,
         city: map['city']! as String,
         country: map['country']! as String,
         openInMap: map['openInMap']! as String,
@@ -691,6 +707,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? shareTheProfile,
+    String? shareYourProfile,
     String? city,
     String? country,
     String? openInMap,
@@ -776,6 +794,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        shareTheProfile: shareTheProfile ?? this.shareTheProfile,
+        shareYourProfile: shareYourProfile ?? this.shareYourProfile,
         city: city ?? this.city,
         country: country ?? this.country,
         openInMap: openInMap ?? this.openInMap,
@@ -865,6 +885,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          shareTheProfile == other.shareTheProfile &&
+          shareYourProfile == other.shareYourProfile &&
           city == other.city &&
           country == other.country &&
           openInMap == other.openInMap &&
@@ -951,6 +973,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      shareTheProfile.hashCode ^
+      shareYourProfile.hashCode ^
       city.hashCode ^
       country.hashCode ^
       openInMap.hashCode ^
