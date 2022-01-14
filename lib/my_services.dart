@@ -6,6 +6,7 @@ export 'dart:math';
 export 'dart:typed_data';
 export 'dart:ui' show ImageFilter;
 
+export 'package:app_links/app_links.dart';
 export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';
@@ -41,6 +42,7 @@ export 'package:package_info/package_info.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:photo_view/photo_view.dart';
 export 'package:photo_view/photo_view_gallery.dart';
+export 'package:share_plus/share_plus.dart';
 export 'package:smooth_page_indicator/smooth_page_indicator.dart';
 export 'package:sqflite/sqflite.dart';
 export 'package:timeago/timeago.dart';
