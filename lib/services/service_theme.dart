@@ -188,6 +188,7 @@ class ServiceTheme {
   static ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
   static ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
   static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => ref.read(generalStateProvider.notifier).setThemeMode(context, value);
+  static void toggleThemeMode(dynamic ref, BuildContext context) => ref.read(generalStateProvider.notifier).toggleThemeMode(context);
 }
 
 //////Theme Helpers
