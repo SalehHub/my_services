@@ -106,7 +106,7 @@ class AppLauncher {
   //for testing
   Widget mainWidget({required Widget homePage, String title = ''}) {
     return ProviderScope(
-      observers: this.observers,
+      observers: observers,
       overrides: [
         initialGeneralStateProvider.overrideWithValue(_generalState),
         ..._readyOverrides,
