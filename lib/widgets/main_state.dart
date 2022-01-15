@@ -36,11 +36,16 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   List<Widget> get appBarActions => <Widget>[];
 
   List<Widget> get _appBarActionsWithProgress => <Widget>[
-        if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions,
+        if (!emptyData && actionBarLoading)
+          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
+        else
+          ...appBarActions,
       ];
 
   String title = '';
   TextStyle? titleStyle;
+
+  bool homePage = false;
 
   bool pageLoading = false;
 
@@ -212,10 +217,28 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   void initState() {
     super.initState();
     if (WidgetsBinding.instance != null) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) => init());
+      WidgetsBinding.instance!.addPostFrameCallback((_) => _myInitState());
     } else {
-      init();
+      _myInitState();
     }
+  }
+
+  void _myInitState() {
+    if (homePage) {
+      if (AppLauncher.appWithFCM) {
+        ServiceFirebaseMessaging.requestPermission();
+
+        if (AppLauncher.appOnTokenRefresh != null) {
+          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appOnTokenRefresh!(token, ref, context));
+        }
+      }
+
+      if (AppLauncher.appOnDynamicLink != null) {
+        ServiceDynamicLink.register((Uri uri) => AppLauncher.appOnDynamicLink!(uri, ref, context));
+      }
+    }
+
+    init();
   }
 
   void init() {}

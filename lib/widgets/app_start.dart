@@ -6,15 +6,30 @@ typedef Overrides = Future<List<Override>> Function();
 class AppLauncher {
   GeneralState _generalState = GeneralState();
   List<Override> _readyOverrides = [];
-  //
-  static bool _appWithFirebase = true;
-  static bool get appWithFirebase => _appWithFirebase;
-  static bool _appWithCrashlytics = true;
-  static bool get appWithCrashlytics => _appWithCrashlytics;
-  static bool _appWithFCM = true;
-  static bool get appWithFCM => _appWithFCM;
-  //
 
+  //
+  static bool get appWithFirebase => _appWithFirebase;
+  static bool _appWithFirebase = true;
+
+  static bool get appWithCrashlytics => _appWithCrashlytics;
+  static bool _appWithCrashlytics = true;
+
+  static bool get appWithFCM => _appWithFCM;
+  static bool _appWithFCM = true;
+
+  //
+  static Function(Uri uri, WidgetRef ref, BuildContext context)? get appOnDynamicLink => _appOnDynamicLink;
+  static Function(Uri uri, WidgetRef ref, BuildContext context)? _appOnDynamicLink;
+
+  //
+  static Function(String token, WidgetRef ref, BuildContext context)? get appOnTokenRefresh => _appOnTokenRefresh;
+  static Function(String token, WidgetRef ref, BuildContext context)? _appOnTokenRefresh;
+
+  //
+  static GenerateAppTitle? get appOnGenerateTitle => _appOnGenerateTitle;
+  static GenerateAppTitle? _appOnGenerateTitle;
+
+  //
   final bool testing;
 
   final Locale defaultLocale;
@@ -25,6 +40,14 @@ class AppLauncher {
   final bool withCrashlytics;
   final bool withFCM;
 
+  //
+  final Function(Uri uri, WidgetRef ref, BuildContext context)? onDynamicLink;
+  final Function(String token, WidgetRef ref, BuildContext context)? onTokenRefresh;
+
+  //
+  final GenerateAppTitle? onGenerateTitle;
+
+  //
   final bool initGeneralState;
 
   final Color? lightAccentColor;
@@ -61,12 +84,21 @@ class AppLauncher {
     this.initGeneralState = true,
     this.overrides,
     this.observers,
+    //
+    this.onGenerateTitle,
+    //
+    this.onTokenRefresh,
+    this.onDynamicLink,
     //testing
     this.testing = false,
   }) {
     _appWithFirebase = withFirebase;
     _appWithCrashlytics = withFirebase && withCrashlytics;
     _appWithFCM = withFirebase && withFCM;
+    //
+    _appOnDynamicLink = onDynamicLink;
+    _appOnTokenRefresh = onTokenRefresh;
+    _appOnGenerateTitle = onGenerateTitle;
 
     ServiceTheme.lightAccentColor = lightAccentColor;
     ServiceTheme.darkAccentColor = darkAccentColor;
@@ -104,27 +136,26 @@ class AppLauncher {
   }
 
   //for testing
-  Widget mainWidget({required Widget homePage, String title = ''}) {
+  Widget mainWidget({required Widget homePage}) {
     return ProviderScope(
       observers: observers,
       overrides: [
         initialGeneralStateProvider.overrideWithValue(_generalState),
         ..._readyOverrides,
       ],
-      child: AppStart(title: title, homePage: homePage, delegates: delegates),
+      child: AppStart(homePage: homePage, delegates: delegates),
     );
   }
 
-  void run({required Widget homePage, String title = ''}) {
-    runApp(mainWidget(homePage: homePage, title: title));
+  void run({required Widget homePage}) {
+    runApp(mainWidget(homePage: homePage));
   }
 }
 
 class AppStart extends StatelessWidget {
-  const AppStart({Key? key, required this.delegates, required this.title, required this.homePage}) : super(key: key);
+  const AppStart({Key? key, required this.delegates, required this.homePage}) : super(key: key);
 
   final List<LocalizationsDelegate<dynamic>> delegates;
-  final String title;
   final Widget homePage;
 
   @override
@@ -132,7 +163,7 @@ class AppStart extends StatelessWidget {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: title,
+        onGenerateTitle: AppLauncher.appOnGenerateTitle,
         //
         localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,
