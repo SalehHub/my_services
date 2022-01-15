@@ -57,6 +57,10 @@ class ServiceLocale {
 
   static bool isEn(BuildContext context) => currentLocaleLangCode(context) == 'en';
 
+  static void toggleArEn(BuildContext context, ref) {
+    isAr(context) ? setLocaleToEn(ref) : setLocaleToAr(ref);
+  }
+
   //providers
   static Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
   static void setLocaleWithoutSaving(dynamic ref, Locale value) {
@@ -70,6 +74,22 @@ class ServiceLocale {
   static void setLocale(dynamic ref, Locale value) {
     if (isSupportedLocale(value)) {
       ref.read(generalStateProvider.notifier).setLocale(value);
+    } else {
+      logger.e("Unsupported locale");
+    }
+  }
+
+  static void setLocaleToAr(dynamic ref) {
+    if (isSupportedLocale(const Locale('ar'))) {
+      ref.read(generalStateProvider.notifier).setLocale(const Locale('ar'));
+    } else {
+      logger.e("Unsupported locale");
+    }
+  }
+
+  static void setLocaleToEn(dynamic ref) {
+    if (isSupportedLocale(const Locale('en'))) {
+      ref.read(generalStateProvider.notifier).setLocale(const Locale('en'));
     } else {
       logger.e("Unsupported locale");
     }
