@@ -8,6 +8,9 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    countryDialCode: 'Country dial code',
+    searchByCountryNameOrDialCode: 'Search by country name or dial code',
+    mobileNumber: 'Mobile Number',
     download: 'Download',
     share: 'Share',
     joinUs: 'Join Us',
@@ -99,6 +102,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    countryDialCode: 'مفتاح الدولة',
+    searchByCountryNameOrDialCode: 'بحث بإسم الدولة او مفتاح الاتصال',
+    mobileNumber: 'رقم الجوال',
     download: 'تحميل',
     share: 'مشاركة',
     joinUs: 'انضم لنا',
@@ -190,6 +196,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    countryDialCode: 'Code de numérotation de pays',
+    searchByCountryNameOrDialCode: 'Recherche par nom de pays ou code de numérotation',
+    mobileNumber: 'Numéro de portable',
     download: 'Télécharger',
     share: 'Partager',
     joinUs: 'Rejoignez-nous',
@@ -281,6 +290,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    countryDialCode: 'Código de marcación rural',
+    searchByCountryNameOrDialCode: 'Búsqueda por nombre de país o código de marcación',
+    mobileNumber: 'Número de teléfono móvil',
     download: 'Descargar',
     share: 'Cuota',
     joinUs: 'Únete a nosotros',
@@ -372,6 +384,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    countryDialCode: 'Ülke arama kodu',
+    searchByCountryNameOrDialCode: 'Ülke adına veya çevir koduna göre arama yapın',
+    mobileNumber: 'Cep numarası',
     download: 'İndirmek',
     share: 'Paylaş',
     joinUs: 'Bize katıl',
@@ -466,6 +481,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.countryDialCode,
+    required this.searchByCountryNameOrDialCode,
+    required this.mobileNumber,
     required this.download,
     required this.share,
     required this.joinUs,
@@ -557,6 +575,9 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String countryDialCode;
+  final String searchByCountryNameOrDialCode;
+  final String mobileNumber;
   final String download;
   final String share;
   final String joinUs;
@@ -647,6 +668,9 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        countryDialCode: map['countryDialCode']! as String,
+        searchByCountryNameOrDialCode: map['searchByCountryNameOrDialCode']! as String,
+        mobileNumber: map['mobileNumber']! as String,
         download: map['download']! as String,
         share: map['share']! as String,
         joinUs: map['joinUs']! as String,
@@ -739,6 +763,9 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? countryDialCode,
+    String? searchByCountryNameOrDialCode,
+    String? mobileNumber,
     String? download,
     String? share,
     String? joinUs,
@@ -830,6 +857,9 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        countryDialCode: countryDialCode ?? this.countryDialCode,
+        searchByCountryNameOrDialCode: searchByCountryNameOrDialCode ?? this.searchByCountryNameOrDialCode,
+        mobileNumber: mobileNumber ?? this.mobileNumber,
         download: download ?? this.download,
         share: share ?? this.share,
         joinUs: joinUs ?? this.joinUs,
@@ -925,6 +955,9 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          countryDialCode == other.countryDialCode &&
+          searchByCountryNameOrDialCode == other.searchByCountryNameOrDialCode &&
+          mobileNumber == other.mobileNumber &&
           download == other.download &&
           share == other.share &&
           joinUs == other.joinUs &&
@@ -1017,6 +1050,9 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      countryDialCode.hashCode ^
+      searchByCountryNameOrDialCode.hashCode ^
+      mobileNumber.hashCode ^
       download.hashCode ^
       share.hashCode ^
       joinUs.hashCode ^
