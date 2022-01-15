@@ -24,6 +24,9 @@ class MyText extends StatelessWidget {
     if (shadows != null) {
       _textStyle = _textStyle?.copyWith(shadows: shadows);
     }
+    if (fontSize != null) {
+      _textStyle = _textStyle?.copyWith(fontSize: fontSize);
+    }
 
     return Padding(
       padding: margin,

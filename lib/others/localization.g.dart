@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    download: 'Download',
+    share: 'Share',
+    joinUs: 'Join Us',
+    shareAccount: 'Share account',
     shareTheProfile: 'Share the profile',
     shareYourProfile: 'Share your profile',
     city: 'City',
@@ -95,6 +99,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    download: 'تحميل',
+    share: 'مشاركة',
+    joinUs: 'انضم لنا',
+    shareAccount: 'مشاركة الحساب',
     shareTheProfile: 'مشاركة الملف الشخصي',
     shareYourProfile: 'مشاركة ملفك الشخصي',
     city: 'المدينة',
@@ -182,6 +190,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    download: 'Télécharger',
+    share: 'Partager',
+    joinUs: 'Rejoignez-nous',
+    shareAccount: 'Compte de partage',
     shareTheProfile: 'Partager le profil',
     shareYourProfile: 'Partagez votre profil',
     city: 'Ville',
@@ -206,7 +218,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image de profil',
+    changeProfileImage: 'Changer l\'image du profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -269,6 +281,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    download: 'Descargar',
+    share: 'Cuota',
+    joinUs: 'Únete a nosotros',
+    shareAccount: 'Cuenta de acciones',
     shareTheProfile: 'Comparte el perfil',
     shareYourProfile: 'Comparte tu perfil',
     city: 'Ciudad',
@@ -318,7 +334,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
@@ -356,6 +372,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    download: 'İndirmek',
+    share: 'Paylaş',
+    joinUs: 'Bize katıl',
+    shareAccount: 'Hesap Paylaş',
     shareTheProfile: 'Profili paylaş',
     shareYourProfile: 'Profilini paylaş',
     city: 'Şehir',
@@ -446,6 +466,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.download,
+    required this.share,
+    required this.joinUs,
+    required this.shareAccount,
     required this.shareTheProfile,
     required this.shareYourProfile,
     required this.city,
@@ -533,6 +557,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String download;
+  final String share;
+  final String joinUs;
+  final String shareAccount;
   final String shareTheProfile;
   final String shareYourProfile;
   final String city;
@@ -619,6 +647,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        download: map['download']! as String,
+        share: map['share']! as String,
+        joinUs: map['joinUs']! as String,
+        shareAccount: map['shareAccount']! as String,
         shareTheProfile: map['shareTheProfile']! as String,
         shareYourProfile: map['shareYourProfile']! as String,
         city: map['city']! as String,
@@ -707,6 +739,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? download,
+    String? share,
+    String? joinUs,
+    String? shareAccount,
     String? shareTheProfile,
     String? shareYourProfile,
     String? city,
@@ -794,6 +830,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        download: download ?? this.download,
+        share: share ?? this.share,
+        joinUs: joinUs ?? this.joinUs,
+        shareAccount: shareAccount ?? this.shareAccount,
         shareTheProfile: shareTheProfile ?? this.shareTheProfile,
         shareYourProfile: shareYourProfile ?? this.shareYourProfile,
         city: city ?? this.city,
@@ -885,6 +925,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          download == other.download &&
+          share == other.share &&
+          joinUs == other.joinUs &&
+          shareAccount == other.shareAccount &&
           shareTheProfile == other.shareTheProfile &&
           shareYourProfile == other.shareYourProfile &&
           city == other.city &&
@@ -973,6 +1017,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      download.hashCode ^
+      share.hashCode ^
+      joinUs.hashCode ^
+      shareAccount.hashCode ^
       shareTheProfile.hashCode ^
       shareYourProfile.hashCode ^
       city.hashCode ^

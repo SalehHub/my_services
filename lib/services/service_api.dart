@@ -4,6 +4,15 @@ class ServiceApi {
   static final Dio dio = Dio();
   static String domain = '';
 
+  static Future<String> download(String url) async {
+    String ext = extension(url);
+    String fileName = Helpers.getMd5(url);
+    String savePath = (await Helpers.getApplicationDocumentsPath() ?? "") + "/" + fileName + ".$ext";
+    logger.i(savePath);
+    await dio.download(url, savePath);
+    return savePath;
+  }
+
   static Options _dioOptions(String? accessToken, String? lang) {
     Map<String, dynamic> headers = <String, dynamic>{
       if (accessToken != null) ...{

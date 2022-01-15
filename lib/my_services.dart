@@ -39,6 +39,7 @@ export 'package:map_launcher/map_launcher.dart';
 export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
 export 'package:package_info/package_info.dart';
+export 'package:path/path.dart' hide Style, context;
 export 'package:path_provider/path_provider.dart';
 export 'package:photo_view/photo_view.dart';
 export 'package:photo_view/photo_view_gallery.dart';
