@@ -17,6 +17,10 @@ class AppLauncher {
   static AppConfig get appConfig => _appConfig ?? AppConfig();
   static AppConfig? _appConfig;
 
+  // App Events
+  static AppEvents get appEvents => _appEvents ?? AppEvents();
+  static AppEvents? _appEvents;
+
   //
   final bool initGeneralState;
 
@@ -33,6 +37,7 @@ class AppLauncher {
   final List<ProviderObserver>? observers;
   //
   final AppConfig? config;
+  final AppEvents? events;
 
   AppLauncher({
     //locale
@@ -56,11 +61,14 @@ class AppLauncher {
     //testing
     this.testing = false,
     this.config,
+    this.events,
   }) {
     _appConfig = config?.copyWith(
       withCrashlytics: config?.withFirebase == true && config?.withCrashlytics == true,
       withFCM: config?.withFirebase == true && config?.withFCM == true,
     );
+
+    _appEvents = events;
 
     ServiceTheme.lightAccentColor = lightAccentColor;
     ServiceTheme.darkAccentColor = darkAccentColor;
@@ -125,7 +133,7 @@ class AppStart extends StatelessWidget {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        onGenerateTitle: AppLauncher.appConfig.onGenerateTitle,
+        onGenerateTitle: AppLauncher.appEvents.onGenerateTitle,
         //
         localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,

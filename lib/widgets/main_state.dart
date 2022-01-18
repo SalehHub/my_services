@@ -225,13 +225,13 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       if (AppLauncher.appConfig.withFCM) {
         ServiceFirebaseMessaging.requestPermission();
 
-        if (AppLauncher.appConfig.onFCMTokenRefresh != null) {
-          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appConfig.onFCMTokenRefresh!(token, ref, context));
+        if (AppLauncher.appEvents.onFCMTokenRefresh != null) {
+          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appEvents.onFCMTokenRefresh!(token, ref, context));
         }
       }
 
-      if (AppLauncher.appConfig.onDynamicLink != null) {
-        ServiceDynamicLink.register((Uri uri) => AppLauncher.appConfig.onDynamicLink!(uri, ref, context));
+      if (AppLauncher.appEvents.onDynamicLink != null) {
+        ServiceDynamicLink.register((Uri uri) => AppLauncher.appEvents.onDynamicLink!(uri, ref, context));
       }
     }
 
@@ -244,9 +244,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   @override
   Widget build(BuildContext context) {
-    if (homePage && AppLauncher.appConfig.onLocaleChange != null) {
+    if (homePage && AppLauncher.appEvents.onLocaleChange != null) {
       ServiceLocale.onLocaleChange(ref, (previous, next) {
-        AppLauncher.appConfig.onLocaleChange!(previous, next, ref, context);
+        AppLauncher.appEvents.onLocaleChange!(previous, next, ref, context);
         logger.w("Previous:" + (previous?.languageCode ?? "") + "\nNext:" + (next?.languageCode ?? ""));
       });
     }
