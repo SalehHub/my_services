@@ -99,7 +99,7 @@ class ServiceTheme {
       toggleableActiveColor: accentColor,
       textTheme: textTheme,
       primaryTextTheme: textTheme,
-      // primaryColor: primaryColor,
+      canvasColor: cardColor,
       //
       colorScheme: mainThemeData.colorScheme.copyWith(primary: accentColor),
       iconTheme: mainThemeData.iconTheme.copyWith(color: accentColor),
@@ -163,7 +163,7 @@ class ServiceTheme {
         elevation: elevation,
         titleTextStyle: textTheme.bodyText2,
         iconTheme: IconThemeData(color: iconColor),
-        shape: circularBorderRadius10, //.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
+        shape: circularBorderRadius10,
       ),
       progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
         refreshBackgroundColor: bgColor,
