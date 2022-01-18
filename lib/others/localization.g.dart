@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    accountType: 'Account type',
+    selectYourLocation: 'Select your location',
+    yourLocation: 'Your location',
+    location: 'Location',
     countryDialCode: 'Country dial code',
     searchByCountryNameOrDialCode: 'Search by country name or dial code',
     mobileNumber: 'Mobile Number',
@@ -102,6 +106,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    accountType: 'نوع الحساب',
+    selectYourLocation: 'حدد موقعك',
+    yourLocation: 'موقعك',
+    location: 'الموقع',
     countryDialCode: 'مفتاح الدولة',
     searchByCountryNameOrDialCode: 'بحث بإسم الدولة او مفتاح الاتصال',
     mobileNumber: 'رقم الجوال',
@@ -196,6 +204,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    accountType: 'Type de compte',
+    selectYourLocation: 'Sélectionnez votre emplacement',
+    yourLocation: 'Votre emplacement',
+    location: 'Emplacement',
     countryDialCode: 'Code de numérotation de pays',
     searchByCountryNameOrDialCode: 'Recherche par nom de pays ou code de numérotation',
     mobileNumber: 'Numéro de portable',
@@ -227,7 +239,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marquer comme lu',
     delete: 'Supprimer',
     avatar: 'Avatar',
-    changeProfileImage: 'Changer l\'image du profil',
+    changeProfileImage: 'Changer l\'image de profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas la permission d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Toujours n\'a pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
@@ -290,6 +302,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    accountType: 'Tipo de cuenta',
+    selectYourLocation: 'Seleccione su ubicación',
+    yourLocation: 'Tu ubicación',
+    location: 'Ubicación',
     countryDialCode: 'Código de marcación rural',
     searchByCountryNameOrDialCode: 'Búsqueda por nombre de país o código de marcación',
     mobileNumber: 'Número de teléfono móvil',
@@ -384,6 +400,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    accountType: 'Hesap tipi',
+    selectYourLocation: 'Konumunuzu seçin',
+    yourLocation: 'Konumunuz',
+    location: 'Konum',
     countryDialCode: 'Ülke arama kodu',
     searchByCountryNameOrDialCode: 'Ülke adına veya çevir koduna göre arama yapın',
     mobileNumber: 'Cep numarası',
@@ -481,6 +501,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.accountType,
+    required this.selectYourLocation,
+    required this.yourLocation,
+    required this.location,
     required this.countryDialCode,
     required this.searchByCountryNameOrDialCode,
     required this.mobileNumber,
@@ -575,6 +599,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String accountType;
+  final String selectYourLocation;
+  final String yourLocation;
+  final String location;
   final String countryDialCode;
   final String searchByCountryNameOrDialCode;
   final String mobileNumber;
@@ -668,6 +696,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        accountType: map['accountType']! as String,
+        selectYourLocation: map['selectYourLocation']! as String,
+        yourLocation: map['yourLocation']! as String,
+        location: map['location']! as String,
         countryDialCode: map['countryDialCode']! as String,
         searchByCountryNameOrDialCode: map['searchByCountryNameOrDialCode']! as String,
         mobileNumber: map['mobileNumber']! as String,
@@ -763,6 +795,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? accountType,
+    String? selectYourLocation,
+    String? yourLocation,
+    String? location,
     String? countryDialCode,
     String? searchByCountryNameOrDialCode,
     String? mobileNumber,
@@ -857,6 +893,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        accountType: accountType ?? this.accountType,
+        selectYourLocation: selectYourLocation ?? this.selectYourLocation,
+        yourLocation: yourLocation ?? this.yourLocation,
+        location: location ?? this.location,
         countryDialCode: countryDialCode ?? this.countryDialCode,
         searchByCountryNameOrDialCode: searchByCountryNameOrDialCode ?? this.searchByCountryNameOrDialCode,
         mobileNumber: mobileNumber ?? this.mobileNumber,
@@ -955,6 +995,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          accountType == other.accountType &&
+          selectYourLocation == other.selectYourLocation &&
+          yourLocation == other.yourLocation &&
+          location == other.location &&
           countryDialCode == other.countryDialCode &&
           searchByCountryNameOrDialCode == other.searchByCountryNameOrDialCode &&
           mobileNumber == other.mobileNumber &&
@@ -1050,6 +1094,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      accountType.hashCode ^
+      selectYourLocation.hashCode ^
+      yourLocation.hashCode ^
+      location.hashCode ^
       countryDialCode.hashCode ^
       searchByCountryNameOrDialCode.hashCode ^
       mobileNumber.hashCode ^

@@ -36,10 +36,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   List<Widget> get appBarActions => <Widget>[];
 
   List<Widget> get _appBarActionsWithProgress => <Widget>[
-        if (!emptyData && actionBarLoading)
-          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
-        else
-          ...appBarActions,
+        if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions,
       ];
 
   String title = '';
@@ -225,16 +222,16 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   void _myInitState() {
     if (homePage) {
-      if (AppLauncher.appWithFCM) {
+      if (AppLauncher.appConfig.withFCM) {
         ServiceFirebaseMessaging.requestPermission();
 
-        if (AppLauncher.appOnTokenRefresh != null) {
-          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appOnTokenRefresh!(token, ref, context));
+        if (AppLauncher.appConfig.onFCMTokenRefresh != null) {
+          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appConfig.onFCMTokenRefresh!(token, ref, context));
         }
       }
 
-      if (AppLauncher.appOnDynamicLink != null) {
-        ServiceDynamicLink.register((Uri uri) => AppLauncher.appOnDynamicLink!(uri, ref, context));
+      if (AppLauncher.appConfig.onDynamicLink != null) {
+        ServiceDynamicLink.register((Uri uri) => AppLauncher.appConfig.onDynamicLink!(uri, ref, context));
       }
     }
 
@@ -247,6 +244,12 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   @override
   Widget build(BuildContext context) {
+    if (homePage && AppLauncher.appConfig.onLocaleChange != null) {
+      ServiceLocale.onLocaleChange(ref, (previous, next) {
+        AppLauncher.appConfig.onLocaleChange!(previous, next, ref, context);
+        logger.w("Previous:" + (previous?.languageCode ?? "") + "\nNext:" + (next?.languageCode ?? ""));
+      });
+    }
     return Container(
       color: theme.scaffoldBackgroundColor,
       child: SafeArea(

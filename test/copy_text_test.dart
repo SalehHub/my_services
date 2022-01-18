@@ -4,7 +4,7 @@ import 'package:my_services/my_services.dart';
 Future<void> main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
   testWidgets('Test CopyTextWidget', (WidgetTester tester) async {
-    AppLauncher appLauncher = AppLauncher(testing: true, withFirebase: false, initGeneralState: false);
+    AppLauncher appLauncher = AppLauncher(testing: true, config: AppConfig(withFirebase: false), initGeneralState: false);
     await appLauncher.prepare();
 
     String copiedText = '';

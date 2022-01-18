@@ -44,12 +44,19 @@ class MyContainer extends StatelessWidget {
   }
 
   Widget buildBody() {
-    return MyInk(
-      onTap: onTap,
-      margin: margin ?? EdgeInsets.zero,
-      borderRadius: borderRadius,
-      child: buildChild(),
-    );
+    if (onTap != null) {
+      return MyInk(
+        onTap: onTap,
+        margin: margin ?? EdgeInsets.zero,
+        borderRadius: borderRadius,
+        child: buildChild(),
+      );
+    } else {
+      return Padding(
+        padding: margin ?? EdgeInsets.zero,
+        child: buildChild(),
+      );
+    }
   }
 
   Widget buildChild() {

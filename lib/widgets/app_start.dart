@@ -7,45 +7,15 @@ class AppLauncher {
   GeneralState _generalState = GeneralState();
   List<Override> _readyOverrides = [];
 
-  //
-  static bool get appWithFirebase => _appWithFirebase;
-  static bool _appWithFirebase = true;
-
-  static bool get appWithCrashlytics => _appWithCrashlytics;
-  static bool _appWithCrashlytics = true;
-
-  static bool get appWithFCM => _appWithFCM;
-  static bool _appWithFCM = true;
-
-  //
-  static Function(Uri uri, WidgetRef ref, BuildContext context)? get appOnDynamicLink => _appOnDynamicLink;
-  static Function(Uri uri, WidgetRef ref, BuildContext context)? _appOnDynamicLink;
-
-  //
-  static Function(String token, WidgetRef ref, BuildContext context)? get appOnTokenRefresh => _appOnTokenRefresh;
-  static Function(String token, WidgetRef ref, BuildContext context)? _appOnTokenRefresh;
-
-  //
-  static GenerateAppTitle? get appOnGenerateTitle => _appOnGenerateTitle;
-  static GenerateAppTitle? _appOnGenerateTitle;
-
-  //
   final bool testing;
 
   final Locale defaultLocale;
   final List<Locale> supportedLocales;
   final List<LocalizationsDelegate<dynamic>> delegates;
 
-  final bool withFirebase;
-  final bool withCrashlytics;
-  final bool withFCM;
-
-  //
-  final Function(Uri uri, WidgetRef ref, BuildContext context)? onDynamicLink;
-  final Function(String token, WidgetRef ref, BuildContext context)? onTokenRefresh;
-
-  //
-  final GenerateAppTitle? onGenerateTitle;
+  // App Config
+  static AppConfig get appConfig => _appConfig ?? AppConfig();
+  static AppConfig? _appConfig;
 
   //
   final bool initGeneralState;
@@ -61,6 +31,8 @@ class AppLauncher {
 
   final Overrides? overrides;
   final List<ProviderObserver>? observers;
+  //
+  final AppConfig? config;
 
   AppLauncher({
     //locale
@@ -76,29 +48,19 @@ class AppLauncher {
     //
     this.darkCardColor = const Color(0xff161B1F),
     this.lightCardColor = const Color(0xffffffff),
-    //firebase
-    this.withFirebase = true,
-    this.withCrashlytics = true,
-    this.withFCM = true,
     //providers
     this.initGeneralState = true,
     this.overrides,
     this.observers,
     //
-    this.onGenerateTitle,
-    //
-    this.onTokenRefresh,
-    this.onDynamicLink,
     //testing
     this.testing = false,
+    this.config,
   }) {
-    _appWithFirebase = withFirebase;
-    _appWithCrashlytics = withFirebase && withCrashlytics;
-    _appWithFCM = withFirebase && withFCM;
-    //
-    _appOnDynamicLink = onDynamicLink;
-    _appOnTokenRefresh = onTokenRefresh;
-    _appOnGenerateTitle = onGenerateTitle;
+    _appConfig = config?.copyWith(
+      withCrashlytics: config?.withFirebase == true && config?.withCrashlytics == true,
+      withFCM: config?.withFirebase == true && config?.withFCM == true,
+    );
 
     ServiceTheme.lightAccentColor = lightAccentColor;
     ServiceTheme.darkAccentColor = darkAccentColor;
@@ -118,11 +80,11 @@ class AppLauncher {
       WidgetsFlutterBinding.ensureInitialized();
     }
 
-    if (appWithFirebase) {
+    if (appConfig.withFirebase) {
       await Firebase.initializeApp();
     }
 
-    if (appWithCrashlytics) {
+    if (appConfig.withCrashlytics) {
       await ServiceFirebaseCrashlytics.register();
     }
 
@@ -163,7 +125,7 @@ class AppStart extends StatelessWidget {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        onGenerateTitle: AppLauncher.appOnGenerateTitle,
+        onGenerateTitle: AppLauncher.appConfig.onGenerateTitle,
         //
         localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,

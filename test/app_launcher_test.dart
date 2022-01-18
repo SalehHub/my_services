@@ -17,14 +17,16 @@ Future<void> main() async {
     expect(ServiceTheme.darkBgColor, null);
 
     //firebase
-    expect(AppLauncher.appWithFirebase, true);
-    expect(AppLauncher.appWithFCM, true);
-    expect(AppLauncher.appWithCrashlytics, true);
+    // AppConfig appConfig = const AppConfig();
+    expect(AppLauncher.appConfig.withFirebase, true);
+    expect(AppLauncher.appConfig.withFCM, true);
+    expect(AppLauncher.appConfig.withCrashlytics, true);
 
     AppLauncher appLauncher = AppLauncher(
       testing: true,
       initGeneralState: false,
-      withFirebase: false,
+      config: AppConfig(withFirebase: false),
+      // withFirebase: false,
       //
       defaultLocale: const Locale("test1"),
       supportedLocales: [const Locale("test1"), const Locale("test2")],
@@ -45,9 +47,9 @@ Future<void> main() async {
     expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
 
     //firebase
-    expect(AppLauncher.appWithFirebase, false);
-    expect(AppLauncher.appWithFCM, false);
-    expect(AppLauncher.appWithCrashlytics, false);
+    expect(AppLauncher.appConfig.withFirebase, false);
+    expect(AppLauncher.appConfig.withFCM, false);
+    expect(AppLauncher.appConfig.withCrashlytics, false);
 
     await appLauncher.prepare();
 
@@ -63,8 +65,8 @@ Future<void> main() async {
     expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
 
     //firebase
-    expect(AppLauncher.appWithFirebase, false);
-    expect(AppLauncher.appWithFCM, false);
-    expect(AppLauncher.appWithCrashlytics, false);
+    expect(AppLauncher.appConfig.withFirebase, false);
+    expect(AppLauncher.appConfig.withFCM, false);
+    expect(AppLauncher.appConfig.withCrashlytics, false);
   });
 }
