@@ -52,10 +52,13 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
 
   map_launcher: ^2.1.2
-  flutter_svg: ^1.0.1
+  flutter_svg: ^1.0.2
 
   app_links: ^2.2.0
   share_plus: ^3.0.4
+
+  google_maps_flutter: ^2.1.1
+  google_maps_cluster_manager: ^3.0.0+1
 
 dev_dependencies:
   flutter_sheet_localization_generator: ^5.1.7

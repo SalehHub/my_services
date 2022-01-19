@@ -31,6 +31,8 @@ export 'package:flutter_sheet_localization/flutter_sheet_localization.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:google_fonts/google_fonts.dart';
+export 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+export 'package:google_maps_flutter/google_maps_flutter.dart' hide MapType;
 export 'package:image_cropper/image_cropper.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:intl/intl.dart' hide TextDirection;
