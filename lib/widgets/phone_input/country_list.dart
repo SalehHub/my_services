@@ -41,7 +41,7 @@ class Countries {
   ///
   static List<Map<String, dynamic>> get countryList => _countryList;
 
-  static List<Map<String, dynamic>> _countryList = [
+  static final List<Map<String, dynamic>> _countryList = [
     {
       "num_code": "4",
       "alpha_2_code": "AF",

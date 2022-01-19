@@ -1,5 +1,4 @@
 import '../../my_services.dart';
-import 'country_model.dart';
 import 'util.dart';
 
 /// Creates a list of Countries with a search textfield.
@@ -83,7 +82,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300,
       width: 400,
       child: Column(
@@ -146,33 +145,33 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
   }
 }
 
-class _Flag extends StatelessWidget {
-  final Country? country;
-  final bool? useEmoji;
-
-  const _Flag({Key? key, this.country, this.useEmoji}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return country != null
-        ? Container(
-            color: Colors.red,
-            width: 50,
-            child: useEmoji!
-                ? Text(
-                    Utils.generateFlagEmojiUnicode(country?.alpha2Code ?? ''),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
-                  )
-                : country?.flagUri != null
-                    ? CircleAvatar(
-                        backgroundImage: AssetImage(
-                          country!.flagUri,
-                          package: 'intl_phone_number_input',
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-          )
-        : const SizedBox.shrink();
-  }
-}
+// class _Flag extends StatelessWidget {
+//   final Country? country;
+//   final bool? useEmoji;
+//
+//   const _Flag({Key? key, this.country, this.useEmoji}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return country != null
+//         ? Container(
+//             color: Colors.red,
+//             width: 50,
+//             child: useEmoji!
+//                 ? Text(
+//                     Utils.generateFlagEmojiUnicode(country?.alpha2Code ?? ''),
+//                     textAlign: TextAlign.center,
+//                     style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
+//                   )
+//                 : country?.flagUri != null
+//                     ? CircleAvatar(
+//                         backgroundImage: AssetImage(
+//                           country!.flagUri,
+//                           package: 'intl_phone_number_input',
+//                         ),
+//                       )
+//                     : const SizedBox.shrink(),
+//           )
+//         : const SizedBox.shrink();
+//   }
+// }

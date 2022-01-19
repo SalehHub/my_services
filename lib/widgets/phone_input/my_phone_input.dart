@@ -1,8 +1,6 @@
 import 'package:my_services/my_services.dart';
 
 import 'countries_search_list_widget.dart';
-import 'country_model.dart';
-import 'country_provider.dart';
 import 'item.dart';
 
 class MyPhoneInput extends StatelessWidget {
