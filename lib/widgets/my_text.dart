@@ -1,7 +1,8 @@
 import '../my_services.dart';
 
 class MyText extends StatelessWidget {
-  const MyText(this.text, {Key? key, this.margin = EdgeInsets.zero, this.style, this.bold = false, this.textAlign, this.maxLines, this.fontSize, this.color, this.shadows, this.overflow}) : super(key: key);
+  const MyText(this.text, {Key? key, this.margin = EdgeInsets.zero, this.style, this.bold = false, this.textAlign, this.maxLines, this.fontSize, this.color, this.shadows, this.overflow})
+      : super(key: key);
   final String? text;
   final bool bold;
   final TextStyle? style;

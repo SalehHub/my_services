@@ -3,8 +3,7 @@ import '../my_services.dart';
 class ServiceDialog {
   ServiceDialog._();
 
-  static dynamic show(
-      {required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
+  static dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<dynamic>(
         context: ServiceNav.context!,
         barrierDismissible: barrierDismissible,
@@ -41,16 +40,13 @@ class MyDialog extends StatelessWidget {
         title: Text(title, textAlign: TextAlign.center),
         children: children,
       );
-    } else if (child != null) {
-      return AlertDialog(
-        contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-        insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-        title: Text(title, textAlign: TextAlign.center),
-        content: SizedBox(width: double.maxFinite, child: child), //width: double.maxFinite in case the child was a ListView
-      );
     }
-
-    return const SizedBox();
+    return AlertDialog(
+      contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
+      insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+      title: Text(title, textAlign: TextAlign.center),
+      content: SizedBox(width: double.maxFinite, child: child), //width: double.maxFinite in case the child was a ListView
+    );
   }
 
   @override

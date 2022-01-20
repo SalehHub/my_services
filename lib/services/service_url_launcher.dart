@@ -27,7 +27,7 @@ class ServiceURLLauncher {
   }
 
   static Future<void> openTwitterUser(String username, BuildContext context) async {
-    return launchUrl('https://twitter.com/$username', context);
+    return launchUrl('https://twitter.com/$username');
   }
 
   static Future<void> openTwitterTag(String tag, BuildContext context) async {
@@ -35,10 +35,10 @@ class ServiceURLLauncher {
     _tag = Uri.encodeFull(_tag);
 
     // print(_tag);
-    return launchUrl('https://twitter.com/hashtag/$_tag?src=hashtag_click', context);
+    return launchUrl('https://twitter.com/hashtag/$_tag?src=hashtag_click');
   }
 
-  static Future<void> launchUrl(String url, BuildContext context) async {
+  static Future<void> launchUrl(String url) async {
     final bool result = await launchUniversalLinkIos(url);
 
     if (result == false) {

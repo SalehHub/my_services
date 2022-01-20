@@ -72,6 +72,34 @@ class MyContainer extends StatelessWidget {
   }
 
   Container buildContainer() {
+    Widget? image;
+
+    if (bgImageUrl != null && bgImageUrl?.trim() != "") {
+      image = Opacity(
+        opacity: bgImageOpacity ?? 1,
+        child: MyLoadingImage(
+          url: bgImageUrl!,
+          blurHash: bgImageBlurHash,
+          width: double.infinity,
+          height: double.infinity,
+        ),
+      );
+    }
+
+    Widget _child = Padding(padding: padding ?? EdgeInsets.zero, child: child);
+    if (image != null || gradient != null) {
+      _child = Stack(children: [
+        //bg image
+        if (image != null) image,
+
+        //gradient
+        if (gradient != null) Container(decoration: BoxDecoration(gradient: gradient)),
+
+        //child
+        Padding(padding: padding ?? EdgeInsets.zero, child: child),
+      ]);
+    }
+
     return Container(
       height: height,
       width: width,
@@ -79,27 +107,7 @@ class MyContainer extends StatelessWidget {
       decoration: getBoxDecoration(),
       child: ClipRRect(
         borderRadius: BorderRadius.circular((borderRadius?.topLeft.x ?? 0) - (borderWidth ?? 0)),
-        child: Stack(
-          children: [
-            //bg image
-            if (bgImageUrl != null && bgImageUrl?.trim() != "")
-              Opacity(
-                opacity: bgImageOpacity ?? 1,
-                child: MyLoadingImage(
-                  url: bgImageUrl!,
-                  blurHash: bgImageBlurHash,
-                  width: double.infinity,
-                  height: double.infinity,
-                ),
-              ),
-
-            //gradient
-            if (gradient != null) Container(decoration: BoxDecoration(gradient: gradient)),
-
-            //child
-            Positioned.fill(child: Padding(padding: padding ?? EdgeInsets.zero, child: child))
-          ],
-        ),
+        child: _child,
       ),
     );
   }

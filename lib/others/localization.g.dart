@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    theMap: 'The Map',
     accountType: 'Account type',
     selectYourLocation: 'Select your location',
     yourLocation: 'Your location',
@@ -106,6 +107,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    theMap: 'الخريطة',
     accountType: 'نوع الحساب',
     selectYourLocation: 'حدد موقعك',
     yourLocation: 'موقعك',
@@ -204,6 +206,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    theMap: 'La carte',
     accountType: 'Type de compte',
     selectYourLocation: 'Sélectionnez votre emplacement',
     yourLocation: 'Votre emplacement',
@@ -302,6 +305,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    theMap: 'El mapa',
     accountType: 'Tipo de cuenta',
     selectYourLocation: 'Seleccione su ubicación',
     yourLocation: 'Tu ubicación',
@@ -400,6 +404,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    theMap: 'Harita',
     accountType: 'Hesap tipi',
     selectYourLocation: 'Konumunuzu seçin',
     yourLocation: 'Konumunuz',
@@ -501,6 +506,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.theMap,
     required this.accountType,
     required this.selectYourLocation,
     required this.yourLocation,
@@ -599,6 +605,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String theMap;
   final String accountType;
   final String selectYourLocation;
   final String yourLocation;
@@ -696,6 +703,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        theMap: map['theMap']! as String,
         accountType: map['accountType']! as String,
         selectYourLocation: map['selectYourLocation']! as String,
         yourLocation: map['yourLocation']! as String,
@@ -795,6 +803,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? theMap,
     String? accountType,
     String? selectYourLocation,
     String? yourLocation,
@@ -893,6 +902,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        theMap: theMap ?? this.theMap,
         accountType: accountType ?? this.accountType,
         selectYourLocation: selectYourLocation ?? this.selectYourLocation,
         yourLocation: yourLocation ?? this.yourLocation,
@@ -995,6 +1005,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          theMap == other.theMap &&
           accountType == other.accountType &&
           selectYourLocation == other.selectYourLocation &&
           yourLocation == other.yourLocation &&
@@ -1094,6 +1105,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      theMap.hashCode ^
       accountType.hashCode ^
       selectYourLocation.hashCode ^
       yourLocation.hashCode ^
