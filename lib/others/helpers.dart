@@ -4,6 +4,8 @@ final Logger logger = Logger();
 
 class Helpers {
   static TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
+  static TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;
+  static TextAlign getTextAlignByLang(BuildContext context) => ServiceLocale.isAr(context) ? TextAlign.right : TextAlign.left;
 
   static bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
 
