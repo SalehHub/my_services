@@ -1,7 +1,8 @@
 import '../my_services.dart';
 
 class MyText extends StatelessWidget {
-  const MyText(this.text, {Key? key, this.margin = EdgeInsets.zero, this.style, this.bold = false, this.textAlign, this.maxLines, this.fontSize, this.color, this.shadows, this.overflow})
+  const MyText(this.text,
+      {Key? key, this.margin = EdgeInsets.zero, this.style, this.bold = false, this.textAlign, this.maxLines, this.fontSize, this.color, this.shadows, this.overflow})
       : super(key: key);
   final String? text;
   final bool bold;
@@ -16,7 +17,7 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? _textStyle = style ?? getTextTheme(context).button;
+    TextStyle? _textStyle = style ?? getTextTheme(context).bodyText2;
     if (bold) {
       _textStyle = _textStyle?.copyWith(fontWeight: FontWeight.bold);
     }

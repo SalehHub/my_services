@@ -1,18 +1,21 @@
 import '../my_services.dart';
 
 class MyButton extends ConsumerWidget {
-  const MyButton({Key? key, this.id, required this.text, this.onPressed, this.color, this.isTextButton = false, this.isLoading = true}) : super(key: key);
+  const MyButton({Key? key, this.id, required this.text, this.onPressed, this.color, this.isTextButton = false, this.withLoading = true}) : super(key: key);
   final String text;
-  final String? id;
+  final dynamic id;
   final Color? color;
-  final bool isLoading;
+  final bool withLoading;
   final bool isTextButton;
   final AsyncCallback? onPressed;
+  final double progressIndicatorSize = 20;
+
+  String get _id => id?.toString() ?? text;
 
   Widget _child(BuildContext context, WidgetRef ref) {
-    if (isLoading) {
-      if (ServiceLoader.isLoading(ref, Helpers.getMd5(id ?? text))) {
-        return const MyProgressIndicator(color: Colors.white);
+    if (withLoading) {
+      if (ServiceLoader.isLoading(ref, Helpers.getMd5(_id))) {
+        return MyProgressIndicator(color: Colors.white, width: progressIndicatorSize, height: progressIndicatorSize);
       }
     }
 
@@ -21,8 +24,8 @@ class MyButton extends ConsumerWidget {
 
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
     if (onPressed != null) {
-      if (isLoading) {
-        ServiceLoader.setLoading(ref, Helpers.getMd5(id ?? text), true);
+      if (withLoading) {
+        ServiceLoader.setLoading(ref, Helpers.getMd5(_id), true);
       }
 
       try {
@@ -31,18 +34,34 @@ class MyButton extends ConsumerWidget {
         logger.e(e, s);
       }
 
-      if (isLoading) {
-        ServiceLoader.setLoading(ref, Helpers.getMd5(id ?? text), false);
+      if (withLoading) {
+        ServiceLoader.setLoading(ref, Helpers.getMd5(_id), false);
       }
     }
   }
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget _button(BuildContext context, WidgetRef ref) {
     if (isTextButton) {
       return TextButton(onPressed: () => _onPressed(context, ref), child: _child(context, ref));
     }
 
     return ElevatedButton(onPressed: () => _onPressed(context, ref), child: _child(context, ref));
+  }
+
+  Widget _animated(BuildContext context, WidgetRef ref) {
+    if (withLoading) {
+      return AnimatedSize(
+        // alignment: Alignment.centerLeft,
+        duration: const Duration(milliseconds: 200),
+        child: _button(context, ref),
+      );
+    }
+
+    return _button(context, ref);
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return _animated(context, ref);
   }
 }
