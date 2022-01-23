@@ -66,7 +66,7 @@ class MyTextInputBorder extends StatelessWidget {
 
   Positioned buildLabel(String label, BuildContext context) {
     return Positioned(
-      top: -11,
+      top: -12,
       child: Container(
         margin: labelMargin,
         padding: const EdgeInsets.symmetric(horizontal: 5),
