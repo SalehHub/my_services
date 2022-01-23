@@ -1,9 +1,10 @@
 import '../my_services.dart';
 
 class MyProgressIndicator extends StatelessWidget {
-  const MyProgressIndicator({Key? key, this.margin = EdgeInsets.zero}) : super(key: key);
+  const MyProgressIndicator({Key? key, this.color , this.margin = EdgeInsets.zero}) : super(key: key);
 
   final EdgeInsets margin;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class MyProgressIndicator extends StatelessWidget {
         padding: margin,
         child: CircularProgressIndicator(
           valueColor: AlwaysStoppedAnimation<Color>(getTheme(context).toggleableActiveColor),
-          backgroundColor: isDark(context) ? Colors.white : null,
+          backgroundColor:color ?? (isDark(context) ? Colors.white : null),
         ),
       ),
     );

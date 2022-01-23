@@ -4,6 +4,8 @@ class MyContainer extends StatelessWidget {
   final GestureTapCallback? onTap;
   final double? width;
   final double? height;
+  final double? minHeight;
+  final double? maxHeight;
   final double? borderWidth;
   final Color? borderColor;
   final Color? bgColor;
@@ -36,6 +38,8 @@ class MyContainer extends StatelessWidget {
     this.bgImageBlurHash,
     this.elevation,
     this.alignment,
+    this.minHeight,
+    this.maxHeight,
   }) : super(key: key);
 
   @override
@@ -71,6 +75,20 @@ class MyContainer extends StatelessWidget {
     return buildContainer();
   }
 
+  BoxConstraints? getBoxConstraints() {
+    if (maxHeight != null && minHeight != null) {
+      return null;
+    }
+    BoxConstraints boxConstraints = const BoxConstraints();
+    if (maxHeight != null) {
+      boxConstraints = boxConstraints.copyWith(maxHeight: maxHeight);
+    }
+    if (minHeight != null) {
+      boxConstraints = boxConstraints.copyWith(minHeight: minHeight);
+    }
+    return boxConstraints;
+  }
+
   Container buildContainer() {
     Widget? image;
 
@@ -104,6 +122,7 @@ class MyContainer extends StatelessWidget {
       height: height,
       width: width,
       alignment: alignment,
+      constraints: getBoxConstraints(),
       decoration: getBoxDecoration(),
       child: ClipRRect(
         borderRadius: BorderRadius.circular((borderRadius?.topLeft.x ?? 0) - (borderWidth ?? 0)),
@@ -122,5 +141,6 @@ class MyContainer extends StatelessWidget {
         border: (borderWidth == null && borderColor == null) ? null : Border.all(width: borderWidth ?? 0, color: borderColor ?? Colors.transparent),
       );
     }
+    return null;
   }
 }

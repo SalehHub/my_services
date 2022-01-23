@@ -16,7 +16,7 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle? _textStyle = style ?? getTextTheme(context).bodyText1;
+    TextStyle? _textStyle = style ?? getTextTheme(context).button;
     if (bold) {
       _textStyle = _textStyle?.copyWith(fontWeight: FontWeight.bold);
     }

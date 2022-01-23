@@ -189,6 +189,30 @@ class ServiceTheme {
   static ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
   static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => ref.read(generalStateProvider.notifier).setThemeMode(context, value);
   static void toggleThemeMode(dynamic ref, BuildContext context) => ref.read(generalStateProvider.notifier).toggleThemeMode(context);
+
+  static String getThemeLabel(ThemeMode themeMode) {
+    if (themeMode == ThemeMode.system) {
+      return getMyServicesLabels(ServiceNav.context!).dependsOnSystem;
+    } else if (themeMode == ThemeMode.dark) {
+      return getMyServicesLabels(ServiceNav.context!).darkMode;
+    } else if (themeMode == ThemeMode.light) {
+      return getMyServicesLabels(ServiceNav.context!).lightMode;
+    }
+
+    return "";
+  }
+
+  static IconData getThemeIcon(ThemeMode themeMode) {
+    if (themeMode == ThemeMode.system) {
+      return Mdi.cellphone;
+    } else if (themeMode == ThemeMode.dark) {
+      return Mdi.weatherNight;
+    } else if (themeMode == ThemeMode.light) {
+      return Mdi.weatherSunny;
+    }
+
+    return Mdi.cellphone;
+  }
 }
 
 //////Theme Helpers

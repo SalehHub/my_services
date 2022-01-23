@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    save: 'Save',
+    add: 'Add',
+    reject: 'Reject',
+    accept: 'Accept',
     theMap: 'The Map',
     accountType: 'Account type',
     selectYourLocation: 'Select your location',
@@ -107,6 +111,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    save: 'حفظ',
+    add: 'إضافة',
+    reject: 'رفض',
+    accept: 'قبول',
     theMap: 'الخريطة',
     accountType: 'نوع الحساب',
     selectYourLocation: 'حدد موقعك',
@@ -206,6 +214,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    save: 'Sauvegarder',
+    add: 'Ajouter',
+    reject: 'Rejeter',
+    accept: 'J\'accepte',
     theMap: 'La carte',
     accountType: 'Type de compte',
     selectYourLocation: 'Sélectionnez votre emplacement',
@@ -305,6 +317,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. S\'il vous plaît prenez une capture d\'écran et contactez-nous',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    save: 'Ahorrar',
+    add: 'Agregar',
+    reject: 'Rechazar',
+    accept: 'Aceptar',
     theMap: 'El mapa',
     accountType: 'Tipo de cuenta',
     selectYourLocation: 'Seleccione su ubicación',
@@ -366,7 +382,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
@@ -404,6 +420,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor, tome una captura de pantalla y contáctenos.',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    save: 'Kayıt etmek',
+    add: 'Eklemek',
+    reject: 'Reddetmek',
+    accept: 'Kabul',
     theMap: 'Harita',
     accountType: 'Hesap tipi',
     selectYourLocation: 'Konumunuzu seçin',
@@ -506,6 +526,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.save,
+    required this.add,
+    required this.reject,
+    required this.accept,
     required this.theMap,
     required this.accountType,
     required this.selectYourLocation,
@@ -605,6 +629,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String save;
+  final String add;
+  final String reject;
+  final String accept;
   final String theMap;
   final String accountType;
   final String selectYourLocation;
@@ -703,6 +731,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        save: map['save']! as String,
+        add: map['add']! as String,
+        reject: map['reject']! as String,
+        accept: map['accept']! as String,
         theMap: map['theMap']! as String,
         accountType: map['accountType']! as String,
         selectYourLocation: map['selectYourLocation']! as String,
@@ -803,6 +835,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? save,
+    String? add,
+    String? reject,
+    String? accept,
     String? theMap,
     String? accountType,
     String? selectYourLocation,
@@ -902,6 +938,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        save: save ?? this.save,
+        add: add ?? this.add,
+        reject: reject ?? this.reject,
+        accept: accept ?? this.accept,
         theMap: theMap ?? this.theMap,
         accountType: accountType ?? this.accountType,
         selectYourLocation: selectYourLocation ?? this.selectYourLocation,
@@ -1005,6 +1045,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          save == other.save &&
+          add == other.add &&
+          reject == other.reject &&
+          accept == other.accept &&
           theMap == other.theMap &&
           accountType == other.accountType &&
           selectYourLocation == other.selectYourLocation &&
@@ -1105,6 +1149,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      save.hashCode ^
+      add.hashCode ^
+      reject.hashCode ^
+      accept.hashCode ^
       theMap.hashCode ^
       accountType.hashCode ^
       selectYourLocation.hashCode ^
