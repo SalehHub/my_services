@@ -53,7 +53,7 @@ class MyGenerator {
     if ((line.contains("//$imagePickerKey") || line.contains("#$imagePickerKey")) && imagePicker == false) {
       return false;
     }
-    
+
     if ((line.contains("//$skipGeneratorKey") || line.contains("#$skipGeneratorKey"))) {
       return false;
     }
