@@ -54,7 +54,9 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
       final labels = getMyServicesLabels(context);
 
       return GestureDetector(
-        onTap: AppSettings.openNotificationSettings,
+        onTap: () {
+          AppSettings.openNotificationSettings(); //appSettings
+        },
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
           padding: const EdgeInsets.all(20),
@@ -75,7 +77,7 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
               const SizedBox(height: 20),
               const IconButton(
                 color: Colors.white,
-                onPressed: AppSettings.openNotificationSettings,
+                onPressed: null,
                 icon: Icon(iconSettings),
               )
             ],

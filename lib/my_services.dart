@@ -7,7 +7,7 @@ export 'dart:typed_data';
 export 'dart:ui' show ImageFilter;
 
 export 'package:app_links/app_links.dart'; //appLinks
-export 'package:app_settings/app_settings.dart';
+export 'package:app_settings/app_settings.dart'; //appSettings
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';
 export 'package:device_info/device_info.dart';
