@@ -52,7 +52,7 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
 
   map_launcher: ^2.1.2
-  flutter_svg: ^1.0.2
+  flutter_svg: ^1.0.3
 
   app_links: ^2.2.0
   share_plus: ^3.0.4

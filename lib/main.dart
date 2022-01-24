@@ -1,10 +1,13 @@
 //skipGenerator
 import 'dart:io';
 
-void main() {
-  String newFolderName = "../my_services";
-  String sourceFolder = "../";
-  MyGenerator.generate(newFolderName, sourceFolder);
+// void main() {
+//   String newFolderName = "../my_services";
+//   String sourceFolder = "../";
+//   MyGenerator.generate(newFolderName, sourceFolder);
+// }
+extension FileExtention on FileSystemEntity {
+  String get name => path.split("/").last;
 }
 
 class MyGenerator {
@@ -28,6 +31,7 @@ class MyGenerator {
       newFolder.deleteSync(recursive: true);
     }
     newFolder.createSync(recursive: true);
+    print(newFolder.absolute.path);
     return newFolder.path;
   }
 
@@ -66,27 +70,45 @@ class MyGenerator {
   }
 
   static void generateFiles(newFolderPath, sourceFolder) {
-    var lib = Directory("./");
+    var lib = Directory(sourceFolder + "/lib");
     copyFiles(lib, newFolderPath, sourceFolder);
+
+    var from = Directory(sourceFolder + "/flags");
+    var to = Directory(newFolderPath + "/flags");
+    copyFolder(from, to);
+  }
+
+  static copyFolder(Directory from, Directory to) {
+    to.createSync();
+    for (FileSystemEntity file in from.listSync()) {
+      if (file is File) {
+        file.copySync(to.path + "/" + file.name);
+      }
+    }
   }
 
   static void copyFiles(Directory folder, String newFolderPath, sourceFolder) {
+    String folderPath = folder.path.replaceAll(sourceFolder, "");
     for (FileSystemEntity file in folder.listSync()) {
-      if (file is File) {
-        var lines = file.readAsLinesSync();
-        if (shouldGenerate(lines.first)) {
-          var f = File(newFolderPath + "/lib/" + file.path);
-          f.createSync(recursive: true);
-          var newFile = StringBuffer();
-          for (String line in lines) {
-            if (shouldGenerate(line)) {
-              newFile.writeln(line);
+      try {
+        if (file is File) {
+          var lines = file.readAsLinesSync();
+          if (shouldGenerate(lines.first)) {
+            var f = File(newFolderPath + folderPath + "/" + file.name);
+            f.createSync(recursive: true);
+            var newFile = StringBuffer();
+            for (String line in lines) {
+              if (shouldGenerate(line)) {
+                newFile.writeln(line);
+              }
             }
+            f.writeAsStringSync(newFile.toString());
           }
-          f.writeAsStringSync(newFile.toString());
+        } else if (file is Directory) {
+          copyFiles(file, newFolderPath, sourceFolder);
         }
-      } else if (file is Directory) {
-        copyFiles(file, newFolderPath, sourceFolder);
+      } catch (e, s) {
+        print(e);
       }
     }
   }
