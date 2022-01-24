@@ -16,7 +16,7 @@ dependencies:
 
   google_fonts: ^2.2.0
 
-  firebase_core: ^1.11.0
+  firebase_core: ^1.11.0 #firebaseCore
   firebase_messaging: ^11.2.5 #firebaseMessaging
   firebase_crashlytics: ^2.4.5 #firebaseCrashlytics
 

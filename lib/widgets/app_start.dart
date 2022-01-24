@@ -89,7 +89,7 @@ class AppLauncher {
     }
 
     if (appConfig.withFirebase) {
-      await Firebase.initializeApp();
+      await Firebase.initializeApp(); //firebaseCore
     }
 
     if (appConfig.withCrashlytics) {

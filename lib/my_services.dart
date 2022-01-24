@@ -12,7 +12,7 @@ export 'package:cached_network_image/cached_network_image.dart' hide ErrorListen
 export 'package:crypto/crypto.dart';
 export 'package:device_info/device_info.dart';
 export 'package:dio/dio.dart';
-export 'package:firebase_core/firebase_core.dart';
+export 'package:firebase_core/firebase_core.dart'; //firebaseCore
 export 'package:firebase_crashlytics/firebase_crashlytics.dart'; //firebaseCrashlytics
 export 'package:firebase_messaging/firebase_messaging.dart'; //firebaseMessaging
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
