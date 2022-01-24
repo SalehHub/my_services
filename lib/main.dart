@@ -4,7 +4,19 @@ import 'dart:io';
 void main() {
   String newFolderName = "../my_services";
   String sourceFolder = "../";
-  MyGenerator.generate(newFolderName, sourceFolder, []);
+  MyGenerator.generate(
+    newFolderName,
+    sourceFolder,
+    [
+      Settings.googleMaps,
+      Settings.imagePicker,
+      Settings.photoView,
+      Settings.sharePlus,
+      Settings.mapLauncher,
+      // Settings.appLinks,
+      Settings.skipGenerator,
+    ],
+  );
 }
 
 extension FileExtention on FileSystemEntity {
@@ -14,6 +26,10 @@ extension FileExtention on FileSystemEntity {
 enum Settings {
   googleMaps,
   imagePicker,
+  photoView,
+  sharePlus,
+  mapLauncher,
+  appLinks,
   skipGenerator,
 }
 
@@ -56,6 +72,24 @@ class MyGenerator {
     f.writeAsStringSync(newPubspec.toString());
   }
 
+  static String cleanFile(String contents) {
+    String t = contents;
+    for (var s in _toRemove) {
+      String ss = "start-${s.name}";
+      String es = "end-${s.name}";
+      int start = t.lastIndexOf(ss);
+      int end = t.lastIndexOf(es);
+      if (start == -1 || end == -1) {
+        continue;
+      }
+      String bad = t.substring(start, end + es.length);
+      String result = t.replaceAll(bad, "");
+      t = result;
+    }
+
+    return t;
+  }
+
   static bool shouldGenerate(String line) {
     for (var s in _toRemove) {
       if ((line.contains("//${s.name}") || line.contains("#${s.name}"))) {
@@ -66,6 +100,7 @@ class MyGenerator {
   }
 
   static void pubGet() {
+    Process.run("flutter", ['clean'], workingDirectory: _newFolderPath);
     Process.run("flutter", ['pub', 'get'], workingDirectory: _newFolderPath);
   }
 
@@ -97,12 +132,13 @@ class MyGenerator {
             var f = File(newFolderPath + folderPath + "/" + file.name);
             f.createSync(recursive: true);
             var newFile = StringBuffer();
+
             for (String line in lines) {
               if (shouldGenerate(line)) {
                 newFile.writeln(line);
               }
             }
-            f.writeAsStringSync(newFile.toString());
+            f.writeAsStringSync(cleanFile(newFile.toString()));
           }
         } else if (file is Directory) {
           copyFiles(file, newFolderPath, sourceFolder);
