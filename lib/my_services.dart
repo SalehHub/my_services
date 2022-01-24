@@ -6,15 +6,15 @@ export 'dart:math';
 export 'dart:typed_data';
 export 'dart:ui' show ImageFilter;
 
-export 'package:app_links/app_links.dart';
+export 'package:app_links/app_links.dart'; //appLinks
 export 'package:app_settings/app_settings.dart';
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';
 export 'package:device_info/device_info.dart';
 export 'package:dio/dio.dart';
 export 'package:firebase_core/firebase_core.dart';
-export 'package:firebase_crashlytics/firebase_crashlytics.dart';
-export 'package:firebase_messaging/firebase_messaging.dart';
+export 'package:firebase_crashlytics/firebase_crashlytics.dart'; //firebaseCrashlytics
+export 'package:firebase_messaging/firebase_messaging.dart'; //firebaseMessaging
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/foundation.dart' hide binarySearch, mergeSort;
 export 'package:flutter/gestures.dart';
@@ -29,7 +29,7 @@ export 'package:flutter_image_compress/flutter_image_compress.dart'; //imagePick
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError;
 export 'package:flutter_sheet_localization/flutter_sheet_localization.dart';
-export 'package:flutter_svg/flutter_svg.dart';
+export 'package:flutter_svg/flutter_svg.dart'; //flutterSvg
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:google_fonts/google_fonts.dart';
 //
@@ -40,16 +40,19 @@ export 'package:image_picker/image_picker.dart'; //imagePicker
 //
 export 'package:intl/intl.dart' hide TextDirection;
 export 'package:logger/logger.dart';
-export 'package:map_launcher/map_launcher.dart';
+export 'package:map_launcher/map_launcher.dart'; //mapLauncher
 export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
 export 'package:package_info/package_info.dart';
 export 'package:path/path.dart' hide Style, context;
 export 'package:path_provider/path_provider.dart';
-export 'package:photo_view/photo_view.dart';
-export 'package:photo_view/photo_view_gallery.dart';
-export 'package:share_plus/share_plus.dart';
-export 'package:smooth_page_indicator/smooth_page_indicator.dart';
+//
+export 'package:photo_view/photo_view.dart'; //photoView
+export 'package:photo_view/photo_view_gallery.dart'; //photoView
+//
+
+export 'package:share_plus/share_plus.dart'; //sharePlus
+export 'package:smooth_page_indicator/smooth_page_indicator.dart'; //photoView
 export 'package:sqflite/sqflite.dart';
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';

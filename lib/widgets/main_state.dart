@@ -36,7 +36,10 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   List<Widget> get appBarActions => <Widget>[];
 
   List<Widget> get _appBarActionsWithProgress => <Widget>[
-        if (!emptyData && actionBarLoading) Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator()) else ...appBarActions,
+        if (!emptyData && actionBarLoading)
+          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
+        else
+          ...appBarActions,
       ];
 
   String title = '';
@@ -223,15 +226,15 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   void _myInitState() {
     if (homePage) {
       if (AppLauncher.appConfig.withFCM) {
-        ServiceFirebaseMessaging.requestPermission();
+        ServiceFirebaseMessaging.requestPermission(); //firebaseMessaging
 
         if (AppLauncher.appEvents.onFCMTokenRefresh != null) {
-          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appEvents.onFCMTokenRefresh!(token, ref, context));
+          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appEvents.onFCMTokenRefresh!(token, ref, context)); //firebaseMessaging
         }
       }
 
       if (AppLauncher.appEvents.onDynamicLink != null) {
-        ServiceDynamicLink.register((Uri uri) => AppLauncher.appEvents.onDynamicLink!(uri, ref, context));
+        ServiceDynamicLink.register((Uri uri) => AppLauncher.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
       }
     }
 

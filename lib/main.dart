@@ -13,7 +13,10 @@ void main() {
       Settings.photoView,
       Settings.sharePlus,
       Settings.mapLauncher,
-      // Settings.appLinks,
+      Settings.appLinks,
+      Settings.flutterSvg,
+      Settings.firebaseCrashlytics,
+      Settings.firebaseMessaging,
       Settings.skipGenerator,
     ],
   );
@@ -30,6 +33,9 @@ enum Settings {
   sharePlus,
   mapLauncher,
   appLinks,
+  flutterSvg,
+  firebaseCrashlytics,
+  firebaseMessaging,
   skipGenerator,
 }
 

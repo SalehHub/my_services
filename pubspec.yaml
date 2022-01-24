@@ -17,8 +17,8 @@ dependencies:
   google_fonts: ^2.2.0
 
   firebase_core: ^1.11.0
-  firebase_messaging: ^11.2.5
-  firebase_crashlytics: ^2.4.5
+  firebase_messaging: ^11.2.5 #firebaseMessaging
+  firebase_crashlytics: ^2.4.5 #firebaseCrashlytics
 
   logger: ^1.1.0
   url_launcher: ^6.0.18
@@ -48,14 +48,14 @@ dependencies:
   image_picker: ^0.8.4+4 #imagePicker
   flutter_image_compress: ^1.1.0 #imagePicker
 
-  photo_view: ^0.13.0
-  smooth_page_indicator: ^1.0.0+2
+  photo_view: ^0.13.0 #photoView
+  smooth_page_indicator: ^1.0.0+2 #photoView
 
-  map_launcher: ^2.1.2
-  flutter_svg: ^1.0.3
+  map_launcher: ^2.1.2 #mapLauncher
+  flutter_svg: ^1.0.3 #flutterSvg
 
-  app_links: ^2.2.0
-  share_plus: ^3.0.4
+  app_links: ^2.2.0 #appLinks
+  share_plus: ^3.0.4 #sharePlus
 
   google_maps_flutter: ^2.1.1 #googleMaps
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps

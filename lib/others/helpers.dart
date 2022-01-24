@@ -177,7 +177,7 @@ class Helpers {
     return '';
   }
 
-  //
+  //start-mapLauncher
   static Future<void> openMap(double lat, double lng, String? title, [BuildContext? context]) async {
     final Coords coords = Coords(lat, lng);
     final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;
@@ -187,6 +187,17 @@ class Helpers {
     }
 
     MyServicesLocalizationsData labels = getMyServicesLabels((ServiceNav.context ?? context)!);
+
+    _buildIcon(map) {
+      //start-flutterSvg
+      return SvgPicture.asset(map.icon, fit: BoxFit.cover, height: 30, width: 30);
+      //end-flutterSvg
+      if (map == MapType.google) {
+        return const Icon(Mdi.googleMaps, size: 30);
+      } else {
+        return const Icon(Mdi.mapMarkerCircle, size: 30);
+      }
+    }
 
     ServiceDialog.show(
         title: labels.chooseMapApp,
@@ -205,10 +216,7 @@ class Helpers {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
             child: ListTile(
               shape: ServiceTheme.circularBorderRadius10,
-              leading: ClipRRect(
-                borderRadius: ServiceTheme.borderRadius,
-                child: SvgPicture.asset(map.icon, fit: BoxFit.cover, height: 30, width: 30),
-              ),
+              leading: ClipRRect(borderRadius: ServiceTheme.borderRadius, child: _buildIcon(map)),
               title: Text(mapName),
               onTap: () => map.showMarker(coords: coords, title: title ?? ""),
             ),
@@ -216,6 +224,6 @@ class Helpers {
         }).toList());
   }
 
-  //
+  //end-mapLauncher
 
 }

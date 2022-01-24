@@ -93,7 +93,7 @@ class AppLauncher {
     }
 
     if (appConfig.withCrashlytics) {
-      await ServiceFirebaseCrashlytics.register();
+      await ServiceFirebaseCrashlytics.register(); //firebaseCrashlytics
     }
 
     if (initGeneralState) {

@@ -1,3 +1,4 @@
+//appLinks
 import '../my_services.dart';
 
 typedef OnAppLinkFunction = void Function(Uri urt);
