@@ -44,9 +44,9 @@ dependencies:
   sqflite: ^2.0.2
   dio: ^4.0.4
 
-  image_cropper: ^1.4.1
-  image_picker: ^0.8.4+4
-  flutter_image_compress: ^1.1.0
+  image_cropper: ^1.4.1 #imagePicker
+  image_picker: ^0.8.4+4 #imagePicker
+  flutter_image_compress: ^1.1.0 #imagePicker
 
   photo_view: ^0.13.0
   smooth_page_indicator: ^1.0.0+2
@@ -57,8 +57,8 @@ dependencies:
   app_links: ^2.2.0
   share_plus: ^3.0.4
 
-  google_maps_flutter: ^2.1.1
-  google_maps_cluster_manager: ^3.0.0+1
+  google_maps_flutter: ^2.1.1 #googleMaps
+  google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
 dev_dependencies:
   flutter_sheet_localization_generator: ^5.1.7

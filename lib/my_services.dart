@@ -56,7 +56,7 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:uuid/uuid.dart';
 
 export 'databases/general_key_value_database.dart';
-export 'main.dart';
+export 'main.dart'; //skipGenerator
 export 'models/exports.dart';
 export 'others/exports.dart';
 export 'providers/exports.dart';

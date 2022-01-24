@@ -1,3 +1,4 @@
+//skipGenerator
 import 'dart:io';
 
 void main() {
@@ -8,13 +9,17 @@ void main() {
 
 class MyGenerator {
   static bool googleMaps = false;
+  static String googleMapsKey = "googleMaps";
   static bool imagePicker = false;
+  static String imagePickerKey = "imagePicker";
+
+  static String skipGeneratorKey = "skipGenerator";
 
   static void generate(newFolderPath, sourceFolder) {
     createNewFolderName(newFolderPath);
     generatePubspecFile(newFolderPath, sourceFolder);
-    // generateFiles(newFolderPath);
-    // pubGet(newFolderPath);
+    generateFiles(newFolderPath, sourceFolder);
+    pubGet(newFolderPath);
   }
 
   static String createNewFolderName(newFolderPath) {
@@ -35,17 +40,21 @@ class MyGenerator {
         newPubspec.writeln(line);
       }
     }
-    var f = File(newFolderPath + "/" + pubspec.path);
-    f.createSync(recursive: true);
+    var f = File(newFolderPath + "/pubspec.yaml");
+    f.createSync();
     f.writeAsStringSync(newPubspec.toString());
   }
 
   static bool shouldGenerate(String line) {
-    if (line.contains("googleMaps") && googleMaps == false) {
+    if ((line.contains("//$googleMapsKey") || line.contains("#$googleMapsKey")) && googleMaps == false) {
       return false;
     }
 
-    if (line.contains("imagePicker") && imagePicker == false) {
+    if ((line.contains("//$imagePickerKey") || line.contains("#$imagePickerKey")) && imagePicker == false) {
+      return false;
+    }
+    
+    if ((line.contains("//$skipGeneratorKey") || line.contains("#$skipGeneratorKey"))) {
       return false;
     }
 
@@ -56,17 +65,17 @@ class MyGenerator {
     Process.run("flutter", ['pub', 'get'], workingDirectory: newFolderPath);
   }
 
-  static void generateFiles(newFolderPath) {
-    var lib = Directory("lib");
-    copyFiles(lib, newFolderPath);
+  static void generateFiles(newFolderPath, sourceFolder) {
+    var lib = Directory("./");
+    copyFiles(lib, newFolderPath, sourceFolder);
   }
 
-  static void copyFiles(Directory folder, String newFolderPath) {
+  static void copyFiles(Directory folder, String newFolderPath, sourceFolder) {
     for (FileSystemEntity file in folder.listSync()) {
       if (file is File) {
         var lines = file.readAsLinesSync();
         if (shouldGenerate(lines.first)) {
-          var f = File(newFolderPath + "/" + file.path);
+          var f = File(newFolderPath + "/lib/" + file.path);
           f.createSync(recursive: true);
           var newFile = StringBuffer();
           for (String line in lines) {
@@ -77,7 +86,7 @@ class MyGenerator {
           f.writeAsStringSync(newFile.toString());
         }
       } else if (file is Directory) {
-        copyFiles(file, newFolderPath);
+        copyFiles(file, newFolderPath, sourceFolder);
       }
     }
   }
