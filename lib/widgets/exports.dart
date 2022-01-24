@@ -1,6 +1,6 @@
 export 'app_start.dart';
 export 'copy_text.dart';
-export 'google_maps_location_picker.dart';
+export 'google_maps_location_picker.dart'; //googleMaps
 export 'main_state.dart';
 export 'main_state_empty_widget.dart';
 export 'main_state_error_widget.dart';
