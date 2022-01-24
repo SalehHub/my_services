@@ -1,32 +1,39 @@
 //skipGenerator
 import 'dart:io';
 
-// void main() {
-//   String newFolderName = "../my_services";
-//   String sourceFolder = "../";
-//   MyGenerator.generate(newFolderName, sourceFolder);
-// }
+void main() {
+  String newFolderName = "../my_services";
+  String sourceFolder = "../";
+  MyGenerator.generate(newFolderName, sourceFolder, []);
+}
+
 extension FileExtention on FileSystemEntity {
   String get name => path.split("/").last;
 }
 
+enum Settings {
+  googleMaps,
+  imagePicker,
+  skipGenerator,
+}
+
 class MyGenerator {
-  static bool googleMaps = false;
-  static String googleMapsKey = "googleMaps";
-  static bool imagePicker = false;
-  static String imagePickerKey = "imagePicker";
+  static List<Settings> _toRemove = [];
+  static String _newFolderPath = '../my_services';
+  static String _sourceFolder = '../';
 
-  static String skipGeneratorKey = "skipGenerator";
-
-  static void generate(newFolderPath, sourceFolder) {
-    createNewFolderName(newFolderPath);
-    generatePubspecFile(newFolderPath, sourceFolder);
-    generateFiles(newFolderPath, sourceFolder);
-    pubGet(newFolderPath);
+  static void generate(newFolderPath, sourceFolder, List<Settings> toRemove) {
+    _toRemove = toRemove;
+    _newFolderPath = newFolderPath;
+    _sourceFolder = sourceFolder;
+    createNewFolderName();
+    generatePubspecFile();
+    generateFiles();
+    pubGet();
   }
 
-  static String createNewFolderName(newFolderPath) {
-    var newFolder = Directory(newFolderPath);
+  static String createNewFolderName() {
+    var newFolder = Directory(_newFolderPath);
     if (newFolder.existsSync()) {
       newFolder.deleteSync(recursive: true);
     }
@@ -35,8 +42,8 @@ class MyGenerator {
     return newFolder.path;
   }
 
-  static void generatePubspecFile(newFolderPath, sourceFolder) {
-    var pubspec = File(sourceFolder + "/pubspec.yaml");
+  static void generatePubspecFile() {
+    var pubspec = File(_sourceFolder + "/pubspec.yaml");
     var newPubspec = StringBuffer();
     var lines = pubspec.readAsLinesSync();
     for (String line in lines) {
@@ -44,37 +51,30 @@ class MyGenerator {
         newPubspec.writeln(line);
       }
     }
-    var f = File(newFolderPath + "/pubspec.yaml");
+    var f = File(_newFolderPath + "/pubspec.yaml");
     f.createSync();
     f.writeAsStringSync(newPubspec.toString());
   }
 
   static bool shouldGenerate(String line) {
-    if ((line.contains("//$googleMapsKey") || line.contains("#$googleMapsKey")) && googleMaps == false) {
-      return false;
+    for (var s in _toRemove) {
+      if ((line.contains("//${s.name}") || line.contains("#${s.name}"))) {
+        return false;
+      }
     }
-
-    if ((line.contains("//$imagePickerKey") || line.contains("#$imagePickerKey")) && imagePicker == false) {
-      return false;
-    }
-
-    if ((line.contains("//$skipGeneratorKey") || line.contains("#$skipGeneratorKey"))) {
-      return false;
-    }
-
     return true;
   }
 
-  static void pubGet(newFolderPath) {
-    Process.run("flutter", ['pub', 'get'], workingDirectory: newFolderPath);
+  static void pubGet() {
+    Process.run("flutter", ['pub', 'get'], workingDirectory: _newFolderPath);
   }
 
-  static void generateFiles(newFolderPath, sourceFolder) {
-    var lib = Directory(sourceFolder + "/lib");
-    copyFiles(lib, newFolderPath, sourceFolder);
+  static void generateFiles() {
+    var lib = Directory(_sourceFolder + "/lib");
+    copyFiles(lib, _newFolderPath, _sourceFolder);
 
-    var from = Directory(sourceFolder + "/flags");
-    var to = Directory(newFolderPath + "/flags");
+    var from = Directory(_sourceFolder + "/flags");
+    var to = Directory(_newFolderPath + "/flags");
     copyFolder(from, to);
   }
 
