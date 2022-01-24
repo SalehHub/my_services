@@ -35,12 +35,12 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   List<Widget> get appBarActions => <Widget>[];
 
-  List<Widget> get _appBarActionsWithProgress => <Widget>[
-        if (!emptyData && actionBarLoading)
-          Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())
-        else
-          ...appBarActions,
-      ];
+  List<Widget> get _appBarActionsWithProgress {
+    if (!emptyData && actionBarLoading) {
+      return [Container(margin: const EdgeInsets.all(8), height: 24, width: 24, child: const CupertinoActivityIndicator())];
+    }
+    return appBarActions;
+  }
 
   String title = '';
   TextStyle? titleStyle;
