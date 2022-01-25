@@ -29,6 +29,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> {
   List<Widget> bodyChildren = <Widget>[];
   Widget? drawer;
+  Widget? floatingBottomWidget;
 
   @protected
   bool get emptyData => bodyChildren.isEmpty;
@@ -273,13 +274,26 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
               ];
             },
             body: Builder(builder: (context) {
-              return Center(child: isTabView == false ? buildBody(context) : buildTabView(context));
+              if (floatingBottomWidget != null) {
+                return Stack(
+                  children: [
+                    buildScafoldBody(context),
+                    Positioned(
+                      bottom: 0,
+                      child: floatingBottomWidget!,
+                    )
+                  ],
+                );
+              }
+              return buildScafoldBody(context);
             }),
           ),
         ),
       ),
     );
   }
+
+  Center buildScafoldBody(BuildContext context) => Center(child: isTabView == false ? buildPage(context) : buildTabView(context));
 
   Widget buildTabView(BuildContext context) {
     if (!pageLoading && error == null && emptyData) {
@@ -312,7 +326,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     );
   }
 
-  Widget buildBody(BuildContext context) {
+  Widget buildPage(BuildContext context) {
     var customScrollView = CustomScrollView(
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
