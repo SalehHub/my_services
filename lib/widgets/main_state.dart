@@ -277,7 +277,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
               if (floatingBottomWidget != null) {
                 return Stack(
                   children: [
-                    buildScafoldBody(context),
+                    buildScaffoldBody(context),
                     Positioned(
                       bottom: 0,
                       child: floatingBottomWidget!,
@@ -285,7 +285,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
                   ],
                 );
               }
-              return buildScafoldBody(context);
+              return buildScaffoldBody(context);
             }),
           ),
         ),
@@ -293,7 +293,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     );
   }
 
-  Center buildScafoldBody(BuildContext context) => Center(child: isTabView == false ? buildPage(context) : buildTabView(context));
+  Center buildScaffoldBody(BuildContext context) => Center(child: isTabView == false ? buildPage(context) : buildTabView(context));
 
   Widget buildTabView(BuildContext context) {
     if (!pageLoading && error == null && emptyData) {
