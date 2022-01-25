@@ -77,7 +77,7 @@ dev_dependencies:
     sdk: flutter
 
 dependency_overrides:
-  analyzer: ^2.8.0
+  analyzer: ^3.2.0
   meta: ^1.7.0
 
 flutter:
