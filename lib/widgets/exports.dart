@@ -8,6 +8,7 @@ export 'my_button.dart';
 export 'my_container.dart';
 export 'my_ink.dart';
 export 'my_loading_image.dart';
+export 'my_pin_code_field.dart'; //pinCodeFields
 export 'my_popup_menu.dart';
 export 'my_progress_indicator.dart';
 export 'my_stateless_widget.dart';

@@ -49,6 +49,7 @@ export 'package:path_provider/path_provider.dart';
 //
 export 'package:photo_view/photo_view.dart'; //photoView
 export 'package:photo_view/photo_view_gallery.dart'; //photoView
+export 'package:pin_code_fields/pin_code_fields.dart'; //pinCodeFields
 //
 
 export 'package:share_plus/share_plus.dart'; //sharePlus
