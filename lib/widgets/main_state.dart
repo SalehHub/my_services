@@ -47,14 +47,18 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   TextStyle? titleStyle;
 
   bool homePage = false;
-
-  bool pageLoading = false;
-
   bool hideTopBanner = false;
   bool hideBottomBanner = false;
+
   Widget topBanner = const SizedBox();
   Widget bottomBanner = const SizedBox();
   Widget? underAppBarWidget;
+
+  bool pageLoading = false;
+
+  bool startPageInLoadingState = false;
+  //bad don't do this
+  //bool get startPageInLoadingState => pageLoading;
 
   Widget get pageLoadingWidget => MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3));
 
@@ -216,6 +220,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   @override
   @protected
   void initState() {
+    if (startPageInLoadingState) {
+      pageLoading = true;
+    }
     super.initState();
     if (WidgetsBinding.instance != null) {
       WidgetsBinding.instance!.addPostFrameCallback((_) => _myInitState());
