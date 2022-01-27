@@ -30,6 +30,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   List<Widget> bodyChildren = <Widget>[];
   Widget? drawer;
   Widget? floatingBottomWidget;
+  WillPopCallback? onBack;
 
   @protected
   bool get emptyData => bodyChildren.isEmpty;
@@ -57,6 +58,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   bool pageLoading = false;
 
   bool startPageInLoadingState = false;
+
   //bad don't do this
   //bool get startPageInLoadingState => pageLoading;
 
@@ -261,6 +263,18 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         logger.w("Previous:" + (previous?.languageCode ?? "") + "\nNext:" + (next?.languageCode ?? ""));
       });
     }
+
+    if (onBack == null) {
+      return buildScaffold();
+    }
+
+    return WillPopScope(
+      onWillPop: onBack,
+      child: buildScaffold(),
+    );
+  }
+
+  Container buildScaffold() {
     return Container(
       color: theme.scaffoldBackgroundColor,
       child: SafeArea(
@@ -286,10 +300,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
                   alignment: Alignment.bottomCenter,
                   children: [
                     buildScaffoldBody(context),
-                    Positioned(
-                      bottom: 0,
-                      child: floatingBottomWidget!,
-                    )
+                    Positioned(bottom: 0, child: floatingBottomWidget!),
                   ],
                 );
               }
