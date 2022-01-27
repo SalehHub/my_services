@@ -283,6 +283,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
             body: Builder(builder: (context) {
               if (floatingBottomWidget != null) {
                 return Stack(
+                  alignment: Alignment.bottomCenter,
                   children: [
                     buildScaffoldBody(context),
                     Positioned(

@@ -11,6 +11,7 @@ export 'my_loading_image.dart';
 export 'my_pin_code_field.dart'; //pinCodeFields
 export 'my_popup_menu.dart';
 export 'my_progress_indicator.dart';
+export 'my_side_menu.dart';
 export 'my_stateless_widget.dart';
 export 'my_text.dart';
 export 'my_text_input.dart';
