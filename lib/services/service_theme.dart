@@ -18,6 +18,10 @@ class ServiceTheme {
   static final Color _lightScaffoldBackgroundColor = lightBgColor ?? ThemeData.light().scaffoldBackgroundColor;
 
   static SystemUiOverlayStyle get _lightSystemUiOverlayStyle {
+    if (kIsWeb) {
+      return SystemUiOverlayStyle.light;
+    }
+
     if (Platform.isIOS) {
       return SystemUiOverlayStyle.light;
     }
@@ -31,6 +35,10 @@ class ServiceTheme {
   }
 
   static SystemUiOverlayStyle get _darkSystemUiOverlayStyle {
+    if (kIsWeb) {
+      return SystemUiOverlayStyle.dark;
+    }
+
     if (Platform.isIOS) {
       return SystemUiOverlayStyle.dark;
     }
