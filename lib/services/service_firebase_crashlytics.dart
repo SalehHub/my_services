@@ -18,5 +18,10 @@ class ServiceFirebaseCrashlytics {
     }
   }
 
-  static Future<void> setUserIdentifier(String identifier) async => _firebaseCrashlytics.setUserIdentifier(identifier);
+  static Future<void> setUserIdentifier(String identifier) async {
+    if (!kIsWeb) {
+      //TODO: remove when web get supported
+      return _firebaseCrashlytics.setUserIdentifier(identifier);
+    }
+  }
 }
