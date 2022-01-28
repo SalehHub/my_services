@@ -8,7 +8,7 @@ class MyStorageKeys {
   String themeModeKey = 'themeMode';
 }
 
-abstract class MyStorage extends MyStorageKeys {
+abstract class MyStorage {
   Future<dynamic> getDatabase();
 
   Future<String?> query(String key);
