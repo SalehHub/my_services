@@ -35,11 +35,10 @@ class MySideMenu extends StatelessWidget {
                 image: (imageUrl == null)
                     ? null
                     : DecorationImage(
-                  colorFilter:
-                  isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
-                  fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(imageUrl!),
-                ),
+                        colorFilter: isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
+                        fit: BoxFit.cover,
+                        image: CachedNetworkImageProvider(imageUrl!),
+                      ),
               ),
               margin: EdgeInsets.zero,
               currentAccountPictureSize: const Size(60, 60),
@@ -68,7 +67,6 @@ class MySideMenu extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class MySideMenuTile extends StatelessWidget {
