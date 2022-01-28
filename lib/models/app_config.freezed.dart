@@ -212,11 +212,12 @@ abstract class _AppEvents extends AppEvents {
 class _$AppConfigTearOff {
   const _$AppConfigTearOff();
 
-  _AppConfig call({bool withFirebase = true, bool withFCM = true, bool withCrashlytics = true}) {
+  _AppConfig call({bool withFirebase = true, bool withFCM = true, bool withCrashlytics = true, FirebaseOptions? firebaseOptions}) {
     return _AppConfig(
       withFirebase: withFirebase,
       withFCM: withFCM,
       withCrashlytics: withCrashlytics,
+      firebaseOptions: firebaseOptions,
     );
   }
 }
@@ -229,6 +230,7 @@ mixin _$AppConfig {
   bool get withFirebase => throw _privateConstructorUsedError;
   bool get withFCM => throw _privateConstructorUsedError;
   bool get withCrashlytics => throw _privateConstructorUsedError;
+  FirebaseOptions? get firebaseOptions => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppConfigCopyWith<AppConfig> get copyWith => throw _privateConstructorUsedError;
@@ -237,7 +239,7 @@ mixin _$AppConfig {
 /// @nodoc
 abstract class $AppConfigCopyWith<$Res> {
   factory $AppConfigCopyWith(AppConfig value, $Res Function(AppConfig) then) = _$AppConfigCopyWithImpl<$Res>;
-  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics});
+  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
@@ -253,6 +255,7 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
     Object? withFirebase = freezed,
     Object? withFCM = freezed,
     Object? withCrashlytics = freezed,
+    Object? firebaseOptions = freezed,
   }) {
     return _then(_value.copyWith(
       withFirebase: withFirebase == freezed
@@ -267,6 +270,10 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
+      firebaseOptions: firebaseOptions == freezed
+          ? _value.firebaseOptions
+          : firebaseOptions // ignore: cast_nullable_to_non_nullable
+              as FirebaseOptions?,
     ));
   }
 }
@@ -275,7 +282,7 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
 abstract class _$AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
   factory _$AppConfigCopyWith(_AppConfig value, $Res Function(_AppConfig) then) = __$AppConfigCopyWithImpl<$Res>;
   @override
-  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics});
+  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
@@ -290,6 +297,7 @@ class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imple
     Object? withFirebase = freezed,
     Object? withFCM = freezed,
     Object? withCrashlytics = freezed,
+    Object? firebaseOptions = freezed,
   }) {
     return _then(_AppConfig(
       withFirebase: withFirebase == freezed
@@ -304,6 +312,10 @@ class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imple
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
+      firebaseOptions: firebaseOptions == freezed
+          ? _value.firebaseOptions
+          : firebaseOptions // ignore: cast_nullable_to_non_nullable
+              as FirebaseOptions?,
     ));
   }
 }
@@ -311,7 +323,7 @@ class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imple
 /// @nodoc
 
 class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
-  _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true}) : super._();
+  _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.firebaseOptions}) : super._();
 
   @JsonKey()
   @override
@@ -322,10 +334,12 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
   @JsonKey()
   @override
   final bool withCrashlytics;
+  @override
+  final FirebaseOptions? firebaseOptions;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppConfig(withFirebase: $withFirebase, withFCM: $withFCM, withCrashlytics: $withCrashlytics)';
+    return 'AppConfig(withFirebase: $withFirebase, withFCM: $withFCM, withCrashlytics: $withCrashlytics, firebaseOptions: $firebaseOptions)';
   }
 
   @override
@@ -335,7 +349,8 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'AppConfig'))
       ..add(DiagnosticsProperty('withFirebase', withFirebase))
       ..add(DiagnosticsProperty('withFCM', withFCM))
-      ..add(DiagnosticsProperty('withCrashlytics', withCrashlytics));
+      ..add(DiagnosticsProperty('withCrashlytics', withCrashlytics))
+      ..add(DiagnosticsProperty('firebaseOptions', firebaseOptions));
   }
 
   @override
@@ -345,11 +360,13 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
             other is _AppConfig &&
             const DeepCollectionEquality().equals(other.withFirebase, withFirebase) &&
             const DeepCollectionEquality().equals(other.withFCM, withFCM) &&
-            const DeepCollectionEquality().equals(other.withCrashlytics, withCrashlytics));
+            const DeepCollectionEquality().equals(other.withCrashlytics, withCrashlytics) &&
+            const DeepCollectionEquality().equals(other.firebaseOptions, firebaseOptions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(withFirebase), const DeepCollectionEquality().hash(withFCM), const DeepCollectionEquality().hash(withCrashlytics));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(withFirebase), const DeepCollectionEquality().hash(withFCM), const DeepCollectionEquality().hash(withCrashlytics),
+      const DeepCollectionEquality().hash(firebaseOptions));
 
   @JsonKey(ignore: true)
   @override
@@ -357,7 +374,7 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
 }
 
 abstract class _AppConfig extends AppConfig {
-  factory _AppConfig({bool withFirebase, bool withFCM, bool withCrashlytics}) = _$_AppConfig;
+  factory _AppConfig({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions}) = _$_AppConfig;
   _AppConfig._() : super._();
 
   @override
@@ -366,6 +383,8 @@ abstract class _AppConfig extends AppConfig {
   bool get withFCM;
   @override
   bool get withCrashlytics;
+  @override
+  FirebaseOptions? get firebaseOptions;
   @override
   @JsonKey(ignore: true)
   _$AppConfigCopyWith<_AppConfig> get copyWith => throw _privateConstructorUsedError;

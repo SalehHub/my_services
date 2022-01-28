@@ -35,6 +35,7 @@ class AppLauncher {
 
   final Overrides? overrides;
   final List<ProviderObserver>? observers;
+
   //
   final AppConfig? config;
   final AppEvents? events;
@@ -89,7 +90,7 @@ class AppLauncher {
     }
 
     if (appConfig.withFirebase) {
-      await Firebase.initializeApp(); //firebaseCore
+      await Firebase.initializeApp(options: appConfig.firebaseOptions); //firebaseCore
     }
 
     if (appConfig.withCrashlytics) {

@@ -18,5 +18,10 @@ class AppEvents with _$AppEvents {
 class AppConfig with _$AppConfig {
   const AppConfig._();
 
-  factory AppConfig({@Default(true) bool withFirebase, @Default(true) bool withFCM, @Default(true) bool withCrashlytics}) = _AppConfig;
+  factory AppConfig({
+    @Default(true) bool withFirebase,
+    @Default(true) bool withFCM,
+    @Default(true) bool withCrashlytics,
+    FirebaseOptions? firebaseOptions, //firebaseCore
+  }) = _AppConfig;
 }
