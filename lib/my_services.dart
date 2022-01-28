@@ -10,7 +10,7 @@ export 'package:app_links/app_links.dart'; //appLinks
 export 'package:app_settings/app_settings.dart'; //appSettings
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';
-export 'package:device_info/device_info.dart';
+export 'package:device_info_plus/device_info_plus.dart';
 export 'package:dio/dio.dart';
 export 'package:firebase_core/firebase_core.dart'; //firebaseCore
 export 'package:firebase_crashlytics/firebase_crashlytics.dart'; //firebaseCrashlytics
@@ -35,6 +35,8 @@ export 'package:google_fonts/google_fonts.dart';
 //
 export 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart'; //googleMaps
 export 'package:google_maps_flutter/google_maps_flutter.dart' hide MapType; //googleMaps
+export 'package:hive/hive.dart'; //hive
+export 'package:hive_flutter/hive_flutter.dart'; //hive
 export 'package:image_cropper/image_cropper.dart'; //imagePicker
 export 'package:image_picker/image_picker.dart'; //imagePicker
 //
@@ -43,7 +45,9 @@ export 'package:logger/logger.dart';
 export 'package:map_launcher/map_launcher.dart'; //mapLauncher
 export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
-export 'package:package_info/package_info.dart';
+// export 'package:package_info/package_info.dart';
+// export 'package:device_info/device_info.dart';
+export 'package:package_info_plus/package_info_plus.dart';
 export 'package:path/path.dart' hide Style, context;
 export 'package:path_provider/path_provider.dart';
 //
@@ -54,12 +58,12 @@ export 'package:pin_code_fields/pin_code_fields.dart'; //pinCodeFields
 
 export 'package:share_plus/share_plus.dart'; //sharePlus
 export 'package:smooth_page_indicator/smooth_page_indicator.dart'; //photoView
-export 'package:sqflite/sqflite.dart';
+export 'package:sqflite/sqflite.dart'; //sqflite
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:uuid/uuid.dart';
 
-export 'databases/general_key_value_database.dart';
+export 'databases/exports.dart';
 export 'models/exports.dart';
 export 'others/exports.dart';
 export 'providers/exports.dart';

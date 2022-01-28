@@ -1,153 +1,36 @@
 import '../my_services.dart';
 
 class GeneralKeyValueDatabase {
-  static Database? _database;
+  GeneralKeyValueDatabase._();
 
-  static Future<Database> getDatabase() async {
-    if (_database == null) {
-      final applicationDocumentsDirectoryPath = await Helpers.getApplicationDocumentsPath();
-      final keyValueDatabasePath = '${applicationDocumentsDirectoryPath!}/$databaseName';
-      _database ??= await openDatabase(
-        keyValueDatabasePath,
-        version: databaseVersion,
-        onCreate: (Database db, int version) async {
-          await db.execute(databaseCreatingQuery);
-        },
-      );
-    }
-    return _database!;
-  }
+  factory GeneralKeyValueDatabase() => _singleton;
+  static final GeneralKeyValueDatabase _singleton = GeneralKeyValueDatabase._();
 
-  static const String tableName = 'keyValue';
-  static const String databaseCreatingQuery = 'CREATE TABLE $tableName (key TEXT PRIMARY KEY, value TEXT, createdAt INTEGER)';
-  static const int databaseVersion = 1;
-  static const String databaseName = 'keyValueDB.db';
+  static final MyStorage _myStorage = MyStorageHive();
 
-  static const String accessTokenKey = 'accessToken';
-  static const String isFirstAppRun = 'isFirstAppRunKey';
-  static const String isFirstAppBuildRun = 'isFirstAppBuildRunKey';
-  static const String localeKey = 'locale';
-  static const String themeModeKey = 'themeMode';
+  static Future<bool> delete(String key) => _myStorage.delete(key);
 
-  static Future<int?> count() async {
-    final database = await getDatabase();
-    return Sqflite.firstIntValue(
-      await database.rawQuery('SELECT COUNT(*) FROM $tableName'),
-    );
-  }
+  static Future get(String key) => _myStorage.get(key);
 
-  static Future<int> set(String key, String? value, {bool replaceExist = true}) {
-    return getDatabase().then((Database database) {
-      return database.insert(
-        tableName,
-        <String, Object?>{
-          'key': key,
-          'value': value,
-          'createdAt': DateTime.now().millisecondsSinceEpoch,
-        },
-        conflictAlgorithm: replaceExist ? ConflictAlgorithm.replace : ConflictAlgorithm.ignore,
-      );
-    });
-  }
+  static Future<String?> getAccessToken() => _myStorage.getAccessToken();
 
-  static Future<int> setAccessToken(String? accessToken, {bool replaceExist = true}) {
-    return set(accessTokenKey, accessToken, replaceExist: replaceExist);
-  }
+  static Future getDatabase() => _myStorage.getDatabase();
 
-  static Future<int> setLocale(Locale locale, {bool replaceExist = true}) {
-    return set(localeKey, locale.languageCode, replaceExist: replaceExist);
-  }
+  static Future<bool> getIsFirstAppBuildRun(String build) => _myStorage.getIsFirstAppBuildRun(build);
 
-  static Future<int> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
-    return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
-  }
+  static Future<bool> getIsFirstAppRun() => _myStorage.getIsFirstAppRun();
 
-  static Future<dynamic> get(String key) async {
-    final String? value = await query(key);
-    if (value != null) {
-      return jsonDecode(value);
-    }
-    return null;
-  }
+  static Future<Locale> getLocale() => _myStorage.getLocale();
 
-  static Future<bool> getIsFirstAppRun() async {
-    final String? data = await query(isFirstAppRun);
+  static Future<ThemeMode> getThemeMode() => _myStorage.getThemeMode();
 
-    if (data == null) {
-      await set(isFirstAppRun, 'false');
-      return true;
-    }
+  static Future<String?> query(String key) => _myStorage.query(key);
 
-    return false;
-  }
+  static Future<bool> set(String key, String? value, {bool replaceExist = true}) => _myStorage.set(key, value, replaceExist: replaceExist);
 
-  static Future<bool> getIsFirstAppBuildRun(String build) async {
-    final String _key = isFirstAppBuildRun + build;
-    final String? data = await query(_key);
+  static Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) => _myStorage.setAccessToken(accessToken, replaceExist: true);
 
-    if (data == null) {
-      await set(_key, 'false');
-      return true;
-    }
+  static Future<bool> setLocale(Locale locale, {bool replaceExist = true}) => _myStorage.setLocale(locale, replaceExist: replaceExist);
 
-    return false;
-  }
-
-  static Future<String?> getAccessToken() async {
-    return query(accessTokenKey);
-  }
-
-  static Future<Locale> getLocale() async {
-    try {
-      final String? value = await query(localeKey);
-      if (value != null && ServiceLocale.isSupportedLocale(Locale(value))) {
-        return Locale(value);
-      }
-      //if no stored locale then try to get device locale if it is supported
-      final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
-      if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
-        return Locale(deviceLocale.languageCode);
-      }
-    } catch (e, s) {
-      logger.e(e, e, s);
-    }
-    return ServiceLocale.defaultLocale;
-  }
-
-  static Future<ThemeMode> getThemeMode() async {
-    final String? value = await query(themeModeKey);
-    if (value == ThemeMode.light.toString()) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-      return ThemeMode.light;
-    } else if (value == ThemeMode.dark.toString()) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-      return ThemeMode.dark;
-    } else {
-      return ThemeMode.system;
-    }
-  }
-
-  static Future<String?> query(String key) async {
-    final Database database = await getDatabase();
-
-    final List<Map<String, Object?>> maps = await database.query(
-      tableName,
-      where: 'key = ?',
-      whereArgs: <String>[key],
-    );
-    if (maps.isNotEmpty) {
-      return maps.first['value'] as String?;
-    }
-    return null;
-  }
-
-  static Future<int> delete(String key) {
-    return getDatabase().then((Database database) {
-      return database.delete(
-        tableName,
-        where: 'key = ?',
-        whereArgs: <String>[key],
-      );
-    });
-  }
+  static Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) => _myStorage.setThemeMode(themeMode, replaceExist: replaceExist);
 }
