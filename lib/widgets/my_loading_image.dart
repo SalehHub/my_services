@@ -95,6 +95,38 @@ class MyLoadingImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (kIsWeb) {
+      if (circle) {
+        return SizedBox(
+          width: width,
+          height: height,
+          child: CircleAvatar(
+            radius: circle ? width : 0,
+            backgroundImage: NetworkImage(
+              url,
+              // width: width,
+              // height: height,
+              // fit: fit.
+            ),
+            child: const SizedBox(),
+
+            // Image.network(
+            //   url,
+            //   width: width,
+            //   height: height,
+            //   fit: fit,
+            // ),
+          ),
+        );
+      }
+
+      return Image.network(
+        url,
+        width: width,
+        height: height,
+        fit: fit,
+      );
+    }
     return OctoImage(
       alignment: alignment,
       width: width,
