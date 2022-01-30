@@ -9,10 +9,10 @@ class ServiceTheme {
   static Color? darkBgColor;
   static Color? lightCardColor;
   static Color? darkCardColor;
+  static BorderRadius borderRadius = const BorderRadius.all(Radius.zero);
 
   static const double elevation = 2;
-  static const BorderRadius borderRadius = BorderRadius.all(Radius.circular(15));
-  static const RoundedRectangleBorder circularBorderRadius10 = RoundedRectangleBorder(borderRadius: borderRadius);
+  static RoundedRectangleBorder circularBorderRadius10 = RoundedRectangleBorder(borderRadius: borderRadius);
 
   static final Color _darkScaffoldBackgroundColor = darkBgColor ?? ThemeData.dark().scaffoldBackgroundColor;
   static final Color _lightScaffoldBackgroundColor = lightBgColor ?? ThemeData.light().scaffoldBackgroundColor;
@@ -100,7 +100,7 @@ class ServiceTheme {
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
     final Color? primaryColor = isDark ? null : Colors.white;
-    final Color iconColor = !isDark ? Colors.black : Colors.white;
+    final Color iconColor = isDark ? Colors.white : (accentColor ?? Colors.black);
 
     final ThemeData themeData = mainThemeData.copyWith(
       scaffoldBackgroundColor: bgColor,
@@ -111,6 +111,10 @@ class ServiceTheme {
       //
       colorScheme: mainThemeData.colorScheme.copyWith(primary: accentColor),
       iconTheme: mainThemeData.iconTheme.copyWith(color: accentColor),
+      listTileTheme: mainThemeData.listTileTheme.copyWith(
+        shape: circularBorderRadius10,
+        iconColor: iconColor,
+      ),
       //
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
         shape: circularBorderRadius10,

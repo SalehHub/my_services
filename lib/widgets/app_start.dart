@@ -32,6 +32,7 @@ class AppLauncher {
 
   final Color? lightCardColor;
   final Color? darkCardColor;
+  final BorderRadius borderRadius;
 
   final Overrides? overrides;
   final List<ProviderObserver>? observers;
@@ -54,6 +55,8 @@ class AppLauncher {
     //
     this.darkCardColor = const Color(0xff161B1F),
     this.lightCardColor = const Color(0xffffffff),
+    //
+    this.borderRadius = const BorderRadius.all(Radius.circular(15)),
     //providers
     this.initGeneralState = true,
     this.overrides,
@@ -79,6 +82,8 @@ class AppLauncher {
 
     ServiceTheme.lightCardColor = lightCardColor;
     ServiceTheme.darkCardColor = darkCardColor;
+
+    ServiceTheme.borderRadius = borderRadius;
 
     ServiceLocale.defaultLocale = defaultLocale;
     ServiceLocale.supportedLocales = supportedLocales;

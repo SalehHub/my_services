@@ -35,7 +35,8 @@ class MySideMenu extends StatelessWidget {
                 image: (imageUrl == null)
                     ? null
                     : DecorationImage(
-                        colorFilter: isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
+                        colorFilter:
+                            isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(imageUrl!),
                       ),
@@ -109,7 +110,7 @@ class MySideMenuTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
       child: ListTile(
-        shape: ServiceTheme.circularBorderRadius10,
+        shape: Theme.of(context).listTileTheme.shape,
         leading: Icon(icon),
         title: MyText(title),
         trailing: trailing,

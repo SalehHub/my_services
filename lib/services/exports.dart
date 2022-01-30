@@ -1,6 +1,7 @@
 export 'service_api.dart';
 export 'service_app_badger.dart';
 export 'service_app_device.dart';
+export 'service_color.dart';
 export 'service_debounce.dart';
 export 'service_dialog.dart';
 export 'service_dynamic_link.dart'; //appLinks

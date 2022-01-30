@@ -144,7 +144,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       return Material(
         color: Colors.transparent,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        borderRadius: ServiceTheme.borderRadius,
         child: e,
       );
     }).toList();
