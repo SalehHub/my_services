@@ -32,11 +32,13 @@ class MyTextInputBorder extends StatelessWidget {
     required this.child,
     this.height,
     this.labelMargin = const EdgeInsets.symmetric(horizontal: 25),
+    this.padding = const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
   }) : super(key: key);
 
   final Widget child;
   final double? height;
   final EdgeInsetsGeometry? labelMargin;
+  final EdgeInsetsGeometry? padding;
   final String? labelText;
   final TextStyle? labelStyle;
 
@@ -91,7 +93,7 @@ class MyTextInputBorder extends StatelessWidget {
         Container(
           height: height,
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          padding: padding,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.grey.shade500, width: 1),
             borderRadius: ServiceTheme.borderRadius,
