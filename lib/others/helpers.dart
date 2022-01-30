@@ -4,7 +4,9 @@ final Logger logger = Logger();
 
 class Helpers {
   static TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
+
   static TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;
+
   static TextAlign getTextAlignByLang(BuildContext context) => ServiceLocale.isAr(context) ? TextAlign.right : TextAlign.left;
 
   static bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
@@ -99,9 +101,16 @@ class Helpers {
 
 //////////
 
-  static String getFileSize(String filepath, [int decimals = 3]) {
+  static double bytesToMegabytes(int sizeInBits) {
+    return sizeInBits / (1024 * 1000);
+  }
+
+  static String getFileSizeForHuman(String filepath, [int decimals = 3]) {
     final File file = File(filepath);
-    final int bytes = file.lengthSync();
+    return bytesToFileSizeForHuman(file.lengthSync(), decimals);
+  }
+
+  static String bytesToFileSizeForHuman(int bytes, [int decimals = 3]) {
     if (bytes <= 0) {
       return '0 B';
     }
@@ -224,6 +233,6 @@ class Helpers {
         }).toList());
   }
 
-  //end-mapLauncher
+//end-mapLauncher
 
 }

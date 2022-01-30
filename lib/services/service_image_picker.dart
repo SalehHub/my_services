@@ -1,11 +1,36 @@
 //imagePicker
 import '../my_services.dart';
 
+class MyFile {
+  late String sizeForHuman;
+  late int sizeInBytes;
+  late String path;
+  late double sizeInMegabytes;
+  late File file;
+
+  MyFile(dynamic _file) {
+    if (_file is String) {
+      file = File(_file);
+    } else if (_file is File) {
+      file = _file;
+    }
+    path = file.path;
+    sizeInBytes = file.lengthSync();
+    sizeForHuman = Helpers.bytesToFileSizeForHuman(sizeInBytes);
+    sizeInMegabytes = Helpers.bytesToMegabytes(sizeInBytes);
+  }
+
+  String printSize([String filename = ""]) {
+    return filename + ":\t" + sizeForHuman + "\n";
+  }
+}
+
 // ignore: avoid_classes_with_only_static_members
 class ServiceImagePicker {
   static final ImagePicker _imagePicker = ImagePicker();
 
-  static Future<File?> pickImage(BuildContext context, {double sizeInMB = 1.0, bool square = false, bool circle = false}) async {
+  static Future<File?> pickImage(BuildContext context,
+      {bool withCrop = true, bool withCompress = true, double sizeInMB = 1.0, bool square = false, bool circle = false}) async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
@@ -16,50 +41,55 @@ class ServiceImagePicker {
         return null;
       }
 
-      final String path = pickedFile.path;
+      final MyFile originalFile = MyFile(pickedFile.path);
 
-      // if (path != null) {
-      final File originalFile = File(path);
-
-      final double originalFileSizeInMB = originalFile.lengthSync() / (1024 * 1000);
-
-      final File? croppedFile = await ImageCropper.cropImage(
-        sourcePath: path,
-        compressQuality: originalFileSizeInMB > sizeInMB ? 50 : 70,
-        aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
-        cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
-      );
-
-      if (croppedFile == null) {
-        return null;
+      if (kIsWeb) {
+        return originalFile.file;
       }
 
-      File? newFile = croppedFile;
-      double newFileSizeInMB = croppedFile.lengthSync() / (1024 * 1000);
+      MyFile compressedFile;
 
-      int i = 0;
-      while (newFileSizeInMB > sizeInMB) {
-        //print(newFileSizeInMB);
-        i++;
-        newFile = await FlutterImageCompress.compressAndGetFile(
-          newFile!.path,
-          newFile.path.replaceFirst('.', '$i.', newFile.path.length - 6),
-          quality: 95 - (i + 5),
-          minHeight: 500,
-          minWidth: 500,
+      if (withCrop) {
+        final File? _croppedFile = await ImageCropper.cropImage(
+          sourcePath: originalFile.path,
+          compressQuality: originalFile.sizeInMegabytes > sizeInMB ? 50 : 80,
+          aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
+          cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
         );
 
-        newFileSizeInMB = newFile!.lengthSync() / (1024 * 1000);
+        if (_croppedFile != null) {
+          compressedFile = MyFile(_croppedFile);
+          logger.i(compressedFile.printSize("Cropped File"));
+        } else {
+          compressedFile = originalFile;
+        }
+      } else {
+        compressedFile = originalFile;
       }
 
-      if (newFile != null) {
-        logger.i('Original File Size: ${Helpers.getFileSize(path)}'
-            '\nCropped File  Size: ${Helpers.getFileSize(croppedFile.path)}'
-            '\nNew Compressed File Size: ${Helpers.getFileSize(newFile.path)}');
+      if (withCompress) {
+        int i = 0;
+        while (compressedFile.sizeInMegabytes > sizeInMB) {
+          i++;
+          File? _newFile = await FlutterImageCompress.compressAndGetFile(
+            compressedFile.path,
+            compressedFile.path.replaceFirst('.', '$i.', compressedFile.path.length - 6),
+            quality: 95 - (i + 5),
+            minHeight: 500,
+            minWidth: 500,
+          );
 
-        return newFile;
+          if (_newFile == null) {
+            break;
+          }
+
+          compressedFile = MyFile(_newFile);
+        }
       }
-      // }
+
+      logger.i(originalFile.printSize("Original File") + compressedFile.printSize("Compressed File"));
+
+      return compressedFile.file;
     } catch (e, s) {
       logger.e(e, e, s);
 
