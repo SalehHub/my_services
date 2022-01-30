@@ -62,20 +62,6 @@ class MyTextInput extends StatelessWidget {
   final InputBorder? border;
   final List<MyDropdownMenuItemData> items;
 
-  Positioned buildLabel(String label, BuildContext context) {
-    return Positioned(
-      top: -12,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 25),
-        color: Colors.white,
-        child: Text(
-          label,
-          style: getTextTheme(context).caption,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     // return buildStackField(context);
@@ -151,10 +137,7 @@ class MyTextInput extends StatelessWidget {
                 child: prefixIcon,
               ),
             ),
-      border: border ??
-          OutlineInputBorder(
-            borderRadius: borderRadius ?? ServiceTheme.borderRadius,
-          ),
+      border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? ServiceTheme.borderRadius),
     );
   }
 
