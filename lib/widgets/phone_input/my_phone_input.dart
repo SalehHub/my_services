@@ -12,31 +12,28 @@ class MyPhoneInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
-    return Directionality(
+    return MyTextInput(
+      digitsOnly: true,
+      length: 12,
+      controller: controller,
+      prefixText: selectedCountry.dialCode,
+      labelText: myServicesLabels.mobileNumber,
+      validator: defaultFieldRequiredValidator,
+      textInputAction: TextInputAction.done,
       textDirection: TextDirection.ltr,
-      child: MyTextInput(
-        digitsOnly: true,
-        length: 12,
-        controller: controller,
-        prefixText: selectedCountry.dialCode,
-        labelText: myServicesLabels.mobileNumber,
-        validator: defaultFieldRequiredValidator,
-        textInputAction: TextInputAction.done,
-        textDirection: TextDirection.ltr,
 
-        // prefixIcon: buildPrefix(),
-        // suffixIcon: buildSuffix(context ),
-        prefixIcon: buildSuffix(context),
-        suffixIcon: buildPrefix(),
+      // prefixIcon: buildPrefix(),
+      // suffixIcon: buildSuffix(context ),
+      prefixIcon: buildSuffix(context),
+      suffixIcon: buildPrefix(),
 
-        // prefixIcon: ServiceLocale.isAr(context) ? buildPrefix() : buildSuffix(context),
-        // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
+      // prefixIcon: ServiceLocale.isAr(context) ? buildPrefix() : buildSuffix(context),
+      // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
 
-        contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
-        // suffixIcon: buildSuffix(context),
-        // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
-        onChanged: onChanged,
-      ),
+      contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+      // suffixIcon: buildSuffix(context),
+      // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
+      onChanged: onChanged,
     );
   }
 

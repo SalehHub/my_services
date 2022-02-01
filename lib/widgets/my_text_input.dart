@@ -74,7 +74,7 @@ class MyTextInput extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            buildLabel(),
+            buildLabel(context),
             DropdownButtonFormField<String>(
               validator: validator,
               value: value,
@@ -98,7 +98,7 @@ class MyTextInput extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildLabel(),
+          buildLabel(context),
           if (widget != null)
             Container(
               // height: height,
@@ -111,38 +111,48 @@ class MyTextInput extends StatelessWidget {
               child: widget!,
             )
           else
-            TextFormField(
-              autocorrect: !isPassword,
-              enableSuggestions: !isPassword,
-              controller: controller ?? (value != null ? TextEditingController(text: value) : null),
-              validator: validator,
-              textDirection: textDirection,
-              obscureText: isPassword,
-              textInputAction: textInputAction,
-              keyboardType: keyboardType,
-              inputFormatters: [
-                if (length != null) LengthLimitingTextInputFormatter(length),
-                if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
-              ],
-              maxLines: maxLines,
-              strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
-              style: style,
-              textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
-              decoration: buildMyInputDecoration(),
-              onChanged: (String v) {
-                if (onChanged != null) {
-                  onChanged!(v);
-                }
-              },
-              focusNode: focusNode,
-              onFieldSubmitted: onFieldSubmitted,
+            Directionality(
+              textDirection: textDirection ?? Directionality.of(context),
+              child: TextFormField(
+                autocorrect: !isPassword,
+                enableSuggestions: !isPassword,
+                controller: controller ?? (value != null ? TextEditingController(text: value) : null),
+                validator: validator,
+                textDirection: textDirection,
+                obscureText: isPassword,
+                textInputAction: textInputAction,
+                keyboardType: keyboardType,
+                inputFormatters: [
+                  if (length != null) LengthLimitingTextInputFormatter(length),
+                  if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+                ],
+                maxLines: maxLines,
+                strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
+                style: style,
+                textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
+                decoration: buildMyInputDecoration(),
+                onChanged: (String v) {
+                  if (onChanged != null) {
+                    onChanged!(v);
+                  }
+                },
+                focusNode: focusNode,
+                onFieldSubmitted: onFieldSubmitted,
+              ),
             ),
         ],
       ),
     );
   }
 
-  MyText buildLabel() => MyText(labelText, bold: true, margin: const EdgeInsets.symmetric(horizontal: 15));
+  Widget buildLabel(BuildContext context) {
+    print(Directionality.of(context));
+    return MyText(
+      labelText,
+      bold: true,
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+    );
+  }
 
   InputDecoration buildMyInputDecoration() {
     return InputDecoration(
