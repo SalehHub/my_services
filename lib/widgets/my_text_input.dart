@@ -31,6 +31,7 @@ class MyTextInput extends StatelessWidget {
     this.border,
     this.isDropDown = false,
     this.items = const [],
+    this.widget,
   }) : super(key: key);
 
   final bool isDropDown;
@@ -61,6 +62,7 @@ class MyTextInput extends StatelessWidget {
   final StrutStyle? strutStyle;
   final InputBorder? border;
   final List<MyDropdownMenuItemData> items;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) {
@@ -69,75 +71,109 @@ class MyTextInput extends StatelessWidget {
     if (isDropDown) {
       return Padding(
         padding: margin,
-        child: DropdownButtonFormField<String>(
-          validator: validator,
-          value: value,
-          onChanged: (String? v) {
-            if (v != null) {
-              if (onChanged != null) {
-                onChanged!(v);
-              }
-            }
-          },
-          items: items.map((e) => DropdownMenuItem(child: MyText(e.text), value: e.value)).toList(),
-          decoration: buildMyInputDecoration(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildLabel(),
+            DropdownButtonFormField<String>(
+              validator: validator,
+              value: value,
+              onChanged: (String? v) {
+                if (v != null) {
+                  if (onChanged != null) {
+                    onChanged!(v);
+                  }
+                }
+              },
+              items: items.map((e) => DropdownMenuItem(child: MyText(e.text), value: e.value)).toList(),
+              decoration: buildMyInputDecoration(),
+            ),
+          ],
         ),
       );
     }
 
     return Padding(
       padding: margin,
-      child: TextFormField(
-        autocorrect: !isPassword,
-        enableSuggestions: !isPassword,
-        controller: controller ?? (value != null ? TextEditingController(text: value) : null),
-        validator: validator,
-        textDirection: textDirection,
-        obscureText: isPassword,
-        textInputAction: textInputAction,
-        keyboardType: keyboardType,
-        inputFormatters: [
-          if (length != null) LengthLimitingTextInputFormatter(length),
-          if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildLabel(),
+          if (widget != null)
+            Container(
+              // height: height,
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade500, width: 0.8),
+                borderRadius: ServiceTheme.borderRadius,
+              ),
+              child: widget!,
+            )
+          else
+            TextFormField(
+              autocorrect: !isPassword,
+              enableSuggestions: !isPassword,
+              controller: controller ?? (value != null ? TextEditingController(text: value) : null),
+              validator: validator,
+              textDirection: textDirection,
+              obscureText: isPassword,
+              textInputAction: textInputAction,
+              keyboardType: keyboardType,
+              inputFormatters: [
+                if (length != null) LengthLimitingTextInputFormatter(length),
+                if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+              ],
+              maxLines: maxLines,
+              strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
+              style: style,
+              textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
+              decoration: buildMyInputDecoration(),
+              onChanged: (String v) {
+                if (onChanged != null) {
+                  onChanged!(v);
+                }
+              },
+              focusNode: focusNode,
+              onFieldSubmitted: onFieldSubmitted,
+            ),
         ],
-        maxLines: maxLines,
-        strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
-        style: style,
-        textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
-        decoration: buildMyInputDecoration(),
-        onChanged: (String v) {
-          if (onChanged != null) {
-            onChanged!(v);
-          }
-        },
-        focusNode: focusNode,
-        onFieldSubmitted: onFieldSubmitted,
       ),
     );
   }
+
+  MyText buildLabel() => MyText(labelText, bold: true, margin: const EdgeInsets.symmetric(horizontal: 15));
 
   InputDecoration buildMyInputDecoration() {
     return InputDecoration(
       prefixText: prefixText,
       alignLabelWithHint: true,
-      labelStyle: labelStyle,
+      // labelStyle: labelStyle,
       floatingLabelStyle: floatingLabelStyle,
-      labelText: labelText,
+      // labelText: labelText,
       helperText: helperText,
-      contentPadding: contentPadding ?? (isDropDown ? const EdgeInsets.fromLTRB(10, 15, 10, 15) : const EdgeInsets.fromLTRB(10, 10, 10, 10)),
+      contentPadding: contentPadding ?? (isDropDown ? const EdgeInsets.fromLTRB(10, 15, 10, 15) : const EdgeInsets.fromLTRB(15, 10, 10, 10)),
       suffixIcon: suffixIcon,
-      prefixIcon: maxLines == 1
-          ? prefixIcon
-          : Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: Align(
-                alignment: Alignment.topCenter,
-                widthFactor: 1.0,
-                heightFactor: 10.0,
-                child: prefixIcon,
-              ),
-            ),
+      // prefixIcon: prefixIcon,
+      prefixIcon: buildPrefixIcon(),
       border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? ServiceTheme.borderRadius),
+    );
+  }
+
+  Widget? buildPrefixIcon() {
+    if (prefixIcon == null) {
+      return null;
+    } else if (maxLines == 1) {
+      return prefixIcon;
+    }
+    return Padding(
+      padding: const EdgeInsets.only(top: 18),
+      child: Align(
+        alignment: Alignment.topCenter,
+        widthFactor: 1.0,
+        heightFactor: 10.0,
+        child: prefixIcon,
+      ),
     );
   }
 
