@@ -382,7 +382,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'Su dirección de correo electrónico no se verifica, haga clic aquí para verificarlo',
     restorePassword: 'Restaurar contraseña',
     createNewAccount: 'Crear una nueva cuenta',
-    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrate de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
+    makeSureItIsCorrectWeWillAskYouToConfirmItBySendingACodeToIt: 'Asegúrese de que sea correcto. Le pediremos que lo confirme enviándolo un código.',
     email: 'Correo electrónico',
     name: 'Nombre',
     enterTheNameCorrectly: 'Ingrese el nombre correctamente',
