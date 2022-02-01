@@ -99,7 +99,7 @@ class ServiceTheme {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
-    final Color? primaryColor = isDark ? null : Colors.white;
+    // final Color? primaryColor = isDark ? null : Colors.white;
     final Color iconColor = isDark ? Colors.white : (accentColor ?? Colors.black);
 
     final ThemeData themeData = mainThemeData.copyWith(
@@ -171,11 +171,22 @@ class ServiceTheme {
         elevation: elevation,
       ),
       appBarTheme: mainThemeData.appBarTheme.copyWith(
-        backgroundColor: cardColor ?? bgColor ?? primaryColor,
-        elevation: elevation,
+        backgroundColor: bgColor, //cardColor ?? bgColor ?? primaryColor,
+        elevation: 0.5,
         titleTextStyle: textTheme.bodyText2,
         iconTheme: IconThemeData(color: iconColor),
-        shape: circularBorderRadius10,
+        shape: circularBorderRadius10.copyWith(
+          side: BorderSide(
+            color: isDark
+                ? ServiceColor.getShade(
+                    bgColor ?? Colors.transparent,
+                    darker: true,
+                    value: 0.02,
+                  )
+                : Colors.grey.shade200,
+            width: 1,
+          ),
+        ),
       ),
       progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
         refreshBackgroundColor: bgColor,

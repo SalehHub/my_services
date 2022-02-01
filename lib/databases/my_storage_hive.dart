@@ -128,7 +128,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
         return maps['value'] as String?;
       }
     } catch (e, s) {
-      print(e);
+      logger.e(e, s);
     }
     return null;
   }

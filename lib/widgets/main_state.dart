@@ -226,8 +226,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       pageLoading = true;
     }
     super.initState();
-    if (WidgetsBinding.instance != null) {
-      WidgetsBinding.instance!.addPostFrameCallback((_) => _myInitState());
+    WidgetsBinding? instance = WidgetsBinding.instance;
+    if (instance != null) {
+      instance.addPostFrameCallback((_) => _myInitState());
     } else {
       _myInitState();
     }
