@@ -88,7 +88,7 @@ class MyLoadingImage extends StatelessWidget {
         onTap: onTap,
         borderRadius: circle == true ? circleBorderRadius : _borderRadius,
         child: ClipRRect(
-          borderRadius: circle == true ? circleBorderRadius : BorderRadius.circular(radius - borderWidth),
+          borderRadius: circle == true ? circleBorderRadius : (borderRadius ?? BorderRadius.circular(radius - borderWidth)),
           child: child,
         ),
       ),
