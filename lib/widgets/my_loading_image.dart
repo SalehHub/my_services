@@ -8,6 +8,7 @@ class MyLoadingImage extends StatelessWidget {
     this.width = 150,
     this.height = 150,
     this.radius = 0,
+    this.borderRadius,
     this.onTap,
     this.borderColor,
     this.borderWidth = 0,
@@ -27,6 +28,7 @@ class MyLoadingImage extends StatelessWidget {
   final Color? borderColor;
   final double borderWidth;
   final double radius;
+  final BorderRadius? borderRadius;
   final bool circle;
   final bool useCacheImage;
   final GestureTapCallback? onTap;
@@ -55,7 +57,7 @@ class MyLoadingImage extends StatelessWidget {
 
   BorderRadius get circleBorderRadius => BorderRadius.circular(height);
 
-  BorderRadius get borderRadius => BorderRadius.circular(radius);
+  BorderRadius get _borderRadius => borderRadius ?? BorderRadius.circular(radius);
 
   Widget get placeHolder => buildImageContainer(
         Image(
@@ -79,12 +81,12 @@ class MyLoadingImage extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         color: borderColor,
-        borderRadius: circle == true ? circleBorderRadius : borderRadius,
+        borderRadius: circle == true ? circleBorderRadius : _borderRadius,
         border: Border.all(color: borderColor ?? Colors.transparent, width: borderWidth),
       ),
       child: MyInk(
         onTap: onTap,
-        borderRadius: circle == true ? circleBorderRadius : borderRadius,
+        borderRadius: circle == true ? circleBorderRadius : _borderRadius,
         child: ClipRRect(
           borderRadius: circle == true ? circleBorderRadius : BorderRadius.circular(radius - borderWidth),
           child: child,
