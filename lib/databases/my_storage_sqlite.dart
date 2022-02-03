@@ -84,7 +84,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
       int? createdAt = maps.first['createdAt'] as int?;
       if (createdAt != null) {
         DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(createdAt);
-        int difference = dateTime.difference(DateTime.now()).inMinutes;
+        int difference = DateTime.now().difference(dateTime).inMinutes;
         print(difference);
         if (difference > minutes) {
           delete(key);
