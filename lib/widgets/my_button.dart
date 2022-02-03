@@ -10,11 +10,11 @@ class MyButton extends ConsumerWidget {
   final AsyncCallback? onPressed;
   final double progressIndicatorSize = 20;
 
-  String get _id => id?.toString() ?? text;
+  String get _id => Helpers.getMd5(id?.toString() ?? text);
 
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {
-      if (ServiceLoader.isLoading(ref, Helpers.getMd5(_id))) {
+      if (ServiceLoader.isLoading(ref, _id)) {
         return MyProgressIndicator(color: Colors.white, width: progressIndicatorSize, height: progressIndicatorSize);
       }
     }
@@ -25,7 +25,10 @@ class MyButton extends ConsumerWidget {
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
     if (onPressed != null) {
       if (withLoading) {
-        ServiceLoader.setLoading(ref, Helpers.getMd5(_id), true);
+        if (ServiceLoader.isLoading(ref, _id)) {
+          return Future.value();
+        }
+        ServiceLoader.setLoading(ref, _id, true);
       }
 
       try {
@@ -35,7 +38,7 @@ class MyButton extends ConsumerWidget {
       }
 
       if (withLoading) {
-        ServiceLoader.setLoading(ref, Helpers.getMd5(_id), false);
+        ServiceLoader.setLoading(ref, _id, false);
       }
     }
   }
