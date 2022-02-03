@@ -31,7 +31,7 @@ class MyButton extends ConsumerWidget {
       try {
         await onPressed!();
       } catch (e, s) {
-        logger.e(e, s);
+        logger.e(e, e, s);
       }
 
       if (withLoading) {
