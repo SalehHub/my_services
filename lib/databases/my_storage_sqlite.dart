@@ -58,8 +58,8 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<dynamic> get(String key) async {
-    final String? value = await query(key);
+  Future<dynamic> get(String key, [int? minutes]) async {
+    final String? value = await query(key, minutes);
     if (value != null) {
       return jsonDecode(value);
     }
@@ -67,7 +67,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<String?> query(String key) async {
+  Future<String?> query(String key, [int? minutes]) async {
     final Database database = await getDatabase();
 
     final List<Map<String, Object?>> maps = await database.query(
@@ -76,7 +76,23 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
       whereArgs: <String>[key],
     );
     if (maps.isNotEmpty) {
-      return maps.first['value'] as String?;
+      String? value = maps.first['value'] as String?;
+      if (minutes == null) {
+        return value;
+      }
+
+      int? createdAt = maps.first['createdAt'] as int?;
+      if (createdAt != null) {
+        DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(createdAt);
+        int difference = dateTime.difference(DateTime.now()).inMinutes;
+        print(difference);
+        if (difference > minutes) {
+          delete(key);
+          return null;
+        } else {
+          return value;
+        }
+      }
     }
     return null;
   }

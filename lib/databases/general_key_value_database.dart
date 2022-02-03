@@ -10,7 +10,7 @@ class GeneralKeyValueDatabase {
 
   static Future<bool> delete(String key) => _myStorage.delete(key);
 
-  static Future get(String key) => _myStorage.get(key);
+  static Future get(String key, [int? minutes]) => _myStorage.get(key, minutes);
 
   static Future<String?> getAccessToken() => _myStorage.getAccessToken();
 
@@ -24,7 +24,7 @@ class GeneralKeyValueDatabase {
 
   static Future<ThemeMode> getThemeMode() => _myStorage.getThemeMode();
 
-  static Future<String?> query(String key) => _myStorage.query(key);
+  static Future<String?> query(String key, [int? minutes]) => _myStorage.query(key, minutes);
 
   static Future<bool> set(String key, String? value, {bool replaceExist = true}) => _myStorage.set(key, value, replaceExist: replaceExist);
 

@@ -50,8 +50,8 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<dynamic> get(String key) async {
-    final String? value = await query(key);
+  Future<dynamic> get(String key, [int? minutes]) async {
+    final String? value = await query(key, minutes);
     if (value != null) {
       return jsonDecode(value);
     }
@@ -121,14 +121,31 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<String?> query(String key) async {
+  Future<String?> query(String key, [int? minutes]) async {
     try {
       final maps = (await getDatabase()).get(key, defaultValue: <dynamic, dynamic>{});
       if (maps.isNotEmpty) {
-        return maps['value'] as String?;
+        String? value = maps['value'] as String?;
+        if (minutes == null) {
+          return value;
+        }
+
+        int? createdAt = maps['createdAt'] as int?;
+        print(createdAt);
+        if (createdAt != null) {
+          DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(createdAt);
+          int difference = dateTime.difference(DateTime.now()).inMinutes;
+          print(difference);
+          if (difference > minutes) {
+            delete(key);
+            return null;
+          } else {
+            return value;
+          }
+        }
       }
     } catch (e, s) {
-      logger.e(e, s);
+      logger.e(e,e, s);
     }
     return null;
   }

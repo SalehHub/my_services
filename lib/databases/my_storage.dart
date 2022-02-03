@@ -11,9 +11,9 @@ class MyStorageKeys {
 abstract class MyStorage {
   Future<dynamic> getDatabase();
 
-  Future<String?> query(String key);
+  Future<String?> query(String key, [int? minutes]);
 
-  Future<dynamic> get(String key);
+  Future<dynamic> get(String key, [int? minutes]);
 
   Future<bool> set(String key, String? value, {bool replaceExist = true});
 
