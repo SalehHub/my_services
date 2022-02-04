@@ -6,8 +6,11 @@ class GeneralKeyValueDatabase {
   factory GeneralKeyValueDatabase() => _singleton;
   static final GeneralKeyValueDatabase _singleton = GeneralKeyValueDatabase._();
 
-  static final MyStorage _myStorage = MyStorageHive(); //hive
-  // static final MyStorage _myStorage = MyStorageSQLite(); //sqflite
+  static  MyStorage get _myStorage {
+    return MyStorageHive(); //hive
+    // ignore: dead_code
+    return MyStorageSQLite(); //sqflite
+  }
 
   static Future<bool> delete(String key) => _myStorage.delete(key);
 
