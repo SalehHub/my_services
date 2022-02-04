@@ -30,9 +30,8 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
   Future<int?> count() async {
-    final database = await getDatabase();
     return Sqflite.firstIntValue(
-      await database.rawQuery('SELECT COUNT(*) FROM $tableName'),
+      await (await getDatabase()).rawQuery('SELECT COUNT(*) FROM $tableName'),
     );
   }
 
@@ -67,10 +66,26 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<String?> query(String key, [int? minutes]) async {
-    final Database database = await getDatabase();
+  Future<int?> liveInMinutes(String key) async {
 
-    final List<Map<String, Object?>> maps = await database.query(
+    final List<Map<String, Object?>> maps = await (await getDatabase()).query(
+      tableName,
+      where: 'key = ?',
+      whereArgs: <String>[key],
+    );
+    if (maps.isNotEmpty) {
+      final createdAt = maps.first['createdAt'] as int?;
+      if (createdAt != null) {
+        return DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(createdAt)).inMinutes;
+      }
+    }
+    return null;
+  }
+
+  @override
+  Future<String?> query(String key, [int? minutes]) async {
+
+    final List<Map<String, Object?>> maps = await (await getDatabase()).query(
       tableName,
       where: 'key = ?',
       whereArgs: <String>[key],

@@ -13,6 +13,8 @@ abstract class MyStorage {
 
   Future<String?> query(String key, [int? minutes]);
 
+  Future<int?> liveInMinutes(String key);
+
   Future<dynamic> get(String key, [int? minutes]);
 
   Future<bool> set(String key, String? value, {bool replaceExist = true});

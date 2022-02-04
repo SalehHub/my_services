@@ -121,6 +121,19 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
+  Future<int?> liveInMinutes(String key) async {
+    final maps = (await getDatabase()).get(key, defaultValue: <dynamic, dynamic>{});
+
+    if (maps.isNotEmpty) {
+      final createdAt = maps['createdAt'] as int?;
+      if (createdAt != null) {
+        return DateTime.now().difference(DateTime.fromMillisecondsSinceEpoch(createdAt)).inMinutes;
+      }
+    }
+    return null;
+  }
+
+  @override
   Future<String?> query(String key, [int? minutes]) async {
     try {
       final maps = (await getDatabase()).get(key, defaultValue: <dynamic, dynamic>{});
