@@ -26,6 +26,7 @@ class MyTextInput extends StatelessWidget {
     this.contentPadding,
     this.labelStyle,
     this.floatingLabelStyle,
+    this.floatingLabel = false,
     this.strutStyle,
     this.style,
     this.border,
@@ -59,6 +60,7 @@ class MyTextInput extends StatelessWidget {
   final TextStyle? style;
   final TextStyle? labelStyle;
   final TextStyle? floatingLabelStyle;
+  final bool floatingLabel;
   final StrutStyle? strutStyle;
   final InputBorder? border;
   final List<MyDropdownMenuItemData> items;
@@ -146,7 +148,10 @@ class MyTextInput extends StatelessWidget {
   }
 
   Widget buildLabel(BuildContext context) {
-    print(Directionality.of(context));
+    // print(Directionality.of(context));
+    if (floatingLabel) {
+      return SizedBox();
+    }
     return MyText(
       labelText,
       bold: true,
@@ -158,9 +163,9 @@ class MyTextInput extends StatelessWidget {
     return InputDecoration(
       prefixText: prefixText,
       alignLabelWithHint: true,
-      // labelStyle: labelStyle,
+      labelStyle: labelStyle,
       floatingLabelStyle: floatingLabelStyle,
-      // labelText: labelText,
+      labelText: floatingLabel ? labelText : null,
       helperText: helperText,
       contentPadding: contentPadding ?? (isDropDown ? const EdgeInsets.fromLTRB(10, 15, 10, 15) : const EdgeInsets.fromLTRB(15, 10, 10, 10)),
       suffixIcon: suffixIcon,

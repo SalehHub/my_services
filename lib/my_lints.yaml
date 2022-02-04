@@ -1,0 +1,10 @@
+# Recommended lints for Flutter apps, packages, and plugins.
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/generated_plugin_registrant.dart"
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "my_services"
