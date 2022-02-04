@@ -6,6 +6,7 @@ class MySideMenu extends StatelessWidget {
     this.name,
     this.email,
     this.imageUrl,
+    this.avatarIcon = Icons.account_circle,
     this.imageBlurhash,
     this.bgImageUrl,
     this.bgImageBlurhash,
@@ -16,6 +17,7 @@ class MySideMenu extends StatelessWidget {
   final String? name;
   final String? email;
   final String? imageUrl;
+  final IconData avatarIcon;
   final String? imageBlurhash;
   final String? bgImageUrl;
   final String? bgImageBlurhash;
@@ -44,7 +46,7 @@ class MySideMenu extends StatelessWidget {
               currentAccountPictureSize: const Size(60, 60),
               currentAccountPicture: GestureDetector(
                 onTap: onAvatarTap,
-                child: imageUrl == null ? const CircleAvatar(child: Icon(Mdi.food, size: 35)) : MyLoadingImage(url: imageUrl!, blurHash: imageBlurhash, circle: true),
+                child: imageUrl == null ? CircleAvatar(child: Icon(avatarIcon, size: 35)) : MyLoadingImage(url: imageUrl!, blurHash: imageBlurhash, circle: true),
               ),
               accountName: GestureDetector(
                 onTap: onAvatarTap,
