@@ -175,12 +175,28 @@ class MyTextInput extends StatelessWidget {
       floatingLabelStyle: floatingLabelStyle,
       labelText: floatingLabel ? labelText : null,
       helperText: helperText,
-      contentPadding: contentPadding ?? (isDropDown ? const EdgeInsets.fromLTRB(10, 15, 10, 15) : const EdgeInsets.fromLTRB(15, 10, 10, 10)),
+      contentPadding: buildContentPadding(),
       suffixIcon: suffixIcon,
-      // prefixIcon: prefixIcon,
       prefixIcon: buildPrefixIcon(),
       border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? ServiceTheme.borderRadius),
     );
+  }
+
+  EdgeInsetsGeometry? buildContentPadding() {
+    if (contentPadding != null) {
+      return contentPadding;
+    } else if (isDropDown) {
+      return const EdgeInsets.fromLTRB(10, 15, 10, 15);
+    } else {
+      return EdgeInsets.fromLTRB(
+        suffixIcon == null ? 15 : 0,
+        10,
+        suffixIcon == null ? 15 : 0,
+        10,
+      );
+    }
+
+    // contentPadding ?? (isDropDown ? const EdgeInsets.fromLTRB(10, 15, 10, 15) : EdgeInsets.fromLTRB(suffixIcon == null ? 15 : 0, 10, 10, 10))
   }
 
   Widget? buildPrefixIcon() {
