@@ -21,6 +21,7 @@ class MyPhoneInput extends StatelessWidget {
       validator: defaultFieldRequiredValidator,
       textInputAction: TextInputAction.done,
       textDirection: TextDirection.ltr,
+      directionalityTextDirection: TextDirection.ltr,
 
       // prefixIcon: buildPrefix(),
       // suffixIcon: buildSuffix(context ),

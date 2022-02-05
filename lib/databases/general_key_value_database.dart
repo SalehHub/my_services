@@ -6,7 +6,7 @@ class GeneralKeyValueDatabase {
   factory GeneralKeyValueDatabase() => _singleton;
   static final GeneralKeyValueDatabase _singleton = GeneralKeyValueDatabase._();
 
-  static  MyStorage get _myStorage {
+  static MyStorage get _myStorage {
     return MyStorageHive(); //hive
     // ignore: dead_code
     return MyStorageSQLite(); //sqflite

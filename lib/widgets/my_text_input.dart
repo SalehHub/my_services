@@ -11,6 +11,7 @@ class MyTextInput extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onChanged,
+    this.directionalityTextDirection,
     this.textDirection,
     this.keyboardType,
     this.controller,
@@ -46,6 +47,7 @@ class MyTextInput extends StatelessWidget {
   final Widget? prefixIcon;
   final ValueChanged<String>? onChanged;
   final TextDirection? textDirection;
+  final TextDirection? directionalityTextDirection;
   final TextInputAction? textInputAction;
   final TextInputType? keyboardType;
   final BorderRadius? borderRadius;
@@ -112,38 +114,44 @@ class MyTextInput extends StatelessWidget {
               ),
               child: widget!,
             )
-          else
+          else if (directionalityTextDirection != null)
             Directionality(
               textDirection: textDirection ?? Directionality.of(context),
-              child: TextFormField(
-                autocorrect: !isPassword,
-                enableSuggestions: !isPassword,
-                controller: controller ?? (value != null ? TextEditingController(text: value) : null),
-                validator: validator,
-                textDirection: textDirection,
-                obscureText: isPassword,
-                textInputAction: textInputAction,
-                keyboardType: keyboardType,
-                inputFormatters: [
-                  if (length != null) LengthLimitingTextInputFormatter(length),
-                  if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
-                ],
-                maxLines: maxLines,
-                strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
-                style: style,
-                textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
-                decoration: buildMyInputDecoration(),
-                onChanged: (String v) {
-                  if (onChanged != null) {
-                    onChanged!(v);
-                  }
-                },
-                focusNode: focusNode,
-                onFieldSubmitted: onFieldSubmitted,
-              ),
-            ),
+              child: buildTextInput(),
+            )
+          else
+            buildTextInput(),
         ],
       ),
+    );
+  }
+
+  TextFormField buildTextInput() {
+    return TextFormField(
+      autocorrect: !isPassword,
+      enableSuggestions: !isPassword,
+      controller: controller ?? (value != null ? TextEditingController(text: value) : null),
+      validator: validator,
+      textDirection: textDirection,
+      obscureText: isPassword,
+      textInputAction: textInputAction,
+      keyboardType: keyboardType,
+      inputFormatters: [
+        if (length != null) LengthLimitingTextInputFormatter(length),
+        if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+      ],
+      maxLines: maxLines,
+      strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
+      style: style,
+      textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
+      decoration: buildMyInputDecoration(),
+      onChanged: (String v) {
+        if (onChanged != null) {
+          onChanged!(v);
+        }
+      },
+      focusNode: focusNode,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 

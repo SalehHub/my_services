@@ -83,7 +83,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: Helpers.getPageHeight(context) - 150,
       width: 400,
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -91,7 +91,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
           MyTextInput(
             controller: _searchController,
             textInputAction: TextInputAction.search,
-            borderRadius: BorderRadius.zero,
+            floatingLabel: true,
+            // borderRadius: BorderRadius.zero,
             // border: InputBorder.none,
             margin: const EdgeInsets.only(top: 0, bottom: 5, left: 20, right: 20),
             prefixIcon: const Icon(iconSearch),
@@ -104,6 +105,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
               controller: widget.scrollController,
               shrinkWrap: true,
               itemCount: filteredCountries.length,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               itemBuilder: (BuildContext context, int index) {
                 Country country = filteredCountries[index];
                 return ListTile(

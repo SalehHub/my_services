@@ -67,7 +67,6 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
 
   @override
   Future<int?> liveInMinutes(String key) async {
-
     final List<Map<String, Object?>> maps = await (await getDatabase()).query(
       tableName,
       where: 'key = ?',
@@ -84,7 +83,6 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
 
   @override
   Future<String?> query(String key, [int? minutes]) async {
-
     final List<Map<String, Object?>> maps = await (await getDatabase()).query(
       tableName,
       where: 'key = ?',
