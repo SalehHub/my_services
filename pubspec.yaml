@@ -90,3 +90,4 @@ dependency_overrides:
 flutter:
   assets:
     - flags/
+    - google_fonts/

@@ -124,6 +124,11 @@ class AppLauncher {
   }
 
   void run({required Widget homePage}) {
+    LicenseRegistry.addLicense(() async* {
+      final license = await rootBundle.loadString('google_fonts/OFL.txt');
+      yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+    });
+
     runApp(mainWidget(homePage: homePage));
   }
 }
