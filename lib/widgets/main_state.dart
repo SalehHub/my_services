@@ -182,7 +182,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   void _refreshThemeStyle() {
     ServiceDebounce.debounce(() {
       logger.w("Service Theme Set System Ui Overlay Style");
-      ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
+      if (mounted) {
+        ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
+      }
     }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
   }
 
