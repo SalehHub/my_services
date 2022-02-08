@@ -252,7 +252,7 @@ String mapStyleDark(bgColor, roadColor) => '''
 ]
 ''';
 
-//TODO: ref this
+//TODO: refactor this
 String getMapImageFromLatLong(double lat, double lng, String googleMapKey, BuildContext context) {
   String style = isDark(context) ? darkMapStyleStatic() : lightMapStyleStatic();
   String lang = ServiceLocale.currentLocaleLangCode(context);

@@ -98,7 +98,6 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
       if (createdAt != null) {
         DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(createdAt);
         int difference = DateTime.now().difference(dateTime).inMinutes;
-        print(difference);
         if (difference > minutes) {
           delete(key);
           return null;
@@ -126,21 +125,25 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return true;
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
     return set(accessTokenKey, accessToken, replaceExist: replaceExist);
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
     return set(localeKey, locale.languageCode, replaceExist: replaceExist);
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
     return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> getIsFirstAppRun() async {
     final String? data = await query(isFirstAppRun);
@@ -153,6 +156,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return false;
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> getIsFirstAppBuildRun(String build) async {
     final String _key = isFirstAppBuildRun + build;
@@ -166,11 +170,13 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return false;
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<String?> getAccessToken() async {
     return query(accessTokenKey);
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<Locale> getLocale() async {
     try {
@@ -189,6 +195,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return ServiceLocale.defaultLocale;
   }
 
+//TODO: remove this in favor of setGeneralState
   @override
   Future<ThemeMode> getThemeMode() async {
     final String? value = await query(themeModeKey);
@@ -201,5 +208,23 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     } else {
       return ThemeMode.system;
     }
+  }
+
+  @override
+  Future setGeneralState(Map<String, dynamic>? value) {
+    return set(generalStateKey, value == null ? null : jsonEncode(value));
+  }
+
+  @override
+  Future<GeneralState?> getGeneralState() async {
+    try {
+      final Map<String, dynamic>? data = await get(generalStateKey, 3);
+      if (data != null) {
+        return GeneralState.fromJson(data);
+      }
+    } catch (e, s) {
+      logger.e(e, e, s);
+    }
+    return null;
   }
 }

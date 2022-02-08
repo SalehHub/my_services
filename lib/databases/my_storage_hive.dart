@@ -35,89 +35,12 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
-    return set(accessTokenKey, accessToken, replaceExist: replaceExist);
-  }
-
-  @override
-  Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
-    return set(localeKey, locale.languageCode, replaceExist: replaceExist);
-  }
-
-  @override
-  Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
-    return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
-  }
-
-  @override
   Future<dynamic> get(String key, [int? minutes]) async {
     final String? value = await query(key, minutes);
     if (value != null) {
       return jsonDecode(value);
     }
     return null;
-  }
-
-  @override
-  Future<bool> getIsFirstAppRun() async {
-    final String? data = await query(isFirstAppRun);
-
-    if (data == null) {
-      await set(isFirstAppRun, 'false');
-      return true;
-    }
-
-    return false;
-  }
-
-  @override
-  Future<bool> getIsFirstAppBuildRun(String build) async {
-    final String _key = isFirstAppBuildRun + build;
-    final String? data = await query(_key);
-
-    if (data == null) {
-      await set(_key, 'false');
-      return true;
-    }
-
-    return false;
-  }
-
-  @override
-  Future<String?> getAccessToken() async {
-    return query(accessTokenKey);
-  }
-
-  @override
-  Future<Locale> getLocale() async {
-    try {
-      final String? value = await query(localeKey);
-      if (value != null && ServiceLocale.isSupportedLocale(Locale(value))) {
-        return Locale(value);
-      }
-      //if no stored locale then try to get device locale if it is supported
-      final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
-      if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
-        return Locale(deviceLocale.languageCode);
-      }
-    } catch (e, s) {
-      logger.e(e, e, s);
-    }
-    return ServiceLocale.defaultLocale;
-  }
-
-  @override
-  Future<ThemeMode> getThemeMode() async {
-    final String? value = await query(themeModeKey);
-    if (value == ThemeMode.light.toString()) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-      return ThemeMode.light;
-    } else if (value == ThemeMode.dark.toString()) {
-      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-      return ThemeMode.dark;
-    } else {
-      return ThemeMode.system;
-    }
   }
 
   @override
@@ -144,11 +67,9 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
         }
 
         int? createdAt = maps['createdAt'] as int?;
-        print(createdAt);
         if (createdAt != null) {
           DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(createdAt);
           int difference = DateTime.now().difference(dateTime).inMinutes;
-          print(difference);
           if (difference > minutes) {
             delete(key);
             return null;
@@ -173,5 +94,108 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
       return false;
     }
     return true;
+  }
+
+  //TODO: remove this in favor of setGeneralState
+  @override
+  Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
+    return set(accessTokenKey, accessToken, replaceExist: replaceExist);
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
+    return set(localeKey, locale.languageCode, replaceExist: replaceExist);
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
+    return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<bool> getIsFirstAppRun() async {
+    final String? data = await query(isFirstAppRun);
+
+    if (data == null) {
+      await set(isFirstAppRun, 'false');
+      return true;
+    }
+
+    return false;
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<bool> getIsFirstAppBuildRun(String build) async {
+    final String _key = isFirstAppBuildRun + build;
+    final String? data = await query(_key);
+
+    if (data == null) {
+      await set(_key, 'false');
+      return true;
+    }
+
+    return false;
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<String?> getAccessToken() async {
+    return query(accessTokenKey);
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<Locale> getLocale() async {
+    try {
+      final String? value = await query(localeKey);
+      if (value != null && ServiceLocale.isSupportedLocale(Locale(value))) {
+        return Locale(value);
+      }
+      //if no stored locale then try to get device locale if it is supported
+      final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
+      if (deviceLocale != null && ServiceLocale.isSupportedLocale(deviceLocale)) {
+        return Locale(deviceLocale.languageCode);
+      }
+    } catch (e, s) {
+      logger.e(e, e, s);
+    }
+    return ServiceLocale.defaultLocale;
+  }
+
+//TODO: remove this in favor of setGeneralState
+  @override
+  Future<ThemeMode> getThemeMode() async {
+    final String? value = await query(themeModeKey);
+    if (value == ThemeMode.light.toString()) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+      return ThemeMode.light;
+    } else if (value == ThemeMode.dark.toString()) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+      return ThemeMode.dark;
+    } else {
+      return ThemeMode.system;
+    }
+  }
+
+  @override
+  Future setGeneralState(Map<String, dynamic>? value) {
+    return set(generalStateKey, value == null ? null : jsonEncode(value));
+  }
+
+  @override
+  Future<GeneralState?> getGeneralState() async {
+    try {
+      final Map<String, dynamic>? data = await get(generalStateKey, 3);
+      if (data != null) {
+        return GeneralState.fromJson(data);
+      }
+    } catch (e, s) {
+      logger.e(e, e, s);
+    }
+    return null;
   }
 }

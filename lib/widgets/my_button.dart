@@ -41,6 +41,7 @@ class MyButton extends ConsumerWidget {
         ServiceLoader.setLoading(ref, _id, false);
       }
     }
+    return null;
   }
 
   Widget _button(BuildContext context, WidgetRef ref) {

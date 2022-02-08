@@ -35,7 +35,7 @@ class AppLauncher {
   final BorderRadius borderRadius;
 
   final Overrides? overrides;
-  final List<ProviderObserver>? observers;
+  final List<ProviderObserver> observers;
 
   //
   final AppConfig? config;
@@ -60,7 +60,7 @@ class AppLauncher {
     //providers
     this.initGeneralState = true,
     this.overrides,
-    this.observers,
+    this.observers = const [],
     //
     //testing
     this.testing = false,
@@ -103,7 +103,7 @@ class AppLauncher {
     }
 
     if (initGeneralState) {
-      _generalState = await getGeneralState();
+      _generalState = await GeneralKeyValueDatabase.getGeneralState() ?? await getGeneralState(); // TODO: remove getGeneralState()
     }
 
     if (overrides != null) {
@@ -114,7 +114,7 @@ class AppLauncher {
   //for testing
   Widget mainWidget({required Widget homePage}) {
     return ProviderScope(
-      observers: observers,
+      observers: [const GeneralStateSaver(), ...observers],
       overrides: [
         initialGeneralStateProvider.overrideWithValue(_generalState),
         ..._readyOverrides,
@@ -162,5 +162,19 @@ class AppStart extends StatelessWidget {
         navigatorObservers: ServiceNav.navigatorObservers,
       );
     });
+  }
+}
+
+class GeneralStateSaver extends ProviderObserver {
+  const GeneralStateSaver();
+
+  @override
+  void didUpdateProvider(ProviderBase provider, Object? previousValue, Object? newValue, ProviderContainer container) {
+    if (newValue is GeneralState) {
+      if (newValue != previousValue) {
+        GeneralKeyValueDatabase.setGeneralState(newValue.toJson());
+        logger.w((newValue == previousValue).toString() + " - New GeneralState Saved");
+      }
+    }
   }
 }

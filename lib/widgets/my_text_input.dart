@@ -158,7 +158,7 @@ class MyTextInput extends StatelessWidget {
   Widget buildLabel(BuildContext context) {
     // print(Directionality.of(context));
     if (floatingLabel) {
-      return SizedBox();
+      return const SizedBox();
     }
     return MyText(
       labelText,

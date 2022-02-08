@@ -201,6 +201,7 @@ class Helpers {
       //start-flutterSvg
       return SvgPicture.asset(map.icon, fit: BoxFit.cover, height: 30, width: 30);
       //end-flutterSvg
+      // ignore: dead_code
       if (map == MapType.google) {
         return const Icon(Mdi.googleMaps, size: 30);
       } else {
