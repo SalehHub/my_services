@@ -194,7 +194,7 @@ class ServiceTheme {
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
         behavior: SnackBarBehavior.floating,
         backgroundColor: bgColor,
-        contentTextStyle: GoogleFonts.tajawal(),
+        // contentTextStyle: GoogleFonts.tajawal(),
         elevation: elevation,
         shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
       ),
