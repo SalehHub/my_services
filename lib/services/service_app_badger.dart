@@ -3,7 +3,7 @@ import '../my_services.dart';
 class ServiceAppBadger {
   static Future<void> updateBadgeCount(int count) async {
     try {
-      if (!kIsWeb) {
+      if (!kIsWeb && !Platform.isMacOS) { //TODO: remove when supported
         if (await FlutterAppBadger.isAppBadgeSupported()) {
           FlutterAppBadger.updateBadgeCount(count);
         }

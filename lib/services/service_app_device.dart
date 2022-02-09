@@ -7,6 +7,7 @@ class ServiceAppDevice {
   static AndroidDeviceInfo? _androidInfo;
   static PackageInfo? _packageInfo;
   static IosDeviceInfo? _iosInfo;
+  static MacOsDeviceInfo? _macOsInfo;
   static WebBrowserInfo? _webBrowserInfo;
   static final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
   static const String _deviceOS = "unknown";
@@ -47,6 +48,12 @@ class ServiceAppDevice {
       // print(iosInfo.utsname.release);
       // print(iosInfo.utsname.sysname);
       // print(iosInfo.utsname.version);
+    } else if (Platform.isMacOS) {
+      final MacOsDeviceInfo macOsInfo = _macOsInfo ?? (await _deviceInfoPlugin.macOsInfo);
+      deviceId = macOsInfo.systemGUID;
+      deviceOSVersion = macOsInfo.osRelease;
+      deviceModel = macOsInfo.model;
+      deviceOS = Platform.operatingSystem.toLowerCase();
     }
 
     return AppDeviceData(
