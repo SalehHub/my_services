@@ -28,7 +28,7 @@ class ServiceColor {
   }
 
 //generate color from text
-  static Color colorFromText(String text, {bool light = true}) {
+  static Color colorFromText(String text, {bool light = true, double amount = 0.25}) {
     int hash = 0;
     for (int i = 0; i < text.length; i++) {
       hash = text.codeUnitAt(i) + ((hash << 5) - hash);
@@ -39,7 +39,7 @@ class ServiceColor {
     final int blue = (finalHash & 0xFF00) >> 8;
     final int green = finalHash & 0xFF;
     final Color color = Color.fromRGBO(red, green, blue, light ? 0.1 : 1);
-    return light ? color : darkenColor(color, 0.25);
+    return light ? color : darkenColor(color, amount);
   }
 
   static Color getShade(Color color, {bool darker = false, double value = .1}) {
