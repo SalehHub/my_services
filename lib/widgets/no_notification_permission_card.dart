@@ -63,7 +63,7 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
           margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
           decoration: BoxDecoration(
             //border: Border.all(color: Colors.purple.shade900, width: 2),
-            borderRadius: const BorderRadius.all(Radius.circular(15)),
+            borderRadius: ServiceTheme.borderRadius,
             color: Colors.blue.shade600,
           ),
           child: Row(
