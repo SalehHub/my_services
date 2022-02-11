@@ -63,6 +63,7 @@ class ServiceLocale {
 
   //providers
   static Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
+  static Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
 
   static void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
