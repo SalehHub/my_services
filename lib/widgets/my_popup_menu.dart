@@ -60,7 +60,7 @@ class _MyPopupMenuItemWidget extends ConsumerWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        widget ?? Padding(padding: const EdgeInsets.all(0.0), child: Icon(icon, color: getTheme(context).iconTheme.color)),
+        widget ?? Padding(padding: const EdgeInsets.all(0.0), child: Icon(icon)),
         const SizedBox(width: 4),
         Text(title, style: getTextTheme(context).bodyText1?.copyWith(height: 2)),
         const Spacer(),
