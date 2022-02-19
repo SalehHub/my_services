@@ -22,7 +22,7 @@ class ServiceLocale {
   }
 
   static String getLanguageLabel(Locale locale) {
-    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.context!);
+    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.context);
     if (locale.languageCode == 'ar') {
       return myServicesLabels.arabic;
     } else if (locale.languageCode == 'en') {

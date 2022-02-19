@@ -5,7 +5,7 @@ class ServiceDialog {
 
   static dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<dynamic>(
-        context: ServiceNav.context!,
+        context: ServiceNav.context,
         barrierDismissible: barrierDismissible,
         builder: (BuildContext c) {
           return GestureDetector(

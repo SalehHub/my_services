@@ -187,7 +187,7 @@ class Helpers {
   }
 
   //start-mapLauncher
-  static Future<void> openMap(double lat, double lng, String? title, [BuildContext? context]) async {
+  static Future<void> openMap(double lat, double lng, String? title) async {
     final Coords coords = Coords(lat, lng);
     final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;
 
@@ -195,7 +195,7 @@ class Helpers {
       return await availableMaps.first.showMarker(coords: coords, title: title ?? "");
     }
 
-    MyServicesLocalizationsData labels = getMyServicesLabels((ServiceNav.context ?? context)!);
+    MyServicesLocalizationsData labels = getMyServicesLabels(ServiceNav.context);
 
     _buildIcon(map) {
       //start-flutterSvg
