@@ -8,6 +8,7 @@ class MyButton extends ConsumerWidget {
     this.child,
     this.onPressed,
     this.color,
+    this.textColor,
     this.isTextButton = false,
     this.withLoading = true,
     this.circle = false,
@@ -16,6 +17,7 @@ class MyButton extends ConsumerWidget {
   final Widget? child;
   final dynamic id;
   final Color? color;
+  final Color? textColor;
   final bool withLoading;
   final bool circle;
   final bool isTextButton;
@@ -35,7 +37,11 @@ class MyButton extends ConsumerWidget {
       return child!;
     }
 
-    return MyText(text);
+    if (textColor != null) {
+      return MyText(text, color: textColor);
+    }
+
+    return Text(text);
   }
 
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
