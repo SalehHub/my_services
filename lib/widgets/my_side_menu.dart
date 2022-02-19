@@ -72,15 +72,27 @@ class MySideMenu extends StatelessWidget {
 }
 
 class MySideMenuTile extends StatelessWidget {
-  const MySideMenuTile({Key? key, this.title, this.icon, this.onTap, this.isDivider = false, this.child, this.trailing}) : super(key: key);
+  const MySideMenuTile({
+    Key? key,
+    this.title,
+    this.icon,
+    this.onTap,
+    this.isDivider = false,
+    this.show = true,
+    this.child,
+    this.children,
+    this.trailing,
+  }) : super(key: key);
 
   const MySideMenuTile.divider({Key? key})
       : icon = null,
         title = null,
         onTap = null,
         isDivider = true,
+        show = true,
         child = null,
         trailing = null,
+        children = null,
         super(key: key);
 
   const MySideMenuTile.widget({Key? key, required this.child})
@@ -88,24 +100,45 @@ class MySideMenuTile extends StatelessWidget {
         title = null,
         onTap = null,
         isDivider = false,
+        show = true,
         trailing = null,
+        children = null,
         super(key: key);
 
   final String? title;
   final IconData? icon;
   final GestureTapCallback? onTap;
   final bool isDivider;
+  final bool show;
   final Widget? child;
+  final List<MySideMenuTile>? children;
   final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
+    if (show == false) {
+      return const SizedBox();
+    }
+
     if (isDivider) {
       return const Divider();
     }
 
     if (child != null) {
       return child!;
+    }
+
+    if (children != null && children?.isEmpty == false) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+        child: ExpansionTile(
+          // shape: Theme.of(context).listTileTheme.shape,
+          leading: Icon(icon),
+          title: MyText(title),
+          trailing: trailing,
+          children: children!,
+        ),
+      );
     }
 
     return Padding(
