@@ -129,10 +129,12 @@ class MySideMenuTile extends StatelessWidget {
     }
 
     if (children != null && children?.isEmpty == false) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+      return Card(
+        margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+        elevation: 0,
+        shape: Theme.of(context).listTileTheme.shape,
+        clipBehavior: Clip.antiAlias,
         child: ExpansionTile(
-          // shape: Theme.of(context).listTileTheme.shape,
           leading: Icon(icon),
           title: MyText(title),
           trailing: trailing,
