@@ -79,13 +79,13 @@ class ServiceGoogleMapsCluster<T extends ClusterItem> {
         );
       };
 
-  Future<BitmapDescriptor> buildClusterMarker({String text = '', Color color = Colors.red}) async {
+  Future<BitmapDescriptor> buildClusterMarker({String text = '', Color bgColor = Colors.red, Color fgColor = Colors.white}) async {
     const int size = 120;
 
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
     final Canvas canvas = Canvas(pictureRecorder);
-    final Paint paint1 = Paint()..color = color;
-    final Paint paint2 = Paint()..color = Colors.white;
+    final Paint paint1 = Paint()..color = bgColor;
+    final Paint paint2 = Paint()..color = fgColor;
 
     canvas.drawCircle(const Offset(size / 2, size / 2), size / 2.0, paint1);
     canvas.drawCircle(const Offset(size / 2, size / 2), size / 2.1, paint2);
@@ -95,7 +95,7 @@ class ServiceGoogleMapsCluster<T extends ClusterItem> {
 
     painter.text = TextSpan(
       text: text,
-      style: const TextStyle(fontSize: size / 4, color: Colors.white, fontWeight: FontWeight.normal),
+      style: TextStyle(fontSize: size / 4, color: fgColor, fontWeight: FontWeight.normal),
     );
 
     painter.layout();

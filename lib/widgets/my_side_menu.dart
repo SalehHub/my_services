@@ -31,36 +31,74 @@ class MySideMenu extends StatelessWidget {
       child: Drawer(
         child: ListView(
           children: <Widget>[
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
+            Hero(
+              tag: imageUrl ?? "d",
+              child: MyContainer(
+                height: 160,
+                bgImageOpacity: 0.1,
+                bgImageUrl: imageUrl,
+                bgColor: ServiceTheme.theme(context).primary.withOpacity(0.1),
+                bgImageBlurHash: bgImageBlurhash,
                 borderRadius: ServiceTheme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
-                image: (imageUrl == null)
-                    ? null
-                    : DecorationImage(
-                        colorFilter: isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
-                        fit: BoxFit.cover,
-                        image: CachedNetworkImageProvider(imageUrl!),
-                      ),
-              ),
-              margin: EdgeInsets.zero,
-              currentAccountPictureSize: const Size(60, 60),
-              currentAccountPicture: GestureDetector(
                 onTap: onAvatarTap,
-                child: imageUrl == null ? CircleAvatar(child: Icon(avatarIcon, size: 35)) : MyLoadingImage(url: imageUrl!, blurHash: imageBlurhash, circle: true),
-              ),
-              accountName: GestureDetector(
-                onTap: onAvatarTap,
-                child: MyText(
-                  name,
-                  textAlign: TextAlign.center,
-                  style: getTextTheme(context).subtitle2?.copyWith(fontWeight: FontWeight.bold),
+                child: Center(
+                  child: (imageUrl == null)
+                      ? CircleAvatar(
+                          child: Icon(avatarIcon, size: 40),
+                          backgroundColor: ServiceTheme.theme(context).primary,
+                          foregroundColor: ServiceTheme.theme(context).onPrimary,
+                        )
+                      : Column(
+                          children: [
+                            const SizedBox(height: 10),
+                            const Spacer(),
+                            MyLoadingImage(
+                              url: imageUrl!,
+                              circle: true,
+                              borderColor: ServiceTheme.theme(context).primary,
+                              borderWidth: 2,
+                              width: 70,
+                              height: 70,
+                            ),
+                            Text(name ?? "", style: getTextTheme(context).bodyText1),
+                            Text(email ?? "", style: getTextTheme(context).caption),
+                          ],
+                        ),
                 ),
               ),
-              accountEmail: GestureDetector(
-                onTap: onAvatarTap,
-                child: Text(email ?? '', textDirection: TextDirection.ltr),
-              ),
             ),
+
+            // UserAccountsDrawerHeader(
+            //   decoration: BoxDecoration(
+            //     borderRadius: ServiceTheme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+            //     image: (imageUrl == null)
+            //         ? null
+            //         : DecorationImage(
+            //             colorFilter: isDark(context) ? const ColorFilter.mode(Colors.black87, BlendMode.srcATop) : const ColorFilter.mode(Colors.white70, BlendMode.srcATop),
+            //             fit: BoxFit.cover,
+            //             image: CachedNetworkImageProvider(imageUrl!),
+            //           ),
+            //   ),
+            //   margin: EdgeInsets.zero,
+            //   currentAccountPictureSize: const Size(60, 60),
+            //   currentAccountPicture: GestureDetector(
+            //     onTap: onAvatarTap,
+            //     child: imageUrl == null ? CircleAvatar(child: Icon(avatarIcon, size: 35)) : MyLoadingImage(url: imageUrl!, blurHash: imageBlurhash, circle: true),
+            //   ),
+            //   accountName: GestureDetector(
+            //     onTap: onAvatarTap,
+            //     child: MyText(
+            //       name,
+            //       textAlign: TextAlign.center,
+            //       style: getTextTheme(context).subtitle2?.copyWith(fontWeight: FontWeight.bold),
+            //     ),
+            //   ),
+            //   accountEmail: GestureDetector(
+            //     onTap: onAvatarTap,
+            //     child: Text(email ?? '', textDirection: TextDirection.ltr),
+            //   ),
+            // ),
+
             const SizedBox(height: 5),
             ...children,
             const SizedBox(height: 25),
