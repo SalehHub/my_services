@@ -171,12 +171,16 @@ class MySideMenuTile extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
         elevation: 0,
         shape: Theme.of(context).listTileTheme.shape,
+        color: Colors.transparent,
         clipBehavior: Clip.antiAlias,
-        child: ExpansionTile(
-          leading: Icon(icon),
-          title: MyText(title),
-          trailing: trailing,
-          children: children!,
+        child: Theme(
+          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            leading: Icon(icon),
+            title: MyText(title),
+            trailing: trailing,
+            children: children!,
+          ),
         ),
       );
     }
