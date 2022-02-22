@@ -49,7 +49,7 @@ class ServiceImagePicker {
       MyFile compressedFile;
 
       if (withCrop) {
-        final File? _croppedFile = await ImageCropper.cropImage(
+        final File? _croppedFile = await ImageCropper().cropImage(
           sourcePath: originalFile.path,
           compressQuality: originalFile.sizeInMegabytes > sizeInMB ? 50 : 80,
           aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,

@@ -18,27 +18,27 @@ dependencies:
 
   firebase_core: ^1.12.0 #firebaseCore
   firebase_messaging: ^11.2.6 #firebaseMessaging
-  firebase_crashlytics: ^2.5.0 #firebaseCrashlytics
+  firebase_crashlytics: ^2.5.1 #firebaseCrashlytics
 
   app_settings: ^4.1.1 #appSettings
 
   google_maps_flutter: ^2.1.1 #googleMaps
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
-  image_cropper: ^1.4.1 #imagePicker
-  image_picker: ^0.8.4+6 #imagePicker
+  image_cropper: ^1.5.0 #imagePicker
+  image_picker: ^0.8.4+9 #imagePicker
   flutter_image_compress: ^1.1.0 #imagePicker
 
   photo_view: ^0.13.0 #photoView
   smooth_page_indicator: ^1.0.0+2 #photoView
 
-  map_launcher: ^2.2.0 #mapLauncher
+  map_launcher: ^2.2.1+1 #mapLauncher
 
   flutter_svg: ^1.0.3 #flutterSvg
 
-  app_links: ^2.2.0 #appLinks
+  app_links: ^2.2.1 #appLinks
 
-  share_plus: ^3.0.4 #sharePlus
+  share_plus: ^3.1.0 #sharePlus
 
   pin_code_fields: ^7.3.0 #pinCodeFields
 
@@ -48,16 +48,16 @@ dependencies:
 
 
   logger: ^1.1.0
-  url_launcher: ^6.0.18
+  url_launcher: ^6.0.20
   intl: ^0.17.0
 
 #  device_info: ^2.0.3
-  device_info_plus: ^3.2.1
+  device_info_plus: ^3.2.2
 #  package_info: ^2.0.2
-  package_info_plus: ^1.3.0
+  package_info_plus: ^1.4.0
 
 
-  path_provider: ^2.0.8
+  path_provider: ^2.0.9
   mdi: ^5.0.0-nullsafety.0
   timeago: 3.0.2
 
