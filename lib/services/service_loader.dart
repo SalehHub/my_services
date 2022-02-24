@@ -3,9 +3,9 @@ import '../my_services.dart';
 class ServiceLoader {
   static final _loadings = ChangeNotifierProvider<_LoadersNotifier>((ref) => _LoadersNotifier());
 
-  static bool isLoading(WidgetRef ref, dynamic name) => ref.watch(_loadings).isLoading(name);
+  static bool isLoading(dynamic ref, dynamic name) => ref.watch(_loadings).isLoading(name);
 
-  static void setLoading(WidgetRef ref, dynamic name, bool status) => ref.read(_loadings.notifier).setLoading(name, status);
+  static void setLoading(dynamic ref, dynamic name, bool status) => ref.read(_loadings.notifier).setLoading(name, status);
 }
 
 class _LoadersNotifier extends ChangeNotifier {
