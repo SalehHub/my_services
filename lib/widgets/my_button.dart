@@ -70,11 +70,11 @@ class MyButton extends ConsumerWidget {
     if (circle) {
       return MyContainer(
         onTap: () => _onPressed(context, ref),
-        borderRadius: BorderRadius.all(Radius.circular(100)),
+        borderRadius: const BorderRadius.all(Radius.circular(100)),
         width: progressIndicatorSize * 1.5,
         height: progressIndicatorSize * 1.5,
         bgColor: Colors.black45,
-        margin: EdgeInsets.all(2),
+        margin: const EdgeInsets.all(2),
         child: _child(context, ref),
       );
     }
