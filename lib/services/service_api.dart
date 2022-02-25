@@ -13,7 +13,7 @@ class ServiceApi {
     return savePath;
   }
 
-  static Options _dioOptions(String? accessToken, String? lang) {
+  static Options _dioOptions(String? accessToken, String? lang, {String method = 'POST'}) {
     Map<String, dynamic> headers = <String, dynamic>{
       if (accessToken != null) ...{
         'X-Requested-With': 'XMLHttpRequest',
@@ -24,8 +24,11 @@ class ServiceApi {
       },
     };
 
+    logger.i(headers);
+    logger.i(method);
+
     return Options(
-      method: 'POST',
+      method: method,
       headers: headers,
       contentType: 'application/json',
     );
@@ -71,7 +74,7 @@ class ServiceApi {
     final Response<T> data = await dio.getUri<T>(
       Uri.parse('$domain$url'),
       cancelToken: cancelToken,
-      options: _dioOptions(accessToken, lang),
+      options: _dioOptions(accessToken, lang, method: 'GET'),
     );
     return data;
   }
