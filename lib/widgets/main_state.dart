@@ -350,7 +350,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   }
 
   Widget buildPage(BuildContext context) {
-    var customScrollView = CustomScrollView(
+    final customScrollView = CustomScrollView(
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
