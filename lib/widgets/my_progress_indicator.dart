@@ -10,19 +10,13 @@ class MyProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (Platform.isIOS) {
-    //   return const Center(child: CupertinoActivityIndicator());
-    // }
     return SizedBox(
       width: width,
       height: height,
       child: Center(
         child: Padding(
           padding: margin,
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(getTheme(context).toggleableActiveColor),
-            backgroundColor: color ?? (isDark(context) ? Colors.white : null),
-          ),
+          child: const CircularProgressIndicator.adaptive(),
         ),
       ),
     );
