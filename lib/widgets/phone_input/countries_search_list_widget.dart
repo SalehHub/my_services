@@ -97,7 +97,9 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
             margin: const EdgeInsets.only(top: 0, bottom: 5, left: 20, right: 20),
             prefixIcon: const Icon(iconSearch),
             labelText: getMyServicesLabels(context).searchByCountryNameOrDialCode,
-            labelStyle: getTextTheme(context).caption?.copyWith(color: ServiceTheme.lightAccentColor),
+            labelStyle: getTextTheme(context).caption?.copyWith(
+                // color: ServiceTheme.lightAccentColor,
+                ),
             onChanged: (value) => setState(() => filteredCountries = filterCountries()),
           ),
           Flexible(
