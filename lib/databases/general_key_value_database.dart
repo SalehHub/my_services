@@ -31,10 +31,12 @@ class GeneralKeyValueDatabase {
   static Future<Locale> getLocale() => _myStorage.getLocale();
 //TODO: remove this in favor of setGeneralState
   static Future<ThemeMode> getThemeMode() => _myStorage.getThemeMode();
+
 //TODO: remove this in favor of setGeneralState
-  static Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) => _myStorage.setAccessToken(accessToken, replaceExist: true);
+// static Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) => _myStorage.setAccessToken(accessToken, replaceExist: true);
 //TODO: remove this in favor of setGeneralState
-  static Future<bool> setLocale(Locale locale, {bool replaceExist = true}) => _myStorage.setLocale(locale, replaceExist: replaceExist);
+// static Future<bool> setLocale(Locale locale, {bool replaceExist = true}) => _myStorage.setLocale(locale, replaceExist: replaceExist);
 //TODO: remove this in favor of setGeneralState
-  static Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) => _myStorage.setThemeMode(themeMode, replaceExist: replaceExist);
+// static Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) => _myStorage.setThemeMode(themeMode, replaceExist: replaceExist);
+
 }

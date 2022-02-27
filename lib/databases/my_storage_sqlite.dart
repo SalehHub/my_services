@@ -126,22 +126,22 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
 //TODO: remove this in favor of setGeneralState
-  @override
-  Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
-    return set(accessTokenKey, accessToken, replaceExist: replaceExist);
-  }
+  // @override
+  // Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
+  //   return set(accessTokenKey, accessToken, replaceExist: replaceExist);
+  // }
 
 //TODO: remove this in favor of setGeneralState
-  @override
-  Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
-    return set(localeKey, locale.languageCode, replaceExist: replaceExist);
-  }
+  // @override
+  // Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
+  //   return set(localeKey, locale.languageCode, replaceExist: replaceExist);
+  // }
 
 //TODO: remove this in favor of setGeneralState
-  @override
-  Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
-    return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
-  }
+  // @override
+  // Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
+  //   return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
+  // }
 
 //TODO: remove this in favor of setGeneralState
   @override

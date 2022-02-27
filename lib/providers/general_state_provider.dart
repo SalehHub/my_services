@@ -32,13 +32,13 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
   ///app
   Future<void> setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
-    await GeneralKeyValueDatabase.setAccessToken(value);
+    // await GeneralKeyValueDatabase.setAccessToken(value);
   }
 
   void setThemeMode(BuildContext context, ThemeMode value) {
     state = state.copyWith(themeMode: value);
     ServiceTheme.setSystemUiOverlayStyle(value, context);
-    GeneralKeyValueDatabase.setThemeMode(value);
+    // GeneralKeyValueDatabase.setThemeMode(value);
   }
 
   void toggleThemeMode(BuildContext context) {
@@ -51,7 +51,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
 
   void setLocale(Locale value) {
     setLocaleWithoutSaving(value);
-    GeneralKeyValueDatabase.setLocale(value);
+    // GeneralKeyValueDatabase.setLocale(value);
   }
 
   void setLocaleWithoutSaving(Locale value) {
