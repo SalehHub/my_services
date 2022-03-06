@@ -96,7 +96,7 @@ class ServiceImagePicker {
         MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.context);
         ServiceSnackBar.showText(
           text: myServicesLabels.theAppDoesntHavePhotoAccessPermission,
-          backgroundColor: Colors.red.shade900,
+          success: false,
         );
       }
     }
