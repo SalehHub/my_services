@@ -53,7 +53,12 @@ class _GoogleMapsLocationPickerState extends State<GoogleMapsLocationPicker> {
                 child: GoogleMap(
                   myLocationButtonEnabled: false,
                   myLocationEnabled: false,
-                  onMapCreated: (GoogleMapController controller) => controller.setMapStyle(isDark(context) ? darkMapStyle() : null),
+                  onMapCreated: (GoogleMapController controller) => controller.setMapStyle(isDark(context)
+                      ? mapStyleDark(
+                          getColorScheme(context).background,
+                          getColorScheme(context).primary,
+                        )
+                      : null),
                   onTap: (LatLng latLng) {
                     setState(() {
                       newLat = latLng.latitude;
