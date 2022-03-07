@@ -1,3 +1,5 @@
+import 'package:boxy/slivers.dart';
+
 import '../my_services.dart';
 
 abstract class _MainStateData<T extends ConsumerStatefulWidget> extends ConsumerState<T> {
@@ -124,6 +126,13 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     }
 
     /// theme from [ServiceTheme] appBarTheme
+    // return SliverCard(
+    //   clipBehavior: Clip.antiAlias,
+    //   elevation: 0,
+    //   margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+    //   shape: ServiceTheme.circularBorderRadius10,
+    //   sliver:
+
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       sliver: SliverAppBar(
@@ -138,6 +147,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         forceElevated: true,
       ),
     );
+
+    // );
   }
 
   List<Widget> _buildAppBarActions() {

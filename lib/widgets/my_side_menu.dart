@@ -42,29 +42,31 @@ class MySideMenu extends StatelessWidget {
                 borderRadius: ServiceTheme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
                 onTap: onAvatarTap,
                 child: Center(
-                  child: (imageUrl == null)
-                      ? CircleAvatar(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      const Spacer(),
+                      if (imageUrl == null)
+                        CircleAvatar(
                           child: Icon(avatarIcon, size: 40),
+                          radius: 30,
                           backgroundColor: ServiceTheme.theme(context).primary,
                           foregroundColor: ServiceTheme.theme(context).onPrimary,
                         )
-                      : Column(
-                          children: [
-                            const SizedBox(height: 10),
-                            const Spacer(),
-                            MyLoadingImage(
-                              url: imageUrl!,
-                              circle: true,
-                              borderColor: ServiceTheme.theme(context).primary,
-                              borderWidth: 2,
-                              width: 70,
-                              height: 70,
-                            ),
-                            SizedBox(height: 10),
-                            Text(name ?? "", style: getTextTheme(context).subtitle1),
-                            Text(email ?? "", style: getTextTheme(context).caption),
-                          ],
+                      else
+                        MyLoadingImage(
+                          url: imageUrl!,
+                          circle: true,
+                          borderColor: ServiceTheme.theme(context).primary,
+                          borderWidth: 2,
+                          width: 70,
+                          height: 70,
                         ),
+                      SizedBox(height: 10),
+                      Text(name ?? "", style: getTextTheme(context).subtitle1),
+                      Text(email ?? "", style: getTextTheme(context).caption),
+                    ],
+                  ),
                 ),
               ),
             ),

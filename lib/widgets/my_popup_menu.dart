@@ -1,10 +1,11 @@
 import '../my_services.dart';
 
 class MyPopupMenu<T> extends StatefulWidget {
-  const MyPopupMenu({Key? key, this.onSelected, required this.items}) : super(key: key);
+  const MyPopupMenu({Key? key,this.icon, this.onSelected, required this.items}) : super(key: key);
 
   final PopupMenuItemSelected<T>? onSelected;
   final List<MyPopupMenuItem<T>> items;
+  final Widget? icon;
 
   @override
   State<MyPopupMenu<T>> createState() => _MyPopupMenuState<T>();
@@ -15,13 +16,18 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
   Widget build(BuildContext context) {
     /// theme from [ServiceTheme] popupMenuTheme
     return PopupMenuButton<T>(
+      icon: widget.icon,
       onSelected: widget.onSelected,
       itemBuilder: (BuildContext context) => <PopupMenuEntry<T>>[
         ...widget.items.map((e) {
           if (e.isDivider == true) {
-            return MyPopupMenuItemWidget<T>(height: 5, child: const Divider(height: 1));
+            return _PopupMenuItemWidget<T>(height: 5, child: const Divider(height: 1));
+          } else if (e.widget != null) {
+            return _PopupMenuItemWidget<T>(child: e.widget!);
+          } else if (e.isTitle == true) {
+            return _PopupMenuItemWidget<T>(child: Text(e.title), enabled: false);
           }
-          return MyPopupMenuItemWidget<T>(value: e.value, child: _MyPopupMenuItemWidget(widget: e.widget, icon: e.icon, title: e.title, tail: e.tail));
+          return _PopupMenuItemWidget<T>(value: e.value, child: _MyPopupMenuItemWidget(widget: e.widget, icon: e.icon, title: e.title, tail: e.tail));
         }).toList()
       ],
     );
@@ -29,15 +35,35 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
 }
 
 class MyPopupMenuItem<T> {
-  MyPopupMenuItem(this.value, this.icon, this.title, [this.widget, this.tail, this.isDivider = false]);
+  MyPopupMenuItem.tile(this.value, this.icon, this.title, [this.tail])
+      : isDivider = false,
+        isTitle = false,
+        widget = null;
 
   MyPopupMenuItem.divider()
       : isDivider = true,
+        isTitle = false,
         value = null,
         icon = Mdi.division,
         title = "",
         tail = const SizedBox(),
-        widget = const SizedBox();
+        widget = null;
+
+  MyPopupMenuItem.title(this.title)
+      : isDivider = false,
+        isTitle = true,
+        value = null,
+        icon = Mdi.division,
+        tail = const SizedBox(),
+        widget = null;
+
+  MyPopupMenuItem.widget(this.widget)
+      : isDivider = false,
+        isTitle = false,
+        value = null,
+        icon = Mdi.division,
+        title = "",
+        tail = const SizedBox();
 
   final T? value;
   final IconData icon;
@@ -45,6 +71,7 @@ class MyPopupMenuItem<T> {
   final Widget? widget;
   final Widget? tail;
   final bool isDivider;
+  final bool isTitle;
 }
 
 class _MyPopupMenuItemWidget extends ConsumerWidget {
@@ -70,8 +97,8 @@ class _MyPopupMenuItemWidget extends ConsumerWidget {
   }
 }
 
-class MyPopupMenuItemWidget<T> extends PopupMenuEntry<T> {
-  const MyPopupMenuItemWidget({
+class _PopupMenuItemWidget<T> extends PopupMenuEntry<T> {
+  const _PopupMenuItemWidget({
     Key? key,
     this.value,
     this.onTap,
@@ -98,10 +125,10 @@ class MyPopupMenuItemWidget<T> extends PopupMenuEntry<T> {
   bool represents(T? value) => value == this.value;
 
   @override
-  MyPopupMenuItemState<T, MyPopupMenuItemWidget<T>> createState() => MyPopupMenuItemState<T, MyPopupMenuItemWidget<T>>();
+  _PopupMenuItemState<T, _PopupMenuItemWidget<T>> createState() => _PopupMenuItemState<T, _PopupMenuItemWidget<T>>();
 }
 
-class MyPopupMenuItemState<T, W extends MyPopupMenuItemWidget<T>> extends State<W> {
+class _PopupMenuItemState<T, W extends _PopupMenuItemWidget<T>> extends State<W> {
   @protected
   Widget? buildChild() => widget.child;
 

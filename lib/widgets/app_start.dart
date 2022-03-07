@@ -24,14 +24,18 @@ class AppLauncher {
   //
   final bool initGeneralState;
 
-  final Color? lightAccentColor;
-  final Color? darkAccentColor;
+  final MyThemeData darkTheme;
+  final MyThemeData lightTheme;
 
-  final Color? lightBgColor;
-  final Color? darkBgColor;
+  // final Color lightAccentColor;
+  // final Color darkAccentColor;
 
-  final Color? lightCardColor;
-  final Color? darkCardColor;
+  // final Color lightBgColor;
+  // final Color darkBgColor;
+
+  // final Color lightCardColor;
+  // final Color darkCardColor;
+
   final BorderRadius borderRadius;
 
   final Overrides? overrides;
@@ -47,14 +51,15 @@ class AppLauncher {
     this.supportedLocales = const [Locale('ar'), Locale('en')],
     this.delegates = const [],
     //theme
-    this.lightAccentColor = const Color(0xff219ebc),
-    this.darkAccentColor = const Color(0xff219ebc),
-    //
-    this.lightBgColor = const Color(0xffffffff),
-    this.darkBgColor = const Color(0xff161B1F),
-    //
-    this.darkCardColor = const Color(0xff161B1F),
-    this.lightCardColor = const Color(0xffffffff),
+    this.lightTheme = MyThemeData.light,
+    this.darkTheme = MyThemeData.dark,
+
+    // this.lightAccentColor = const Color(0xff219ebc),
+    // this.darkAccentColor = const Color(0xff219ebc),
+    // this.lightBgColor = const Color(0xffffffff),
+    // this.darkBgColor = const Color(0xff161B1F),
+    // this.darkCardColor = const Color(0xff161B1F),
+    // this.lightCardColor = const Color(0xffffffff),
     //
     this.borderRadius = const BorderRadius.all(Radius.circular(15)),
     //providers
@@ -74,14 +79,16 @@ class AppLauncher {
 
     _appEvents = events;
 
-    ServiceTheme.lightAccentColor = lightAccentColor;
-    ServiceTheme.darkAccentColor = darkAccentColor;
+    ServiceTheme.dark = darkTheme;
+    ServiceTheme.light = lightTheme;
+    // ServiceTheme.lightAccentColor = lightAccentColor;
+    // ServiceTheme.darkAccentColor = darkAccentColor;
 
-    ServiceTheme.lightBgColor = lightBgColor;
-    ServiceTheme.darkBgColor = darkBgColor;
+    // ServiceTheme.lightBgColor = lightBgColor;
+    // ServiceTheme.darkBgColor = darkBgColor;
 
-    ServiceTheme.lightCardColor = lightCardColor;
-    ServiceTheme.darkCardColor = darkCardColor;
+    // ServiceTheme.lightCardColor = lightCardColor;
+    // ServiceTheme.darkCardColor = darkCardColor;
 
     ServiceTheme.borderRadius = borderRadius;
 
