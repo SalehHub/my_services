@@ -1,5 +1,4 @@
 import '../my_services.dart';
-import '../providers/general_state_provider.dart';
 
 typedef Overrides = Future<List<Override>> Function();
 
@@ -27,6 +26,8 @@ class AppLauncher {
   final MyThemeData darkTheme;
   final MyThemeData lightTheme;
 
+//
+  final MyStorage? storage;
   // final Color lightAccentColor;
   // final Color darkAccentColor;
 
@@ -53,6 +54,9 @@ class AppLauncher {
     //theme
     this.lightTheme = MyThemeData.light,
     this.darkTheme = MyThemeData.dark,
+
+    //
+    this.storage,
 
     // this.lightAccentColor = const Color(0xff219ebc),
     // this.darkAccentColor = const Color(0xff219ebc),
@@ -81,6 +85,10 @@ class AppLauncher {
 
     ServiceTheme.dark = darkTheme;
     ServiceTheme.light = lightTheme;
+
+    if (storage != null) {
+      MyServices.storage = storage!;
+    }
     // ServiceTheme.lightAccentColor = lightAccentColor;
     // ServiceTheme.darkAccentColor = darkAccentColor;
 
@@ -110,7 +118,7 @@ class AppLauncher {
     }
 
     if (initGeneralState) {
-      _generalState = await GeneralKeyValueDatabase.getGeneralState() ?? await getGeneralState(); // TODO: remove getGeneralState()
+      _generalState = await MyServices.storage.getGeneralState() ?? await getGeneralState(); // TODO: remove getGeneralState()
     }
 
     if (overrides != null) {
@@ -179,7 +187,7 @@ class GeneralStateSaver extends ProviderObserver {
   void didUpdateProvider(ProviderBase provider, Object? previousValue, Object? newValue, ProviderContainer container) {
     if (newValue is GeneralState) {
       if (newValue != previousValue) {
-        GeneralKeyValueDatabase.setGeneralState(newValue.toJson());
+        MyServices.storage.setGeneralState(newValue.toJson());
         logger.w((newValue == previousValue).toString() + " - New GeneralState Saved");
       }
     }

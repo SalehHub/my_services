@@ -3,6 +3,10 @@ import '../my_services.dart';
 final Logger logger = Logger();
 
 class Helpers {
+  const Helpers._();
+  static const Helpers _s = Helpers._();
+  factory Helpers() => _s;
+
   static TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
 
   static TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;

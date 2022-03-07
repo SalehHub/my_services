@@ -3,9 +3,8 @@ import '../my_services.dart';
 
 class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   MyStorageSQLite._();
-
-  factory MyStorageSQLite() => _singleton;
-  static final MyStorageSQLite _singleton = MyStorageSQLite._();
+  static final MyStorageSQLite _s = MyStorageSQLite._();
+  factory MyStorageSQLite() => _s;
 
   static Database? _database;
   static const String tableName = 'keyValue';

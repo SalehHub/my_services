@@ -1,7 +1,10 @@
 import '../my_services.dart';
 
 class ServiceSnackBar {
-  ServiceSnackBar._();
+  static const ServiceSnackBar _s = ServiceSnackBar._();
+  factory ServiceSnackBar() => _s;
+  const ServiceSnackBar._();
+
   static const EdgeInsets margin = EdgeInsets.symmetric(vertical: 10, horizontal: 15);
 
   static fgColor(bool? success) {

@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class MyPopupMenu<T> extends StatefulWidget {
-  const MyPopupMenu({Key? key,this.icon, this.onSelected, required this.items}) : super(key: key);
+  const MyPopupMenu({Key? key, this.icon, this.onSelected, required this.items}) : super(key: key);
 
   final PopupMenuItemSelected<T>? onSelected;
   final List<MyPopupMenuItem<T>> items;

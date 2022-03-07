@@ -76,14 +76,14 @@ Future<GeneralState> getGeneralState() async {
       Helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
         appDeviceData = await ServiceAppDevice.getAppAndDeviceData();
         //
-        isFirstAppRun = await GeneralKeyValueDatabase.getIsFirstAppRun();
-        isFirstAppBuildRun = await GeneralKeyValueDatabase.getIsFirstAppBuildRun(appDeviceData.appBuild);
+        isFirstAppRun = await MyServices.storage.getIsFirstAppRun();
+        isFirstAppBuildRun = await MyServices.storage.getIsFirstAppBuildRun(appDeviceData.appBuild);
         //
-        accessToken = await GeneralKeyValueDatabase.getAccessToken();
+        accessToken = await MyServices.storage.getAccessToken();
         //
-        locale = await GeneralKeyValueDatabase.getLocale();
+        locale = await MyServices.storage.getLocale();
         //
-        themeMode = await GeneralKeyValueDatabase.getThemeMode();
+        themeMode = await MyServices.storage.getThemeMode();
       }),
       //-----------------------------------------------------------------//
 
