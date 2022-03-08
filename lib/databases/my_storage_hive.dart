@@ -165,19 +165,20 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
     }
   }
 
-  @override
-  Future setGeneralState(Map<String, dynamic>? value) => set(generalStateKey, value == null ? null : jsonEncode(value));
+  // @override
+  // Future setGeneralState(Map<String, dynamic>? value) => set(generalStateKey, value == null ? null : jsonEncode(value));
 
-  @override
-  Future<GeneralState?> getGeneralState() async {
-    try {
-      final Map<String, dynamic>? data = await get(generalStateKey, 3);
-      if (data != null) {
-        return GeneralState.fromJson(data);
-      }
-    } catch (e, s) {
-      logger.e(e, e, s);
-    }
-    return null;
-  }
+  // @override
+  // Future<GeneralState?> getGeneralState() async {
+  //   try {
+  //     final Map<String, dynamic>? data = await get(generalStateKey, 3);
+  //     if (data != null) {
+  //       return GeneralState.fromJson(data);
+  //     }
+  //   } catch (e, s) {
+  //     logger.e(e, e, s);
+  //   }
+  //   return null;
+  // }
+
 }

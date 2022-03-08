@@ -46,7 +46,7 @@ abstract class MyStorage {
 
   Future<ThemeMode> getThemeMode();
 
-  Future setGeneralState(Map<String, dynamic>? value);
+  // Future setGeneralState(Map<String, dynamic>? value);
 
-  Future<GeneralState?> getGeneralState();
+  // Future<GeneralState?> getGeneralState();
 }

@@ -4,11 +4,18 @@ class MyServices {
   const MyServices._();
   static const MyServices _s = MyServices._();
   factory MyServices() => _s;
+
   //
   static MyStorage storage = MyStorageSQLite(); //MyStorageHive();
   static final Helpers helpers = Helpers();
   static final Services services = Services();
   static final Providers providers = Providers();
+
+  // App Config
+  static AppConfig appConfig = AppConfig();
+
+  // App Events
+  static AppEvents appEvents = AppEvents();
 }
 
 class Providers {

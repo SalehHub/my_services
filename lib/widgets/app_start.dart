@@ -1,22 +1,17 @@
 import '../my_services.dart';
 
 typedef Overrides = Future<List<Override>> Function();
+GeneralState _generalState = GeneralState();
+List<Override> _readyOverrides = [];
 
 class AppLauncher {
+  //is testing
   final bool testing;
 
   //locale
   final Locale defaultLocale;
   final List<Locale> supportedLocales;
   final List<LocalizationsDelegate<dynamic>> delegates;
-
-  // App Config
-  static AppConfig get appConfig => _appConfig ?? AppConfig();
-  static AppConfig? _appConfig;
-
-  // App Events
-  static AppEvents get appEvents => _appEvents ?? AppEvents();
-  static AppEvents? _appEvents;
 
   //theme
   final MyThemeData darkTheme;
@@ -25,6 +20,7 @@ class AppLauncher {
   //storage
   final MyStorage? storage;
 
+  //borderRadius
   final BorderRadius borderRadius;
 
   //providers
@@ -32,7 +28,7 @@ class AppLauncher {
   final Overrides? overrides;
   final List<ProviderObserver> observers;
 
-  //
+  // app config & events
   final AppConfig? config;
   final AppEvents? events;
 
@@ -49,7 +45,7 @@ class AppLauncher {
     //storage
     this.storage,
 
-    //
+    // borderRadius
     this.borderRadius = const BorderRadius.all(Radius.circular(15)),
 
     //providers
@@ -60,16 +56,19 @@ class AppLauncher {
     //testing
     this.testing = false,
 
-    //
+    // app config & events
     this.config,
     this.events,
   }) {
-    _appConfig = config?.copyWith(
-      withCrashlytics: config?.withFirebase == true && config?.withCrashlytics == true,
-      withFCM: config?.withFirebase == true && config?.withFCM == true,
-    );
-
-    _appEvents = events;
+    if (config != null) {
+      MyServices.appConfig = config!.copyWith(
+        withCrashlytics: config!.withFirebase == true && config!.withCrashlytics == true,
+        withFCM: config!.withFirebase == true && config!.withFCM == true,
+      );
+    }
+    if (events != null) {
+      MyServices.appEvents = events!;
+    }
 
     ServiceTheme.dark = darkTheme;
     ServiceTheme.light = lightTheme;
@@ -77,14 +76,6 @@ class AppLauncher {
     if (storage != null) {
       MyServices.storage = storage!;
     }
-    // ServiceTheme.lightAccentColor = lightAccentColor;
-    // ServiceTheme.darkAccentColor = darkAccentColor;
-
-    // ServiceTheme.lightBgColor = lightBgColor;
-    // ServiceTheme.darkBgColor = darkBgColor;
-
-    // ServiceTheme.lightCardColor = lightCardColor;
-    // ServiceTheme.darkCardColor = darkCardColor;
 
     ServiceTheme.borderRadius = borderRadius;
 
@@ -92,24 +83,21 @@ class AppLauncher {
     ServiceLocale.supportedLocales = supportedLocales;
   }
 
-  GeneralState _generalState = GeneralState();
-  List<Override> _readyOverrides = [];
-
   Future<void> prepare() async {
     if (!testing) {
       WidgetsFlutterBinding.ensureInitialized();
     }
 
-    if (appConfig.withFirebase) {
-      await Firebase.initializeApp(options: appConfig.firebaseOptions); //firebaseCore
+    if (MyServices.appConfig.withFirebase) {
+      await Firebase.initializeApp(options: MyServices.appConfig.firebaseOptions); //firebaseCore
     }
 
-    if (appConfig.withCrashlytics) {
+    if (MyServices.appConfig.withCrashlytics) {
       await ServiceFirebaseCrashlytics.register(); //firebaseCrashlytics
     }
 
     if (initGeneralState) {
-      _generalState = await MyServices.storage.getGeneralState() ?? await getGeneralState(); // TODO: remove getGeneralState()
+      _generalState = await getGeneralState();
     }
 
     if (overrides != null) {
@@ -150,7 +138,7 @@ class AppStart extends StatelessWidget {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        onGenerateTitle: AppLauncher.appEvents.onGenerateTitle,
+        onGenerateTitle: MyServices.appEvents.onGenerateTitle,
         //
         localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
         supportedLocales: ServiceLocale.supportedLocales,
@@ -176,10 +164,23 @@ class GeneralStateSaver extends ProviderObserver {
 
   @override
   void didUpdateProvider(ProviderBase provider, Object? previousValue, Object? newValue, ProviderContainer container) {
-    if (newValue is GeneralState) {
+    if (newValue is GeneralState && previousValue is GeneralState) {
       if (newValue != previousValue) {
-        MyServices.storage.setGeneralState(newValue.toJson());
-        logger.w((newValue == previousValue).toString() + " - New GeneralState Saved");
+        //theme
+        if (newValue.themeMode != null && newValue.themeMode != previousValue.themeMode) {
+          MyServices.storage.setThemeMode(newValue.themeMode!);
+          logger.w("New themeMode Saved");
+        }
+        //locale
+        if (newValue.locale != null && newValue.locale != previousValue.locale) {
+          MyServices.storage.setLocale(newValue.locale!);
+          logger.w("New locale Saved");
+        }
+        //accessToken
+        if (newValue.accessToken != previousValue.accessToken) {
+          MyServices.storage.setAccessToken(newValue.accessToken);
+          logger.w("New accessToken Saved");
+        }
       }
     }
   }

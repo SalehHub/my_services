@@ -248,16 +248,16 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   void _myInitState() {
     if (homePage) {
-      if (AppLauncher.appConfig.withFCM) {
+      if (MyServices.appConfig.withFCM) {
         ServiceFirebaseMessaging.requestPermission(); //firebaseMessaging
 
-        if (AppLauncher.appEvents.onFCMTokenRefresh != null) {
-          ServiceFirebaseMessaging.onTokenRefresh((token) => AppLauncher.appEvents.onFCMTokenRefresh!(token, ref, context)); //firebaseMessaging
+        if (MyServices.appEvents.onFCMTokenRefresh != null) {
+          ServiceFirebaseMessaging.onTokenRefresh((token) => MyServices.appEvents.onFCMTokenRefresh!(token, ref, context)); //firebaseMessaging
         }
       }
 
-      if (AppLauncher.appEvents.onDynamicLink != null) {
-        ServiceDynamicLink.register((Uri uri) => AppLauncher.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
+      if (MyServices.appEvents.onDynamicLink != null) {
+        ServiceDynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
       }
     }
 
@@ -270,9 +270,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   @override
   Widget build(BuildContext context) {
-    if (homePage && AppLauncher.appEvents.onLocaleChange != null) {
+    if (homePage && MyServices.appEvents.onLocaleChange != null) {
       ServiceLocale.onLocaleChange(ref, (previous, next) {
-        AppLauncher.appEvents.onLocaleChange!(previous, next, ref, context);
+        MyServices.appEvents.onLocaleChange!(previous, next, ref, context);
         logger.w("Previous:" + (previous?.languageCode ?? "") + "\nNext:" + (next?.languageCode ?? ""));
       });
     }

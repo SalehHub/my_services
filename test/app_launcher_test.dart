@@ -18,15 +18,15 @@ Future<void> main() async {
     expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.zero));
 
     //appConfig + firebase
-    expect(AppLauncher.appConfig.withFirebase, true);
-    expect(AppLauncher.appConfig.withFCM, true);
-    expect(AppLauncher.appConfig.withCrashlytics, true);
+    expect(MyServices.appConfig.withFirebase, true);
+    expect(MyServices.appConfig.withFCM, true);
+    expect(MyServices.appConfig.withCrashlytics, true);
 
     //events
-    expect(AppLauncher.appEvents.onDynamicLink, null);
-    expect(AppLauncher.appEvents.onFCMTokenRefresh, null);
-    expect(AppLauncher.appEvents.onGenerateTitle, null);
-    expect(AppLauncher.appEvents.onLocaleChange, null);
+    expect(MyServices.appEvents.onDynamicLink, null);
+    expect(MyServices.appEvents.onFCMTokenRefresh, null);
+    expect(MyServices.appEvents.onGenerateTitle, null);
+    expect(MyServices.appEvents.onLocaleChange, null);
 
     AppLauncher appLauncher = AppLauncher(
       testing: true,
@@ -60,15 +60,15 @@ Future<void> main() async {
     expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.circular(10)));
 
     //appConfig + firebase
-    expect(AppLauncher.appConfig.withFirebase, false);
-    expect(AppLauncher.appConfig.withFCM, false);
-    expect(AppLauncher.appConfig.withCrashlytics, false);
+    expect(MyServices.appConfig.withFirebase, false);
+    expect(MyServices.appConfig.withFCM, false);
+    expect(MyServices.appConfig.withCrashlytics, false);
 
     //events
-    expect(AppLauncher.appEvents.onDynamicLink != null, true);
-    expect(AppLauncher.appEvents.onFCMTokenRefresh != null, true);
-    expect(AppLauncher.appEvents.onGenerateTitle != null, true);
-    expect(AppLauncher.appEvents.onLocaleChange != null, true);
+    expect(MyServices.appEvents.onDynamicLink != null, true);
+    expect(MyServices.appEvents.onFCMTokenRefresh != null, true);
+    expect(MyServices.appEvents.onGenerateTitle != null, true);
+    expect(MyServices.appEvents.onLocaleChange != null, true);
 
     await appLauncher.prepare();
 
@@ -84,14 +84,14 @@ Future<void> main() async {
     // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
 
     //appConfig + firebase
-    expect(AppLauncher.appConfig.withFirebase, false);
-    expect(AppLauncher.appConfig.withFCM, false);
-    expect(AppLauncher.appConfig.withCrashlytics, false);
+    expect(MyServices.appConfig.withFirebase, false);
+    expect(MyServices.appConfig.withFCM, false);
+    expect(MyServices.appConfig.withCrashlytics, false);
 
     //events
-    expect(AppLauncher.appEvents.onDynamicLink != null, true);
-    expect(AppLauncher.appEvents.onFCMTokenRefresh != null, true);
-    expect(AppLauncher.appEvents.onGenerateTitle != null, true);
-    expect(AppLauncher.appEvents.onLocaleChange != null, true);
+    expect(MyServices.appEvents.onDynamicLink != null, true);
+    expect(MyServices.appEvents.onFCMTokenRefresh != null, true);
+    expect(MyServices.appEvents.onGenerateTitle != null, true);
+    expect(MyServices.appEvents.onLocaleChange != null, true);
   });
 }

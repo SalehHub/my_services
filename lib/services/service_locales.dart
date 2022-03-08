@@ -1,5 +1,4 @@
 import '../my_services.dart';
-import '../providers/general_state_provider.dart';
 
 class ServiceLocale {
   static const ServiceLocale _s = ServiceLocale._();

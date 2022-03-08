@@ -62,7 +62,7 @@ class MySideMenu extends StatelessWidget {
                           width: 70,
                           height: 70,
                         ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(name ?? "", style: getTextTheme(context).subtitle1),
                       Text(email ?? "", style: getTextTheme(context).caption),
                     ],
