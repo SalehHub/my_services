@@ -1,3 +1,4 @@
+//flutterAppBadger
 import '../my_services.dart';
 
 class ServiceAppBadger {
@@ -7,8 +8,8 @@ class ServiceAppBadger {
   //
   static Future<void> updateBadgeCount(int count) async {
     try {
+      //TODO: remove when supported
       if (!kIsWeb && !Platform.isMacOS) {
-        //TODO: remove when supported
         if (await FlutterAppBadger.isAppBadgeSupported()) {
           FlutterAppBadger.updateBadgeCount(count);
         }

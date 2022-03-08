@@ -73,6 +73,7 @@ Future<GeneralState> getGeneralState() async {
   await Future.wait<dynamic>(
     <Future<dynamic>>[
       //-----------------------------------------------------------------//
+
       Helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
         appDeviceData = await ServiceAppDevice.getAppAndDeviceData();
         //
@@ -85,6 +86,7 @@ Future<GeneralState> getGeneralState() async {
         //
         themeMode = await MyServices.storage.getThemeMode();
       }),
+
       //-----------------------------------------------------------------//
 
       if (AppLauncher.appConfig.withFCM) ServiceFirebaseMessaging.getToken().then<String?>((String? value) => notificationToken = value), //firebaseMessaging

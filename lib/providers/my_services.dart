@@ -53,19 +53,19 @@ class Services {
   static final ServiceURLLauncher urlLauncher = ServiceURLLauncher();
   static final ServiceTheme theme = ServiceTheme();
   static final ServiceSnackBar snackBar = ServiceSnackBar();
-  static final ServiceShare share = ServiceShare();
+  static final ServiceShare share = ServiceShare(); //sharePlus
   static final ServiceNav nav = ServiceNav();
   static final ServiceLocale locale = ServiceLocale();
   static final ServiceLoader loader = ServiceLoader();
-  static final ServiceImagePicker imagePicker = ServiceImagePicker();
-  static final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics();
-  static final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging();
-  static final ServiceDynamicLink dynamicLink = ServiceDynamicLink();
+  static final ServiceImagePicker imagePicker = ServiceImagePicker(); //imagePicker
+  static final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics(); //firebaseCrashlytics
+  static final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging(); //firebaseMessaging
+  static final ServiceDynamicLink dynamicLink = ServiceDynamicLink(); //appLinks
   static final ServiceDialog dialog = ServiceDialog();
   static final ServiceDebounce debounce = ServiceDebounce();
   static final ServiceColor color = ServiceColor();
   static final ServiceAppDevice appDevice = ServiceAppDevice();
-  static final ServiceAppBadger appBadger = ServiceAppBadger();
+  static final ServiceAppBadger appBadger = ServiceAppBadger(); //flutterAppBadger
   static final ServiceApi api = ServiceApi();
-  static ServiceGoogleMapsCluster googleMapsCluster(ref) => ServiceGoogleMapsCluster(ref);
+  static ServiceGoogleMapsCluster googleMapsCluster(ref) => ServiceGoogleMapsCluster(ref); //googleMaps
 }

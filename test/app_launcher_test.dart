@@ -10,11 +10,11 @@ Future<void> main() async {
     expect(ServiceLocale.supportedLocales, [const Locale('ar')]);
 
     //theme
-    expect(ServiceTheme.lightAccentColor, null);
-    expect(ServiceTheme.darkAccentColor, null);
+    // expect(ServiceTheme.lightAccentColor, null);
+    // expect(ServiceTheme.darkAccentColor, null);
 
-    expect(ServiceTheme.lightBgColor, null);
-    expect(ServiceTheme.darkBgColor, null);
+    // expect(ServiceTheme.lightBgColor, null);
+    // expect(ServiceTheme.darkBgColor, null);
     expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.zero));
 
     //appConfig + firebase
@@ -42,8 +42,8 @@ Future<void> main() async {
       defaultLocale: const Locale("test1"),
       supportedLocales: [const Locale("test1"), const Locale("test2")],
       //
-      lightAccentColor: const Color(0x0f000000),
-      darkAccentColor: const Color(0xfddddddd),
+      // lightAccentColor: const Color(0x0f000000),
+      // darkAccentColor: const Color(0xfddddddd),
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
 
@@ -52,11 +52,11 @@ Future<void> main() async {
     expect(ServiceLocale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
 
     //theme
-    expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
-    expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
+    // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
+    // expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
 
-    expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
-    expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
+    // expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
+    // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
     expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.circular(10)));
 
     //appConfig + firebase
@@ -77,11 +77,11 @@ Future<void> main() async {
     expect(ServiceLocale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
 
     //theme
-    expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
-    expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
+    // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
+    // expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
 
-    expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
-    expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
+    // expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
+    // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
 
     //appConfig + firebase
     expect(AppLauncher.appConfig.withFirebase, false);

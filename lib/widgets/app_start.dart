@@ -3,11 +3,9 @@ import '../my_services.dart';
 typedef Overrides = Future<List<Override>> Function();
 
 class AppLauncher {
-  GeneralState _generalState = GeneralState();
-  List<Override> _readyOverrides = [];
-
   final bool testing;
 
+  //locale
   final Locale defaultLocale;
   final List<Locale> supportedLocales;
   final List<LocalizationsDelegate<dynamic>> delegates;
@@ -20,25 +18,17 @@ class AppLauncher {
   static AppEvents get appEvents => _appEvents ?? AppEvents();
   static AppEvents? _appEvents;
 
-  //
-  final bool initGeneralState;
-
+  //theme
   final MyThemeData darkTheme;
   final MyThemeData lightTheme;
 
-//
+  //storage
   final MyStorage? storage;
-  // final Color lightAccentColor;
-  // final Color darkAccentColor;
-
-  // final Color lightBgColor;
-  // final Color darkBgColor;
-
-  // final Color lightCardColor;
-  // final Color darkCardColor;
 
   final BorderRadius borderRadius;
 
+  //providers
+  final bool initGeneralState;
   final Overrides? overrides;
   final List<ProviderObserver> observers;
 
@@ -51,28 +41,26 @@ class AppLauncher {
     this.defaultLocale = const Locale('ar'),
     this.supportedLocales = const [Locale('ar'), Locale('en')],
     this.delegates = const [],
+
     //theme
     this.lightTheme = MyThemeData.light,
     this.darkTheme = MyThemeData.dark,
 
-    //
+    //storage
     this.storage,
 
-    // this.lightAccentColor = const Color(0xff219ebc),
-    // this.darkAccentColor = const Color(0xff219ebc),
-    // this.lightBgColor = const Color(0xffffffff),
-    // this.darkBgColor = const Color(0xff161B1F),
-    // this.darkCardColor = const Color(0xff161B1F),
-    // this.lightCardColor = const Color(0xffffffff),
     //
     this.borderRadius = const BorderRadius.all(Radius.circular(15)),
+
     //providers
     this.initGeneralState = true,
     this.overrides,
     this.observers = const [],
-    //
+
     //testing
     this.testing = false,
+
+    //
     this.config,
     this.events,
   }) {
@@ -103,6 +91,9 @@ class AppLauncher {
     ServiceLocale.defaultLocale = defaultLocale;
     ServiceLocale.supportedLocales = supportedLocales;
   }
+
+  GeneralState _generalState = GeneralState();
+  List<Override> _readyOverrides = [];
 
   Future<void> prepare() async {
     if (!testing) {
