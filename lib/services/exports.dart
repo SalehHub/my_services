@@ -1,5 +1,5 @@
 export 'service_api.dart';
-export 'service_app_badger.dart';
+export 'service_app_badger.dart'; //flutterAppBadger
 export 'service_app_device.dart';
 export 'service_color.dart';
 export 'service_debounce.dart';
