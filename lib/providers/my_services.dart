@@ -8,8 +8,8 @@ class MyServices {
   //
   static MyStorage storage = MyStorageSQLite(); //MyStorageHive();
   static final Helpers helpers = Helpers();
-  static final Services services = Services();
-  static final Providers providers = Providers();
+  static final _Services services = _Services();
+  static final _Providers providers = _Providers();
 
   // App Config
   static AppConfig appConfig = AppConfig();
@@ -18,62 +18,62 @@ class MyServices {
   static AppEvents appEvents = AppEvents();
 }
 
-class Providers {
-  const Providers._();
-  static const Providers _s = Providers._();
-  factory Providers() => _s;
+class _Providers {
+  const _Providers._();
+  static const _Providers _s = _Providers._();
+  factory _Providers() => _s;
   //
   // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
-  static GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
-  static Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
-  static Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
+  GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
+  Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
+  Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
   //
-  static String? watchAccessToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.accessToken));
-  static String? readAccessToken(dynamic ref) => ref.read(generalStateProvider).accessToken;
+  String? watchAccessToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.accessToken));
+  String? readAccessToken(dynamic ref) => ref.read(generalStateProvider).accessToken;
   //
-  static ThemeMode? watchThemeMode(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
-  static ThemeMode? readThemeMode(dynamic ref) => ref.read(generalStateProvider).themeMode;
+  ThemeMode? watchThemeMode(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
+  ThemeMode? readThemeMode(dynamic ref) => ref.read(generalStateProvider).themeMode;
   //
-  static bool watchIsFirstAppBuildRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppBuildRun));
-  static bool readIsFirstAppBuildRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppBuildRun;
+  bool watchIsFirstAppBuildRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppBuildRun));
+  bool readIsFirstAppBuildRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppBuildRun;
   //
-  static bool watchIsFirstAppRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
-  static bool readIsFirstAppRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppRun;
+  bool watchIsFirstAppRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
+  bool readIsFirstAppRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppRun;
   //
-  static Locale? watchLocale(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.locale));
-  static Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
+  Locale? watchLocale(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.locale));
+  Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
   //
-  static String? watchNotificationToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.notificationToken));
-  static String? readNotificationToken(dynamic ref) => ref.read(generalStateProvider).notificationToken;
+  String? watchNotificationToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.notificationToken));
+  String? readNotificationToken(dynamic ref) => ref.read(generalStateProvider).notificationToken;
   //
-  static AppDeviceData? watchAppDeviceData(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData));
-  static AppDeviceData? readAppDeviceData(dynamic ref) => ref.read(generalStateProvider).appDeviceData;
+  AppDeviceData? watchAppDeviceData(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData));
+  AppDeviceData? readAppDeviceData(dynamic ref) => ref.read(generalStateProvider).appDeviceData;
   //
 }
 
-class Services {
-  const Services._();
-  static const Services _s = Services._();
-  factory Services() => _s;
+class _Services {
+  _Services._();
+  static final _Services _s = _Services._();
+  factory _Services() => _s;
   //
-  static final ServiceURLLauncher urlLauncher = ServiceURLLauncher();
-  static final ServiceTheme theme = ServiceTheme();
-  static final ServiceSnackBar snackBar = ServiceSnackBar();
-  static final ServiceNav nav = ServiceNav();
-  static final ServiceLocale locale = ServiceLocale();
-  static final ServiceLoader loader = ServiceLoader();
+  final ServiceURLLauncher urlLauncher = ServiceURLLauncher();
+  final ServiceTheme theme = ServiceTheme();
+  final ServiceSnackBar snackBar = ServiceSnackBar();
+  final ServiceNav nav = ServiceNav();
+  final ServiceLocale locale = ServiceLocale();
+  final ServiceLoader loader = ServiceLoader();
 
-  static final ServiceDialog dialog = ServiceDialog();
-  static final ServiceDebounce debounce = ServiceDebounce();
-  static final ServiceColor color = ServiceColor();
-  static final ServiceAppDevice appDevice = ServiceAppDevice();
-  static final ServiceApi api = ServiceApi();
+  final ServiceDialog dialog = ServiceDialog();
+  final ServiceDebounce debounce = ServiceDebounce();
+  final ServiceColor color = ServiceColor();
+  final ServiceAppDevice appDevice = ServiceAppDevice();
+  final ServiceApi api = ServiceApi();
 
-  static final ServiceShare share = ServiceShare(); //sharePlus
-  static final ServiceImagePicker imagePicker = ServiceImagePicker(); //imagePicker
-  static final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics(); //firebaseCrashlytics
-  static final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging(); //firebaseMessaging
-  static final ServiceDynamicLink dynamicLink = ServiceDynamicLink(); //appLinks
-  static final ServiceAppBadger appBadger = ServiceAppBadger(); //flutterAppBadger
-  static ServiceGoogleMapsCluster googleMapsCluster(ref) => ServiceGoogleMapsCluster(ref); //googleMaps
+  final ServiceShare share = ServiceShare(); //sharePlus
+  final ServiceImagePicker imagePicker = ServiceImagePicker(); //imagePicker
+  final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics(); //firebaseCrashlytics
+  final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging(); //firebaseMessaging
+  final ServiceDynamicLink dynamicLink = ServiceDynamicLink(); //appLinks
+  final ServiceAppBadger appBadger = ServiceAppBadger(); //flutterAppBadger
+  ServiceGoogleMapsCluster googleMapsCluster(ref) => ServiceGoogleMapsCluster(ref); //googleMaps
 }

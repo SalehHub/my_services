@@ -1,13 +1,13 @@
 import '../my_services.dart';
 
 class ServiceSnackBar {
-  static const ServiceSnackBar _s = ServiceSnackBar._();
+  ServiceSnackBar._();
+  static final ServiceSnackBar _s = ServiceSnackBar._();
   factory ServiceSnackBar() => _s;
-  const ServiceSnackBar._();
   //
-  static const EdgeInsets margin = EdgeInsets.symmetric(vertical: 10, horizontal: 15);
+  static const EdgeInsets _margin = EdgeInsets.symmetric(vertical: 10, horizontal: 15);
 
-  static fgColor(bool? success) {
+  fgColor(bool? success) {
     if (success == true) {
       return getColorScheme(ServiceNav.context).onTertiary;
     } else if (success == false) {
@@ -17,7 +17,7 @@ class ServiceSnackBar {
     return getColorScheme(ServiceNav.context).onPrimary;
   }
 
-  static bgColor(bool? success) {
+  bgColor(bool? success) {
     if (success == true) {
       return getColorScheme(ServiceNav.context).tertiary;
     } else if (success == false) {
@@ -27,11 +27,11 @@ class ServiceSnackBar {
     return getColorScheme(ServiceNav.context).primary;
   }
 
-  static void hide() {
+  void hide() {
     ScaffoldMessenger.of(ServiceNav.context).hideCurrentSnackBar();
   }
 
-  static void showText({
+  void showText({
     String text = '',
     bool? success,
     int seconds = 3,
@@ -39,7 +39,7 @@ class ServiceSnackBar {
     bool hideShownSnackBars = false,
   }) {
     show(
-      margin: margin,
+      margin: _margin,
       seconds: seconds,
       hideShownSnackBars: hideShownSnackBars,
       success: success,
@@ -50,9 +50,9 @@ class ServiceSnackBar {
     );
   }
 
-  static ScaffoldFeatureController? show({
+  ScaffoldFeatureController? show({
     required Widget content,
-    EdgeInsets margin = margin,
+    EdgeInsets margin = _margin,
     int seconds = 3,
     bool hideShownSnackBars = false,
     bool? success,
@@ -78,7 +78,7 @@ class ServiceSnackBar {
     return null;
   }
 
-  static void showYesQuestion({
+  void showYesQuestion({
     String? questionText,
     String? buttonText,
     required VoidCallback onYes,

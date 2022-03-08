@@ -45,8 +45,8 @@ export 'package:logger/logger.dart';
 export 'package:map_launcher/map_launcher.dart'; //mapLauncher
 export 'package:mdi/mdi.dart';
 export 'package:octo_image/octo_image.dart';
-// export 'package:package_info/package_info.dart';
-// export 'package:device_info/device_info.dart';
+export 'package:get_it/get_it.dart';
+
 export 'package:package_info_plus/package_info_plus.dart';
 export 'package:path/path.dart' hide Style, context;
 export 'package:path_provider/path_provider.dart';
@@ -55,7 +55,6 @@ export 'package:photo_view/photo_view.dart'; //photoView
 export 'package:photo_view/photo_view_gallery.dart'; //photoView
 export 'package:pin_code_fields/pin_code_fields.dart'; //pinCodeFields
 //
-
 export 'package:share_plus/share_plus.dart'; //sharePlus
 export 'package:smooth_page_indicator/smooth_page_indicator.dart'; //photoView
 export 'package:sqflite/sqflite.dart'; //sqflite
