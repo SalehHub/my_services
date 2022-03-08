@@ -2,6 +2,10 @@ import '../my_services.dart';
 import '../providers/general_state_provider.dart';
 
 class ServiceLocale {
+  static const ServiceLocale _s = ServiceLocale._();
+  factory ServiceLocale() => _s;
+  const ServiceLocale._();
+  //
   static Locale defaultLocale = const Locale('ar');
   static List<Locale> supportedLocales = [defaultLocale];
 

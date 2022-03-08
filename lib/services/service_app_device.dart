@@ -1,9 +1,10 @@
 import '../my_services.dart';
-import '../providers/general_state_provider.dart';
 
 class ServiceAppDevice {
-  ServiceAppDevice._();
-
+  const ServiceAppDevice._();
+  static const ServiceAppDevice _s = ServiceAppDevice._();
+  factory ServiceAppDevice() => _s;
+  //
   static AndroidDeviceInfo? _androidInfo;
   static PackageInfo? _packageInfo;
   static IosDeviceInfo? _iosInfo;

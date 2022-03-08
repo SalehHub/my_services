@@ -27,6 +27,11 @@ class MyFile {
 
 // ignore: avoid_classes_with_only_static_members
 class ServiceImagePicker {
+  static const ServiceImagePicker _s = ServiceImagePicker._();
+  factory ServiceImagePicker() => _s;
+  const ServiceImagePicker._();
+  //
+
   static final ImagePicker _imagePicker = ImagePicker();
 
   static Future<File?> pickImage(BuildContext context, {bool withCrop = true, bool withCompress = true, double sizeInMB = 1.0, bool square = false, bool circle = false}) async {

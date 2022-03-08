@@ -28,11 +28,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return _database!;
   }
 
-  Future<int?> count() async {
-    return Sqflite.firstIntValue(
-      await (await getDatabase()).rawQuery('SELECT COUNT(*) FROM $tableName'),
-    );
-  }
+  Future<int?> count() async => Sqflite.firstIntValue(await (await getDatabase()).rawQuery('SELECT COUNT(*) FROM $tableName'));
 
   @override
   Future<bool> set(String key, String? value, {bool replaceExist = true}) async {
@@ -124,25 +120,15 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return true;
   }
 
-//TODO: remove this in favor of setGeneralState
-  // @override
-  // Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) {
-  //   return set(accessTokenKey, accessToken, replaceExist: replaceExist);
-  // }
+  @override
+  Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}) => set(accessTokenKey, accessToken, replaceExist: replaceExist);
 
-//TODO: remove this in favor of setGeneralState
-  // @override
-  // Future<bool> setLocale(Locale locale, {bool replaceExist = true}) {
-  //   return set(localeKey, locale.languageCode, replaceExist: replaceExist);
-  // }
+  @override
+  Future<bool> setLocale(Locale locale, {bool replaceExist = true}) => set(localeKey, locale.languageCode, replaceExist: replaceExist);
 
-//TODO: remove this in favor of setGeneralState
-  // @override
-  // Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) {
-  //   return set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
-  // }
+  @override
+  Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}) => set(themeModeKey, themeMode.toString(), replaceExist: replaceExist);
 
-//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> getIsFirstAppRun() async {
     final String? data = await query(isFirstAppRun);
@@ -155,7 +141,6 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return false;
   }
 
-//TODO: remove this in favor of setGeneralState
   @override
   Future<bool> getIsFirstAppBuildRun(String build) async {
     final String _key = isFirstAppBuildRun + build;
@@ -169,13 +154,9 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return false;
   }
 
-//TODO: remove this in favor of setGeneralState
   @override
-  Future<String?> getAccessToken() async {
-    return query(accessTokenKey);
-  }
+  Future<String?> getAccessToken() async => query(accessTokenKey);
 
-//TODO: remove this in favor of setGeneralState
   @override
   Future<Locale> getLocale() async {
     try {
@@ -194,7 +175,6 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     return ServiceLocale.defaultLocale;
   }
 
-//TODO: remove this in favor of setGeneralState
   @override
   Future<ThemeMode> getThemeMode() async {
     final String? value = await query(themeModeKey);
@@ -210,9 +190,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future setGeneralState(Map<String, dynamic>? value) {
-    return set(generalStateKey, value == null ? null : jsonEncode(value));
-  }
+  Future setGeneralState(Map<String, dynamic>? value) => set(generalStateKey, value == null ? null : jsonEncode(value));
 
   @override
   Future<GeneralState?> getGeneralState() async {

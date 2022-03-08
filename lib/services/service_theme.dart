@@ -1,7 +1,10 @@
 import '../my_services.dart';
-import '../providers/general_state_provider.dart';
 
 class ServiceTheme {
+  static const ServiceTheme _s = ServiceTheme._();
+  factory ServiceTheme() => _s;
+  const ServiceTheme._();
+  //
   static const double elevation = 2;
 
   static MyThemeData dark = MyThemeData.dark;

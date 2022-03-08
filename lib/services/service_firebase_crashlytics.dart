@@ -2,6 +2,10 @@
 import '../my_services.dart';
 
 class ServiceFirebaseCrashlytics {
+  static const ServiceFirebaseCrashlytics _s = ServiceFirebaseCrashlytics._();
+  factory ServiceFirebaseCrashlytics() => _s;
+  const ServiceFirebaseCrashlytics._();
+  //
   static final FirebaseCrashlytics _firebaseCrashlytics = FirebaseCrashlytics.instance;
 
   static final RawReceivePort _rawReceivePort = RawReceivePort((List<dynamic> errorAndStacktrace) async {

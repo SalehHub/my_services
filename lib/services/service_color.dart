@@ -1,6 +1,10 @@
 import '../my_services.dart';
 
 class ServiceColor {
+  static const ServiceColor _s = ServiceColor._();
+  factory ServiceColor() => _s;
+  const ServiceColor._();
+  //
   static List<Color> getRandomColors(int length, {bool dark = false}) {
     const List<MaterialAccentColor> accentsColors = Colors.accents;
     const List<MaterialColor> primariesColors = Colors.primaries;

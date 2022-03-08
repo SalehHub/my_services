@@ -7,6 +7,7 @@ StateProvider<Set<Marker>> _markersProvider = StateProvider<Set<Marker>>((ref) =
 
 class ServiceGoogleMapsCluster<T extends ClusterItem> {
   ServiceGoogleMapsCluster(this._ref);
+  //
 
   final WidgetRef _ref;
 

@@ -1,8 +1,10 @@
 import '../my_services.dart';
 
 class ServiceDialog {
-  ServiceDialog._();
-
+  const ServiceDialog._();
+  static const ServiceDialog _s = ServiceDialog._();
+  factory ServiceDialog() => _s;
+  //
   static dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<dynamic>(
         context: ServiceNav.context,

@@ -2,6 +2,10 @@
 import '../my_services.dart';
 
 class ServiceShare {
+  static const ServiceShare _s = ServiceShare._();
+  factory ServiceShare() => _s;
+  const ServiceShare._();
+  //
   static Future<void> text(String text) async {
     try {
       await Share.share(text);

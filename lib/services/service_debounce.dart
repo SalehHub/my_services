@@ -1,6 +1,10 @@
 import 'dart:async';
 
 class ServiceDebounce {
+  static const ServiceDebounce _s = ServiceDebounce._();
+  factory ServiceDebounce() => _s;
+  const ServiceDebounce._();
+  //
   static final Map<String, _ServiceDebounceOperation> _debouncers = {};
 
   static void debounce(VoidDebounceCallback onExecute, [String tag = "debounce-fn", int milliseconds = 300]) {

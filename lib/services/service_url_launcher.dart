@@ -1,6 +1,11 @@
 import '../my_services.dart';
 
 class ServiceURLLauncher {
+  static const ServiceURLLauncher _s = ServiceURLLauncher._();
+  factory ServiceURLLauncher() => _s;
+  const ServiceURLLauncher._();
+  //
+
   static Future<bool> launchUniversalLinkIos(String url) async {
     try {
       assert(url.trim() != '');

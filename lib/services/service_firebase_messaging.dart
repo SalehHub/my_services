@@ -10,6 +10,10 @@ enum FirebaseMessagingPlace {
 typedef OnFirebaseNotification = Function(WidgetRef ref, RemoteMessage? message, FirebaseMessagingPlace s);
 
 class ServiceFirebaseMessaging {
+  static const ServiceFirebaseMessaging _s = ServiceFirebaseMessaging._();
+  factory ServiceFirebaseMessaging() => _s;
+  const ServiceFirebaseMessaging._();
+  //
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   static Future<String?> getToken() => _firebaseMessaging.getToken();

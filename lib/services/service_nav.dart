@@ -1,11 +1,15 @@
 import '../my_services.dart';
 
 class ServiceNav {
+  static const ServiceNav _s = ServiceNav._();
+  factory ServiceNav() => _s;
+  const ServiceNav._();
+  //
+
   static String? currentRoute;
 
   static final List<NavigatorObserver> navigatorObservers = <NavigatorObserver>[
     MyNavigatorObserver(),
-    // FirebaseAnalyticsObserver(analytics: firebaseAnalytics),
   ];
 
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

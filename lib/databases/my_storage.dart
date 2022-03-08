@@ -27,24 +27,26 @@ abstract class MyStorage {
   Future<bool> delete(String key);
 
   //
-  // Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true}); //TODO: remove this in favor of setGeneralState
 
-  // Future<bool> setLocale(Locale locale, {bool replaceExist = true}); //TODO: remove this in favor of setGeneralState
+  Future<bool> setAccessToken(String? accessToken, {bool replaceExist = true});
 
-  // Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true}); //TODO: remove this in favor of setGeneralState
+  Future<bool> setLocale(Locale locale, {bool replaceExist = true});
+
+  Future<bool> setThemeMode(ThemeMode themeMode, {bool replaceExist = true});
 
   //
 
-  Future<bool> getIsFirstAppRun(); //TODO: remove this in favor of setGeneralState
+  Future<bool> getIsFirstAppRun();
 
-  Future<bool> getIsFirstAppBuildRun(String build); //TODO: remove this in favor of setGeneralState
+  Future<bool> getIsFirstAppBuildRun(String build);
 
-  Future<String?> getAccessToken(); //TODO: remove this in favor of setGeneralState
+  Future<String?> getAccessToken();
 
-  Future<Locale> getLocale(); //TODO: remove this in favor of setGeneralState
+  Future<Locale> getLocale();
 
-  Future<ThemeMode> getThemeMode(); //TODO: remove this in favor of setGeneralState
+  Future<ThemeMode> getThemeMode();
 
   Future setGeneralState(Map<String, dynamic>? value);
+
   Future<GeneralState?> getGeneralState();
 }

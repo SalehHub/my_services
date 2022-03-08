@@ -1,6 +1,10 @@
 import '../my_services.dart';
 
 class ServiceApi {
+  static const ServiceApi _s = ServiceApi._();
+  factory ServiceApi() => _s;
+  const ServiceApi._();
+  //
   static final Dio dio = Dio();
   static String domain = '';
 
