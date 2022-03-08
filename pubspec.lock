@@ -21,21 +21,21 @@ packages:
       name: app_links
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "3.0.1"
   app_links_platform_interface:
     dependency: transitive
     description:
       name: app_links_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "1.0.0"
   app_links_web:
     dependency: transitive
     description:
       name: app_links_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.0"
+    version: "1.0.0"
   app_settings:
     dependency: "direct main"
     description:
@@ -64,13 +64,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  boxy:
-    dependency: "direct main"
-    description:
-      name: boxy
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
   build:
     dependency: transitive
     description:
@@ -322,56 +315,56 @@ packages:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.12.0"
+    version: "1.13.1"
   firebase_core_platform_interface:
     dependency: transitive
     description:
       name: firebase_core_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.4"
+    version: "4.2.5"
   firebase_core_web:
     dependency: transitive
     description:
       name: firebase_core_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.5.4"
+    version: "1.6.1"
   firebase_crashlytics:
     dependency: "direct main"
     description:
       name: firebase_crashlytics
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.5.1"
+    version: "2.5.3"
   firebase_crashlytics_platform_interface:
     dependency: transitive
     description:
       name: firebase_crashlytics_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.13"
+    version: "3.2.1"
   firebase_messaging:
     dependency: "direct main"
     description:
       name: firebase_messaging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "11.2.6"
+    version: "11.2.8"
   firebase_messaging_platform_interface:
     dependency: transitive
     description:
       name: firebase_messaging_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.1.6"
+    version: "3.2.1"
   firebase_messaging_web:
     dependency: transitive
     description:
       name: firebase_messaging_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.7"
+    version: "2.2.9"
   fixnum:
     dependency: transitive
     description:
@@ -524,7 +517,7 @@ packages:
       name: google_maps_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
@@ -545,7 +538,7 @@ packages:
       name: hive
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.5"
+    version: "2.0.6"
   hive_flutter:
     dependency: "direct main"
     description:
@@ -587,7 +580,7 @@ packages:
       name: image_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.8.4+9"
+    version: "0.8.4+10"
   image_picker_for_web:
     dependency: transitive
     description:
@@ -636,7 +629,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.1.4"
+    version: "6.1.5"
   lints:
     dependency: transitive
     description:
