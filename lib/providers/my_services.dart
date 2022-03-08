@@ -1,12 +1,11 @@
 import '../my_services.dart';
-import 'general_state_provider.dart';
 
 class MyServices {
   const MyServices._();
   static const MyServices _s = MyServices._();
   factory MyServices() => _s;
   //
-  static MyStorage storage = MyStorageSQLite();
+  static MyStorage storage = MyStorageSQLite(); //MyStorageHive();
   static final Helpers helpers = Helpers();
   static final Services services = Services();
   static final Providers providers = Providers();
@@ -53,19 +52,21 @@ class Services {
   static final ServiceURLLauncher urlLauncher = ServiceURLLauncher();
   static final ServiceTheme theme = ServiceTheme();
   static final ServiceSnackBar snackBar = ServiceSnackBar();
-  static final ServiceShare share = ServiceShare(); //sharePlus
   static final ServiceNav nav = ServiceNav();
   static final ServiceLocale locale = ServiceLocale();
   static final ServiceLoader loader = ServiceLoader();
-  static final ServiceImagePicker imagePicker = ServiceImagePicker(); //imagePicker
-  static final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics(); //firebaseCrashlytics
-  static final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging(); //firebaseMessaging
-  static final ServiceDynamicLink dynamicLink = ServiceDynamicLink(); //appLinks
+
   static final ServiceDialog dialog = ServiceDialog();
   static final ServiceDebounce debounce = ServiceDebounce();
   static final ServiceColor color = ServiceColor();
   static final ServiceAppDevice appDevice = ServiceAppDevice();
-  static final ServiceAppBadger appBadger = ServiceAppBadger(); //flutterAppBadger
   static final ServiceApi api = ServiceApi();
+
+  static final ServiceShare share = ServiceShare(); //sharePlus
+  static final ServiceImagePicker imagePicker = ServiceImagePicker(); //imagePicker
+  static final ServiceFirebaseCrashlytics firebaseCrashlytics = ServiceFirebaseCrashlytics(); //firebaseCrashlytics
+  static final ServiceFirebaseMessaging firebaseMessaging = ServiceFirebaseMessaging(); //firebaseMessaging
+  static final ServiceDynamicLink dynamicLink = ServiceDynamicLink(); //appLinks
+  static final ServiceAppBadger appBadger = ServiceAppBadger(); //flutterAppBadger
   static ServiceGoogleMapsCluster googleMapsCluster(ref) => ServiceGoogleMapsCluster(ref); //googleMaps
 }
