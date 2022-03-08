@@ -21,7 +21,7 @@ export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/rendering.dart';
 export 'package:flutter/services.dart' hide MessageHandler;
-export 'package:flutter_app_badger/flutter_app_badger.dart';
+export 'package:flutter_app_badger/flutter_app_badger.dart'; //flutterAppBadger
 export 'package:flutter_blurhash/flutter_blurhash.dart';
 export 'package:flutter_image/flutter_image.dart';
 //
