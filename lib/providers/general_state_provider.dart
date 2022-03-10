@@ -30,7 +30,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
       };
 
   ///app
-  Future<void> setAccessToken(String? value) async {
+  void setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
     // await MyServices.storage.setAccessToken(value);
   }

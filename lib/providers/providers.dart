@@ -4,10 +4,12 @@ import 'general_state_provider.dart';
 class Providers {
   // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
   GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
-  Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
+  
+  void setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
   void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
   void setLocale(dynamic ref, Locale value) => _readGeneralStateNotifier(ref).setLocale(value);
   void toggleThemeMode(dynamic ref, BuildContext context) => _readGeneralStateNotifier(ref).toggleThemeMode(context);
+  //
   Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
   //
   String? watchAccessToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.accessToken));
@@ -27,17 +29,16 @@ class Providers {
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
   }
-
   //
   String? watchNotificationToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.notificationToken));
   String? readNotificationToken(dynamic ref) => ref.read(generalStateProvider).notificationToken;
   //
+  String? watchAppBuild(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
+  String? readAppBuild(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appBuild;
+  //
   // AppDeviceData? watchAppDeviceData(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData));
   // AppDeviceData? readAppDeviceData(dynamic ref) => ref.read(generalStateProvider).appDeviceData;
   //
-  String? watchAppBuild(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
-  String? readAppBuild(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appBuild;
-
   // String? watchAppVersion(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appVersion));
   // String? readAppVersion(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appVersion;
   //

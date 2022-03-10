@@ -5,7 +5,7 @@ export 'dart:isolate';
 export 'dart:math';
 export 'dart:typed_data';
 export 'dart:ui' show ImageFilter;
-
+//
 export 'package:app_links/app_links.dart'; //appLinks
 export 'package:app_settings/app_settings.dart'; //appSettings
 export 'package:firebase_core/firebase_core.dart'; //firebaseCore
