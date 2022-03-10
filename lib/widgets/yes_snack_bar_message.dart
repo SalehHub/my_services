@@ -21,15 +21,15 @@ class YesSnackBarMessage extends StatelessWidget {
         Expanded(
           child: Text(
             text ?? labels?.areYouSure ?? "",
-            style: getTextTheme(context).bodyText1?.copyWith(color: ServiceSnackBar.fgColor(success)),
+            style: getTextTheme(context).bodyText1?.copyWith(color: MyServices.services.snackBar.fgColor(success)),
           ),
         ),
         ElevatedButton(
-          style: OutlinedButton.styleFrom(backgroundColor: ServiceSnackBar.fgColor(success)),
+          style: OutlinedButton.styleFrom(backgroundColor: MyServices.services.snackBar.fgColor(success)),
           onPressed: () => onYes(),
           child: Text(
             buttonText ?? labels?.yes ?? "Yes",
-            style: getTextTheme(context).bodyText1?.copyWith(color: ServiceSnackBar.bgColor(success)),
+            style: getTextTheme(context).bodyText1?.copyWith(color: MyServices.services.snackBar.bgColor(success)),
           ),
         )
       ],

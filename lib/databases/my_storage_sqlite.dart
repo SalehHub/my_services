@@ -15,7 +15,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   @override
   Future getDatabase() async {
     if (_database == null) {
-      final applicationDocumentsDirectoryPath = await Helpers.getApplicationDocumentsPath();
+      final applicationDocumentsDirectoryPath = await MyServices.helpers.getApplicationDocumentsPath();
       final keyValueDatabasePath = '${applicationDocumentsDirectoryPath!}/$databaseName';
       _database ??= await openDatabase(
         keyValueDatabasePath,

@@ -6,7 +6,7 @@ class ServiceURLLauncher {
   const ServiceURLLauncher._();
   //
 
-  static Future<bool> launchUniversalLinkIos(String url) async {
+  Future<bool> launchUniversalLinkIos(String url) async {
     try {
       assert(url.trim() != '');
       logger.i(url);
@@ -31,11 +31,11 @@ class ServiceURLLauncher {
     return false;
   }
 
-  static Future<void> openTwitterUser(String username, BuildContext context) async {
+  Future<void> openTwitterUser(String username, BuildContext context) async {
     return launchUrl('https://twitter.com/$username');
   }
 
-  static Future<void> openTwitterTag(String tag, BuildContext context) async {
+  Future<void> openTwitterTag(String tag, BuildContext context) async {
     String _tag = tag.replaceAll('#', '');
     _tag = Uri.encodeFull(_tag);
 
@@ -43,15 +43,15 @@ class ServiceURLLauncher {
     return launchUrl('https://twitter.com/hashtag/$_tag?src=hashtag_click');
   }
 
-  static Future<void> launchUrl(String url) async {
+  Future<void> launchUrl(String url) async {
     final bool result = await launchUniversalLinkIos(url);
 
     if (result == false) {
-      ServiceSnackBar.showText(text: url);
+      MyServices.services.snackBar.showText(text: url);
     }
   }
 
-  static Future<void> launchWhatsapp(String num, String text, BuildContext context) async {
+  Future<void> launchWhatsapp(String num, String text, BuildContext context) async {
     final String _text = Uri.encodeFull(text);
 
     final bool result = await launchUniversalLinkIos('whatsapp://send?phone=$num&text=$_text');
@@ -62,29 +62,29 @@ class ServiceURLLauncher {
       if (nativeAppLaunchSucceeded == false) {
         final bool urlLaunch = await launch(url);
         if (urlLaunch == false) {
-          ServiceSnackBar.showText(text: num);
+          MyServices.services.snackBar.showText(text: num);
         }
       }
     }
   }
 
-  static Future<void> launchCall(String num, BuildContext context) async {
+  Future<void> launchCall(String num, BuildContext context) async {
     final bool result = await launchUniversalLinkIos('tel:$num');
 
     if (result == false) {
-      ServiceSnackBar.showText(text: num);
+      MyServices.services.snackBar.showText(text: num);
     }
   }
 
-  static Future<void> launchEmail(String email, BuildContext context) async {
+  Future<void> launchEmail(String email, BuildContext context) async {
     final bool result = await launchUniversalLinkIos('mailto:$email');
 
     if (result == false) {
-      ServiceSnackBar.showText(text: email);
+      MyServices.services.snackBar.showText(text: email);
     }
   }
 
-  static Future<void> openAppOnStore(String iosAppStoreUrl, String androidPlayStoreUrl) async {
+  Future<void> openAppOnStore(String iosAppStoreUrl, String androidPlayStoreUrl) async {
     if (Platform.isIOS) {
       await launchUniversalLinkIos(iosAppStoreUrl);
     } else if (Platform.isAndroid) {

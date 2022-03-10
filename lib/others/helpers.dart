@@ -7,36 +7,36 @@ class Helpers {
   static const Helpers _s = Helpers._();
   factory Helpers() => _s;
 
-  static TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
+  TextDirection getTextDirection(String text) => isRTL(text) ? TextDirection.rtl : TextDirection.ltr;
 
-  static TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;
+  TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;
 
-  static TextAlign getTextAlignByLang(BuildContext context) => ServiceLocale.isAr(context) ? TextAlign.right : TextAlign.left;
+  TextAlign getTextAlignByLang(BuildContext context) => ServiceLocale.isAr(context) ? TextAlign.right : TextAlign.left;
 
-  static bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
+  bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
 
-  static bool isLandScape(BuildContext context) {
+  bool isLandScape(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final Orientation pageOrientation = mediaQueryData.orientation;
     final bool isPageOrientationLandScape = pageOrientation == Orientation.landscape;
     return isPageOrientationLandScape;
   }
 
-  static double getPageWidth(BuildContext context) {
+  double getPageWidth(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return mediaQueryData.size.width;
   }
 
-  static double getPageHeight(BuildContext context) {
+  double getPageHeight(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     return mediaQueryData.size.height;
   }
 
-  static String getMd5(String input) {
+  String getMd5(String input) {
     return md5.convert(utf8.encode(input)).toString();
   }
 
-  static List chunk(List list, int chunkSize) {
+  List chunk(List list, int chunkSize) {
     List chunks = [];
     int len = list.length;
     for (var i = 0; i < len; i += chunkSize) {
@@ -46,7 +46,7 @@ class Helpers {
     return chunks;
   }
 
-  static List<Shadow> getTextStroke(double strokeWidth, Color strokeColor) {
+  List<Shadow> getTextStroke(double strokeWidth, Color strokeColor) {
     return [
       // bottomLeft
       Shadow(
@@ -75,7 +75,7 @@ class Helpers {
     ];
   }
 
-  static String indianToArabicNumbers(String text) {
+  String indianToArabicNumbers(String text) {
     return text
         .replaceAll('٠', '0')
         .replaceAll('١', '1')
@@ -90,9 +90,9 @@ class Helpers {
     //return text;
   }
 
-  static void hideKeyboard() => FocusManager.instance.primaryFocus?.unfocus();
+  void hideKeyboard() => FocusManager.instance.primaryFocus?.unfocus();
 
-  static bool isArabicText(String text) {
+  bool isArabicText(String text) {
     const String arabicLetters = 'ةجحخهعغفقثصضشسيبلاتنمكورزدذطظؤآءئإأ';
     for (final String c in text.split('')) {
       if (arabicLetters.contains(c)) {
@@ -105,16 +105,16 @@ class Helpers {
 
 //////////
 
-  static double bytesToMegabytes(int sizeInBits) {
+  double bytesToMegabytes(int sizeInBits) {
     return sizeInBits / (1024 * 1000);
   }
 
-  static String getFileSizeForHuman(String filepath, [int decimals = 3]) {
+  String getFileSizeForHuman(String filepath, [int decimals = 3]) {
     final File file = File(filepath);
     return bytesToFileSizeForHuman(file.lengthSync(), decimals);
   }
 
-  static String bytesToFileSizeForHuman(int bytes, [int decimals = 3]) {
+  String bytesToFileSizeForHuman(int bytes, [int decimals = 3]) {
     if (bytes <= 0) {
       return '0 B';
     }
@@ -125,13 +125,13 @@ class Helpers {
 
 //////////
 
-  static Future<void> waitForSeconds([int seconds = 2]) => Future<void>.delayed(Duration(seconds: seconds));
+  Future<void> waitForSeconds([int seconds = 2]) => Future<void>.delayed(Duration(seconds: seconds));
 
-  static Future<void> waitForMilliseconds([int milliseconds = 200]) => Future<void>.delayed(Duration(milliseconds: milliseconds));
+  Future<void> waitForMilliseconds([int milliseconds = 200]) => Future<void>.delayed(Duration(milliseconds: milliseconds));
 
   ///////
 
-  static Future<Directory?> _getApplicationDocumentsDirectory() async {
+  Future<Directory?> _getApplicationDocumentsDirectory() async {
     if (!kIsWeb) {
       return getApplicationDocumentsDirectory();
     }
@@ -141,7 +141,7 @@ class Helpers {
   static String? _applicationDocumentsDirectoryPath;
   static bool _printed = false;
 
-  static Future<String?> getApplicationDocumentsPath() async {
+  Future<String?> getApplicationDocumentsPath() async {
     if (_printed == false && _applicationDocumentsDirectoryPath != null) {
       logger.i(_applicationDocumentsDirectoryPath);
       _printed = true;
@@ -165,7 +165,7 @@ class Helpers {
     'tr': TrMessages(),
   };
 
-  static String getTimeAgo(DateTime time, [String? langCode]) {
+  String getTimeAgo(DateTime time, [String? langCode]) {
     String? _langCode = langCode;
 
     if (_langCode == null) {
@@ -191,7 +191,7 @@ class Helpers {
   }
 
   //start-mapLauncher
-  static Future<void> openMap(double lat, double lng, String? title) async {
+  Future<void> openMap(double lat, double lng, String? title) async {
     final Coords coords = Coords(lat, lng);
     final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;
 
@@ -237,7 +237,6 @@ class Helpers {
           );
         }).toList());
   }
-
-//end-mapLauncher
+  //end-mapLauncher
 
 }

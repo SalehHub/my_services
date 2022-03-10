@@ -95,7 +95,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   final TextEditingController searchController = TextEditingController();
 
   Widget get appBarTitle {
-    return Text(title, textDirection: Helpers.getTextDirection(title), style: titleStyle, maxLines: 1);
+    return Text(title, textDirection: MyServices.helpers.getTextDirection(title), style: titleStyle, maxLines: 1);
   }
 
   //tab view

@@ -83,7 +83,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Helpers.getPageHeight(context) - 150,
+      height: MyServices.helpers.getPageHeight(context) - 150,
       width: 400,
       child: Column(
         mainAxisSize: MainAxisSize.min,

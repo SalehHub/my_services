@@ -11,7 +11,7 @@ class WillPopScopeWidget extends StatelessWidget {
 
     return WillPopScope(
       onWillPop: () {
-        ServiceSnackBar.show(
+        MyServices.services.snackBar.show(
           seconds: 2,
           hideShownSnackBars: true,
           content: YesSnackBarMessage(

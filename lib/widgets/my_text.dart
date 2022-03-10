@@ -45,9 +45,9 @@ class MyText extends StatelessWidget {
       padding: margin,
       child: Text(
         text ?? '',
-        textAlign: textAlign ?? Helpers.getTextAlignByLang(context),
+        textAlign: textAlign ?? MyServices.helpers.getTextAlignByLang(context),
         maxLines: maxLines,
-        textDirection: Helpers.getTextDirection(text ?? ''),
+        textDirection: MyServices.helpers.getTextDirection(text ?? ''),
         style: _textStyle,
         overflow: overflow,
       ),

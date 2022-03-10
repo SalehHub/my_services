@@ -9,8 +9,8 @@ class Unfocus extends StatelessWidget {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        Helpers.hideKeyboard();
-        ServiceSnackBar.hide();
+        MyServices.helpers.hideKeyboard();
+        MyServices.services.snackBar.hide();
       },
       child: child,
     );

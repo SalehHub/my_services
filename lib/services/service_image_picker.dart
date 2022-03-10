@@ -16,8 +16,8 @@ class MyFile {
     }
     path = file.path;
     sizeInBytes = file.lengthSync();
-    sizeForHuman = Helpers.bytesToFileSizeForHuman(sizeInBytes);
-    sizeInMegabytes = Helpers.bytesToMegabytes(sizeInBytes);
+    sizeForHuman = MyServices.helpers.bytesToFileSizeForHuman(sizeInBytes);
+    sizeInMegabytes = MyServices.helpers.bytesToMegabytes(sizeInBytes);
   }
 
   String printSize([String filename = ""]) {
@@ -99,7 +99,7 @@ class ServiceImagePicker {
 
       if (e.toString().toLowerCase().contains('photo_access_denied')) {
         MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.context);
-        ServiceSnackBar.showText(
+        MyServices.services.snackBar.showText(
           text: myServicesLabels.theAppDoesntHavePhotoAccessPermission,
           success: false,
         );

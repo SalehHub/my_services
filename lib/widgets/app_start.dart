@@ -18,7 +18,7 @@ class AppLauncher {
   final MyThemeData lightTheme;
 
   //storage
-  final MyStorage? storage;
+  // final MyStorage? storage;
 
   //borderRadius
   final BorderRadius borderRadius;
@@ -43,7 +43,7 @@ class AppLauncher {
     this.darkTheme = MyThemeData.dark,
 
     //storage
-    this.storage,
+    // this.storage,
 
     // borderRadius
     this.borderRadius = const BorderRadius.all(Radius.circular(15)),
@@ -60,6 +60,7 @@ class AppLauncher {
     this.config,
     this.events,
   }) {
+    MyServices.register();
     if (config != null) {
       MyServices.appConfig = config!.copyWith(
         withCrashlytics: config!.withFirebase == true && config!.withCrashlytics == true,
@@ -73,9 +74,9 @@ class AppLauncher {
     ServiceTheme.dark = darkTheme;
     ServiceTheme.light = lightTheme;
 
-    if (storage != null) {
-      MyServices.storage = storage!;
-    }
+    // if (storage != null) {
+    //   MyServices.storage = storage!;
+    // }
 
     ServiceTheme.borderRadius = borderRadius;
 
@@ -156,32 +157,5 @@ class AppStart extends StatelessWidget {
         navigatorObservers: ServiceNav.navigatorObservers,
       );
     });
-  }
-}
-
-class GeneralStateSaver extends ProviderObserver {
-  const GeneralStateSaver();
-
-  @override
-  void didUpdateProvider(ProviderBase provider, Object? previousValue, Object? newValue, ProviderContainer container) {
-    if (newValue is GeneralState && previousValue is GeneralState) {
-      if (newValue != previousValue) {
-        //theme
-        if (newValue.themeMode != null && newValue.themeMode != previousValue.themeMode) {
-          MyServices.storage.setThemeMode(newValue.themeMode!);
-          logger.w("New themeMode Saved");
-        }
-        //locale
-        if (newValue.locale != null && newValue.locale != previousValue.locale) {
-          MyServices.storage.setLocale(newValue.locale!);
-          logger.w("New locale Saved");
-        }
-        //accessToken
-        if (newValue.accessToken != previousValue.accessToken) {
-          MyServices.storage.setAccessToken(newValue.accessToken);
-          logger.w("New accessToken Saved");
-        }
-      }
-    }
   }
 }

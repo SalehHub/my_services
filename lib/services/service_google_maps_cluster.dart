@@ -6,27 +6,21 @@ import '../my_services.dart';
 StateProvider<Set<Marker>> _markersProvider = StateProvider<Set<Marker>>((ref) => {});
 
 class ServiceGoogleMapsCluster<T extends ClusterItem> {
-  ServiceGoogleMapsCluster(this._ref);
   //
-
-  final WidgetRef _ref;
-
+  late WidgetRef _ref;
   ClusterManager<T>? _manager;
   Function(T cluster)? _onMarkerTap;
   Function(Iterable<T> cluster)? _onMultiMarkersTap;
   Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? _markerIconBuilder;
 
-  void register({
+  void register(
+    WidgetRef ref, {
     Function(T cluster)? onMarkerTap,
     Function(Iterable<T> cluster)? onMultiMarkersTap,
     Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? markerIconBuilder,
   }) {
-    _manager ??= ClusterManager<T>(
-      <T>[],
-      _updateMarkers,
-      markerBuilder: _markerBuilder,
-    );
-
+    _ref = ref;
+    _manager ??= ClusterManager<T>(<T>[], _updateMarkers, markerBuilder: _markerBuilder);
     _onMarkerTap = onMarkerTap;
     _onMultiMarkersTap = onMultiMarkersTap;
     _markerIconBuilder = markerIconBuilder;

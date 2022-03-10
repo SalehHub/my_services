@@ -74,7 +74,7 @@ Future<GeneralState> getGeneralState() async {
     <Future<dynamic>>[
       //-----------------------------------------------------------------//
 
-      Helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
+      MyServices.helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
         appDeviceData = await ServiceAppDevice.getAppAndDeviceData();
         //
         isFirstAppRun = await MyServices.storage.getIsFirstAppRun();
@@ -108,4 +108,31 @@ Future<GeneralState> getGeneralState() async {
   );
 
   return generalState;
+}
+
+class GeneralStateSaver extends ProviderObserver {
+  const GeneralStateSaver();
+
+  @override
+  void didUpdateProvider(ProviderBase provider, Object? previousValue, Object? newValue, ProviderContainer container) {
+    if (newValue is GeneralState && previousValue is GeneralState) {
+      if (newValue != previousValue) {
+        //theme
+        if (newValue.themeMode != null && newValue.themeMode != previousValue.themeMode) {
+          MyServices.storage.setThemeMode(newValue.themeMode!);
+          logger.w("New themeMode Saved");
+        }
+        //locale
+        if (newValue.locale != null && newValue.locale != previousValue.locale) {
+          MyServices.storage.setLocale(newValue.locale!);
+          logger.w("New locale Saved");
+        }
+        //accessToken
+        if (newValue.accessToken != previousValue.accessToken) {
+          MyServices.storage.setAccessToken(newValue.accessToken);
+          logger.w("New accessToken Saved");
+        }
+      }
+    }
+  }
 }

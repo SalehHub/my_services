@@ -24,7 +24,7 @@ class MyButton extends ConsumerWidget {
   final AsyncCallback? onPressed;
   final double progressIndicatorSize = 20;
 
-  String get _id => Helpers.getMd5(id?.toString() ?? text);
+  String get _id => MyServices.helpers.getMd5(id?.toString() ?? text);
 
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {

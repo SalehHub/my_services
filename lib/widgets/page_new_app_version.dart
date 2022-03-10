@@ -54,7 +54,7 @@ class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
                       backgroundColor: Colors.green[800],
                       padding: const EdgeInsets.all(20),
                     ),
-                    onPressed: () => ServiceURLLauncher.openAppOnStore(widget.iosAppStoreUrl, widget.androidPlayStoreUrl),
+                    onPressed: () => MyServices.services.urlLauncher.openAppOnStore(widget.iosAppStoreUrl, widget.androidPlayStoreUrl),
                     child: Text(
                       labels.updateNow,
                       textAlign: TextAlign.center,
