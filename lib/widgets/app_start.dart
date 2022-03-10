@@ -1,4 +1,5 @@
 import '../my_services.dart';
+import '../providers/general_state_provider.dart';
 
 typedef Overrides = Future<List<Override>> Function();
 GeneralState _generalState = GeneralState();

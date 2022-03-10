@@ -65,24 +65,24 @@ class ServiceLocale {
   }
 
   //providers
-  static Locale? watchLocale(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.locale));
-  static Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
+  static Locale? watchLocale(WidgetRef ref) => MyServices.providers.watchLocale(ref);
+  static Locale? readLocale(dynamic ref) => MyServices.providers.readLocale(ref);
 
   static void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
-    ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
+    MyServices.providers.onLocaleChange(ref, (previous, next) => listener);
   }
 
-  static void setLocaleWithoutSaving(dynamic ref, Locale value) {
-    if (isSupportedLocale(value)) {
-      ref.read(generalStateProvider.notifier).setLocaleWithoutSaving(value);
-    } else {
-      logger.e("Unsupported locale");
-    }
-  }
+  // static void setLocaleWithoutSaving(dynamic ref, Locale value) {
+  //   if (isSupportedLocale(value)) {
+  //     MyServices.providers.setLocaleWithoutSaving(value);
+  //   } else {
+  //     logger.e("Unsupported locale");
+  //   }
+  // }
 
   static void setLocale(dynamic ref, Locale value) {
     if (isSupportedLocale(value)) {
-      ref.read(generalStateProvider.notifier).setLocale(value);
+      MyServices.providers.setLocale(ref, value);
     } else {
       logger.e("Unsupported locale");
     }
@@ -90,7 +90,7 @@ class ServiceLocale {
 
   static void setLocaleToAr(dynamic ref) {
     if (isSupportedLocale(const Locale('ar'))) {
-      ref.read(generalStateProvider.notifier).setLocale(const Locale('ar'));
+      MyServices.providers.setLocale(ref, const Locale('ar'));
     } else {
       logger.e("Unsupported locale");
     }
@@ -98,7 +98,7 @@ class ServiceLocale {
 
   static void setLocaleToEn(dynamic ref) {
     if (isSupportedLocale(const Locale('en'))) {
-      ref.read(generalStateProvider.notifier).setLocale(const Locale('en'));
+      MyServices.providers.setLocale(ref, const Locale('en'));
     } else {
       logger.e("Unsupported locale");
     }

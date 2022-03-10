@@ -226,10 +226,10 @@ class ServiceTheme {
   }
 
   //provider
-  static ThemeMode? watchThemeMode(WidgetRef ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
-  static ThemeMode? readThemeMode(WidgetRef ref) => ref.read(generalStateProvider).themeMode;
-  static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => ref.read(generalStateProvider.notifier).setThemeMode(context, value);
-  static void toggleThemeMode(dynamic ref, BuildContext context) => ref.read(generalStateProvider.notifier).toggleThemeMode(context);
+  static ThemeMode? watchThemeMode(WidgetRef ref) => MyServices.providers.watchThemeMode(ref);
+  static ThemeMode? readThemeMode(WidgetRef ref) => MyServices.providers.readThemeMode(ref);
+  static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => MyServices.providers.setThemeMode(ref, context, value);
+  static void toggleThemeMode(dynamic ref, BuildContext context) => MyServices.providers.toggleThemeMode(ref, context);
 
   static String getThemeLabel(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
