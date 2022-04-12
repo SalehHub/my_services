@@ -32,13 +32,13 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
   ///app
   void setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
-    // await MyServices.storage.setAccessToken(value);
+    MyServices.storage.setAccessToken(value);
   }
 
   void setThemeMode(BuildContext context, ThemeMode value) {
     state = state.copyWith(themeMode: value);
     ServiceTheme.setSystemUiOverlayStyle(value, context);
-    // MyServices.storage.setThemeMode(value);
+    MyServices.storage.setThemeMode(value);
   }
 
   void toggleThemeMode(BuildContext context) {
@@ -51,7 +51,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
 
   void setLocale(Locale value) {
     setLocaleWithoutSaving(value);
-    // MyServices.storage.setLocale(value);
+    MyServices.storage.setLocale(value);
   }
 
   void setLocaleWithoutSaving(Locale value) {

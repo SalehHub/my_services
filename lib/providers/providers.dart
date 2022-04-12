@@ -4,7 +4,7 @@ import 'general_state_provider.dart';
 class Providers {
   // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
   GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
-  
+
   void setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
   void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
   void setLocale(dynamic ref, Locale value) => _readGeneralStateNotifier(ref).setLocale(value);
@@ -29,6 +29,7 @@ class Providers {
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
   }
+
   //
   String? watchNotificationToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.notificationToken));
   String? readNotificationToken(dynamic ref) => ref.read(generalStateProvider).notificationToken;

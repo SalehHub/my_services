@@ -5,25 +5,16 @@ import '../my_services.dart';
 
 StateProvider<Set<Marker>> _markersProvider = StateProvider<Set<Marker>>((ref) => {});
 
-class ServiceGoogleMapsCluster<T extends ClusterItem> {
-  //
-  late WidgetRef _ref;
-  ClusterManager<T>? _manager;
-  Function(T cluster)? _onMarkerTap;
-  Function(Iterable<T> cluster)? _onMultiMarkersTap;
-  Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? _markerIconBuilder;
+class GoogleMapsCluster<T extends ClusterItem> {
+  final WidgetRef _ref;
+  final Function(T cluster)? _onMarkerTap;
+  final Function(Iterable<T> cluster)? _onMultiMarkersTap;
+  final Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? _markerIconBuilder;
 
-  void register(
-    WidgetRef ref, {
-    Function(T cluster)? onMarkerTap,
-    Function(Iterable<T> cluster)? onMultiMarkersTap,
-    Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? markerIconBuilder,
-  }) {
-    _ref = ref;
+  ClusterManager<T>? _manager;
+
+  GoogleMapsCluster(this._ref, this._onMarkerTap, this._onMultiMarkersTap, this._markerIconBuilder) {
     _manager ??= ClusterManager<T>(<T>[], _updateMarkers, markerBuilder: _markerBuilder);
-    _onMarkerTap = onMarkerTap;
-    _onMultiMarkersTap = onMultiMarkersTap;
-    _markerIconBuilder = markerIconBuilder;
   }
 
   void setItems(List<T> items) {
@@ -118,5 +109,16 @@ class ServiceGoogleMapsCluster<T extends ClusterItem> {
   Future<BitmapDescriptor> getBitmapDescriptorFromAssetBytes(String path, int width) async {
     final Uint8List imageData = await getBytesFromAsset(path, width);
     return BitmapDescriptor.fromBytes(imageData);
+  }
+}
+
+class ServiceGoogleMapsCluster {
+  GoogleMapsCluster<T> register<T extends ClusterItem>(
+    WidgetRef ref, {
+    Function(T cluster)? onMarkerTap,
+    Function(Iterable<T> cluster)? onMultiMarkersTap,
+    Future<BitmapDescriptor> Function(Iterable<T> cluster, bool isCluster)? markerIconBuilder,
+  }) {
+    return GoogleMapsCluster<T>(ref, onMarkerTap, onMultiMarkersTap, markerIconBuilder);
   }
 }
