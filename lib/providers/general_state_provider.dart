@@ -30,28 +30,28 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
       };
 
   ///app
-  void setAccessToken(String? value) async {
+  Future<void> setAccessToken(String? value) async {
     state = state.copyWith(accessToken: value);
-    MyServices.storage.setAccessToken(value);
+    await MyServices.storage.setAccessToken(value);
   }
 
-  void setThemeMode(BuildContext context, ThemeMode value) {
+  Future<void> setThemeMode(BuildContext context, ThemeMode value) async {
     state = state.copyWith(themeMode: value);
     ServiceTheme.setSystemUiOverlayStyle(value, context);
-    MyServices.storage.setThemeMode(value);
+    await MyServices.storage.setThemeMode(value);
   }
 
-  void toggleThemeMode(BuildContext context) {
+  Future<void> toggleThemeMode(BuildContext context) async {
     if (isDark(context)) {
-      setThemeMode(context, ThemeMode.light);
+      await setThemeMode(context, ThemeMode.light);
     } else {
-      setThemeMode(context, ThemeMode.dark);
+      await setThemeMode(context, ThemeMode.dark);
     }
   }
 
-  void setLocale(Locale value) {
+  Future<void> setLocale(Locale value) async {
     setLocaleWithoutSaving(value);
-    MyServices.storage.setLocale(value);
+    await MyServices.storage.setLocale(value);
   }
 
   void setLocaleWithoutSaving(Locale value) {

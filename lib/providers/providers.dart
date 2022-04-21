@@ -5,10 +5,10 @@ class Providers {
   // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
   GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
 
-  void setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
-  void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
-  void setLocale(dynamic ref, Locale value) => _readGeneralStateNotifier(ref).setLocale(value);
-  void toggleThemeMode(dynamic ref, BuildContext context) => _readGeneralStateNotifier(ref).toggleThemeMode(context);
+  Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
+  Future<void> setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
+  Future<void> setLocale(dynamic ref, Locale value) => _readGeneralStateNotifier(ref).setLocale(value);
+  Future<void> toggleThemeMode(dynamic ref, BuildContext context) => _readGeneralStateNotifier(ref).toggleThemeMode(context);
   //
   Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
   //
