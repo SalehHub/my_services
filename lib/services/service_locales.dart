@@ -8,6 +8,37 @@ class ServiceLocale {
   static Locale defaultLocale = const Locale('ar');
   static List<Locale> supportedLocales = [defaultLocale];
 
+  static Widget getLocalSettingsSectionWidget() {
+    return Builder(builder: (context) {
+      return Column(
+        children: [
+          const SizedBox(height: 20),
+          Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).headline6),
+          const Divider(),
+          ...ServiceLocale.supportedLocales.map((Locale _locale) {
+            return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
+              return RadioListTile<Locale>(
+                secondary: ServiceLocale.getLanguageIcon(_locale),
+                title: Text(
+                  ServiceLocale.getLanguageLabel(_locale),
+                  style: getTextTheme(context).bodyText2,
+                ),
+                value: _locale,
+                groupValue: ServiceLocale.watchLocale(ref),
+                onChanged: (Locale? value) {
+                  if (value != null) {
+                    ServiceLocale.setLocale(ref, value);
+                  }
+                },
+              );
+            });
+          }).toList(),
+          const SizedBox(height: 20),
+        ],
+      );
+    });
+  }
+
   static Widget getLanguageIcon(Locale locale, {double width = 25}) {
     if (locale.languageCode == 'ar') {
       return Image.asset('flags/sa.png', width: width, package: 'my_services');

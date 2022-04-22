@@ -89,7 +89,17 @@ class MyTextInput extends StatelessWidget {
                   }
                 }
               },
-              items: items.map((e) => DropdownMenuItem(child: MyText(e.text), value: e.value)).toList(),
+              items: items
+                  .map((e) => DropdownMenuItem(
+                      child: Row(
+                        children: [
+                          if (e.icon != null) e.icon!,
+                          if (e.icon != null) const SizedBox(width: 5),
+                          MyText(e.text),
+                        ],
+                      ),
+                      value: e.value))
+                  .toList(),
               decoration: buildMyInputDecoration(),
             ),
           ],
@@ -257,6 +267,7 @@ class MyTextInput extends StatelessWidget {
 class MyDropdownMenuItemData {
   final String text;
   final String value;
+  final Widget? icon;
 
-  const MyDropdownMenuItemData(this.text, this.value);
+  const MyDropdownMenuItemData(this.text, this.value, {this.icon});
 }
