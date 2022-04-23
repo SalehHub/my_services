@@ -10,7 +10,6 @@ export 'service_firebase_messaging.dart'; //firebaseMessaging
 export 'service_google_maps_cluster.dart'; //googleMaps
 export 'service_image_picker.dart'; //imagePicker
 export 'service_loader.dart';
-export 'service_locales.dart';
 export 'service_nav.dart';
 export 'service_share.dart'; //sharePlus
 export 'service_snack_bar.dart';

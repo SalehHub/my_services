@@ -61,7 +61,9 @@ class AppLauncher {
     this.config,
     this.events,
   }) {
+    
     MyServices.register();
+
     if (config != null) {
       MyServices.appConfig = config!.copyWith(
         withCrashlytics: config!.withFirebase == true && config!.withCrashlytics == true,
@@ -81,8 +83,8 @@ class AppLauncher {
 
     ServiceTheme.borderRadius = borderRadius;
 
-    ServiceLocale.defaultLocale = defaultLocale;
-    ServiceLocale.supportedLocales = supportedLocales;
+    MyServices.services.locale.setDefaultLocale(defaultLocale);
+    MyServices.services.locale.setSupportedLocales(supportedLocales);
   }
 
   Future<void> prepare() async {
@@ -142,9 +144,9 @@ class AppStart extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateTitle: MyServices.appEvents.onGenerateTitle,
         //
-        localizationsDelegates: ServiceLocale.localizationsDelegates(delegates),
-        supportedLocales: ServiceLocale.supportedLocales,
-        locale: ServiceLocale.watchLocale(ref),
+        localizationsDelegates: MyServices.services.locale.localizationsDelegates(delegates),
+        supportedLocales: MyServices.services.locale.supportedLocales,
+        locale: MyServices.services.locale.watchLocale(ref),
         //
         themeMode: ServiceTheme.watchThemeMode(ref),
         theme: ServiceTheme.lightTheme(),

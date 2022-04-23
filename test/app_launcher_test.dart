@@ -5,29 +5,6 @@ Future<void> main() async {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets('Test AppLauncher class', (WidgetTester tester) async {
-    //locale
-    expect(ServiceLocale.defaultLocale, const Locale('ar'));
-    expect(ServiceLocale.supportedLocales, [const Locale('ar')]);
-
-    //theme
-    // expect(ServiceTheme.lightAccentColor, null);
-    // expect(ServiceTheme.darkAccentColor, null);
-
-    // expect(ServiceTheme.lightBgColor, null);
-    // expect(ServiceTheme.darkBgColor, null);
-    expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.zero));
-
-    //appConfig + firebase
-    expect(MyServices.appConfig.withFirebase, true);
-    expect(MyServices.appConfig.withFCM, true);
-    expect(MyServices.appConfig.withCrashlytics, true);
-
-    //events
-    expect(MyServices.appEvents.onDynamicLink, null);
-    expect(MyServices.appEvents.onFCMTokenRefresh, null);
-    expect(MyServices.appEvents.onGenerateTitle, null);
-    expect(MyServices.appEvents.onLocaleChange, null);
-
     AppLauncher appLauncher = AppLauncher(
       testing: true,
       initGeneralState: false,
@@ -48,8 +25,8 @@ Future<void> main() async {
     );
 
     //locale
-    expect(ServiceLocale.defaultLocale, const Locale("test1"));
-    expect(ServiceLocale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
+    expect(MyServices.services.locale.defaultLocale, const Locale("test1"));
+    expect(MyServices.services.locale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
 
     //theme
     // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
@@ -73,8 +50,8 @@ Future<void> main() async {
     await appLauncher.prepare();
 
     //locale
-    expect(ServiceLocale.defaultLocale, const Locale("test1"));
-    expect(ServiceLocale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
+    expect(MyServices.services.locale.defaultLocale, const Locale("test1"));
+    expect(MyServices.services.locale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
 
     //theme
     // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));

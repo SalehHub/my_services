@@ -11,7 +11,7 @@ class Helpers {
 
   TextAlign getTextAlign(String text) => isRTL(text) ? TextAlign.right : TextAlign.left;
 
-  TextAlign getTextAlignByLang(BuildContext context) => ServiceLocale.isAr(context) ? TextAlign.right : TextAlign.left;
+  TextAlign getTextAlignByLang(BuildContext context) => MyServices.services.locale.isAr(context) ? TextAlign.right : TextAlign.left;
 
   bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
 

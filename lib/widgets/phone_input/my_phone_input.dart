@@ -28,12 +28,12 @@ class MyPhoneInput extends StatelessWidget {
       prefixIcon: buildSuffix(context),
       suffixIcon: buildPrefix(),
 
-      // prefixIcon: ServiceLocale.isAr(context) ? buildPrefix() : buildSuffix(context),
-      // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
+      // prefixIcon: MyServices.services.locale.isAr(context) ? buildPrefix() : buildSuffix(context),
+      // suffixIcon: MyServices.services.locale.isAr(context) ? buildSuffix(context) : buildPrefix(),
 
       contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
       // suffixIcon: buildSuffix(context),
-      // suffixIcon: ServiceLocale.isAr(context) ? buildSuffix(context) : buildPrefix(),
+      // suffixIcon: MyServices.services.locale.isAr(context) ? buildSuffix(context) : buildPrefix(),
       onChanged: onChanged,
     );
   }
@@ -49,7 +49,7 @@ class MyPhoneInput extends StatelessWidget {
         ServiceDialog.show(
           title: myServicesLabels.countryDialCode,
           children: [
-            CountrySearchListWidget(countries, ServiceLocale.currentLocaleLangCode(context), onSelect: onCountrySelect),
+            CountrySearchListWidget(countries, MyServices.services.locale.currentLocaleLangCode(context), onSelect: onCountrySelect),
           ],
         );
       },

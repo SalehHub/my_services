@@ -1,4 +1,5 @@
 import '../my_services.dart';
+import 'service_locales.dart';
 
 class Services {
   static const Services _s = Services._();

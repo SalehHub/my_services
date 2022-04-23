@@ -255,7 +255,7 @@ String mapStyleDark(bgColor, roadColor) => '''
 //TODO: refactor this
 String getMapImageFromLatLong(double lat, double lng, String googleMapKey, BuildContext context) {
   String style = isDark(context) ? darkMapStyleStatic(getColorScheme(context).background, getColorScheme(context).primary) : lightMapStyleStatic(getColorScheme(context).primary);
-  String lang = ServiceLocale.currentLocaleLangCode(context);
+  String lang = MyServices.services.locale.currentLocaleLangCode(context);
 
   String language = 'language=$lang';
   String key = 'key=$googleMapKey';
