@@ -34,7 +34,7 @@ Future<void> main() async {
 
     // expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
     // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
-    expect(ServiceTheme.borderRadius, const BorderRadius.all(Radius.circular(10)));
+    expect(MyServices.services.theme.borderRadius, const BorderRadius.all(Radius.circular(10)));
 
     //appConfig + firebase
     expect(MyServices.appConfig.withFirebase, false);

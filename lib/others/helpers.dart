@@ -229,8 +229,8 @@ class Helpers {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
             child: ListTile(
-              shape: ServiceTheme.circularBorderRadius10,
-              leading: ClipRRect(borderRadius: ServiceTheme.borderRadius, child: _buildIcon(map)),
+              shape: MyServices.services.theme.circularBorderRadius,
+              leading: ClipRRect(borderRadius: MyServices.services.theme.borderRadius, child: _buildIcon(map)),
               title: Text(mapName),
               onTap: () => map.showMarker(coords: coords, title: title ?? ""),
             ),
@@ -240,3 +240,21 @@ class Helpers {
   //end-mapLauncher
 
 }
+
+//////Theme Helpers
+
+ThemeData getTheme(BuildContext context) => Theme.of(context);
+
+TextTheme getTextTheme(BuildContext context) => getTheme(context).textTheme;
+
+ColorScheme getColorScheme(BuildContext context) => getTheme(context).colorScheme;
+
+bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.dark;
+
+bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
+
+Color getColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;
+
+Color whiteWhenDarkBlackWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
+
+Color blackWhenDarkWhiteWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);

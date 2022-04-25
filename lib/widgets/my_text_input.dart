@@ -120,7 +120,7 @@ class MyTextInput extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade500, width: 0.8),
-                borderRadius: ServiceTheme.borderRadius,
+                borderRadius: MyServices.services.theme.borderRadius,
               ),
               child: widget!,
             )
@@ -188,7 +188,7 @@ class MyTextInput extends StatelessWidget {
       contentPadding: buildContentPadding(),
       suffixIcon: suffixIcon,
       prefixIcon: buildPrefixIcon(),
-      border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? ServiceTheme.borderRadius),
+      border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? MyServices.services.theme.borderRadius),
     );
   }
 

@@ -37,7 +37,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
 
   Future<void> setThemeMode(BuildContext context, ThemeMode value) async {
     state = state.copyWith(themeMode: value);
-    ServiceTheme.setSystemUiOverlayStyle(value, context);
+    MyServices.services.theme.setSystemUiOverlayStyle(value, context);
     await MyServices.storage.setThemeMode(value);
   }
 

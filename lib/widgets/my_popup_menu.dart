@@ -181,7 +181,7 @@ class _PopupMenuItemState<T, W extends _PopupMenuItemWidget<T>> extends State<W>
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 6),
           child: InkWell(
-            borderRadius: ServiceTheme.borderRadius,
+            borderRadius: MyServices.services.theme.borderRadius,
             onTap: widget.enabled ? handleTap : null,
             canRequestFocus: widget.enabled,
             mouseCursor: effectiveMouseCursor,

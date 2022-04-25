@@ -61,7 +61,6 @@ class AppLauncher {
     this.config,
     this.events,
   }) {
-    
     MyServices.register();
 
     if (config != null) {
@@ -74,14 +73,14 @@ class AppLauncher {
       MyServices.appEvents = events!;
     }
 
-    ServiceTheme.dark = darkTheme;
-    ServiceTheme.light = lightTheme;
+    MyServices.services.theme.setDark(darkTheme);
+    MyServices.services.theme.setLight(lightTheme);
 
     // if (storage != null) {
     //   MyServices.storage = storage!;
     // }
 
-    ServiceTheme.borderRadius = borderRadius;
+    MyServices.services.theme.setBorderRadius(borderRadius);
 
     MyServices.services.locale.setDefaultLocale(defaultLocale);
     MyServices.services.locale.setSupportedLocales(supportedLocales);
@@ -148,9 +147,9 @@ class AppStart extends StatelessWidget {
         supportedLocales: MyServices.services.locale.supportedLocales,
         locale: MyServices.services.locale.watchLocale(ref),
         //
-        themeMode: ServiceTheme.watchThemeMode(ref),
-        theme: ServiceTheme.lightTheme(),
-        darkTheme: ServiceTheme.darkTheme(),
+        themeMode: MyServices.services.theme.watchThemeMode(ref),
+        theme: MyServices.services.theme.lightTheme,
+        darkTheme: MyServices.services.theme.darkTheme,
         //
         home: homePage,
         builder: (BuildContext context, Widget? child) => Unfocus(child: child),

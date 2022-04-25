@@ -154,7 +154,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       return Material(
         color: Colors.transparent,
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        borderRadius: ServiceTheme.borderRadius,
+        borderRadius: MyServices.services.theme.borderRadius,
         child: e,
       );
     }).toList();
@@ -192,7 +192,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     ServiceDebounce.debounce(() {
       logger.w("Service Theme Set System Ui Overlay Style");
       if (mounted) {
-        ServiceTheme.setSystemUiOverlayStyle(ThemeMode.system, context);
+        MyServices.services.theme.setSystemUiOverlayStyle(ThemeMode.system, context);
       }
     }, 'changeDependenciesSetSystemUiOverlayStyle', 300);
   }

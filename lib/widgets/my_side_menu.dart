@@ -37,9 +37,9 @@ class MySideMenu extends StatelessWidget {
                 height: 160,
                 bgImageOpacity: 0.1,
                 bgImageUrl: bgImageUrl,
-                bgColor: ServiceTheme.theme(context).primary.withOpacity(0.02),
+                bgColor: getColorScheme(context).primary.withOpacity(0.02),
                 bgImageBlurHash: bgImageBlurhash,
-                borderRadius: ServiceTheme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+                borderRadius: MyServices.services.theme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
                 onTap: onAvatarTap,
                 child: Center(
                   child: Column(
@@ -50,14 +50,14 @@ class MySideMenu extends StatelessWidget {
                         CircleAvatar(
                           child: Icon(avatarIcon, size: 40),
                           radius: 30,
-                          backgroundColor: ServiceTheme.theme(context).primary,
-                          foregroundColor: ServiceTheme.theme(context).onPrimary,
+                          backgroundColor: getColorScheme(context).primary,
+                          foregroundColor: getColorScheme(context).onPrimary,
                         )
                       else
                         MyLoadingImage(
                           url: imageUrl!,
                           circle: true,
-                          borderColor: ServiceTheme.theme(context).primary,
+                          borderColor: getColorScheme(context).primary,
                           borderWidth: 2,
                           width: 70,
                           height: 70,

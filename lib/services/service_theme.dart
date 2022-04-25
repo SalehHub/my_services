@@ -1,27 +1,32 @@
 import '../my_services.dart';
 
 class ServiceTheme {
-  static const ServiceTheme _s = ServiceTheme._();
-  factory ServiceTheme() => _s;
-  const ServiceTheme._();
+  // const ServiceTheme _s = ServiceTheme._();
+  // factory ServiceTheme() => _s;
+  // const ServiceTheme._();
   //
   static const double elevation = 2;
 
-  static MyThemeData dark = MyThemeData.dark;
-  static MyThemeData light = MyThemeData.light;
+  MyThemeData _dark = MyThemeData.dark;
+  MyThemeData _light = MyThemeData.light;
 
-  static MyThemeData theme([BuildContext? context]) => isDark(context ?? ServiceNav.context) ? dark : light;
+  BorderRadius _borderRadius = const BorderRadius.all(Radius.zero);
+  BorderRadius get borderRadius => _borderRadius;
+  RoundedRectangleBorder get circularBorderRadius => RoundedRectangleBorder(borderRadius: _borderRadius);
 
-  static BorderRadius borderRadius = const BorderRadius.all(Radius.zero);
-  static RoundedRectangleBorder circularBorderRadius10 = RoundedRectangleBorder(borderRadius: borderRadius);
+  void setDark(MyThemeData v) => _dark = v;
 
-  static ThemeData lightTheme() => _getThemeData(ThemeData.light());
-  static ThemeData darkTheme() => _getThemeData(ThemeData.dark());
+  void setLight(MyThemeData v) => _light = v;
 
-  static final Color _darkScaffoldBackgroundColor = dark.background;
-  static final Color _lightScaffoldBackgroundColor = light.background;
+  void setBorderRadius(BorderRadius v) => _borderRadius = v;
 
-  static SystemUiOverlayStyle get _lightSystemUiOverlayStyle {
+  // MyThemeData theme([BuildContext? context]) => isDark(context ?? ServiceNav.context) ? _dark : _light;
+
+  ThemeData get lightTheme => _getThemeData(ThemeData.light());
+
+  ThemeData get darkTheme => _getThemeData(ThemeData.dark());
+
+  SystemUiOverlayStyle get _lightSystemUiOverlayStyle {
     if (kIsWeb) {
       return SystemUiOverlayStyle.light;
     }
@@ -31,14 +36,14 @@ class ServiceTheme {
     }
 
     return SystemUiOverlayStyle(
-      statusBarColor: _darkScaffoldBackgroundColor,
-      systemNavigationBarColor: _darkScaffoldBackgroundColor,
+      statusBarColor: _dark.background,
+      systemNavigationBarColor: _dark.background,
       statusBarIconBrightness: Brightness.light,
       systemNavigationBarIconBrightness: Brightness.light,
     );
   }
 
-  static SystemUiOverlayStyle get _darkSystemUiOverlayStyle {
+  SystemUiOverlayStyle get _darkSystemUiOverlayStyle {
     if (kIsWeb) {
       return SystemUiOverlayStyle.dark;
     }
@@ -48,14 +53,14 @@ class ServiceTheme {
     }
 
     return SystemUiOverlayStyle(
-      statusBarColor: _lightScaffoldBackgroundColor,
-      systemNavigationBarColor: _lightScaffoldBackgroundColor,
+      statusBarColor: _light.background,
+      systemNavigationBarColor: _light.background,
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarIconBrightness: Brightness.dark,
     );
   }
 
-  static void setSystemUiOverlayStyle(ThemeMode? value, BuildContext context) {
+  void setSystemUiOverlayStyle(ThemeMode? value, BuildContext context) {
     if (value == ThemeMode.dark) {
       SystemChrome.setSystemUIOverlayStyle(_lightSystemUiOverlayStyle);
     } else if (value == ThemeMode.light) {
@@ -71,7 +76,7 @@ class ServiceTheme {
     }
   }
 
-  static TextTheme _modifyTextHeight(TextTheme textTheme) {
+  TextTheme _modifyTextHeight(TextTheme textTheme) {
     // return textTheme;
     const double height = 1.8;
     const double letterSpacing = 0.1;
@@ -99,10 +104,10 @@ class ServiceTheme {
     );
   }
 
-  static ThemeData _getThemeData(ThemeData mainThemeData) {
+  ThemeData _getThemeData(ThemeData mainThemeData) {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
 
-    MyThemeData myThemeData = isDark ? dark : light;
+    MyThemeData myThemeData = isDark ? _dark : _light;
 
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
@@ -141,7 +146,7 @@ class ServiceTheme {
         elevation: myThemeData.appBar?.elevation ?? 0,
         titleTextStyle: textTheme.bodyText2?.copyWith(color: colorScheme.onBackground),
         iconTheme: iconTheme,
-        shape: myThemeData.appBar?.shape ?? circularBorderRadius10,
+        shape: myThemeData.appBar?.shape ?? circularBorderRadius,
       ),
       chipTheme: mainThemeData.chipTheme.copyWith(
         backgroundColor: colorScheme.primary,
@@ -149,20 +154,20 @@ class ServiceTheme {
         labelStyle: textTheme.bodyText2?.copyWith(color: colorScheme.onPrimary),
       ),
       listTileTheme: mainThemeData.listTileTheme.copyWith(
-        shape: circularBorderRadius10,
+        shape: circularBorderRadius,
         iconColor: iconTheme.color,
       ),
       //
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
-        shape: circularBorderRadius10,
+        shape: circularBorderRadius,
       ),
       dialogTheme: mainThemeData.dialogTheme.copyWith(
         backgroundColor: colorScheme.background,
         elevation: elevation,
-        shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
+        shape: circularBorderRadius.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
       ),
       cardTheme: mainThemeData.cardTheme.copyWith(
-        shape: circularBorderRadius10,
+        shape: circularBorderRadius,
         color: colorScheme.surface,
         elevation: elevation,
         clipBehavior: Clip.antiAlias,
@@ -170,30 +175,30 @@ class ServiceTheme {
       ),
       drawerTheme: mainThemeData.drawerTheme.copyWith(
         // backgroundColor: colorScheme.surface,
-        shape: circularBorderRadius10,
+        shape: circularBorderRadius,
         elevation: elevation,
       ),
       popupMenuTheme: mainThemeData.popupMenuTheme.copyWith(
         color: colorScheme.surface,
-        shape: circularBorderRadius10.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
+        shape: circularBorderRadius.copyWith(side: const BorderSide(width: 0.5, color: Colors.grey)),
         elevation: elevation,
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           textStyle: textTheme.bodyText1,
-          shape: circularBorderRadius10,
+          shape: circularBorderRadius,
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           textStyle: textTheme.bodyText1,
-          shape: circularBorderRadius10,
+          shape: circularBorderRadius,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           textStyle: textTheme.bodyText1,
-          shape: circularBorderRadius10,
+          shape: circularBorderRadius,
         ),
       ),
       tabBarTheme: mainThemeData.tabBarTheme.copyWith(
@@ -218,7 +223,7 @@ class ServiceTheme {
         backgroundColor: colorScheme.surface,
         contentTextStyle: textTheme.subtitle1?.copyWith(color: colorScheme.onInverseSurface),
         elevation: elevation,
-        shape: circularBorderRadius10.copyWith(side: BorderSide(width: 0.5, color: colorScheme.onInverseSurface)),
+        shape: circularBorderRadius.copyWith(side: BorderSide(width: 0.5, color: colorScheme.onInverseSurface)),
       ),
     );
 
@@ -226,13 +231,13 @@ class ServiceTheme {
   }
 
   //provider
-  static ThemeMode? watchThemeMode(WidgetRef ref) => MyServices.providers.watchThemeMode(ref);
-  static ThemeMode? readThemeMode(WidgetRef ref) => MyServices.providers.readThemeMode(ref);
-  static void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => MyServices.providers.setThemeMode(ref, context, value);
-  static void toggleThemeMode(dynamic ref, BuildContext context) => MyServices.providers.toggleThemeMode(ref, context);
+  ThemeMode? watchThemeMode(WidgetRef ref) => MyServices.providers.watchThemeMode(ref);
+  ThemeMode? readThemeMode(WidgetRef ref) => MyServices.providers.readThemeMode(ref);
 
+  void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => MyServices.providers.setThemeMode(ref, context, value);
+  void toggleThemeMode(dynamic ref, BuildContext context) => MyServices.providers.toggleThemeMode(ref, context);
 
-  static Widget getThemeSettingsSectionWidget() {
+  Widget getThemeSettingsSectionWidget() {
     return Builder(builder: (context) {
       return Column(
         children: [
@@ -240,7 +245,7 @@ class ServiceTheme {
           Text(getMyServicesLabels(context).appTheme, style: getTextTheme(context).headline6),
           const Divider(),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = ServiceTheme.watchThemeMode(ref);
+            final ThemeMode? themeMode = watchThemeMode(ref);
 
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconCellphone),
@@ -249,13 +254,13 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  ServiceTheme.setThemeMode(ref, context, value);
+                  setThemeMode(ref, context, value);
                 }
               },
             );
           }),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = ServiceTheme.watchThemeMode(ref);
+            final ThemeMode? themeMode = watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconLight),
               title: Text(getMyServicesLabels(context).lightMode, style: getTextTheme(context).bodyText2),
@@ -263,13 +268,13 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  ServiceTheme.setThemeMode(ref, context, value);
+                  setThemeMode(ref, context, value);
                 }
               },
             );
           }),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = ServiceTheme.watchThemeMode(ref);
+            final ThemeMode? themeMode = watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconDark),
               title: Text(getMyServicesLabels(context).darkMode, style: getTextTheme(context).bodyText2),
@@ -277,7 +282,7 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  ServiceTheme.setThemeMode(ref, context, value);
+                  setThemeMode(ref, context, value);
                 }
               },
             );
@@ -288,8 +293,7 @@ class ServiceTheme {
     });
   }
 
-
-  static String getThemeLabel(ThemeMode themeMode) {
+  String getThemeLabel(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
       return getMyServicesLabels(ServiceNav.context).dependsOnSystem;
     } else if (themeMode == ThemeMode.dark) {
@@ -301,7 +305,7 @@ class ServiceTheme {
     return "";
   }
 
-  static IconData getThemeIcon(ThemeMode themeMode) {
+  IconData getThemeIcon(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
       return Mdi.cellphone;
     } else if (themeMode == ThemeMode.dark) {
@@ -314,18 +318,3 @@ class ServiceTheme {
   }
 }
 
-//////Theme Helpers
-
-ThemeData getTheme(BuildContext context) => Theme.of(context);
-
-TextTheme getTextTheme(BuildContext context) => getTheme(context).textTheme;
-
-ColorScheme getColorScheme(BuildContext context) => getTheme(context).colorScheme;
-
-bool isDark(BuildContext context) => getTheme(context).brightness == Brightness.dark;
-
-bool isLight(BuildContext context) => getTheme(context).brightness == Brightness.light;
-
-Color getColor(BuildContext context, {Color colorWhenDark = Colors.white, Color colorWhenLight = Colors.black}) => isDark(context) ? colorWhenDark : colorWhenLight;
-Color whiteWhenDarkBlackWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
-Color blackWhenDarkWhiteWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);

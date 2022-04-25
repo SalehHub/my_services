@@ -26,7 +26,7 @@ class _GoogleMapsLocationPickerState extends State<GoogleMapsLocationPicker> {
             Container(
               padding: const EdgeInsets.all(5),
               margin: const EdgeInsets.only(left: 10, right: 10, top: 15),
-              decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: ServiceTheme.borderRadius),
+              decoration: BoxDecoration(border: Border.all(color: Colors.grey), borderRadius: MyServices.services.theme.borderRadius),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -49,7 +49,7 @@ class _GoogleMapsLocationPickerState extends State<GoogleMapsLocationPicker> {
                 margin: const EdgeInsets.only(left: 15, right: 15, bottom: 30, top: 15),
                 borderWidth: 1,
                 borderColor: Colors.grey,
-                borderRadius: ServiceTheme.borderRadius,
+                borderRadius: MyServices.services.theme.borderRadius,
                 child: GoogleMap(
                   myLocationButtonEnabled: false,
                   myLocationEnabled: false,

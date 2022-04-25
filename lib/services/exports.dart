@@ -13,6 +13,5 @@ export 'service_loader.dart';
 export 'service_nav.dart';
 export 'service_share.dart'; //sharePlus
 export 'service_snack_bar.dart';
-export 'service_theme.dart';
 export 'service_url_launcher.dart';
 export 'services.dart';
