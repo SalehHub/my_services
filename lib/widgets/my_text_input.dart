@@ -199,9 +199,9 @@ class MyTextInput extends StatelessWidget {
       return const EdgeInsets.fromLTRB(10, 15, 10, 15);
     } else {
       return EdgeInsets.fromLTRB(
-        suffixIcon == null ? 15 : 0,
+        suffixIcon == null ? 10 : 10,
         10,
-        suffixIcon == null ? 15 : 0,
+        suffixIcon == null ? 10 : 10,
         10,
       );
     }
@@ -262,6 +262,7 @@ class MyTextInput extends StatelessWidget {
 //     ],
 //   );
 // }
+
 }
 
 class MyDropdownMenuItemData {
