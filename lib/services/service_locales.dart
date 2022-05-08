@@ -26,11 +26,17 @@ class ServiceLocale {
                   style: getTextTheme(context).bodyText2,
                 ),
                 value: _locale,
-                groupValue: watchLocale(ref),
+                groupValue: currentLocale(context), // watchLocale(ref),
                 onChanged: (Locale? value) {
-                  if (value != null) {
-                    setLocale(ref, value);
-                  }
+
+                  AppSettings.openNotificationSettings(); //appSettings
+
+
+
+                  // if (value != null) {
+                  //   setLocale(ref, value);
+                  // }
+
                 },
               );
             });
@@ -98,8 +104,8 @@ class ServiceLocale {
   }
 
   //providers
-  Locale? watchLocale(WidgetRef ref) => MyServices.providers.watchLocale(ref);
-  Locale? readLocale(dynamic ref) => MyServices.providers.readLocale(ref);
+  // Locale? watchLocale(WidgetRef ref) => MyServices.providers.watchLocale(ref);
+  // Locale? readLocale(dynamic ref) => MyServices.providers.readLocale(ref);
 
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     MyServices.providers.onLocaleChange(ref, (previous, next) => listener);

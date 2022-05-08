@@ -136,15 +136,19 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   @override
   Future<Locale> getLocale() async {
     try {
-      final String? value = await query(localeKey);
-      if (value != null && MyServices.services.locale.isSupportedLocale(Locale(value))) {
-        return Locale(value);
-      }
+
       //if no stored locale then try to get device locale if it is supported
       final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
       if (deviceLocale != null && MyServices.services.locale.isSupportedLocale(deviceLocale)) {
         return Locale(deviceLocale.languageCode);
       }
+
+
+      final String? value = await query(localeKey);
+      if (value != null && MyServices.services.locale.isSupportedLocale(Locale(value))) {
+        return Locale(value);
+      }
+
     } catch (e, s) {
       logger.e(e, e, s);
     }

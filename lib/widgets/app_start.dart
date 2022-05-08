@@ -145,7 +145,7 @@ class AppStart extends StatelessWidget {
         //
         localizationsDelegates: MyServices.services.locale.localizationsDelegates(delegates),
         supportedLocales: MyServices.services.locale.supportedLocales,
-        locale: MyServices.services.locale.watchLocale(ref),
+        // locale: MyServices.services.locale.watchLocale(ref),
         //
         themeMode: MyServices.services.theme.watchThemeMode(ref),
         theme: MyServices.services.theme.lightTheme,
