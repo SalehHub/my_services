@@ -14,7 +14,7 @@ class MyFile {
     } else if (_file is File) {
       file = _file;
     } else if (_file is CroppedFile) {
-      file =  File(_file.path);
+      file = File(_file.path);
     }
     path = file.path;
     sizeInBytes = file.lengthSync();

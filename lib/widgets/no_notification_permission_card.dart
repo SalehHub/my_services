@@ -9,7 +9,6 @@ class NoNotificationPermissionCard extends StatefulWidget {
 }
 
 class _NoNotificationPermissionCardState extends State<NoNotificationPermissionCard> with WidgetsBindingObserver {
-  
   NotificationSettings settings = const NotificationSettings(
     authorizationStatus: AuthorizationStatus.authorized,
     alert: AppleNotificationSetting.enabled,
@@ -19,7 +18,7 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
     carPlay: AppleNotificationSetting.enabled,
     lockScreen: AppleNotificationSetting.enabled,
     sound: AppleNotificationSetting.enabled,
-    showPreviews: AppleShowPreviewSetting.always, 
+    showPreviews: AppleShowPreviewSetting.always,
     timeSensitive: AppleNotificationSetting.enabled,
   );
 

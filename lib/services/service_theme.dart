@@ -317,4 +317,3 @@ class ServiceTheme {
     return Mdi.cellphone;
   }
 }
-

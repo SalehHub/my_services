@@ -12,28 +12,7 @@ part of 'app_config.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$AppEventsTearOff {
-  const _$AppEventsTearOff();
-
-  _AppEvents call(
-      {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
-      dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
-      GenerateAppTitle? onGenerateTitle,
-      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange}) {
-    return _AppEvents(
-      onDynamicLink: onDynamicLink,
-      onFCMTokenRefresh: onFCMTokenRefresh,
-      onGenerateTitle: onGenerateTitle,
-      onLocaleChange: onLocaleChange,
-    );
-  }
-}
-
-/// @nodoc
-const $AppEvents = _$AppEventsTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$AppEvents {
@@ -93,8 +72,8 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
-  factory _$AppEventsCopyWith(_AppEvents value, $Res Function(_AppEvents) then) = __$AppEventsCopyWithImpl<$Res>;
+abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
+  factory _$$_AppEventsCopyWith(_$_AppEvents value, $Res Function(_$_AppEvents) then) = __$$_AppEventsCopyWithImpl<$Res>;
   @override
   $Res call(
       {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
@@ -104,11 +83,11 @@ abstract class _$AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> implements _$AppEventsCopyWith<$Res> {
-  __$AppEventsCopyWithImpl(_AppEvents _value, $Res Function(_AppEvents) _then) : super(_value, (v) => _then(v as _AppEvents));
+class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> implements _$$_AppEventsCopyWith<$Res> {
+  __$$_AppEventsCopyWithImpl(_$_AppEvents _value, $Res Function(_$_AppEvents) _then) : super(_value, (v) => _then(v as _$_AppEvents));
 
   @override
-  _AppEvents get _value => super._value as _AppEvents;
+  _$_AppEvents get _value => super._value as _$_AppEvents;
 
   @override
   $Res call({
@@ -117,7 +96,7 @@ class __$AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imple
     Object? onGenerateTitle = freezed,
     Object? onLocaleChange = freezed,
   }) {
-    return _then(_AppEvents(
+    return _then(_$_AppEvents(
       onDynamicLink: onDynamicLink == freezed
           ? _value.onDynamicLink
           : onDynamicLink // ignore: cast_nullable_to_non_nullable
@@ -172,7 +151,7 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppEvents &&
+            other is _$_AppEvents &&
             (identical(other.onDynamicLink, onDynamicLink) || other.onDynamicLink == onDynamicLink) &&
             (identical(other.onFCMTokenRefresh, onFCMTokenRefresh) || other.onFCMTokenRefresh == onFCMTokenRefresh) &&
             (identical(other.onGenerateTitle, onGenerateTitle) || other.onGenerateTitle == onGenerateTitle) &&
@@ -184,46 +163,29 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$AppEventsCopyWith<_AppEvents> get copyWith => __$AppEventsCopyWithImpl<_AppEvents>(this, _$identity);
+  _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => __$$_AppEventsCopyWithImpl<_$_AppEvents>(this, _$identity);
 }
 
 abstract class _AppEvents extends AppEvents {
   factory _AppEvents(
-      {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
-      dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
-      GenerateAppTitle? onGenerateTitle,
-      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange}) = _$_AppEvents;
+      {final dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
+      final dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
+      final GenerateAppTitle? onGenerateTitle,
+      final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange}) = _$_AppEvents;
   _AppEvents._() : super._();
 
   @override
-  dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink;
+  dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink => throw _privateConstructorUsedError;
   @override
-  dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh;
+  dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh => throw _privateConstructorUsedError;
   @override
-  GenerateAppTitle? get onGenerateTitle;
+  GenerateAppTitle? get onGenerateTitle => throw _privateConstructorUsedError;
   @override
-  dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange;
+  dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppEventsCopyWith<_AppEvents> get copyWith => throw _privateConstructorUsedError;
+  _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$AppConfigTearOff {
-  const _$AppConfigTearOff();
-
-  _AppConfig call({bool withFirebase = true, bool withFCM = true, bool withCrashlytics = true, FirebaseOptions? firebaseOptions}) {
-    return _AppConfig(
-      withFirebase: withFirebase,
-      withFCM: withFCM,
-      withCrashlytics: withCrashlytics,
-      firebaseOptions: firebaseOptions,
-    );
-  }
-}
-
-/// @nodoc
-const $AppConfig = _$AppConfigTearOff();
 
 /// @nodoc
 mixin _$AppConfig {
@@ -279,18 +241,18 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
-  factory _$AppConfigCopyWith(_AppConfig value, $Res Function(_AppConfig) then) = __$AppConfigCopyWithImpl<$Res>;
+abstract class _$$_AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
+  factory _$$_AppConfigCopyWith(_$_AppConfig value, $Res Function(_$_AppConfig) then) = __$$_AppConfigCopyWithImpl<$Res>;
   @override
   $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
-class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> implements _$AppConfigCopyWith<$Res> {
-  __$AppConfigCopyWithImpl(_AppConfig _value, $Res Function(_AppConfig) _then) : super(_value, (v) => _then(v as _AppConfig));
+class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> implements _$$_AppConfigCopyWith<$Res> {
+  __$$_AppConfigCopyWithImpl(_$_AppConfig _value, $Res Function(_$_AppConfig) _then) : super(_value, (v) => _then(v as _$_AppConfig));
 
   @override
-  _AppConfig get _value => super._value as _AppConfig;
+  _$_AppConfig get _value => super._value as _$_AppConfig;
 
   @override
   $Res call({
@@ -299,7 +261,7 @@ class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imple
     Object? withCrashlytics = freezed,
     Object? firebaseOptions = freezed,
   }) {
-    return _then(_AppConfig(
+    return _then(_$_AppConfig(
       withFirebase: withFirebase == freezed
           ? _value.withFirebase
           : withFirebase // ignore: cast_nullable_to_non_nullable
@@ -325,14 +287,14 @@ class __$AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imple
 class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
   _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.firebaseOptions}) : super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool withFirebase;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool withFCM;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool withCrashlytics;
   @override
   final FirebaseOptions? firebaseOptions;
@@ -357,7 +319,7 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppConfig &&
+            other is _$_AppConfig &&
             const DeepCollectionEquality().equals(other.withFirebase, withFirebase) &&
             const DeepCollectionEquality().equals(other.withFCM, withFCM) &&
             const DeepCollectionEquality().equals(other.withCrashlytics, withCrashlytics) &&
@@ -370,22 +332,22 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$AppConfigCopyWith<_AppConfig> get copyWith => __$AppConfigCopyWithImpl<_AppConfig>(this, _$identity);
+  _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => __$$_AppConfigCopyWithImpl<_$_AppConfig>(this, _$identity);
 }
 
 abstract class _AppConfig extends AppConfig {
-  factory _AppConfig({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions}) = _$_AppConfig;
+  factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
   _AppConfig._() : super._();
 
   @override
-  bool get withFirebase;
+  bool get withFirebase => throw _privateConstructorUsedError;
   @override
-  bool get withFCM;
+  bool get withFCM => throw _privateConstructorUsedError;
   @override
-  bool get withCrashlytics;
+  bool get withCrashlytics => throw _privateConstructorUsedError;
   @override
-  FirebaseOptions? get firebaseOptions;
+  FirebaseOptions? get firebaseOptions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppConfigCopyWith<_AppConfig> get copyWith => throw _privateConstructorUsedError;
+  _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => throw _privateConstructorUsedError;
 }

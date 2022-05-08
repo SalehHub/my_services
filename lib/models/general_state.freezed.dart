@@ -12,42 +12,11 @@ part of 'general_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GeneralState _$GeneralStateFromJson(Map<String, dynamic> json) {
   return _GeneralState.fromJson(json);
 }
-
-/// @nodoc
-class _$GeneralStateTearOff {
-  const _$GeneralStateTearOff();
-
-  _GeneralState call(
-      {String? accessToken,
-      String? notificationToken,
-      AppDeviceData? appDeviceData,
-      @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode? themeMode,
-      bool isFirstAppRun = false,
-      bool isFirstAppBuildRun = false}) {
-    return _GeneralState(
-      accessToken: accessToken,
-      notificationToken: notificationToken,
-      appDeviceData: appDeviceData,
-      locale: locale,
-      themeMode: themeMode,
-      isFirstAppRun: isFirstAppRun,
-      isFirstAppBuildRun: isFirstAppBuildRun,
-    );
-  }
-
-  GeneralState fromJson(Map<String, Object?> json) {
-    return GeneralState.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $GeneralState = _$GeneralStateTearOff();
 
 /// @nodoc
 mixin _$GeneralState {
@@ -144,8 +113,8 @@ class _$GeneralStateCopyWithImpl<$Res> implements $GeneralStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Res> {
-  factory _$GeneralStateCopyWith(_GeneralState value, $Res Function(_GeneralState) then) = __$GeneralStateCopyWithImpl<$Res>;
+abstract class _$$_GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Res> {
+  factory _$$_GeneralStateCopyWith(_$_GeneralState value, $Res Function(_$_GeneralState) then) = __$$_GeneralStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {String? accessToken,
@@ -161,11 +130,11 @@ abstract class _$GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Re
 }
 
 /// @nodoc
-class __$GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res> implements _$GeneralStateCopyWith<$Res> {
-  __$GeneralStateCopyWithImpl(_GeneralState _value, $Res Function(_GeneralState) _then) : super(_value, (v) => _then(v as _GeneralState));
+class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res> implements _$$_GeneralStateCopyWith<$Res> {
+  __$$_GeneralStateCopyWithImpl(_$_GeneralState _value, $Res Function(_$_GeneralState) _then) : super(_value, (v) => _then(v as _$_GeneralState));
 
   @override
-  _GeneralState get _value => super._value as _GeneralState;
+  _$_GeneralState get _value => super._value as _$_GeneralState;
 
   @override
   $Res call({
@@ -177,7 +146,7 @@ class __$GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res>
     Object? isFirstAppRun = freezed,
     Object? isFirstAppBuildRun = freezed,
   }) {
-    return _then(_GeneralState(
+    return _then(_$_GeneralState(
       accessToken: accessToken == freezed
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -231,11 +200,11 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
   @override
   @ThemeModeConverter()
   final ThemeMode? themeMode;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isFirstAppRun;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isFirstAppBuildRun;
 
   @override
@@ -261,7 +230,7 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GeneralState &&
+            other is _$_GeneralState &&
             const DeepCollectionEquality().equals(other.accessToken, accessToken) &&
             const DeepCollectionEquality().equals(other.notificationToken, notificationToken) &&
             const DeepCollectionEquality().equals(other.appDeviceData, appDeviceData) &&
@@ -271,6 +240,7 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.isFirstAppBuildRun, isFirstAppBuildRun));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -284,7 +254,7 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$GeneralStateCopyWith<_GeneralState> get copyWith => __$GeneralStateCopyWithImpl<_GeneralState>(this, _$identity);
+  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => __$$_GeneralStateCopyWithImpl<_$_GeneralState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -294,34 +264,34 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
 
 abstract class _GeneralState extends GeneralState {
   factory _GeneralState(
-      {String? accessToken,
-      String? notificationToken,
-      AppDeviceData? appDeviceData,
-      @LocaleConverter() Locale? locale,
-      @ThemeModeConverter() ThemeMode? themeMode,
-      bool isFirstAppRun,
-      bool isFirstAppBuildRun}) = _$_GeneralState;
+      {final String? accessToken,
+      final String? notificationToken,
+      final AppDeviceData? appDeviceData,
+      @LocaleConverter() final Locale? locale,
+      @ThemeModeConverter() final ThemeMode? themeMode,
+      final bool isFirstAppRun,
+      final bool isFirstAppBuildRun}) = _$_GeneralState;
   _GeneralState._() : super._();
 
   factory _GeneralState.fromJson(Map<String, dynamic> json) = _$_GeneralState.fromJson;
 
   @override
-  String? get accessToken;
+  String? get accessToken => throw _privateConstructorUsedError;
   @override
-  String? get notificationToken;
+  String? get notificationToken => throw _privateConstructorUsedError;
   @override
-  AppDeviceData? get appDeviceData;
+  AppDeviceData? get appDeviceData => throw _privateConstructorUsedError;
   @override
   @LocaleConverter()
-  Locale? get locale;
+  Locale? get locale => throw _privateConstructorUsedError;
   @override
   @ThemeModeConverter()
-  ThemeMode? get themeMode;
+  ThemeMode? get themeMode => throw _privateConstructorUsedError;
   @override
-  bool get isFirstAppRun;
+  bool get isFirstAppRun => throw _privateConstructorUsedError;
   @override
-  bool get isFirstAppBuildRun;
+  bool get isFirstAppBuildRun => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GeneralStateCopyWith<_GeneralState> get copyWith => throw _privateConstructorUsedError;
+  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => throw _privateConstructorUsedError;
 }

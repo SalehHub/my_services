@@ -12,42 +12,7 @@ part of 'my_theme_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MyThemeDataTearOff {
-  const _$MyThemeDataTearOff();
-
-  _MyThemeData call(
-      {Color background = Colors.black,
-      Color onBackground = Colors.white,
-      Color primary = Colors.green,
-      Color onPrimary = Colors.white,
-      Color card = Colors.white,
-      Color onCard = Colors.green,
-      Color error = const Color(0xffFFE5E5),
-      Color onError = const Color(0xff750000),
-      Color success = const Color(0xffDDFFD6),
-      Color onSuccess = const Color(0xff175800),
-      AppBarTheme? appBar}) {
-    return _MyThemeData(
-      background: background,
-      onBackground: onBackground,
-      primary: primary,
-      onPrimary: onPrimary,
-      card: card,
-      onCard: onCard,
-      error: error,
-      onError: onError,
-      success: success,
-      onSuccess: onSuccess,
-      appBar: appBar,
-    );
-  }
-}
-
-/// @nodoc
-const $MyThemeData = _$MyThemeDataTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MyThemeData {
@@ -145,18 +110,18 @@ class _$MyThemeDataCopyWithImpl<$Res> implements $MyThemeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MyThemeDataCopyWith<$Res> implements $MyThemeDataCopyWith<$Res> {
-  factory _$MyThemeDataCopyWith(_MyThemeData value, $Res Function(_MyThemeData) then) = __$MyThemeDataCopyWithImpl<$Res>;
+abstract class _$$_MyThemeDataCopyWith<$Res> implements $MyThemeDataCopyWith<$Res> {
+  factory _$$_MyThemeDataCopyWith(_$_MyThemeData value, $Res Function(_$_MyThemeData) then) = __$$_MyThemeDataCopyWithImpl<$Res>;
   @override
   $Res call({Color background, Color onBackground, Color primary, Color onPrimary, Color card, Color onCard, Color error, Color onError, Color success, Color onSuccess, AppBarTheme? appBar});
 }
 
 /// @nodoc
-class __$MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res> implements _$MyThemeDataCopyWith<$Res> {
-  __$MyThemeDataCopyWithImpl(_MyThemeData _value, $Res Function(_MyThemeData) _then) : super(_value, (v) => _then(v as _MyThemeData));
+class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res> implements _$$_MyThemeDataCopyWith<$Res> {
+  __$$_MyThemeDataCopyWithImpl(_$_MyThemeData _value, $Res Function(_$_MyThemeData) _then) : super(_value, (v) => _then(v as _$_MyThemeData));
 
   @override
-  _MyThemeData get _value => super._value as _MyThemeData;
+  _$_MyThemeData get _value => super._value as _$_MyThemeData;
 
   @override
   $Res call({
@@ -172,7 +137,7 @@ class __$MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res> i
     Object? onSuccess = freezed,
     Object? appBar = freezed,
   }) {
-    return _then(_MyThemeData(
+    return _then(_$_MyThemeData(
       background: background == freezed
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
@@ -238,35 +203,39 @@ class _$_MyThemeData extends _MyThemeData with DiagnosticableTreeMixin {
       this.appBar})
       : super._();
 
-  @JsonKey()
   @override
+  @JsonKey()
   final Color background;
-  @JsonKey()
   @override
+  @JsonKey()
   final Color onBackground;
+//
+  @override
   @JsonKey()
-  @override //
   final Color primary;
-  @JsonKey()
   @override
+  @JsonKey()
   final Color onPrimary;
+//
+  @override
   @JsonKey()
-  @override //
   final Color card;
-  @JsonKey()
   @override
+  @JsonKey()
   final Color onCard;
+//
+  @override
   @JsonKey()
-  @override //
   final Color error;
-  @JsonKey()
   @override
+  @JsonKey()
   final Color onError;
-  @JsonKey()
-  @override //
-  final Color success;
-  @JsonKey()
+//
   @override
+  @JsonKey()
+  final Color success;
+  @override
+  @JsonKey()
   final Color onSuccess;
   @override
   final AppBarTheme? appBar;
@@ -298,7 +267,7 @@ class _$_MyThemeData extends _MyThemeData with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MyThemeData &&
+            other is _$_MyThemeData &&
             const DeepCollectionEquality().equals(other.background, background) &&
             const DeepCollectionEquality().equals(other.onBackground, onBackground) &&
             const DeepCollectionEquality().equals(other.primary, primary) &&
@@ -329,47 +298,47 @@ class _$_MyThemeData extends _MyThemeData with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$MyThemeDataCopyWith<_MyThemeData> get copyWith => __$MyThemeDataCopyWithImpl<_MyThemeData>(this, _$identity);
+  _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => __$$_MyThemeDataCopyWithImpl<_$_MyThemeData>(this, _$identity);
 }
 
 abstract class _MyThemeData extends MyThemeData {
   const factory _MyThemeData(
-      {Color background,
-      Color onBackground,
-      Color primary,
-      Color onPrimary,
-      Color card,
-      Color onCard,
-      Color error,
-      Color onError,
-      Color success,
-      Color onSuccess,
-      AppBarTheme? appBar}) = _$_MyThemeData;
+      {final Color background,
+      final Color onBackground,
+      final Color primary,
+      final Color onPrimary,
+      final Color card,
+      final Color onCard,
+      final Color error,
+      final Color onError,
+      final Color success,
+      final Color onSuccess,
+      final AppBarTheme? appBar}) = _$_MyThemeData;
   const _MyThemeData._() : super._();
 
   @override
-  Color get background;
+  Color get background => throw _privateConstructorUsedError;
   @override
-  Color get onBackground;
+  Color get onBackground => throw _privateConstructorUsedError;
   @override //
-  Color get primary;
+  Color get primary => throw _privateConstructorUsedError;
   @override
-  Color get onPrimary;
+  Color get onPrimary => throw _privateConstructorUsedError;
   @override //
-  Color get card;
+  Color get card => throw _privateConstructorUsedError;
   @override
-  Color get onCard;
+  Color get onCard => throw _privateConstructorUsedError;
   @override //
-  Color get error;
+  Color get error => throw _privateConstructorUsedError;
   @override
-  Color get onError;
+  Color get onError => throw _privateConstructorUsedError;
   @override //
-  Color get success;
+  Color get success => throw _privateConstructorUsedError;
   @override
-  Color get onSuccess;
+  Color get onSuccess => throw _privateConstructorUsedError;
   @override
-  AppBarTheme? get appBar;
+  AppBarTheme? get appBar => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MyThemeDataCopyWith<_MyThemeData> get copyWith => throw _privateConstructorUsedError;
+  _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => throw _privateConstructorUsedError;
 }

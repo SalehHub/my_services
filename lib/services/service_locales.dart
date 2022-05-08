@@ -28,15 +28,11 @@ class ServiceLocale {
                 value: _locale,
                 groupValue: currentLocale(context), // watchLocale(ref),
                 onChanged: (Locale? value) {
-
                   AppSettings.openNotificationSettings(); //appSettings
-
-
 
                   // if (value != null) {
                   //   setLocale(ref, value);
                   // }
-
                 },
               );
             });

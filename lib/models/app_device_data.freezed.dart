@@ -12,34 +12,11 @@ part of 'app_device_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AppDeviceData _$AppDeviceDataFromJson(Map<String, dynamic> json) {
   return _AppDeviceData.fromJson(json);
 }
-
-/// @nodoc
-class _$AppDeviceDataTearOff {
-  const _$AppDeviceDataTearOff();
-
-  _AppDeviceData call({required String appVersion, required String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS}) {
-    return _AppDeviceData(
-      appVersion: appVersion,
-      appBuild: appBuild,
-      deviceID: deviceID,
-      deviceOSVersion: deviceOSVersion,
-      deviceModel: deviceModel,
-      deviceOS: deviceOS,
-    );
-  }
-
-  AppDeviceData fromJson(Map<String, Object?> json) {
-    return AppDeviceData.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AppDeviceData = _$AppDeviceDataTearOff();
 
 /// @nodoc
 mixin _$AppDeviceData {
@@ -108,18 +85,18 @@ class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> 
 }
 
 /// @nodoc
-abstract class _$AppDeviceDataCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
-  factory _$AppDeviceDataCopyWith(_AppDeviceData value, $Res Function(_AppDeviceData) then) = __$AppDeviceDataCopyWithImpl<$Res>;
+abstract class _$$_AppDeviceDataCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
+  factory _$$_AppDeviceDataCopyWith(_$_AppDeviceData value, $Res Function(_$_AppDeviceData) then) = __$$_AppDeviceDataCopyWithImpl<$Res>;
   @override
   $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
-class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res> implements _$AppDeviceDataCopyWith<$Res> {
-  __$AppDeviceDataCopyWithImpl(_AppDeviceData _value, $Res Function(_AppDeviceData) _then) : super(_value, (v) => _then(v as _AppDeviceData));
+class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res> implements _$$_AppDeviceDataCopyWith<$Res> {
+  __$$_AppDeviceDataCopyWithImpl(_$_AppDeviceData _value, $Res Function(_$_AppDeviceData) _then) : super(_value, (v) => _then(v as _$_AppDeviceData));
 
   @override
-  _AppDeviceData get _value => super._value as _AppDeviceData;
+  _$_AppDeviceData get _value => super._value as _$_AppDeviceData;
 
   @override
   $Res call({
@@ -130,7 +107,7 @@ class __$AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Re
     Object? deviceModel = freezed,
     Object? deviceOS = freezed,
   }) {
-    return _then(_AppDeviceData(
+    return _then(_$_AppDeviceData(
       appVersion: appVersion == freezed
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
@@ -201,7 +178,7 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppDeviceData &&
+            other is _$_AppDeviceData &&
             const DeepCollectionEquality().equals(other.appVersion, appVersion) &&
             const DeepCollectionEquality().equals(other.appBuild, appBuild) &&
             const DeepCollectionEquality().equals(other.deviceID, deviceID) &&
@@ -210,13 +187,14 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.deviceOS, deviceOS));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(appVersion), const DeepCollectionEquality().hash(appBuild), const DeepCollectionEquality().hash(deviceID),
       const DeepCollectionEquality().hash(deviceOSVersion), const DeepCollectionEquality().hash(deviceModel), const DeepCollectionEquality().hash(deviceOS));
 
   @JsonKey(ignore: true)
   @override
-  _$AppDeviceDataCopyWith<_AppDeviceData> get copyWith => __$AppDeviceDataCopyWithImpl<_AppDeviceData>(this, _$identity);
+  _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => __$$_AppDeviceDataCopyWithImpl<_$_AppDeviceData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -225,24 +203,25 @@ class _$_AppDeviceData extends _AppDeviceData with DiagnosticableTreeMixin {
 }
 
 abstract class _AppDeviceData extends AppDeviceData {
-  factory _AppDeviceData({required String appVersion, required String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS}) = _$_AppDeviceData;
+  factory _AppDeviceData({required final String appVersion, required final String appBuild, final String? deviceID, final String? deviceOSVersion, final String? deviceModel, final String? deviceOS}) =
+      _$_AppDeviceData;
   _AppDeviceData._() : super._();
 
   factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$_AppDeviceData.fromJson;
 
   @override
-  String get appVersion;
+  String get appVersion => throw _privateConstructorUsedError;
   @override
-  String get appBuild;
+  String get appBuild => throw _privateConstructorUsedError;
   @override
-  String? get deviceID;
+  String? get deviceID => throw _privateConstructorUsedError;
   @override
-  String? get deviceOSVersion;
+  String? get deviceOSVersion => throw _privateConstructorUsedError;
   @override
-  String? get deviceModel;
+  String? get deviceModel => throw _privateConstructorUsedError;
   @override
-  String? get deviceOS;
+  String? get deviceOS => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppDeviceDataCopyWith<_AppDeviceData> get copyWith => throw _privateConstructorUsedError;
+  _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => throw _privateConstructorUsedError;
 }
