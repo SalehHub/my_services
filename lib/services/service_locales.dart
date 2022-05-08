@@ -17,6 +17,7 @@ class ServiceLocale {
           const SizedBox(height: 20),
           Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).headline6),
           const Divider(),
+          Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).caption),
           ...supportedLocales.map((Locale _locale) {
             return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
               return RadioListTile<Locale>(
