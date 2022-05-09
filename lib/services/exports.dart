@@ -3,7 +3,6 @@ export 'service_app_badger.dart'; //flutterAppBadger
 export 'service_app_device.dart';
 export 'service_color.dart';
 export 'service_debounce.dart';
-export 'service_dialog.dart';
 export 'service_dynamic_link.dart'; //appLinks
 export 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
 export 'service_firebase_messaging.dart'; //firebaseMessaging

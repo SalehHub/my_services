@@ -213,7 +213,7 @@ class Helpers {
       }
     }
 
-    ServiceDialog.show(
+    MyServices.services.dialog.show(
         title: labels.chooseMapApp,
         children: availableMaps.map((map) {
           String mapName = "";

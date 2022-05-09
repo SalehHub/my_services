@@ -1,11 +1,11 @@
 import '../my_services.dart';
 
 class ServiceDialog {
-  const ServiceDialog._();
-  static const ServiceDialog _s = ServiceDialog._();
-  factory ServiceDialog() => _s;
+  // const ServiceDialog._();
+  // static const ServiceDialog _s = ServiceDialog._();
+  // factory ServiceDialog() => _s;
   //
-  static dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
+  dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<dynamic>(
         context: ServiceNav.context,
         barrierDismissible: barrierDismissible,
@@ -13,6 +13,52 @@ class ServiceDialog {
           return GestureDetector(
             onTap: () => barrierDismissible ? pop() : null,
             child: MyDialog(title: title, child: child, children: children, insetPadding: insetPadding, contentPadding: contentPadding),
+          );
+        });
+  }
+
+  Future<bool?> showYesNo({required String title, required String question, bool barrierDismissible = true}) {
+    return showDialog<bool>(
+        context: ServiceNav.context,
+        barrierDismissible: barrierDismissible,
+        builder: (BuildContext context) {
+          return GestureDetector(
+            onTap: () => barrierDismissible ? pop(false) : null,
+            child: MyDialog(
+              title: title,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(question, style: getTextTheme(context).titleMedium),
+                      ),
+                      Row(
+                        children: [
+                          TextButton(
+                            child: Text(
+                              getMyServicesLabels(context).cancel,
+                              style: getTextTheme(context).titleMedium?.copyWith(color: Colors.green),
+                            ),
+                            onPressed: () => pop(false),
+                          ),
+                          const Spacer(),
+                          TextButton(
+                            child: Text(
+                              getMyServicesLabels(context).continue1,
+                              style: getTextTheme(context).titleMedium?.copyWith(color: Colors.red.shade800),
+                            ),
+                            onPressed: () => pop(true),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           );
         });
   }

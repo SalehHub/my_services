@@ -46,7 +46,7 @@ class MyPhoneInput extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        ServiceDialog.show(
+        MyServices.services.dialog.show(
           title: myServicesLabels.countryDialCode,
           children: [
             CountrySearchListWidget(countries, MyServices.services.locale.currentLocaleLangCode(context), onSelect: onCountrySelect),
