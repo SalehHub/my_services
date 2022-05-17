@@ -2,7 +2,7 @@
 import '../my_services.dart';
 
 class NoNotificationPermissionCard extends StatefulWidget {
-  const NoNotificationPermissionCard({Key? key}) : super(key: key);
+  const NoNotificationPermissionCard({super.key});
 
   @override
   _NoNotificationPermissionCardState createState() => _NoNotificationPermissionCardState();

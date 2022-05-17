@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class YesSnackBarMessage extends StatelessWidget {
-  const YesSnackBarMessage({Key? key, this.text, this.buttonText, required this.onYes, this.icon, this.success}) : super(key: key);
+  const YesSnackBarMessage({super.key, this.text, this.buttonText, required this.onYes, this.icon, this.success});
   final String? text;
   final String? buttonText;
   final VoidCallback onYes;

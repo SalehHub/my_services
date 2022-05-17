@@ -66,13 +66,13 @@ class ServiceDialog {
 
 class MyDialog extends StatelessWidget {
   const MyDialog({
-    Key? key,
+    super.key,
     this.title = '',
     this.children,
     this.child,
     this.insetPadding,
     this.contentPadding,
-  }) : super(key: key);
+  });
 
   final String title;
   final List<Widget>? children;

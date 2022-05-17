@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class MyPopupMenu<T> extends StatefulWidget {
-  const MyPopupMenu({Key? key, this.icon, this.onSelected, required this.items}) : super(key: key);
+  const MyPopupMenu({super.key, this.icon, this.onSelected, required this.items});
 
   final PopupMenuItemSelected<T>? onSelected;
   final List<MyPopupMenuItem<T>> items;
@@ -75,7 +75,7 @@ class MyPopupMenuItem<T> {
 }
 
 class _MyPopupMenuItemWidget extends ConsumerWidget {
-  const _MyPopupMenuItemWidget({Key? key, this.widget, this.tail, required this.title, required this.icon}) : super(key: key);
+  const _MyPopupMenuItemWidget({super.key, this.widget, this.tail, required this.title, required this.icon});
 
   final Widget? widget;
   final Widget? tail;
@@ -99,7 +99,7 @@ class _MyPopupMenuItemWidget extends ConsumerWidget {
 
 class _PopupMenuItemWidget<T> extends PopupMenuEntry<T> {
   const _PopupMenuItemWidget({
-    Key? key,
+    super.key,
     this.value,
     this.onTap,
     this.enabled = true,
@@ -108,7 +108,7 @@ class _PopupMenuItemWidget<T> extends PopupMenuEntry<T> {
     this.textStyle,
     this.mouseCursor,
     required this.child,
-  }) : super(key: key);
+  });
 
   final T? value;
   final VoidCallback? onTap;

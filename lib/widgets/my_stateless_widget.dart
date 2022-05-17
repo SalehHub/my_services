@@ -4,7 +4,7 @@ import '../my_services.dart';
 Map<String, BuildContext> _sc = {};
 
 abstract class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
+  const MyStatelessWidget({super.key});
 
   BuildContext get context => _sc[runtimeType.toString()]!;
 

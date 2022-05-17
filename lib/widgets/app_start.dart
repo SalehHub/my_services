@@ -131,7 +131,7 @@ class AppLauncher {
 }
 
 class AppStart extends StatelessWidget {
-  const AppStart({Key? key, required this.delegates, required this.homePage}) : super(key: key);
+  const AppStart({super.key, required this.delegates, required this.homePage});
 
   final List<LocalizationsDelegate<dynamic>> delegates;
   final Widget homePage;

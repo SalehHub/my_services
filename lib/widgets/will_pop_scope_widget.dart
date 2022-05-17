@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class WillPopScopeWidget extends StatelessWidget {
-  const WillPopScopeWidget({Key? key, required this.child}) : super(key: key);
+  const WillPopScopeWidget({super.key, required this.child});
 
   final Widget child;
 

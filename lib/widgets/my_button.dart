@@ -2,7 +2,7 @@ import '../my_services.dart';
 
 class MyButton extends ConsumerWidget {
   const MyButton({
-    Key? key,
+    super.key,
     this.id,
     required this.text,
     this.child,
@@ -12,7 +12,7 @@ class MyButton extends ConsumerWidget {
     this.isTextButton = false,
     this.withLoading = true,
     this.circle = false,
-  }) : super(key: key);
+  });
   final String text;
   final Widget? child;
   final dynamic id;

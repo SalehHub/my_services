@@ -15,14 +15,14 @@ class CountrySearchListWidget extends StatefulWidget {
   const CountrySearchListWidget(
     this.countries,
     this.locale, {
-    Key? key,
+    super.key,
     this.searchBoxDecoration,
     this.scrollController,
     this.showFlags = false,
     this.useEmoji = true,
     this.autoFocus = false,
     this.onSelect,
-  }) : super(key: key);
+  });
 
   @override
   _CountrySearchListWidgetState createState() => _CountrySearchListWidgetState();

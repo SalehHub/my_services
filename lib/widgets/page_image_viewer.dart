@@ -11,7 +11,7 @@ class ImageData {
 }
 
 class PageImageViewer extends ConsumerStatefulWidget {
-  const PageImageViewer({Key? key, required this.image, this.imageList = const [], this.showDotIndicators = true}) : super(key: key);
+  const PageImageViewer({super.key, required this.image, this.imageList = const [], this.showDotIndicators = true});
   final List<ImageData> imageList;
   final ImageData image;
   final bool showDotIndicators;

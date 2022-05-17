@@ -3,7 +3,7 @@ import '../my_services.dart';
 class MyText extends StatelessWidget {
   const MyText(
     this.text, {
-    Key? key,
+    super.key,
     this.margin = EdgeInsets.zero,
     this.style,
     this.bold = false,
@@ -13,7 +13,7 @@ class MyText extends StatelessWidget {
     this.color,
     this.shadows,
     this.overflow,
-  }) : super(key: key);
+  });
   final String? text;
   final bool bold;
   final TextStyle? style;

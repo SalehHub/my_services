@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class PageNewAppVersion extends ConsumerStatefulWidget {
-  const PageNewAppVersion({Key? key, required this.iosAppStoreUrl, required this.androidPlayStoreUrl}) : super(key: key);
+  const PageNewAppVersion({super.key, required this.iosAppStoreUrl, required this.androidPlayStoreUrl});
   final String iosAppStoreUrl;
   final String androidPlayStoreUrl;
 

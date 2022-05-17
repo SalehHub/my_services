@@ -2,7 +2,7 @@
 import '../my_services.dart';
 
 class GoogleMapsLocationPicker extends StatefulWidget {
-  const GoogleMapsLocationPicker({Key? key, this.lat, this.lng, required this.onLocationPicked, this.title}) : super(key: key);
+  const GoogleMapsLocationPicker({super.key, this.lat, this.lng, required this.onLocationPicked, this.title});
 
   final String? title;
   final double? lat;

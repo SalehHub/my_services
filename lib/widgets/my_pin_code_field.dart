@@ -2,7 +2,7 @@
 import 'package:my_services/my_services.dart';
 
 class MyPinCodeField extends StatelessWidget {
-  const MyPinCodeField({Key? key, this.onCompleted, this.length = 4, this.onChanged, this.margin = EdgeInsets.zero}) : super(key: key);
+  const MyPinCodeField({super.key, this.onCompleted, this.length = 4, this.onChanged, this.margin = EdgeInsets.zero});
 
   final ValueChanged<String>? onCompleted;
   final ValueChanged<String>? onChanged;

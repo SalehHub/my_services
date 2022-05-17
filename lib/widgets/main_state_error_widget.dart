@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class FutureErrorWidget extends StatelessWidget {
-  const FutureErrorWidget({Key? key, this.err, this.contactUS}) : super(key: key);
+  const FutureErrorWidget({super.key, this.err, this.contactUS});
 
   final Object? err;
 

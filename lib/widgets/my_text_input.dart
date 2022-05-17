@@ -2,7 +2,7 @@ import '../my_services.dart';
 
 class MyTextInput extends StatelessWidget {
   const MyTextInput({
-    Key? key,
+    super.key,
     this.value,
     this.validator,
     this.prefixText,
@@ -34,7 +34,7 @@ class MyTextInput extends StatelessWidget {
     this.isDropDown = false,
     this.items = const [],
     this.widget,
-  }) : super(key: key);
+  });
 
   final bool isDropDown;
   final String? value;

@@ -2,11 +2,11 @@ import '../my_services.dart';
 
 class PageEmptyWidget extends StatelessWidget {
   const PageEmptyWidget({
-    Key? key,
+    super.key,
     required this.noDataIcon,
     required this.noDataLabel,
     this.margin = const EdgeInsets.all(5),
-  }) : super(key: key);
+  });
   final EdgeInsets margin;
 
   final IconData noDataIcon;

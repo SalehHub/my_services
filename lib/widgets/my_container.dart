@@ -21,7 +21,7 @@ class MyContainer extends StatelessWidget {
   final AlignmentGeometry? alignment;
 
   const MyContainer({
-    Key? key,
+    super.key,
     this.onTap,
     this.width,
     this.height,
@@ -40,7 +40,7 @@ class MyContainer extends StatelessWidget {
     this.alignment,
     this.minHeight,
     this.maxHeight,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

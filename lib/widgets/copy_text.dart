@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class CopyTextWidget extends StatelessWidget {
-  const CopyTextWidget({Key? key, required this.textToCopy, required this.child}) : super(key: key);
+  const CopyTextWidget({super.key, required this.textToCopy, required this.child});
 
   final String textToCopy;
   final Widget child;

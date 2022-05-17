@@ -12,7 +12,7 @@ class Item extends StatelessWidget {
   final bool trailingSpace;
 
   const Item({
-    Key? key,
+    super.key,
     required this.country,
     this.showFlag = false,
     this.useEmoji = true,
@@ -20,7 +20,7 @@ class Item extends StatelessWidget {
     this.withCountryNames = false,
     this.leadingPadding = 12,
     this.trailingSpace = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

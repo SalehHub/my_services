@@ -3,7 +3,7 @@ import 'countries_search_list_widget.dart';
 import 'item.dart';
 
 class MyPhoneInput extends StatelessWidget {
-  const MyPhoneInput({Key? key, this.onChanged, this.controller, this.onCountrySelect, required this.selectedCountry}) : super(key: key);
+  const MyPhoneInput({super.key, this.onChanged, this.controller, this.onCountrySelect, required this.selectedCountry});
   final ValueChanged<String>? onChanged;
   final ValueChanged<Country>? onCountrySelect;
   final Country selectedCountry;

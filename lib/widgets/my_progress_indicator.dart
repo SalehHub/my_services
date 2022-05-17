@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class MyProgressIndicator extends StatelessWidget {
-  const MyProgressIndicator({Key? key, this.color, this.margin = EdgeInsets.zero, this.width, this.height}) : super(key: key);
+  const MyProgressIndicator({super.key, this.color, this.margin = EdgeInsets.zero, this.width, this.height});
 
   final EdgeInsets margin;
   final Color? color;

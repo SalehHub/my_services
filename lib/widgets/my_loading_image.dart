@@ -2,7 +2,7 @@ import '../my_services.dart';
 
 class MyLoadingImage extends StatelessWidget {
   const MyLoadingImage({
-    Key? key,
+    super.key,
     required this.url,
     this.blurHash,
     this.width = 150,
@@ -19,7 +19,7 @@ class MyLoadingImage extends StatelessWidget {
     this.fetchStrategy,
     this.errorBuilder,
     this.placeholderBuilder,
-  }) : super(key: key);
+  });
 
   final String url;
   final String? blurHash;
@@ -137,7 +137,7 @@ class MyLoadingImage extends StatelessWidget {
 
 class ImageContainer extends StatelessWidget {
   const ImageContainer({
-    Key? key,
+    super.key,
     required this.child,
     required this.width,
     required this.height,
@@ -146,7 +146,7 @@ class ImageContainer extends StatelessWidget {
     required this.borderColor,
     required this.borderWidth,
     required this.circle,
-  }) : super(key: key);
+  });
 
   final double width;
   final double height;

@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class Unfocus extends StatelessWidget {
-  const Unfocus({Key? key, this.child}) : super(key: key);
+  const Unfocus({super.key, this.child});
   final Widget? child;
 
   @override

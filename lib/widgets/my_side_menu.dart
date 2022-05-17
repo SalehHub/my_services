@@ -2,7 +2,7 @@ import '../my_services.dart';
 
 class MySideMenu extends StatelessWidget {
   const MySideMenu({
-    Key? key,
+    super.key,
     this.name,
     this.email,
     this.imageUrl,
@@ -12,7 +12,7 @@ class MySideMenu extends StatelessWidget {
     this.bgImageBlurhash,
     this.children = const [],
     this.onAvatarTap,
-  }) : super(key: key);
+  });
 
   final String? name;
   final String? email;
@@ -114,7 +114,7 @@ class MySideMenu extends StatelessWidget {
 
 class MySideMenuTile extends StatelessWidget {
   const MySideMenuTile({
-    Key? key,
+    super.key,
     this.title,
     this.icon,
     this.onTap,
@@ -123,9 +123,9 @@ class MySideMenuTile extends StatelessWidget {
     this.child,
     this.children,
     this.trailing,
-  }) : super(key: key);
+  });
 
-  const MySideMenuTile.divider({Key? key})
+  const MySideMenuTile.divider({super.key})
       : icon = null,
         title = null,
         onTap = null,
@@ -133,18 +133,16 @@ class MySideMenuTile extends StatelessWidget {
         show = true,
         child = null,
         trailing = null,
-        children = null,
-        super(key: key);
+        children = null;
 
-  const MySideMenuTile.widget({Key? key, required this.child})
+  const MySideMenuTile.widget({super.key, required this.child})
       : icon = null,
         title = null,
         onTap = null,
         isDivider = false,
         show = true,
         trailing = null,
-        children = null,
-        super(key: key);
+        children = null;
 
   final String? title;
   final IconData? icon;

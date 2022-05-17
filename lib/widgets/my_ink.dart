@@ -1,7 +1,7 @@
 import '../my_services.dart';
 
 class MyInk extends StatelessWidget {
-  const MyInk({Key? key, required this.child, this.onTap, this.radius, this.borderRadius, this.margin = EdgeInsets.zero}) : super(key: key);
+  const MyInk({super.key, required this.child, this.onTap, this.radius, this.borderRadius, this.margin = EdgeInsets.zero});
   final Widget child;
   final GestureTapCallback? onTap;
   final double? radius;
