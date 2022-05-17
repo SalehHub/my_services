@@ -85,15 +85,15 @@ class MyContainer extends StatelessWidget {
       }
     }
 
-    Widget _child = child;
+    Widget tempChild = child;
 
     //we need the image to cover whole container
     if (padding != null) {
-      _child = Padding(padding: padding!, child: _child);
+      tempChild = Padding(padding: padding!, child: tempChild);
     }
 
     if (image != null || gradient != null) {
-      _child = Stack(children: [
+      tempChild = Stack(children: [
         //bg image
         if (image != null) image,
 
@@ -106,28 +106,28 @@ class MyContainer extends StatelessWidget {
     }
 
     if (onTap != null) {
-      _child = MyInk(onTap: onTap, child: _child);
+      tempChild = MyInk(onTap: onTap, child: tempChild);
     }
 
     if (borderRadius != null) {
-      _child = ClipRRect(borderRadius: borderRadius, child: _child);
+      tempChild = ClipRRect(borderRadius: borderRadius, child: tempChild);
     }
 
     if (elevation != null) {
-      _child = Material(elevation: elevation!, borderRadius: borderRadius, color: Colors.transparent, child: _child);
+      tempChild = Material(elevation: elevation!, borderRadius: borderRadius, color: Colors.transparent, child: tempChild);
     }
 
-    _child = Container(
+    tempChild = Container(
       height: height,
       width: width,
       alignment: alignment,
       margin: margin,
       constraints: getBoxConstraints(),
       decoration: getBoxDecoration(),
-      child: _child,
+      child: tempChild,
     );
 
-    return _child;
+    return tempChild;
   }
 
   BoxDecoration? getBoxDecoration() {

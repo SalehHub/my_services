@@ -8,13 +8,13 @@ class MyFile {
   late double sizeInMegabytes;
   late File file;
 
-  MyFile(dynamic _file) {
-    if (_file is String) {
-      file = File(_file);
-    } else if (_file is File) {
-      file = _file;
-    } else if (_file is CroppedFile) {
-      file = File(_file.path);
+  MyFile(dynamic maybeFile) {
+    if (maybeFile is String) {
+      file = File(maybeFile);
+    } else if (maybeFile is File) {
+      file = maybeFile;
+    } else if (maybeFile is CroppedFile) {
+      file = File(maybeFile.path);
     }
     path = file.path;
     sizeInBytes = file.lengthSync();

@@ -10,12 +10,13 @@ class ServiceURLLauncher {
     try {
       assert(url.trim() != '');
       logger.i(url);
-      if (await canLaunch(url)) {
-        final bool try2 = await launch(url, forceSafariVC: false);
+      Uri uri = Uri.dataFromString(url);
+      if (await canLaunchUrl(uri)) {
+        final bool try2 = await launchUrl(uri, mode: LaunchMode.platformDefault);
         if (try2 == false) {
-          final bool try3 = await launch(url, forceSafariVC: true);
+          final bool try3 = await launchUrl(uri, mode: LaunchMode.externalApplication);
           if (try3 == false) {
-            final bool nativeAppLaunchSucceeded = await launch(url);
+            final bool nativeAppLaunchSucceeded = await launchUrl(uri);
             return nativeAppLaunchSucceeded;
           } else {
             return true;
@@ -32,18 +33,18 @@ class ServiceURLLauncher {
   }
 
   Future<void> openTwitterUser(String username, BuildContext context) async {
-    return launchUrl('https://twitter.com/$username');
+    return launchStringUrl('https://twitter.com/$username');
   }
 
   Future<void> openTwitterTag(String tag, BuildContext context) async {
-    String _tag = tag.replaceAll('#', '');
-    _tag = Uri.encodeFull(_tag);
+    String cleanTag = tag.replaceAll('#', '');
+    cleanTag = Uri.encodeFull(cleanTag);
 
     // print(_tag);
-    return launchUrl('https://twitter.com/hashtag/$_tag?src=hashtag_click');
+    return launchStringUrl('https://twitter.com/hashtag/$cleanTag?src=hashtag_click');
   }
 
-  Future<void> launchUrl(String url) async {
+  Future<void> launchStringUrl(String url) async {
     final bool result = await launchUniversalLinkIos(url);
 
     if (result == false) {
@@ -52,15 +53,15 @@ class ServiceURLLauncher {
   }
 
   Future<void> launchWhatsapp(String num, String text, BuildContext context) async {
-    final String _text = Uri.encodeFull(text);
+    final String msg = Uri.encodeFull(text);
 
-    final bool result = await launchUniversalLinkIos('whatsapp://send?phone=$num&text=$_text');
+    final bool result = await launchUniversalLinkIos('whatsapp://send?phone=$num&text=$msg');
 
     if (result == false) {
-      final String url = 'https://wa.me/$num?text=$_text';
+      final String url = 'https://wa.me/$num?text=$msg';
       final bool nativeAppLaunchSucceeded = await launchUniversalLinkIos(url);
       if (nativeAppLaunchSucceeded == false) {
-        final bool urlLaunch = await launch(url);
+        final bool urlLaunch = await launchUrl(Uri.dataFromString(url));
         if (urlLaunch == false) {
           MyServices.services.snackBar.showText(text: num);
         }

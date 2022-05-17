@@ -166,23 +166,17 @@ class Helpers {
   };
 
   String getTimeAgo(DateTime time, [String? langCode]) {
-    String? _langCode = langCode;
-
-    if (_langCode == null) {
-      final BuildContext? context = ServiceNav.context;
-      Locale? locale;
-      if (context != null) {
-        locale = Localizations.localeOf(context);
-      }
-
-      _langCode = locale?.languageCode.toLowerCase() ?? 'en';
+    if (langCode == null) {
+      final BuildContext context = ServiceNav.context;
+      Locale locale = Localizations.localeOf(context);
+      langCode = locale.languageCode.toLowerCase();
     }
 
-    final LookupMessages lookupMessages = _lookupMessagesMap[_langCode] ?? EnMessages();
+    final LookupMessages lookupMessages = _lookupMessagesMap[langCode] ?? EnMessages();
 
     try {
-      setLocaleMessages(_langCode, lookupMessages);
-      final String timeAgo = format(time, locale: _langCode);
+      setLocaleMessages(langCode, lookupMessages);
+      final String timeAgo = format(time, locale: langCode);
       return timeAgo;
     } catch (e) {
       logger.e(e);
@@ -192,14 +186,14 @@ class Helpers {
 
   //start-mapLauncher
   Future<void> openMap(double lat, double lng, String? title) async {
+    MyServicesLocalizationsData labels = getMyServicesLabels(ServiceNav.context);
+
     final Coords coords = Coords(lat, lng);
     final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;
 
     if (availableMaps.length == 1) {
       return await availableMaps.first.showMarker(coords: coords, title: title ?? "");
     }
-
-    MyServicesLocalizationsData labels = getMyServicesLabels(ServiceNav.context);
 
     _buildIcon(map) {
       //start-flutterSvg

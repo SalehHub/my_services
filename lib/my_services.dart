@@ -42,7 +42,7 @@ export 'package:flutter/rendering.dart';
 export 'package:flutter/services.dart' hide MessageHandler;
 export 'package:flutter_blurhash/flutter_blurhash.dart';
 export 'package:flutter_image/flutter_image.dart';
-export "package:collection/collection.dart";
+// export "package:collection/collection.dart";
 //
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError;
@@ -60,7 +60,7 @@ export 'package:path_provider/path_provider.dart';
 //
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';
-export 'package:uuid/uuid.dart';
+// export 'package:uuid/uuid.dart';
 //
 export 'databases/exports.dart';
 export 'models/exports.dart';
