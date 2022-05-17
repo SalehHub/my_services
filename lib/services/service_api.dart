@@ -11,7 +11,7 @@ class ServiceApi {
   static Future<String> download(String url) async {
     String ext = extension(url);
     String fileName = MyServices.helpers.getMd5(url);
-    String savePath = (await MyServices.helpers.getApplicationDocumentsPath() ?? "") + "/" + fileName + ".$ext";
+    String savePath = "${await MyServices.helpers.getApplicationDocumentsPath() ?? ""}/$fileName.$ext";
     logger.i(savePath);
     await dio.download(url, savePath);
     return savePath;

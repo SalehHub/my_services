@@ -12,13 +12,13 @@ class ServiceDynamicLink {
     //TODO: remove when web supported
     if (!kIsWeb && !Platform.isMacOS) {
       Future<void>.delayed(const Duration(seconds: 1)).then((_) async {
-        final AppLinks _appLinks = AppLinks();
+        final AppLinks appLinks = AppLinks();
 
-        _appLinks.uriLinkStream.listen((uri) {
+        appLinks.uriLinkStream.listen((uri) {
           onAppLink(uri);
         });
 
-        await _appLinks.getInitialAppLink().then((Uri? uri) {
+        await appLinks.getInitialAppLink().then((Uri? uri) {
           if (uri != null) {
             onAppLink(uri);
           }

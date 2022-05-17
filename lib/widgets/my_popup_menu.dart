@@ -25,7 +25,7 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
           } else if (e.widget != null) {
             return _PopupMenuItemWidget<T>(child: e.widget!);
           } else if (e.isTitle == true) {
-            return _PopupMenuItemWidget<T>(child: Text(e.title), enabled: false);
+            return _PopupMenuItemWidget<T>(enabled: false, child: Text(e.title));
           }
           return _PopupMenuItemWidget<T>(value: e.value, child: _MyPopupMenuItemWidget(widget: e.widget, icon: e.icon, title: e.title, tail: e.tail));
         }).toList()

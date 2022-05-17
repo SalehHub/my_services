@@ -27,18 +27,18 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle _textStyle = style ?? DefaultTextStyle.of(context).style;
+    TextStyle textStyle = style ?? DefaultTextStyle.of(context).style;
     if (bold) {
-      _textStyle = _textStyle.copyWith(fontWeight: FontWeight.bold);
+      textStyle = textStyle.copyWith(fontWeight: FontWeight.bold);
     }
     if (color != null) {
-      _textStyle = _textStyle.copyWith(color: color);
+      textStyle = textStyle.copyWith(color: color);
     }
     if (shadows != null) {
-      _textStyle = _textStyle.copyWith(shadows: shadows);
+      textStyle = textStyle.copyWith(shadows: shadows);
     }
     if (fontSize != null) {
-      _textStyle = _textStyle.copyWith(fontSize: fontSize);
+      textStyle = textStyle.copyWith(fontSize: fontSize);
     }
 
     return Padding(
@@ -48,7 +48,7 @@ class MyText extends StatelessWidget {
         textAlign: textAlign ?? MyServices.helpers.getTextAlignByLang(context),
         maxLines: maxLines,
         textDirection: MyServices.helpers.getTextDirection(text ?? ''),
-        style: _textStyle,
+        style: textStyle,
         overflow: overflow,
       ),
     );

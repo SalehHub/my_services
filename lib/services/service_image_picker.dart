@@ -23,7 +23,7 @@ class MyFile {
   }
 
   String printSize([String filename = ""]) {
-    return filename + ":\t" + sizeForHuman + "\n";
+    return "$filename:\t$sizeForHuman\n";
   }
 }
 
@@ -56,15 +56,15 @@ class ServiceImagePicker {
       MyFile compressedFile;
 
       if (withCrop) {
-        final CroppedFile? _croppedFile = await ImageCropper().cropImage(
+        final CroppedFile? croppedFile = await ImageCropper().cropImage(
           sourcePath: originalFile.path,
           compressQuality: originalFile.sizeInMegabytes > sizeInMB ? 50 : 80,
           aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
           cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
         );
 
-        if (_croppedFile != null) {
-          compressedFile = MyFile(_croppedFile);
+        if (croppedFile != null) {
+          compressedFile = MyFile(croppedFile);
           logger.i(compressedFile.printSize("Cropped File"));
         } else {
           compressedFile = originalFile;
@@ -77,7 +77,7 @@ class ServiceImagePicker {
         int i = 0;
         while (compressedFile.sizeInMegabytes > sizeInMB) {
           i++;
-          File? _newFile = await FlutterImageCompress.compressAndGetFile(
+          File? newFile = await FlutterImageCompress.compressAndGetFile(
             compressedFile.path,
             compressedFile.path.replaceFirst('.', '$i.', compressedFile.path.length - 6),
             quality: 95 - (i + 5),
@@ -85,11 +85,11 @@ class ServiceImagePicker {
             minWidth: 500,
           );
 
-          if (_newFile == null) {
+          if (newFile == null) {
             break;
           }
 
-          compressedFile = MyFile(_newFile);
+          compressedFile = MyFile(newFile);
         }
       }
 

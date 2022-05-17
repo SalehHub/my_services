@@ -8,3 +8,7 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "my_services"
+
+linter:
+  rules:
+    library_private_types_in_public_api: false

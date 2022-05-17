@@ -48,10 +48,10 @@ class MySideMenu extends StatelessWidget {
                       const Spacer(),
                       if (imageUrl == null)
                         CircleAvatar(
-                          child: Icon(avatarIcon, size: 40),
                           radius: 30,
                           backgroundColor: getColorScheme(context).primary,
                           foregroundColor: getColorScheme(context).onPrimary,
+                          child: Icon(avatarIcon, size: 40),
                         )
                       else
                         MyLoadingImage(

@@ -18,15 +18,15 @@ class ServiceLocale {
           Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).headline6),
           const Divider(),
           Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).caption),
-          ...supportedLocales.map((Locale _locale) {
+          ...supportedLocales.map((Locale locale) {
             return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
               return RadioListTile<Locale>(
-                secondary: getLanguageIcon(_locale),
+                secondary: getLanguageIcon(locale),
                 title: Text(
-                  getLanguageLabel(_locale),
+                  getLanguageLabel(locale),
                   style: getTextTheme(context).bodyText2,
                 ),
-                value: _locale,
+                value: locale,
                 groupValue: currentLocale(context), // watchLocale(ref),
                 onChanged: (Locale? value) {
                   AppSettings.openNotificationSettings(); //appSettings

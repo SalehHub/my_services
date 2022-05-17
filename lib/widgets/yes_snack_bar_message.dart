@@ -10,7 +10,7 @@ class YesSnackBarMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyServicesLocalizationsData? labels = getMyServicesLabels(context);
+    final MyServicesLocalizationsData labels = getMyServicesLabels(context);
 
     return Row(
       children: <Widget>[
@@ -20,7 +20,7 @@ class YesSnackBarMessage extends StatelessWidget {
         ],
         Expanded(
           child: Text(
-            text ?? labels?.areYouSure ?? "",
+            text ?? labels.areYouSure ?? "",
             style: getTextTheme(context).bodyText1?.copyWith(color: MyServices.services.snackBar.fgColor(success)),
           ),
         ),
@@ -28,7 +28,7 @@ class YesSnackBarMessage extends StatelessWidget {
           style: OutlinedButton.styleFrom(backgroundColor: MyServices.services.snackBar.fgColor(success)),
           onPressed: () => onYes(),
           child: Text(
-            buttonText ?? labels?.yes ?? "Yes",
+            buttonText ?? labels.yes ?? "Yes",
             style: getTextTheme(context).bodyText1?.copyWith(color: MyServices.services.snackBar.bgColor(success)),
           ),
         )

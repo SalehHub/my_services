@@ -119,11 +119,11 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
 
   @override
   Future<bool> getIsFirstAppBuildRun(String build) async {
-    final String _key = isFirstAppBuildRun + build;
-    final String? data = await query(_key);
+    final String key = isFirstAppBuildRun + build;
+    final String? data = await query(key);
 
     if (data == null) {
-      await set(_key, 'false');
+      await set(key, 'false');
       return true;
     }
 
@@ -137,8 +137,8 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   Future<Locale> getLocale() async {
     try {
       //if no stored locale then try to get device locale if it is supported
-      final Locale? deviceLocale = WidgetsBinding.instance?.window.locales.first;
-      if (deviceLocale != null && MyServices.services.locale.isSupportedLocale(deviceLocale)) {
+      final Locale deviceLocale = WidgetsBinding.instance.window.locales.first;
+      if (MyServices.services.locale.isSupportedLocale(deviceLocale)) {
         return Locale(deviceLocale.languageCode);
       }
 

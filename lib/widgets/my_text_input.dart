@@ -91,14 +91,14 @@ class MyTextInput extends StatelessWidget {
               },
               items: items
                   .map((e) => DropdownMenuItem(
+                      value: e.value,
                       child: Row(
                         children: [
                           if (e.icon != null) e.icon!,
                           if (e.icon != null) const SizedBox(width: 5),
                           MyText(e.text),
                         ],
-                      ),
-                      value: e.value))
+                      )))
                   .toList(),
               decoration: buildMyInputDecoration(),
             ),

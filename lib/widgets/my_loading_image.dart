@@ -99,7 +99,6 @@ class MyLoadingImage extends StatelessWidget {
     }
 
     final Widget placeHolder = ImageContainer(
-      child: Image(width: width, height: height, image: BlurHashImage(blurHash ?? 'LUMiyF-=_N?a#PD*IUslj^RPt6RP'), fit: fit),
       width: width,
       height: height,
       borderRadius: borderRadius ?? BorderRadius.circular(radius),
@@ -107,6 +106,7 @@ class MyLoadingImage extends StatelessWidget {
       borderColor: borderColor,
       borderWidth: borderWidth,
       circle: circle,
+      child: Image(width: width, height: height, image: BlurHashImage(blurHash ?? 'LUMiyF-=_N?a#PD*IUslj^RPt6RP'), fit: fit),
     );
 
     // precacheImage(image,context);
@@ -119,7 +119,6 @@ class MyLoadingImage extends StatelessWidget {
       height: height,
       fit: fit,
       imageBuilder: (BuildContext context, Widget child) => ImageContainer(
-        child: child,
         width: width,
         height: height,
         borderRadius: borderRadius ?? BorderRadius.circular(radius),
@@ -127,6 +126,7 @@ class MyLoadingImage extends StatelessWidget {
         borderColor: borderColor,
         borderWidth: borderWidth,
         circle: circle,
+        child: child,
       ),
       image: image,
       placeholderBuilder: placeholderBuilder ?? (BuildContext context) => placeHolder,

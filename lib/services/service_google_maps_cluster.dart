@@ -33,8 +33,8 @@ class GoogleMapsCluster<T extends ClusterItem> {
     _manager?.updateMap();
   }
 
-  void _updateMarkers(Set<Marker> _markers) {
-    _ref.read(_markersProvider.state).update((state) => _markers);
+  void _updateMarkers(Set<Marker> markers) {
+    _ref.read(_markersProvider.state).update((state) => markers);
   }
 
   Set<Marker> watchMarkers() {
