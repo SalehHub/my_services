@@ -56,55 +56,56 @@ class MyText extends StatelessWidget {
 }
 
 // class MyText2 extends Text {
-//   MyText2(
-
-//     String? text, {
-//     Key? key,
+//   const MyText2(
+//     super.data, {
+//     super.key,
+//     super.style,
+//     super.textAlign,
+//     super.maxLines,
+//     super.overflow,
+//     this.bold = false,
 //     this.margin = EdgeInsets.zero,
-//     TextStyle? style,
-//     bool? bold = false,
-//     TextAlign? textAlign,
-//     int? maxLines,
-//     double? fontSize,
-//     Color? color,
-//     List<Shadow>? shadows,
-//     TextOverflow? overflow,
+//     this.fontSize,
+//     this.color,
+//     this.shadows,
+//   });
 
-//   }) : super(
-//           text ?? "",
-//           key: key,
-//           maxLines: maxLines,
-//           overflow: overflow,
-//           textAlign: textAlign,
-//           style: getStyle(style, bold, color, shadows, fontSize),
-//         );
-
-//   final EdgeInsetsGeometry? margin;
-
-//   static TextStyle? getStyle(style, bold, color, shadows, fontSize) {
-//     TextStyle? _textStyle = style ?? const TextStyle();
-//     if (bold) {
-//       _textStyle = _textStyle?.copyWith(fontWeight: FontWeight.bold);
-//     }
-//     if (color != null) {
-//       _textStyle = _textStyle?.copyWith(color: color);
-//     }
-//     if (shadows != null) {
-//       _textStyle = _textStyle?.copyWith(shadows: shadows);
-//     }
-//     if (fontSize != null) {
-//       _textStyle = _textStyle?.copyWith(fontSize: fontSize);
-//     }
-
-//     return _textStyle;
-//   }
+//   final bool bold;
+//   final EdgeInsetsGeometry margin;
+//   final double? fontSize;
+//   final Color? color;
+//   final List<Shadow>? shadows;
 
 //   @override
 //   Widget build(BuildContext context) {
-//     if (margin != null) {
-//       return Padding(padding: margin!, child: super.build(context));
-//     }
-//     return super.build(context);
-//   }
 
+//     String text = super.data ?? "";
+
+//     TextStyle textStyle = super.style ?? DefaultTextStyle.of(context).style;
+
+//     if (bold) {
+//       textStyle = textStyle.copyWith(fontWeight: FontWeight.bold);
+//     }
+//     if (color != null) {
+//       textStyle = textStyle.copyWith(color: color);
+//     }
+//     if (shadows != null) {
+//       textStyle = textStyle.copyWith(shadows: shadows);
+//     }
+//     if (fontSize != null) {
+//       textStyle = textStyle.copyWith(fontSize: fontSize);
+//     }
+
+//     return Padding(
+//       padding: margin,
+//       child: Text(
+//         text,
+//         textAlign: textAlign ?? MyServices.helpers.getTextAlignByLang(context),
+//         maxLines: maxLines,
+//         textDirection: MyServices.helpers.getTextDirection(text),
+//         style: textStyle,
+//         overflow: overflow,
+//       ),
+//     );
+//   }
 // }
