@@ -10,6 +10,7 @@ class MySideMenu extends StatelessWidget {
     this.imageBlurhash,
     this.bgImageUrl,
     this.bgImageBlurhash,
+    this.backgroundColor,
     this.children = const [],
     this.onAvatarTap,
   });
@@ -21,6 +22,7 @@ class MySideMenu extends StatelessWidget {
   final String? imageBlurhash;
   final String? bgImageUrl;
   final String? bgImageBlurhash;
+  final Color? backgroundColor;
   final List<MySideMenuTile> children;
   final GestureTapCallback? onAvatarTap;
 
@@ -29,6 +31,7 @@ class MySideMenu extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 10, bottom: 25, left: 10, right: 10),
       child: Drawer(
+        backgroundColor: backgroundColor,
         child: ListView(
           children: <Widget>[
             Hero(
