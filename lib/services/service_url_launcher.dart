@@ -47,11 +47,11 @@ class ServiceURLLauncher {
     return false;
   }
 
-  Future<bool> openTwitterUser(String username, BuildContext context) async {
+  Future<bool> openTwitterUser(String username) async {
     return launchUniversalLinkIos('https://twitter.com/$username');
   }
 
-  Future<void> openTwitterTag(String tag, BuildContext context) async {
+  Future<void> openTwitterTag(String tag) async {
     String cleanTag = tag.replaceAll('#', '');
 
     cleanTag = Uri.encodeFull(cleanTag);
@@ -68,7 +68,7 @@ class ServiceURLLauncher {
     }
   }
 
-  Future<void> launchWhatsapp(String num, String text, BuildContext context) async {
+  Future<void> launchWhatsapp(String num, String text) async {
     final String msg = Uri.encodeFull(text);
 
     final bool result = await launchUniversalLinkIos('whatsapp://send?phone=$num&text=$msg');
@@ -82,7 +82,7 @@ class ServiceURLLauncher {
     }
   }
 
-  Future<void> launchCall(String num, BuildContext context) async {
+  Future<void> launchCall(String num) async {
     final bool result = await launchUniversalLinkIos('tel:$num');
 
     if (result == false) {
@@ -90,7 +90,7 @@ class ServiceURLLauncher {
     }
   }
 
-  Future<void> launchEmail(String email, BuildContext context) async {
+  Future<void> launchEmail(String email) async {
     final bool result = await launchUniversalLinkIos('mailto:$email');
 
     if (result == false) {
