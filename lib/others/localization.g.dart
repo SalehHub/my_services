@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    showLess: 'Show less',
+    showMore: 'Show more',
     continue1: 'Continue',
     cancel: 'Cancel',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'This will delete your account and all your data permanently',
@@ -116,6 +118,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    showLess: 'عرض اقل',
+    showMore: 'عرض المزيد',
     continue1: 'متابعة',
     cancel: 'الغاء',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'سيؤدي هذا الى حذف حسابك وبياناتك من التطبيق للأبد',
@@ -224,6 +228,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    showLess: 'Montrer moins',
+    showMore: 'Montre plus',
     continue1: 'Continuez',
     cancel: 'Annuler',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Cela supprimera votre compte et toutes vos données en permanence',
@@ -332,6 +338,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    showLess: 'Muestra menos',
+    showMore: 'Mostrar más',
     continue1: 'Continuar',
     cancel: 'Cancelar',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Esto eliminará su cuenta y todos sus datos de forma permanente',
@@ -440,6 +448,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    showLess: 'Daha az göster',
+    showMore: 'Daha fazla göster',
     continue1: 'Devam etmek',
     cancel: 'İptal etmek',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Bu, hesabınızı ve tüm verilerinizi kalıcı olarak silecektir',
@@ -551,6 +561,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.showLess,
+    required this.showMore,
     required this.continue1,
     required this.cancel,
     required this.thisWillDeleteYourAccountAndAllYourDataPermanently,
@@ -659,6 +671,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String showLess;
+  final String showMore;
   final String continue1;
   final String cancel;
   final String thisWillDeleteYourAccountAndAllYourDataPermanently;
@@ -766,6 +780,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        showLess: map['showLess']! as String,
+        showMore: map['showMore']! as String,
         continue1: map['continue1']! as String,
         cancel: map['cancel']! as String,
         thisWillDeleteYourAccountAndAllYourDataPermanently: map['thisWillDeleteYourAccountAndAllYourDataPermanently']! as String,
@@ -875,6 +891,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? showLess,
+    String? showMore,
     String? continue1,
     String? cancel,
     String? thisWillDeleteYourAccountAndAllYourDataPermanently,
@@ -983,6 +1001,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        showLess: showLess ?? this.showLess,
+        showMore: showMore ?? this.showMore,
         continue1: continue1 ?? this.continue1,
         cancel: cancel ?? this.cancel,
         thisWillDeleteYourAccountAndAllYourDataPermanently: thisWillDeleteYourAccountAndAllYourDataPermanently ?? this.thisWillDeleteYourAccountAndAllYourDataPermanently,
@@ -1095,6 +1115,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          showLess == other.showLess &&
+          showMore == other.showMore &&
           continue1 == other.continue1 &&
           cancel == other.cancel &&
           thisWillDeleteYourAccountAndAllYourDataPermanently == other.thisWillDeleteYourAccountAndAllYourDataPermanently &&
@@ -1204,6 +1226,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      showLess.hashCode ^
+      showMore.hashCode ^
       continue1.hashCode ^
       cancel.hashCode ^
       thisWillDeleteYourAccountAndAllYourDataPermanently.hashCode ^
