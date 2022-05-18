@@ -75,7 +75,7 @@ class MyPopupMenuItem<T> {
 }
 
 class _MyPopupMenuItemWidget extends ConsumerWidget {
-  const _MyPopupMenuItemWidget({super.key, this.widget, this.tail, required this.title, required this.icon});
+  const _MyPopupMenuItemWidget({this.widget, this.tail, required this.title, required this.icon});
 
   final Widget? widget;
   final Widget? tail;
