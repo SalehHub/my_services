@@ -202,11 +202,9 @@ class ServiceTheme {
         ),
       ),
       tabBarTheme: mainThemeData.tabBarTheme.copyWith(
-        indicator: const UnderlineTabIndicator(
-            borderSide: BorderSide(
-          width: 2,
-          // color: accentColor,
-        )),
+        indicator: UnderlineTabIndicator(
+          borderSide: BorderSide(width: 2, color: colorScheme.primary),
+        ),
       ),
       floatingActionButtonTheme: mainThemeData.floatingActionButtonTheme.copyWith(
         backgroundColor: colorScheme.primaryContainer,
