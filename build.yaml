@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        generate_for:
+          - lib/models/**.dart
+      flutter_sheet_localization_generator|flutter_sheet_localization:
+        generate_for:
+          - lib/others/localization.dart
