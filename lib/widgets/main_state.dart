@@ -87,7 +87,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
           suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
           labelText: myServicesLabels.search,
           onChanged: onSearchChanged,
-          onFieldSubmitted: onSearchSubmitted ,
+          onFieldSubmitted: onSearchSubmitted,
           floatingLabel: true,
         ),
       );
