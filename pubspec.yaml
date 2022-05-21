@@ -65,7 +65,12 @@ dependencies:
 
   flutter_riverpod: ^1.0.4
   flutter_app_badger: ^1.4.0 #flutterAppBadger
-  flutter_sheet_localization: ^5.1.1
+
+  flutter_sheet_localization: #^5.1.1
+      git:
+        url: https://github.com/salehahmedZ/flutter_sheet_localization.git
+        path: flutter_sheet_localization
+
   freezed_annotation: ^2.0.3
   json_annotation: ^4.5.0
   dio: ^4.0.6
@@ -75,17 +80,18 @@ dependencies:
 
 
 dev_dependencies:
-  flutter_sheet_localization_generator: ^5.1.7
+
+  flutter_sheet_localization_generator: #^5.1.7
+      git:
+        url: https://github.com/salehahmedZ/flutter_sheet_localization.git
+        path: flutter_sheet_localization_generator
+
   build_runner: ^2.1.11
   freezed: ^2.0.3+1
   json_serializable: ^6.2.0
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-
-dependency_overrides:
-  analyzer: ^3.2.0
-  meta: ^1.7.0
 
 flutter:
   assets:
