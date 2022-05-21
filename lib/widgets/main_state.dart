@@ -75,6 +75,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   bool showSearch = false;
   ValueChanged<String>? onSearchChanged;
+  ValueChanged<String>? onSearchSubmitted;
   GestureTapCallback? onSearchClear;
 
   Widget get searchInput => SliverToBoxAdapter(
@@ -86,6 +87,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
           suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
           labelText: myServicesLabels.search,
           onChanged: onSearchChanged,
+          onFieldSubmitted: onSearchSubmitted ,
           floatingLabel: true,
         ),
       );
