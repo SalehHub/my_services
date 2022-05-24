@@ -41,6 +41,7 @@ class Providers {
   }
 
   Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
+  
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
   }

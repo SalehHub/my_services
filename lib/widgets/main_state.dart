@@ -269,8 +269,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   @override
   Widget build(BuildContext context) {
     if (homePage && MyServices.appEvents.onLocaleChange != null) {
-      MyServices.services.locale.onLocaleChange(ref, (previous, next) {
+      MyServices.providers.onLocaleChange(ref, (previous, next) {
         MyServices.appEvents.onLocaleChange!(previous, next, ref, context);
+
         logger.w("Previous:${previous?.languageCode ?? ""}\nNext:${next?.languageCode ?? ""}");
       });
     }

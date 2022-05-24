@@ -104,9 +104,9 @@ class ServiceLocale {
     isAr(context) ? setLocaleToEn(ref) : setLocaleToAr(ref);
   }
 
-  void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
-    MyServices.providers.onLocaleChange(ref, (previous, next) => listener);
-  }
+  // void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
+  //   MyServices.providers.onLocaleChange(ref, (previous, next) => listener);
+  // }
 
   //  void setLocaleWithoutSaving(dynamic ref, Locale value) {
   //   if (isSupportedLocale(value)) {
