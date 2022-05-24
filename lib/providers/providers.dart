@@ -7,7 +7,6 @@ class Providers {
 
   Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
   Future<void> setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
-  Future<void> setLocale(dynamic ref, Locale value) => _readGeneralStateNotifier(ref).setLocale(value);
   Future<void> toggleThemeMode(dynamic ref, BuildContext context) => _readGeneralStateNotifier(ref).toggleThemeMode(context);
   //
   Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
@@ -23,8 +22,24 @@ class Providers {
   //
   bool watchIsFirstAppRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
   bool readIsFirstAppRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppRun;
-  //
-  Locale? watchLocale(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.locale));
+
+  //locale providers
+  Future<void> setLocale(dynamic ref, Locale value) {
+    if (MyServices.services.locale.isSupportedLocale(value)) {
+      return _readGeneralStateNotifier(ref).setLocale(value);
+    } else {
+      logger.e("Unsupported locale");
+      return Future.value(null);
+    }
+  }
+
+  Locale? watchLocale(dynamic ref) {
+    if (MyServices.appConfig.nativeLocaleChange) {
+      return null;
+    }
+    return ref.watch(generalStateProvider.select((s) => s.locale));
+  }
+
   Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);

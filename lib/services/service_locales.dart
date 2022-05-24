@@ -17,7 +17,9 @@ class ServiceLocale {
           const SizedBox(height: 20),
           Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).headline6),
           const Divider(),
-          Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).caption),
+          //when nativeLocaleChange is true, show helper text
+          if (MyServices.appConfig.nativeLocaleChange) Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).caption),
+          //
           ...supportedLocales.map((Locale locale) {
             return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
               return RadioListTile<Locale>(
@@ -29,11 +31,13 @@ class ServiceLocale {
                 value: locale,
                 groupValue: currentLocale(context), // watchLocale(ref),
                 onChanged: (Locale? value) {
-                  AppSettings.openNotificationSettings(); //appSettings
-
-                  // if (value != null) {
-                  //   setLocale(ref, value);
-                  // }
+                  if (MyServices.appConfig.nativeLocaleChange) {
+                    AppSettings.openNotificationSettings(); //appSettings
+                  } else {
+                    if (value != null) {
+                      MyServices.providers.setLocale(ref, value);
+                    }
+                  }
                 },
               );
             });
@@ -100,43 +104,23 @@ class ServiceLocale {
     isAr(context) ? setLocaleToEn(ref) : setLocaleToAr(ref);
   }
 
-  //providers
-  // Locale? watchLocale(WidgetRef ref) => MyServices.providers.watchLocale(ref);
-  // Locale? readLocale(dynamic ref) => MyServices.providers.readLocale(ref);
-
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
     MyServices.providers.onLocaleChange(ref, (previous, next) => listener);
   }
 
   //  void setLocaleWithoutSaving(dynamic ref, Locale value) {
   //   if (isSupportedLocale(value)) {
-  //     MyServices.providers.setLocaleWithoutSaving(value);
+  // MyServices.providers.setLocaleWithoutSaving(value);
   //   } else {
   //     logger.e("Unsupported locale");
   //   }
   // }
 
-  void setLocale(dynamic ref, Locale value) {
-    if (isSupportedLocale(value)) {
-      MyServices.providers.setLocale(ref, value);
-    } else {
-      logger.e("Unsupported locale");
-    }
-  }
-
   void setLocaleToAr(dynamic ref) {
-    if (isSupportedLocale(const Locale('ar'))) {
-      MyServices.providers.setLocale(ref, const Locale('ar'));
-    } else {
-      logger.e("Unsupported locale");
-    }
+    MyServices.providers.setLocale(ref, const Locale('ar'));
   }
 
   void setLocaleToEn(dynamic ref) {
-    if (isSupportedLocale(const Locale('en'))) {
-      MyServices.providers.setLocale(ref, const Locale('en'));
-    } else {
-      logger.e("Unsupported locale");
-    }
+    MyServices.providers.setLocale(ref, const Locale('en'));
   }
 }
