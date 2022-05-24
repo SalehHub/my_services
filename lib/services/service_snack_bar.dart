@@ -28,7 +28,7 @@ class ServiceSnackBar {
   }
 
   void hide() {
-    ScaffoldMessenger.of(ServiceNav.context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(ServiceNav.context).removeCurrentSnackBar();
   }
 
   void showText({
