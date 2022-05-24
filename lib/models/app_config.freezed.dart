@@ -192,6 +192,7 @@ mixin _$AppConfig {
   bool get withFirebase => throw _privateConstructorUsedError;
   bool get withFCM => throw _privateConstructorUsedError;
   bool get withCrashlytics => throw _privateConstructorUsedError;
+  bool get nativeLocaleChange => throw _privateConstructorUsedError;
   FirebaseOptions? get firebaseOptions => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -201,7 +202,7 @@ mixin _$AppConfig {
 /// @nodoc
 abstract class $AppConfigCopyWith<$Res> {
   factory $AppConfigCopyWith(AppConfig value, $Res Function(AppConfig) then) = _$AppConfigCopyWithImpl<$Res>;
-  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions});
+  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, bool nativeLocaleChange, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
@@ -217,6 +218,7 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
     Object? withFirebase = freezed,
     Object? withFCM = freezed,
     Object? withCrashlytics = freezed,
+    Object? nativeLocaleChange = freezed,
     Object? firebaseOptions = freezed,
   }) {
     return _then(_value.copyWith(
@@ -232,6 +234,10 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
+      nativeLocaleChange: nativeLocaleChange == freezed
+          ? _value.nativeLocaleChange
+          : nativeLocaleChange // ignore: cast_nullable_to_non_nullable
+              as bool,
       firebaseOptions: firebaseOptions == freezed
           ? _value.firebaseOptions
           : firebaseOptions // ignore: cast_nullable_to_non_nullable
@@ -244,7 +250,7 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
 abstract class _$$_AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
   factory _$$_AppConfigCopyWith(_$_AppConfig value, $Res Function(_$_AppConfig) then) = __$$_AppConfigCopyWithImpl<$Res>;
   @override
-  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, FirebaseOptions? firebaseOptions});
+  $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, bool nativeLocaleChange, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
@@ -259,6 +265,7 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imp
     Object? withFirebase = freezed,
     Object? withFCM = freezed,
     Object? withCrashlytics = freezed,
+    Object? nativeLocaleChange = freezed,
     Object? firebaseOptions = freezed,
   }) {
     return _then(_$_AppConfig(
@@ -274,6 +281,10 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imp
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
+      nativeLocaleChange: nativeLocaleChange == freezed
+          ? _value.nativeLocaleChange
+          : nativeLocaleChange // ignore: cast_nullable_to_non_nullable
+              as bool,
       firebaseOptions: firebaseOptions == freezed
           ? _value.firebaseOptions
           : firebaseOptions // ignore: cast_nullable_to_non_nullable
@@ -285,7 +296,7 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imp
 /// @nodoc
 
 class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
-  _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.firebaseOptions}) : super._();
+  _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions}) : super._();
 
   @override
   @JsonKey()
@@ -297,11 +308,14 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
   @JsonKey()
   final bool withCrashlytics;
   @override
+  @JsonKey()
+  final bool nativeLocaleChange;
+  @override
   final FirebaseOptions? firebaseOptions;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppConfig(withFirebase: $withFirebase, withFCM: $withFCM, withCrashlytics: $withCrashlytics, firebaseOptions: $firebaseOptions)';
+    return 'AppConfig(withFirebase: $withFirebase, withFCM: $withFCM, withCrashlytics: $withCrashlytics, nativeLocaleChange: $nativeLocaleChange, firebaseOptions: $firebaseOptions)';
   }
 
   @override
@@ -312,6 +326,7 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('withFirebase', withFirebase))
       ..add(DiagnosticsProperty('withFCM', withFCM))
       ..add(DiagnosticsProperty('withCrashlytics', withCrashlytics))
+      ..add(DiagnosticsProperty('nativeLocaleChange', nativeLocaleChange))
       ..add(DiagnosticsProperty('firebaseOptions', firebaseOptions));
   }
 
@@ -323,12 +338,13 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.withFirebase, withFirebase) &&
             const DeepCollectionEquality().equals(other.withFCM, withFCM) &&
             const DeepCollectionEquality().equals(other.withCrashlytics, withCrashlytics) &&
+            const DeepCollectionEquality().equals(other.nativeLocaleChange, nativeLocaleChange) &&
             const DeepCollectionEquality().equals(other.firebaseOptions, firebaseOptions));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(withFirebase), const DeepCollectionEquality().hash(withFCM), const DeepCollectionEquality().hash(withCrashlytics),
-      const DeepCollectionEquality().hash(firebaseOptions));
+      const DeepCollectionEquality().hash(nativeLocaleChange), const DeepCollectionEquality().hash(firebaseOptions));
 
   @JsonKey(ignore: true)
   @override
@@ -336,7 +352,7 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
 }
 
 abstract class _AppConfig extends AppConfig {
-  factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
+  factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final bool nativeLocaleChange, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
   _AppConfig._() : super._();
 
   @override
@@ -345,6 +361,8 @@ abstract class _AppConfig extends AppConfig {
   bool get withFCM => throw _privateConstructorUsedError;
   @override
   bool get withCrashlytics => throw _privateConstructorUsedError;
+  @override
+  bool get nativeLocaleChange => throw _privateConstructorUsedError;
   @override
   FirebaseOptions? get firebaseOptions => throw _privateConstructorUsedError;
   @override

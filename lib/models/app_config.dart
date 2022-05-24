@@ -22,6 +22,7 @@ class AppConfig with _$AppConfig {
     @Default(true) bool withFirebase,
     @Default(true) bool withFCM,
     @Default(true) bool withCrashlytics,
+    @Default(false) bool nativeLocaleChange,
     FirebaseOptions? firebaseOptions, //firebaseCore
   }) = _AppConfig;
 }
