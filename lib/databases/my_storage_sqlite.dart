@@ -162,17 +162,27 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
     try {
       //if no stored locale then try to get device locale if it is supported
       final Locale deviceLocale = WidgetsBinding.instance.window.locales.first;
-      if (MyServices.services.locale.isSupportedLocale(deviceLocale)) {
-        return Locale(deviceLocale.languageCode);
+
+      if (MyServices.appConfig.nativeLocaleChange) {
+        if (MyServices.services.locale.isSupportedLocale(deviceLocale)) {
+          return Locale(deviceLocale.languageCode);
+        }
+      } else {
+        final String? value = await query(localeKey);
+        if (value != null && MyServices.services.locale.isSupportedLocale(Locale(value))) {
+          return Locale(value);
+        }
       }
 
-      final String? value = await query(localeKey);
-      if (value != null && MyServices.services.locale.isSupportedLocale(Locale(value))) {
-        return Locale(value);
+      //
+
+      if (MyServices.services.locale.isSupportedLocale(deviceLocale)) {
+        return Locale(deviceLocale.languageCode);
       }
     } catch (e, s) {
       logger.e(e, e, s);
     }
+
     return MyServices.services.locale.defaultLocale;
   }
 
