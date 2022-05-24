@@ -191,6 +191,9 @@ class ServiceTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          elevation: 0,
+          primary: colorScheme.primary,
+          onPrimary: colorScheme.onPrimary,
           textStyle: textTheme.bodyText1,
           shape: circularBorderRadius,
         ),
