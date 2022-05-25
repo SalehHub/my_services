@@ -29,7 +29,7 @@ dependencies:
   image_picker: ^0.8.5+3 #imagePicker
   flutter_image_compress: ^1.1.0 #imagePicker
 
-  photo_view: ^0.13.0 #photoView
+  photo_view: ^0.14.0 #photoView
   smooth_page_indicator: ^1.0.0+2 #photoView
 
   map_launcher: ^2.2.2 #mapLauncher
