@@ -174,7 +174,7 @@ class ServiceTheme {
         margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       ),
       drawerTheme: mainThemeData.drawerTheme.copyWith(
-        backgroundColor: colorScheme.primary,
+        backgroundColor: colorScheme.background,
         shape: circularBorderRadius,
         elevation: elevation,
       ),
