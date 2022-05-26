@@ -130,7 +130,7 @@ class MyTextInput extends StatelessWidget {
               child: buildTextInput(),
             )
           else
-            buildTextInput(),
+            SizedBox(height: maxLines > 1 ? maxLines * 45 : null, child: buildTextInput()),
         ],
       ),
     );
