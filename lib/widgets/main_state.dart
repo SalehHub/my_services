@@ -26,16 +26,19 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
   double get pageWidth => pageSize.width;
 }
 
-abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> {
+abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SearchMixin, BannersMixin, LoadingsMixin, TabsMixin {
+  //
   List<Widget> bodyChildren = <Widget>[];
+  List<Widget> get appBarActions => <Widget>[];
+
   Widget? drawer;
   Widget? floatingBottomWidget;
+  Widget? underAppBarWidget;
+
   WillPopCallback? onBack;
 
   @protected
   bool get emptyData => bodyChildren.isEmpty;
-
-  List<Widget> get appBarActions => <Widget>[];
 
   List<Widget> get _appBarActionsWithProgress {
     if (!emptyData && actionBarLoading) {
@@ -48,24 +51,11 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   TextStyle? titleStyle;
 
   bool homePage = false;
-  bool hideTopBanner = false;
-  bool hideBottomBanner = false;
-
-  Widget topBanner = const SizedBox();
-  Widget bottomBanner = const SizedBox();
-  Widget? underAppBarWidget;
-
-  bool pageLoading = false;
-
-  bool startPageInLoadingState = false;
+  bool showAppBar = true;
+  bool showRefreshIndicator = true;
 
   //bad don't do this
   //bool get startPageInLoadingState => pageLoading;
-
-  Widget get pageLoadingWidget => MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: pageHeight / 3));
-
-  bool actionBarLoading = false;
-  Widget? appBarLeading;
 
   String get noDataLabel => myServicesLabels.thereAreNoDataYet;
   IconData noDataIcon = iconNoData;
@@ -73,52 +63,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   Object? error;
   StackTrace? stackTrace;
 
-  bool showSearch = false;
-  ValueChanged<String>? onSearchChanged;
-  ValueChanged<String>? onSearchSubmitted;
-  GestureTapCallback? onSearchClear;
-
-  Widget get searchInput => SliverToBoxAdapter(
-        child: MyTextInput(
-          controller: searchController,
-          textInputAction: TextInputAction.search,
-          margin: const EdgeInsets.all(10),
-          prefixIcon: const BackButton(),
-          suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
-          labelText: myServicesLabels.search,
-          onChanged: onSearchChanged,
-          onFieldSubmitted: onSearchSubmitted,
-          floatingLabel: true,
-        ),
-      );
-
-  bool showAppBar = true;
-  bool showRefreshIndicator = true;
-  final TextEditingController searchController = TextEditingController();
-
   Widget get appBarTitle {
     return Text(title, textDirection: MyServices.helpers.getTextDirection(title), style: titleStyle, maxLines: 1);
   }
-
-  //tab view
-  List<Widget>? get tabs => null;
-  bool isTabView = false;
-
-  TabController? _tabController;
-
-  // TabController? get tabController => _tabController;
-
-  void setTabController(TabController tabController, {bool replace = false}) {
-    if (replace) {
-      _tabController = tabController;
-    } else {
-      _tabController ??= tabController;
-    }
-  }
-
-  bool get _isValidTabBar => _isValidTabView && tabs != null && (tabs ?? []).length > 1;
-
-  bool get _isValidTabView => isTabView && _tabController != null;
 
   Widget appBar(bool innerBoxIsScrolled) {
     if (showSearch == true) {
@@ -209,28 +156,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
+      print("main setstate");
       super.setState(fn);
     }
-  }
-
-  @protected
-  void startPageLoading() {
-    setState(() => pageLoading = true);
-  }
-
-  @protected
-  void stopPageLoading() {
-    setState(() => pageLoading = false);
-  }
-
-  @protected
-  void startActionBarLoading() {
-    setState(() => actionBarLoading = true);
-  }
-
-  @protected
-  void stopActionBarLoading() {
-    setState(() => actionBarLoading = false);
   }
 
   @override
@@ -241,6 +169,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     }
 
     super.initState();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => _myInitState());
   }
 
@@ -413,4 +342,85 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       if (showActionBarLoading) stopActionBarLoading();
     }
   }
+}
+
+mixin TabsMixin<T extends StatefulWidget> on State<T> {
+  //tab view
+  List<Widget>? get tabs => null;
+  bool isTabView = false;
+
+  TabController? _tabController;
+
+  void setTabController(TabController tabController, {bool replace = false}) {
+    if (replace) {
+      _tabController = tabController;
+    } else {
+      _tabController ??= tabController;
+    }
+  }
+
+  bool get _isValidTabView => isTabView && _tabController != null;
+
+  bool get _isValidTabBar => _isValidTabView && tabs != null && (tabs ?? []).length > 1;
+}
+
+mixin LoadingsMixin<T extends StatefulWidget> on State<T> {
+  bool pageLoading = false;
+  bool startPageInLoadingState = false;
+  bool actionBarLoading = false;
+  Widget? appBarLeading;
+  Widget get pageLoadingWidget => MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: MyServices.helpers.getPageHeight(context) / 3));
+
+  @protected
+  void startPageLoading() {
+    print("startPageLoading mixin");
+    setState(() => pageLoading = true);
+  }
+
+  @protected
+  void stopPageLoading() {
+    setState(() => pageLoading = false);
+  }
+
+  @protected
+  void startActionBarLoading() {
+    setState(() => actionBarLoading = true);
+  }
+
+  @protected
+  void stopActionBarLoading() {
+    setState(() => actionBarLoading = false);
+  }
+}
+
+mixin BannersMixin<T extends StatefulWidget> on State<T> {
+  bool hideTopBanner = false;
+  bool hideBottomBanner = false;
+
+  Widget topBanner = const SizedBox();
+  Widget bottomBanner = const SizedBox();
+}
+
+mixin SearchMixin<T extends StatefulWidget> on State<T> {
+  bool showSearch = false;
+
+  ValueChanged<String>? onSearchChanged;
+  ValueChanged<String>? onSearchSubmitted;
+  GestureTapCallback? onSearchClear;
+
+  final TextEditingController searchController = TextEditingController();
+
+  Widget get searchInput => SliverToBoxAdapter(
+        child: MyTextInput(
+          controller: searchController,
+          textInputAction: TextInputAction.search,
+          margin: const EdgeInsets.all(10),
+          prefixIcon: const BackButton(),
+          suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
+          labelText: getMyServicesLabels(context).search,
+          onChanged: onSearchChanged,
+          onFieldSubmitted: onSearchSubmitted,
+          floatingLabel: true,
+        ),
+      );
 }
