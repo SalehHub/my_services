@@ -138,6 +138,7 @@ class ServiceTheme {
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.background,
       toggleableActiveColor: colorScheme.primary, //TODO: [https://github.com/flutter/flutter/pull/95870]
+      canvasColor: colorScheme.background, //used for dropdownitem bg color
       textTheme: textTheme,
       primaryTextTheme: textTheme,
       iconTheme: iconTheme,
@@ -160,6 +161,11 @@ class ServiceTheme {
       //
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
         shape: circularBorderRadius,
+      ),
+      inputDecorationTheme:mainThemeData.inputDecorationTheme.copyWith(
+      alignLabelWithHint: true,
+      isDense: true,
+      border:  OutlineInputBorder(borderRadius: borderRadius),
       ),
       dialogTheme: mainThemeData.dialogTheme.copyWith(
         backgroundColor: colorScheme.background,
