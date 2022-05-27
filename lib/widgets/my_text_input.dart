@@ -115,7 +115,6 @@ class MyTextInput extends StatelessWidget {
           buildLabel(context),
           if (widget != null)
             Container(
-              // height: height,
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               decoration: BoxDecoration(
@@ -130,13 +129,20 @@ class MyTextInput extends StatelessWidget {
               child: buildTextInput(),
             )
           else
-            SizedBox(height: maxLines > 1 ? maxLines * 45 : null, child: buildTextInput()),
+            buildTextInput(),
         ],
       ),
     );
   }
 
-  TextFormField buildTextInput() {
+  Widget buildTextInput() {
+    if (maxLines > 1) {
+      return SizedBox(height: maxLines > 1 ? maxLines * 45 : null, child: buildTextFormField());
+    }
+    return buildTextFormField();
+  }
+
+  Widget buildTextFormField() {
     return TextFormField(
       autocorrect: !isPassword,
       enableSuggestions: !isPassword,
@@ -188,6 +194,8 @@ class MyTextInput extends StatelessWidget {
       contentPadding: buildContentPadding(),
       suffixIcon: suffixIcon,
       prefixIcon: buildPrefixIcon(),
+      isDense: true,
+      // isCollapsed: true,
       border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? MyServices.services.theme.borderRadius),
     );
   }
