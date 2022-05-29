@@ -68,7 +68,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   }
 
   Widget appBar(bool innerBoxIsScrolled) {
-    if (showSearch == true) {
+    if (showSearchAppBar == true) {
       return searchInput;
     }
 
@@ -402,7 +402,7 @@ mixin BannersMixin<T extends StatefulWidget> on State<T> {
 }
 
 mixin SearchMixin<T extends StatefulWidget> on State<T> {
-  bool showSearch = false;
+  bool showSearchAppBar = false;
 
   ValueChanged<String>? onSearchChanged;
   ValueChanged<String>? onSearchSubmitted;
