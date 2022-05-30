@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    noReviewsYet: 'No reviews yet',
+    review: 'Review',
+    yourReview: 'Your review',
+    optional: 'Optional',
     showLess: 'Show less',
     showMore: 'Show more',
     continue1: 'Continue',
@@ -118,6 +122,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    noReviewsYet: 'لايوجد تقييمات بعد',
+    review: 'تقييم',
+    yourReview: 'تقييمك',
+    optional: 'إختياري',
     showLess: 'عرض اقل',
     showMore: 'عرض المزيد',
     continue1: 'متابعة',
@@ -228,14 +236,18 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    noReviewsYet: 'Aucune critique encore',
+    review: 'Examen',
+    yourReview: 'Votre avis',
+    optional: 'Optionnel',
     showLess: 'Montrer moins',
     showMore: 'Montre plus',
-    continue1: 'Continuez',
+    continue1: 'Continuer',
     cancel: 'Annuler',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Cela supprimera votre compte et toutes vos données en permanence',
     deleteYourAccount: 'Supprimer votre compte',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Les paramètres de votre téléphone seront ouverts pour modifier le langage de l\'application',
-    save: 'Sauver',
+    save: 'sauvegarder',
     add: 'Ajouter',
     reject: 'Rejeter',
     accept: 'Accepter',
@@ -261,19 +273,19 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     chooseMapApp: 'Choisissez l\'application MAP',
     noResultTryWithDifferentWords: 'Aucun résultat, essayez avec différents mots.',
     yourDevices: 'Vos appareils',
-    edit: 'Modifier',
-    thisFieldIsRequired: 'Ce champ est obligatoire',
+    edit: 'Éditer',
+    thisFieldIsRequired: 'Ce champ est requis',
     price: 'Prix',
     description: 'La description',
     addNewImage: 'Ajouter une nouvelle image',
-    search: 'Recherche',
+    search: 'Chercher',
     textHasBeenCopied: 'Le texte a été copié',
-    areYouSure: 'Es-tu sûr?',
+    areYouSure: 'Êtes-vous sûr?',
     deleteAll: 'Supprimer tout',
     doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
     youHaveNoNotificationsAtTheMoment: 'Vous n\'avez pas de notifications pour le moment',
     markAsRead: 'Marquer comme lu',
-    delete: 'Supprimer',
+    delete: 'Effacer',
     avatar: 'Avatar',
     changeProfileImage: 'Changer l\'image du profil',
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas d\'autorisation d\'accès photo',
@@ -327,7 +339,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'arabe',
     appLanguage: 'Langage de l\'application',
     settings: 'Réglages',
-    updated: 'Mis à jour',
+    updated: 'Actualisé',
     updateNow: 'Mettez à jour maintenant',
     toEnjoyLatestFeaturesPleaseUpdate: 'Pour profiter des dernières fonctionnalités, veuillez mettre à jour',
     newAppVersionIsAvailable: 'La nouvelle version de l\'application est disponible',
@@ -338,6 +350,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    noReviewsYet: 'Todavía no hay críticas',
+    review: 'Revisar',
+    yourReview: 'Tu reseña',
+    optional: 'Opcional',
     showLess: 'Muestra menos',
     showMore: 'Mostrar más',
     continue1: 'Continuar',
@@ -345,15 +361,15 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Esto eliminará su cuenta y todos sus datos de forma permanente',
     deleteYourAccount: 'Elimina tu cuenta',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'La configuración de su teléfono se abrirá para cambiar el idioma de la aplicación',
-    save: 'Guardar',
+    save: 'Ahorrar',
     add: 'Agregar',
     reject: 'Rechazar',
     accept: 'Aceptar',
     theMap: 'El mapa',
     accountType: 'Tipo de cuenta',
-    selectYourLocation: 'Selecciona tu ubicación',
+    selectYourLocation: 'Seleccione su ubicación',
     yourLocation: 'Tu ubicación',
-    location: 'Localización',
+    location: 'Ubicación',
     countryDialCode: 'Código de marcado de país',
     searchByCountryNameOrDialCode: 'Buscar por nombre de país o código de marcación',
     mobileNumber: 'Número de teléfono móvil',
@@ -448,17 +464,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    noReviewsYet: 'Henüz yorum yok',
+    review: 'Gözden geçirmek',
+    yourReview: 'Yorumun',
+    optional: 'İsteğe bağlı',
     showLess: 'Daha az göster',
     showMore: 'Daha fazla göster',
-    continue1: 'Devam etmek',
-    cancel: 'İptal etmek',
+    continue1: 'Devam et',
+    cancel: 'İptal',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Bu, hesabınızı ve tüm verilerinizi kalıcı olarak silecektir',
     deleteYourAccount: 'Hesabını sil',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Uygulama dilini değiştirmek için telefon ayarlarınız açılacak',
     save: 'Kaydetmek',
     add: 'Ekle',
     reject: 'Reddetmek',
-    accept: 'Kabul etmek',
+    accept: 'Kabul',
     theMap: 'Harita',
     accountType: 'Hesap tipi',
     selectYourLocation: 'Konumunuzu seçin',
@@ -469,7 +489,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     mobileNumber: 'Cep numarası',
     download: 'İndirmek',
     share: 'Paylaşmak',
-    joinUs: 'Bize katıl',
+    joinUs: 'Bize katılın',
     shareAccount: 'Hisse hesabı',
     shareTheProfile: 'Profili paylaş',
     shareYourProfile: 'Profilini paylaş',
@@ -486,7 +506,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     price: 'Fiyat',
     description: 'Tanım',
     addNewImage: 'Yeni resim ekle',
-    search: 'Aramak',
+    search: 'Arama',
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     deleteAll: 'Hepsini sil',
@@ -529,7 +549,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     enterTheCurrentPassword: 'Mevcut şifreyi girin',
     enterAPassword: 'Bir parola girin',
     currentPassword: 'Mevcut Şifre',
-    password: 'Parola',
+    password: 'Şifre',
     incorrectEmail: 'Yanlış E-posta',
     login: 'Giriş yapmak',
     newAccount: 'Yeni hesap',
@@ -540,7 +560,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     lightMode: 'Işık Modu',
     dependsOnSystem: 'Sisteme bağlı',
     appTheme: 'Uygulama teması',
-    turkish: 'Türkçe',
+    turkish: 'Türk',
     spanish: 'İspanyol',
     french: 'Fransızca',
     english: 'ingilizce',
@@ -561,6 +581,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.noReviewsYet,
+    required this.review,
+    required this.yourReview,
+    required this.optional,
     required this.showLess,
     required this.showMore,
     required this.continue1,
@@ -671,6 +695,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String noReviewsYet;
+  final String review;
+  final String yourReview;
+  final String optional;
   final String showLess;
   final String showMore;
   final String continue1;
@@ -780,6 +808,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        noReviewsYet: map['noReviewsYet']! as String,
+        review: map['review']! as String,
+        yourReview: map['yourReview']! as String,
+        optional: map['optional']! as String,
         showLess: map['showLess']! as String,
         showMore: map['showMore']! as String,
         continue1: map['continue1']! as String,
@@ -891,6 +923,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? noReviewsYet,
+    String? review,
+    String? yourReview,
+    String? optional,
     String? showLess,
     String? showMore,
     String? continue1,
@@ -1001,6 +1037,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        noReviewsYet: noReviewsYet ?? this.noReviewsYet,
+        review: review ?? this.review,
+        yourReview: yourReview ?? this.yourReview,
+        optional: optional ?? this.optional,
         showLess: showLess ?? this.showLess,
         showMore: showMore ?? this.showMore,
         continue1: continue1 ?? this.continue1,
@@ -1115,6 +1155,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          noReviewsYet == other.noReviewsYet &&
+          review == other.review &&
+          yourReview == other.yourReview &&
+          optional == other.optional &&
           showLess == other.showLess &&
           showMore == other.showMore &&
           continue1 == other.continue1 &&
@@ -1226,6 +1270,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      noReviewsYet.hashCode ^
+      review.hashCode ^
+      yourReview.hashCode ^
+      optional.hashCode ^
       showLess.hashCode ^
       showMore.hashCode ^
       continue1.hashCode ^
