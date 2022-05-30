@@ -93,7 +93,10 @@ class MyDialog extends StatelessWidget {
       contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
       insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
       title: Text(title, textAlign: TextAlign.center),
-      content: SizedBox(width: double.maxFinite, child: child), //width: double.maxFinite in case the child was a ListView
+      content: SizedBox(
+        width: double.maxFinite, //width: double.maxFinite in case the child was a ListView
+        child: Unfocus(child: child),
+      ),
     );
   }
 
