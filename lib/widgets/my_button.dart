@@ -24,12 +24,16 @@ class MyButton extends ConsumerWidget {
   final AsyncCallback? onPressed;
   final double progressIndicatorSize = 20;
 
-  String get _id => MyServices.helpers.getMd5(id?.toString() ?? text);
+  String get _id => MyServices.helpers.getMd5((id ?? text).toString());
 
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {
       if (ServiceLoader.isLoading(ref, _id)) {
-        return MyProgressIndicator(color: Colors.white, width: progressIndicatorSize, height: progressIndicatorSize);
+        return MyProgressIndicator(
+          color: getColorScheme(context).onPrimary,
+          width: progressIndicatorSize,
+          height: progressIndicatorSize,
+        );
       }
     }
 
