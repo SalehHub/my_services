@@ -26,7 +26,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
   double get pageWidth => pageSize.width;
 }
 
-abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SearchMixin, BannersMixin, LoadingsMixin, TabsMixin {
+abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SaveSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin {
   //
   List<Widget> bodyChildren = <Widget>[];
   List<Widget> get appBarActions => <Widget>[];
@@ -151,14 +151,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   void didChangeDependencies() {
     _refreshThemeStyle();
     super.didChangeDependencies();
-  }
-
-  @override
-  void setState(VoidCallback fn) {
-    if (mounted) {
-      print("main setstate");
-      super.setState(fn);
-    }
   }
 
   @override
@@ -401,6 +393,15 @@ mixin BannersMixin<T extends StatefulWidget> on State<T> {
   Widget bottomBanner = const SizedBox();
 }
 
+mixin SaveSetStateMixin<T extends StatefulWidget> on State<T> {
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      print("SaveSetStateMixin");
+      super.setState(fn);
+    }
+  }
+}
 mixin SearchMixin<T extends StatefulWidget> on State<T> {
   bool showSearchAppBar = false;
 
