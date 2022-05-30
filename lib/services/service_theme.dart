@@ -162,10 +162,10 @@ class ServiceTheme {
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
         shape: circularBorderRadius,
       ),
-      inputDecorationTheme:mainThemeData.inputDecorationTheme.copyWith(
-      alignLabelWithHint: true,
-      isDense: true,
-      border:  OutlineInputBorder(borderRadius: borderRadius),
+      inputDecorationTheme: mainThemeData.inputDecorationTheme.copyWith(
+        alignLabelWithHint: true,
+        isDense: true,
+        border: OutlineInputBorder(borderRadius: borderRadius),
       ),
       dialogTheme: mainThemeData.dialogTheme.copyWith(
         backgroundColor: colorScheme.background,

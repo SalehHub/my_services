@@ -16,7 +16,7 @@ class MyProgressIndicator extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: margin,
-          child:  CircularProgressIndicator.adaptive(backgroundColor: color),
+          child: CircularProgressIndicator.adaptive(backgroundColor: color),
         ),
       ),
     );
