@@ -5,8 +5,8 @@ class ServiceDialog {
   // static const ServiceDialog _s = ServiceDialog._();
   // factory ServiceDialog() => _s;
   //
-  dynamic show({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
-    return showDialog<dynamic>(
+  Future<T?> show<T>({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
+    return showDialog<T?>(
         context: ServiceNav.context,
         barrierDismissible: barrierDismissible,
         builder: (BuildContext c) {
