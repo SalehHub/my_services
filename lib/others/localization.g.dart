@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
     noReviewsYet: 'No reviews yet',
@@ -124,6 +125,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
     noReviewsYet: 'لايوجد تقييمات بعد',
@@ -240,6 +242,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloquer',
     noReviewsYet: 'Aucune critique encore',
@@ -356,6 +359,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
     noReviewsYet: 'Todavía no hay críticas',
@@ -472,6 +476,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    blockedAccount: 'Bloke olmuş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
     noReviewsYet: 'Henüz yorum yok',
@@ -591,6 +596,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.blockedAccount,
     required this.unblock,
     required this.block,
     required this.noReviewsYet,
@@ -707,6 +713,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String blockedAccount;
   final String unblock;
   final String block;
   final String noReviewsYet;
@@ -822,6 +829,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
         noReviewsYet: map['noReviewsYet']! as String,
@@ -939,6 +947,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? blockedAccount,
     String? unblock,
     String? block,
     String? noReviewsYet,
@@ -1055,6 +1064,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
         noReviewsYet: noReviewsYet ?? this.noReviewsYet,
@@ -1175,6 +1185,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
           noReviewsYet == other.noReviewsYet &&
@@ -1292,6 +1303,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
       noReviewsYet.hashCode ^
