@@ -11,6 +11,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
+    yourProfileReviews: 'Your profile reviews',
+    yourReviews: 'Your reviews',
     noReviewsYet: 'No reviews yet',
     review: 'Review',
     yourReview: 'Your review',
@@ -128,6 +130,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
+    yourProfileReviews: 'تقييمات حسابك',
+    yourReviews: 'تقييماتك',
     noReviewsYet: 'لايوجد تقييمات بعد',
     review: 'تقييم',
     yourReview: 'تقييمك',
@@ -245,6 +249,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloquer',
+    yourProfileReviews: 'Vos critiques de profil',
+    yourReviews: 'Vos avis',
     noReviewsYet: 'Aucune critique encore',
     review: 'Examen',
     yourReview: 'Votre avis',
@@ -362,6 +368,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
+    yourProfileReviews: 'Sus reseñas de perfil',
+    yourReviews: 'Tus reseñas',
     noReviewsYet: 'Todavía no hay críticas',
     review: 'Revisar',
     yourReview: 'Tu reseña',
@@ -479,6 +487,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Bloke olmuş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
+    yourProfileReviews: 'Profil İncelemeleriniz',
+    yourReviews: 'İncelemeleriniz',
     noReviewsYet: 'Henüz yorum yok',
     review: 'Gözden geçirmek',
     yourReview: 'Yorumun',
@@ -599,6 +609,8 @@ class MyServicesLocalizationsData {
     required this.blockedAccount,
     required this.unblock,
     required this.block,
+    required this.yourProfileReviews,
+    required this.yourReviews,
     required this.noReviewsYet,
     required this.review,
     required this.yourReview,
@@ -716,6 +728,8 @@ class MyServicesLocalizationsData {
   final String blockedAccount;
   final String unblock;
   final String block;
+  final String yourProfileReviews;
+  final String yourReviews;
   final String noReviewsYet;
   final String review;
   final String yourReview;
@@ -832,6 +846,8 @@ class MyServicesLocalizationsData {
         blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
+        yourProfileReviews: map['yourProfileReviews']! as String,
+        yourReviews: map['yourReviews']! as String,
         noReviewsYet: map['noReviewsYet']! as String,
         review: map['review']! as String,
         yourReview: map['yourReview']! as String,
@@ -950,6 +966,8 @@ class MyServicesLocalizationsData {
     String? blockedAccount,
     String? unblock,
     String? block,
+    String? yourProfileReviews,
+    String? yourReviews,
     String? noReviewsYet,
     String? review,
     String? yourReview,
@@ -1067,6 +1085,8 @@ class MyServicesLocalizationsData {
         blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
+        yourProfileReviews: yourProfileReviews ?? this.yourProfileReviews,
+        yourReviews: yourReviews ?? this.yourReviews,
         noReviewsYet: noReviewsYet ?? this.noReviewsYet,
         review: review ?? this.review,
         yourReview: yourReview ?? this.yourReview,
@@ -1188,6 +1208,8 @@ class MyServicesLocalizationsData {
           blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
+          yourProfileReviews == other.yourProfileReviews &&
+          yourReviews == other.yourReviews &&
           noReviewsYet == other.noReviewsYet &&
           review == other.review &&
           yourReview == other.yourReview &&
@@ -1306,6 +1328,8 @@ class MyServicesLocalizationsData {
       blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
+      yourProfileReviews.hashCode ^
+      yourReviews.hashCode ^
       noReviewsYet.hashCode ^
       review.hashCode ^
       yourReview.hashCode ^
