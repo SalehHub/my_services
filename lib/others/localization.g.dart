@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    unblock: 'Unblock',
+    block: 'Block',
     noReviewsYet: 'No reviews yet',
     review: 'Review',
     yourReview: 'Your review',
@@ -122,6 +124,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    unblock: 'إلغاء الحجب',
+    block: 'حجب',
     noReviewsYet: 'لايوجد تقييمات بعد',
     review: 'تقييم',
     yourReview: 'تقييمك',
@@ -236,6 +240,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    unblock: 'Débloquer',
+    block: 'Bloquer',
     noReviewsYet: 'Aucune critique encore',
     review: 'Examen',
     yourReview: 'Votre avis',
@@ -350,6 +356,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    unblock: 'Desatascar',
+    block: 'Bloquear',
     noReviewsYet: 'Todavía no hay críticas',
     review: 'Revisar',
     yourReview: 'Tu reseña',
@@ -464,6 +472,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    unblock: 'engeli kaldırmak',
+    block: 'Engellemek',
     noReviewsYet: 'Henüz yorum yok',
     review: 'Gözden geçirmek',
     yourReview: 'Yorumun',
@@ -581,6 +591,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.unblock,
+    required this.block,
     required this.noReviewsYet,
     required this.review,
     required this.yourReview,
@@ -695,6 +707,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String unblock;
+  final String block;
   final String noReviewsYet;
   final String review;
   final String yourReview;
@@ -808,6 +822,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        unblock: map['unblock']! as String,
+        block: map['block']! as String,
         noReviewsYet: map['noReviewsYet']! as String,
         review: map['review']! as String,
         yourReview: map['yourReview']! as String,
@@ -923,6 +939,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? unblock,
+    String? block,
     String? noReviewsYet,
     String? review,
     String? yourReview,
@@ -1037,6 +1055,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        unblock: unblock ?? this.unblock,
+        block: block ?? this.block,
         noReviewsYet: noReviewsYet ?? this.noReviewsYet,
         review: review ?? this.review,
         yourReview: yourReview ?? this.yourReview,
@@ -1155,6 +1175,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          unblock == other.unblock &&
+          block == other.block &&
           noReviewsYet == other.noReviewsYet &&
           review == other.review &&
           yourReview == other.yourReview &&
@@ -1270,6 +1292,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      unblock.hashCode ^
+      block.hashCode ^
       noReviewsYet.hashCode ^
       review.hashCode ^
       yourReview.hashCode ^
