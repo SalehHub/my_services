@@ -8,6 +8,7 @@ class MyText extends StatelessWidget {
     this.style,
     this.bold = false,
     this.textAlign,
+    this.textDirection,
     this.maxLines,
     this.fontSize,
     this.color,
@@ -19,6 +20,7 @@ class MyText extends StatelessWidget {
   final TextStyle? style;
   final EdgeInsetsGeometry margin;
   final TextAlign? textAlign;
+  final TextDirection? textDirection;
   final int? maxLines;
   final double? fontSize;
   final Color? color;
@@ -47,7 +49,7 @@ class MyText extends StatelessWidget {
         text ?? '',
         textAlign: textAlign ?? MyServices.helpers.getTextAlignByLang(context),
         maxLines: maxLines,
-        textDirection: MyServices.helpers.getTextDirection(text ?? ''),
+        textDirection: textDirection ?? MyServices.helpers.getTextDirection(text ?? ''),
         style: textStyle,
         overflow: overflow,
       ),
