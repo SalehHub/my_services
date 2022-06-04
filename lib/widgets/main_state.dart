@@ -39,6 +39,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   @protected
   bool get emptyData => bodyChildren.isEmpty;
+  String get emptyDataLabel => myServicesLabels.thereAreNoDataYet;
+  IconData emptyDataIcon = iconNoData;
 
   List<Widget> get _appBarActionsWithProgress {
     if (!emptyData && actionBarLoading) {
@@ -56,9 +58,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   //bad don't do this
   //bool get startPageInLoadingState => pageLoading;
-
-  String get noDataLabel => myServicesLabels.thereAreNoDataYet;
-  IconData noDataIcon = iconNoData;
 
   Object? error;
   StackTrace? stackTrace;
@@ -249,7 +248,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   Widget buildTabView(BuildContext context) {
     if (!pageLoading && error == null && emptyData) {
-      return PageEmptyWidget(noDataIcon: noDataIcon, noDataLabel: noDataLabel);
+      return PageEmptyWidget(icon: emptyDataIcon, label: emptyDataLabel);
     }
 
     if (pageLoading || !_isValidTabView) {
@@ -294,7 +293,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
         //no data
         else if (pageLoading == false && error == null && emptyData == true)
-          SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), noDataIcon: noDataIcon, noDataLabel: noDataLabel))
+          SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), icon: icon, label: label))
         // error
         else if (!pageLoading && error != null && emptyData)
           SliverToBoxAdapter(child: FutureErrorWidget(err: error))
