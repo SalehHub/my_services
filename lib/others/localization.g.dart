@@ -8,9 +8,11 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    impersonate: 'Impersonate',
     blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
+    noReviewsYetCheckBackLater: 'No reviews yet. Check back later.',
     yourProfileReviews: 'Your profile reviews',
     yourReviews: 'Your reviews',
     noReviewsYet: 'No reviews yet',
@@ -127,9 +129,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    impersonate: 'إنتحال',
     blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
+    noReviewsYetCheckBackLater: 'لايوجد تقييمات لحسابك حالياً',
     yourProfileReviews: 'تقييمات حسابك',
     yourReviews: 'تقييماتك',
     noReviewsYet: 'لايوجد تقييمات بعد',
@@ -246,9 +250,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    impersonate: 'Imiter',
     blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloquer',
+    noReviewsYetCheckBackLater: 'Aucune critique encore. Revenez plus tard.',
     yourProfileReviews: 'Vos critiques de profil',
     yourReviews: 'Vos avis',
     noReviewsYet: 'Aucune critique encore',
@@ -365,9 +371,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    impersonate: 'Personificar',
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
+    noReviewsYetCheckBackLater: 'No hay reseñas todavía. Vuelva más tarde.',
     yourProfileReviews: 'Sus reseñas de perfil',
     yourReviews: 'Tus reseñas',
     noReviewsYet: 'Todavía no hay críticas',
@@ -484,9 +492,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    impersonate: 'Taklit etmek',
     blockedAccount: 'Bloke olmuş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
+    noReviewsYetCheckBackLater: 'Henüz yorum yok. Daha sonra kontrol et.',
     yourProfileReviews: 'Profil İncelemeleriniz',
     yourReviews: 'İncelemeleriniz',
     noReviewsYet: 'Henüz yorum yok',
@@ -606,9 +616,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.impersonate,
     required this.blockedAccount,
     required this.unblock,
     required this.block,
+    required this.noReviewsYetCheckBackLater,
     required this.yourProfileReviews,
     required this.yourReviews,
     required this.noReviewsYet,
@@ -725,9 +737,11 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String impersonate;
   final String blockedAccount;
   final String unblock;
   final String block;
+  final String noReviewsYetCheckBackLater;
   final String yourProfileReviews;
   final String yourReviews;
   final String noReviewsYet;
@@ -843,9 +857,11 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        impersonate: map['impersonate']! as String,
         blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
+        noReviewsYetCheckBackLater: map['noReviewsYetCheckBackLater']! as String,
         yourProfileReviews: map['yourProfileReviews']! as String,
         yourReviews: map['yourReviews']! as String,
         noReviewsYet: map['noReviewsYet']! as String,
@@ -963,9 +979,11 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? impersonate,
     String? blockedAccount,
     String? unblock,
     String? block,
+    String? noReviewsYetCheckBackLater,
     String? yourProfileReviews,
     String? yourReviews,
     String? noReviewsYet,
@@ -1082,9 +1100,11 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        impersonate: impersonate ?? this.impersonate,
         blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
+        noReviewsYetCheckBackLater: noReviewsYetCheckBackLater ?? this.noReviewsYetCheckBackLater,
         yourProfileReviews: yourProfileReviews ?? this.yourProfileReviews,
         yourReviews: yourReviews ?? this.yourReviews,
         noReviewsYet: noReviewsYet ?? this.noReviewsYet,
@@ -1205,9 +1225,11 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          impersonate == other.impersonate &&
           blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
+          noReviewsYetCheckBackLater == other.noReviewsYetCheckBackLater &&
           yourProfileReviews == other.yourProfileReviews &&
           yourReviews == other.yourReviews &&
           noReviewsYet == other.noReviewsYet &&
@@ -1325,9 +1347,11 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      impersonate.hashCode ^
       blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
+      noReviewsYetCheckBackLater.hashCode ^
       yourProfileReviews.hashCode ^
       yourReviews.hashCode ^
       noReviewsYet.hashCode ^
