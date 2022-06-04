@@ -9,6 +9,7 @@ part of 'localization.dart';
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
     impersonate: 'Impersonate',
+    yourAccountIsBlocked: 'Your account is blocked',
     blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
@@ -130,6 +131,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
     impersonate: 'إنتحال',
+    yourAccountIsBlocked: 'حسابك محجوب',
     blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
@@ -251,6 +253,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
     impersonate: 'Imiter',
+    yourAccountIsBlocked: 'Votre compte est bloqué',
     blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloquer',
@@ -372,6 +375,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
     impersonate: 'Personificar',
+    yourAccountIsBlocked: 'Su cuenta está bloqueada',
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
@@ -493,6 +497,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
     impersonate: 'Taklit etmek',
+    yourAccountIsBlocked: 'Hesabınız engellendi',
     blockedAccount: 'Bloke olmuş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
@@ -617,6 +622,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
     required this.impersonate,
+    required this.yourAccountIsBlocked,
     required this.blockedAccount,
     required this.unblock,
     required this.block,
@@ -738,6 +744,7 @@ class MyServicesLocalizationsData {
   });
 
   final String impersonate;
+  final String yourAccountIsBlocked;
   final String blockedAccount;
   final String unblock;
   final String block;
@@ -858,6 +865,7 @@ class MyServicesLocalizationsData {
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
         impersonate: map['impersonate']! as String,
+        yourAccountIsBlocked: map['yourAccountIsBlocked']! as String,
         blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
@@ -980,6 +988,7 @@ class MyServicesLocalizationsData {
 
   MyServicesLocalizationsData copyWith({
     String? impersonate,
+    String? yourAccountIsBlocked,
     String? blockedAccount,
     String? unblock,
     String? block,
@@ -1101,6 +1110,7 @@ class MyServicesLocalizationsData {
   }) =>
       MyServicesLocalizationsData(
         impersonate: impersonate ?? this.impersonate,
+        yourAccountIsBlocked: yourAccountIsBlocked ?? this.yourAccountIsBlocked,
         blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
@@ -1226,6 +1236,7 @@ class MyServicesLocalizationsData {
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
           impersonate == other.impersonate &&
+          yourAccountIsBlocked == other.yourAccountIsBlocked &&
           blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
@@ -1348,6 +1359,7 @@ class MyServicesLocalizationsData {
   int get hashCode =>
       runtimeType.hashCode ^
       impersonate.hashCode ^
+      yourAccountIsBlocked.hashCode ^
       blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
