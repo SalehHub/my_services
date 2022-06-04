@@ -55,7 +55,12 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   Future<dynamic> get(String key, [int? minutes]) async {
     final String? value = await query(key, minutes);
     if (value != null) {
-      return jsonDecode(value);
+      try {
+        return jsonDecode(value);
+      } on FormatException catch (e, s) {
+        logger.e(e, e, s);
+        return value;
+      }
     }
     return null;
   }
