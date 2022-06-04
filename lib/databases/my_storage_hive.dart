@@ -24,7 +24,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
       await getDatabase().then((database) {
         database.put(key, <dynamic, dynamic>{
           'key': key,
-          'value': value,
+          'value': jsonEncode(value),
           'createdAt': DateTime.now().millisecondsSinceEpoch,
         });
       });

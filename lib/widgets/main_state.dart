@@ -293,7 +293,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
         //no data
         else if (pageLoading == false && error == null && emptyData == true)
-          SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), icon: icon, label: label))
+          SliverToBoxAdapter(child: PageEmptyWidget(margin: const EdgeInsets.all(20), icon: emptyDataIcon, label: emptyDataLabel))
         // error
         else if (!pageLoading && error != null && emptyData)
           SliverToBoxAdapter(child: FutureErrorWidget(err: error))

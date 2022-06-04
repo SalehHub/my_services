@@ -38,7 +38,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
           tableName,
           <String, Object?>{
             'key': key,
-            'value': value,
+            'value': jsonEncode(value),
             'createdAt': DateTime.now().millisecondsSinceEpoch,
           },
           conflictAlgorithm: replaceExist ? ConflictAlgorithm.replace : ConflictAlgorithm.ignore,
