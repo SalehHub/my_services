@@ -45,7 +45,12 @@ class ServiceSnackBar {
       success: success,
       content: GestureDetector(
         onTap: onTap,
-        child: Text(text, textAlign: TextAlign.center, style: getTextTheme(ServiceNav.context).bodyText1?.copyWith(color: fgColor(success))),
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          textDirection: MyServices.helpers.getTextDirection(text),
+          style: getTextTheme(ServiceNav.context).bodyText1?.copyWith(color: fgColor(success)),
+        ),
       ),
     );
   }
