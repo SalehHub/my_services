@@ -31,7 +31,7 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   Future<int?> count() async => Sqflite.firstIntValue(await (await getDatabase()).rawQuery('SELECT COUNT(*) FROM $tableName'));
 
   @override
-  Future<bool> set(String key, String? value, {bool replaceExist = true}) async {
+  Future<bool> set(String key, dynamic value, {bool replaceExist = true}) async {
     try {
       await getDatabase().then((database) {
         database.insert(
@@ -60,6 +60,8 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
       } on FormatException catch (e, s) {
         logger.e(e, e, s);
         return value;
+      } catch (e, s) {
+        logger.e(e, e, s);
       }
     }
     return null;

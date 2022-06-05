@@ -22,7 +22,7 @@ abstract class MyStorage {
 
   Future<dynamic> get(String key, [int? minutes]);
 
-  Future<bool> set(String key, String? value, {bool replaceExist = true});
+  Future<bool> set(String key, dynamic value, {bool replaceExist = true});
 
   Future<bool> delete(String key);
 

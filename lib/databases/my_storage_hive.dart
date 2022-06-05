@@ -19,7 +19,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<bool> set(String key, String? value, {bool replaceExist = true}) async {
+  Future<bool> set(String key, dynamic value, {bool replaceExist = true}) async {
     try {
       await getDatabase().then((database) {
         database.put(key, <dynamic, dynamic>{
@@ -43,6 +43,8 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
       } on FormatException catch (e, s) {
         logger.e(e, e, s);
         return value;
+      } catch (e, s) {
+        logger.e(e, e, s);
       }
     }
     return null;
