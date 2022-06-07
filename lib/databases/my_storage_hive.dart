@@ -138,7 +138,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   }
 
   @override
-  Future<String?> getAccessToken() async => query(accessTokenKey);
+  Future<String?> getAccessToken() async => await get(accessTokenKey);
 
   @override
   Future<Locale> getLocale() async {
