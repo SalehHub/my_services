@@ -62,6 +62,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Text has been copied',
     areYouSure: 'Are you sure?',
     markAllAsRead: 'Mark all as read',
+    deleteAllNotifications: 'Delete all notifications',
     deleteAll: 'Delete all',
     doYouWantToMarkAllNotificationsAsRead: 'Do you want to mark all notifications as read?',
     doYouWantToDeleteAllNotifications: 'Do you want to delete all notifications?',
@@ -186,6 +187,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'تم نسخ البيانات',
     areYouSure: 'هل انت متأكد؟',
     markAllAsRead: 'تعليم الكل كمقروء',
+    deleteAllNotifications: 'حذف كل الإشعارات',
     deleteAll: 'حذف الكل',
     doYouWantToMarkAllNotificationsAsRead: 'هل تريد تعليم جميع الإشعارات كمقروء؟',
     doYouWantToDeleteAllNotifications: 'هل تريد حذف جميع الإشعارات؟',
@@ -310,6 +312,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Le texte a été copié',
     areYouSure: 'Êtes-vous sûr?',
     markAllAsRead: 'tout marquer comme lu',
+    deleteAllNotifications: 'Supprimer toutes les notifications',
     deleteAll: 'Supprimer tout',
     doYouWantToMarkAllNotificationsAsRead: 'Voulez-vous marquer toutes les notifications comme lue?',
     doYouWantToDeleteAllNotifications: 'Voulez-vous supprimer toutes les notifications?',
@@ -434,6 +437,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Se ha copiado el texto',
     areYouSure: '¿Está seguro?',
     markAllAsRead: 'marcar todo como leido',
+    deleteAllNotifications: 'Eliminar todas las notificaciones',
     deleteAll: 'Eliminar todos',
     doYouWantToMarkAllNotificationsAsRead: '¿Quieres marcar todas las notificaciones como leída?',
     doYouWantToDeleteAllNotifications: '¿Quieres eliminar todas las notificaciones?',
@@ -558,6 +562,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     markAllAsRead: 'Hepsini okuduğu gibi işaretleyin',
+    deleteAllNotifications: 'Tüm bildirimleri sil',
     deleteAll: 'Hepsini sil',
     doYouWantToMarkAllNotificationsAsRead: 'Tüm bildirimleri okunur olarak işaretlemek ister misiniz?',
     doYouWantToDeleteAllNotifications: 'Tüm bildirimleri silmek ister misiniz?',
@@ -685,6 +690,7 @@ class MyServicesLocalizationsData {
     required this.textHasBeenCopied,
     required this.areYouSure,
     required this.markAllAsRead,
+    required this.deleteAllNotifications,
     required this.deleteAll,
     required this.doYouWantToMarkAllNotificationsAsRead,
     required this.doYouWantToDeleteAllNotifications,
@@ -809,6 +815,7 @@ class MyServicesLocalizationsData {
   final String textHasBeenCopied;
   final String areYouSure;
   final String markAllAsRead;
+  final String deleteAllNotifications;
   final String deleteAll;
   final String doYouWantToMarkAllNotificationsAsRead;
   final String doYouWantToDeleteAllNotifications;
@@ -932,6 +939,7 @@ class MyServicesLocalizationsData {
         textHasBeenCopied: map['textHasBeenCopied']! as String,
         areYouSure: map['areYouSure']! as String,
         markAllAsRead: map['markAllAsRead']! as String,
+        deleteAllNotifications: map['deleteAllNotifications']! as String,
         deleteAll: map['deleteAll']! as String,
         doYouWantToMarkAllNotificationsAsRead: map['doYouWantToMarkAllNotificationsAsRead']! as String,
         doYouWantToDeleteAllNotifications: map['doYouWantToDeleteAllNotifications']! as String,
@@ -1057,6 +1065,7 @@ class MyServicesLocalizationsData {
     String? textHasBeenCopied,
     String? areYouSure,
     String? markAllAsRead,
+    String? deleteAllNotifications,
     String? deleteAll,
     String? doYouWantToMarkAllNotificationsAsRead,
     String? doYouWantToDeleteAllNotifications,
@@ -1181,6 +1190,7 @@ class MyServicesLocalizationsData {
         textHasBeenCopied: textHasBeenCopied ?? this.textHasBeenCopied,
         areYouSure: areYouSure ?? this.areYouSure,
         markAllAsRead: markAllAsRead ?? this.markAllAsRead,
+        deleteAllNotifications: deleteAllNotifications ?? this.deleteAllNotifications,
         deleteAll: deleteAll ?? this.deleteAll,
         doYouWantToMarkAllNotificationsAsRead: doYouWantToMarkAllNotificationsAsRead ?? this.doYouWantToMarkAllNotificationsAsRead,
         doYouWantToDeleteAllNotifications: doYouWantToDeleteAllNotifications ?? this.doYouWantToDeleteAllNotifications,
@@ -1309,6 +1319,7 @@ class MyServicesLocalizationsData {
           textHasBeenCopied == other.textHasBeenCopied &&
           areYouSure == other.areYouSure &&
           markAllAsRead == other.markAllAsRead &&
+          deleteAllNotifications == other.deleteAllNotifications &&
           deleteAll == other.deleteAll &&
           doYouWantToMarkAllNotificationsAsRead == other.doYouWantToMarkAllNotificationsAsRead &&
           doYouWantToDeleteAllNotifications == other.doYouWantToDeleteAllNotifications &&
@@ -1434,6 +1445,7 @@ class MyServicesLocalizationsData {
       textHasBeenCopied.hashCode ^
       areYouSure.hashCode ^
       markAllAsRead.hashCode ^
+      deleteAllNotifications.hashCode ^
       deleteAll.hashCode ^
       doYouWantToMarkAllNotificationsAsRead.hashCode ^
       doYouWantToDeleteAllNotifications.hashCode ^
