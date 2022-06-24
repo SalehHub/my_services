@@ -114,7 +114,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
 
   @override
   Future<bool> getIsFirstAppRun() async {
-    final String? data = await query(isFirstAppRun);
+    final String? data = await get(isFirstAppRun);
 
     if (data == null) {
       await set(isFirstAppRun, 'false');
@@ -127,7 +127,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   @override
   Future<bool> getIsFirstAppBuildRun(String build) async {
     final String key = isFirstAppBuildRun + build;
-    final String? data = await query(key);
+    final String? data = await get(key);
 
     if (data == null) {
       await set(key, 'false');
@@ -151,7 +151,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
           return Locale(deviceLocale.languageCode);
         }
       } else {
-        final String? value = await query(localeKey);
+        final String? value = await get(localeKey);
         if (value != null && MyServices.services.locale.isSupportedLocale(Locale(value))) {
           return Locale(value);
         }
@@ -171,7 +171,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
 
   @override
   Future<ThemeMode> getThemeMode() async {
-    final String? value = await query(themeModeKey);
+    final String? value = await get(themeModeKey);
     if (value == ThemeMode.light.toString()) {
       SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
       return ThemeMode.light;
