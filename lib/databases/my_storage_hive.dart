@@ -114,10 +114,10 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
 
   @override
   Future<bool> getIsFirstAppRun() async {
-    final String? data = await get(isFirstAppRun);
+    final bool? data = await get(isFirstAppRun);
 
     if (data == null) {
-      await set(isFirstAppRun, 'false');
+      await set(isFirstAppRun, false);
       return true;
     }
 
@@ -127,10 +127,10 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   @override
   Future<bool> getIsFirstAppBuildRun(String build) async {
     final String key = isFirstAppBuildRun + build;
-    final String? data = await get(key);
+    final bool? data = await get(key);
 
     if (data == null) {
-      await set(key, 'false');
+      await set(key, false);
       return true;
     }
 
