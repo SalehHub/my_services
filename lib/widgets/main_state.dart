@@ -169,6 +169,10 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       if (MyServices.appConfig.withFCM) {
         ServiceFirebaseMessaging.requestPermission(); //firebaseMessaging
 
+        if (MyServices.appEvents.onFirebaseNotification != null) {
+          ServiceFirebaseMessaging.registerFirebaseMessaging(ref, onFirebaseNotification: MyServices.appEvents.onFirebaseNotification!); //firebaseMessaging
+        }
+
         if (MyServices.appEvents.onFCMTokenRefresh != null) {
           ServiceFirebaseMessaging.onTokenRefresh((token) => MyServices.appEvents.onFCMTokenRefresh!(token, ref, context)); //firebaseMessaging
         }

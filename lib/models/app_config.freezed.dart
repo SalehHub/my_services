@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppEvents {
   dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink => throw _privateConstructorUsedError;
   dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh => throw _privateConstructorUsedError;
+  OnFirebaseNotification? get onFirebaseNotification => throw _privateConstructorUsedError;
   GenerateAppTitle? get onGenerateTitle => throw _privateConstructorUsedError;
   dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange => throw _privateConstructorUsedError;
 
@@ -31,6 +32,7 @@ abstract class $AppEventsCopyWith<$Res> {
   $Res call(
       {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
+      OnFirebaseNotification? onFirebaseNotification,
       GenerateAppTitle? onGenerateTitle,
       dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange});
 }
@@ -47,6 +49,7 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
   $Res call({
     Object? onDynamicLink = freezed,
     Object? onFCMTokenRefresh = freezed,
+    Object? onFirebaseNotification = freezed,
     Object? onGenerateTitle = freezed,
     Object? onLocaleChange = freezed,
   }) {
@@ -59,6 +62,10 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
           ? _value.onFCMTokenRefresh
           : onFCMTokenRefresh // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String, WidgetRef, BuildContext)?,
+      onFirebaseNotification: onFirebaseNotification == freezed
+          ? _value.onFirebaseNotification
+          : onFirebaseNotification // ignore: cast_nullable_to_non_nullable
+              as OnFirebaseNotification?,
       onGenerateTitle: onGenerateTitle == freezed
           ? _value.onGenerateTitle
           : onGenerateTitle // ignore: cast_nullable_to_non_nullable
@@ -78,6 +85,7 @@ abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
   $Res call(
       {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
+      OnFirebaseNotification? onFirebaseNotification,
       GenerateAppTitle? onGenerateTitle,
       dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange});
 }
@@ -93,6 +101,7 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
   $Res call({
     Object? onDynamicLink = freezed,
     Object? onFCMTokenRefresh = freezed,
+    Object? onFirebaseNotification = freezed,
     Object? onGenerateTitle = freezed,
     Object? onLocaleChange = freezed,
   }) {
@@ -105,6 +114,10 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
           ? _value.onFCMTokenRefresh
           : onFCMTokenRefresh // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String, WidgetRef, BuildContext)?,
+      onFirebaseNotification: onFirebaseNotification == freezed
+          ? _value.onFirebaseNotification
+          : onFirebaseNotification // ignore: cast_nullable_to_non_nullable
+              as OnFirebaseNotification?,
       onGenerateTitle: onGenerateTitle == freezed
           ? _value.onGenerateTitle
           : onGenerateTitle // ignore: cast_nullable_to_non_nullable
@@ -120,12 +133,14 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
 /// @nodoc
 
 class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
-  _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onGenerateTitle, this.onLocaleChange}) : super._();
+  _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange}) : super._();
 
   @override
   final dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink;
   @override
   final dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh;
+  @override
+  final OnFirebaseNotification? onFirebaseNotification;
   @override
   final GenerateAppTitle? onGenerateTitle;
   @override
@@ -133,7 +148,7 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppEvents(onDynamicLink: $onDynamicLink, onFCMTokenRefresh: $onFCMTokenRefresh, onGenerateTitle: $onGenerateTitle, onLocaleChange: $onLocaleChange)';
+    return 'AppEvents(onDynamicLink: $onDynamicLink, onFCMTokenRefresh: $onFCMTokenRefresh, onFirebaseNotification: $onFirebaseNotification, onGenerateTitle: $onGenerateTitle, onLocaleChange: $onLocaleChange)';
   }
 
   @override
@@ -143,6 +158,7 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('type', 'AppEvents'))
       ..add(DiagnosticsProperty('onDynamicLink', onDynamicLink))
       ..add(DiagnosticsProperty('onFCMTokenRefresh', onFCMTokenRefresh))
+      ..add(DiagnosticsProperty('onFirebaseNotification', onFirebaseNotification))
       ..add(DiagnosticsProperty('onGenerateTitle', onGenerateTitle))
       ..add(DiagnosticsProperty('onLocaleChange', onLocaleChange));
   }
@@ -154,12 +170,13 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
             other is _$_AppEvents &&
             (identical(other.onDynamicLink, onDynamicLink) || other.onDynamicLink == onDynamicLink) &&
             (identical(other.onFCMTokenRefresh, onFCMTokenRefresh) || other.onFCMTokenRefresh == onFCMTokenRefresh) &&
+            (identical(other.onFirebaseNotification, onFirebaseNotification) || other.onFirebaseNotification == onFirebaseNotification) &&
             (identical(other.onGenerateTitle, onGenerateTitle) || other.onGenerateTitle == onGenerateTitle) &&
             (identical(other.onLocaleChange, onLocaleChange) || other.onLocaleChange == onLocaleChange));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onDynamicLink, onFCMTokenRefresh, onGenerateTitle, onLocaleChange);
+  int get hashCode => Object.hash(runtimeType, onDynamicLink, onFCMTokenRefresh, onFirebaseNotification, onGenerateTitle, onLocaleChange);
 
   @JsonKey(ignore: true)
   @override
@@ -170,6 +187,7 @@ abstract class _AppEvents extends AppEvents {
   factory _AppEvents(
       {final dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
       final dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
+      final OnFirebaseNotification? onFirebaseNotification,
       final GenerateAppTitle? onGenerateTitle,
       final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange}) = _$_AppEvents;
   _AppEvents._() : super._();
@@ -178,6 +196,8 @@ abstract class _AppEvents extends AppEvents {
   dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink => throw _privateConstructorUsedError;
   @override
   dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh => throw _privateConstructorUsedError;
+  @override
+  OnFirebaseNotification? get onFirebaseNotification => throw _privateConstructorUsedError;
   @override
   GenerateAppTitle? get onGenerateTitle => throw _privateConstructorUsedError;
   @override

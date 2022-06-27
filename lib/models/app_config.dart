@@ -9,6 +9,7 @@ class AppEvents with _$AppEvents {
   factory AppEvents({
     Function(Uri uri, WidgetRef ref, BuildContext context)? onDynamicLink,
     Function(String token, WidgetRef ref, BuildContext context)? onFCMTokenRefresh,
+    OnFirebaseNotification? onFirebaseNotification,
     GenerateAppTitle? onGenerateTitle,
     Function(Locale? oldLocale, Locale? newLocale, WidgetRef ref, BuildContext context)? onLocaleChange,
   }) = _AppEvents;
