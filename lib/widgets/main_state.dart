@@ -368,7 +368,6 @@ mixin LoadingsMixin<T extends StatefulWidget> on State<T> {
 
   @protected
   void startPageLoading() {
-    print("startPageLoading mixin");
     setState(() => pageLoading = true);
   }
 
@@ -400,7 +399,6 @@ mixin SaveSetStateMixin<T extends StatefulWidget> on State<T> {
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
-      print("SaveSetStateMixin");
       super.setState(fn);
     }
   }
