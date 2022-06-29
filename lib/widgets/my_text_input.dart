@@ -3,6 +3,7 @@ import '../my_services.dart';
 class MyTextInput extends StatelessWidget {
   const MyTextInput({
     super.key,
+    this.show = true,
     this.value,
     this.validator,
     this.prefixText,
@@ -36,6 +37,7 @@ class MyTextInput extends StatelessWidget {
     this.widget,
   });
 
+  final bool show;
   final bool isDropDown;
   final String? value;
   final FormFieldValidator<String>? validator;
@@ -72,6 +74,9 @@ class MyTextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     // return buildStackField(context);
 
+    if (!show) {
+      return const SizedBox();
+    }
     if (isDropDown) {
       return Padding(
         padding: margin,
