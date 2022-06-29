@@ -35,12 +35,12 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
 }
 
 class MyPopupMenuItem<T> {
-  MyPopupMenuItem.tile(this.value, this.icon, this.title, [this.tail])
+  MyPopupMenuItem.tile(this.value, this.icon, this.title, [this.tail, this.show = true])
       : isDivider = false,
         isTitle = false,
         widget = null;
 
-  MyPopupMenuItem.divider()
+  MyPopupMenuItem.divider([this.show = true])
       : isDivider = true,
         isTitle = false,
         value = null,
@@ -49,7 +49,7 @@ class MyPopupMenuItem<T> {
         tail = const SizedBox(),
         widget = null;
 
-  MyPopupMenuItem.title(this.title)
+  MyPopupMenuItem.title(this.title, [this.show = true])
       : isDivider = false,
         isTitle = true,
         value = null,
@@ -57,7 +57,7 @@ class MyPopupMenuItem<T> {
         tail = const SizedBox(),
         widget = null;
 
-  MyPopupMenuItem.widget(this.widget)
+  MyPopupMenuItem.widget(this.widget, [this.show = true])
       : isDivider = false,
         isTitle = false,
         value = null,
@@ -72,6 +72,7 @@ class MyPopupMenuItem<T> {
   final Widget? tail;
   final bool isDivider;
   final bool isTitle;
+  final bool show;
 }
 
 class _MyPopupMenuItemWidget extends ConsumerWidget {
