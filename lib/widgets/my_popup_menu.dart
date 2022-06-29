@@ -20,7 +20,9 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
       onSelected: widget.onSelected,
       itemBuilder: (BuildContext context) => <PopupMenuEntry<T>>[
         ...widget.items.map((e) {
-          if (e.isDivider == true) {
+          if (e.show == false) {
+            return _PopupMenuItemWidget<T>(show: false, child: const SizedBox());
+          } else if (e.isDivider == true) {
             return _PopupMenuItemWidget<T>(height: 5, child: const Divider(height: 1));
           } else if (e.widget != null) {
             return _PopupMenuItemWidget<T>(child: e.widget!);
@@ -104,6 +106,7 @@ class _PopupMenuItemWidget<T> extends PopupMenuEntry<T> {
     this.value,
     this.onTap,
     this.enabled = true,
+    this.show = true,
     this.height = kMinInteractiveDimension,
     this.padding,
     this.textStyle,
@@ -114,6 +117,7 @@ class _PopupMenuItemWidget<T> extends PopupMenuEntry<T> {
   final T? value;
   final VoidCallback? onTap;
   final bool enabled;
+  final bool show;
   @override
   final double height;
   final EdgeInsets? padding;
@@ -142,6 +146,10 @@ class _PopupMenuItemState<T, W extends _PopupMenuItemWidget<T>> extends State<W>
 
   @override
   Widget build(BuildContext context) {
+    if (!widget.show) {
+      return const SizedBox();
+    }
+
     final ThemeData theme = Theme.of(context);
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
     TextStyle style = widget.textStyle ?? popupMenuTheme.textStyle ?? theme.textTheme.subtitle1!;
