@@ -37,7 +37,7 @@ class _MyPopupMenuState<T> extends State<MyPopupMenu<T>> {
 }
 
 class MyPopupMenuItem<T> {
-  MyPopupMenuItem.tile(this.value, this.icon, this.title, [this.tail, this.show = true])
+  MyPopupMenuItem.tile(this.value, this.icon, this.title, {this.tail, this.show = true})
       : isDivider = false,
         isTitle = false,
         widget = null;
