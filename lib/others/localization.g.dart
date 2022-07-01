@@ -8,6 +8,9 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    loginUsingPhoneNumber: 'Login using phone number',
+    customer: 'Customer',
+    user: 'User',
     impersonate: 'Impersonate',
     yourAccountIsBlocked: 'Your account is blocked',
     blockedAccount: 'Blocked account',
@@ -74,6 +77,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     theAppDoesntHavePhotoAccessPermission: 'The app doesn\'t have photo access permission',
     stillDidntReceiveTheVerificationCode: 'Still didn\'t receive the verification code?',
     resendVerificationCode: 'Resend verification code',
+    addYourEmailAddress: 'Add your email address',
     changeEmailAddress: 'Change email address',
     newEmailAddress: 'New email address',
     currentEmailAddress: 'Current email address',
@@ -133,6 +137,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    loginUsingPhoneNumber: 'تسجيل الدخول بإستخدام رقم الجوال',
+    customer: 'زبون',
+    user: 'مستخدم',
     impersonate: 'إنتحال',
     yourAccountIsBlocked: 'حسابك محجوب',
     blockedAccount: 'حساب محجوب',
@@ -199,6 +206,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     theAppDoesntHavePhotoAccessPermission: 'ليس لدى التطبيق صلاحيات الوصول الصور',
     stillDidntReceiveTheVerificationCode: 'لم يصلك رمز التحقق حتى الآن؟',
     resendVerificationCode: 'إعادة ارسال الرمز على بريدك',
+    addYourEmailAddress: 'إضافة بريدك الالكتروني',
     changeEmailAddress: 'تغيير البريد الالكتروني',
     newEmailAddress: 'البريد الالكتروني الجديد',
     currentEmailAddress: 'البريد الالكتروني الحالي',
@@ -258,6 +266,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    loginUsingPhoneNumber: 'Connexion à l\'aide du numéro de téléphone',
+    customer: 'Client',
+    user: 'Utilisateur',
     impersonate: 'Imiter',
     yourAccountIsBlocked: 'Votre compte est bloqué',
     blockedAccount: 'Compte bloqué',
@@ -324,6 +335,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     theAppDoesntHavePhotoAccessPermission: 'L\'application n\'a pas d\'autorisation d\'accès photo',
     stillDidntReceiveTheVerificationCode: 'Vous n\'avez toujours pas reçu le code de vérification?',
     resendVerificationCode: 'Renvoyer le code de vérification',
+    addYourEmailAddress: 'Ajoutez votre adresse e-mail',
     changeEmailAddress: 'Changer l\'adresse email',
     newEmailAddress: 'Nouvelle adresse courriel',
     currentEmailAddress: 'Adresse e-mail actuelle',
@@ -383,6 +395,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    loginUsingPhoneNumber: 'Iniciar sesión con el número de teléfono',
+    customer: 'Cliente',
+    user: 'Usuario',
     impersonate: 'Personificar',
     yourAccountIsBlocked: 'Su cuenta está bloqueada',
     blockedAccount: 'Cuenta bloqueada',
@@ -449,6 +464,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso a la foto',
     stillDidntReceiveTheVerificationCode: '¿Todavía no recibió el código de verificación?',
     resendVerificationCode: 'Vuelva a enviar el código de verificación',
+    addYourEmailAddress: 'Agregue su dirección de correo electrónico',
     changeEmailAddress: 'Cambiar la dirección de correo electrónico',
     newEmailAddress: 'Nueva dirección de correo electrónico',
     currentEmailAddress: 'Dirección de email actual',
@@ -508,6 +524,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    loginUsingPhoneNumber: 'Telefon numarasını kullanarak giriş yapın',
+    customer: 'Müşteri',
+    user: 'Kullanıcı',
     impersonate: 'Taklit etmek',
     yourAccountIsBlocked: 'Hesabınız engellendi',
     blockedAccount: 'Bloke olmuş hesap',
@@ -574,6 +593,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     theAppDoesntHavePhotoAccessPermission: 'Uygulamada fotoğraf erişim izni yok',
     stillDidntReceiveTheVerificationCode: 'Hala doğrulama kodunu almadınız mı?',
     resendVerificationCode: 'Doğrulama Kodunu Yeniden Yapın',
+    addYourEmailAddress: 'E -posta adresinizi ekleyin',
     changeEmailAddress: 'e-posta adresini değiştir',
     newEmailAddress: 'Yeni email adresi',
     currentEmailAddress: 'Geçerli eposta adresi',
@@ -636,6 +656,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.loginUsingPhoneNumber,
+    required this.customer,
+    required this.user,
     required this.impersonate,
     required this.yourAccountIsBlocked,
     required this.blockedAccount,
@@ -702,6 +725,7 @@ class MyServicesLocalizationsData {
     required this.theAppDoesntHavePhotoAccessPermission,
     required this.stillDidntReceiveTheVerificationCode,
     required this.resendVerificationCode,
+    required this.addYourEmailAddress,
     required this.changeEmailAddress,
     required this.newEmailAddress,
     required this.currentEmailAddress,
@@ -761,6 +785,9 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String loginUsingPhoneNumber;
+  final String customer;
+  final String user;
   final String impersonate;
   final String yourAccountIsBlocked;
   final String blockedAccount;
@@ -827,6 +854,7 @@ class MyServicesLocalizationsData {
   final String theAppDoesntHavePhotoAccessPermission;
   final String stillDidntReceiveTheVerificationCode;
   final String resendVerificationCode;
+  final String addYourEmailAddress;
   final String changeEmailAddress;
   final String newEmailAddress;
   final String currentEmailAddress;
@@ -885,6 +913,9 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        loginUsingPhoneNumber: map['loginUsingPhoneNumber']! as String,
+        customer: map['customer']! as String,
+        user: map['user']! as String,
         impersonate: map['impersonate']! as String,
         yourAccountIsBlocked: map['yourAccountIsBlocked']! as String,
         blockedAccount: map['blockedAccount']! as String,
@@ -951,6 +982,7 @@ class MyServicesLocalizationsData {
         theAppDoesntHavePhotoAccessPermission: map['theAppDoesntHavePhotoAccessPermission']! as String,
         stillDidntReceiveTheVerificationCode: map['stillDidntReceiveTheVerificationCode']! as String,
         resendVerificationCode: map['resendVerificationCode']! as String,
+        addYourEmailAddress: map['addYourEmailAddress']! as String,
         changeEmailAddress: map['changeEmailAddress']! as String,
         newEmailAddress: map['newEmailAddress']! as String,
         currentEmailAddress: map['currentEmailAddress']! as String,
@@ -1011,6 +1043,9 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? loginUsingPhoneNumber,
+    String? customer,
+    String? user,
     String? impersonate,
     String? yourAccountIsBlocked,
     String? blockedAccount,
@@ -1077,6 +1112,7 @@ class MyServicesLocalizationsData {
     String? theAppDoesntHavePhotoAccessPermission,
     String? stillDidntReceiveTheVerificationCode,
     String? resendVerificationCode,
+    String? addYourEmailAddress,
     String? changeEmailAddress,
     String? newEmailAddress,
     String? currentEmailAddress,
@@ -1136,6 +1172,9 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        loginUsingPhoneNumber: loginUsingPhoneNumber ?? this.loginUsingPhoneNumber,
+        customer: customer ?? this.customer,
+        user: user ?? this.user,
         impersonate: impersonate ?? this.impersonate,
         yourAccountIsBlocked: yourAccountIsBlocked ?? this.yourAccountIsBlocked,
         blockedAccount: blockedAccount ?? this.blockedAccount,
@@ -1202,6 +1241,7 @@ class MyServicesLocalizationsData {
         theAppDoesntHavePhotoAccessPermission: theAppDoesntHavePhotoAccessPermission ?? this.theAppDoesntHavePhotoAccessPermission,
         stillDidntReceiveTheVerificationCode: stillDidntReceiveTheVerificationCode ?? this.stillDidntReceiveTheVerificationCode,
         resendVerificationCode: resendVerificationCode ?? this.resendVerificationCode,
+        addYourEmailAddress: addYourEmailAddress ?? this.addYourEmailAddress,
         changeEmailAddress: changeEmailAddress ?? this.changeEmailAddress,
         newEmailAddress: newEmailAddress ?? this.newEmailAddress,
         currentEmailAddress: currentEmailAddress ?? this.currentEmailAddress,
@@ -1265,6 +1305,9 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          loginUsingPhoneNumber == other.loginUsingPhoneNumber &&
+          customer == other.customer &&
+          user == other.user &&
           impersonate == other.impersonate &&
           yourAccountIsBlocked == other.yourAccountIsBlocked &&
           blockedAccount == other.blockedAccount &&
@@ -1331,6 +1374,7 @@ class MyServicesLocalizationsData {
           theAppDoesntHavePhotoAccessPermission == other.theAppDoesntHavePhotoAccessPermission &&
           stillDidntReceiveTheVerificationCode == other.stillDidntReceiveTheVerificationCode &&
           resendVerificationCode == other.resendVerificationCode &&
+          addYourEmailAddress == other.addYourEmailAddress &&
           changeEmailAddress == other.changeEmailAddress &&
           newEmailAddress == other.newEmailAddress &&
           currentEmailAddress == other.currentEmailAddress &&
@@ -1391,6 +1435,9 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      loginUsingPhoneNumber.hashCode ^
+      customer.hashCode ^
+      user.hashCode ^
       impersonate.hashCode ^
       yourAccountIsBlocked.hashCode ^
       blockedAccount.hashCode ^
@@ -1457,6 +1504,7 @@ class MyServicesLocalizationsData {
       theAppDoesntHavePhotoAccessPermission.hashCode ^
       stillDidntReceiveTheVerificationCode.hashCode ^
       resendVerificationCode.hashCode ^
+      addYourEmailAddress.hashCode ^
       changeEmailAddress.hashCode ^
       newEmailAddress.hashCode ^
       currentEmailAddress.hashCode ^
