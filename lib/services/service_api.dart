@@ -17,7 +17,7 @@ class ServiceApi {
     return savePath;
   }
 
-  static Options _dioOptions(String? accessToken, String? lang, {String method = 'POST'}) {
+  static Options _dioOptions(String? accessToken, String? lang, {String method = 'POST', Map<String, dynamic> extraHeaders = const {}}) {
     Map<String, dynamic> headers = <String, dynamic>{
       if (accessToken != null) ...{
         'X-Requested-With': 'XMLHttpRequest',
@@ -26,6 +26,7 @@ class ServiceApi {
       if (lang != null) ...{
         'X-Localization': lang,
       },
+      ...extraHeaders
     };
 
     logger.i(headers);
@@ -38,7 +39,7 @@ class ServiceApi {
     );
   }
 
-  static Future<Response<Map<String, dynamic>>> postRequest(String url, dynamic formData, CancelToken? cancelToken) async {
+  static Future<Response<Map<String, dynamic>>> postRequest(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
@@ -56,12 +57,12 @@ class ServiceApi {
       Uri.parse('$domain$url'),
       data: formData,
       cancelToken: cancelToken,
-      options: _dioOptions(accessToken, lang),
+      options: _dioOptions(accessToken, lang, extraHeaders: extraHeaders),
     );
     return data;
   }
 
-  static Future<Response<T>> getRequest<T>(String url, dynamic formData, CancelToken? cancelToken) async {
+  static Future<Response<T>> getRequest<T>(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
@@ -78,7 +79,7 @@ class ServiceApi {
     final Response<T> data = await dio.getUri<T>(
       Uri.parse('$domain$url'),
       cancelToken: cancelToken,
-      options: _dioOptions(accessToken, lang, method: 'GET'),
+      options: _dioOptions(accessToken, lang, method: 'GET', extraHeaders: extraHeaders),
     );
     return data;
   }
