@@ -8,9 +8,12 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    products: 'Products',
+    product: 'Product',
+    users: 'Users',
+    user: 'User',
     loginUsingPhoneNumber: 'Login using phone number',
     customer: 'Customer',
-    user: 'User',
     impersonate: 'Impersonate',
     yourAccountIsBlocked: 'Your account is blocked',
     blockedAccount: 'Blocked account',
@@ -137,9 +140,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    products: 'منتجات',
+    product: 'منتج',
+    users: 'مستخدمين',
+    user: 'مستخدم',
     loginUsingPhoneNumber: 'تسجيل الدخول بإستخدام رقم الجوال',
     customer: 'زبون',
-    user: 'مستخدم',
     impersonate: 'إنتحال',
     yourAccountIsBlocked: 'حسابك محجوب',
     blockedAccount: 'حساب محجوب',
@@ -266,9 +272,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    products: 'Des produits',
+    product: 'Produit',
+    users: 'Utilisateurs',
+    user: 'Utilisateur',
     loginUsingPhoneNumber: 'Connexion à l\'aide du numéro de téléphone',
     customer: 'Client',
-    user: 'Utilisateur',
     impersonate: 'Imiter',
     yourAccountIsBlocked: 'Votre compte est bloqué',
     blockedAccount: 'Compte bloqué',
@@ -395,9 +404,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    products: 'Productos',
+    product: 'Producto',
+    users: 'Usuarios',
+    user: 'Usuario',
     loginUsingPhoneNumber: 'Iniciar sesión con el número de teléfono',
     customer: 'Cliente',
-    user: 'Usuario',
     impersonate: 'Personificar',
     yourAccountIsBlocked: 'Su cuenta está bloqueada',
     blockedAccount: 'Cuenta bloqueada',
@@ -524,9 +536,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    products: 'Ürün:% s',
+    product: 'Ürün',
+    users: 'Kullanıcılar',
+    user: 'Kullanıcı',
     loginUsingPhoneNumber: 'Telefon numarasını kullanarak giriş yapın',
     customer: 'Müşteri',
-    user: 'Kullanıcı',
     impersonate: 'Taklit etmek',
     yourAccountIsBlocked: 'Hesabınız engellendi',
     blockedAccount: 'Bloke olmuş hesap',
@@ -656,9 +671,12 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.products,
+    required this.product,
+    required this.users,
+    required this.user,
     required this.loginUsingPhoneNumber,
     required this.customer,
-    required this.user,
     required this.impersonate,
     required this.yourAccountIsBlocked,
     required this.blockedAccount,
@@ -785,9 +803,12 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String products;
+  final String product;
+  final String users;
+  final String user;
   final String loginUsingPhoneNumber;
   final String customer;
-  final String user;
   final String impersonate;
   final String yourAccountIsBlocked;
   final String blockedAccount;
@@ -913,9 +934,12 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        products: map['products']! as String,
+        product: map['product']! as String,
+        users: map['users']! as String,
+        user: map['user']! as String,
         loginUsingPhoneNumber: map['loginUsingPhoneNumber']! as String,
         customer: map['customer']! as String,
-        user: map['user']! as String,
         impersonate: map['impersonate']! as String,
         yourAccountIsBlocked: map['yourAccountIsBlocked']! as String,
         blockedAccount: map['blockedAccount']! as String,
@@ -1043,9 +1067,12 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? products,
+    String? product,
+    String? users,
+    String? user,
     String? loginUsingPhoneNumber,
     String? customer,
-    String? user,
     String? impersonate,
     String? yourAccountIsBlocked,
     String? blockedAccount,
@@ -1172,9 +1199,12 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        products: products ?? this.products,
+        product: product ?? this.product,
+        users: users ?? this.users,
+        user: user ?? this.user,
         loginUsingPhoneNumber: loginUsingPhoneNumber ?? this.loginUsingPhoneNumber,
         customer: customer ?? this.customer,
-        user: user ?? this.user,
         impersonate: impersonate ?? this.impersonate,
         yourAccountIsBlocked: yourAccountIsBlocked ?? this.yourAccountIsBlocked,
         blockedAccount: blockedAccount ?? this.blockedAccount,
@@ -1305,9 +1335,12 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          products == other.products &&
+          product == other.product &&
+          users == other.users &&
+          user == other.user &&
           loginUsingPhoneNumber == other.loginUsingPhoneNumber &&
           customer == other.customer &&
-          user == other.user &&
           impersonate == other.impersonate &&
           yourAccountIsBlocked == other.yourAccountIsBlocked &&
           blockedAccount == other.blockedAccount &&
@@ -1435,9 +1468,12 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      products.hashCode ^
+      product.hashCode ^
+      users.hashCode ^
+      user.hashCode ^
       loginUsingPhoneNumber.hashCode ^
       customer.hashCode ^
-      user.hashCode ^
       impersonate.hashCode ^
       yourAccountIsBlocked.hashCode ^
       blockedAccount.hashCode ^

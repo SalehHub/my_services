@@ -54,7 +54,6 @@ FormFieldValidator<String> defaultCurrentPasswordValidator({int length = 6}) => 
       return null;
     };
 
-
 FormFieldValidator<String> defaultNameValidator = (String? value) {
   MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
 
@@ -64,12 +63,11 @@ FormFieldValidator<String> defaultNameValidator = (String? value) {
   return null;
 };
 
-
 FormFieldValidator<String> defaultCodeValidator({int length = 4}) => (String? value) {
-  MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
 
-  if (value == null || value.isEmpty || value.length < length) {
-    return myServicesLabels.invalidRecoveryCode;
-  }
-  return null;
-};
+      if (value == null || value.isEmpty || value.length < length) {
+        return myServicesLabels.invalidRecoveryCode;
+      }
+      return null;
+    };
