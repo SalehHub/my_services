@@ -55,7 +55,7 @@ class ServiceSnackBar {
     );
   }
 
-  ScaffoldFeatureController? show({
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? show({
     required Widget content,
     EdgeInsets margin = _margin,
     int seconds = 3,
@@ -83,14 +83,14 @@ class ServiceSnackBar {
     return null;
   }
 
-  void showYesQuestion({
+  Future<bool> showYesQuestion({
     String? questionText,
     String? buttonText,
     required VoidCallback onYes,
     bool hideShownSnackBars = true,
     bool? success = false,
-  }) {
-    show(
+  }) async {
+    ScaffoldFeatureController<SnackBar, SnackBarClosedReason>? res = show(
       success: success,
       hideShownSnackBars: hideShownSnackBars,
       content: YesSnackBarMessage(
@@ -103,5 +103,13 @@ class ServiceSnackBar {
         },
       ),
     );
+
+    //TODO: not a good solution // the snackbar can be hidden without clicking yes button
+    if (res != null) {
+      if ((await res.closed) == SnackBarClosedReason.remove) {
+        return true;
+      }
+    }
+    return false;
   }
 }
