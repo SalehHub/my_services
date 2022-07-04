@@ -15,6 +15,10 @@ class CountryProvider {
     return getCountriesData().firstWhere((e) => int.tryParse(e.dialCode ?? "966") == code);
   }
 
+  static Country getCountryByAlpha2Code(String code) {
+    return getCountriesData().firstWhere((e) => e.alpha2Code == code);
+  }
+
   static List<Country>? allCountries;
 
   static List<Country> getCountriesData({List<String>? countries}) {
