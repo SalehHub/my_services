@@ -104,6 +104,7 @@ class ServiceSnackBar {
       ),
     );
 
+    //check out WillPopScopeWidget
     //TODO: not a good solution // the snackbar can be hidden without clicking yes button
     if (res != null) {
       if ((await res.closed) == SnackBarClosedReason.remove) {
