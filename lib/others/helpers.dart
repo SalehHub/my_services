@@ -15,6 +15,8 @@ class Helpers {
 
   bool isRTL(String text) => Bidi.detectRtlDirectionality(text);
 
+  String getUuid() => const Uuid().v4();
+
   bool isLandScape(BuildContext context) {
     final MediaQueryData mediaQueryData = MediaQuery.of(context);
     final Orientation pageOrientation = mediaQueryData.orientation;

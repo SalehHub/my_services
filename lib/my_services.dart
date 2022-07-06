@@ -62,7 +62,7 @@ export 'package:path_provider/path_provider.dart';
 //
 export 'package:timeago/timeago.dart';
 export 'package:url_launcher/url_launcher.dart';
-// export 'package:uuid/uuid.dart';
+export 'package:uuid/uuid.dart';
 //
 export 'databases/exports.dart';
 export 'models/exports.dart';
