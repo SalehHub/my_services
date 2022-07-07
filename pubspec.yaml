@@ -12,55 +12,55 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  cupertino_icons: ^1.0.4
+  cupertino_icons: ^1.0.5
 
-  google_fonts: ^2.3.2
+  google_fonts: ^3.0.1
 
-  firebase_core: ^1.17.0 #firebaseCore
-  firebase_messaging: ^11.4.0 #firebaseMessaging
-  firebase_crashlytics: ^2.8.0 #firebaseCrashlytics
+  firebase_core: ^1.19.1 #firebaseCore
+  firebase_messaging: ^11.4.4 #firebaseMessaging
+  firebase_crashlytics: ^2.8.4 #firebaseCrashlytics
 
-  app_settings: ^4.1.6 #appSettings
+  app_settings: ^4.1.8 #appSettings
 
-  google_maps_flutter: ^2.1.5 #googleMaps
+  google_maps_flutter: ^2.1.8 #googleMaps
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
-  image_cropper: ^2.0.2 #imagePicker
+  image_cropper: ^2.0.3 #imagePicker
   image_picker: ^0.8.5+3 #imagePicker
   flutter_image_compress: ^1.1.0 #imagePicker
 
   photo_view: ^0.14.0 #photoView
   smooth_page_indicator: ^1.0.0+2 #photoView
 
-  map_launcher: ^2.2.2 #mapLauncher
+  map_launcher: ^2.2.3 #mapLauncher
 
-  flutter_svg: ^1.0.3 #flutterSvg
+  flutter_svg: ^1.1.1+1 #flutterSvg
 
   app_links: ^3.2.0 #appLinks
 
-  share_plus: ^4.0.4 #sharePlus
+  share_plus: ^4.0.10 #sharePlus
 
   pin_code_fields: ^7.4.0 #pinCodeFields
 
-  hive: ^2.1.0 #hive
+  hive: ^2.2.3 #hive
   hive_flutter: ^1.1.0 #hive
-  sqflite: ^2.0.2+1 #sqflite
+  sqflite: ^2.0.3 #sqflite
 
 
   logger: ^1.1.0
-  url_launcher: ^6.1.2
+  url_launcher: ^6.1.4
   intl: ^0.17.0
 
-  device_info_plus: ^3.2.3
+  device_info_plus: ^4.0.0
 
   package_info_plus: ^1.4.2
 
-  path_provider: ^2.0.10
+  path_provider: ^2.0.11
   mdi: ^5.0.0-nullsafety.0
   timeago: 3.0.2
 
   octo_image: ^1.0.2
-  flutter_image: ^4.1.0
+  flutter_image: ^4.1.3
   cached_network_image: ^3.2.1
 
   flutter_riverpod: ^1.0.4
@@ -87,7 +87,7 @@ dev_dependencies:
         path: flutter_sheet_localization_generator
 
   build_runner: ^2.1.11
-  freezed: ^2.0.3+1
+  freezed: ^2.0.4
   json_serializable: ^6.2.0
   flutter_lints: ^2.0.1
   flutter_test:

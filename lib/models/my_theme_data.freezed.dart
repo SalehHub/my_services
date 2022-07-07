@@ -317,27 +317,27 @@ abstract class _MyThemeData extends MyThemeData {
   const _MyThemeData._() : super._();
 
   @override
-  Color get background => throw _privateConstructorUsedError;
+  Color get background;
   @override
-  Color get onBackground => throw _privateConstructorUsedError;
+  Color get onBackground;
   @override //
-  Color get primary => throw _privateConstructorUsedError;
+  Color get primary;
   @override
-  Color get onPrimary => throw _privateConstructorUsedError;
+  Color get onPrimary;
   @override //
-  Color get card => throw _privateConstructorUsedError;
+  Color get card;
   @override
-  Color get onCard => throw _privateConstructorUsedError;
+  Color get onCard;
   @override //
-  Color get error => throw _privateConstructorUsedError;
+  Color get error;
   @override
-  Color get onError => throw _privateConstructorUsedError;
+  Color get onError;
   @override //
-  Color get success => throw _privateConstructorUsedError;
+  Color get success;
   @override
-  Color get onSuccess => throw _privateConstructorUsedError;
+  Color get onSuccess;
   @override
-  AppBarTheme? get appBar => throw _privateConstructorUsedError;
+  AppBarTheme? get appBar;
   @override
   @JsonKey(ignore: true)
   _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => throw _privateConstructorUsedError;

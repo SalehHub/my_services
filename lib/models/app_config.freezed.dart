@@ -193,15 +193,15 @@ abstract class _AppEvents extends AppEvents {
   _AppEvents._() : super._();
 
   @override
-  dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink => throw _privateConstructorUsedError;
+  dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink;
   @override
-  dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh => throw _privateConstructorUsedError;
+  dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh;
   @override
-  OnFirebaseNotification? get onFirebaseNotification => throw _privateConstructorUsedError;
+  OnFirebaseNotification? get onFirebaseNotification;
   @override
-  GenerateAppTitle? get onGenerateTitle => throw _privateConstructorUsedError;
+  GenerateAppTitle? get onGenerateTitle;
   @override
-  dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange => throw _privateConstructorUsedError;
+  dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange;
   @override
   @JsonKey(ignore: true)
   _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => throw _privateConstructorUsedError;
@@ -376,15 +376,15 @@ abstract class _AppConfig extends AppConfig {
   _AppConfig._() : super._();
 
   @override
-  bool get withFirebase => throw _privateConstructorUsedError;
+  bool get withFirebase;
   @override
-  bool get withFCM => throw _privateConstructorUsedError;
+  bool get withFCM;
   @override
-  bool get withCrashlytics => throw _privateConstructorUsedError;
+  bool get withCrashlytics;
   @override
-  bool get nativeLocaleChange => throw _privateConstructorUsedError;
+  bool get nativeLocaleChange;
   @override
-  FirebaseOptions? get firebaseOptions => throw _privateConstructorUsedError;
+  FirebaseOptions? get firebaseOptions;
   @override
   @JsonKey(ignore: true)
   _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => throw _privateConstructorUsedError;

@@ -210,17 +210,17 @@ abstract class _AppDeviceData extends AppDeviceData {
   factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$_AppDeviceData.fromJson;
 
   @override
-  String get appVersion => throw _privateConstructorUsedError;
+  String get appVersion;
   @override
-  String get appBuild => throw _privateConstructorUsedError;
+  String get appBuild;
   @override
-  String? get deviceID => throw _privateConstructorUsedError;
+  String? get deviceID;
   @override
-  String? get deviceOSVersion => throw _privateConstructorUsedError;
+  String? get deviceOSVersion;
   @override
-  String? get deviceModel => throw _privateConstructorUsedError;
+  String? get deviceModel;
   @override
-  String? get deviceOS => throw _privateConstructorUsedError;
+  String? get deviceOS;
   @override
   @JsonKey(ignore: true)
   _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => throw _privateConstructorUsedError;

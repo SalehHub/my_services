@@ -276,21 +276,21 @@ abstract class _GeneralState extends GeneralState {
   factory _GeneralState.fromJson(Map<String, dynamic> json) = _$_GeneralState.fromJson;
 
   @override
-  String? get accessToken => throw _privateConstructorUsedError;
+  String? get accessToken;
   @override
-  String? get notificationToken => throw _privateConstructorUsedError;
+  String? get notificationToken;
   @override
-  AppDeviceData? get appDeviceData => throw _privateConstructorUsedError;
+  AppDeviceData? get appDeviceData;
   @override
   @LocaleConverter()
-  Locale? get locale => throw _privateConstructorUsedError;
+  Locale? get locale;
   @override
   @ThemeModeConverter()
-  ThemeMode? get themeMode => throw _privateConstructorUsedError;
+  ThemeMode? get themeMode;
   @override
-  bool get isFirstAppRun => throw _privateConstructorUsedError;
+  bool get isFirstAppRun;
   @override
-  bool get isFirstAppBuildRun => throw _privateConstructorUsedError;
+  bool get isFirstAppBuildRun;
   @override
   @JsonKey(ignore: true)
   _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => throw _privateConstructorUsedError;
