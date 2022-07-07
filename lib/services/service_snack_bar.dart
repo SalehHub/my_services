@@ -67,9 +67,7 @@ class ServiceSnackBar {
         hide();
       }
 
-      final BuildContext context = MyServices.context;
-
-      return ScaffoldMessenger.of(context).showSnackBar(
+      return ScaffoldMessenger.of(MyServices.context).showSnackBar(
         SnackBar(
           duration: Duration(seconds: seconds),
           backgroundColor: bgColor(success),
