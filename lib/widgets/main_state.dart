@@ -409,16 +409,18 @@ mixin SearchMixin<T extends StatefulWidget> on State<T> {
   ValueChanged<String>? onSearchChanged;
   ValueChanged<String>? onSearchSubmitted;
   GestureTapCallback? onSearchClear;
+  String searchTerm = "";
 
-  final TextEditingController searchController = TextEditingController();
+  // final TextEditingController searchController = TextEditingController();
 
   Widget get searchInput => SliverToBoxAdapter(
         child: MyTextInput(
-          controller: searchController,
+          // controller: searchController,
+          value: searchTerm,
           textInputAction: TextInputAction.search,
           margin: const EdgeInsets.all(10),
           prefixIcon: const BackButton(),
-          suffixIcon: searchController.text == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
+          suffixIcon: searchTerm == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
           labelText: getMyServicesLabels(context).search,
           onChanged: onSearchChanged,
           onFieldSubmitted: onSearchSubmitted,
