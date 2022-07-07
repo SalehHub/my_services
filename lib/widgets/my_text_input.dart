@@ -1,6 +1,6 @@
 import '../my_services.dart';
 
-class MyTextInput extends StatelessWidget {
+class MyTextInput extends StatefulWidget {
   const MyTextInput({
     super.key,
     this.show = true,
@@ -71,39 +71,104 @@ class MyTextInput extends StatelessWidget {
   final Widget? widget;
 
   @override
+  State<MyTextInput> createState() => _MyTextInputState();
+}
+
+class _MyTextInputState extends State<MyTextInput> {
+  TextEditingController? controller;
+
+  @override
+  void initState() {
+    super.initState();
+    if (!widget.isDropDown) {
+      controller = widget.controller ?? TextEditingController();
+      controller?.text = widget.value ?? "";
+      // print(widget.value);
+      // print(controller);
+    }
+  }
+
+  @override
+  void dispose() {
+    try {
+      controller?.dispose();
+      widget.controller?.dispose();
+    } catch (e) {
+      //
+    }
+    super.dispose();
+  }
+
+  @override
+  void didUpdateWidget(covariant MyTextInput oldWidget) {
+    // print("didUpdateWidget");
+    // print(widget.value);
+    if (!widget.isDropDown) {
+      if (widget.value != controller!.text) {
+        controller?.text = widget.value ?? "";
+      }
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     // return buildStackField(context);
 
-    if (!show) {
+    if (!widget.show) {
       return const SizedBox();
     }
-    if (isDropDown) {
+
+    if (widget.isDropDown) {
       return Padding(
-        padding: margin,
+        padding: widget.margin,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildLabel(context),
             DropdownButtonFormField<String>(
-              validator: validator,
-              value: value,
+              borderRadius: widget.borderRadius ?? MyServices.services.theme.borderRadius,
+              validator: widget.validator,
+              value: widget.value,
               onChanged: (String? v) {
                 if (v != null) {
-                  if (onChanged != null) {
-                    onChanged!(v);
+                  if (widget.onChanged != null) {
+                    widget.onChanged!(v);
                   }
                 }
               },
-              items: items
-                  .map((e) => DropdownMenuItem(
+              items: widget.items
+                  .map(
+                    (e) => DropdownMenuItem(
                       value: e.value,
                       child: Row(
                         children: [
                           if (e.icon != null) e.icon!,
                           if (e.icon != null) const SizedBox(width: 5),
-                          MyText(e.text),
+                          //to fix the overflow issue when text is to long
+                          LayoutBuilder(builder: (context, constraints) {
+                            // print(constraints.maxWidth);
+
+                            double width = constraints.maxWidth == double.infinity ? MyServices.helpers.getPageWidth(context) : constraints.maxWidth;
+                            // print(width);
+
+                            width = width * 0.6;
+
+                            // print(width);
+
+                            return SizedBox(
+                              // color: Colors.amber,
+                              width: width,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: MyText(e.text, maxLines: 1, overflow: TextOverflow.fade),
+                              ),
+                            );
+                          }),
                         ],
-                      )))
+                      ),
+                    ),
+                  )
                   .toList(),
               decoration: buildMyInputDecoration(),
             ),
@@ -113,12 +178,12 @@ class MyTextInput extends StatelessWidget {
     }
 
     return Padding(
-      padding: margin,
+      padding: widget.margin,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildLabel(context),
-          if (widget != null)
+          if (widget.widget != null)
             Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -126,11 +191,11 @@ class MyTextInput extends StatelessWidget {
                 border: Border.all(color: Colors.grey.shade500, width: 0.8),
                 borderRadius: MyServices.services.theme.borderRadius,
               ),
-              child: widget!,
+              child: widget.widget!,
             )
-          else if (directionalityTextDirection != null)
+          else if (widget.directionalityTextDirection != null)
             Directionality(
-              textDirection: textDirection ?? Directionality.of(context),
+              textDirection: widget.textDirection ?? Directionality.of(context),
               child: buildTextInput(),
             )
           else
@@ -141,48 +206,48 @@ class MyTextInput extends StatelessWidget {
   }
 
   Widget buildTextInput() {
-    if (maxLines > 1) {
-      return SizedBox(height: maxLines > 1 ? maxLines * 45 : null, child: buildTextFormField());
+    if (widget.maxLines > 1) {
+      return SizedBox(height: widget.maxLines > 1 ? widget.maxLines * 45 : null, child: buildTextFormField());
     }
     return buildTextFormField();
   }
 
   Widget buildTextFormField() {
     return TextFormField(
-      autocorrect: !isPassword,
-      enableSuggestions: !isPassword,
-      controller: controller ?? (value != null ? TextEditingController(text: value) : null),
-      validator: validator,
-      textDirection: textDirection,
-      obscureText: isPassword,
-      textInputAction: textInputAction,
-      keyboardType: keyboardType,
+      autocorrect: !widget.isPassword,
+      enableSuggestions: !widget.isPassword,
+      controller: controller,
+      validator: widget.validator,
+      textDirection: widget.textDirection,
+      obscureText: widget.isPassword,
+      textInputAction: widget.textInputAction,
+      keyboardType: widget.keyboardType,
       inputFormatters: [
-        if (length != null) LengthLimitingTextInputFormatter(length),
-        if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+        if (widget.length != null) LengthLimitingTextInputFormatter(widget.length),
+        if (widget.digitsOnly) FilteringTextInputFormatter.digitsOnly,
       ],
-      maxLines: maxLines,
-      strutStyle: strutStyle ?? const StrutStyle(height: 2.1),
-      style: style,
-      textAlignVertical: maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
+      maxLines: widget.maxLines,
+      strutStyle: widget.strutStyle ?? const StrutStyle(height: 2.1),
+      style: widget.style,
+      textAlignVertical: widget.maxLines == 1 ? TextAlignVertical.center : TextAlignVertical.top,
       decoration: buildMyInputDecoration(),
       onChanged: (String v) {
-        if (onChanged != null) {
-          onChanged!(v);
+        if (widget.onChanged != null) {
+          widget.onChanged!(v);
         }
       },
-      focusNode: focusNode,
-      onFieldSubmitted: onFieldSubmitted,
+      focusNode: widget.focusNode,
+      onFieldSubmitted: widget.onFieldSubmitted,
     );
   }
 
   Widget buildLabel(BuildContext context) {
     // print(Directionality.of(context));
-    if (floatingLabel) {
+    if (widget.floatingLabel) {
       return const SizedBox();
     }
     return MyText(
-      labelText,
+      widget.labelText,
       bold: true,
       margin: const EdgeInsets.symmetric(horizontal: 15),
     );
@@ -190,31 +255,31 @@ class MyTextInput extends StatelessWidget {
 
   InputDecoration buildMyInputDecoration() {
     return InputDecoration(
-      prefixText: prefixText,
+      prefixText: widget.prefixText,
       alignLabelWithHint: true,
-      labelStyle: labelStyle,
-      floatingLabelStyle: floatingLabelStyle,
-      labelText: floatingLabel ? labelText : null,
-      helperText: helperText,
+      labelStyle: widget.labelStyle,
+      floatingLabelStyle: widget.floatingLabelStyle,
+      labelText: widget.floatingLabel ? widget.labelText : null,
+      helperText: widget.helperText,
       contentPadding: buildContentPadding(),
-      suffixIcon: suffixIcon,
+      suffixIcon: widget.suffixIcon,
       prefixIcon: buildPrefixIcon(),
       isDense: true,
       // isCollapsed: true,
-      border: border ?? OutlineInputBorder(borderRadius: borderRadius ?? MyServices.services.theme.borderRadius),
+      border: widget.border ?? OutlineInputBorder(borderRadius: widget.borderRadius ?? MyServices.services.theme.borderRadius),
     );
   }
 
   EdgeInsetsGeometry? buildContentPadding() {
-    if (contentPadding != null) {
-      return contentPadding;
-    } else if (isDropDown) {
+    if (widget.contentPadding != null) {
+      return widget.contentPadding;
+    } else if (widget.isDropDown) {
       return const EdgeInsets.fromLTRB(10, 15, 10, 15);
     } else {
       return EdgeInsets.fromLTRB(
-        suffixIcon == null ? 10 : 10,
+        widget.suffixIcon == null ? 10 : 10,
         10,
-        suffixIcon == null ? 10 : 10,
+        widget.suffixIcon == null ? 10 : 10,
         10,
       );
     }
@@ -223,10 +288,10 @@ class MyTextInput extends StatelessWidget {
   }
 
   Widget? buildPrefixIcon() {
-    if (prefixIcon == null) {
+    if (widget.prefixIcon == null) {
       return null;
-    } else if (maxLines == 1) {
-      return prefixIcon;
+    } else if (widget.maxLines == 1) {
+      return widget.prefixIcon;
     }
     return Padding(
       padding: const EdgeInsets.only(top: 18),
@@ -234,48 +299,10 @@ class MyTextInput extends StatelessWidget {
         alignment: Alignment.topCenter,
         widthFactor: 1.0,
         heightFactor: 10.0,
-        child: prefixIcon,
+        child: widget.prefixIcon,
       ),
     );
   }
-
-// Stack buildStackField(BuildContext context) {
-//   return Stack(
-//     clipBehavior: Clip.none,
-//     children: [
-//       Container(
-//         height: 55.0 * maxLines,
-//         width: double.infinity,
-//         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-//         decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade500, width: 1), borderRadius: ServiceTheme.borderRadius),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             prefixIcon ?? const SizedBox(),
-//             Expanded(
-//               child: Padding(
-//                 padding: const EdgeInsets.only(bottom: 1),
-//                 child: TextFormField(
-//                   controller: controller,
-//                   initialValue: value,
-//                   maxLines: maxLines,
-//                   onChanged: onChanged,
-//                   decoration: const InputDecoration(
-//                     border: InputBorder.none,
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             suffixIcon ?? const SizedBox(),
-//           ],
-//         ),
-//       ),
-//       buildLabel(labelText ?? '', context),
-//     ],
-//   );
-// }
-
 }
 
 class MyDropdownMenuItemData {
