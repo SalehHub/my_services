@@ -157,8 +157,8 @@ class AppStart extends StatelessWidget {
         builder: (BuildContext context, Widget? child) => Unfocus(child: child),
         //
         initialRoute: '/',
-        navigatorKey: ServiceNav.navigatorKey,
-        navigatorObservers: ServiceNav.navigatorObservers,
+        navigatorKey: MyServices.services.nav.navigatorKey,
+        navigatorObservers: MyServices.services.nav.navigatorObservers,
       );
     });
   }

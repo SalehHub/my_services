@@ -1,4 +1,4 @@
-import 'package:flutter/rendering.dart';
+import '../../my_services.dart';
 
 /// A [Country] model represents an instance of a country which contains
 /// information about the country
@@ -57,4 +57,17 @@ class Country {
       'alpha3: $alpha3Code, '
       'dialCode: $dialCode '
       '}';
+
+  /// Returns the country name of a [Country]. if the locale is set and translation in available.
+  /// returns the translated name.
+  String? localeName() {
+    if (nameTranslations != null) {
+      String? locale = MyServices.services.locale.currentLocaleLangCode(MyServices.context);
+      String? translated = nameTranslations![locale];
+      if (translated != null && translated.isNotEmpty) {
+        return translated;
+      }
+    }
+    return name;
+  }
 }

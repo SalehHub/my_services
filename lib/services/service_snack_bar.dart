@@ -9,26 +9,26 @@ class ServiceSnackBar {
 
   fgColor(bool? success) {
     if (success == true) {
-      return getColorScheme(ServiceNav.context).onTertiary;
+      return getColorScheme(MyServices.context).onTertiary;
     } else if (success == false) {
-      return getColorScheme(ServiceNav.context).onError;
+      return getColorScheme(MyServices.context).onError;
     }
 
-    return getColorScheme(ServiceNav.context).onPrimary;
+    return getColorScheme(MyServices.context).onPrimary;
   }
 
   bgColor(bool? success) {
     if (success == true) {
-      return getColorScheme(ServiceNav.context).tertiary;
+      return getColorScheme(MyServices.context).tertiary;
     } else if (success == false) {
-      return getColorScheme(ServiceNav.context).error;
+      return getColorScheme(MyServices.context).error;
     }
 
-    return getColorScheme(ServiceNav.context).primary;
+    return getColorScheme(MyServices.context).primary;
   }
 
   void hide() {
-    ScaffoldMessenger.of(ServiceNav.context).removeCurrentSnackBar();
+    ScaffoldMessenger.of(MyServices.context).removeCurrentSnackBar();
   }
 
   void showText({
@@ -49,7 +49,7 @@ class ServiceSnackBar {
           text,
           textAlign: TextAlign.center,
           textDirection: MyServices.helpers.getTextDirection(text),
-          style: getTextTheme(ServiceNav.context).bodyText1?.copyWith(color: fgColor(success)),
+          style: getTextTheme(MyServices.context).bodyText1?.copyWith(color: fgColor(success)),
         ),
       ),
     );
@@ -67,7 +67,7 @@ class ServiceSnackBar {
         hide();
       }
 
-      final BuildContext context = ServiceNav.context;
+      final BuildContext context = MyServices.context;
 
       return ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

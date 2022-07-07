@@ -20,7 +20,7 @@ class ServiceTheme {
 
   void setBorderRadius(BorderRadius v) => _borderRadius = v;
 
-  // MyThemeData theme([BuildContext? context]) => isDark(context ?? ServiceNav.context) ? _dark : _light;
+  // MyThemeData theme([BuildContext? context]) => isDark(context ?? MyServices.context) ? _dark : _light;
 
   ThemeData get lightTheme => _getThemeData(ThemeData.light());
 
@@ -157,6 +157,15 @@ class ServiceTheme {
       listTileTheme: mainThemeData.listTileTheme.copyWith(
         shape: circularBorderRadius,
         iconColor: iconTheme.color,
+        selectedColor: Colors.red,
+      ),
+      switchTheme: mainThemeData.switchTheme.copyWith(
+        thumbColor: MaterialStateProperty.resolveWith((states) {
+          return states.contains(MaterialState.selected) ? colorScheme.tertiary : Colors.grey;
+        }),
+        trackColor: MaterialStateProperty.resolveWith((states) {
+          return states.contains(MaterialState.selected) ? colorScheme.onTertiary : Colors.grey.shade200;
+        }),
       ),
       //
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
@@ -225,6 +234,7 @@ class ServiceTheme {
         refreshBackgroundColor: colorScheme.surface,
         color: colorScheme.onSurface,
       ),
+
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
         behavior: SnackBarBehavior.floating,
         backgroundColor: colorScheme.surface,
@@ -302,11 +312,11 @@ class ServiceTheme {
 
   String getThemeLabel(ThemeMode themeMode) {
     if (themeMode == ThemeMode.system) {
-      return getMyServicesLabels(ServiceNav.context).dependsOnSystem;
+      return getMyServicesLabels(MyServices.context).dependsOnSystem;
     } else if (themeMode == ThemeMode.dark) {
-      return getMyServicesLabels(ServiceNav.context).darkMode;
+      return getMyServicesLabels(MyServices.context).darkMode;
     } else if (themeMode == ThemeMode.light) {
-      return getMyServicesLabels(ServiceNav.context).lightMode;
+      return getMyServicesLabels(MyServices.context).lightMode;
     }
 
     return "";

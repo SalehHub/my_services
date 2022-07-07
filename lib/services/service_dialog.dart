@@ -7,7 +7,7 @@ class ServiceDialog {
   //
   Future<T?> show<T>({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<T?>(
-        context: ServiceNav.context,
+        context: MyServices.context,
         barrierDismissible: barrierDismissible,
         builder: (BuildContext c) {
           return GestureDetector(
@@ -19,7 +19,7 @@ class ServiceDialog {
 
   Future<bool?> showYesNo({required String title, required String question, bool barrierDismissible = true}) {
     return showDialog<bool>(
-        context: ServiceNav.context,
+        context: MyServices.context,
         barrierDismissible: barrierDismissible,
         builder: (BuildContext context) {
           return GestureDetector(

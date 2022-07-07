@@ -1,20 +1,21 @@
 import '../my_services.dart';
 
 class ServiceNav {
-  static const ServiceNav _s = ServiceNav._();
-  factory ServiceNav() => _s;
-  const ServiceNav._();
-  //
+  String? _currentRoute;
 
-  static String? currentRoute;
+  String? get currentRoute => _currentRoute;
 
-  static final List<NavigatorObserver> navigatorObservers = <NavigatorObserver>[
+  setCurrentRoute(String? v) {
+    _currentRoute = v;
+  }
+
+  final List<NavigatorObserver> navigatorObservers = <NavigatorObserver>[
     MyNavigatorObserver(),
   ];
 
-  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  static BuildContext get context => navigatorKey.currentContext!;
+  BuildContext get context => navigatorKey.currentContext!;
 }
 
 class MyNavigatorObserver extends NavigatorObserver {
@@ -24,7 +25,7 @@ class MyNavigatorObserver extends NavigatorObserver {
     if (name != null) {
       logger.i('Push: $name');
     }
-    ServiceNav.currentRoute = name;
+    MyServices.services.nav.setCurrentRoute(name);
   }
 
   @override
@@ -33,27 +34,27 @@ class MyNavigatorObserver extends NavigatorObserver {
     if (name != null) {
       logger.i('Pop: $name');
     }
-    ServiceNav.currentRoute = name;
+    MyServices.services.nav.setCurrentRoute(name);
   }
 }
 
 ////Helpers
 void pop<T extends Object?>([T? result]) {
-  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  final NavigatorState? nav = MyServices.services.nav.navigatorKey.currentState;
   if (nav != null) {
     return nav.pop<T>(result);
   }
 }
 
 void popToHome() {
-  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  final NavigatorState? nav = MyServices.services.nav.navigatorKey.currentState;
   if (nav != null) {
     return nav.popUntil((Route<dynamic> route) => route.isFirst);
   }
 }
 
 Future<dynamic> push({Widget? page, bool goToFirstRoute = false, bool replacement = false, bool transparent = false}) {
-  final NavigatorState? nav = ServiceNav.navigatorKey.currentState;
+  final NavigatorState? nav = MyServices.services.nav.navigatorKey.currentState;
   if (nav != null) {
     final String name = page.runtimeType.toString();
 

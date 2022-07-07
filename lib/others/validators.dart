@@ -3,7 +3,7 @@ import '../my_services.dart';
 // ignore: prefer_function_declarations_over_variables
 FormFieldValidator<String> defaultFieldRequiredValidator = (String? value) {
   if (value == null || value.trim().isEmpty) {
-    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
     return myServicesLabels.thisFieldIsRequired;
   }
   return null;
@@ -15,14 +15,14 @@ FormFieldValidator<String> defaultEmailValidator = (String? value) {
   final RegExp emailRxp = RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$');
 
   if (value == null || value.isEmpty || !emailRxp.hasMatch(value)) {
-    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+    MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
     return myServicesLabels.incorrectEmail;
   }
   return null;
 };
 
 FormFieldValidator<String> defaultPasswordValidator({int length = 6}) => (String? value) {
-      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
 
       if (value == null || value.isEmpty) {
         return myServicesLabels.enterAPassword;
@@ -33,7 +33,7 @@ FormFieldValidator<String> defaultPasswordValidator({int length = 6}) => (String
     };
 
 FormFieldValidator<String> defaultNewPasswordValidator({int length = 6}) => (String? value) {
-      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
 
       if (value == null || value.isEmpty) {
         return myServicesLabels.enterANewPassword;
@@ -44,7 +44,7 @@ FormFieldValidator<String> defaultNewPasswordValidator({int length = 6}) => (Str
     };
 
 FormFieldValidator<String> defaultCurrentPasswordValidator({int length = 6}) => (String? value) {
-      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
 
       if (value == null || value.isEmpty) {
         return myServicesLabels.enterTheCurrentPassword;
@@ -55,7 +55,7 @@ FormFieldValidator<String> defaultCurrentPasswordValidator({int length = 6}) => 
     };
 
 FormFieldValidator<String> defaultNameValidator = (String? value) {
-  MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+  MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
 
   if (value == null || value.isEmpty) {
     return myServicesLabels.enterTheNameCorrectly;
@@ -64,7 +64,7 @@ FormFieldValidator<String> defaultNameValidator = (String? value) {
 };
 
 FormFieldValidator<String> defaultCodeValidator({int length = 4}) => (String? value) {
-      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(ServiceNav.navigatorKey.currentContext!);
+      MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
 
       if (value == null || value.isEmpty || value.length < length) {
         return myServicesLabels.invalidRecoveryCode;

@@ -25,7 +25,8 @@ class MyServices {
   static Helpers get helpers => GetIt.I<Helpers>();
   static Providers get providers => GetIt.I<Providers>();
   static Services get services => GetIt.I<Services>();
-
+  //
+  static BuildContext get context => services.nav.context;
   // App Config
   static AppConfig appConfig = AppConfig();
 

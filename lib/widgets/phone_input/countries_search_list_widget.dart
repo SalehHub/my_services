@@ -10,6 +10,7 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool autoFocus;
   final bool showFlags;
   final bool useEmoji;
+  final bool showDailCode;
   final ValueChanged<Country>? onSelect;
 
   const CountrySearchListWidget(
@@ -21,6 +22,7 @@ class CountrySearchListWidget extends StatefulWidget {
     this.showFlags = false,
     this.useEmoji = true,
     this.autoFocus = false,
+    this.showDailCode = true,
     this.onSelect,
   });
 
@@ -29,19 +31,13 @@ class CountrySearchListWidget extends StatefulWidget {
 }
 
 class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
-  final TextEditingController _searchController = TextEditingController();
-  late List<Country> filteredCountries;
+  String searchTerm = "";
+  List<Country> filteredCountries = [];
 
   @override
   void initState() {
     filteredCountries = filterCountries();
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 
   /// Returns [InputDecoration] of the search box
@@ -51,18 +47,17 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
 
   /// Filters the list of Country by text from the search box.
   List<Country> filterCountries() {
-    final value = _searchController.text.trim();
+    final value = searchTerm.trim();
 
     if (value.isNotEmpty) {
-      return widget.countries
-          .where(
-            (Country country) =>
-                country.alpha3Code!.toLowerCase().startsWith(value.toLowerCase()) ||
-                country.name!.toLowerCase().contains(value.toLowerCase()) ||
-                getCountryName(country)!.toLowerCase().contains(value.toLowerCase()) ||
-                country.dialCode!.contains(value.toLowerCase()),
-          )
-          .toList();
+      return widget.countries.where(
+        (Country country) {
+          return country.alpha3Code!.toLowerCase().startsWith(value.toLowerCase()) || //
+              country.name!.toLowerCase().contains(value.toLowerCase()) || //
+              getCountryName(country)!.toLowerCase().contains(value.toLowerCase()) || //
+              country.dialCode!.contains(value.toLowerCase()); //
+        },
+      ).toList();
     }
 
     return widget.countries;
@@ -89,18 +84,19 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           MyTextInput(
-            controller: _searchController,
             textInputAction: TextInputAction.search,
+            value: searchTerm,
             floatingLabel: true,
-            // borderRadius: BorderRadius.zero,
-            // border: InputBorder.none,
             margin: const EdgeInsets.only(top: 0, bottom: 5, left: 20, right: 20),
             prefixIcon: const Icon(iconSearch),
             labelText: getMyServicesLabels(context).searchByCountryNameOrDialCode,
-            labelStyle: getTextTheme(context).caption?.copyWith(
-                // color: ServiceTheme.lightAccentColor,
-                ),
-            onChanged: (value) => setState(() => filteredCountries = filterCountries()),
+            labelStyle: getTextTheme(context).caption,
+            onChanged: (String? value) {
+              setState(() {
+                searchTerm = value ?? "";
+                filteredCountries = filterCountries();
+              });
+            },
           ),
           Flexible(
             child: ListView.builder(
@@ -125,7 +121,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                       ],
                     ),
                   ),
-                  subtitle: Text(country.dialCode ?? ''),
+                  subtitle: widget.showDailCode ? Text(country.dialCode ?? '') : null,
                   onTap: () {
                     if (widget.onSelect != null) {
                       widget.onSelect!(country);

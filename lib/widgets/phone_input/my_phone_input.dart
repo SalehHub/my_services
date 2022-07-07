@@ -10,6 +10,7 @@ class MyPhoneInput extends StatelessWidget {
     this.controller,
     this.onCountrySelect,
     this.value,
+    this.labelText,
   });
 
   final ValueChanged<String>? onChanged;
@@ -17,6 +18,7 @@ class MyPhoneInput extends StatelessWidget {
   final Country selectedCountry;
   final TextEditingController? controller;
   final String? value;
+  final String? labelText;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +29,10 @@ class MyPhoneInput extends StatelessWidget {
       length: 12,
       controller: controller,
       prefixText: selectedCountry.dialCode,
-      labelText: myServicesLabels.mobileNumber,
+      labelText: labelText ?? myServicesLabels.mobileNumber,
       validator: defaultFieldRequiredValidator,
       textInputAction: TextInputAction.done,
+      keyboardType: TextInputType.number,
       textDirection: TextDirection.ltr,
       directionalityTextDirection: TextDirection.ltr,
 
@@ -59,11 +62,77 @@ class MyPhoneInput extends StatelessWidget {
         MyServices.services.dialog.show(
           title: myServicesLabels.countryDialCode,
           children: [
-            CountrySearchListWidget(countries, MyServices.services.locale.currentLocaleLangCode(context), onSelect: onCountrySelect),
+            CountrySearchListWidget(
+              countries,
+              MyServices.services.locale.currentLocaleLangCode(context),
+              onSelect: onCountrySelect,
+            ),
           ],
         );
       },
       child: Item(country: selectedCountry, useEmoji: true),
     );
+  }
+}
+
+class MyCountryInput extends StatelessWidget {
+  const MyCountryInput({
+    super.key,
+    required this.selectedCountry,
+    this.onCountrySelect,
+    this.labelText,
+  });
+
+  final ValueChanged<Country>? onCountrySelect;
+  final Country selectedCountry;
+  final String? labelText;
+
+  @override
+  Widget build(BuildContext context) {
+    var myServicesLabels = getMyServicesLabels(context);
+    return Builder(builder: (context) {
+      return MyTextInput(
+        key: selectedCountry.alpha2Code != null ? Key(selectedCountry.alpha2Code!) : null,
+        onTap: () => showPopup(context),
+        withController: false,
+        value: selectedCountry.localeName(),
+        digitsOnly: true,
+        length: 12,
+        controller: null,
+        labelText: labelText ?? myServicesLabels.country,
+        validator: defaultFieldRequiredValidator,
+        textInputAction: TextInputAction.done,
+        prefixIcon: buildSuffix(),
+        suffixIcon: buildPrefix(),
+        contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+      );
+    });
+  }
+
+  Icon buildPrefix() => const Icon(Icons.flag);
+
+  void showPopup(BuildContext context) {
+    var myServicesLabels = getMyServicesLabels(context);
+    List<Country> countries = CountryProvider.getCountriesData(countries: []);
+    MyServices.services.dialog.show(
+      title: myServicesLabels.country,
+      children: [
+        CountrySearchListWidget(
+          countries,
+          MyServices.services.locale.currentLocaleLangCode(context),
+          onSelect: onCountrySelect,
+          showDailCode: false,
+        ),
+      ],
+    );
+  }
+
+  Widget buildSuffix() {
+    return Builder(builder: (context) {
+      return GestureDetector(
+        onTap: () => showPopup(context),
+        child: Item(country: selectedCountry, useEmoji: true),
+      );
+    });
   }
 }

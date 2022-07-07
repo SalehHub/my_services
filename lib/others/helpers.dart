@@ -169,8 +169,7 @@ class Helpers {
 
   String getTimeAgo(DateTime time, [String? langCode]) {
     if (langCode == null) {
-      final BuildContext context = ServiceNav.context;
-      Locale locale = Localizations.localeOf(context);
+      Locale locale = Localizations.localeOf(MyServices.context);
       langCode = locale.languageCode.toLowerCase();
     }
 
@@ -188,7 +187,7 @@ class Helpers {
 
   //start-mapLauncher
   Future<void> openMap(double lat, double lng, String? title) async {
-    MyServicesLocalizationsData labels = getMyServicesLabels(ServiceNav.context);
+    MyServicesLocalizationsData labels = getMyServicesLabels(MyServices.context);
 
     final Coords coords = Coords(lat, lng);
     final List<AvailableMap> availableMaps = await MapLauncher.installedMaps;

@@ -19,6 +19,7 @@ class MyTextInput extends StatefulWidget {
     this.focusNode,
     this.onFieldSubmitted,
     this.isPassword = false,
+    this.withController = true,
     this.borderRadius,
     this.maxLines = 1,
     this.length,
@@ -29,12 +30,14 @@ class MyTextInput extends StatefulWidget {
     this.labelStyle,
     this.floatingLabelStyle,
     this.floatingLabel = false,
+    this.withPasteButton = false,
     this.strutStyle,
     this.style,
     this.border,
     this.isDropDown = false,
     this.items = const [],
     this.widget,
+    this.onTap,
   });
 
   final bool show;
@@ -65,10 +68,13 @@ class MyTextInput extends StatefulWidget {
   final TextStyle? labelStyle;
   final TextStyle? floatingLabelStyle;
   final bool floatingLabel;
+  final bool withPasteButton;
+  final bool withController;
   final StrutStyle? strutStyle;
   final InputBorder? border;
   final List<MyDropdownMenuItemData> items;
   final Widget? widget;
+  final GestureTapCallback? onTap;
 
   @override
   State<MyTextInput> createState() => _MyTextInputState();
@@ -80,11 +86,9 @@ class _MyTextInputState extends State<MyTextInput> {
   @override
   void initState() {
     super.initState();
-    if (!widget.isDropDown) {
+    if (widget.isDropDown == false && widget.withController == true) {
       controller = widget.controller ?? TextEditingController();
       controller?.text = widget.value ?? "";
-      // print(widget.value);
-      // print(controller);
     }
   }
 
@@ -101,9 +105,7 @@ class _MyTextInputState extends State<MyTextInput> {
 
   @override
   void didUpdateWidget(covariant MyTextInput oldWidget) {
-    // print("didUpdateWidget");
-    // print(widget.value);
-    if (!widget.isDropDown) {
+    if (widget.isDropDown == false && widget.withController == true) {
       if (widget.value != controller!.text) {
         controller?.text = widget.value ?? "";
       }
@@ -182,7 +184,26 @@ class _MyTextInputState extends State<MyTextInput> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildLabel(context),
+          Row(
+            children: [
+              Expanded(child: buildLabel(context)),
+              //
+              if (widget.withPasteButton)
+                IconButton(
+                  onPressed: () async {
+                    String? data = (await Clipboard.getData('text/plain'))?.text;
+                    if (data != null) {
+                      // controller?.text = data;
+                      if (widget.onChanged != null) {
+                        widget.onChanged!(data);
+                      }
+                    }
+                  },
+                  icon: const Icon(Mdi.contentPaste),
+                ),
+              //
+            ],
+          ),
           if (widget.widget != null)
             Container(
               width: double.infinity,
@@ -214,9 +235,16 @@ class _MyTextInputState extends State<MyTextInput> {
 
   Widget buildTextFormField() {
     return TextFormField(
+      //
+      controller: widget.withController ? controller : null,
+      initialValue: widget.withController ? null : widget.value,
+      //
+      onTap: widget.onTap,
+      readOnly: widget.onTap != null,
+      //
       autocorrect: !widget.isPassword,
       enableSuggestions: !widget.isPassword,
-      controller: controller,
+      //
       validator: widget.validator,
       textDirection: widget.textDirection,
       obscureText: widget.isPassword,
@@ -234,6 +262,7 @@ class _MyTextInputState extends State<MyTextInput> {
       onChanged: (String v) {
         if (widget.onChanged != null) {
           widget.onChanged!(v);
+          setState(() {});
         }
       },
       focusNode: widget.focusNode,
