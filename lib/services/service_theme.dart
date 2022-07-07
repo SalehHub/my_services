@@ -1,10 +1,6 @@
 import '../my_services.dart';
 
 class ServiceTheme {
-  // const ServiceTheme _s = ServiceTheme._();
-  // factory ServiceTheme() => _s;
-  // const ServiceTheme._();
-  //
   static const double elevation = 2;
 
   MyThemeData _dark = MyThemeData.dark;
@@ -157,19 +153,28 @@ class ServiceTheme {
       listTileTheme: mainThemeData.listTileTheme.copyWith(
         shape: circularBorderRadius,
         iconColor: iconTheme.color,
-        selectedColor: Colors.red,
       ),
       switchTheme: mainThemeData.switchTheme.copyWith(
         thumbColor: MaterialStateProperty.resolveWith((states) {
-          return states.contains(MaterialState.selected) ? colorScheme.tertiary : Colors.grey;
+          return states.contains(MaterialState.selected) ? colorScheme.onTertiary : Colors.grey;
         }),
         trackColor: MaterialStateProperty.resolveWith((states) {
-          return states.contains(MaterialState.selected) ? colorScheme.onTertiary : Colors.grey.shade200;
+          return states.contains(MaterialState.selected) ? colorScheme.tertiary : Colors.grey.shade200;
         }),
       ),
-      //
+      radioTheme: mainThemeData.radioTheme.copyWith(
+        fillColor: MaterialStateProperty.resolveWith((states) {
+          return states.contains(MaterialState.selected) ? colorScheme.onTertiary : Colors.grey;
+        }),
+      ),
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
         shape: circularBorderRadius,
+        fillColor: MaterialStateProperty.resolveWith((states) {
+          return states.contains(MaterialState.selected) ? colorScheme.primary : Colors.grey;
+        }),
+        checkColor: MaterialStateProperty.resolveWith((states) {
+          return states.contains(MaterialState.selected) ? colorScheme.onPrimary : Colors.grey;
+        }),
       ),
       inputDecorationTheme: mainThemeData.inputDecorationTheme.copyWith(
         alignLabelWithHint: true,
