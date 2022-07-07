@@ -61,24 +61,27 @@ class AppLauncher {
     this.config,
     this.events,
   }) {
+    //register all services
     MyServices.register();
 
+    //add delegates
+    MyServices.services.locale.addLocalizationsDelegates(delegates);
+
+    //configure firebase
     if (config != null) {
       MyServices.appConfig = config!.copyWith(
         withCrashlytics: config!.withFirebase == true && config!.withCrashlytics == true,
         withFCM: config!.withFirebase == true && config!.withFCM == true,
       );
     }
+
+    //add app events
     if (events != null) {
       MyServices.appEvents = events!;
     }
 
     MyServices.services.theme.setDark(darkTheme);
     MyServices.services.theme.setLight(lightTheme);
-
-    // if (storage != null) {
-    //   MyServices.storage = storage!;
-    // }
 
     MyServices.services.theme.setBorderRadius(borderRadius);
 
@@ -116,7 +119,7 @@ class AppLauncher {
         initialGeneralStateProvider.overrideWithValue(_generalState),
         ..._readyOverrides,
       ],
-      child: AppStart(homePage: homePage, delegates: delegates),
+      child: AppStart(homePage: homePage),
     );
   }
 
@@ -131,9 +134,8 @@ class AppLauncher {
 }
 
 class AppStart extends StatelessWidget {
-  const AppStart({super.key, required this.delegates, required this.homePage});
+  const AppStart({super.key, required this.homePage});
 
-  final List<LocalizationsDelegate<dynamic>> delegates;
   final Widget homePage;
 
   @override
@@ -143,7 +145,7 @@ class AppStart extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateTitle: MyServices.appEvents.onGenerateTitle,
         //
-        localizationsDelegates: MyServices.services.locale.localizationsDelegates(delegates),
+        localizationsDelegates: MyServices.services.locale.localizationsDelegates,
         supportedLocales: MyServices.services.locale.supportedLocales,
         locale: MyServices.providers.watchLocale(ref),
         //

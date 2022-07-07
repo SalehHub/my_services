@@ -86,13 +86,18 @@ class ServiceLocale {
   //we can not use ServiceNav.context in here
   Locale currentLocale(BuildContext context) => Localizations.localeOf(context);
 
-  List<LocalizationsDelegate<dynamic>> localizationsDelegates([List<LocalizationsDelegate<dynamic>> others = const []]) => <LocalizationsDelegate<dynamic>>[
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        const MyServicesLocalizationsDelegate(),
-        ...others,
-      ];
+  void addLocalizationsDelegates([List<LocalizationsDelegate<dynamic>> others = const []]) {
+    delegates.addAll(others);
+  }
+
+  List<LocalizationsDelegate<dynamic>> delegates = [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    const MyServicesLocalizationsDelegate(),
+  ];
+
+  List<LocalizationsDelegate<dynamic>> get localizationsDelegates => delegates;
 
   bool isSupportedLocale(Locale locale) => supportedLocales.where((l) => l.languageCode == locale.languageCode).isNotEmpty;
 
