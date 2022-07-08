@@ -19,8 +19,6 @@ export 'my_text_input_border.dart';
 export 'no_notification_permission_card.dart'; //firebaseMessaging
 export 'page_image_viewer.dart'; //photoView
 export 'page_new_app_version.dart';
-export 'phone_input/country_model.dart';
-export 'phone_input/country_provider.dart';
 export 'phone_input/my_phone_input.dart';
 export 'unfocus.dart';
 export 'will_pop_scope_widget.dart';

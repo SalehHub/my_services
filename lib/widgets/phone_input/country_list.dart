@@ -7243,35 +7243,29 @@ class CountryWidget extends StatelessWidget {
               }
             }
           : null,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 15),
       title: Text(name),
-      subtitle: showDialCode
-          ? Text(
-              country.dialCode ?? "",
-              textDirection: TextDirection.ltr,
-              textAlign: TextAlign.end,
-            )
-          : null,
-      horizontalTitleGap: 2,
+      subtitle: showDialCode ? Text(country.dialCode ?? "", textDirection: TextDirection.ltr, textAlign: TextAlign.end) : null,
+      horizontalTitleGap: 4,
       leading: CountryEmoji(country: country),
     );
   }
 }
 
 class CountryEmoji extends StatelessWidget {
-  const CountryEmoji({
-    super.key,
-    required this.country,
-  });
-
+  const CountryEmoji({super.key, required this.country});
   final Country country;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      Utils.generateFlagEmojiUnicode(country.code),
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
+    return Container(
+      alignment: Alignment.center,
+      width: 50,
+      child: Text(
+        Utils.generateFlagEmojiUnicode(country.code),
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
+      ),
     );
   }
 }
