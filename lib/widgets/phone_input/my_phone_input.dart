@@ -27,7 +27,7 @@ class MyPhoneInput extends StatelessWidget {
       digitsOnly: true,
       length: 12,
       controller: controller,
-      prefixText: selectedCountry.dialCode,
+      // prefixText: selectedCountry.dialCode,
       labelText: labelText ?? myServicesLabels.mobileNumber,
       validator: defaultFieldRequiredValidator,
       textInputAction: TextInputAction.done,
@@ -126,7 +126,7 @@ class MyCountryInput extends StatelessWidget {
     return Builder(builder: (context) {
       return GestureDetector(
         onTap: () => showPopup(context),
-        child: CountryEmoji(country: selectedCountry),
+        child: CountryEmoji(country: selectedCountry, showDialCode: false),
       );
     });
   }

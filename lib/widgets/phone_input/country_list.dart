@@ -7245,27 +7245,50 @@ class CountryWidget extends StatelessWidget {
           : null,
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
       title: Text(name),
-      subtitle: showDialCode ? Text(country.dialCode ?? "", textDirection: TextDirection.ltr, textAlign: TextAlign.end) : null,
+      subtitle: showDialCode
+          ? Row(
+              children: [
+                Text(
+                  country.dialCode ?? "",
+                  textDirection: TextDirection.ltr,
+                  textAlign: TextAlign.start,
+                ),
+              ],
+            )
+          : null,
       horizontalTitleGap: 4,
-      leading: CountryEmoji(country: country),
+      leading: CountryEmoji(country: country, showDialCode: false),
     );
   }
 }
 
 class CountryEmoji extends StatelessWidget {
-  const CountryEmoji({super.key, required this.country});
+  const CountryEmoji({
+    super.key,
+    required this.country,
+    this.showDialCode = true,
+  });
   final Country country;
+  final bool showDialCode;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 50,
-      child: Text(
-        Utils.generateFlagEmojiUnicode(country.code),
-        textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
-      ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Text(
+            Utils.generateFlagEmojiUnicode(country.code),
+            style: getTextTheme(context).headline6?.copyWith(height: 0, fontWeight: FontWeight.bold),
+          ),
+        ),
+        if (showDialCode)
+          Text(
+            country.dialCode ?? "",
+            style: getTextTheme(context).subtitle1?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
+          ),
+      ],
     );
   }
 }
