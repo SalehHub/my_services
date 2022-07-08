@@ -1,6 +1,5 @@
 import '../../my_services.dart';
-import 'countries_search_list_widget.dart';
-import 'item.dart';
+import 'country_list.dart';
 
 class MyPhoneInput extends StatelessWidget {
   const MyPhoneInput({
@@ -35,18 +34,9 @@ class MyPhoneInput extends StatelessWidget {
       keyboardType: TextInputType.number,
       textDirection: TextDirection.ltr,
       directionalityTextDirection: TextDirection.ltr,
-
-      // prefixIcon: buildPrefix(),
-      // suffixIcon: buildSuffix(context ),
       prefixIcon: buildSuffix(context),
       suffixIcon: buildPrefix(),
-
-      // prefixIcon: MyServices.services.locale.isAr(context) ? buildPrefix() : buildSuffix(context),
-      // suffixIcon: MyServices.services.locale.isAr(context) ? buildSuffix(context) : buildPrefix(),
-
       contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
-      // suffixIcon: buildSuffix(context),
-      // suffixIcon: MyServices.services.locale.isAr(context) ? buildSuffix(context) : buildPrefix(),
       onChanged: onChanged,
     );
   }
@@ -55,22 +45,18 @@ class MyPhoneInput extends StatelessWidget {
 
   Widget buildSuffix(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
-    List<Country> countries = CountryProvider.getCountriesData(countries: []);
-
     return GestureDetector(
       onTap: () {
         MyServices.services.dialog.show(
-          title: myServicesLabels.countryDialCode,
-          children: [
-            CountrySearchListWidget(
-              countries,
-              MyServices.services.locale.currentLocaleLangCode(context),
-              onSelect: onCountrySelect,
-            ),
-          ],
+          title: myServicesLabels.country,
+          child: CountriesListWidget(
+            showDialCode: true,
+            popOnSelect: true,
+            onCountrySelect: onCountrySelect,
+          ),
         );
       },
-      child: Item(country: selectedCountry, useEmoji: true),
+      child: CountryEmoji(country: selectedCountry),
     );
   }
 }
@@ -92,10 +78,10 @@ class MyCountryInput extends StatelessWidget {
     var myServicesLabels = getMyServicesLabels(context);
     return Builder(builder: (context) {
       return MyTextInput(
-        key: selectedCountry.alpha2Code != null ? Key(selectedCountry.alpha2Code!) : null,
+        key: Key(selectedCountry.code),
         onTap: () => showPopup(context),
         withController: false,
-        value: selectedCountry.localeName(),
+        value: CountriesData.getCountryLocaleName(selectedCountry.code, MyServices.services.locale.currentLocaleLangCode(context)),
         digitsOnly: true,
         length: 12,
         controller: null,
@@ -113,25 +99,34 @@ class MyCountryInput extends StatelessWidget {
 
   void showPopup(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
-    List<Country> countries = CountryProvider.getCountriesData(countries: []);
+
     MyServices.services.dialog.show(
       title: myServicesLabels.country,
-      children: [
-        CountrySearchListWidget(
-          countries,
-          MyServices.services.locale.currentLocaleLangCode(context),
-          onSelect: onCountrySelect,
-          showDailCode: false,
-        ),
-      ],
+      child: CountriesListWidget(
+        showDialCode: false,
+        popOnSelect: true,
+        onCountrySelect: onCountrySelect,
+      ),
     );
+
+    // MyServices.services.dialog.show(
+    //   title: myServicesLabels.country,
+    //   children: [
+    //     CountrySearchListWidget(
+    //       countries,
+    //       MyServices.services.locale.currentLocaleLangCode(context),
+    //       onSelect: onCountrySelect,
+    //       showDailCode: false,
+    //     ),
+    //   ],
+    // );
   }
 
   Widget buildSuffix() {
     return Builder(builder: (context) {
       return GestureDetector(
         onTap: () => showPopup(context),
-        child: Item(country: selectedCountry, useEmoji: true),
+        child: CountryEmoji(country: selectedCountry),
       );
     });
   }

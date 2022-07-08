@@ -1,45 +1,34 @@
-/// [Countries] has a static method [countryList] that returns list of Map for most country around the world.
-class Countries {
-  /// returns `List<Map<String, dynamic>` of countries which contains
-  ///  *  num_code
-  ///  *  alpha_2_code
-  ///  *  alpha_3_code
-  ///  *  en_short_name
-  ///  *  nationality
-  ///  *  dial_code
-  ///  *  nameTranslations
-  ///
-  ///   ```dart
-  ///     {
-  ///    "num_code": "566",
-  ///    "alpha_2_code": "NG",
-  ///    "alpha_3_code": "NGA",
-  ///    "en_short_name": "Nigeria",
-  ///    "nationality": "Nigerian",
-  ///    "dial_code": "+234",
-  ///    "nameTranslations": {
-  ///      "sk": "Nigéria",
-  ///      "se": "Nigeria",
-  ///      "pl": "Nigeria",
-  ///      "no": "Nigeria",
-  ///      "ja": "ナイジェリア",
-  ///      "it": "Nigeria",
-  ///      "zh": "尼日利亚",
-  ///      "nl": "Nigeria",
-  ///      "de": "Nigeria",
-  ///      "fr": "Nigéria",
-  ///      "es": "Nigeria",
-  ///      "en": "Nigeria",
-  ///      "pt_BR": "Nigéria",
-  ///      "sr-Cyrl": "Нигерија",
-  ///      "sr-Latn": "Nigerija",
-  ///      "zh_TW": "奈及利亞",
-  ///      "ar": "نيجيريا"
-  ///        }
-  ///     }
-  ///   ```
-  ///
-  static List<Map<String, dynamic>> get countryList => _countryList;
+import '../../my_services.dart';
+
+class CountriesData {
+  const CountriesData._();
+  static const CountriesData _s = CountriesData._();
+  factory CountriesData() => _s;
+
+  static List<Map<String, dynamic>> get getAll => _countryList;
+
+  static Map<String, dynamic> getByCountryCode(String code) => getAll.firstWhere(
+        (e) => e['alpha_2_code'].toString().toLowerCase() == code.toLowerCase(),
+      );
+  static Map<String, dynamic> getCountryByDialCode(String dialCode) => getAll.firstWhere(
+        (e) => e['dial_code'].toString().toLowerCase() == dialCode.toLowerCase(),
+      );
+  static List<Map<String, dynamic>> search(String term) {
+    term = term.toLowerCase();
+    return getAll.where(
+      (e) {
+        List<String> names = (e['nameTranslations'] as Map<String, String>).values.toList();
+        return e['alpha_2_code'].toString().toLowerCase() == term || //
+            e['dial_code'].toString().toLowerCase().contains(term) || //
+            names.where((e) => e.toLowerCase().contains(term)).isNotEmpty;
+      },
+    ).toList();
+  }
+
+  static String getCountryLocaleName(String code, String locale) {
+    var country = getByCountryCode(code);
+    return country['nameTranslations'][locale];
+  }
 
   static final List<Map<String, dynamic>> _countryList = [
     {
@@ -7119,4 +7108,177 @@ class Countries {
       }
     }
   ];
+}
+
+class CountriesModel {
+  const CountriesModel._();
+  static const CountriesModel _s = CountriesModel._();
+  factory CountriesModel() => _s;
+
+  static Country getByCountryCode(String code) {
+    Map<String, dynamic> data = CountriesData.getByCountryCode(code);
+    return Country(name: data['en_short_name'], code: data['alpha_2_code'], dialCode: data['dial_code']);
+  }
+
+  static Country getCountryByDialCode(String dialCode) {
+    Map<String, dynamic> data = CountriesData.getCountryByDialCode(dialCode);
+    return Country(name: data['en_short_name'], code: data['alpha_2_code'], dialCode: data['dial_code']);
+  }
+
+  static List<Country> search(String term) {
+    return CountriesData.search(term).map((data) => Country(name: data['en_short_name'], code: data['alpha_2_code'], dialCode: data['dial_code'])).toList();
+  }
+
+  static List<Country> getAll() {
+    return CountriesData.getAll.map((data) => Country(name: data['en_short_name'], code: data['alpha_2_code'], dialCode: data['dial_code'])).toList();
+  }
+}
+
+class CountriesListWidget extends StatefulWidget {
+  const CountriesListWidget({
+    super.key,
+    this.showDialCode = true,
+    this.popOnSelect = true,
+    this.onCountrySelect,
+    this.topCountries,
+  });
+  final bool showDialCode;
+  final ValueChanged<Country>? onCountrySelect;
+  final List<Country>? topCountries;
+  final bool popOnSelect;
+
+  @override
+  State<CountriesListWidget> createState() => _CountriesListWidgetState();
+}
+
+class _CountriesListWidgetState extends State<CountriesListWidget> {
+  String searchTerm = '';
+
+  List<Country> get topCountries {
+    if (searchTerm.trim() != "") {
+      return [];
+    } else if (widget.topCountries != null) {
+      return widget.topCountries!;
+    }
+
+    return [
+      CountriesModel.getByCountryCode("SA"),
+      CountriesModel.getByCountryCode("AE"),
+      CountriesModel.getByCountryCode("OM"),
+      CountriesModel.getByCountryCode("KW"),
+      CountriesModel.getByCountryCode("BH"),
+      CountriesModel.getByCountryCode("QA"),
+      //
+      CountriesModel.getByCountryCode("YE"),
+      CountriesModel.getByCountryCode("EG"),
+      CountriesModel.getByCountryCode("JO"),
+      CountriesModel.getByCountryCode("IQ"),
+      //
+    ];
+  }
+
+  List<Country> get countries => [...topCountries, ...CountriesModel.search(searchTerm)];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Column(
+        children: [
+          MyTextInput(
+            textInputAction: TextInputAction.search,
+            value: searchTerm,
+            floatingLabel: true,
+            margin: const EdgeInsets.only(top: 0, bottom: 5, left: 20, right: 20),
+            prefixIcon: const Icon(iconSearch),
+            labelText: getMyServicesLabels(context).searchByCountryNameOrDialCode,
+            labelStyle: getTextTheme(context).caption,
+            onChanged: (t) => setState(() => searchTerm = t),
+          ),
+          Expanded(
+            child: ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              children: countries
+                  .map(
+                    (e) => CountryWidget(
+                      country: e,
+                      onCountrySelect: widget.onCountrySelect,
+                      showDialCode: widget.showDialCode,
+                      popOnSelect: widget.popOnSelect,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CountryWidget extends StatelessWidget {
+  const CountryWidget({
+    super.key,
+    required this.country,
+    this.showDialCode = true,
+    this.popOnSelect = true,
+    this.onCountrySelect,
+  });
+
+  final Country country;
+  final bool showDialCode;
+  final bool popOnSelect;
+  final ValueChanged<Country>? onCountrySelect;
+
+  @override
+  Widget build(BuildContext context) {
+    String name = CountriesData.getCountryLocaleName(country.code, MyServices.services.locale.currentLocaleLangCode(context));
+
+    return ListTile(
+      onTap: onCountrySelect != null
+          ? () {
+              onCountrySelect!(country);
+              if (popOnSelect) {
+                pop();
+              }
+            }
+          : null,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 25),
+      title: Text(name),
+      subtitle: showDialCode
+          ? Text(
+              country.dialCode ?? "",
+              textDirection: TextDirection.ltr,
+              textAlign: TextAlign.end,
+            )
+          : null,
+      horizontalTitleGap: 2,
+      leading: CountryEmoji(country: country),
+    );
+  }
+}
+
+class CountryEmoji extends StatelessWidget {
+  const CountryEmoji({
+    super.key,
+    required this.country,
+  });
+
+  final Country country;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      Utils.generateFlagEmojiUnicode(country.code),
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.headline5?.copyWith(height: 1.3),
+    );
+  }
+}
+
+class Utils {
+  static String generateFlagEmojiUnicode(String countryCode) {
+    const base = 127397;
+    return countryCode.codeUnits.map((e) => String.fromCharCode(base + e)).toList().reduce((value, element) => value + element).toString();
+  }
 }
