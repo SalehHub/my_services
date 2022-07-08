@@ -20,9 +20,7 @@ Country _$CountryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Country {
-  String get name => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
-  String? get dialCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +30,7 @@ mixin _$Country {
 /// @nodoc
 abstract class $CountryCopyWith<$Res> {
   factory $CountryCopyWith(Country value, $Res Function(Country) then) = _$CountryCopyWithImpl<$Res>;
-  $Res call({String name, String code, String? dialCode});
+  $Res call({String code});
 }
 
 /// @nodoc
@@ -45,23 +43,13 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? name = freezed,
     Object? code = freezed,
-    Object? dialCode = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      dialCode: dialCode == freezed
-          ? _value.dialCode
-          : dialCode // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -70,7 +58,7 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
 abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
   factory _$$_CountryCopyWith(_$_Country value, $Res Function(_$_Country) then) = __$$_CountryCopyWithImpl<$Res>;
   @override
-  $Res call({String name, String code, String? dialCode});
+  $Res call({String code});
 }
 
 /// @nodoc
@@ -82,23 +70,13 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res> impleme
 
   @override
   $Res call({
-    Object? name = freezed,
     Object? code = freezed,
-    Object? dialCode = freezed,
   }) {
     return _then(_$_Country(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
       code: code == freezed
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-      dialCode: dialCode == freezed
-          ? _value.dialCode
-          : dialCode // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -106,20 +84,16 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res> impleme
 /// @nodoc
 @JsonSerializable()
 class _$_Country extends _Country with DiagnosticableTreeMixin {
-  _$_Country({required this.name, required this.code, required this.dialCode}) : super._();
+  _$_Country({required this.code}) : super._();
 
   factory _$_Country.fromJson(Map<String, dynamic> json) => _$$_CountryFromJson(json);
 
   @override
-  final String name;
-  @override
   final String code;
-  @override
-  final String? dialCode;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Country(name: $name, code: $code, dialCode: $dialCode)';
+    return 'Country(code: $code)';
   }
 
   @override
@@ -127,24 +101,17 @@ class _$_Country extends _Country with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Country'))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('dialCode', dialCode));
+      ..add(DiagnosticsProperty('code', code));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Country &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.code, code) &&
-            const DeepCollectionEquality().equals(other.dialCode, dialCode));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Country && const DeepCollectionEquality().equals(other.code, code));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(name), const DeepCollectionEquality().hash(code), const DeepCollectionEquality().hash(dialCode));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(code));
 
   @JsonKey(ignore: true)
   @override
@@ -157,17 +124,13 @@ class _$_Country extends _Country with DiagnosticableTreeMixin {
 }
 
 abstract class _Country extends Country {
-  factory _Country({required final String name, required final String code, required final String? dialCode}) = _$_Country;
+  factory _Country({required final String code}) = _$_Country;
   _Country._() : super._();
 
   factory _Country.fromJson(Map<String, dynamic> json) = _$_Country.fromJson;
 
   @override
-  String get name;
-  @override
   String get code;
-  @override
-  String? get dialCode;
   @override
   @JsonKey(ignore: true)
   _$$_CountryCopyWith<_$_Country> get copyWith => throw _privateConstructorUsedError;
