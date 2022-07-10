@@ -8,10 +8,7 @@ part 'country.g.dart';
 class Country with _$Country {
   const Country._();
 
-  factory Country({
-    required String code,
-    // required String? dialCode,
-  }) = _Country;
+  const factory Country({required String code}) = _Country;
 
   String localeName([String? locale]) {
     Map<String, dynamic> country = CountriesData.getByCountryCode(code);

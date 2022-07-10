@@ -92,8 +92,8 @@ class _MyPopupMenuItemWidget extends ConsumerWidget {
       children: <Widget>[
         widget ?? Padding(padding: const EdgeInsets.all(0.0), child: Icon(icon)),
         const SizedBox(width: 4),
-        Text(title, style: getTextTheme(context).bodyText1?.copyWith(height: 2)),
-        const Spacer(),
+        Expanded(child: Text(title, style: getTextTheme(context).bodyText1?.copyWith(height: 2))),
+        // const Spacer(),
         if (tail != null) tail!,
       ],
     );

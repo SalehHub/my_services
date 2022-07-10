@@ -84,7 +84,7 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res> impleme
 /// @nodoc
 @JsonSerializable()
 class _$_Country extends _Country with DiagnosticableTreeMixin {
-  _$_Country({required this.code}) : super._();
+  const _$_Country({required this.code}) : super._();
 
   factory _$_Country.fromJson(Map<String, dynamic> json) => _$$_CountryFromJson(json);
 
@@ -124,8 +124,8 @@ class _$_Country extends _Country with DiagnosticableTreeMixin {
 }
 
 abstract class _Country extends Country {
-  factory _Country({required final String code}) = _$_Country;
-  _Country._() : super._();
+  const factory _Country({required final String code}) = _$_Country;
+  const _Country._() : super._();
 
   factory _Country.fromJson(Map<String, dynamic> json) = _$_Country.fromJson;
 
