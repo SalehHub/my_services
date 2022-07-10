@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    guests: 'Guests',
+    guest: 'Guest',
     products: 'Products',
     product: 'Product',
     users: 'Users',
@@ -140,6 +142,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    guests: 'ضيوف',
+    guest: 'ضيف',
     products: 'منتجات',
     product: 'منتج',
     users: 'مستخدمين',
@@ -272,6 +276,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    guests: 'Invités',
+    guest: 'Invité',
     products: 'Des produits',
     product: 'Produit',
     users: 'Utilisateurs',
@@ -404,6 +410,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    guests: 'Huéspedes',
+    guest: 'Invitado',
     products: 'Productos',
     product: 'Producto',
     users: 'Usuarios',
@@ -536,6 +544,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    guests: 'Misafirler',
+    guest: 'Misafir',
     products: 'Ürün:% s',
     product: 'Ürün',
     users: 'Kullanıcılar',
@@ -671,6 +681,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.guests,
+    required this.guest,
     required this.products,
     required this.product,
     required this.users,
@@ -803,6 +815,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String guests;
+  final String guest;
   final String products;
   final String product;
   final String users;
@@ -934,6 +948,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        guests: map['guests']! as String,
+        guest: map['guest']! as String,
         products: map['products']! as String,
         product: map['product']! as String,
         users: map['users']! as String,
@@ -1067,6 +1083,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? guests,
+    String? guest,
     String? products,
     String? product,
     String? users,
@@ -1199,6 +1217,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        guests: guests ?? this.guests,
+        guest: guest ?? this.guest,
         products: products ?? this.products,
         product: product ?? this.product,
         users: users ?? this.users,
@@ -1335,6 +1355,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          guests == other.guests &&
+          guest == other.guest &&
           products == other.products &&
           product == other.product &&
           users == other.users &&
@@ -1468,6 +1490,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      guests.hashCode ^
+      guest.hashCode ^
       products.hashCode ^
       product.hashCode ^
       users.hashCode ^
