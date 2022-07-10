@@ -84,7 +84,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       sliver: SliverAppBar(
         toolbarHeight: 50,
         centerTitle: true,
-        bottom: _isValidTabBar ? _buildAppBarBottom() : null,
+        bottom: _isValidTabBar && showTabBar ? _buildAppBarBottom() : null,
         title: appBarTitle,
         leading: _buildAppBarLeading(),
         actions: _buildAppBarActions(),
@@ -128,10 +128,13 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   PreferredSizeWidget? _buildAppBarBottom() {
     return PreferredSize(
       preferredSize: const Size.fromHeight(35),
-      child: TabBar(
-        controller: _tabController,
-        isScrollable: true,
-        tabs: tabs!,
+      child: IgnorePointer(
+        ignoring: ignoreTabBarTap,
+        child: TabBar(
+          controller: _tabController,
+          isScrollable: true,
+          tabs: tabs!,
+        ),
       ),
     );
   }
@@ -343,8 +346,11 @@ mixin TabsMixin<T extends StatefulWidget> on State<T> {
   //tab view
   List<Widget>? get tabs => null;
   bool isTabView = false;
+  bool showTabBar = true;
+  bool ignoreTabBarTap = false;
 
   TabController? _tabController;
+  TabController? get tabController => _tabController;
 
   void setTabController(TabController tabController, {bool replace = false}) {
     if (replace) {
