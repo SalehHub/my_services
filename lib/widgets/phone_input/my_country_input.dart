@@ -5,18 +5,21 @@ class MyCountryInput extends StatelessWidget {
     super.key,
     required this.selectedCountry,
     this.onCountrySelect,
+    this.enabled = true,
     this.labelText,
   });
 
   final ValueChanged<Country>? onCountrySelect;
   final Country selectedCountry;
   final String? labelText;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
     return Builder(builder: (context) {
       return MyTextInput(
+        enabled: enabled,
         key: Key(selectedCountry.code),
         onTap: () => showPopup(context),
         withController: false,

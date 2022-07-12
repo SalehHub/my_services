@@ -20,6 +20,7 @@ class MyTextInput extends StatefulWidget {
     this.onFieldSubmitted,
     this.isPassword = false,
     this.withController = true,
+    this.enabled = true,
     this.borderRadius,
     this.maxLines = 1,
     this.length,
@@ -70,6 +71,7 @@ class MyTextInput extends StatefulWidget {
   final bool floatingLabel;
   final bool withPasteButton;
   final bool withController;
+  final bool enabled;
   final StrutStyle? strutStyle;
   final InputBorder? border;
   final List<MyDropdownMenuItemData> items;
@@ -241,6 +243,7 @@ class _MyTextInputState extends State<MyTextInput> {
       //
       onTap: widget.onTap,
       readOnly: widget.onTap != null,
+      enabled: widget.enabled,
       //
       autocorrect: !widget.isPassword,
       enableSuggestions: !widget.isPassword,
