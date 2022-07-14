@@ -34,30 +34,30 @@ class MySideMenu extends StatelessWidget {
         backgroundColor: backgroundColor,
         child: ListView(
           children: <Widget>[
-            Hero(
-              tag: imageUrl ?? "d",
-              child: MyContainer(
-                height: 160,
-                bgImageOpacity: 0.1,
-                bgImageUrl: bgImageUrl,
-                bgColor: getColorScheme(context).primary.withOpacity(0.02),
-                bgImageBlurHash: bgImageBlurhash,
-                borderRadius: MyServices.services.theme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
-                onTap: onAvatarTap,
-                child: Center(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      const Spacer(),
-                      if (imageUrl == null)
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: getColorScheme(context).primary,
-                          foregroundColor: getColorScheme(context).onPrimary,
-                          child: Icon(avatarIcon, size: 40),
-                        )
-                      else
-                        MyLoadingImage(
+            MyContainer(
+              height: 160,
+              bgImageOpacity: 0.1,
+              bgImageUrl: bgImageUrl,
+              bgColor: getColorScheme(context).primary.withOpacity(0.02),
+              bgImageBlurHash: bgImageBlurhash,
+              borderRadius: MyServices.services.theme.borderRadius.copyWith(bottomLeft: Radius.zero, bottomRight: Radius.zero),
+              onTap: onAvatarTap,
+              child: Center(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    const Spacer(),
+                    if (imageUrl == null)
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: getColorScheme(context).primary,
+                        foregroundColor: getColorScheme(context).onPrimary,
+                        child: Icon(avatarIcon, size: 40),
+                      )
+                    else
+                      Hero(
+                        tag: imageUrl ?? "d",
+                        child: MyLoadingImage(
                           url: imageUrl!,
                           circle: true,
                           borderColor: getColorScheme(context).primary,
@@ -65,11 +65,11 @@ class MySideMenu extends StatelessWidget {
                           width: 70,
                           height: 70,
                         ),
-                      const SizedBox(height: 10),
-                      Text(name ?? "", style: getTextTheme(context).subtitle1),
-                      Text(email ?? "", style: getTextTheme(context).caption),
-                    ],
-                  ),
+                      ),
+                    const SizedBox(height: 10),
+                    Text(name ?? "", style: getTextTheme(context).subtitle1),
+                    Text(email ?? "", style: getTextTheme(context).caption),
+                  ],
                 ),
               ),
             ),
