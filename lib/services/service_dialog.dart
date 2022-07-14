@@ -5,7 +5,7 @@ class ServiceDialog {
   // static const ServiceDialog _s = ServiceDialog._();
   // factory ServiceDialog() => _s;
   //
-  Future<T?> show<T>({required String title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
+  Future<T?> show<T>({String? title, List<Widget>? children, Widget? child, bool barrierDismissible = true, EdgeInsets? insetPadding, EdgeInsets? contentPadding}) {
     return showDialog<T?>(
         context: MyServices.context,
         barrierDismissible: barrierDismissible,
@@ -74,7 +74,7 @@ class MyDialog extends StatelessWidget {
     this.contentPadding,
   });
 
-  final String title;
+  final String? title;
   final List<Widget>? children;
   final Widget? child;
   final EdgeInsets? insetPadding;
@@ -85,14 +85,14 @@ class MyDialog extends StatelessWidget {
       return SimpleDialog(
         contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
         insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-        title: Text(title, textAlign: TextAlign.center),
+        title: title != null ? MyText(title, textAlign: TextAlign.center) : null,
         children: children,
       );
     }
     return AlertDialog(
       contentPadding: contentPadding ?? const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
       insetPadding: insetPadding ?? const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-      title: Text(title, textAlign: TextAlign.center),
+      title: title != null ? MyText(title, textAlign: TextAlign.center) : null,
       content: SizedBox(
         width: double.maxFinite, //width: double.maxFinite in case the child was a ListView
         child: Unfocus(child: child),
