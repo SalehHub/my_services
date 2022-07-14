@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    privacyPolicy: 'Privacy Policy',
+    and: 'and',
+    termsOfService: 'Terms of Service',
+    byRegisteringYouAgreeTo: 'By registering you agree to',
     guests: 'Guests',
     guest: 'Guest',
     products: 'Products',
@@ -142,6 +146,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    privacyPolicy: 'سياسة الخصوصية',
+    and: 'و',
+    termsOfService: 'شروط الخدمة',
+    byRegisteringYouAgreeTo: 'تسجيلك بالتطبيق يعتبر موافقة منك على',
     guests: 'ضيوف',
     guest: 'ضيف',
     products: 'منتجات',
@@ -276,6 +284,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    privacyPolicy: 'Politique de confidentialité',
+    and: 'et',
+    termsOfService: 'Conditions d\'utilisation',
+    byRegisteringYouAgreeTo: 'En vous inscrivant, vous acceptez',
     guests: 'Invités',
     guest: 'Invité',
     products: 'Des produits',
@@ -410,6 +422,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    privacyPolicy: 'Política de privacidad',
+    and: 'y',
+    termsOfService: 'Términos de servicio',
+    byRegisteringYouAgreeTo: 'Al registrarse, acepta',
     guests: 'Huéspedes',
     guest: 'Invitado',
     products: 'Productos',
@@ -544,6 +560,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    privacyPolicy: 'Gizlilik Politikası',
+    and: 've',
+    termsOfService: 'Kullanım Şartları',
+    byRegisteringYouAgreeTo: 'Kayıt yaparak kabul edersiniz',
     guests: 'Misafirler',
     guest: 'Misafir',
     products: 'Ürün:% s',
@@ -681,6 +701,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.privacyPolicy,
+    required this.and,
+    required this.termsOfService,
+    required this.byRegisteringYouAgreeTo,
     required this.guests,
     required this.guest,
     required this.products,
@@ -815,6 +839,10 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String privacyPolicy;
+  final String and;
+  final String termsOfService;
+  final String byRegisteringYouAgreeTo;
   final String guests;
   final String guest;
   final String products;
@@ -948,6 +976,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        privacyPolicy: map['privacyPolicy']! as String,
+        and: map['and']! as String,
+        termsOfService: map['termsOfService']! as String,
+        byRegisteringYouAgreeTo: map['byRegisteringYouAgreeTo']! as String,
         guests: map['guests']! as String,
         guest: map['guest']! as String,
         products: map['products']! as String,
@@ -1083,6 +1115,10 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? privacyPolicy,
+    String? and,
+    String? termsOfService,
+    String? byRegisteringYouAgreeTo,
     String? guests,
     String? guest,
     String? products,
@@ -1217,6 +1253,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        privacyPolicy: privacyPolicy ?? this.privacyPolicy,
+        and: and ?? this.and,
+        termsOfService: termsOfService ?? this.termsOfService,
+        byRegisteringYouAgreeTo: byRegisteringYouAgreeTo ?? this.byRegisteringYouAgreeTo,
         guests: guests ?? this.guests,
         guest: guest ?? this.guest,
         products: products ?? this.products,
@@ -1355,6 +1395,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          privacyPolicy == other.privacyPolicy &&
+          and == other.and &&
+          termsOfService == other.termsOfService &&
+          byRegisteringYouAgreeTo == other.byRegisteringYouAgreeTo &&
           guests == other.guests &&
           guest == other.guest &&
           products == other.products &&
@@ -1490,6 +1534,10 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      privacyPolicy.hashCode ^
+      and.hashCode ^
+      termsOfService.hashCode ^
+      byRegisteringYouAgreeTo.hashCode ^
       guests.hashCode ^
       guest.hashCode ^
       products.hashCode ^
