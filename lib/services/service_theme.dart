@@ -104,6 +104,7 @@ class ServiceTheme {
     final bool isDark = mainThemeData.brightness == Brightness.dark;
 
     MyThemeData myThemeData = isDark ? _dark : _light;
+    MyThemeData myThemeDataInverse = !isDark ? _dark : _light;
 
     final TextTheme textTheme = _modifyTextHeight(GoogleFonts.tajawalTextTheme(mainThemeData.textTheme));
 
@@ -113,8 +114,14 @@ class ServiceTheme {
       background: myThemeData.background,
       onBackground: myThemeData.onBackground,
       //
+      inverseSurface: _dark.background,
+      onInverseSurface: _light.background,
+      //
       primary: myThemeData.primary,
       onPrimary: myThemeData.onPrimary,
+      //
+      primaryContainer: myThemeDataInverse.primary,
+      onPrimaryContainer: myThemeDataInverse.onPrimary,
       //
       secondary: myThemeData.primary,
       onSecondary: myThemeData.onPrimary,
@@ -167,6 +174,7 @@ class ServiceTheme {
           return states.contains(MaterialState.selected) ? colorScheme.onTertiary : Colors.grey;
         }),
       ),
+
       checkboxTheme: mainThemeData.checkboxTheme.copyWith(
         shape: circularBorderRadius,
         fillColor: MaterialStateProperty.resolveWith((states) {
@@ -236,8 +244,8 @@ class ServiceTheme {
       ),
 
       progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
-        refreshBackgroundColor: colorScheme.surface,
-        color: colorScheme.onSurface,
+        color: isDark ? _light.onPrimary : _light.primary,
+        circularTrackColor:  isDark ? _light.primary : _dark.background,
       ),
 
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
