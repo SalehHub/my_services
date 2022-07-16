@@ -1,5 +1,3 @@
-import '../../my_services.dart';
-
 class CountriesData {
   const CountriesData._();
   static const CountriesData _s = CountriesData._();
