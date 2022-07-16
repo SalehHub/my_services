@@ -2,6 +2,10 @@ import '../my_services.dart';
 import 'general_state_provider.dart';
 
 class Providers {
+  late WidgetRef _ref;
+  WidgetRef get ref => _ref;
+  WidgetRef setRef(WidgetRef ref) => _ref = ref;
+
   // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
   GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
 

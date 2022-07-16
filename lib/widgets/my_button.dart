@@ -7,8 +7,6 @@ class MyButton extends ConsumerWidget {
     required this.text,
     this.child,
     this.onPressed,
-    this.color,
-    this.textColor,
     this.isTextButton = false,
     this.withLoading = true,
     this.circle = false,
@@ -16,8 +14,6 @@ class MyButton extends ConsumerWidget {
   final String text;
   final Widget? child;
   final dynamic id;
-  final Color? color;
-  final Color? textColor;
   final bool withLoading;
   final bool circle;
   final bool isTextButton;
@@ -30,7 +26,6 @@ class MyButton extends ConsumerWidget {
     if (withLoading) {
       if (ServiceLoader.isLoading(ref, _id)) {
         return MyProgressIndicator(
-          color: getColorScheme(context).onPrimary,
           width: progressIndicatorSize,
           height: progressIndicatorSize,
         );
@@ -41,11 +36,8 @@ class MyButton extends ConsumerWidget {
       return child!;
     }
 
-    if (textColor != null) {
-      return MyText(text, color: textColor);
-    }
 
-    return Text(text);
+    return MyText(text);
   }
 
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
@@ -54,7 +46,7 @@ class MyButton extends ConsumerWidget {
         if (ServiceLoader.isLoading(ref, _id)) {
           return Future.value();
         }
-        ServiceLoader.setLoading(ref, _id, true);
+        ServiceLoader.setLoading(_id, true);
       }
 
       try {
@@ -64,7 +56,7 @@ class MyButton extends ConsumerWidget {
       }
 
       if (withLoading) {
-        ServiceLoader.setLoading(ref, _id, false);
+        ServiceLoader.setLoading(_id, false);
       }
     }
     return null;

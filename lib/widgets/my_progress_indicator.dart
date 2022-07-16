@@ -1,10 +1,14 @@
 import '../my_services.dart';
 
 class MyProgressIndicator extends StatelessWidget {
-  const MyProgressIndicator({super.key, this.color, this.margin = EdgeInsets.zero, this.width, this.height});
+  const MyProgressIndicator({
+    super.key,
+    this.margin = EdgeInsets.zero,
+    this.width,
+    this.height,
+  });
 
   final EdgeInsets margin;
-  final Color? color;
   final double? width;
   final double? height;
 
@@ -16,7 +20,19 @@ class MyProgressIndicator extends StatelessWidget {
       child: Center(
         child: Padding(
           padding: margin,
-          child: CircularProgressIndicator.adaptive(backgroundColor: color),
+          child: Builder(builder: (context) {
+            if (getTheme(context).platform == TargetPlatform.android) {
+              return const CircularProgressIndicator();
+            }
+
+            return CircularProgressIndicator.adaptive(
+              backgroundColor: getColor(
+                context,
+                colorWhenDark: getColorScheme(context).primaryContainer,
+                colorWhenLight: getColorScheme(context).onPrimaryContainer,
+              ),
+            );
+          }),
         ),
       ),
     );

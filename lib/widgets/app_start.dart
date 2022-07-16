@@ -141,6 +141,9 @@ class AppStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
+      //
+      MyServices.providers.setRef(ref);
+      //
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateTitle: MyServices.appEvents.onGenerateTitle,
@@ -149,7 +152,7 @@ class AppStart extends StatelessWidget {
         supportedLocales: MyServices.services.locale.supportedLocales,
         locale: MyServices.providers.watchLocale(ref),
         //
-        themeMode: MyServices.services.theme.watchThemeMode(ref),
+        themeMode: MyServices.providers.watchThemeMode(ref),
         theme: MyServices.services.theme.lightTheme,
         darkTheme: MyServices.services.theme.darkTheme,
         //
