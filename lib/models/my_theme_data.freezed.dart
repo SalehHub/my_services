@@ -188,7 +188,7 @@ class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MyThemeData extends _MyThemeData with DiagnosticableTreeMixin {
+class _$_MyThemeData extends _MyThemeData {
   const _$_MyThemeData(
       {this.background = Colors.black,
       this.onBackground = Colors.white,
@@ -241,26 +241,8 @@ class _$_MyThemeData extends _MyThemeData with DiagnosticableTreeMixin {
   final AppBarTheme? appBar;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'MyThemeData(background: $background, onBackground: $onBackground, primary: $primary, onPrimary: $onPrimary, card: $card, onCard: $onCard, error: $error, onError: $onError, success: $success, onSuccess: $onSuccess, appBar: $appBar)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'MyThemeData'))
-      ..add(DiagnosticsProperty('background', background))
-      ..add(DiagnosticsProperty('onBackground', onBackground))
-      ..add(DiagnosticsProperty('primary', primary))
-      ..add(DiagnosticsProperty('onPrimary', onPrimary))
-      ..add(DiagnosticsProperty('card', card))
-      ..add(DiagnosticsProperty('onCard', onCard))
-      ..add(DiagnosticsProperty('error', error))
-      ..add(DiagnosticsProperty('onError', onError))
-      ..add(DiagnosticsProperty('success', success))
-      ..add(DiagnosticsProperty('onSuccess', onSuccess))
-      ..add(DiagnosticsProperty('appBar', appBar));
   }
 
   @override

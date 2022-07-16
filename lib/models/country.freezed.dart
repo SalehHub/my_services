@@ -83,7 +83,7 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res> impleme
 
 /// @nodoc
 @JsonSerializable()
-class _$_Country extends _Country with DiagnosticableTreeMixin {
+class _$_Country extends _Country {
   const _$_Country({required this.code}) : super._();
 
   factory _$_Country.fromJson(Map<String, dynamic> json) => _$$_CountryFromJson(json);
@@ -92,16 +92,8 @@ class _$_Country extends _Country with DiagnosticableTreeMixin {
   final String code;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Country(code: $code)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Country'))
-      ..add(DiagnosticsProperty('code', code));
   }
 
   @override
@@ -119,7 +111,9 @@ class _$_Country extends _Country with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CountryToJson(this);
+    return _$$_CountryToJson(
+      this,
+    );
   }
 }
 

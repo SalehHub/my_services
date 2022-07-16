@@ -181,7 +181,7 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
+class _$_GeneralState extends _GeneralState {
   _$_GeneralState(
       {this.accessToken, this.notificationToken, this.appDeviceData, @LocaleConverter() this.locale, @ThemeModeConverter() this.themeMode, this.isFirstAppRun = false, this.isFirstAppBuildRun = false})
       : super._();
@@ -208,22 +208,8 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
   final bool isFirstAppBuildRun;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'GeneralState(accessToken: $accessToken, notificationToken: $notificationToken, appDeviceData: $appDeviceData, locale: $locale, themeMode: $themeMode, isFirstAppRun: $isFirstAppRun, isFirstAppBuildRun: $isFirstAppBuildRun)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GeneralState'))
-      ..add(DiagnosticsProperty('accessToken', accessToken))
-      ..add(DiagnosticsProperty('notificationToken', notificationToken))
-      ..add(DiagnosticsProperty('appDeviceData', appDeviceData))
-      ..add(DiagnosticsProperty('locale', locale))
-      ..add(DiagnosticsProperty('themeMode', themeMode))
-      ..add(DiagnosticsProperty('isFirstAppRun', isFirstAppRun))
-      ..add(DiagnosticsProperty('isFirstAppBuildRun', isFirstAppBuildRun));
   }
 
   @override
@@ -258,7 +244,9 @@ class _$_GeneralState extends _GeneralState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GeneralStateToJson(this);
+    return _$$_GeneralStateToJson(
+      this,
+    );
   }
 }
 

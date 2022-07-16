@@ -132,7 +132,7 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
 
 /// @nodoc
 
-class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
+class _$_AppEvents extends _AppEvents {
   _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange}) : super._();
 
   @override
@@ -147,20 +147,8 @@ class _$_AppEvents extends _AppEvents with DiagnosticableTreeMixin {
   final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AppEvents(onDynamicLink: $onDynamicLink, onFCMTokenRefresh: $onFCMTokenRefresh, onFirebaseNotification: $onFirebaseNotification, onGenerateTitle: $onGenerateTitle, onLocaleChange: $onLocaleChange)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AppEvents'))
-      ..add(DiagnosticsProperty('onDynamicLink', onDynamicLink))
-      ..add(DiagnosticsProperty('onFCMTokenRefresh', onFCMTokenRefresh))
-      ..add(DiagnosticsProperty('onFirebaseNotification', onFirebaseNotification))
-      ..add(DiagnosticsProperty('onGenerateTitle', onGenerateTitle))
-      ..add(DiagnosticsProperty('onLocaleChange', onLocaleChange));
   }
 
   @override
@@ -315,7 +303,7 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> imp
 
 /// @nodoc
 
-class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
+class _$_AppConfig extends _AppConfig {
   _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions}) : super._();
 
   @override
@@ -334,20 +322,8 @@ class _$_AppConfig extends _AppConfig with DiagnosticableTreeMixin {
   final FirebaseOptions? firebaseOptions;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'AppConfig(withFirebase: $withFirebase, withFCM: $withFCM, withCrashlytics: $withCrashlytics, nativeLocaleChange: $nativeLocaleChange, firebaseOptions: $firebaseOptions)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AppConfig'))
-      ..add(DiagnosticsProperty('withFirebase', withFirebase))
-      ..add(DiagnosticsProperty('withFCM', withFCM))
-      ..add(DiagnosticsProperty('withCrashlytics', withCrashlytics))
-      ..add(DiagnosticsProperty('nativeLocaleChange', nativeLocaleChange))
-      ..add(DiagnosticsProperty('firebaseOptions', firebaseOptions));
   }
 
   @override

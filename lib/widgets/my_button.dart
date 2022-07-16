@@ -36,7 +36,6 @@ class MyButton extends ConsumerWidget {
       return child!;
     }
 
-
     return MyText(text);
   }
 
