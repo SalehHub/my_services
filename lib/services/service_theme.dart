@@ -140,7 +140,7 @@ class ServiceTheme {
       useMaterial3: true,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.background,
-      toggleableActiveColor: colorScheme.primary, //TODO: [https://github.com/flutter/flutter/pull/95870]
+      toggleableActiveColor: colorScheme.primary, //TODO: [https://github.com/flutter/flutter/pull/97972]
       canvasColor: colorScheme.background, //used for dropdownitem bg color
       textTheme: textTheme,
       primaryTextTheme: textTheme,
