@@ -10,9 +10,12 @@ export 'dart:ui' show ImageFilter;
 //
 export 'package:app_links/app_links.dart'; //appLinks
 export 'package:app_settings/app_settings.dart'; //appSettings
+//
 export 'package:firebase_core/firebase_core.dart'; //firebaseCore
 export 'package:firebase_crashlytics/firebase_crashlytics.dart'; //firebaseCrashlytics
 export 'package:firebase_messaging/firebase_messaging.dart'; //firebaseMessaging
+export 'package:firebase_auth/firebase_auth.dart'; //firebaseAuth
+//
 export 'package:flutter_app_badger/flutter_app_badger.dart'; //flutterAppBadger
 export 'package:flutter_image_compress/flutter_image_compress.dart'; //imagePicker
 export 'package:flutter_svg/flutter_svg.dart'; //flutterSvg

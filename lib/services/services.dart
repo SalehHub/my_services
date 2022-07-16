@@ -1,5 +1,8 @@
 import '../my_services.dart';
 import 'service_dialog.dart';
+import 'service_firebase_auth.dart';
+import 'service_firebase_crashlytics.dart';
+import 'service_firebase_messaging.dart';
 import 'service_locales.dart';
 import 'service_theme.dart';
 
@@ -24,8 +27,11 @@ class Services {
     //
     GetIt.I.registerLazySingleton<ServiceShare>(() => ServiceShare()); //sharePlus
     GetIt.I.registerLazySingleton<ServiceImagePicker>(() => ServiceImagePicker()); //imagePicker
+    //
     GetIt.I.registerLazySingleton<ServiceFirebaseCrashlytics>(() => ServiceFirebaseCrashlytics()); //firebaseCrashlytics
     GetIt.I.registerLazySingleton<ServiceFirebaseMessaging>(() => ServiceFirebaseMessaging()); //firebaseMessaging
+    GetIt.I.registerLazySingleton<ServiceFirebaseAuth>(() => ServiceFirebaseAuth()); //firebaseAuth
+    //
     GetIt.I.registerLazySingleton<ServiceDynamicLink>(() => ServiceDynamicLink()); //appLinks
     GetIt.I.registerLazySingleton<ServiceAppBadger>(() => ServiceAppBadger()); //flutterAppBadger
     GetIt.I.registerLazySingleton<ServiceGoogleMapsCluster>(() => ServiceGoogleMapsCluster()); //googleMaps

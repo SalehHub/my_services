@@ -4,8 +4,11 @@ export 'service_app_device.dart';
 export 'service_color.dart';
 export 'service_debounce.dart';
 export 'service_dynamic_link.dart'; //appLinks
-export 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
-export 'service_firebase_messaging.dart'; //firebaseMessaging
+//
+// export 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
+// export 'service_firebase_messaging.dart'; //firebaseMessaging
+// export 'service_firebase_auth.dart'; //firebaseAuth
+//
 export 'service_google_maps_cluster.dart'; //googleMaps
 export 'service_image_picker.dart'; //imagePicker
 export 'service_loader.dart';
