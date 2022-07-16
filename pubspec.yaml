@@ -16,9 +16,10 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^1.19.1 #firebaseCore
-  firebase_messaging: ^11.4.4 #firebaseMessaging
-  firebase_crashlytics: ^2.8.4 #firebaseCrashlytics
+  firebase_core: ^1.19.2 #firebaseCore
+  firebase_messaging: ^12.0.0 #firebaseMessaging
+  firebase_crashlytics: ^2.8.5 #firebaseCrashlytics
+  firebase_auth: ^3.4.2 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -48,7 +49,7 @@ dependencies:
 
 
   logger: ^1.1.0
-  url_launcher: ^6.1.4
+  url_launcher: ^6.1.5
   intl: ^0.17.0
 
   device_info_plus: ^4.0.0
@@ -71,10 +72,9 @@ dependencies:
         url: https://github.com/salehahmedZ/flutter_sheet_localization.git
         path: flutter_sheet_localization
 
-  freezed_annotation: ^2.0.3
-  json_annotation: ^4.5.0
+  freezed_annotation: ^2.1.0
+  json_annotation: ^4.6.0
   dio: ^4.0.6
-
   get_it: ^7.2.0
 
 
@@ -86,9 +86,9 @@ dev_dependencies:
         url: https://github.com/salehahmedZ/flutter_sheet_localization.git
         path: flutter_sheet_localization_generator
 
-  build_runner: ^2.1.11
-  freezed: ^2.0.4
-  json_serializable: ^6.2.0
+  build_runner: ^2.2.0
+  freezed: ^2.1.0+1
+  json_serializable: ^6.3.1
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
