@@ -3,9 +3,9 @@ import '../my_services.dart';
 
 class ServiceFirebaseAuth {
   //----------------------------------------------//
-  factory ServiceFirebaseAuth() => instance;
-  ServiceFirebaseAuth._();
-  static ServiceFirebaseAuth instance = ServiceFirebaseAuth._();
+  // factory ServiceFirebaseAuth() => instance;
+  // ServiceFirebaseAuth._();
+  // static ServiceFirebaseAuth instance = ServiceFirebaseAuth._();
   //----------------------------------------------//
 
   final FirebaseAuth _auth = FirebaseAuth.instance;

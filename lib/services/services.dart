@@ -53,8 +53,11 @@ class Services {
   //
   ServiceShare get share => GetIt.I<ServiceShare>(); //sharePlus
   ServiceImagePicker get imagePicker => GetIt.I<ServiceImagePicker>(); //imagePicker
+  //
   ServiceFirebaseCrashlytics get firebaseCrashlytics => GetIt.I<ServiceFirebaseCrashlytics>(); //firebaseCrashlytics
   ServiceFirebaseMessaging get firebaseMessaging => GetIt.I<ServiceFirebaseMessaging>(); //firebaseMessaging
+  ServiceFirebaseAuth get firebaseAuth => GetIt.I<ServiceFirebaseAuth>(); //firebaseAuth
+  //
   ServiceDynamicLink get dynamicLink => GetIt.I<ServiceDynamicLink>(); //appLinks
   ServiceAppBadger get appBadger => GetIt.I<ServiceAppBadger>(); //flutterAppBadger
   ServiceGoogleMapsCluster get googleMapsCluster => GetIt.I<ServiceGoogleMapsCluster>(); //googleMaps
