@@ -318,6 +318,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
     if (showRefreshIndicator) {
       return RefreshIndicator(
+        color: getColorScheme(context).onPrimary,
+        backgroundColor: getColorScheme(context).primary,
         displacement: 55,
         onRefresh: onRefresh,
         child: customScrollView,
