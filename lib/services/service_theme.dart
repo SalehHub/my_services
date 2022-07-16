@@ -245,7 +245,7 @@ class ServiceTheme {
 
       progressIndicatorTheme: mainThemeData.progressIndicatorTheme.copyWith(
         color: isDark ? _light.onPrimary : _light.primary,
-        circularTrackColor:  isDark ? _light.primary : _dark.background,
+        circularTrackColor: isDark ? _light.primary : _dark.background,
       ),
 
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
