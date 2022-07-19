@@ -26,7 +26,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
   double get pageWidth => pageSize.width;
 }
 
-abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SaveSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin {
+abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SaveSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin {
   //
   List<Widget> bodyChildren = <Widget>[];
   List<Widget> get appBarActions => <Widget>[];
@@ -158,6 +158,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   @override
   @protected
   void initState() {
+    addLoadMoreListener();
+
     if (startPageInLoadingState) {
       pageLoading = true;
     }
@@ -165,6 +167,12 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _myInitState());
+  }
+
+  @override
+  void dispose() {
+    loadMoreDispose();
+    super.dispose();
   }
 
   void _myInitState() {
@@ -286,6 +294,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   Widget buildPage(BuildContext context) {
     final customScrollView = CustomScrollView(
+      controller: pageScrollController,
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
@@ -307,10 +316,12 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         else
           ...bodyChildren,
 
-        const SliverPadding(padding: EdgeInsets.only(top: 50)),
+        if (moreLoading) const SliverToBoxAdapter(child: MyProgressIndicator(margin: EdgeInsets.all(20))),
+
+        const SliverPadding(padding: EdgeInsets.only(top: 20)),
 
         //bottom banner
-        if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
+        if (!hideBottomBanner) bottomBanner,
 
         const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
       ],
@@ -340,6 +351,41 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     } finally {
       if (showPageLoading) stopPageLoading();
       if (showActionBarLoading) stopActionBarLoading();
+    }
+  }
+}
+
+mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
+  ScrollController? pageScrollController;
+  bool moreLoading = false;
+  double moreTrigger = 0.8;
+  AsyncCallback? loadMore;
+  bool moreData = false;
+
+  void loadMoreDispose() {
+    pageScrollController?.dispose();
+  }
+
+  void addLoadMoreListener() {
+    if (loadMore != null) {
+      pageScrollController = ScrollController();
+
+      if (pageScrollController == null) {
+        return;
+      }
+
+      pageScrollController?.addListener(() async {
+        double maxScrollExtent = pageScrollController?.position.maxScrollExtent ?? 0;
+        var nextPageTrigger = moreTrigger * maxScrollExtent;
+        double pixels = pageScrollController?.position.pixels ?? 0;
+        if (pixels > nextPageTrigger && moreLoading == false && moreData == true) {
+          setState(() => moreLoading = true);
+          if (loadMore != null) {
+            await loadMore!();
+            setState(() => moreLoading = false);
+          }
+        }
+      });
     }
   }
 }
