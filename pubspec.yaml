@@ -7,7 +7,6 @@ environment:
   flutter: ">=3.0.0"
 
 dependencies:
-
   flutter:
     sdk: flutter
 
@@ -34,9 +33,11 @@ dependencies:
   image_cropper: ^2.0.3 #imagePicker
 
   image_picker: ^0.8.5+3 #imagePicker
+
   flutter_image_compress: ^1.1.0 #imagePicker
 
   photo_view: ^0.14.0 #photoView
+
   smooth_page_indicator: ^1.0.0+2 #photoView
 
   map_launcher: ^2.2.3 #mapLauncher
@@ -96,11 +97,6 @@ dependencies:
 
 
 dev_dependencies:
-  flutter_sheet_localization_generator: #^5.1.7
-      git:
-        url: https://github.com/salehahmedZ/flutter_sheet_localization.git
-        path: flutter_sheet_localization_generator
-
   build_runner: ^2.2.0
 
   freezed: ^2.1.0+1
@@ -111,6 +107,11 @@ dev_dependencies:
 
   flutter_test:
     sdk: flutter
+
+  flutter_sheet_localization_generator: #^5.1.7
+      git:
+        url: https://github.com/salehahmedZ/flutter_sheet_localization.git
+        path: flutter_sheet_localization_generator
 
 flutter:
   assets:
