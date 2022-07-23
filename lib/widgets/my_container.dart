@@ -68,11 +68,7 @@ class MyContainer extends StatelessWidget {
     if (bgImageUrl != null && bgImageUrl?.trim() != "") {
       image = MyLoadingImage(
         url: bgImageUrl!,
-        // borderColor: Colors.green,
-        // borderWidth: 1,
-        useCacheImage: true,
         blurHash: bgImageBlurHash,
-        // borderRadius: borderRadius,
         width: double.infinity,
         height: double.infinity,
       );
@@ -101,7 +97,7 @@ class MyContainer extends StatelessWidget {
         if (gradient != null) Container(decoration: BoxDecoration(gradient: gradient)),
 
         //child
-        child,
+        Padding(padding: padding ?? EdgeInsets.zero, child: child),
       ]);
     }
 
