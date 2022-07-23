@@ -29,13 +29,18 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = style ?? DefaultTextStyle.of(context).style;
+    TextStyle defaultTextStyle = DefaultTextStyle.of(context).style;
+
+    TextStyle textStyle = style ?? defaultTextStyle;
+
     if (bold) {
       textStyle = textStyle.copyWith(fontWeight: FontWeight.bold);
     }
-    if (color != null) {
-      textStyle = textStyle.copyWith(color: color);
-    }
+
+    // if (color != null) {
+    textStyle = textStyle.copyWith(color: color ?? defaultTextStyle.color);
+    // }
+
     if (shadows != null) {
       textStyle = textStyle.copyWith(shadows: shadows);
     }
