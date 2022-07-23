@@ -170,7 +170,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
         builder: (context, index) {
           return PhotoViewGalleryPageOptions(
             heroAttributes: PhotoViewHeroAttributes(tag: imageList[index].url),
-            imageProvider: CachedNetworkImageProvider(imageList[index].url),
+            imageProvider: MyLoadingImage.provider(imageList[index].url),
             minScale: PhotoViewComputedScale.contained * 0.8,
             maxScale: PhotoViewComputedScale.covered * 2,
           );
