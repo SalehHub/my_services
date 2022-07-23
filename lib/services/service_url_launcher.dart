@@ -6,7 +6,7 @@ class ServiceURLLauncher {
   const ServiceURLLauncher._();
   //
 
-  Future<bool> launchUniversalLinkIos(String url) async {
+  Future<bool> launchUniversalLinkIos(String url, {LaunchMode? mode}) async {
     try {
       assert(url.trim() != '');
 
@@ -19,17 +19,23 @@ class ServiceURLLauncher {
       // print("canLaunchUrl: $result");
 
       if (result) {
-        final bool try2 = await launchUrl(uri, mode: LaunchMode.externalApplication);
+        //launch with specific mode
+        if (mode != null) {
+          final bool withMode = await launchUrl(uri, mode: mode);
+          if (withMode == true) {
+            return true;
+          }
+        }
+
+        final bool try1 = await launchUrl(uri, mode: LaunchMode.externalApplication);
         // print("externalApplication: $try2");
 
-        if (try2 == false) {
-          final bool try3 = await launchUrl(uri, mode: LaunchMode.inAppWebView);
+        if (try1 == false) {
+          final bool try2 = await launchUrl(uri, mode: LaunchMode.inAppWebView);
           // print("platformDefault: $try2");
 
-          if (try3 == false) {
-            final bool nativeAppLaunchSucceeded = await launchUrl(
-              uri,
-            );
+          if (try2 == false) {
+            final bool nativeAppLaunchSucceeded = await launchUrl(uri);
             // print("nativeAppLaunchSucceeded: $nativeAppLaunchSucceeded");
 
             return nativeAppLaunchSucceeded;
@@ -62,6 +68,14 @@ class ServiceURLLauncher {
 
   Future<void> launchStringUrl(String url) async {
     final bool result = await launchUniversalLinkIos(url);
+
+    if (result == false) {
+      MyServices.services.snackBar.showText(text: url);
+    }
+  }
+
+  Future<void> launchStringUrlInAppWebView(String url) async {
+    final bool result = await launchUniversalLinkIos(url, mode: LaunchMode.inAppWebView);
 
     if (result == false) {
       MyServices.services.snackBar.showText(text: url);
