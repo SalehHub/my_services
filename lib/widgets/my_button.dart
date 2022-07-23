@@ -5,6 +5,7 @@ class MyButton extends ConsumerWidget {
     super.key,
     this.id,
     required this.text,
+    this.textStyle,
     this.child,
     this.onPressed,
     this.isTextButton = false,
@@ -12,6 +13,7 @@ class MyButton extends ConsumerWidget {
     this.circle = false,
   });
   final String text;
+  final TextStyle? textStyle;
   final Widget? child;
   final dynamic id;
   final bool withLoading;
@@ -36,7 +38,7 @@ class MyButton extends ConsumerWidget {
       return child!;
     }
 
-    return MyText(text);
+    return MyText(text, style: textStyle);
   }
 
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
