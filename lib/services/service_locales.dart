@@ -35,7 +35,7 @@ class ServiceLocale {
                     AppSettings.openNotificationSettings(); //appSettings
                   } else {
                     if (value != null) {
-                      MyServices.providers.setLocale(ref, value);
+                      MyServices.providers.setLocale(value);
                     }
                   }
                 },
@@ -105,8 +105,8 @@ class ServiceLocale {
 
   bool isEn(BuildContext context) => currentLocaleLangCode(context) == 'en';
 
-  void toggleArEn(BuildContext context, ref) {
-    isAr(context) ? setLocaleToEn(ref) : setLocaleToAr(ref);
+  void toggleArEn(BuildContext context) {
+    isAr(context) ? setLocaleToEn() : setLocaleToAr();
   }
 
   // void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
@@ -121,11 +121,11 @@ class ServiceLocale {
   //   }
   // }
 
-  void setLocaleToAr(dynamic ref) {
-    MyServices.providers.setLocale(ref, const Locale('ar'));
+  void setLocaleToAr() {
+    MyServices.providers.setLocale(const Locale('ar'));
   }
 
-  void setLocaleToEn(dynamic ref) {
-    MyServices.providers.setLocale(ref, const Locale('en'));
+  void setLocaleToEn() {
+    MyServices.providers.setLocale(const Locale('en'));
   }
 }

@@ -1,66 +1,100 @@
 import '../my_services.dart';
 import 'general_state_provider.dart';
 
+final _initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
+final _generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) {
+  return GeneralStateNotifier(ref.watch(_initialGeneralStateProvider), ref);
+});
+
+readProviderNotifier<T>(ProviderBase<T> provider) {
+  if (provider is StateNotifierProvider<StateNotifier<T>, T>) {
+    logger.wtf("ProvType 1: " + provider.runtimeType.toString());
+    return MyServices.providers.ref.read(provider.notifier);
+    //
+  } else if (provider is StateProvider<T>) {
+    logger.wtf("ProvType 2: " + provider.runtimeType.toString());
+    return MyServices.providers.ref.read(provider.notifier);
+    //
+  }
+
+  logger.wtf("ProvType 3: " + provider.runtimeType.toString());
+
+  //TODO:  not correct
+  return (provider as dynamic).notifier;
+}
+
+T readProviderState<T>(ProviderBase<T> provider) {
+  if (provider is StateNotifierProvider<StateNotifier<T>, T>) {
+    logger.wtf("ProvType state 1: " + provider.runtimeType.toString());
+
+    return MyServices.providers.ref.read<T>(provider);
+  } else if (provider is StateProvider<T>) {
+    logger.wtf("ProvType state 2: " + provider.runtimeType.toString());
+
+    return MyServices.providers.ref.read<T>(provider);
+  }
+
+  logger.wtf("ProvType state 3: " + provider.runtimeType.toString());
+
+  //TODO:  not correct
+  return provider as T;
+}
+
 class Providers {
+  //
   late WidgetRef _ref;
   WidgetRef get ref => _ref;
   WidgetRef setRef(WidgetRef ref) => _ref = ref;
 
-  // static GeneralState _readGeneralState(dynamic ref) => ref.read(generalStateProvider);
-  GeneralStateNotifier _readGeneralStateNotifier(dynamic ref) => ref.read(generalStateProvider.notifier);
+  //
+  GeneralState get _generalState => readProviderState(_generalStateProvider);
+  GeneralStateNotifier get _generalStateNotifier => readProviderNotifier(_generalStateProvider);
 
-  Future<void> setAccessToken(dynamic ref, String? value) => _readGeneralStateNotifier(ref).setAccessToken(value);
-  Future<void> setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => _readGeneralStateNotifier(ref).setThemeMode(context, value);
-  Future<void> toggleThemeMode(dynamic ref, BuildContext context) => _readGeneralStateNotifier(ref).toggleThemeMode(context);
   //
-  Map<String, dynamic> asMap(Ref ref) => _readGeneralStateNotifier(ref).asMap;
-  //
-  String? watchAccessToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.accessToken));
-  String? readAccessToken(dynamic ref) => ref.read(generalStateProvider).accessToken;
-  //
-  ThemeMode? watchThemeMode(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.themeMode));
-  ThemeMode? readThemeMode(dynamic ref) => ref.read(generalStateProvider).themeMode;
-  //
-  bool watchIsFirstAppBuildRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppBuildRun));
-  bool readIsFirstAppBuildRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppBuildRun;
-  //
-  bool watchIsFirstAppRun(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
-  bool readIsFirstAppRun(dynamic ref) => ref.read(generalStateProvider).isFirstAppRun;
-
-  //locale providers
-  Future<void> setLocale(dynamic ref, Locale value) {
+  Future<void> setAccessToken(String? value) => _generalStateNotifier.setAccessToken(value);
+  Future<void> setThemeMode(BuildContext context, ThemeMode value) => _generalStateNotifier.setThemeMode(context, value);
+  Future<void> toggleThemeMode(BuildContext context) => _generalStateNotifier.toggleThemeMode(context);
+  Future<void> setLocale(Locale value) {
     if (MyServices.services.locale.isSupportedLocale(value)) {
-      return _readGeneralStateNotifier(ref).setLocale(value);
+      return _generalStateNotifier.setLocale(value);
     } else {
       logger.e("Unsupported locale");
       return Future.value(null);
     }
   }
 
+  //
+  Map<String, dynamic> asMap() => _generalStateNotifier.asMap;
+
+  //
+  bool watchIsFirstAppRun(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.isFirstAppRun));
+  String? watchAccessToken(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.accessToken));
+  bool watchIsFirstAppBuildRun(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.isFirstAppBuildRun));
+  ThemeMode? watchThemeMode(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.themeMode));
+  String? watchNotificationToken(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.notificationToken));
+  String? watchAppBuild(dynamic ref) => ref.watch(_generalStateProvider.select((s) => s.appDeviceData?.appBuild));
   Locale? watchLocale(dynamic ref) {
     if (MyServices.appConfig.nativeLocaleChange) {
       return null;
     }
-    return ref.watch(generalStateProvider.select((s) => s.locale));
+    return ref.watch(_generalStateProvider.select((s) => s.locale));
   }
 
-  Locale? readLocale(dynamic ref) => ref.read(generalStateProvider).locale;
+  //
+  String? get readAccessToken => _generalState.accessToken;
+  String? get readNotificationToken => _generalState.notificationToken;
+  ThemeMode? get readThemeMode => _generalState.themeMode;
+  bool get readIsFirstAppBuildRun => _generalState.isFirstAppBuildRun;
+  bool get readIsFirstAppRun => _generalState.isFirstAppRun;
+  Locale? get readLocale => _generalState.locale;
+  String? get readAppBuild => _generalState.appDeviceData?.appBuild;
 
+  //
   void onLocaleChange(WidgetRef ref, Function(Locale? previous, Locale? next) listener) {
-    ref.listen<Locale?>(generalStateProvider.select((s) => s.locale), listener);
+    ref.listen<Locale?>(_generalStateProvider.select((s) => s.locale), listener);
   }
 
-  //
-  String? watchNotificationToken(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.notificationToken));
-  String? readNotificationToken(dynamic ref) => ref.read(generalStateProvider).notificationToken;
-  //
-  String? watchAppBuild(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
-  String? readAppBuild(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appBuild;
-  //
-  // AppDeviceData? watchAppDeviceData(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData));
-  // AppDeviceData? readAppDeviceData(dynamic ref) => ref.read(generalStateProvider).appDeviceData;
-  //
-  // String? watchAppVersion(dynamic ref) => ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appVersion));
-  // String? readAppVersion(dynamic ref) => ref.read(generalStateProvider).appDeviceData?.appVersion;
-  //
+  Override overrideGeneralStateWithValue(GeneralState generalState) {
+    return _initialGeneralStateProvider.overrideWithValue(generalState);
+  }
 }

@@ -66,11 +66,4 @@ class ServiceAppDevice {
       deviceOS: deviceOS,
     );
   }
-
-  //providers
-  static String? watchAppBuild(dynamic ref) => MyServices.providers.watchAppBuild(ref); // ref.watch(generalStateProvider.select((s) => s.appDeviceData?.appBuild));
-  static String? readAppBuild(dynamic ref) => MyServices.providers.readAppBuild(ref); // ref.read(generalStateProvider).appDeviceData?.appBuild;
-
-  static bool watchIsFirstAppRun(dynamic ref) => MyServices.providers.watchIsFirstAppRun(ref); //  ref.watch(generalStateProvider.select((s) => s.isFirstAppRun));
-  static bool readIsFirstAppRun(dynamic ref) => MyServices.providers.readIsFirstAppRun(ref); // ref.read(generalStateProvider).isFirstAppRun;
 }

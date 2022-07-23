@@ -260,13 +260,6 @@ class ServiceTheme {
     return themeData;
   }
 
-  //provider
-  ThemeMode? watchThemeMode(WidgetRef ref) => MyServices.providers.watchThemeMode(ref);
-  ThemeMode? readThemeMode(WidgetRef ref) => MyServices.providers.readThemeMode(ref);
-
-  void setThemeMode(dynamic ref, BuildContext context, ThemeMode value) => MyServices.providers.setThemeMode(ref, context, value);
-  void toggleThemeMode(dynamic ref, BuildContext context) => MyServices.providers.toggleThemeMode(ref, context);
-
   Widget getThemeSettingsSectionWidget() {
     return Builder(builder: (context) {
       return Column(
@@ -275,7 +268,7 @@ class ServiceTheme {
           Text(getMyServicesLabels(context).appTheme, style: getTextTheme(context).headline6),
           const Divider(),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = watchThemeMode(ref);
+            final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
 
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconCellphone),
@@ -284,13 +277,13 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  setThemeMode(ref, context, value);
+                  MyServices.providers.setThemeMode(context, value);
                 }
               },
             );
           }),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = watchThemeMode(ref);
+            final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconLight),
               title: Text(getMyServicesLabels(context).lightMode, style: getTextTheme(context).bodyText2),
@@ -298,13 +291,13 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  setThemeMode(ref, context, value);
+                  MyServices.providers.setThemeMode(context, value);
                 }
               },
             );
           }),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
-            final ThemeMode? themeMode = watchThemeMode(ref);
+            final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconDark),
               title: Text(getMyServicesLabels(context).darkMode, style: getTextTheme(context).bodyText2),
@@ -312,7 +305,7 @@ class ServiceTheme {
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
                 if (value != null) {
-                  setThemeMode(ref, context, value);
+                  MyServices.providers.setThemeMode(context, value);
                 }
               },
             );

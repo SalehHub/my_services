@@ -116,7 +116,7 @@ class AppLauncher {
     return ProviderScope(
       observers: [const GeneralStateSaver(), ...observers],
       overrides: [
-        initialGeneralStateProvider.overrideWithValue(_generalState),
+        MyServices.providers.overrideGeneralStateWithValue(_generalState),
         ..._readyOverrides,
       ],
       child: AppStart(homePage: homePage),
