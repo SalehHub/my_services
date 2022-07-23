@@ -52,7 +52,7 @@ class _GoogleMapsLocationPickerState extends State<GoogleMapsLocationPicker> {
                 borderRadius: MyServices.services.theme.borderRadius,
                 child: GoogleMap(
                   myLocationButtonEnabled: false,
-                  myLocationEnabled: false,
+                  myLocationEnabled: true,
                   onMapCreated: (GoogleMapController controller) => controller.setMapStyle(isDark(context)
                       ? mapStyleDark(
                           getColorScheme(context).background,
