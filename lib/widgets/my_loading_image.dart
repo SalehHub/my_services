@@ -13,7 +13,7 @@ class MyLoadingImage extends StatelessWidget {
     this.borderColor,
     this.borderWidth = 0,
     this.circle = false,
-    this.useCacheImage = false,
+    this.useCacheImage = true,
     this.fit = BoxFit.cover,
     this.alignment = Alignment.center,
     this.fetchStrategy,
@@ -81,22 +81,7 @@ class MyLoadingImage extends StatelessWidget {
       );
     }
 
-    late ImageProvider image;
-    if (useCacheImage) {
-      image = CachedNetworkImageProvider(url);
-    } else {
-      image = NetworkImageWithRetry(
-        url,
-        fetchStrategy: fetchStrategy ??
-            (Uri uri, FetchFailure? failure) async {
-              if (!url.startsWith('http') || (failure != null && failure.httpStatusCode == 404)) {
-                return FetchInstructions.giveUp(uri: uri);
-              } else {
-                return FetchInstructions.attempt(uri: uri, timeout: const Duration(seconds: 5));
-              }
-            },
-      );
-    }
+    final ImageProvider image = provider(url, useCacheImage: useCacheImage, fetchStrategy: fetchStrategy);
 
     final Widget placeHolder = ImageContainer(
       width: width,
@@ -132,6 +117,24 @@ class MyLoadingImage extends StatelessWidget {
       placeholderBuilder: placeholderBuilder ?? (BuildContext context) => placeHolder,
       errorBuilder: errorBuilder ?? (BuildContext context, Object error, StackTrace? stackTrace) => Stack(children: [placeHolder, const Center(child: Icon(Icons.error))]),
     );
+  }
+
+  static ImageProvider provider(String url, {bool useCacheImage = true, Future<FetchInstructions> Function(Uri, FetchFailure?)? fetchStrategy}) {
+    if (useCacheImage) {
+      return CachedNetworkImageProvider(url);
+    } else {
+      return NetworkImageWithRetry(
+        url,
+        fetchStrategy: fetchStrategy ??
+            (Uri uri, FetchFailure? failure) async {
+              if (!url.startsWith('http') || (failure != null && failure.httpStatusCode == 404)) {
+                return FetchInstructions.giveUp(uri: uri);
+              } else {
+                return FetchInstructions.attempt(uri: uri, timeout: const Duration(seconds: 5));
+              }
+            },
+      );
+    }
   }
 }
 
