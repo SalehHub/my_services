@@ -1,9 +1,9 @@
 import '../my_services.dart';
 import 'service_dialog.dart';
 //
-import 'service_firebase_crashlytics.dart';//firebaseCrashlytics
-import 'service_firebase_messaging.dart';//firebaseMessaging
-import 'service_firebase_auth.dart';//firebaseAuth
+import 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
+import 'service_firebase_messaging.dart'; //firebaseMessaging
+import 'service_firebase_auth.dart'; //firebaseAuth
 //
 import 'service_locales.dart';
 import 'service_theme.dart';
