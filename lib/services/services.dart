@@ -21,7 +21,7 @@ class Services {
     GetIt.I.registerLazySingleton<ServiceNav>(() => ServiceNav());
     GetIt.I.registerLazySingleton<ServiceLocale>(() => ServiceLocale());
     GetIt.I.registerLazySingleton<ServiceLoader>(() => ServiceLoader());
-    GetIt.I.registerLazySingleton<ServiceDialog>(() => ServiceDialog());
+    GetIt.I.registerLazySingleton<ServiceDialog>(() => const ServiceDialog());
     GetIt.I.registerLazySingleton<ServiceDebounce>(() => ServiceDebounce());
     GetIt.I.registerLazySingleton<ServiceColor>(() => ServiceColor());
     GetIt.I.registerLazySingleton<ServiceAppDevice>(() => ServiceAppDevice());
