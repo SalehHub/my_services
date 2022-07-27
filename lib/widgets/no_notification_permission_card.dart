@@ -20,6 +20,7 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
     sound: AppleNotificationSetting.enabled,
     showPreviews: AppleShowPreviewSetting.always,
     timeSensitive: AppleNotificationSetting.enabled,
+    criticalAlert: AppleNotificationSetting.enabled,
   );
 
   Future<void> init() async {

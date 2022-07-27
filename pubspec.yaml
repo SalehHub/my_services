@@ -22,7 +22,8 @@ dependencies:
   firebase_messaging: ^12.0.1 #firebaseMessaging
 
   firebase_crashlytics: ^2.8.6 #firebaseCrashlytics
-  firebase_auth: ^3.5.0 #firebaseAuth
+  
+  firebase_auth: ^3.5.1 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 

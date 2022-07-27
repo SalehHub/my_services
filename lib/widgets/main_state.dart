@@ -26,7 +26,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
   double get pageWidth => pageSize.width;
 }
 
-abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SaveSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin {
+abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SafeSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin {
   //
   List<Widget> bodyChildren = <Widget>[];
   List<Widget> get appBarActions => <Widget>[];
@@ -449,7 +449,7 @@ mixin BannersMixin<T extends StatefulWidget> on State<T> {
   Widget bottomBanner = const SizedBox();
 }
 
-mixin SaveSetStateMixin<T extends StatefulWidget> on State<T> {
+mixin SafeSetStateMixin<T extends StatefulWidget> on State<T> {
   @override
   void setState(VoidCallback fn) {
     if (mounted) {
