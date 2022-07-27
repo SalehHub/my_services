@@ -2,18 +2,14 @@ import '../my_services.dart';
 
 class ServiceNav {
   String? _currentRoute;
-
   String? get currentRoute => _currentRoute;
-
-  setCurrentRoute(String? v) {
-    _currentRoute = v;
-  }
+  setCurrentRoute(String? v) => _currentRoute = v;
 
   final List<NavigatorObserver> navigatorObservers = <NavigatorObserver>[
     MyNavigatorObserver(),
   ];
 
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   BuildContext get context => navigatorKey.currentContext!;
 }
@@ -22,19 +18,33 @@ class MyNavigatorObserver extends NavigatorObserver {
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final String? name = route.settings.name;
-    if (name != null) {
-      logger.i('Push: $name');
-    }
+    // if (name != null) {
+    //   logger.i('Push: $name');
+    // }
     MyServices.services.nav.setCurrentRoute(name);
+
+    //
+    Function(String?)? onPush = MyServices.appEvents.onPush;
+    if (onPush != null) {
+      onPush(name);
+    }
+    //
   }
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
     final String? name = previousRoute?.settings.name;
-    if (name != null) {
-      logger.i('Pop: $name');
-    }
+    // if (name != null) {
+    //   logger.i('Pop: $name');
+    // }
     MyServices.services.nav.setCurrentRoute(name);
+
+    //
+    Function(String?)? onPop = MyServices.appEvents.onPop;
+    if (onPop != null) {
+      onPop(name);
+    }
+    //
   }
 }
 

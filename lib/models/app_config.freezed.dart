@@ -18,9 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppEvents {
   dynamic Function(Uri, WidgetRef, BuildContext)? get onDynamicLink => throw _privateConstructorUsedError;
   dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh => throw _privateConstructorUsedError;
-  OnFirebaseNotification? get onFirebaseNotification => throw _privateConstructorUsedError;
+  OnFirebaseNotification? get onFirebaseNotification => throw _privateConstructorUsedError; //firebaseMessaging
   GenerateAppTitle? get onGenerateTitle => throw _privateConstructorUsedError;
   dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange => throw _privateConstructorUsedError;
+  dynamic Function(String?)? get onPush => throw _privateConstructorUsedError;
+  dynamic Function(String?)? get onPop => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppEventsCopyWith<AppEvents> get copyWith => throw _privateConstructorUsedError;
@@ -34,7 +36,9 @@ abstract class $AppEventsCopyWith<$Res> {
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
       OnFirebaseNotification? onFirebaseNotification,
       GenerateAppTitle? onGenerateTitle,
-      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange});
+      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange,
+      dynamic Function(String?)? onPush,
+      dynamic Function(String?)? onPop});
 }
 
 /// @nodoc
@@ -52,6 +56,8 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
     Object? onFirebaseNotification = freezed,
     Object? onGenerateTitle = freezed,
     Object? onLocaleChange = freezed,
+    Object? onPush = freezed,
+    Object? onPop = freezed,
   }) {
     return _then(_value.copyWith(
       onDynamicLink: onDynamicLink == freezed
@@ -74,6 +80,14 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
           ? _value.onLocaleChange
           : onLocaleChange // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)?,
+      onPush: onPush == freezed
+          ? _value.onPush
+          : onPush // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String?)?,
+      onPop: onPop == freezed
+          ? _value.onPop
+          : onPop // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String?)?,
     ));
   }
 }
@@ -87,7 +101,9 @@ abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
       OnFirebaseNotification? onFirebaseNotification,
       GenerateAppTitle? onGenerateTitle,
-      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange});
+      dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange,
+      dynamic Function(String?)? onPush,
+      dynamic Function(String?)? onPop});
 }
 
 /// @nodoc
@@ -104,6 +120,8 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
     Object? onFirebaseNotification = freezed,
     Object? onGenerateTitle = freezed,
     Object? onLocaleChange = freezed,
+    Object? onPush = freezed,
+    Object? onPop = freezed,
   }) {
     return _then(_$_AppEvents(
       onDynamicLink: onDynamicLink == freezed
@@ -126,6 +144,14 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
           ? _value.onLocaleChange
           : onLocaleChange // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)?,
+      onPush: onPush == freezed
+          ? _value.onPush
+          : onPush // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String?)?,
+      onPop: onPop == freezed
+          ? _value.onPop
+          : onPop // ignore: cast_nullable_to_non_nullable
+              as dynamic Function(String?)?,
     ));
   }
 }
@@ -133,7 +159,7 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
 /// @nodoc
 
 class _$_AppEvents extends _AppEvents {
-  _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange}) : super._();
+  _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange, this.onPush, this.onPop}) : super._();
 
   @override
   final dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink;
@@ -141,14 +167,19 @@ class _$_AppEvents extends _AppEvents {
   final dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh;
   @override
   final OnFirebaseNotification? onFirebaseNotification;
+//firebaseMessaging
   @override
   final GenerateAppTitle? onGenerateTitle;
   @override
   final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange;
+  @override
+  final dynamic Function(String?)? onPush;
+  @override
+  final dynamic Function(String?)? onPop;
 
   @override
   String toString() {
-    return 'AppEvents(onDynamicLink: $onDynamicLink, onFCMTokenRefresh: $onFCMTokenRefresh, onFirebaseNotification: $onFirebaseNotification, onGenerateTitle: $onGenerateTitle, onLocaleChange: $onLocaleChange)';
+    return 'AppEvents(onDynamicLink: $onDynamicLink, onFCMTokenRefresh: $onFCMTokenRefresh, onFirebaseNotification: $onFirebaseNotification, onGenerateTitle: $onGenerateTitle, onLocaleChange: $onLocaleChange, onPush: $onPush, onPop: $onPop)';
   }
 
   @override
@@ -160,11 +191,13 @@ class _$_AppEvents extends _AppEvents {
             (identical(other.onFCMTokenRefresh, onFCMTokenRefresh) || other.onFCMTokenRefresh == onFCMTokenRefresh) &&
             (identical(other.onFirebaseNotification, onFirebaseNotification) || other.onFirebaseNotification == onFirebaseNotification) &&
             (identical(other.onGenerateTitle, onGenerateTitle) || other.onGenerateTitle == onGenerateTitle) &&
-            (identical(other.onLocaleChange, onLocaleChange) || other.onLocaleChange == onLocaleChange));
+            (identical(other.onLocaleChange, onLocaleChange) || other.onLocaleChange == onLocaleChange) &&
+            (identical(other.onPush, onPush) || other.onPush == onPush) &&
+            (identical(other.onPop, onPop) || other.onPop == onPop));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, onDynamicLink, onFCMTokenRefresh, onFirebaseNotification, onGenerateTitle, onLocaleChange);
+  int get hashCode => Object.hash(runtimeType, onDynamicLink, onFCMTokenRefresh, onFirebaseNotification, onGenerateTitle, onLocaleChange, onPush, onPop);
 
   @JsonKey(ignore: true)
   @override
@@ -177,7 +210,9 @@ abstract class _AppEvents extends AppEvents {
       final dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
       final OnFirebaseNotification? onFirebaseNotification,
       final GenerateAppTitle? onGenerateTitle,
-      final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange}) = _$_AppEvents;
+      final dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? onLocaleChange,
+      final dynamic Function(String?)? onPush,
+      final dynamic Function(String?)? onPop}) = _$_AppEvents;
   _AppEvents._() : super._();
 
   @override
@@ -186,10 +221,14 @@ abstract class _AppEvents extends AppEvents {
   dynamic Function(String, WidgetRef, BuildContext)? get onFCMTokenRefresh;
   @override
   OnFirebaseNotification? get onFirebaseNotification;
-  @override
+  @override //firebaseMessaging
   GenerateAppTitle? get onGenerateTitle;
   @override
   dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)? get onLocaleChange;
+  @override
+  dynamic Function(String?)? get onPush;
+  @override
+  dynamic Function(String?)? get onPop;
   @override
   @JsonKey(ignore: true)
   _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => throw _privateConstructorUsedError;

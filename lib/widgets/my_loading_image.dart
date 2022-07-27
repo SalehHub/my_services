@@ -91,7 +91,14 @@ class MyLoadingImage extends StatelessWidget {
       borderColor: borderColor,
       borderWidth: borderWidth,
       circle: circle,
-      child: Image(width: width, height: height, image: BlurHashImage(blurHash ?? 'LUMiyF-=_N?a#PD*IUslj^RPt6RP'), fit: fit),
+      child: Image(
+        width: width,
+        height: height,
+        image: BlurHashImage(
+          (blurHash != null && blurHash?.trim() != "") ? blurHash! : 'LUMiyF-=_N?a#PD*IUslj^RPt6RP',
+        ),
+        fit: fit,
+      ),
     );
 
     // precacheImage(image,context);

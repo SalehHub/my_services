@@ -115,17 +115,17 @@ class GeneralStateSaver extends ProviderObserver {
         //theme
         if (newValue.themeMode != null && newValue.themeMode != previousValue.themeMode) {
           MyServices.storage.setThemeMode(newValue.themeMode!);
-          logger.w("New themeMode Saved");
+          // logger.w("New themeMode Saved");
         }
         //locale
         if (newValue.locale != null && newValue.locale != previousValue.locale) {
           MyServices.storage.setLocale(newValue.locale!);
-          logger.w("New locale Saved");
+          // logger.w("New locale Saved");
         }
         //accessToken
         if (newValue.accessToken != previousValue.accessToken) {
           MyServices.storage.setAccessToken(newValue.accessToken);
-          logger.w("New accessToken Saved");
+          // logger.w("New accessToken Saved");
         }
       }
     }

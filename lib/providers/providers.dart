@@ -8,16 +8,16 @@ final _generalStateProvider = StateNotifierProvider<GeneralStateNotifier, Genera
 
 readProviderNotifier<T>(ProviderBase<T> provider) {
   if (provider is StateNotifierProvider<StateNotifier<T>, T>) {
-    logger.wtf("ProvType 1: " + provider.runtimeType.toString());
+    // logger.wtf("ProvType 1: " + provider.runtimeType.toString());
     return MyServices.providers.ref.read(provider.notifier);
     //
   } else if (provider is StateProvider<T>) {
-    logger.wtf("ProvType 2: " + provider.runtimeType.toString());
+    // logger.wtf("ProvType 2: " + provider.runtimeType.toString());
     return MyServices.providers.ref.read(provider.notifier);
     //
   }
 
-  logger.wtf("ProvType 3: " + provider.runtimeType.toString());
+  // logger.wtf("ProvType 3: " + provider.runtimeType.toString());
 
   //TODO:  not correct
   return (provider as dynamic).notifier;
@@ -25,16 +25,16 @@ readProviderNotifier<T>(ProviderBase<T> provider) {
 
 T readProviderState<T>(ProviderBase<T> provider) {
   if (provider is StateNotifierProvider<StateNotifier<T>, T>) {
-    logger.wtf("ProvType state 1: " + provider.runtimeType.toString());
+    // logger.wtf("ProvType state 1: " + provider.runtimeType.toString());
 
     return MyServices.providers.ref.read<T>(provider);
   } else if (provider is StateProvider<T>) {
-    logger.wtf("ProvType state 2: " + provider.runtimeType.toString());
+    // logger.wtf("ProvType state 2: " + provider.runtimeType.toString());
 
     return MyServices.providers.ref.read<T>(provider);
   }
 
-  logger.wtf("ProvType state 3: " + provider.runtimeType.toString());
+  // logger.wtf("ProvType state 3: " + provider.runtimeType.toString());
 
   //TODO:  not correct
   return provider as T;
