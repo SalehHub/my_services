@@ -179,21 +179,25 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   void _myInitState() {
     if (homePage) {
+      //start-firebaseMessaging
       if (MyServices.appConfig.withFCM) {
-        MyServices.services.firebaseMessaging.requestPermission(); //firebaseMessaging
+        MyServices.services.firebaseMessaging.requestPermission();
 
         if (MyServices.appEvents.onFirebaseNotification != null) {
-          MyServices.services.firebaseMessaging.registerFirebaseMessaging(ref, onFirebaseNotification: MyServices.appEvents.onFirebaseNotification!); //firebaseMessaging
+          MyServices.services.firebaseMessaging.registerFirebaseMessaging(ref, onFirebaseNotification: MyServices.appEvents.onFirebaseNotification!);
         }
-
         if (MyServices.appEvents.onFCMTokenRefresh != null) {
-          MyServices.services.firebaseMessaging.onTokenRefresh((token) => MyServices.appEvents.onFCMTokenRefresh!(token, ref, context)); //firebaseMessaging
+          MyServices.services.firebaseMessaging.onTokenRefresh((token) => MyServices.appEvents.onFCMTokenRefresh!(token, ref, context));
         }
       }
+      //end-firebaseMessaging
 
+      //start-appLinks
       if (MyServices.appEvents.onDynamicLink != null) {
-        MyServices.services.dynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
+        MyServices.services.dynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context));
       }
+      //end-appLinks
+
     }
 
     init();
