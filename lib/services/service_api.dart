@@ -9,7 +9,10 @@ class ServiceApi {
 
   //
   static Dio dio = Dio();
-  static String domain = '';
+  static String _domain = '';
+  String get domain => _domain;
+
+  void setDoamin(String domain) => _domain = domain;
 
   Future<String> download(String url) async {
     String ext = extension(url);
@@ -55,9 +58,9 @@ class ServiceApi {
       logger.d(formData);
     }
 
-    logger.i('$domain$url');
+    logger.i('$_domain$url');
     final Response<Map<String, dynamic>> data = await dio.postUri<Map<String, dynamic>>(
-      Uri.parse('$domain$url'),
+      Uri.parse('$_domain$url'),
       data: formData,
       cancelToken: cancelToken,
       options: _dioOptions(accessToken, lang, extraHeaders: extraHeaders),
@@ -78,9 +81,9 @@ class ServiceApi {
       logger.d(formData);
     }
 
-    logger.i('$domain$url');
+    logger.i('$_domain$url');
     final Response<T> data = await dio.getUri<T>(
-      Uri.parse('$domain$url'),
+      Uri.parse('$_domain$url'),
       cancelToken: cancelToken,
       options: _dioOptions(accessToken, lang, method: 'GET', extraHeaders: extraHeaders),
     );
