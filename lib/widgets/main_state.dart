@@ -26,19 +26,21 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
   double get pageWidth => pageSize.width;
 }
 
-abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T> with SafeSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin {
+abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T>
+    with SafeSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin {
   //
+  //
+
   List<Widget> bodyChildren = <Widget>[];
   List<Widget> get appBarActions => <Widget>[];
 
-  Widget? drawer;
   Widget? floatingBottomWidget;
   Widget? underAppBarWidget;
 
   WillPopCallback? onBack;
 
   @protected
-  bool get emptyData => bodyChildren.isEmpty;
+  bool get emptyData => pageLoading == false && bodyChildren.isEmpty;
   String get emptyDataLabel => myServicesLabels.thereAreNoDataYet;
   IconData emptyDataIcon = iconNoData;
 
@@ -158,13 +160,13 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   @override
   @protected
   void initState() {
-    addLoadMoreListener();
+    super.initState();
 
     if (startPageInLoadingState) {
       pageLoading = true;
     }
 
-    super.initState();
+    addLoadMoreListener();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => _myInitState());
   }
@@ -228,6 +230,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         bottom: false,
         child: Scaffold(
           drawer: drawer,
+          key: scaffoldKey,
           body: NestedScrollView(
             floatHeaderSlivers: true,
             headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -355,6 +358,17 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   }
 }
 
+mixin ScaffoldKeyMixin {
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+}
+
+mixin DrawerMixin<T extends StatefulWidget> on State<T>, ScaffoldKeyMixin {
+  Widget? drawer;
+  bool get isDrawerOpen => scaffoldKey.currentState?.isDrawerOpen ?? false;
+  bool get hasDrawer => scaffoldKey.currentState?.hasDrawer ?? false;
+  void openDrawer() => scaffoldKey.currentState?.openDrawer();
+}
+
 mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
   ScrollController? pageScrollController;
   bool moreLoading = false;
@@ -457,6 +471,7 @@ mixin SafeSetStateMixin<T extends StatefulWidget> on State<T> {
     }
   }
 }
+
 mixin SearchMixin<T extends StatefulWidget> on State<T> {
   bool showSearchAppBar = false;
 
