@@ -8,6 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    open: 'Open',
+    warring: 'Warring',
     privacyPolicy: 'Privacy Policy',
     and: 'and',
     termsOfService: 'Terms of Service',
@@ -38,6 +40,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     cancel: 'Cancel',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'This will delete your account and all your data permanently',
     deleteYourAccount: 'Delete Your Account',
+    deleteYourAccountPermanently: 'Delete Your Account Permanently',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Your Phone Settings will be opened to change the app language',
     save: 'Save',
     add: 'Add',
@@ -146,6 +149,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    open: 'فتح',
+    warring: 'تحذير',
     privacyPolicy: 'سياسة الخصوصية',
     and: 'و',
     termsOfService: 'شروط الخدمة',
@@ -176,6 +181,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     cancel: 'الغاء',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'سيؤدي هذا الى حذف حسابك وبياناتك من التطبيق للأبد',
     deleteYourAccount: 'حذف حسابك',
+    deleteYourAccountPermanently: 'حذف الحساب بشكل نهائي',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'سيتم فتح إعدادات جهازك لتغيير لغة التطبيق',
     save: 'حفظ',
     add: 'إضافة',
@@ -284,6 +290,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    open: 'Ouvert',
+    warring: 'En guerre',
     privacyPolicy: 'Politique de confidentialité',
     and: 'et',
     termsOfService: 'Conditions d\'utilisation',
@@ -314,6 +322,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     cancel: 'Annuler',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Cela supprimera votre compte et toutes vos données en permanence',
     deleteYourAccount: 'Supprimer votre compte',
+    deleteYourAccountPermanently: 'Supprimez votre compte en permanence',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Les paramètres de votre téléphone seront ouverts pour modifier le langage de l\'application',
     save: 'sauvegarder',
     add: 'Ajouter',
@@ -422,6 +431,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    open: 'Abierto',
+    warring: 'Barronera',
     privacyPolicy: 'Política de privacidad',
     and: 'y',
     termsOfService: 'Términos de servicio',
@@ -452,6 +463,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     cancel: 'Cancelar',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Esto eliminará su cuenta y todos sus datos de forma permanente',
     deleteYourAccount: 'Elimina tu cuenta',
+    deleteYourAccountPermanently: 'Elimine su cuenta de forma permanente',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'La configuración de su teléfono se abrirá para cambiar el idioma de la aplicación',
     save: 'Ahorrar',
     add: 'Agregar',
@@ -560,6 +572,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    open: 'Açık',
+    warring: 'Savaşan',
     privacyPolicy: 'Gizlilik Politikası',
     and: 've',
     termsOfService: 'Kullanım Şartları',
@@ -590,6 +604,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     cancel: 'İptal',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Bu, hesabınızı ve tüm verilerinizi kalıcı olarak silecektir',
     deleteYourAccount: 'Hesabını sil',
+    deleteYourAccountPermanently: 'Hesabınızı kalıcı olarak silin',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Uygulama dilini değiştirmek için telefon ayarlarınız açılacak',
     save: 'Kaydetmek',
     add: 'Ekle',
@@ -701,6 +716,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.open,
+    required this.warring,
     required this.privacyPolicy,
     required this.and,
     required this.termsOfService,
@@ -731,6 +748,7 @@ class MyServicesLocalizationsData {
     required this.cancel,
     required this.thisWillDeleteYourAccountAndAllYourDataPermanently,
     required this.deleteYourAccount,
+    required this.deleteYourAccountPermanently,
     required this.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
     required this.save,
     required this.add,
@@ -839,6 +857,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String open;
+  final String warring;
   final String privacyPolicy;
   final String and;
   final String termsOfService;
@@ -869,6 +889,7 @@ class MyServicesLocalizationsData {
   final String cancel;
   final String thisWillDeleteYourAccountAndAllYourDataPermanently;
   final String deleteYourAccount;
+  final String deleteYourAccountPermanently;
   final String yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage;
   final String save;
   final String add;
@@ -976,6 +997,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        open: map['open']! as String,
+        warring: map['warring']! as String,
         privacyPolicy: map['privacyPolicy']! as String,
         and: map['and']! as String,
         termsOfService: map['termsOfService']! as String,
@@ -1006,6 +1029,7 @@ class MyServicesLocalizationsData {
         cancel: map['cancel']! as String,
         thisWillDeleteYourAccountAndAllYourDataPermanently: map['thisWillDeleteYourAccountAndAllYourDataPermanently']! as String,
         deleteYourAccount: map['deleteYourAccount']! as String,
+        deleteYourAccountPermanently: map['deleteYourAccountPermanently']! as String,
         yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: map['yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage']! as String,
         save: map['save']! as String,
         add: map['add']! as String,
@@ -1115,6 +1139,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? open,
+    String? warring,
     String? privacyPolicy,
     String? and,
     String? termsOfService,
@@ -1145,6 +1171,7 @@ class MyServicesLocalizationsData {
     String? cancel,
     String? thisWillDeleteYourAccountAndAllYourDataPermanently,
     String? deleteYourAccount,
+    String? deleteYourAccountPermanently,
     String? yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
     String? save,
     String? add,
@@ -1253,6 +1280,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        open: open ?? this.open,
+        warring: warring ?? this.warring,
         privacyPolicy: privacyPolicy ?? this.privacyPolicy,
         and: and ?? this.and,
         termsOfService: termsOfService ?? this.termsOfService,
@@ -1283,6 +1312,7 @@ class MyServicesLocalizationsData {
         cancel: cancel ?? this.cancel,
         thisWillDeleteYourAccountAndAllYourDataPermanently: thisWillDeleteYourAccountAndAllYourDataPermanently ?? this.thisWillDeleteYourAccountAndAllYourDataPermanently,
         deleteYourAccount: deleteYourAccount ?? this.deleteYourAccount,
+        deleteYourAccountPermanently: deleteYourAccountPermanently ?? this.deleteYourAccountPermanently,
         yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage ?? this.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
         save: save ?? this.save,
         add: add ?? this.add,
@@ -1395,6 +1425,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          open == other.open &&
+          warring == other.warring &&
           privacyPolicy == other.privacyPolicy &&
           and == other.and &&
           termsOfService == other.termsOfService &&
@@ -1425,6 +1457,7 @@ class MyServicesLocalizationsData {
           cancel == other.cancel &&
           thisWillDeleteYourAccountAndAllYourDataPermanently == other.thisWillDeleteYourAccountAndAllYourDataPermanently &&
           deleteYourAccount == other.deleteYourAccount &&
+          deleteYourAccountPermanently == other.deleteYourAccountPermanently &&
           yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage == other.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage &&
           save == other.save &&
           add == other.add &&
@@ -1534,6 +1567,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      open.hashCode ^
+      warring.hashCode ^
       privacyPolicy.hashCode ^
       and.hashCode ^
       termsOfService.hashCode ^
@@ -1564,6 +1599,7 @@ class MyServicesLocalizationsData {
       cancel.hashCode ^
       thisWillDeleteYourAccountAndAllYourDataPermanently.hashCode ^
       deleteYourAccount.hashCode ^
+      deleteYourAccountPermanently.hashCode ^
       yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage.hashCode ^
       save.hashCode ^
       add.hashCode ^
