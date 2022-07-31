@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    copy: 'Copy',
     open: 'Open',
     warring: 'Warring',
     privacyPolicy: 'Privacy Policy',
@@ -149,6 +150,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    copy: 'نسخ',
     open: 'فتح',
     warring: 'تحذير',
     privacyPolicy: 'سياسة الخصوصية',
@@ -290,6 +292,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    copy: 'Copie',
     open: 'Ouvert',
     warring: 'En guerre',
     privacyPolicy: 'Politique de confidentialité',
@@ -431,6 +434,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    copy: 'Copiar',
     open: 'Abierto',
     warring: 'Barronera',
     privacyPolicy: 'Política de privacidad',
@@ -572,6 +576,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    copy: 'Kopya',
     open: 'Açık',
     warring: 'Savaşan',
     privacyPolicy: 'Gizlilik Politikası',
@@ -716,6 +721,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.copy,
     required this.open,
     required this.warring,
     required this.privacyPolicy,
@@ -857,6 +863,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String copy;
   final String open;
   final String warring;
   final String privacyPolicy;
@@ -997,6 +1004,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        copy: map['copy']! as String,
         open: map['open']! as String,
         warring: map['warring']! as String,
         privacyPolicy: map['privacyPolicy']! as String,
@@ -1139,6 +1147,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? copy,
     String? open,
     String? warring,
     String? privacyPolicy,
@@ -1280,6 +1289,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        copy: copy ?? this.copy,
         open: open ?? this.open,
         warring: warring ?? this.warring,
         privacyPolicy: privacyPolicy ?? this.privacyPolicy,
@@ -1425,6 +1435,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          copy == other.copy &&
           open == other.open &&
           warring == other.warring &&
           privacyPolicy == other.privacyPolicy &&
@@ -1567,6 +1578,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      copy.hashCode ^
       open.hashCode ^
       warring.hashCode ^
       privacyPolicy.hashCode ^
