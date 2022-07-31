@@ -57,6 +57,10 @@ dependencies:
 
   sqflite: ^2.0.3 #sqflite
 
+  flutter_app_badger: ^1.4.0 #flutterAppBadger
+
+  location: ^4.4.0 #location
+
   logger: ^1.1.0
 
   url_launcher: ^6.1.5
@@ -81,7 +85,6 @@ dependencies:
 
   flutter_riverpod: ^1.0.4
 
-  flutter_app_badger: ^1.4.0 #flutterAppBadger
 
   freezed_annotation: ^2.1.0
 
@@ -90,6 +93,7 @@ dependencies:
   dio: ^4.0.6
   
   get_it: ^7.2.0
+
 
   flutter_sheet_localization: #^5.1.1
       git:

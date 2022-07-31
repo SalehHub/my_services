@@ -32,6 +32,7 @@ export 'package:share_plus/share_plus.dart'; //sharePlus
 export 'package:smooth_page_indicator/smooth_page_indicator.dart'; //photoView
 export 'package:sqflite/sqflite.dart'; //sqflite
 export 'package:map_launcher/map_launcher.dart'; //mapLauncher
+export 'package:location/location.dart'; //location
 //
 export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
 export 'package:crypto/crypto.dart';

@@ -17,6 +17,7 @@ export 'my_text.dart';
 export 'my_text_input.dart';
 export 'my_text_input_border.dart';
 export 'no_notification_permission_card.dart'; //firebaseMessaging
+export 'no_location_permission_card.dart'; //location
 export 'page_image_viewer.dart'; //photoView
 export 'page_new_app_version.dart';
 export 'phone_input/my_phone_input.dart';

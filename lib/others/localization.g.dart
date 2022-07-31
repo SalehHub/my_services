@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'Access to your location is disabled. However, you can enable it from your device Settings.',
     copy: 'Copy',
     open: 'Open',
     warring: 'Warring',
@@ -150,6 +151,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'الوصول للموقع معطل من إعدادات الجهاز',
     copy: 'نسخ',
     open: 'فتح',
     warring: 'تحذير',
@@ -292,6 +294,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings:
+        'L\'accès à votre emplacement est désactivé. Cependant, vous pouvez l\'activer à partir des paramètres de votre appareil.',
     copy: 'Copie',
     open: 'Ouvert',
     warring: 'En guerre',
@@ -434,6 +438,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'El acceso a su ubicación está deshabilitado. Sin embargo, puede habilitarlo desde la configuración de su dispositivo.',
     copy: 'Copiar',
     open: 'Abierto',
     warring: 'Barronera',
@@ -576,6 +581,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'Konumunuza erişim devre dışı bırakılmıştır. Ancak, cihaz ayarlarınızdan etkinleştirebilirsiniz.',
     copy: 'Kopya',
     open: 'Açık',
     warring: 'Savaşan',
@@ -721,6 +727,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
     required this.copy,
     required this.open,
     required this.warring,
@@ -863,6 +870,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings;
   final String copy;
   final String open;
   final String warring;
@@ -1004,6 +1012,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: map['accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings']! as String,
         copy: map['copy']! as String,
         open: map['open']! as String,
         warring: map['warring']! as String,
@@ -1147,6 +1156,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
     String? copy,
     String? open,
     String? warring,
@@ -1289,6 +1299,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings:
+            accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings ?? this.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
         copy: copy ?? this.copy,
         open: open ?? this.open,
         warring: warring ?? this.warring,
@@ -1435,6 +1447,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings == other.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings &&
           copy == other.copy &&
           open == other.open &&
           warring == other.warring &&
@@ -1578,6 +1591,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings.hashCode ^
       copy.hashCode ^
       open.hashCode ^
       warring.hashCode ^
