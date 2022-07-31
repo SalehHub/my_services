@@ -38,7 +38,7 @@ class ServiceImagePicker {
 
   static final ImagePicker _imagePicker = ImagePicker();
 
-  static Future<File?> pickImage(BuildContext context, {bool withCrop = true, bool withCompress = true, double sizeInMB = 1.0, bool square = false, bool circle = false, bool forceCut = false}) async {
+  Future<File?> pickImage(BuildContext context, {bool withCrop = true, bool withCompress = true, double sizeInMB = 1.0, bool square = false, bool circle = false, bool forceCut = false}) async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,

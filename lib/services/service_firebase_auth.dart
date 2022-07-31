@@ -15,7 +15,7 @@ class ServiceFirebaseAuth {
   static Function(User)? _onSuccessLogin;
   static Function(FirebaseAuthException)? _onVerificationFailed;
 
-  static User? get user => _auth.currentUser;
+  User? get user => _auth.currentUser;
 
   static String? _verificationId;
   static int? _resendToken;

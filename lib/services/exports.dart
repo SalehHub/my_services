@@ -5,7 +5,7 @@
 // export 'service_debounce.dart';
 // export 'service_dynamic_link.dart'; //appLinks
 //
-// export 'service_google_maps_cluster.dart'; //googleMaps
+export 'service_google_maps_cluster.dart' show GoogleMapsCluster; //googleMaps
 // export 'service_image_picker.dart'; //imagePicker
 // export 'service_loader.dart';
 export 'service_nav.dart' hide ServiceNav;
