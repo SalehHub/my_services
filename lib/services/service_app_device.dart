@@ -15,6 +15,7 @@ class ServiceAppDevice {
 
   static Future<AppDeviceData> getAppAndDeviceData() async {
     final PackageInfo packageInfo = _packageInfo ?? (await PackageInfo.fromPlatform());
+    String deviceIdCacheKey = "deviceIdStoredValue";
 
     late String? deviceId;
     late String? deviceOSVersion;
@@ -55,6 +56,15 @@ class ServiceAppDevice {
       deviceOSVersion = macOsInfo.osRelease;
       deviceModel = macOsInfo.model;
       deviceOS = Platform.operatingSystem.toLowerCase();
+    }
+
+    //generate and store an uuid as device id when real device id is null
+    if (deviceId == null || deviceId.trim() == "") {
+      deviceId = await MyServices.storage.get(deviceIdCacheKey);
+      if (deviceId == null || deviceId.trim() == "") {
+        deviceId = "${MyServices.helpers.getUuid()}-G";
+        await MyServices.storage.set(deviceIdCacheKey, deviceId);
+      }
     }
 
     return AppDeviceData(
