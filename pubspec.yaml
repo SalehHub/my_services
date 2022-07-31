@@ -23,11 +23,11 @@ dependencies:
 
   firebase_crashlytics: ^2.8.6 #firebaseCrashlytics
   
-  firebase_auth: ^3.5.1 #firebaseAuth
+  firebase_auth: ^3.6.1 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
-  google_maps_flutter: ^2.1.9 #googleMaps
+  google_maps_flutter: ^2.1.10 #googleMaps
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 

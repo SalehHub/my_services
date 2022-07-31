@@ -22,7 +22,11 @@ class MyProgressIndicator extends StatelessWidget {
           padding: margin,
           child: Builder(builder: (context) {
             if (getTheme(context).platform == TargetPlatform.android) {
-              return const CircularProgressIndicator();
+              return SizedBox(
+                width: width != null ? (width! - 25.0) : null,
+                height: height != null ? (height! - 25.0) : null,
+                child: const CircularProgressIndicator(),
+              );
             }
 
             return CircularProgressIndicator.adaptive(
