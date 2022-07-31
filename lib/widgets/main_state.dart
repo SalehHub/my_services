@@ -142,7 +142,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   }
 
   void _refreshThemeStyle() {
-    ServiceDebounce.debounce(() {
+    MyS.services.debounce.debounce(() {
       logger.w("Service Theme Set System Ui Overlay Style");
       if (mounted) {
         MyServices.services.theme.setSystemUiOverlayStyle(ThemeMode.system, context);
@@ -192,7 +192,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       }
 
       if (MyServices.appEvents.onDynamicLink != null) {
-        ServiceDynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
+        MyServices.services.dynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context)); //appLinks
       }
     }
 

@@ -113,6 +113,7 @@ class GoogleMapsCluster<T extends ClusterItem> {
 }
 
 class ServiceGoogleMapsCluster {
+  const ServiceGoogleMapsCluster();
   GoogleMapsCluster<T> register<T extends ClusterItem>(
     WidgetRef ref, {
     Function(T cluster)? onMarkerTap,

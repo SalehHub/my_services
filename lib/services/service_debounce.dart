@@ -1,13 +1,13 @@
 import 'dart:async';
 
 class ServiceDebounce {
-  static const ServiceDebounce _s = ServiceDebounce._();
-  factory ServiceDebounce() => _s;
-  const ServiceDebounce._();
+  // static const ServiceDebounce _s = ServiceDebounce._();
+  // factory ServiceDebounce() => _s;
+  const ServiceDebounce();
   //
   static final Map<String, _ServiceDebounceOperation> _debouncers = {};
 
-  static void debounce(VoidDebounceCallback onExecute, [String tag = "debounce-fn", int milliseconds = 300]) {
+  void debounce(VoidDebounceCallback onExecute, [String tag = "debounce-fn", int milliseconds = 300]) {
     if (milliseconds == 0) {
       _debouncers[tag]?.timer.cancel();
       _debouncers.remove(tag);
@@ -25,21 +25,21 @@ class ServiceDebounce {
     }
   }
 
-  static void cancel(String tag) {
+  void cancel(String tag) {
     _debouncers[tag]?.timer.cancel();
     _debouncers.remove(tag);
   }
 
-  static void cancelAll() {
+  void cancelAll() {
     for (final operation in _debouncers.values) {
       operation.timer.cancel();
     }
     _debouncers.clear();
   }
 
-  static void fire(String tag) => _debouncers[tag]?.callback();
+  void fire(String tag) => _debouncers[tag]?.callback();
 
-  static int count() => _debouncers.length;
+  int count() => _debouncers.length;
 }
 
 typedef VoidDebounceCallback = void Function();

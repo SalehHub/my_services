@@ -2,11 +2,12 @@
 import '../my_services.dart';
 
 class ServiceAppBadger {
-  static const ServiceAppBadger _s = ServiceAppBadger._();
-  factory ServiceAppBadger() => _s;
-  const ServiceAppBadger._();
+  // static const ServiceAppBadger _s = ServiceAppBadger._();
+  // factory ServiceAppBadger() => _s;
+  // const ServiceAppBadger._();
+  const ServiceAppBadger();
   //
-  static Future<void> updateBadgeCount(int count) async {
+  Future<void> updateBadgeCount(int count) async {
     try {
       //TODO: remove when supported
       if (!kIsWeb && !Platform.isMacOS) {
@@ -21,7 +22,7 @@ class ServiceAppBadger {
     }
   }
 
-  static void removeBadge() {
+  void removeBadge() {
     if (!kIsWeb) {
       FlutterAppBadger.removeBadge();
     }

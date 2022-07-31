@@ -1,14 +1,17 @@
 import '../my_services.dart';
 
 class ServiceApi {
-  static const ServiceApi _s = ServiceApi._();
-  factory ServiceApi() => _s;
-  const ServiceApi._();
+  // static const ServiceApi _s = ServiceApi._();
+  // factory ServiceApi() => _s;
+  // const ServiceApi._();
   //
-  static final Dio dio = Dio();
+  const ServiceApi();
+
+  //
+  static Dio dio = Dio();
   static String domain = '';
 
-  static Future<String> download(String url) async {
+  Future<String> download(String url) async {
     String ext = extension(url);
     String fileName = MyServices.helpers.getMd5(url);
     String savePath = "${await MyServices.helpers.getApplicationDocumentsPath() ?? ""}/$fileName.$ext";
@@ -17,7 +20,7 @@ class ServiceApi {
     return savePath;
   }
 
-  static Options _dioOptions(String? accessToken, String? lang, {String method = 'POST', Map<String, dynamic> extraHeaders = const {}}) {
+  Options _dioOptions(String? accessToken, String? lang, {String method = 'POST', Map<String, dynamic> extraHeaders = const {}}) {
     Map<String, dynamic> headers = <String, dynamic>{
       if (accessToken != null) ...{
         'X-Requested-With': 'XMLHttpRequest',
@@ -39,7 +42,7 @@ class ServiceApi {
     );
   }
 
-  static Future<Response<Map<String, dynamic>>> postRequest(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
+  Future<Response<Map<String, dynamic>>> postRequest(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {
@@ -62,7 +65,7 @@ class ServiceApi {
     return data;
   }
 
-  static Future<Response<T>> getRequest<T>(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
+  Future<Response<T>> getRequest<T>(String url, {dynamic formData, Map<String, dynamic> extraHeaders = const {}, CancelToken? cancelToken}) async {
     final String? accessToken;
     final String? lang;
     if (formData is FormData) {

@@ -2,73 +2,78 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:my_services/my_services.dart';
 
 Future<void> main() async {
+  //
   TestWidgetsFlutterBinding.ensureInitialized();
-
-  testWidgets('Test AppLauncher class', (WidgetTester tester) async {
+  testWidgets('Test AppLauncher class initilization', (WidgetTester tester) async {
     AppLauncher appLauncher = AppLauncher(
-      testing: true,
-      initGeneralState: false,
-      config: AppConfig(withFirebase: false),
-      events: AppEvents(
-        onDynamicLink: (Uri _, WidgetRef __, BuildContext ___) {},
-        onFCMTokenRefresh: (String _, WidgetRef __, BuildContext ___) {},
-        onGenerateTitle: (BuildContext _) => "title",
-        onLocaleChange: (Locale? _, Locale? __, WidgetRef ___, BuildContext _____) {},
-      ),
       //
       defaultLocale: const Locale("test1"),
       supportedLocales: [const Locale("test1"), const Locale("test2")],
+      delegates: [
+        //we added this again to make sure no deplication occure
+        const MyServicesLocalizationsDelegate(),
+
+        //new dummuy delegate
+        const _TestDelegate(),
+      ],
       //
-      // lightAccentColor: const Color(0x0f000000),
-      // darkAccentColor: const Color(0xfddddddd),
+      testing: true,
+      initGeneralState: false,
+      config: AppConfig(
+        withFirebase: false,
+        nativeLocaleChange: true,
+      ),
+      events: AppEvents(
+        onDynamicLink: (Uri _, WidgetRef __, BuildContext ___) {
+          return '';
+        },
+        onFCMTokenRefresh: (String _, WidgetRef __, BuildContext ___) {},
+        onGenerateTitle: (BuildContext _) => "title",
+        onLocaleChange: (Locale? _, Locale? __, WidgetRef ___, BuildContext _____) {},
+        onFirebaseNotification: (ref, message, s) {},
+      ),
       borderRadius: const BorderRadius.all(Radius.circular(10)),
     );
-
-    //locale
-    expect(MyServices.services.locale.defaultLocale, const Locale("test1"));
-    expect(MyServices.services.locale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
-
-    //theme
-    // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
-    // expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
-
-    // expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
-    // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
-    expect(MyServices.services.theme.borderRadius, const BorderRadius.all(Radius.circular(10)));
-
-    //appConfig + firebase
-    expect(MyServices.appConfig.withFirebase, false);
-    expect(MyServices.appConfig.withFCM, false);
-    expect(MyServices.appConfig.withCrashlytics, false);
-
-    //events
-    expect(MyServices.appEvents.onDynamicLink != null, true);
-    expect(MyServices.appEvents.onFCMTokenRefresh != null, true);
-    expect(MyServices.appEvents.onGenerateTitle != null, true);
-    expect(MyServices.appEvents.onLocaleChange != null, true);
 
     await appLauncher.prepare();
 
     //locale
     expect(MyServices.services.locale.defaultLocale, const Locale("test1"));
     expect(MyServices.services.locale.supportedLocales, [const Locale("test1"), const Locale("test2")]);
+    expect(MyServices.services.locale.localizationsDelegates, [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+      const MyServicesLocalizationsDelegate(),
+      const _TestDelegate(),
+    ]);
 
     //theme
-    // expect(ServiceTheme.lightAccentColor, const Color(0x0f000000));
-    // expect(ServiceTheme.darkAccentColor, const Color(0xfddddddd));
-
-    // expect(ServiceTheme.lightBgColor, const Color(0xffffffff));
-    // expect(ServiceTheme.darkBgColor, const Color(0xff161b1f));
+    expect(MyServices.services.theme.borderRadius, const BorderRadius.all(Radius.circular(10)));
 
     //appConfig + firebase
     expect(MyServices.appConfig.withFirebase, false);
     expect(MyServices.appConfig.withFCM, false);
     expect(MyServices.appConfig.withCrashlytics, false);
+    expect(MyServices.appConfig.nativeLocaleChange, true);
 
     //events
     expect(MyServices.appEvents.onDynamicLink != null, true);
     expect(MyServices.appEvents.onFCMTokenRefresh != null, true);
     expect(MyServices.appEvents.onGenerateTitle != null, true);
     expect(MyServices.appEvents.onLocaleChange != null, true);
+    expect(MyServices.appEvents.onFirebaseNotification != null, true);
   });
+}
+
+class _TestDelegate extends LocalizationsDelegate {
+  const _TestDelegate();
+  @override
+  bool isSupported(Locale locale) => true;
+
+  @override
+  Future load(Locale locale) async {}
+
+  @override
+  bool shouldReload(covariant LocalizationsDelegate old) => false;
 }

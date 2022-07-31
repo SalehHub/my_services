@@ -2,11 +2,13 @@
 import '../my_services.dart';
 
 class ServiceShare {
-  static const ServiceShare _s = ServiceShare._();
-  factory ServiceShare() => _s;
-  const ServiceShare._();
+  // static const ServiceShare _s = ServiceShare._();
+  // factory ServiceShare() => _s;
+  // const ServiceShare._();
   //
-  static Future<void> text(String text) async {
+  const ServiceShare();
+  //
+  Future<void> text(String text) async {
     try {
       await Share.share(text);
     } catch (e, s) {
@@ -14,10 +16,10 @@ class ServiceShare {
     }
   }
 
-  static Future<void> image(String path, {String? subject, String? text}) async {
+  Future<void> image(String path, {String? subject, String? text}) async {
     try {
       if (path.startsWith("http")) {
-        path = await ServiceApi.download(path);
+        path = await MyServices.services.api.download(path);
       }
 
       List<String> mimeTypes = [];

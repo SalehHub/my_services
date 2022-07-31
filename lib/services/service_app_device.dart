@@ -1,9 +1,11 @@
 import '../my_services.dart';
 
 class ServiceAppDevice {
-  const ServiceAppDevice._();
-  static const ServiceAppDevice _s = ServiceAppDevice._();
-  factory ServiceAppDevice() => _s;
+  // const ServiceAppDevice._();
+  // static const ServiceAppDevice _s = ServiceAppDevice._();
+  // factory ServiceAppDevice() => _s;
+  const ServiceAppDevice();
+
   //
   static AndroidDeviceInfo? _androidInfo;
   static PackageInfo? _packageInfo;
@@ -11,9 +13,8 @@ class ServiceAppDevice {
   static MacOsDeviceInfo? _macOsInfo;
   static WebBrowserInfo? _webBrowserInfo;
   static final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
-  static const String _deviceOS = "unknown";
 
-  static Future<AppDeviceData> getAppAndDeviceData() async {
+  Future<AppDeviceData> getAppAndDeviceData() async {
     final PackageInfo packageInfo = _packageInfo ?? (await PackageInfo.fromPlatform());
     String deviceIdCacheKey = "deviceIdStoredValue";
 
@@ -26,7 +27,7 @@ class ServiceAppDevice {
       deviceId = webBrowserInfo.userAgent;
       deviceOSVersion = webBrowserInfo.appVersion;
       deviceModel = webBrowserInfo.appName;
-      deviceOS = webBrowserInfo.platform ?? _deviceOS;
+      deviceOS = webBrowserInfo.platform ?? "unknown";
     } else if (Platform.isAndroid) {
       final AndroidDeviceInfo androidInfo = _androidInfo ?? (await _deviceInfoPlugin.androidInfo);
       deviceId = androidInfo.androidId;

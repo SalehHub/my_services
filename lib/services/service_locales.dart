@@ -1,14 +1,24 @@
 import '../my_services.dart';
 
 class ServiceLocale {
-  Locale _defaultLocale = const Locale('ar');
-  List<Locale> _supportedLocales = [const Locale('ar')];
+  const ServiceLocale();
+
+  static Locale _defaultLocale = const Locale('ar');
+  Locale get defaultLocale => _defaultLocale;
+
+  static List<Locale> _supportedLocales = [const Locale('ar')];
+  List<Locale> get supportedLocales => _supportedLocales;
+
+  static final Set<LocalizationsDelegate<dynamic>> _delegates = {
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    const MyServicesLocalizationsDelegate(),
+  };
+  List<LocalizationsDelegate<dynamic>> get localizationsDelegates => _delegates.toList();
 
   void setDefaultLocale(Locale v) => _defaultLocale = v;
   void setSupportedLocales(List<Locale> v) => _supportedLocales = v;
-
-  Locale get defaultLocale => _defaultLocale;
-  List<Locale> get supportedLocales => _supportedLocales;
 
   Widget getLocalSettingsSectionWidget() {
     return Builder(builder: (context) {
@@ -87,17 +97,8 @@ class ServiceLocale {
   Locale currentLocale(BuildContext context) => Localizations.localeOf(context);
 
   void addLocalizationsDelegates([List<LocalizationsDelegate<dynamic>> others = const []]) {
-    delegates.addAll(others);
+    _delegates.addAll(others);
   }
-
-  List<LocalizationsDelegate<dynamic>> delegates = [
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    const MyServicesLocalizationsDelegate(),
-  ];
-
-  List<LocalizationsDelegate<dynamic>> get localizationsDelegates => delegates;
 
   bool isSupportedLocale(Locale locale) => supportedLocales.where((l) => l.languageCode == locale.languageCode).isNotEmpty;
 
@@ -121,11 +122,7 @@ class ServiceLocale {
   //   }
   // }
 
-  void setLocaleToAr() {
-    MyServices.providers.setLocale(const Locale('ar'));
-  }
+  void setLocaleToAr() => MyServices.providers.setLocale(const Locale('ar'));
 
-  void setLocaleToEn() {
-    MyServices.providers.setLocale(const Locale('en'));
-  }
+  void setLocaleToEn() => MyServices.providers.setLocale(const Locale('en'));
 }

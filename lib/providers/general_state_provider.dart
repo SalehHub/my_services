@@ -70,7 +70,7 @@ Future<GeneralState> getGeneralState() async {
       //-----------------------------------------------------------------//
 
       MyServices.helpers.getApplicationDocumentsPath().then<dynamic>((_) async {
-        appDeviceData = await ServiceAppDevice.getAppAndDeviceData();
+        appDeviceData = await MyServices.services.appDevice.getAppAndDeviceData();
         //
         isFirstAppRun = await MyServices.storage.getIsFirstAppRun();
         isFirstAppBuildRun = await MyServices.storage.getIsFirstAppBuildRun(appDeviceData.appBuild);

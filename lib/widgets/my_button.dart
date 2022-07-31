@@ -26,7 +26,7 @@ class MyButton extends ConsumerWidget {
 
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {
-      if (ServiceLoader.isLoading(ref, _id)) {
+      if (MyServices.services.loader.isLoading(ref, _id)) {
         return MyProgressIndicator(
           width: progressIndicatorSize,
           height: progressIndicatorSize,
@@ -44,10 +44,10 @@ class MyButton extends ConsumerWidget {
   Future<AsyncCallback?> _onPressed(BuildContext context, WidgetRef ref) async {
     if (onPressed != null) {
       if (withLoading) {
-        if (ServiceLoader.isLoading(ref, _id)) {
+        if (MyServices.services.loader.isLoading(ref, _id)) {
           return Future.value();
         }
-        ServiceLoader.setLoading(_id, true);
+        MyServices.services.loader.setLoading(_id, true);
       }
 
       try {
@@ -57,7 +57,7 @@ class MyButton extends ConsumerWidget {
       }
 
       if (withLoading) {
-        ServiceLoader.setLoading(_id, false);
+        MyServices.services.loader.setLoading(_id, false);
       }
     }
     return null;

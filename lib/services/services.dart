@@ -1,42 +1,57 @@
 import '../my_services.dart';
+import 'service_api.dart';
+import 'service_app_badger.dart'; //flutterAppBadger
+import 'service_app_device.dart';
+import 'service_color.dart';
+import 'service_debounce.dart';
 import 'service_dialog.dart';
+//
+import 'service_dynamic_link.dart'; //appLinks
 //
 import 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
 import 'service_firebase_messaging.dart'; //firebaseMessaging
 import 'service_firebase_auth.dart'; //firebaseAuth
 //
+import 'service_google_maps_cluster.dart'; //googleMaps
+import 'service_image_picker.dart'; //imagePicker
+import 'service_loader.dart';
 import 'service_locales.dart';
+import 'service_nav.dart';
+import 'service_share.dart'; //sharePlus
+import 'service_snack_bar.dart';
 import 'service_theme.dart';
+import 'service_url_launcher.dart';
 
 class Services {
+  //
   static const Services _s = Services._();
   factory Services() => _s;
   const Services._();
   //
   static void register() {
     //
-    GetIt.I.registerLazySingleton<ServiceSnackBar>(() => ServiceSnackBar());
-    GetIt.I.registerLazySingleton<ServiceURLLauncher>(() => ServiceURLLauncher());
-    GetIt.I.registerLazySingleton<ServiceTheme>(() => ServiceTheme());
-    GetIt.I.registerLazySingleton<ServiceNav>(() => ServiceNav());
-    GetIt.I.registerLazySingleton<ServiceLocale>(() => ServiceLocale());
-    GetIt.I.registerLazySingleton<ServiceLoader>(() => ServiceLoader());
+    GetIt.I.registerLazySingleton<ServiceSnackBar>(() => const ServiceSnackBar());
+    GetIt.I.registerLazySingleton<ServiceURLLauncher>(() => const ServiceURLLauncher());
+    GetIt.I.registerLazySingleton<ServiceTheme>(() => const ServiceTheme());
+    GetIt.I.registerLazySingleton<ServiceNav>(() => const ServiceNav());
+    GetIt.I.registerLazySingleton<ServiceLocale>(() => const ServiceLocale());
+    GetIt.I.registerLazySingleton<ServiceLoader>(() => const ServiceLoader());
     GetIt.I.registerLazySingleton<ServiceDialog>(() => const ServiceDialog());
-    GetIt.I.registerLazySingleton<ServiceDebounce>(() => ServiceDebounce());
-    GetIt.I.registerLazySingleton<ServiceColor>(() => ServiceColor());
-    GetIt.I.registerLazySingleton<ServiceAppDevice>(() => ServiceAppDevice());
-    GetIt.I.registerLazySingleton<ServiceApi>(() => ServiceApi());
+    GetIt.I.registerLazySingleton<ServiceDebounce>(() => const ServiceDebounce());
+    GetIt.I.registerLazySingleton<ServiceColor>(() => const ServiceColor());
+    GetIt.I.registerLazySingleton<ServiceAppDevice>(() => const ServiceAppDevice());
+    GetIt.I.registerLazySingleton<ServiceApi>(() => const ServiceApi());
     //
-    GetIt.I.registerLazySingleton<ServiceShare>(() => ServiceShare()); //sharePlus
-    GetIt.I.registerLazySingleton<ServiceImagePicker>(() => ServiceImagePicker()); //imagePicker
+    GetIt.I.registerLazySingleton<ServiceShare>(() => const ServiceShare()); //sharePlus
+    GetIt.I.registerLazySingleton<ServiceImagePicker>(() => const ServiceImagePicker()); //imagePicker
     //
-    GetIt.I.registerLazySingleton<ServiceFirebaseCrashlytics>(() => ServiceFirebaseCrashlytics()); //firebaseCrashlytics
-    GetIt.I.registerLazySingleton<ServiceFirebaseMessaging>(() => ServiceFirebaseMessaging()); //firebaseMessaging
-    GetIt.I.registerLazySingleton<ServiceFirebaseAuth>(() => ServiceFirebaseAuth()); //firebaseAuth
+    GetIt.I.registerLazySingleton<ServiceFirebaseCrashlytics>(() => const ServiceFirebaseCrashlytics()); //firebaseCrashlytics
+    GetIt.I.registerLazySingleton<ServiceFirebaseMessaging>(() => const ServiceFirebaseMessaging()); //firebaseMessaging
+    GetIt.I.registerLazySingleton<ServiceFirebaseAuth>(() => const ServiceFirebaseAuth()); //firebaseAuth
     //
-    GetIt.I.registerLazySingleton<ServiceDynamicLink>(() => ServiceDynamicLink()); //appLinks
-    GetIt.I.registerLazySingleton<ServiceAppBadger>(() => ServiceAppBadger()); //flutterAppBadger
-    GetIt.I.registerLazySingleton<ServiceGoogleMapsCluster>(() => ServiceGoogleMapsCluster()); //googleMaps
+    GetIt.I.registerLazySingleton<ServiceDynamicLink>(() => const ServiceDynamicLink()); //appLinks
+    GetIt.I.registerLazySingleton<ServiceAppBadger>(() => const ServiceAppBadger()); //flutterAppBadger
+    GetIt.I.registerLazySingleton<ServiceGoogleMapsCluster>(() => const ServiceGoogleMapsCluster()); //googleMaps
     //
   }
 

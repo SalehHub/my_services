@@ -71,7 +71,6 @@ export 'databases/exports.dart';
 export 'models/exports.dart';
 export 'others/exports.dart';
 export 'providers/exports.dart';
-// export 'providers/providers.dart';
 export 'services/exports.dart';
 export 'widgets/exports.dart';
 export 'main.dart';

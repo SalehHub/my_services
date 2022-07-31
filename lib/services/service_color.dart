@@ -1,11 +1,12 @@
 import '../my_services.dart';
 
 class ServiceColor {
-  static const ServiceColor _s = ServiceColor._();
-  factory ServiceColor() => _s;
-  const ServiceColor._();
+  // static const ServiceColor _s = ServiceColor._();
+  // factory ServiceColor() => _s;
+  // const ServiceColor._();
+  const ServiceColor();
   //
-  static List<Color> getRandomColors(int length, {bool dark = false}) {
+  List<Color> getRandomColors(int length, {bool dark = false}) {
     const List<MaterialAccentColor> accentsColors = Colors.accents;
     const List<MaterialColor> primariesColors = Colors.primaries;
     final List<ColorSwatch<int>> allColors = <ColorSwatch<int>>[...accentsColors, ...primariesColors];
@@ -17,14 +18,14 @@ class ServiceColor {
     }).toList();
   }
 
-  static Color darkenColor(Color color, [double amount = 0.1]) {
+  Color darkenColor(Color color, [double amount = 0.1]) {
     assert(amount >= 0 && amount <= 1);
     final HSLColor hsl = HSLColor.fromColor(color);
     final HSLColor hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
     return hslDark.toColor();
   }
 
-  static Color lightenColor(Color color, [double amount = 0.1]) {
+  Color lightenColor(Color color, [double amount = 0.1]) {
     assert(amount >= 0 && amount <= 1);
     final HSLColor hsl = HSLColor.fromColor(color);
     final HSLColor hslLight = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
@@ -32,7 +33,7 @@ class ServiceColor {
   }
 
 //generate color from text
-  static Color colorFromText(String text, {bool light = true, double amount = 0.25}) {
+  Color colorFromText(String text, {bool light = true, double amount = 0.25}) {
     int hash = 0;
     for (int i = 0; i < text.length; i++) {
       hash = text.codeUnitAt(i) + ((hash << 5) - hash);
@@ -46,7 +47,7 @@ class ServiceColor {
     return light ? color : darkenColor(color, amount);
   }
 
-  static Color getShade(Color color, {bool darker = false, double value = .1}) {
+  Color getShade(Color color, {bool darker = false, double value = .1}) {
     assert(value >= 0 && value <= 1);
 
     final hsl = HSLColor.fromColor(color);
@@ -55,7 +56,7 @@ class ServiceColor {
     return hslDark.toColor();
   }
 
-  static MaterialColor getMaterialColorFromColor(Color color) {
+  MaterialColor getMaterialColorFromColor(Color color) {
     Map<int, Color> colorShades = {
       50: getShade(color, value: 0.5),
       100: getShade(color, value: 0.4),

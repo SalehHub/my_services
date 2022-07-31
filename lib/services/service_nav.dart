@@ -1,15 +1,17 @@
 import '../my_services.dart';
 
 class ServiceNav {
-  String? _currentRoute;
+  const ServiceNav();
+
+  static String? _currentRoute;
   String? get currentRoute => _currentRoute;
   setCurrentRoute(String? v) => _currentRoute = v;
 
-  final List<NavigatorObserver> navigatorObservers = <NavigatorObserver>[
-    MyNavigatorObserver(),
-  ];
+  static final List<NavigatorObserver> _navigatorObservers = <NavigatorObserver>[MyNavigatorObserver()];
+  List<NavigatorObserver> get navigatorObservers => _navigatorObservers;
 
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
   BuildContext get context => navigatorKey.currentContext!;
 }

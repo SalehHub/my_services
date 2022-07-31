@@ -8,15 +8,17 @@ class ServiceFirebaseAuth {
   // static ServiceFirebaseAuth instance = ServiceFirebaseAuth._();
   //----------------------------------------------//
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  const ServiceFirebaseAuth();
 
-  Function(User)? _onSuccessLogin;
-  Function(FirebaseAuthException)? _onVerificationFailed;
+  static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  User? get user => _auth.currentUser;
+  static Function(User)? _onSuccessLogin;
+  static Function(FirebaseAuthException)? _onVerificationFailed;
 
-  String? _verificationId;
-  int? _resendToken;
+  static User? get user => _auth.currentUser;
+
+  static String? _verificationId;
+  static int? _resendToken;
 
   Future verfiySmsCode({required String smsCode}) async {
     try {

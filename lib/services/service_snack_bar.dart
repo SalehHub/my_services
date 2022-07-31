@@ -1,9 +1,11 @@
 import '../my_services.dart';
 
 class ServiceSnackBar {
-  static const ServiceSnackBar _s = ServiceSnackBar._();
-  factory ServiceSnackBar() => _s;
-  const ServiceSnackBar._();
+  // static const ServiceSnackBar _s = ServiceSnackBar._();
+  // factory ServiceSnackBar() => _s;
+  // const ServiceSnackBar._();
+  //
+  const ServiceSnackBar();
   //
   static const EdgeInsets _margin = EdgeInsets.symmetric(vertical: 10, horizontal: 15);
 
@@ -27,9 +29,7 @@ class ServiceSnackBar {
     return getColorScheme(MyServices.context).primary;
   }
 
-  void hide() {
-    ScaffoldMessenger.of(MyServices.context).removeCurrentSnackBar();
-  }
+  void hide() => ScaffoldMessenger.of(MyServices.context).removeCurrentSnackBar();
 
   void showText({
     String text = '',

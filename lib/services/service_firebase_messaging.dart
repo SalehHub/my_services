@@ -13,8 +13,9 @@ class ServiceFirebaseMessaging {
   // static const ServiceFirebaseMessaging _s = ServiceFirebaseMessaging._();
   // factory ServiceFirebaseMessaging() => _s;
   // const ServiceFirebaseMessaging._();
+  const ServiceFirebaseMessaging();
   //
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   Future<String?> getToken() => _firebaseMessaging.getToken();
 

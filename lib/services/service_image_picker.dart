@@ -29,9 +29,11 @@ class MyFile {
 
 // ignore: avoid_classes_with_only_static_members
 class ServiceImagePicker {
-  static const ServiceImagePicker _s = ServiceImagePicker._();
-  factory ServiceImagePicker() => _s;
-  const ServiceImagePicker._();
+  // static const ServiceImagePicker _s = ServiceImagePicker._();
+  // factory ServiceImagePicker() => _s;
+  // const ServiceImagePicker._();
+  //
+  const ServiceImagePicker();
   //
 
   static final ImagePicker _imagePicker = ImagePicker();

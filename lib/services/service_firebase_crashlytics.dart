@@ -5,8 +5,9 @@ class ServiceFirebaseCrashlytics {
   // static const ServiceFirebaseCrashlytics _s = ServiceFirebaseCrashlytics._();
   // factory ServiceFirebaseCrashlytics() => _s;
   // const ServiceFirebaseCrashlytics();
+  const ServiceFirebaseCrashlytics();
   //
-  final FirebaseCrashlytics _firebaseCrashlytics = FirebaseCrashlytics.instance;
+  static final FirebaseCrashlytics _firebaseCrashlytics = FirebaseCrashlytics.instance;
 
   Future<void> register() async {
     if (kDebugMode) {

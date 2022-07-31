@@ -1,13 +1,16 @@
 import '../my_services.dart';
 
 class ServiceTheme {
+  const ServiceTheme();
+
   static const double elevation = 2;
 
-  MyThemeData _dark = MyThemeData.dark;
-  MyThemeData _light = MyThemeData.light;
+  static MyThemeData _dark = MyThemeData.dark;
+  static MyThemeData _light = MyThemeData.light;
 
-  BorderRadius _borderRadius = const BorderRadius.all(Radius.zero);
+  static BorderRadius _borderRadius = const BorderRadius.all(Radius.zero);
   BorderRadius get borderRadius => _borderRadius;
+
   RoundedRectangleBorder get circularBorderRadius => RoundedRectangleBorder(borderRadius: _borderRadius);
 
   void setDark(MyThemeData v) => _dark = v;

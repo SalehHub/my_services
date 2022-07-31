@@ -1,12 +1,17 @@
 import 'my_services.dart';
+import 'services/services.dart';
+
+//an alias to MyServices class
+typedef MyS = MyServices;
 
 class MyServices {
+  //
   const MyServices._();
   static const MyServices _s = MyServices._();
   factory MyServices() => _s;
 
   static void register() {
-    //
+    //register MyStorage
     GetIt.I.registerLazySingleton<MyStorage>(() {
       return MyStorageSQLite(); //sqflite
       // ignore: dead_code
