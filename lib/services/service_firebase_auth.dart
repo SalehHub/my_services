@@ -32,7 +32,7 @@ class ServiceFirebaseAuth {
         else if (e.code.contains("invalid-verification-code")) {
           msg = l.theCodeIsInccorectPleaseTryAgain;
         } else if (e.code.contains("session-expired")) {
-          msg = l.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain;
+          msg = l.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain;
           if (_onResendRequired != null) {
             _onResendRequired!();
           }
