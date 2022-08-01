@@ -8,7 +8,8 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
-    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'The code has expired. Please re-send the verification code to try again',
+    resendSmsVerificationCode: 'Re-send SMS verification code',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'The code has expired. Please re-send the verification code to try again',
     theCodeIsInccorectPleaseTryAgain: 'The code is inccorect. Please try again',
     phoneNumberIsInvalid: 'Phone number is invalid',
     phoneNumberIsTooLong: 'Phone number is too long',
@@ -156,7 +157,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
-    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة ارسال الرمز',
+    resendSmsVerificationCode: 'إعادة إرسال الرمز',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة ارسال الرمز',
     theCodeIsInccorectPleaseTryAgain: 'الرمز غير صحيح، حاول مجددا',
     phoneNumberIsInvalid: 'رقم الجوال غير صحيح',
     phoneNumberIsTooLong: 'رقم الجوال طويل جدا',
@@ -304,7 +306,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
-    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez revoir le code de vérification pour réessayer',
+    resendSmsVerificationCode: 'Reendez le code de vérification SMS',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez revoir le code de vérification pour réessayer',
     theCodeIsInccorectPleaseTryAgain: 'Le code est incorant. Veuillez réessayer',
     phoneNumberIsInvalid: 'Le numéro de téléphone n\'est pas valide',
     phoneNumberIsTooLong: 'Le numéro de téléphone est trop long',
@@ -453,7 +456,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
-    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'El código ha expirado. Vuelva a enviar el código de verificación para que vuelva a intentarlo',
+    resendSmsVerificationCode: 'Vuelva a enviar el código de verificación SMS',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'El código ha expirado. Vuelva a enviar el código de verificación para que vuelva a intentarlo',
     theCodeIsInccorectPleaseTryAgain: 'El código es inccorect. Inténtalo de nuevo',
     phoneNumberIsInvalid: 'El número de teléfono no es válido',
     phoneNumberIsTooLong: 'El número de teléfono es demasiado largo',
@@ -601,7 +605,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
-    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'Kod süresi doldu. Tekrar denemek için lütfen doğrulama kodunu yeniden yazın',
+    resendSmsVerificationCode: 'SMS Doğrulama Kodunu Yeniden İndir',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Kod süresi doldu. Tekrar denemek için lütfen doğrulama kodunu yeniden yazın',
     theCodeIsInccorectPleaseTryAgain: 'Kod tutulur. Lütfen tekrar deneyin',
     phoneNumberIsInvalid: 'Telefon numarası geçersiz',
     phoneNumberIsTooLong: 'Telefon numarası çok uzun',
@@ -752,7 +757,8 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
-    required this.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+    required this.resendSmsVerificationCode,
+    required this.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
     required this.theCodeIsInccorectPleaseTryAgain,
     required this.phoneNumberIsInvalid,
     required this.phoneNumberIsTooLong,
@@ -900,7 +906,8 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
-  final String theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain;
+  final String resendSmsVerificationCode;
+  final String theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain;
   final String theCodeIsInccorectPleaseTryAgain;
   final String phoneNumberIsInvalid;
   final String phoneNumberIsTooLong;
@@ -1047,7 +1054,8 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
-        theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: map['theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain']! as String,
+        resendSmsVerificationCode: map['resendSmsVerificationCode']! as String,
+        theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: map['theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain']! as String,
         theCodeIsInccorectPleaseTryAgain: map['theCodeIsInccorectPleaseTryAgain']! as String,
         phoneNumberIsInvalid: map['phoneNumberIsInvalid']! as String,
         phoneNumberIsTooLong: map['phoneNumberIsTooLong']! as String,
@@ -1196,7 +1204,8 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
-    String? theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+    String? resendSmsVerificationCode,
+    String? theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
     String? theCodeIsInccorectPleaseTryAgain,
     String? phoneNumberIsInvalid,
     String? phoneNumberIsTooLong,
@@ -1344,7 +1353,8 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
-        theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain ?? this.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+        resendSmsVerificationCode: resendSmsVerificationCode ?? this.resendSmsVerificationCode,
+        theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain ?? this.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
         theCodeIsInccorectPleaseTryAgain: theCodeIsInccorectPleaseTryAgain ?? this.theCodeIsInccorectPleaseTryAgain,
         phoneNumberIsInvalid: phoneNumberIsInvalid ?? this.phoneNumberIsInvalid,
         phoneNumberIsTooLong: phoneNumberIsTooLong ?? this.phoneNumberIsTooLong,
@@ -1497,7 +1507,8 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
-          theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain == other.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain &&
+          resendSmsVerificationCode == other.resendSmsVerificationCode &&
+          theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain == other.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain &&
           theCodeIsInccorectPleaseTryAgain == other.theCodeIsInccorectPleaseTryAgain &&
           phoneNumberIsInvalid == other.phoneNumberIsInvalid &&
           phoneNumberIsTooLong == other.phoneNumberIsTooLong &&
@@ -1646,7 +1657,8 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain.hashCode ^
+      resendSmsVerificationCode.hashCode ^
+      theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain.hashCode ^
       theCodeIsInccorectPleaseTryAgain.hashCode ^
       phoneNumberIsInvalid.hashCode ^
       phoneNumberIsTooLong.hashCode ^
