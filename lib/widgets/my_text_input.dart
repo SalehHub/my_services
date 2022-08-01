@@ -292,8 +292,10 @@ class _MyTextInputState extends State<MyTextInput> {
       labelStyle: widget.labelStyle,
       floatingLabelStyle: widget.floatingLabelStyle,
       labelText: widget.floatingLabel ? widget.labelText : null,
+      //
       helperText: widget.helperText,
       helperMaxLines: 2,
+      //
       contentPadding: buildContentPadding(),
       suffixIcon: widget.suffixIcon,
       prefixIcon: buildPrefixIcon(),
