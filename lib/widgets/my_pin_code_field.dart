@@ -2,11 +2,19 @@
 import 'package:my_services/my_services.dart';
 
 class MyPinCodeField extends StatelessWidget {
-  const MyPinCodeField({super.key, this.onCompleted, this.length = 4, this.onChanged, this.margin = EdgeInsets.zero});
+  const MyPinCodeField({
+    super.key,
+    this.onCompleted,
+    this.length = 4,
+    this.onChanged,
+    this.margin = EdgeInsets.zero,
+    this.controller,
+  });
 
   final ValueChanged<String>? onCompleted;
   final ValueChanged<String>? onChanged;
   final EdgeInsetsGeometry margin;
+  final TextEditingController? controller;
   final int length;
 
   @override
@@ -17,6 +25,7 @@ class MyPinCodeField extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: PinCodeTextField(
+          controller: controller,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           textStyle: getTextTheme(context).bodyText1,
           cursorColor: color,

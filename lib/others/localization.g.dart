@@ -8,6 +8,11 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'The code has expired. Please re-send the verification code to try again',
+    theCodeIsInccorectPleaseTryAgain: 'The code is inccorect. Please try again',
+    phoneNumberIsInvalid: 'Phone number is invalid',
+    phoneNumberIsTooLong: 'Phone number is too long',
+    phoneNumberIsTooShort: 'Phone number is too short',
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'Access to your location is disabled. However, you can enable it from your device Settings.',
     copy: 'Copy',
     open: 'Open',
@@ -151,6 +156,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة ارسال الرمز',
+    theCodeIsInccorectPleaseTryAgain: 'الرمز غير صحيح، حاول مجددا',
+    phoneNumberIsInvalid: 'رقم الجوال غير صحيح',
+    phoneNumberIsTooLong: 'رقم الجوال طويل جدا',
+    phoneNumberIsTooShort: 'رقم الجوال قصير جدا',
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'الوصول للموقع معطل من إعدادات الجهاز',
     copy: 'نسخ',
     open: 'فتح',
@@ -294,6 +304,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez revoir le code de vérification pour réessayer',
+    theCodeIsInccorectPleaseTryAgain: 'Le code est incorant. Veuillez réessayer',
+    phoneNumberIsInvalid: 'Le numéro de téléphone n\'est pas valide',
+    phoneNumberIsTooLong: 'Le numéro de téléphone est trop long',
+    phoneNumberIsTooShort: 'Le numéro de téléphone est trop court',
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings:
         'L\'accès à votre emplacement est désactivé. Cependant, vous pouvez l\'activer à partir des paramètres de votre appareil.',
     copy: 'Copie',
@@ -438,6 +453,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'El código ha expirado. Vuelva a enviar el código de verificación para que vuelva a intentarlo',
+    theCodeIsInccorectPleaseTryAgain: 'El código es inccorect. Inténtalo de nuevo',
+    phoneNumberIsInvalid: 'El número de teléfono no es válido',
+    phoneNumberIsTooLong: 'El número de teléfono es demasiado largo',
+    phoneNumberIsTooShort: 'El número de teléfono es demasiado corto',
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'El acceso a su ubicación está deshabilitado. Sin embargo, puede habilitarlo desde la configuración de su dispositivo.',
     copy: 'Copiar',
     open: 'Abierto',
@@ -581,6 +601,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: 'Kod süresi doldu. Tekrar denemek için lütfen doğrulama kodunu yeniden yazın',
+    theCodeIsInccorectPleaseTryAgain: 'Kod tutulur. Lütfen tekrar deneyin',
+    phoneNumberIsInvalid: 'Telefon numarası geçersiz',
+    phoneNumberIsTooLong: 'Telefon numarası çok uzun',
+    phoneNumberIsTooShort: 'Telefon numarası çok kısa',
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: 'Konumunuza erişim devre dışı bırakılmıştır. Ancak, cihaz ayarlarınızdan etkinleştirebilirsiniz.',
     copy: 'Kopya',
     open: 'Açık',
@@ -727,6 +752,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+    required this.theCodeIsInccorectPleaseTryAgain,
+    required this.phoneNumberIsInvalid,
+    required this.phoneNumberIsTooLong,
+    required this.phoneNumberIsTooShort,
     required this.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
     required this.copy,
     required this.open,
@@ -870,6 +900,11 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain;
+  final String theCodeIsInccorectPleaseTryAgain;
+  final String phoneNumberIsInvalid;
+  final String phoneNumberIsTooLong;
+  final String phoneNumberIsTooShort;
   final String accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings;
   final String copy;
   final String open;
@@ -1012,6 +1047,11 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: map['theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain']! as String,
+        theCodeIsInccorectPleaseTryAgain: map['theCodeIsInccorectPleaseTryAgain']! as String,
+        phoneNumberIsInvalid: map['phoneNumberIsInvalid']! as String,
+        phoneNumberIsTooLong: map['phoneNumberIsTooLong']! as String,
+        phoneNumberIsTooShort: map['phoneNumberIsTooShort']! as String,
         accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings: map['accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings']! as String,
         copy: map['copy']! as String,
         open: map['open']! as String,
@@ -1156,6 +1196,11 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+    String? theCodeIsInccorectPleaseTryAgain,
+    String? phoneNumberIsInvalid,
+    String? phoneNumberIsTooLong,
+    String? phoneNumberIsTooShort,
     String? accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
     String? copy,
     String? open,
@@ -1299,6 +1344,11 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain: theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain ?? this.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain,
+        theCodeIsInccorectPleaseTryAgain: theCodeIsInccorectPleaseTryAgain ?? this.theCodeIsInccorectPleaseTryAgain,
+        phoneNumberIsInvalid: phoneNumberIsInvalid ?? this.phoneNumberIsInvalid,
+        phoneNumberIsTooLong: phoneNumberIsTooLong ?? this.phoneNumberIsTooLong,
+        phoneNumberIsTooShort: phoneNumberIsTooShort ?? this.phoneNumberIsTooShort,
         accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings:
             accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings ?? this.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings,
         copy: copy ?? this.copy,
@@ -1447,6 +1497,11 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain == other.theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain &&
+          theCodeIsInccorectPleaseTryAgain == other.theCodeIsInccorectPleaseTryAgain &&
+          phoneNumberIsInvalid == other.phoneNumberIsInvalid &&
+          phoneNumberIsTooLong == other.phoneNumberIsTooLong &&
+          phoneNumberIsTooShort == other.phoneNumberIsTooShort &&
           accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings == other.accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings &&
           copy == other.copy &&
           open == other.open &&
@@ -1591,6 +1646,11 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      theCodeHasExpiredPleaseReSendTheVerificationCodeToTryAgain.hashCode ^
+      theCodeIsInccorectPleaseTryAgain.hashCode ^
+      phoneNumberIsInvalid.hashCode ^
+      phoneNumberIsTooLong.hashCode ^
+      phoneNumberIsTooShort.hashCode ^
       accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings.hashCode ^
       copy.hashCode ^
       open.hashCode ^
