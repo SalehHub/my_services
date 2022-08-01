@@ -230,7 +230,7 @@ class _MyTextInputState extends State<MyTextInput> {
 
   Widget buildTextInput() {
     if (widget.maxLines > 1) {
-      return SizedBox(height: widget.maxLines > 1 ? widget.maxLines * 45 : null, child: buildTextFormField());
+      return SizedBox(height: widget.maxLines > 1 ? widget.maxLines * 50 : null, child: buildTextFormField());
     }
     return buildTextFormField();
   }
@@ -293,6 +293,7 @@ class _MyTextInputState extends State<MyTextInput> {
       floatingLabelStyle: widget.floatingLabelStyle,
       labelText: widget.floatingLabel ? widget.labelText : null,
       helperText: widget.helperText,
+      helperMaxLines: 2,
       contentPadding: buildContentPadding(),
       suffixIcon: widget.suffixIcon,
       prefixIcon: buildPrefixIcon(),
