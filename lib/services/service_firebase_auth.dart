@@ -73,7 +73,7 @@ class ServiceFirebaseAuth {
     }
     //
     _onSuccessLogin = onSuccessLogin;
-    _onResendRequired = _onResendRequired;
+    _onResendRequired = onResendRequired;
     //
     await _auth.verifyPhoneNumber(
       //
