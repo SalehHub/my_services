@@ -9,6 +9,7 @@ class MyPinCodeField extends StatelessWidget {
     this.onChanged,
     this.margin = EdgeInsets.zero,
     this.controller,
+    this.digitsOnly = false,
   });
 
   final ValueChanged<String>? onCompleted;
@@ -16,6 +17,7 @@ class MyPinCodeField extends StatelessWidget {
   final EdgeInsetsGeometry margin;
   final TextEditingController? controller;
   final int length;
+  final bool digitsOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +28,16 @@ class MyPinCodeField extends StatelessWidget {
         textDirection: TextDirection.ltr,
         child: PinCodeTextField(
           controller: controller,
+          keyboardType: digitsOnly ? TextInputType.number : TextInputType.visiblePassword,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           textStyle: getTextTheme(context).bodyText1,
           cursorColor: color,
           appContext: context,
           length: length,
+          inputFormatters: [
+            if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+            LengthLimitingTextInputFormatter(length),
+          ],
           onCompleted: onCompleted,
           onChanged: onChanged ?? (t) {},
           //theme
