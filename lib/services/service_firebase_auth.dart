@@ -15,6 +15,30 @@ class ServiceFirebaseAuth {
   static Function(User)? _onSuccessLogin;
   static Function()? _onResendRequired;
 
+  static const int _allowedMinutes = 5;
+  static final Map<String, DateTime?> _timers = {};
+
+  DateTime? get timer => _timers[_verificationId];
+  DateTime? get remainingTimer => timer?.add(const Duration(minutes: _allowedMinutes));
+
+  void _resetTimer() {
+    if (_verificationId != null) {
+      _timers[_verificationId!] = null;
+    }
+  }
+
+  void _setTimer() {
+    if (_verificationId != null) {
+      _timers[_verificationId!] = DateTime.now();
+    }
+  }
+
+  void _endTimer() {
+    if (_verificationId != null) {
+      _timers[_verificationId!] = DateTime.now().subtract(const Duration(minutes: _allowedMinutes));
+    }
+  }
+
   Function(FirebaseAuthException) get _onVerificationFailed => (e) {
         String msg = e.message ?? "";
 
@@ -33,6 +57,9 @@ class ServiceFirebaseAuth {
           msg = l.theCodeIsInccorectPleaseTryAgain;
         } else if (e.code.contains("session-expired")) {
           msg = l.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain;
+
+          _endTimer();
+
           if (_onResendRequired != null) {
             _onResendRequired!();
           }
@@ -51,8 +78,13 @@ class ServiceFirebaseAuth {
       if (_verificationId != null) {
         User? user = (await _auth.signInWithCredential(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode))).user;
 
-        if (user != null && _onSuccessLogin != null) {
-          await _onSuccessLogin!(user);
+        if (user != null) {
+          //reset timer
+          _resetTimer();
+
+          if (_onSuccessLogin != null) {
+            await _onSuccessLogin!(user);
+          }
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -73,7 +105,7 @@ class ServiceFirebaseAuth {
     }
     //
     _onSuccessLogin = onSuccessLogin;
-    _onResendRequired = _onResendRequired;
+    _onResendRequired = onResendRequired;
     //
     await _auth.verifyPhoneNumber(
       //
@@ -86,8 +118,13 @@ class ServiceFirebaseAuth {
         if (Platform.isAndroid) {
           User? user = (await _auth.signInWithCredential(credential)).user;
 
-          if (user != null && _onSuccessLogin != null) {
-            await _onSuccessLogin!(user);
+          if (user != null) {
+            //reset timer
+            _resetTimer();
+
+            if (_onSuccessLogin != null) {
+              await _onSuccessLogin!(user);
+            }
           }
         }
       },
@@ -97,6 +134,7 @@ class ServiceFirebaseAuth {
       codeSent: (String verificationId, int? resendToken) {
         _verificationId = verificationId;
         _resendToken = resendToken;
+        _setTimer();
         onSmsCodeSent();
       },
       //
@@ -104,6 +142,8 @@ class ServiceFirebaseAuth {
         // ANDROID ONLY!
         if (Platform.isAndroid) {
           _verificationId = verificationId;
+          _setTimer();
+
           onSmsCodeSent();
         }
       },
