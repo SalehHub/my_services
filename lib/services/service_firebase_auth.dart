@@ -76,16 +76,7 @@ class ServiceFirebaseAuth {
   Future verfiySmsCode({required String smsCode}) async {
     try {
       if (_verificationId != null) {
-        User? user = (await _auth.signInWithCredential(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode))).user;
-
-        if (user != null) {
-          //reset timer
-          _resetTimer();
-
-          if (_onSuccessLogin != null) {
-            await _onSuccessLogin!(user);
-          }
-        }
+        await _onVerificationComplete(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
       }
     } on FirebaseAuthException catch (e) {
       _onVerificationFailed(e);
@@ -110,26 +101,16 @@ class ServiceFirebaseAuth {
     await _auth.verifyPhoneNumber(
       //
       phoneNumber: phoneWithCountryCode,
+
       //
       timeout: const Duration(seconds: 60),
-      //
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        // ANDROID ONLY!
-        if (Platform.isAndroid) {
-          User? user = (await _auth.signInWithCredential(credential)).user;
 
-          if (user != null) {
-            //reset timer
-            _resetTimer();
+      // ANDROID ONLY!
+      verificationCompleted: _onVerificationComplete,
 
-            if (_onSuccessLogin != null) {
-              await _onSuccessLogin!(user);
-            }
-          }
-        }
-      },
       //
       verificationFailed: _onVerificationFailed,
+
       //
       codeSent: (String verificationId, int? resendToken) {
         _verificationId = verificationId;
@@ -137,20 +118,34 @@ class ServiceFirebaseAuth {
         _setTimer();
         onSmsCodeSent();
       },
-      //
-      codeAutoRetrievalTimeout: (String verificationId) {
-        // ANDROID ONLY!
-        if (Platform.isAndroid) {
-          _verificationId = verificationId;
-          _setTimer();
 
-          onSmsCodeSent();
-        }
+      // ANDROID ONLY!
+      codeAutoRetrievalTimeout: (String verificationId) {
+        // if (Platform.isAndroid) {
+        _verificationId = verificationId;
+        _setTimer();
+
+        onSmsCodeSent();
+        // }
       },
+
       //
       forceResendingToken: _resendToken,
       // autoRetrievedSmsCodeForTesting: "123456",
     );
+  }
+
+  Future _onVerificationComplete(PhoneAuthCredential credential) async {
+    User? user = (await _auth.signInWithCredential(credential)).user;
+
+    if (user != null) {
+      //reset timer
+      _resetTimer();
+
+      if (_onSuccessLogin != null) {
+        await _onSuccessLogin!(user);
+      }
+    }
   }
 
   Future<void> signOut() async => _auth.signOut();
