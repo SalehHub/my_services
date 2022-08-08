@@ -8,6 +8,9 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'We are sorry, our servers are not responding at this time, please try again later',
+    noInternetConnection: 'No internet connection',
+    changePhoneNumber: 'Change phone number',
     resendSmsVerificationCode: 'Re-send SMS verification code',
     theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'The code has expired. Please re-send the verification code to try again',
     theCodeIsInccorectPleaseTryAgain: 'The code is inccorect. Please try again',
@@ -157,6 +160,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'نعتذر منك ، خوادمنا لا تستجيب في الوقت الحالي ، يرجى المحاولة مرة أخرى لاحقًا',
+    noInternetConnection: 'لايوجد إتصال بالانترنت',
+    changePhoneNumber: 'تغيير قم الجوال',
     resendSmsVerificationCode: 'إعادة إرسال الرمز',
     theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة ارسال الرمز',
     theCodeIsInccorectPleaseTryAgain: 'الرمز غير صحيح، حاول مجددا',
@@ -306,6 +312,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Nous sommes désolés, nos serveurs ne répondent pas en ce moment, veuillez réessayer plus tard',
+    noInternetConnection: 'Pas de connexion Internet',
+    changePhoneNumber: 'Modifier le numéro de téléphone',
     resendSmsVerificationCode: 'Reendez le code de vérification SMS',
     theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez revoir le code de vérification pour réessayer',
     theCodeIsInccorectPleaseTryAgain: 'Le code est incorant. Veuillez réessayer',
@@ -456,6 +465,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Lo sentimos, nuestros servidores no están respondiendo en este momento, inténtelo de nuevo más tarde',
+    noInternetConnection: 'Sin conexión a Internet',
+    changePhoneNumber: 'Cambiar el número de teléfono',
     resendSmsVerificationCode: 'Vuelva a enviar el código de verificación SMS',
     theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'El código ha expirado. Vuelva a enviar el código de verificación para que vuelva a intentarlo',
     theCodeIsInccorectPleaseTryAgain: 'El código es inccorect. Inténtalo de nuevo',
@@ -605,6 +617,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Üzgünüz, sunucularımız şu anda yanıt vermiyor, lütfen daha sonra tekrar deneyin',
+    noInternetConnection: 'İnternet bağlantısı yok',
+    changePhoneNumber: 'Telefon Numarasını Değiştir',
     resendSmsVerificationCode: 'SMS Doğrulama Kodunu Yeniden İndir',
     theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Kod süresi doldu. Tekrar denemek için lütfen doğrulama kodunu yeniden yazın',
     theCodeIsInccorectPleaseTryAgain: 'Kod tutulur. Lütfen tekrar deneyin',
@@ -757,6 +772,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
+    required this.noInternetConnection,
+    required this.changePhoneNumber,
     required this.resendSmsVerificationCode,
     required this.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
     required this.theCodeIsInccorectPleaseTryAgain,
@@ -906,6 +924,9 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater;
+  final String noInternetConnection;
+  final String changePhoneNumber;
   final String resendSmsVerificationCode;
   final String theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain;
   final String theCodeIsInccorectPleaseTryAgain;
@@ -1054,6 +1075,9 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: map['weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater']! as String,
+        noInternetConnection: map['noInternetConnection']! as String,
+        changePhoneNumber: map['changePhoneNumber']! as String,
         resendSmsVerificationCode: map['resendSmsVerificationCode']! as String,
         theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: map['theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain']! as String,
         theCodeIsInccorectPleaseTryAgain: map['theCodeIsInccorectPleaseTryAgain']! as String,
@@ -1204,6 +1228,9 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
+    String? noInternetConnection,
+    String? changePhoneNumber,
     String? resendSmsVerificationCode,
     String? theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
     String? theCodeIsInccorectPleaseTryAgain,
@@ -1353,6 +1380,10 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater:
+            weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater ?? this.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
+        noInternetConnection: noInternetConnection ?? this.noInternetConnection,
+        changePhoneNumber: changePhoneNumber ?? this.changePhoneNumber,
         resendSmsVerificationCode: resendSmsVerificationCode ?? this.resendSmsVerificationCode,
         theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain ?? this.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain,
         theCodeIsInccorectPleaseTryAgain: theCodeIsInccorectPleaseTryAgain ?? this.theCodeIsInccorectPleaseTryAgain,
@@ -1507,6 +1538,9 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater == other.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater &&
+          noInternetConnection == other.noInternetConnection &&
+          changePhoneNumber == other.changePhoneNumber &&
           resendSmsVerificationCode == other.resendSmsVerificationCode &&
           theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain == other.theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain &&
           theCodeIsInccorectPleaseTryAgain == other.theCodeIsInccorectPleaseTryAgain &&
@@ -1657,6 +1691,9 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater.hashCode ^
+      noInternetConnection.hashCode ^
+      changePhoneNumber.hashCode ^
       resendSmsVerificationCode.hashCode ^
       theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain.hashCode ^
       theCodeIsInccorectPleaseTryAgain.hashCode ^
