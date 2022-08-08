@@ -6,23 +6,12 @@ StateProvider<bool> _showResendSmsCodeButtonStateProvider = StateProvider<bool>(
 StateProvider<bool> _isProccessingStateProvider = StateProvider<bool>((r) => false);
 
 class ServiceFirebaseAuth {
-  //----------------------------------------------//
-  // factory ServiceFirebaseAuth() => instance;
-  // ServiceFirebaseAuth._();
-  // static ServiceFirebaseAuth instance = ServiceFirebaseAuth._();
-  //----------------------------------------------//
-
-  const ServiceFirebaseAuth();
-
-  static final TextEditingController _pinCodeFieldTextEditingController = TextEditingController();
-  TextEditingController get pinCodeFieldTextEditingController => _pinCodeFieldTextEditingController;
-
-  _setShowSmsCodeInputStateProvider(bool value) {
+  _setShowSmsCodeInput(bool value) {
     readProviderNotifier(_showSmsCodeInputStateProvider).state = value;
   }
 
-  bool watchIsProccessing(WidgetRef ref) {
-    return ref.watch(_isProccessingStateProvider);
+  _setShowResendSmsCodeButton(bool value) {
+    readProviderNotifier(_showResendSmsCodeButtonStateProvider).state = value;
   }
 
   _proccessingOn() {
@@ -33,17 +22,22 @@ class ServiceFirebaseAuth {
     readProviderNotifier(_isProccessingStateProvider).state = false;
   }
 
-  bool watchShowSmsCodeInput(WidgetRef ref) {
-    return ref.watch(_showSmsCodeInputStateProvider);
+  bool watchIsProccessing(WidgetRef ref) {
+    return ref.watch(_isProccessingStateProvider);
   }
 
-  _setShowResendSmsCodeButtonStateProvider(bool value) {
-    readProviderNotifier(_showResendSmsCodeButtonStateProvider).state = value;
+  bool watchShowSmsCodeInput(WidgetRef ref) {
+    return ref.watch(_showSmsCodeInputStateProvider);
   }
 
   bool watchShowResendSmsCodeButton(WidgetRef ref) {
     return ref.watch(_showResendSmsCodeButtonStateProvider);
   }
+
+  const ServiceFirebaseAuth();
+
+  static final TextEditingController _pinCodeFieldTextEditingController = TextEditingController();
+  TextEditingController get pinCodeFieldTextEditingController => _pinCodeFieldTextEditingController;
 
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -51,27 +45,21 @@ class ServiceFirebaseAuth {
   // static Function()? _onResendRequired;
 
   static const int _allowedMinutes = 5;
-  static final Map<String, DateTime?> _timers = {};
 
-  DateTime? get timer => _timers[_verificationId];
+  static DateTime? _timer;
+  DateTime? get timer => _timer;
   DateTime? get remainingTimer => timer?.add(const Duration(minutes: _allowedMinutes));
 
-  void _resetTimer() {
-    if (_verificationId != null) {
-      _timers[_verificationId!] = null;
-    }
+  void _setTimerToNull() {
+    _timer = null;
   }
 
-  void _setTimer() {
-    if (_verificationId != null) {
-      _timers[_verificationId!] = DateTime.now();
-    }
+  void _setTimerToNow() {
+    _timer = DateTime.now();
   }
 
   void _endTimer() {
-    if (_verificationId != null) {
-      _timers[_verificationId!] = DateTime.now().subtract(const Duration(minutes: _allowedMinutes));
-    }
+    _timer = DateTime.now().subtract(const Duration(minutes: _allowedMinutes));
   }
 
   Function(FirebaseAuthException) get _onVerificationFailed => (e) {
@@ -126,7 +114,7 @@ class ServiceFirebaseAuth {
         //verifiy sms code
         bool result = await _onVerificationComplete(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
         if (result == true) {
-          _setShowSmsCodeInputStateProvider(false);
+          _setShowSmsCodeInput(false);
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -150,7 +138,7 @@ class ServiceFirebaseAuth {
     _onSuccessLogin = onSuccessLogin;
 
     //hide resend sms code button
-    _setShowResendSmsCodeButtonStateProvider(false);
+    _setShowResendSmsCodeButton(false);
 
     //clear sms code input
     pinCodeFieldTextEditingController.clear();
@@ -193,9 +181,9 @@ class ServiceFirebaseAuth {
 
     _verificationId = verificationId;
 
-    _setTimer();
+    _setTimerToNow();
 
-    _setShowSmsCodeInputStateProvider(true);
+    _setShowSmsCodeInput(true);
 
     // onSmsCodeSent();
   }
@@ -205,7 +193,7 @@ class ServiceFirebaseAuth {
 
     if (user != null) {
       //reset timer
-      _resetTimer();
+      _setTimerToNull();
 
       if (_onSuccessLogin != null) {
         await _onSuccessLogin!(user);
@@ -222,4 +210,10 @@ class ServiceFirebaseAuth {
   }
 
   Future<void> signOut() async => _auth.signOut();
+
+  void changePhoneNumber() {
+    _setShowSmsCodeInput(false);
+    _setShowResendSmsCodeButton(false);
+    _setTimerToNull();
+  }
 }
