@@ -230,7 +230,11 @@ class _MyTextInputState extends State<MyTextInput> {
 
   Widget buildTextInput() {
     if (widget.maxLines > 1) {
-      return SizedBox(height: widget.maxLines > 1 ? widget.maxLines * 50 : null, child: buildTextFormField());
+      double increase = widget.helperText != null ? 50 : 45;
+      return SizedBox(
+        height: widget.maxLines > 1 ? widget.maxLines * increase : null,
+        child: buildTextFormField(),
+      );
     }
     return buildTextFormField();
   }
