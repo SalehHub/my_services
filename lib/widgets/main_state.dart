@@ -27,7 +27,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 }
 
 abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T>
-    with SafeSetStateMixin, SearchMixin, BannersMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin {
+    with SafeSetStateMixin, SearchMixin, BannersMixin, HeadLoadingsMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin {
   //
   //
 
@@ -110,6 +110,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     }).toList();
   }
 
+  Widget? appBarLeading;
+
   Widget? _buildAppBarLeading() {
     if (appBarLeading != null) {
       return Material(
@@ -143,7 +145,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   void _refreshThemeStyle() {
     MyS.services.debounce.debounce(() {
-      logger.w("Service Theme Set System Ui Overlay Style");
+      // logger.w("Service Theme Set System Ui Overlay Style");
       if (mounted) {
         MyServices.services.theme.setSystemUiOverlayStyle(ThemeMode.system, context);
       }
@@ -230,43 +232,50 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   Container buildScaffold() {
     return Container(
       color: theme.scaffoldBackgroundColor,
-      child: SafeArea(
-        bottom: false,
-        child: Scaffold(
-          drawer: drawer,
-          key: scaffoldKey,
-          body: NestedScrollView(
-            floatHeaderSlivers: true,
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                if (showAppBar)
-                  SliverOverlapAbsorber(
-                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                    sliver: appBar(innerBoxIsScrolled),
-                  )
-                else
-                  const SliverToBoxAdapter(child: SizedBox())
-              ];
-            },
-            body: Builder(builder: (context) {
-              if (floatingBottomWidget != null) {
-                return Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    buildScaffoldBody(context),
-                    Positioned(bottom: 0, child: floatingBottomWidget!),
-                  ],
-                );
-              }
-              return buildScaffoldBody(context);
-            }),
+      child: Stack(
+        children: [
+          SafeArea(
+            bottom: false,
+            child: Scaffold(
+              drawer: drawer,
+              key: scaffoldKey,
+              body: NestedScrollView(
+                floatHeaderSlivers: true,
+                headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    if (showAppBar)
+                      SliverOverlapAbsorber(
+                        handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                        sliver: appBar(innerBoxIsScrolled),
+                      )
+                    else
+                      const SliverToBoxAdapter(child: SizedBox())
+                  ];
+                },
+                body: Builder(builder: (context) {
+                  if (floatingBottomWidget != null) {
+                    return Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        buildScaffoldBody(context),
+                        Positioned(bottom: 0, child: floatingBottomWidget!),
+                      ],
+                    );
+                  }
+                  return buildScaffoldBody(context);
+                }),
+              ),
+            ),
           ),
-        ),
+          if (pageHeadLoading) pageHeadLoadingWidget,
+        ],
       ),
     );
   }
 
-  Center buildScaffoldBody(BuildContext context) => Center(child: isTabView == false ? buildPage(context) : buildTabView(context));
+  Widget buildScaffoldBody(BuildContext context) {
+    return Center(child: isTabView == false ? buildPage(context) : buildTabView(context));
+  }
 
   Widget buildTabView(BuildContext context) {
     if (!pageLoading && error == null && emptyData) {
@@ -435,7 +444,6 @@ mixin LoadingsMixin<T extends StatefulWidget> on State<T> {
   bool pageLoading = false;
   bool startPageInLoadingState = false;
   bool actionBarLoading = false;
-  Widget? appBarLeading;
   Widget get pageLoadingWidget => MyProgressIndicator(margin: EdgeInsets.symmetric(vertical: MyServices.helpers.getPageHeight(context) / 3));
 
   @protected
@@ -456,6 +464,28 @@ mixin LoadingsMixin<T extends StatefulWidget> on State<T> {
   @protected
   void stopActionBarLoading() {
     setState(() => actionBarLoading = false);
+  }
+}
+
+mixin HeadLoadingsMixin<T extends StatefulWidget> on State<T> {
+  bool pageHeadLoading = false;
+  bool startPageInHeadLoadingState = false;
+
+  Widget get pageHeadLoadingWidget => Container(
+        color: Colors.black.withOpacity(0.7),
+        child: MyProgressIndicator(
+          margin: EdgeInsets.symmetric(vertical: MyServices.helpers.getPageHeight(context) / 3),
+        ),
+      );
+
+  @protected
+  void startPageHeadLoading() {
+    setState(() => pageHeadLoading = true);
+  }
+
+  @protected
+  void stopPageHeadLoading() {
+    setState(() => pageHeadLoading = false);
   }
 }
 

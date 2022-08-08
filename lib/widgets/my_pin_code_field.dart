@@ -21,18 +21,30 @@ class MyPinCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color color = getTheme(context).toggleableActiveColor;
+    // final Color color = getTheme(context).toggleableActiveColor;
+
+    final defaultPinTheme = PinTheme(
+      width: 56,
+      height: 56,
+      textStyle: getTextTheme(context).headlineSmall,
+      decoration: BoxDecoration(
+        border: Border.all(color: getColorScheme(context).primary),
+        borderRadius: MyServices.services.theme.borderRadius,
+      ),
+    );
+
     return Padding(
       padding: margin,
       child: Directionality(
         textDirection: TextDirection.ltr,
-        child: PinCodeTextField(
+        child: Pinput(
           controller: controller,
           keyboardType: digitsOnly ? TextInputType.number : TextInputType.visiblePassword,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          textStyle: getTextTheme(context).bodyText1,
-          cursorColor: color,
-          appContext: context,
+
+          // textStyle: getTextTheme(context).bodyText1,
+          // cursorColor: color,
+          // appContext: context,
           length: length,
           inputFormatters: [
             if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
@@ -41,11 +53,7 @@ class MyPinCodeField extends StatelessWidget {
           onCompleted: onCompleted,
           onChanged: onChanged ?? (t) {},
           //theme
-          pinTheme: PinTheme.defaults(
-            shape: PinCodeFieldShape.circle,
-            inactiveColor: color.withOpacity(0.7),
-            selectedColor: color,
-          ),
+          defaultPinTheme: defaultPinTheme,
         ),
       ),
     );

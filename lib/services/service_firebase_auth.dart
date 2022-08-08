@@ -1,6 +1,10 @@
 //firebaseAuth
 import '../my_services.dart';
 
+StateProvider<bool> _showSmsCodeInputStateProvider = StateProvider<bool>((r) => false);
+StateProvider<bool> _showResendSmsCodeButtonStateProvider = StateProvider<bool>((r) => false);
+StateProvider<bool> _isProccessingStateProvider = StateProvider<bool>((r) => false);
+
 class ServiceFirebaseAuth {
   //----------------------------------------------//
   // factory ServiceFirebaseAuth() => instance;
@@ -10,10 +14,41 @@ class ServiceFirebaseAuth {
 
   const ServiceFirebaseAuth();
 
+  static final TextEditingController _pinCodeFieldTextEditingController = TextEditingController();
+  TextEditingController get pinCodeFieldTextEditingController => _pinCodeFieldTextEditingController;
+
+  _setShowSmsCodeInputStateProvider(bool value) {
+    readProviderNotifier(_showSmsCodeInputStateProvider).state = value;
+  }
+
+  bool watchIsProccessing(WidgetRef ref) {
+    return ref.watch(_isProccessingStateProvider);
+  }
+
+  _proccessingOn() {
+    readProviderNotifier(_isProccessingStateProvider).state = true;
+  }
+
+  _proccessingOff() {
+    readProviderNotifier(_isProccessingStateProvider).state = false;
+  }
+
+  bool watchShowSmsCodeInput(WidgetRef ref) {
+    return ref.watch(_showSmsCodeInputStateProvider);
+  }
+
+  _setShowResendSmsCodeButtonStateProvider(bool value) {
+    readProviderNotifier(_showResendSmsCodeButtonStateProvider).state = value;
+  }
+
+  bool watchShowResendSmsCodeButton(WidgetRef ref) {
+    return ref.watch(_showResendSmsCodeButtonStateProvider);
+  }
+
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   static Function(User)? _onSuccessLogin;
-  static Function()? _onResendRequired;
+  // static Function()? _onResendRequired;
 
   static const int _allowedMinutes = 5;
   static final Map<String, DateTime?> _timers = {};
@@ -40,6 +75,8 @@ class ServiceFirebaseAuth {
   }
 
   Function(FirebaseAuthException) get _onVerificationFailed => (e) {
+        _proccessingOff();
+
         String msg = e.message ?? "";
 
         MyServicesLocalizationsData l = getMyServicesLabels(MyServices.context);
@@ -60,9 +97,9 @@ class ServiceFirebaseAuth {
 
           _endTimer();
 
-          if (_onResendRequired != null) {
-            _onResendRequired!();
-          }
+          // if (_onResendRequired != null) {
+          //   _onResendRequired!();
+          // }
         }
 
         if (msg.trim() != "") MyServices.services.snackBar.showText(text: msg, success: false);
@@ -75,29 +112,54 @@ class ServiceFirebaseAuth {
 
   Future verfiySmsCode({required String smsCode}) async {
     try {
+      _proccessingOn();
+
       if (_verificationId != null) {
-        await _onVerificationComplete(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
+        //convert indian number to arabic numbers
+        smsCode = MyServices.helpers.indianToArabicNumbers(smsCode);
+
+        await MyServices.helpers.waitForSeconds(5);
+
+        //clear sms code input
+        pinCodeFieldTextEditingController.clear();
+
+        //verifiy sms code
+        bool result = await _onVerificationComplete(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
+        if (result == true) {
+          _setShowSmsCodeInputStateProvider(false);
+        }
       }
     } on FirebaseAuthException catch (e) {
       _onVerificationFailed(e);
+    } catch (e) {
+      MyServices.services.snackBar.showText(text: e.toString(), success: false);
+    } finally {
+      _proccessingOff();
     }
   }
 
   Future verifyPhoneNumber({
     required String phoneWithCountryCode,
-    required Function onSmsCodeSent,
+    // required Function onSmsCodeSent,
     required Function(User) onSuccessLogin,
-    void Function()? onResendRequired,
+    // void Function()? onResendRequired,
     String? languageCode,
   }) async {
+    _proccessingOn();
     //
+    _onSuccessLogin = onSuccessLogin;
+
+    //hide resend sms code button
+    _setShowResendSmsCodeButtonStateProvider(false);
+
+    //clear sms code input
+    pinCodeFieldTextEditingController.clear();
+
+    //set sms message language
     if (languageCode != null) {
       await _auth.setLanguageCode(languageCode);
     }
-    //
-    _onSuccessLogin = onSuccessLogin;
-    _onResendRequired = onResendRequired;
-    //
+
     await _auth.verifyPhoneNumber(
       //
       phoneNumber: phoneWithCountryCode,
@@ -113,21 +175,12 @@ class ServiceFirebaseAuth {
 
       //
       codeSent: (String verificationId, int? resendToken) {
-        _verificationId = verificationId;
         _resendToken = resendToken;
-        _setTimer();
-        onSmsCodeSent();
+        _showSmsInput(verificationId);
       },
 
       // ANDROID ONLY!
-      codeAutoRetrievalTimeout: (String verificationId) {
-        // if (Platform.isAndroid) {
-        _verificationId = verificationId;
-        _setTimer();
-
-        onSmsCodeSent();
-        // }
-      },
+      codeAutoRetrievalTimeout: _showSmsInput,
 
       //
       forceResendingToken: _resendToken,
@@ -135,7 +188,19 @@ class ServiceFirebaseAuth {
     );
   }
 
-  Future _onVerificationComplete(PhoneAuthCredential credential) async {
+  void _showSmsInput(String verificationId) {
+    _proccessingOff();
+
+    _verificationId = verificationId;
+
+    _setTimer();
+
+    _setShowSmsCodeInputStateProvider(true);
+
+    // onSmsCodeSent();
+  }
+
+  Future<bool> _onVerificationComplete(PhoneAuthCredential credential) async {
     User? user = (await _auth.signInWithCredential(credential)).user;
 
     if (user != null) {
@@ -146,6 +211,14 @@ class ServiceFirebaseAuth {
         await _onSuccessLogin!(user);
       }
     }
+
+    _proccessingOff();
+
+    if (user != null) {
+      return true;
+    }
+
+    return false;
   }
 
   Future<void> signOut() async => _auth.signOut();

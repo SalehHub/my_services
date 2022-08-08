@@ -49,7 +49,9 @@ dependencies:
 
   share_plus: ^4.0.10 #sharePlus
 
-  pin_code_fields: ^7.4.0 #pinCodeFields
+  # pin_code_fields: ^7.4.0 #pinCodeFields
+
+  pinput: ^2.2.12 #pinCodeFields
 
   hive: ^2.2.3 #hive
 

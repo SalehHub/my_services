@@ -937,13 +937,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.0"
-  pin_code_fields:
+  pinput:
     dependency: "direct main"
     description:
-      name: pin_code_fields
+      name: pinput
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.4.0"
+    version: "2.2.12"
   platform:
     dependency: transitive
     description:
@@ -1068,6 +1068,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_auth:
+    dependency: transitive
+    description:
+      name: smart_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   smooth_page_indicator:
     dependency: "direct main"
     description:

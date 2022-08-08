@@ -27,7 +27,10 @@ export 'package:image_cropper/image_cropper.dart'; //imagePicker
 export 'package:image_picker/image_picker.dart'; //imagePicker
 export 'package:photo_view/photo_view.dart'; //photoView
 export 'package:photo_view/photo_view_gallery.dart'; //photoView
-export 'package:pin_code_fields/pin_code_fields.dart'; //pinCodeFields
+
+// export 'package:pin_code_fields/pin_code_fields.dart'; //pinCodeFields
+export 'package:pinput/pinput.dart'; //pinCodeFields
+
 export 'package:share_plus/share_plus.dart'; //sharePlus
 export 'package:smooth_page_indicator/smooth_page_indicator.dart'; //photoView
 export 'package:sqflite/sqflite.dart'; //sqflite
