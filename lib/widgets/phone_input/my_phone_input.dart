@@ -5,6 +5,7 @@ class MyPhoneInput extends StatelessWidget {
     super.key,
     required this.selectedCountry,
     this.onChanged,
+    this.onFieldSubmitted,
     this.controller,
     this.onCountrySelect,
     this.value,
@@ -12,6 +13,7 @@ class MyPhoneInput extends StatelessWidget {
   });
 
   final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onFieldSubmitted;
   final ValueChanged<Country>? onCountrySelect;
   final Country selectedCountry;
   final TextEditingController? controller;
@@ -22,6 +24,10 @@ class MyPhoneInput extends StatelessWidget {
   Widget build(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
     return MyTextInput(
+      autofillHints: const [AutofillHints.telephoneNumberNational],
+      keyboardType: TextInputType.phone,
+      textInputAction: TextInputAction.done,
+      //
       value: value,
       digitsOnly: true,
       length: 12,
@@ -29,14 +35,13 @@ class MyPhoneInput extends StatelessWidget {
       // prefixText: selectedCountry.dialCode,
       labelText: labelText ?? myServicesLabels.mobileNumber,
       validator: defaultFieldRequiredValidator,
-      textInputAction: TextInputAction.done,
-      keyboardType: TextInputType.number,
       textDirection: TextDirection.ltr,
       directionalityTextDirection: TextDirection.ltr,
       prefixIcon: buildSuffix(context),
       suffixIcon: buildPrefix(),
       contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
       onChanged: onChanged,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 

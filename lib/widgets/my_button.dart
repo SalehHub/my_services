@@ -27,10 +27,7 @@ class MyButton extends ConsumerWidget {
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {
       if (MyServices.services.loader.isLoading(ref, _id)) {
-        return MyProgressIndicator(
-          width: progressIndicatorSize,
-          height: progressIndicatorSize,
-        );
+        return MyProgressIndicator(size: progressIndicatorSize);
       }
     }
 

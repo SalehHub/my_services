@@ -4,27 +4,43 @@ class MyProgressIndicator extends StatelessWidget {
   const MyProgressIndicator({
     super.key,
     this.margin = EdgeInsets.zero,
-    this.width,
-    this.height,
+    this.size,
   });
 
   final EdgeInsets margin;
-  final double? width;
-  final double? height;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
-      height: height,
+      width: size,
+      height: size,
       child: Center(
         child: Padding(
           padding: margin,
           child: Builder(builder: (context) {
+            double? width = size;
+            double? height = size;
+
+            if (width != null) {
+              width = width - 25.0;
+              if (width < 0) {
+                width = null;
+              }
+            }
+
+            if (height != null) {
+              height = height - 25.0;
+              if (height < 0) {
+                height = null;
+              }
+            }
+
+            //
             if (getTheme(context).platform == TargetPlatform.android) {
               return SizedBox(
-                width: width != null ? (width! - 25.0) : null,
-                height: height != null ? (height! - 25.0) : null,
+                width: width,
+                height: height,
                 child: const CircularProgressIndicator(),
               );
             }

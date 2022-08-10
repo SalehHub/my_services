@@ -39,6 +39,7 @@ class MyTextInput extends StatefulWidget {
     this.items = const [],
     this.widget,
     this.onTap,
+    this.autofillHints,
   });
 
   final bool show;
@@ -71,6 +72,7 @@ class MyTextInput extends StatefulWidget {
   final bool floatingLabel;
   final bool withPasteButton;
   final bool withController;
+  final Iterable<String>? autofillHints;
   final bool enabled;
   final StrutStyle? strutStyle;
   final InputBorder? border;
@@ -207,14 +209,29 @@ class _MyTextInputState extends State<MyTextInput> {
             ],
           ),
           if (widget.widget != null)
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey.shade500, width: 0.8),
-                borderRadius: MyServices.services.theme.borderRadius,
-              ),
-              child: widget.widget!,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade500, width: 0.8),
+                    borderRadius: MyServices.services.theme.borderRadius,
+                  ),
+                  child: widget.widget!,
+                ),
+                MyText(
+                  widget.helperText ?? "",
+                  color: Colors.grey.shade600,
+                  style: getTextTheme(context).caption?.copyWith(fontSize: 12.9),
+                  margin: const EdgeInsets.only(
+                    top: 5,
+                    left: 10,
+                    right: 10,
+                  ),
+                ),
+              ],
             )
           else if (widget.directionalityTextDirection != null)
             Directionality(
@@ -242,6 +259,11 @@ class _MyTextInputState extends State<MyTextInput> {
   Widget buildTextFormField() {
     return TextFormField(
       //
+      autofillHints: widget.autofillHints,
+      textInputAction: widget.textInputAction,
+      keyboardType: widget.keyboardType,
+
+      //
       controller: widget.withController ? controller : null,
       initialValue: widget.withController ? null : widget.value,
       //
@@ -255,8 +277,6 @@ class _MyTextInputState extends State<MyTextInput> {
       validator: widget.validator,
       textDirection: widget.textDirection,
       obscureText: widget.isPassword,
-      textInputAction: widget.textInputAction,
-      keyboardType: widget.keyboardType,
       inputFormatters: [
         if (widget.length != null) LengthLimitingTextInputFormatter(widget.length),
         if (widget.digitsOnly) FilteringTextInputFormatter.digitsOnly,
