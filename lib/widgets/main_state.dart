@@ -472,7 +472,7 @@ mixin HeadLoadingsMixin<T extends StatefulWidget> on State<T> {
   bool startPageInHeadLoadingState = false;
 
   Widget get pageHeadLoadingWidget => Container(
-        color: Colors.black.withOpacity(0.7),
+        color: getTheme(context).scaffoldBackgroundColor,
         child: MyProgressIndicator(
           margin: EdgeInsets.symmetric(vertical: MyServices.helpers.getPageHeight(context) / 3),
         ),

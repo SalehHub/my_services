@@ -38,13 +38,19 @@ class MyPinCodeField extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Pinput(
-          controller: controller,
+          autofillHints: const [AutofillHints.oneTimeCode],
           keyboardType: digitsOnly ? TextInputType.number : TextInputType.visiblePassword,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-          // textStyle: getTextTheme(context).bodyText1,
-          // cursorColor: color,
-          // appContext: context,
+          //android only
+          // androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
+          //android only
+          // smsCodeMatcher: '\\d{$length}',
+          //android only
+          // listenForMultipleSmsOnAndroid: true,
+
+          //
+          controller: controller,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           length: length,
           inputFormatters: [
             if (digitsOnly) FilteringTextInputFormatter.digitsOnly,

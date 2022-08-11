@@ -103,19 +103,23 @@ class ServiceFirebaseAuth {
       _proccessingOn();
 
       if (_verificationId != null) {
+
         //convert indian number to arabic numbers
         smsCode = MyServices.helpers.indianToArabicNumbers(smsCode);
 
-        await MyServices.helpers.waitForSeconds(5);
+        //verifiy sms code
+        bool result = await _trySignIn(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
+
+        //so we can navivgate to new page without ui fliker
+        await MyServices.helpers.waitForSeconds(1);
 
         //clear sms code input
         pinCodeFieldTextEditingController.clear();
 
-        //verifiy sms code
-        bool result = await _onVerificationComplete(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
         if (result == true) {
           _setShowSmsCodeInput(false);
         }
+
       }
     } on FirebaseAuthException catch (e) {
       _onVerificationFailed(e);
@@ -153,9 +157,9 @@ class ServiceFirebaseAuth {
       phoneNumber: phoneWithCountryCode,
 
       //
-      timeout: const Duration(seconds: 60),
+      timeout: const Duration(seconds: 30),
 
-      // ANDROID ONLY!
+      // ANDROID ONLY! called only when the verification is successfully completed automatically using Auto Retrieval (without the need of user input).
       verificationCompleted: _onVerificationComplete,
 
       //
@@ -172,6 +176,8 @@ class ServiceFirebaseAuth {
 
       //
       forceResendingToken: _resendToken,
+
+      //
       // autoRetrievedSmsCodeForTesting: "123456",
     );
   }
@@ -184,11 +190,22 @@ class ServiceFirebaseAuth {
     _setTimerToNow();
 
     _setShowSmsCodeInput(true);
-
-    // onSmsCodeSent();
   }
 
-  Future<bool> _onVerificationComplete(PhoneAuthCredential credential) async {
+  // ANDROID ONLY! called only when the verification is successfully completed automatically using Auto Retrieval (without the need of user input).
+  void _onVerificationComplete(PhoneAuthCredential credential) {
+    // print(credential.smsCode);
+    // print(credential.verificationId);
+
+    //Todo: not necessary
+    if (credential.smsCode != null) {
+      _pinCodeFieldTextEditingController.text = credential.smsCode!;
+    }
+
+    _trySignIn(credential);
+  }
+
+  Future<bool> _trySignIn(PhoneAuthCredential credential) async {
     User? user = (await _auth.signInWithCredential(credential)).user;
 
     if (user != null) {
