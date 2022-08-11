@@ -103,7 +103,6 @@ class ServiceFirebaseAuth {
       _proccessingOn();
 
       if (_verificationId != null) {
-
         //convert indian number to arabic numbers
         smsCode = MyServices.helpers.indianToArabicNumbers(smsCode);
 
@@ -119,7 +118,6 @@ class ServiceFirebaseAuth {
         if (result == true) {
           _setShowSmsCodeInput(false);
         }
-
       }
     } on FirebaseAuthException catch (e) {
       _onVerificationFailed(e);
