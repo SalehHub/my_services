@@ -17,13 +17,13 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^1.20.0 #firebaseCore
+  firebase_core: ^1.20.1 #firebaseCore
 
-  firebase_messaging: ^12.0.1 #firebaseMessaging
+  firebase_messaging: ^12.0.2 #firebaseMessaging
 
-  firebase_crashlytics: ^2.8.6 #firebaseCrashlytics
+  firebase_crashlytics: ^2.8.7 #firebaseCrashlytics
   
-  firebase_auth: ^3.6.2 #firebaseAuth
+  firebase_auth: ^3.6.3 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -31,7 +31,7 @@ dependencies:
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
-  image_cropper: ^2.0.3 #imagePicker
+  image_cropper: ^3.0.0 #imagePicker
 
   image_picker: ^0.8.5+3 #imagePicker
 
@@ -41,13 +41,13 @@ dependencies:
 
   smooth_page_indicator: ^1.0.0+2 #photoView
 
-  map_launcher: ^2.2.3 #mapLauncher
+  map_launcher: ^2.3.0+1 #mapLauncher
 
-  flutter_svg: ^1.1.1+1 #flutterSvg
+  flutter_svg: ^1.1.3 #flutterSvg
 
   app_links: ^3.2.0 #appLinks
 
-  share_plus: ^4.0.10 #sharePlus
+  share_plus: ^4.0.10+1 #sharePlus
 
   # pin_code_fields: ^7.4.0 #pinCodeFields
 
@@ -57,7 +57,7 @@ dependencies:
 
   hive_flutter: ^1.1.0 #hive
 
-  sqflite: ^2.0.3 #sqflite
+  sqflite: ^2.0.3+1 #sqflite
 
   flutter_app_badger: ^1.4.0 #flutterAppBadger
 
@@ -69,9 +69,9 @@ dependencies:
 
   intl: ^0.17.0
 
-  device_info_plus: ^4.0.1
+  device_info_plus: ^4.1.0
 
-  package_info_plus: ^1.4.3
+  package_info_plus: ^1.4.3+1
 
   path_provider: ^2.0.11
 

@@ -30,7 +30,7 @@ class ServiceAppDevice {
       deviceOS = webBrowserInfo.platform ?? "unknown";
     } else if (Platform.isAndroid) {
       final AndroidDeviceInfo androidInfo = _androidInfo ?? (await _deviceInfoPlugin.androidInfo);
-      deviceId = androidInfo.androidId;
+      deviceId = null;
       deviceOSVersion = androidInfo.version.release;
       deviceModel = androidInfo.model;
       deviceOS = Platform.operatingSystem.toLowerCase();
