@@ -73,11 +73,12 @@ class ServiceApi {
   String getCacheKey(String url, {Map<String, dynamic>? formData, Map<String, dynamic>? headers}) {
     String cacheKey = //
         (url) + //
-            (formData?.toString() ?? 'noData') + //
-            (headers?.toString() ?? 'noData') + //
-            // (state.user?.id.toString() ?? "guest") + //
-            (MyServices.providers.readLocale?.languageCode ?? "noLang") + //
-            (MyServices.providers.readAppBuild ?? "1");
+            (getFormData(formData)?.toString() ?? 'noData') + //
+            (headers?.toString() ?? 'noData') //+
+        // (state.user?.id.toString() ?? "guest") + //
+        // (MyServices.providers.readLocale?.languageCode ?? "noLang") + //
+        // (MyServices.providers.readAppBuild ?? "1")
+        ;
 
     return MyServices.helpers.getMd5(cacheKey);
   }
@@ -92,9 +93,28 @@ class ServiceApi {
     return await MyServices.storage.set(cacheKey, data);
   }
 
-  Future<void> deleteCache(String url, {dynamic formData, Map<String, dynamic> headers = const {}}) {
+  Future<bool> deleteCache(String url, {dynamic formData, Map<String, dynamic> headers = const {}}) {
     String cacheKey = getCacheKey(url, formData: formData, headers: headers);
     return MyServices.storage.delete(cacheKey);
+  }
+
+  dynamic getFormData(dynamic formData) {
+    //check if form data has file
+    bool isFile = false;
+    for (Object? value in formData.values) {
+      if (value.runtimeType == MultipartFile) {
+        isFile = true;
+      }
+    }
+
+    //if form data has file convert form data to map
+    if (isFile == true) {
+      formData = FormData.fromMap(<String, dynamic>{
+        ...formData,
+      });
+    }
+
+    return formData;
   }
 
   Future<Map<String, dynamic>?> postRequest(
@@ -178,20 +198,7 @@ class ServiceApi {
     }
     cancelTokens[url] = CancelToken();
 
-    //check if form data has file
-    bool isFile = false;
-    for (Object? value in formData.values) {
-      if (value.runtimeType == MultipartFile) {
-        isFile = true;
-      }
-    }
-
-    //if form data has file convert form data to map
-    if (isFile == true) {
-      formData = FormData.fromMap(<String, dynamic>{
-        ...formData,
-      });
-    }
+    formData = getFormData(formData);
 
     if (_enableFormDataLog) {
       logger.d(formData);
