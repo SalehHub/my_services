@@ -162,9 +162,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'نعتذر منك ، خوادمنا لا تستجيب في الوقت الحالي ، يرجى المحاولة مرة أخرى لاحقًا',
     noInternetConnection: 'لايوجد إتصال بالانترنت',
-    changePhoneNumber: 'تغيير قم الجوال',
+    changePhoneNumber: 'تغيير رقم الجوال',
     resendSmsVerificationCode: 'إعادة إرسال الرمز',
-    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة ارسال الرمز',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'أنتهت صلاحية الرمز، قم بطلب اعادة إرسال الرمز',
     theCodeIsInccorectPleaseTryAgain: 'الرمز غير صحيح، حاول مجددا',
     phoneNumberIsInvalid: 'رقم الجوال غير صحيح',
     phoneNumberIsTooLong: 'رقم الجوال طويل جدا',
