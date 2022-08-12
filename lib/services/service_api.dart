@@ -68,11 +68,44 @@ class ServiceApi {
     );
   }
 
-  Future<Response<Map<String, dynamic>>> postRequest(
+  String getCacheKey(String url, {Map<String, dynamic>? formData, Map<String, dynamic>? headers}) {
+    String cacheKey = //
+        (url) + //
+            (formData?.toString() ?? 'noData') + //
+            (headers?.toString() ?? 'noData') + //
+            // (state.user?.id.toString() ?? "guest") + //
+            (MyServices.providers.readLocale?.languageCode ?? "noLang") + //
+            (MyServices.providers.readAppBuild ?? "1");
+
+    return MyServices.helpers.getMd5(cacheKey);
+  }
+
+  Future<Map<String, dynamic>?> getCache(String url, {int cacheMinutes = 5, dynamic formData, Map<String, dynamic> headers = const {}}) async {
+    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
+    return await MyServices.storage.get(cacheKey, cacheMinutes);
+  }
+
+  Future<bool> setCache(Map<String, dynamic> data, String url, {int cacheMinutes = 5, dynamic formData, Map<String, dynamic> headers = const {}}) async {
+    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
+    return await MyServices.storage.set(cacheKey, data);
+  }
+
+  Future<void> deleteCache(String url, {dynamic formData, Map<String, dynamic> headers = const {}}) {
+    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
+    return MyServices.storage.delete(cacheKey);
+  }
+
+  Future<Map<String, dynamic>?> postRequest(
     String url, {
+    //
     dynamic formData,
-    Map<String, dynamic> extraHeaders = const {},
+    Map<String, dynamic> headers = const {},
+    //
     bool cancelPrevious = true,
+    //cache
+    bool withCache = false,
+    int cacheMinutes = 5,
+    //
   }) async {
     if (_enableEndpointLog) {
       logger.i('POST: $_domain$url');
@@ -102,18 +135,43 @@ class ServiceApi {
       logger.d(formData);
     }
 
-    final Response<Map<String, dynamic>> data = await dio.postUri<Map<String, dynamic>>(
+    //cache
+    Map<String, dynamic>? data;
+    if (withCache) {
+      // data = null;
+      data = await getCache(url, formData: formData, headers: headers);
+
+      //fake wait if cache exist
+      if (data != null) {
+        logger.i("FromCache");
+        await MyServices.helpers.waitForSeconds(1);
+      }
+      //
+    } else {
+      deleteCache(url, formData: formData, headers: headers);
+    }
+
+    if (data != null) {
+      return data;
+    }
+
+    final Response<Map<String, dynamic>> res = await dio.postUri<Map<String, dynamic>>(
       Uri.parse('$_domain$url'),
       data: formData,
       cancelToken: cancelTokens[url],
-      options: _dioOptions(formData, extraHeaders: extraHeaders),
+      options: _dioOptions(formData, extraHeaders: headers),
     );
 
     if (_enableResponseLog) {
-      logger.i(data);
+      logger.i(res.data);
     }
 
-    return data;
+    //cache if withCache = true and data not null
+    if (res.data != null && withCache == true) {
+      await setCache(res.data!, url, formData: formData, headers: headers);
+    }
+
+    return res.data;
   }
 
   Future<Response<T>> getRequest<T>(
