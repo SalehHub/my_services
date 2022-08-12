@@ -116,6 +116,7 @@ class ServiceFirebaseAuth {
           ),
         );
 
+        //if Sign in was success hide sms code input ui
         if (result == true) {
           _setShowSmsCodeInput(false);
         }
@@ -234,5 +235,6 @@ class ServiceFirebaseAuth {
     _setShowSmsCodeInput(false);
     _setShowResendSmsCodeButton(false);
     _setTimerToNull();
+    _pinCodeFieldTextEditingController.clear();
   }
 }
