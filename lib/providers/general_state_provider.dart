@@ -55,7 +55,7 @@ class GeneralStateNotifier extends StateNotifier<GeneralState> {
 }
 
 Future<GeneralState> getGeneralState() async {
-  logger.w('Getting GeneralState ...');
+  logger.d('Getting GeneralState ...');
 
   String? notificationToken;
   String? accessToken;

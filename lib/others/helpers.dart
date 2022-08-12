@@ -145,7 +145,7 @@ class Helpers {
 
   Future<String?> getApplicationDocumentsPath() async {
     if (_printed == false && _applicationDocumentsDirectoryPath != null) {
-      logger.i(_applicationDocumentsDirectoryPath);
+      logger.d(_applicationDocumentsDirectoryPath);
       _printed = true;
     }
     return _applicationDocumentsDirectoryPath ??= (await _getApplicationDocumentsDirectory())?.path;

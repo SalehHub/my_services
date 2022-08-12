@@ -29,7 +29,7 @@ class ServiceApi {
     String ext = extension(url);
     String fileName = MyServices.helpers.getMd5(url);
     String savePath = "${await MyServices.helpers.getApplicationDocumentsPath() ?? ""}/$fileName.$ext";
-    logger.i(savePath);
+    logger.d(savePath);
     await dio.download(url, savePath);
     return savePath;
   }
@@ -58,7 +58,7 @@ class ServiceApi {
     };
 
     if (_enableHeadersLog) {
-      logger.i(headers);
+      logger.d(headers);
     }
 
     return Options(
@@ -108,7 +108,7 @@ class ServiceApi {
     //
   }) async {
     if (_enableEndpointLog) {
-      logger.i('POST: $_domain$url');
+      logger.d('POST: $_domain$url');
     }
 
     if (cancelPrevious) {
@@ -139,11 +139,11 @@ class ServiceApi {
     Map<String, dynamic>? data;
     if (withCache) {
       // data = null;
-      data = await getCache(url, formData: formData, headers: headers);
+      data = await getCache(url,cacheMinutes: cacheMinutes, formData: formData, headers: headers);
 
       //fake wait if cache exist
       if (data != null) {
-        logger.i("FromCache");
+        logger.d("FromCache");
         await MyServices.helpers.waitForSeconds(1);
       }
       //
@@ -163,7 +163,7 @@ class ServiceApi {
     );
 
     if (_enableResponseLog) {
-      logger.i(res.data);
+      logger.d(res.data);
     }
 
     //cache if withCache = true and data not null
@@ -181,7 +181,7 @@ class ServiceApi {
     bool cancelPrevious = true,
   }) async {
     if (_enableEndpointLog) {
-      logger.i('GET: $_domain$url');
+      logger.d('GET: $_domain$url');
     }
 
     if (cancelPrevious) {
@@ -196,7 +196,7 @@ class ServiceApi {
     );
 
     if (_enableResponseLog) {
-      logger.i(data);
+      logger.d(data);
     }
 
     return data;

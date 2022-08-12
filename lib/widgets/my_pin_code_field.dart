@@ -7,6 +7,7 @@ class MyPinCodeField extends StatelessWidget {
     this.onCompleted,
     this.length = 4,
     this.onChanged,
+    this.onClipboardFound,
     this.margin = EdgeInsets.zero,
     this.controller,
     this.digitsOnly = false,
@@ -14,6 +15,7 @@ class MyPinCodeField extends StatelessWidget {
 
   final ValueChanged<String>? onCompleted;
   final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onClipboardFound;
   final EdgeInsetsGeometry margin;
   final TextEditingController? controller;
   final int length;
@@ -21,8 +23,6 @@ class MyPinCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final Color color = getTheme(context).toggleableActiveColor;
-
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
@@ -38,6 +38,9 @@ class MyPinCodeField extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.ltr,
         child: Pinput(
+          onClipboardFound: onClipboardFound,
+          enableSuggestions: false,
+
           autofillHints: const [AutofillHints.oneTimeCode],
           keyboardType: digitsOnly ? TextInputType.number : TextInputType.visiblePassword,
 
@@ -53,11 +56,11 @@ class MyPinCodeField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           length: length,
           inputFormatters: [
-            if (digitsOnly) FilteringTextInputFormatter.digitsOnly,
+            if (digitsOnly) FilteringTextInputFormatter.allow(RegExp(r'[0-9٠-١]')),
             LengthLimitingTextInputFormatter(length),
           ],
           onCompleted: onCompleted,
-          onChanged: onChanged ?? (t) {},
+          onChanged: onChanged,
           //theme
           defaultPinTheme: defaultPinTheme,
         ),
