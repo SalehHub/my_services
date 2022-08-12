@@ -103,17 +103,18 @@ class ServiceFirebaseAuth {
       _proccessingOn();
 
       if (_verificationId != null) {
-        //convert indian number to arabic numbers
-        smsCode = MyServices.helpers.indianToArabicNumbers(smsCode);
+        //clear sms code input - must be called before _trySignIn
+        pinCodeFieldTextEditingController.clear();
 
         //verifiy sms code
-        bool result = await _trySignIn(PhoneAuthProvider.credential(verificationId: _verificationId!, smsCode: smsCode));
+        bool result = await _trySignIn(
+          PhoneAuthProvider.credential(
+            verificationId: _verificationId!,
 
-        //so we can navivgate to new page without ui fliker
-        await MyServices.helpers.waitForSeconds(1);
-
-        //clear sms code input
-        pinCodeFieldTextEditingController.clear();
+            //convert indian number to arabic numbers
+            smsCode: MyServices.helpers.indianToArabicNumbers(smsCode),
+          ),
+        );
 
         if (result == true) {
           _setShowSmsCodeInput(false);
@@ -212,6 +213,9 @@ class ServiceFirebaseAuth {
 
       if (_onSuccessLogin != null) {
         await _onSuccessLogin!(user);
+
+        //so we can navivgate to new page without ui fliker
+        await MyServices.helpers.waitForSeconds(1);
       }
     }
 
