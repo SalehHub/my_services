@@ -1,4 +1,6 @@
 import '../my_services.dart';
+// ignore: depend_on_referenced_packages
+import 'package:http/http.dart' as http;
 
 class ServiceApi {
   // static const ServiceApi _s = ServiceApi._();
@@ -105,10 +107,70 @@ class ServiceApi {
     //cache
     bool withCache = false,
     int cacheMinutes = 5,
+    //tries
+    int currentTry = 1,
+    int tries = 6,
+    //
+  }) async {
+    return request(
+      url,
+      "POST",
+      formData: formData,
+      headers: headers,
+      cancelPrevious: cancelPrevious,
+      withCache: withCache,
+      cacheMinutes: cacheMinutes,
+      currentTry: currentTry,
+      tries: tries,
+    );
+  }
+
+  Future<Map<String, dynamic>?> getRequest(
+    String url, {
+    //
+    dynamic formData,
+    Map<String, dynamic> headers = const {},
+    //
+    bool cancelPrevious = true,
+    //cache
+    bool withCache = false,
+    int cacheMinutes = 5,
+    //tries
+    int currentTry = 1,
+    int tries = 6,
+    //
+  }) async {
+    return request(
+      url,
+      "GET",
+      formData: formData,
+      headers: headers,
+      cancelPrevious: cancelPrevious,
+      withCache: withCache,
+      cacheMinutes: cacheMinutes,
+      currentTry: currentTry,
+      tries: tries,
+    );
+  }
+
+  Future<Map<String, dynamic>?> request(
+    String url,
+    String requestType, {
+    //
+    dynamic formData,
+    Map<String, dynamic> headers = const {},
+    //
+    bool cancelPrevious = true,
+    //cache
+    bool withCache = false,
+    int cacheMinutes = 5,
+    //tries
+    int currentTry = 1,
+    int tries = 6,
     //
   }) async {
     if (_enableEndpointLog) {
-      logger.d('POST: $_domain$url');
+      logger.d('$requestType: $_domain$url');
     }
 
     if (cancelPrevious) {
@@ -139,7 +201,7 @@ class ServiceApi {
     Map<String, dynamic>? data;
     if (withCache) {
       // data = null;
-      data = await getCache(url,cacheMinutes: cacheMinutes, formData: formData, headers: headers);
+      data = await getCache(url, cacheMinutes: cacheMinutes, formData: formData, headers: headers);
 
       //fake wait if cache exist
       if (data != null) {
@@ -155,50 +217,78 @@ class ServiceApi {
       return data;
     }
 
-    final Response<Map<String, dynamic>> res = await dio.postUri<Map<String, dynamic>>(
-      Uri.parse('$_domain$url'),
-      data: formData,
-      cancelToken: cancelTokens[url],
-      options: _dioOptions(formData, extraHeaders: headers),
-    );
+    try {
+      Response<Map<String, dynamic>> res = await dio.requestUri<Map<String, dynamic>>(
+        Uri.parse('$_domain$url'),
+        data: formData,
+        cancelToken: cancelTokens[url],
+        options: _dioOptions(formData, extraHeaders: headers, method: requestType),
+      );
 
-    if (_enableResponseLog) {
-      logger.d(res.data);
+      if (_enableResponseLog) {
+        logger.d(res.data);
+      }
+
+      //cache if withCache = true and data not null
+      if (res.data != null && withCache == true) {
+        await setCache(res.data!, url, formData: formData, headers: headers);
+      }
+
+      return res.data;
+    } on DioError catch (e, s) {
+      if (e.type == DioErrorType.cancel) {
+        logger.d("Dio request canceled");
+      } else {
+        logger.e(e, e, s);
+
+        if (currentTry == 1) {
+          await _handleNoInternet(e);
+        }
+
+        if (currentTry != tries) {
+          await MyServices.helpers.waitForSeconds(5 + currentTry);
+          return await postRequest(
+            url,
+            formData: formData,
+            headers: headers,
+            cancelPrevious: cancelPrevious,
+            withCache: withCache,
+            cacheMinutes: cacheMinutes,
+            currentTry: currentTry + 1,
+            tries: tries,
+          );
+        }
+      }
     }
 
-    //cache if withCache = true and data not null
-    if (res.data != null && withCache == true) {
-      await setCache(res.data!, url, formData: formData, headers: headers);
-    }
-
-    return res.data;
+    return null;
   }
 
-  Future<Response<T>> getRequest<T>(
-    String url, {
-    dynamic formData,
-    Map<String, dynamic> extraHeaders = const {},
-    bool cancelPrevious = true,
-  }) async {
-    if (_enableEndpointLog) {
-      logger.d('GET: $_domain$url');
+  Future<bool> _handleNoInternet(DioError e) async {
+    if (e.message.contains("SocketException")) {
+      http.Response? response;
+      try {
+        response = await http.get(Uri.parse('https://google.com'));
+      } on SocketException catch (_) {
+        //
+      }
+
+      if (response?.statusCode == 200) {
+        MyServices.services.snackBar.showText(
+          // ignore: use_build_context_synchronously
+          text: getMyServicesLabels(MyServices.context).weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
+          success: false,
+        );
+      } else {
+        MyServices.services.snackBar.showText(
+          // ignore: use_build_context_synchronously
+          text: getMyServicesLabels(MyServices.context).noInternetConnection,
+          success: false,
+        );
+        return true;
+      }
     }
 
-    if (cancelPrevious) {
-      cancelTokens[url]?.cancel();
-    }
-    cancelTokens[url] = CancelToken();
-
-    final Response<T> data = await dio.getUri<T>(
-      Uri.parse('$_domain$url'),
-      cancelToken: cancelTokens[url],
-      options: _dioOptions(formData, method: 'GET', extraHeaders: extraHeaders),
-    );
-
-    if (_enableResponseLog) {
-      logger.d(data);
-    }
-
-    return data;
+    return false;
   }
 }
