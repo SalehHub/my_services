@@ -70,15 +70,8 @@ class ServiceApi {
     );
   }
 
-  String getCacheKey(String url, {Map<String, dynamic>? formData, Map<String, dynamic>? headers}) {
-    String cacheKey = //
-        (url) + //
-            (getFormData(formData)?.toString() ?? 'noData') + //
-            (headers?.toString() ?? 'noData') //+
-        // (state.user?.id.toString() ?? "guest") + //
-        // (MyServices.providers.readLocale?.languageCode ?? "noLang") + //
-        // (MyServices.providers.readAppBuild ?? "1")
-        ;
+  String getCacheKey(String url, {dynamic formData, Map<String, dynamic>? headers}) {
+    String cacheKey = (url) + (formData?.toString() ?? 'noData') + (headers?.toString() ?? 'noData');
 
     return MyServices.helpers.getMd5(cacheKey);
   }
@@ -254,8 +247,9 @@ class ServiceApi {
 
         if (currentTry != tries) {
           await MyServices.helpers.waitForSeconds(5 + currentTry);
-          return await postRequest(
+          return await request(
             url,
+            requestType,
             formData: formData,
             headers: headers,
             cancelPrevious: cancelPrevious,
