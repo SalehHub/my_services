@@ -1,19 +1,13 @@
-import '../my_services.dart';
+import '../my_services.dart' hide url;
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 class ServiceApi {
-  // static const ServiceApi _s = ServiceApi._();
-  // factory ServiceApi() => _s;
-  // const ServiceApi._();
-  //
   const ServiceApi();
 
   static final Map<String, CancelToken> cancelTokens = {};
 
-  //
   static final Dio dio = Dio();
-  static String _domain = '';
 
   static bool _enableEndpointLog = true;
   static bool _enableResponseLog = true;
@@ -24,8 +18,36 @@ class ServiceApi {
   void disableHeadersLog() => _enableHeadersLog = false;
   void disableFormDataLog() => _enableFormDataLog = false;
 
-  String get domain => _domain;
+  static bool _cancelPrevious = true;
+  void setCancelPrevious(bool cancelPrevious) => _cancelPrevious = cancelPrevious;
+
+  static bool _withCache = false;
+  void setWithCache(bool withCache) => _withCache = withCache;
+
+  static int _cacheMinutes = 5;
+  void setCacheMinutes(int cacheMinutes) => _cacheMinutes = cacheMinutes;
+
+  static String _domain = '';
   void setDoamin(String domain) => _domain = domain;
+
+  static String _url = '';
+  void setUrl(String url) => _url = url;
+
+  static dynamic _formData; //can be FormData or Map<String, dynamic>
+  void setFormData(Map<String, dynamic> formData) => _formData = getFormData(formData);
+
+  static Map<String, dynamic> _headers = {};
+  void setHeaders(Map<String, dynamic> headers) => _headers = headers;
+
+  //-------------------------------------Cache-------------------------------------//
+  String getCacheKey() => MyServices.helpers.getMd5(_url + _formData.toString() + _headers.toString());
+
+  Future<Map<String, dynamic>?> getCache() async => await MyServices.storage.get(getCacheKey(), _cacheMinutes);
+
+  Future<bool> setCache(Map<String, dynamic> data) async => await MyServices.storage.set(getCacheKey(), data);
+
+  Future<bool> deleteCache() async => await MyServices.storage.delete(getCacheKey());
+  //--------------------------------------------------------------------------//
 
   Future<String> download(String url) async {
     String ext = extension(url);
@@ -36,19 +58,19 @@ class ServiceApi {
     return savePath;
   }
 
-  Options _dioOptions(dynamic formData, {String method = 'POST', Map<String, dynamic> extraHeaders = const {}}) {
+  Options _dioOptions(String method) {
     //get access token and language to create authorization headers
     String? accessToken;
     String? lang;
-    if (formData is FormData) {
-      accessToken = formData.fields.firstWhere((element) => element.key == 'accessToken').value;
-      lang = formData.fields.firstWhere((element) => element.key == 'appLang').value;
+    if (_formData is FormData) {
+      accessToken = _formData.fields.firstWhere((element) => element.key == 'accessToken').value;
+      lang = _formData.fields.firstWhere((element) => element.key == 'appLang').value;
     } else {
-      accessToken = formData['accessToken'] as String?;
-      lang = formData['appLang'] as String?;
+      accessToken = _formData['accessToken'] as String?;
+      lang = _formData['appLang'] as String?;
     }
 
-    Map<String, dynamic> headers = <String, dynamic>{
+    Map<String, dynamic> allHeaders = <String, dynamic>{
       if (accessToken != null) ...{
         'X-Requested-With': 'XMLHttpRequest',
         'Authorization': 'Bearer $accessToken',
@@ -56,48 +78,31 @@ class ServiceApi {
       if (lang != null) ...{
         'X-Localization': lang,
       },
-      ...extraHeaders
+      ..._headers
     };
 
     if (_enableHeadersLog) {
-      logger.d(headers);
+      logger.d(allHeaders);
     }
 
     return Options(
       method: method,
-      headers: headers,
+      headers: allHeaders,
       contentType: 'application/json',
     );
-  }
-
-  String getCacheKey(String url, {dynamic formData, Map<String, dynamic>? headers}) {
-    String cacheKey = (url) + (formData?.toString() ?? 'noData') + (headers?.toString() ?? 'noData');
-
-    return MyServices.helpers.getMd5(cacheKey);
-  }
-
-  Future<Map<String, dynamic>?> getCache(String url, {int cacheMinutes = 5, dynamic formData, Map<String, dynamic> headers = const {}}) async {
-    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
-    return await MyServices.storage.get(cacheKey, cacheMinutes);
-  }
-
-  Future<bool> setCache(Map<String, dynamic> data, String url, {int cacheMinutes = 5, dynamic formData, Map<String, dynamic> headers = const {}}) async {
-    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
-    return await MyServices.storage.set(cacheKey, data);
-  }
-
-  Future<bool> deleteCache(String url, {dynamic formData, Map<String, dynamic> headers = const {}}) {
-    String cacheKey = getCacheKey(url, formData: formData, headers: headers);
-    return MyServices.storage.delete(cacheKey);
   }
 
   dynamic getFormData(dynamic formData) {
     //check if form data has file
     bool isFile = false;
-    for (Object? value in formData.values) {
-      if (value.runtimeType == MultipartFile) {
-        isFile = true;
+    try {
+      for (Object? value in formData.values) {
+        if (value.runtimeType == MultipartFile) {
+          isFile = true;
+        }
       }
+    } catch (e, s) {
+      logger.e(e, e, s);
     }
 
     //if form data has file convert form data to map
@@ -107,122 +112,65 @@ class ServiceApi {
       });
     }
 
+    //can be FormData or Map<String, dynamic>
     return formData;
   }
 
-  Future<Map<String, dynamic>?> postRequest(
-    String url, {
-    //
-    dynamic formData,
-    Map<String, dynamic> headers = const {},
-    //
-    bool cancelPrevious = true,
-    //cache
-    bool withCache = false,
-    int cacheMinutes = 5,
-    //tries
-    int currentTry = 1,
-    int tries = 6,
-    //
-  }) async {
-    return request(
-      url,
-      "POST",
-      formData: formData,
-      headers: headers,
-      cancelPrevious: cancelPrevious,
-      withCache: withCache,
-      cacheMinutes: cacheMinutes,
-      currentTry: currentTry,
-      tries: tries,
-    );
+  Future<Map<String, dynamic>?> postRequest({int currentTry = 1, int tries = 6}) async {
+    return request("POST", currentTry: currentTry, tries: tries);
   }
 
-  Future<Map<String, dynamic>?> getRequest(
-    String url, {
-    //
-    dynamic formData,
-    Map<String, dynamic> headers = const {},
-    //
-    bool cancelPrevious = true,
-    //cache
-    bool withCache = false,
-    int cacheMinutes = 5,
-    //tries
-    int currentTry = 1,
-    int tries = 6,
-    //
-  }) async {
-    return request(
-      url,
-      "GET",
-      formData: formData,
-      headers: headers,
-      cancelPrevious: cancelPrevious,
-      withCache: withCache,
-      cacheMinutes: cacheMinutes,
-      currentTry: currentTry,
-      tries: tries,
-    );
+  Future<Map<String, dynamic>?> getRequest({int currentTry = 1, int tries = 6}) async {
+    return request("GET", currentTry: currentTry, tries: tries);
   }
 
-  Future<Map<String, dynamic>?> request(
-    String url,
-    String requestType, {
-    //
-    dynamic formData,
-    Map<String, dynamic> headers = const {},
-    //
-    bool cancelPrevious = true,
-    //cache
-    bool withCache = false,
-    int cacheMinutes = 5,
-    //tries
-    int currentTry = 1,
-    int tries = 6,
-    //
-  }) async {
-    if (_enableEndpointLog) {
-      logger.d('$requestType: $_domain$url');
-    }
-
-    if (cancelPrevious) {
-      cancelTokens[url]?.cancel();
-    }
-    cancelTokens[url] = CancelToken();
-
-    formData = getFormData(formData);
-
-    if (_enableFormDataLog) {
-      logger.d(formData);
-    }
-
-    //cache
-    Map<String, dynamic>? data;
-    if (withCache) {
+  Future<Map<String, dynamic>?> tryGetFromCache() async {
+    if (_withCache) {
       // data = null;
-      data = await getCache(url, cacheMinutes: cacheMinutes, formData: formData, headers: headers);
+      Map<String, dynamic>? data = await getCache();
 
       //fake wait if cache exist
       if (data != null) {
         logger.d("FromCache");
         await MyServices.helpers.waitForSeconds(1);
       }
-      //
+
+      return data;
     } else {
-      deleteCache(url, formData: formData, headers: headers);
+      deleteCache();
     }
 
-    if (data != null) {
-      return data;
+    return null;
+  }
+
+  void tryCancelPrevious() {
+    if (_cancelPrevious) {
+      cancelTokens[_url]?.cancel();
     }
+    cancelTokens[_url] = CancelToken();
+  }
+
+  Future<Map<String, dynamic>?> request(String requestType, {int currentTry = 1, int tries = 6}) async {
+    if (_enableEndpointLog) {
+      logger.d('$requestType: $_domain$_url');
+    }
+
+    if (_enableFormDataLog) {
+      logger.d(_formData);
+    }
+
+    tryCancelPrevious();
+
+    //cache
+    Map<String, dynamic>? data = await tryGetFromCache();
+    if (data != null) return data;
 
     try {
       Response<Map<String, dynamic>> res = await dio.requestUri<Map<String, dynamic>>(
-        Uri.parse('$_domain$url'),
-        data: formData,
-        cancelToken: cancelTokens[url],
-        options: _dioOptions(formData, extraHeaders: headers, method: requestType),
+        Uri.parse('$_domain$_url'),
+        data: _formData,
+        cancelToken: cancelTokens[_url],
+        options: _dioOptions(requestType),
       );
 
       if (_enableResponseLog) {
@@ -230,8 +178,8 @@ class ServiceApi {
       }
 
       //cache if withCache = true and data not null
-      if (res.data != null && withCache == true) {
-        await setCache(res.data!, url, formData: formData, headers: headers);
+      if (res.data != null && _withCache == true) {
+        await setCache(res.data!);
       }
 
       return res.data;
@@ -248,13 +196,7 @@ class ServiceApi {
         if (currentTry != tries) {
           await MyServices.helpers.waitForSeconds(5 + currentTry);
           return await request(
-            url,
             requestType,
-            formData: formData,
-            headers: headers,
-            cancelPrevious: cancelPrevious,
-            withCache: withCache,
-            cacheMinutes: cacheMinutes,
             currentTry: currentTry + 1,
             tries: tries,
           );
@@ -267,6 +209,7 @@ class ServiceApi {
 
   Future<bool> _handleNoInternet(DioError e) async {
     if (e.message.contains("SocketException")) {
+      logger.d("SocketException");
       http.Response? response;
       try {
         response = await http.get(Uri.parse('https://google.com'));
