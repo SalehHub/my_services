@@ -22,6 +22,9 @@ class ServiceApi {
   static bool _withCache = false;
   void setWithCache(bool withCache) => _withCache = withCache;
 
+  static bool _withRetry = true;
+  void setWithRetry(bool withRetry) => _withRetry = withRetry;
+
   static int _cacheMinutes = 5;
   void setCacheMinutes(int cacheMinutes) => _cacheMinutes = cacheMinutes;
 
@@ -172,7 +175,7 @@ class ServiceApi {
 
         if (currentTry == 1) await _handleNoInternet(e);
 
-        if (currentTry != tries) {
+        if (currentTry != tries && _withRetry) {
           await MyServices.helpers.waitForSeconds(5 + currentTry);
           return await request(requestType, currentTry: currentTry + 1, tries: tries);
         }
