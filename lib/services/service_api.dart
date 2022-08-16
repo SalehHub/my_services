@@ -171,7 +171,6 @@ class ServiceApi {
       if (e.type == DioErrorType.cancel) {
         logger.d("Dio request canceled");
       } else {
-        
         logger.d(e.error);
         logger.d(e.message);
         logger.d(e.response);
