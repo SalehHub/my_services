@@ -1,6 +1,6 @@
 import '../my_services.dart';
 
-abstract class _MainStateData<T extends ConsumerStatefulWidget> extends ConsumerState<T> {
+abstract class _MainStateData<T extends ConsumerStatefulWidget> extends ConsumerState<T> with WidgetsBindingObserver {
   /////Theme
   ThemeData get theme => Theme.of(context);
 
@@ -27,7 +27,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 }
 
 abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T>
-    with SafeSetStateMixin, SearchMixin, BannersMixin, HeadLoadingsMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin {
+    with SafeSetStateMixin, SearchMixin, BannersMixin, HeadLoadingsMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin, BindingObserverMixin {
   //
   //
 
@@ -164,19 +164,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
   void initState() {
     super.initState();
 
-    if (startPageInLoadingState) {
-      pageLoading = true;
-    }
-
-    addLoadMoreListener();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => _myInitState());
-  }
-
-  @override
-  void dispose() {
-    loadMoreDispose();
-    super.dispose();
   }
 
   void _myInitState() {
@@ -389,8 +377,16 @@ mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
   AsyncCallback? loadMore;
   bool moreData = false;
 
-  void loadMoreDispose() {
+  @override
+  void initState() {
+    super.initState();
+    addLoadMoreListener();
+  }
+
+  @override
+  void dispose() {
     pageScrollController?.dispose();
+    super.dispose();
   }
 
   void addLoadMoreListener() {
@@ -465,6 +461,14 @@ mixin LoadingsMixin<T extends StatefulWidget> on State<T> {
   void stopActionBarLoading() {
     setState(() => actionBarLoading = false);
   }
+
+  @override
+  void initState() {
+    if (startPageInLoadingState) {
+      pageLoading = true;
+    }
+    super.initState();
+  }
 }
 
 mixin HeadLoadingsMixin<T extends StatefulWidget> on State<T> {
@@ -503,6 +507,37 @@ mixin SafeSetStateMixin<T extends StatefulWidget> on State<T> {
     if (mounted) {
       super.setState(fn);
     }
+  }
+}
+
+mixin BindingObserverMixin<T extends StatefulWidget> on State<T>, WidgetsBindingObserver {
+  Function? onResumed;
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (onResumed != null) {
+      if (state == AppLifecycleState.resumed) {
+        onResumed?.call();
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (onResumed != null) {
+      WidgetsBinding.instance.addObserver(this);
+    }
+  }
+
+  @override
+  void dispose() {
+    if (onResumed != null) {
+      WidgetsBinding.instance.removeObserver(this);
+    }
+
+    super.dispose();
   }
 }
 
