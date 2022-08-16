@@ -171,6 +171,14 @@ class ServiceApi {
       if (e.type == DioErrorType.cancel) {
         logger.d("Dio request canceled");
       } else {
+        
+        logger.d(e.error);
+        logger.d(e.message);
+        logger.d(e.response);
+        logger.d(e.response?.data);
+        logger.d(e.response?.statusCode);
+        logger.d(e.response?.statusMessage);
+
         logger.e(e, e, s);
 
         if (currentTry == 1) await _handleNoInternet(e);
