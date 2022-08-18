@@ -38,12 +38,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
-    noReviewsYetCheckBackLater: 'No reviews yet. Check back later.',
+    youHaventReviewedAnyAccountYet: 'You haven\'t reviewed any account yet',
+    noReviewsForYourAccountYetCheckBackLater: 'No reviews for your account yet. Check back later',
     yourProfileReviews: 'Your profile reviews',
     yourReviews: 'Your reviews',
     noReviewsYet: 'No reviews yet',
     review: 'Review',
     yourReview: 'Your review',
+    accountsYouReviewed: 'Accounts you reviewed',
     optional: 'Optional',
     showLess: 'Show less',
     showMore: 'Show more',
@@ -190,12 +192,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
-    noReviewsYetCheckBackLater: 'لايوجد تقييمات لحسابك حالياً',
+    youHaventReviewedAnyAccountYet: 'لم تقم يتقييم أي حساب حتى الآن. عندما تقيم أحد الحسابات سيظهر تقييمك هنا',
+    noReviewsForYourAccountYetCheckBackLater: 'لايوجد تقييمات لحسابك حالياً',
     yourProfileReviews: 'تقييمات حسابك',
     yourReviews: 'تقييماتك',
     noReviewsYet: 'لايوجد تقييمات بعد',
     review: 'تقييم',
     yourReview: 'تقييمك',
+    accountsYouReviewed: 'حسابات قمت بتقييمها',
     optional: 'إختياري',
     showLess: 'عرض اقل',
     showMore: 'عرض المزيد',
@@ -343,12 +347,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloquer',
-    noReviewsYetCheckBackLater: 'Aucune critique encore. Revenez plus tard.',
+    youHaventReviewedAnyAccountYet: 'Vous n\'avez pas encore examiné de compte',
+    noReviewsForYourAccountYetCheckBackLater: 'Aucune critique pour votre compte. Revenez plus tard',
     yourProfileReviews: 'Vos critiques de profil',
     yourReviews: 'Vos avis',
     noReviewsYet: 'Aucune critique encore',
     review: 'Examen',
     yourReview: 'Votre avis',
+    accountsYouReviewed: 'Comptes que vous avez examinés',
     optional: 'Optionnel',
     showLess: 'Montrer moins',
     showMore: 'Montre plus',
@@ -495,12 +501,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
-    noReviewsYetCheckBackLater: 'No hay reseñas todavía. Vuelva más tarde.',
+    youHaventReviewedAnyAccountYet: 'Aún no has revisado ninguna cuenta',
+    noReviewsForYourAccountYetCheckBackLater: 'No hay revisiones para su cuenta todavía. Vuelva más tarde',
     yourProfileReviews: 'Sus reseñas de perfil',
     yourReviews: 'Tus reseñas',
     noReviewsYet: 'Todavía no hay críticas',
     review: 'Revisar',
     yourReview: 'Tu reseña',
+    accountsYouReviewed: 'Cuentas que revisó',
     optional: 'Opcional',
     showLess: 'Muestra menos',
     showMore: 'Mostrar más',
@@ -647,12 +655,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Bloke olmuş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
-    noReviewsYetCheckBackLater: 'Henüz yorum yok. Daha sonra kontrol et.',
+    youHaventReviewedAnyAccountYet: 'Henüz herhangi bir hesabı incelemediniz',
+    noReviewsForYourAccountYetCheckBackLater: 'Henüz hesabınız için inceleme yok. Daha sonra kontrol et',
     yourProfileReviews: 'Profil İncelemeleriniz',
     yourReviews: 'İncelemeleriniz',
     noReviewsYet: 'Henüz yorum yok',
     review: 'Gözden geçirmek',
     yourReview: 'Yorumun',
+    accountsYouReviewed: 'İncelediğiniz hesaplar',
     optional: 'İsteğe bağlı',
     showLess: 'Daha az göster',
     showMore: 'Daha fazla göster',
@@ -802,12 +812,14 @@ class MyServicesLocalizationsData {
     required this.blockedAccount,
     required this.unblock,
     required this.block,
-    required this.noReviewsYetCheckBackLater,
+    required this.youHaventReviewedAnyAccountYet,
+    required this.noReviewsForYourAccountYetCheckBackLater,
     required this.yourProfileReviews,
     required this.yourReviews,
     required this.noReviewsYet,
     required this.review,
     required this.yourReview,
+    required this.accountsYouReviewed,
     required this.optional,
     required this.showLess,
     required this.showMore,
@@ -954,12 +966,14 @@ class MyServicesLocalizationsData {
   final String blockedAccount;
   final String unblock;
   final String block;
-  final String noReviewsYetCheckBackLater;
+  final String youHaventReviewedAnyAccountYet;
+  final String noReviewsForYourAccountYetCheckBackLater;
   final String yourProfileReviews;
   final String yourReviews;
   final String noReviewsYet;
   final String review;
   final String yourReview;
+  final String accountsYouReviewed;
   final String optional;
   final String showLess;
   final String showMore;
@@ -1105,12 +1119,14 @@ class MyServicesLocalizationsData {
         blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
-        noReviewsYetCheckBackLater: map['noReviewsYetCheckBackLater']! as String,
+        youHaventReviewedAnyAccountYet: map['youHaventReviewedAnyAccountYet']! as String,
+        noReviewsForYourAccountYetCheckBackLater: map['noReviewsForYourAccountYetCheckBackLater']! as String,
         yourProfileReviews: map['yourProfileReviews']! as String,
         yourReviews: map['yourReviews']! as String,
         noReviewsYet: map['noReviewsYet']! as String,
         review: map['review']! as String,
         yourReview: map['yourReview']! as String,
+        accountsYouReviewed: map['accountsYouReviewed']! as String,
         optional: map['optional']! as String,
         showLess: map['showLess']! as String,
         showMore: map['showMore']! as String,
@@ -1258,12 +1274,14 @@ class MyServicesLocalizationsData {
     String? blockedAccount,
     String? unblock,
     String? block,
-    String? noReviewsYetCheckBackLater,
+    String? youHaventReviewedAnyAccountYet,
+    String? noReviewsForYourAccountYetCheckBackLater,
     String? yourProfileReviews,
     String? yourReviews,
     String? noReviewsYet,
     String? review,
     String? yourReview,
+    String? accountsYouReviewed,
     String? optional,
     String? showLess,
     String? showMore,
@@ -1412,12 +1430,14 @@ class MyServicesLocalizationsData {
         blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
-        noReviewsYetCheckBackLater: noReviewsYetCheckBackLater ?? this.noReviewsYetCheckBackLater,
+        youHaventReviewedAnyAccountYet: youHaventReviewedAnyAccountYet ?? this.youHaventReviewedAnyAccountYet,
+        noReviewsForYourAccountYetCheckBackLater: noReviewsForYourAccountYetCheckBackLater ?? this.noReviewsForYourAccountYetCheckBackLater,
         yourProfileReviews: yourProfileReviews ?? this.yourProfileReviews,
         yourReviews: yourReviews ?? this.yourReviews,
         noReviewsYet: noReviewsYet ?? this.noReviewsYet,
         review: review ?? this.review,
         yourReview: yourReview ?? this.yourReview,
+        accountsYouReviewed: accountsYouReviewed ?? this.accountsYouReviewed,
         optional: optional ?? this.optional,
         showLess: showLess ?? this.showLess,
         showMore: showMore ?? this.showMore,
@@ -1568,12 +1588,14 @@ class MyServicesLocalizationsData {
           blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
-          noReviewsYetCheckBackLater == other.noReviewsYetCheckBackLater &&
+          youHaventReviewedAnyAccountYet == other.youHaventReviewedAnyAccountYet &&
+          noReviewsForYourAccountYetCheckBackLater == other.noReviewsForYourAccountYetCheckBackLater &&
           yourProfileReviews == other.yourProfileReviews &&
           yourReviews == other.yourReviews &&
           noReviewsYet == other.noReviewsYet &&
           review == other.review &&
           yourReview == other.yourReview &&
+          accountsYouReviewed == other.accountsYouReviewed &&
           optional == other.optional &&
           showLess == other.showLess &&
           showMore == other.showMore &&
@@ -1721,12 +1743,14 @@ class MyServicesLocalizationsData {
       blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
-      noReviewsYetCheckBackLater.hashCode ^
+      youHaventReviewedAnyAccountYet.hashCode ^
+      noReviewsForYourAccountYetCheckBackLater.hashCode ^
       yourProfileReviews.hashCode ^
       yourReviews.hashCode ^
       noReviewsYet.hashCode ^
       review.hashCode ^
       yourReview.hashCode ^
+      accountsYouReviewed.hashCode ^
       optional.hashCode ^
       showLess.hashCode ^
       showMore.hashCode ^

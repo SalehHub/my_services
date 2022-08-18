@@ -27,7 +27,7 @@ dependencies:
 
   app_settings: ^4.1.8 #appSettings
 
-  google_maps_flutter: ^2.1.10 #googleMaps
+  google_maps_flutter: ^2.1.12 #googleMaps
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
@@ -43,7 +43,7 @@ dependencies:
 
   map_launcher: ^2.3.0+1 #mapLauncher
 
-  flutter_svg: ^1.1.3 #flutterSvg
+  flutter_svg: ^1.1.4 #flutterSvg
 
   app_links: ^3.2.0 #appLinks
 
