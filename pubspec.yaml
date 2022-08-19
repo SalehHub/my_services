@@ -17,13 +17,13 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^1.20.1 #firebaseCore
+  firebase_core: ^1.1.0 #firebaseCore
 
-  firebase_messaging: ^12.0.2 #firebaseMessaging
+  firebase_messaging: ^12.0.3 #firebaseMessaging
 
-  firebase_crashlytics: ^2.8.7 #firebaseCrashlytics
+  firebase_crashlytics: ^2.8.8 #firebaseCrashlytics
   
-  firebase_auth: ^3.6.3 #firebaseAuth
+  firebase_auth: ^3.6.4 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
