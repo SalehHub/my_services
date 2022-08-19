@@ -380,7 +380,7 @@ mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
-    addLoadMoreListener();
+    WidgetsBinding.instance.addPostFrameCallback((_) => addLoadMoreListener());
   }
 
   @override
