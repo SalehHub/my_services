@@ -3,44 +3,42 @@ import '../my_services.dart' hide url;
 import 'package:http/http.dart' as http;
 
 class ServiceApi {
-  const ServiceApi();
-
   static final Map<String, CancelToken> cancelTokens = {};
 
-  static bool _enableEndpointLog = true;
-  static bool _enableResponseLog = true;
-  static bool _enableHeadersLog = true;
-  static bool _enableFormDataLog = true;
+  bool _enableEndpointLog = true;
+  bool _enableResponseLog = true;
+  bool _enableHeadersLog = true;
+  bool _enableFormDataLog = true;
   void disableEndpointLog() => _enableEndpointLog = false;
   void disableResponseLog() => _enableResponseLog = false;
   void disableHeadersLog() => _enableHeadersLog = false;
   void disableFormDataLog() => _enableFormDataLog = false;
 
-  static bool _cancelPrevious = true;
+  bool _cancelPrevious = true;
   void setCancelPrevious(bool cancelPrevious) => _cancelPrevious = cancelPrevious;
 
-  static bool _withCache = false;
+  bool _withCache = false;
   void setWithCache(bool withCache) => _withCache = withCache;
 
-  static bool _withRetry = true;
+  bool _withRetry = true;
   void setWithRetry(bool withRetry) => _withRetry = withRetry;
 
-  static int _cacheMinutes = 5;
+  int _cacheMinutes = 5;
   void setCacheMinutes(int cacheMinutes) => _cacheMinutes = cacheMinutes;
 
-  static String _domain = '';
+  String _domain = '';
   void setDoamin(String domain) => _domain = domain;
 
-  static String _url = '';
+  String _url = '';
   void setUrl(String url) => _url = url;
 
-  static Map<String, dynamic> _formData = {}; //can be FormData or Map<String, dynamic>
+  Map<String, dynamic> _formData = {}; //can be FormData or Map<String, dynamic>
   void setFormData(Map<String, dynamic> formData) => _formData = {
         ...MyServices.providers.asMap(),
         ...formData,
       };
 
-  static Map<String, dynamic> _headers = {};
+  Map<String, dynamic> _headers = {};
   void setHeaders(Map<String, dynamic> headers) => _headers = headers;
 
   //-------------------------------------Cache-------------------------------------//
@@ -123,6 +121,7 @@ class ServiceApi {
       if (data != null) {
         logger.d("FromCache");
         await MyServices.helpers.waitForSeconds(1);
+        if (_enableResponseLog) logger.d(data);
       }
 
       return data;
@@ -139,8 +138,6 @@ class ServiceApi {
     }
     cancelTokens[_url] = CancelToken();
   }
-
-  static FormData? copy;
 
   Future<Map<String, dynamic>?> request(String requestType, {int currentTry = 1, int tries = 6}) async {
     if (_enableEndpointLog) logger.d('$requestType: $_domain$_url');

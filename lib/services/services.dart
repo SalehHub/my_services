@@ -41,7 +41,7 @@ class Services {
     GetIt.I.registerLazySingleton<ServiceColor>(() => const ServiceColor());
     GetIt.I.registerLazySingleton<ServiceAppDevice>(() => const ServiceAppDevice());
     //not Singleton
-    GetIt.I.registerFactory<ServiceApi>(() => const ServiceApi());
+    GetIt.I.registerFactory<ServiceApi>(() => ServiceApi());
     //
     GetIt.I.registerLazySingleton<ServiceShare>(() => const ServiceShare()); //sharePlus
     GetIt.I.registerLazySingleton<ServiceImagePicker>(() => const ServiceImagePicker()); //imagePicker
