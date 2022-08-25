@@ -38,7 +38,7 @@ class MyText extends StatelessWidget {
     }
 
     // if (color != null) {
-    textStyle = textStyle.copyWith(color: color ?? defaultTextStyle.color);
+    textStyle = textStyle.copyWith(color: color ?? textStyle.color);
     // }
 
     if (shadows != null) {
