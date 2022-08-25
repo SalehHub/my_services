@@ -4,6 +4,8 @@ class MyContainer extends StatelessWidget {
   final GestureTapCallback? onTap;
   final double? width;
   final double? height;
+  final double? minWidth;
+  final double? maxWidth;
   final double? minHeight;
   final double? maxHeight;
   final double? borderWidth;
@@ -40,6 +42,9 @@ class MyContainer extends StatelessWidget {
     this.alignment,
     this.minHeight,
     this.maxHeight,
+    //
+    this.minWidth,
+    this.maxWidth,
   });
 
   @override
@@ -48,7 +53,7 @@ class MyContainer extends StatelessWidget {
   }
 
   BoxConstraints? getBoxConstraints() {
-    if (maxHeight == null && minHeight == null) {
+    if (maxHeight == null && minHeight == null && maxWidth == null && minWidth == null) {
       return null;
     }
 
@@ -58,6 +63,13 @@ class MyContainer extends StatelessWidget {
     }
     if (minHeight != null) {
       boxConstraints = boxConstraints.copyWith(minHeight: minHeight);
+    }
+
+    if (maxWidth != null) {
+      boxConstraints = boxConstraints.copyWith(maxWidth: maxWidth);
+    }
+    if (minWidth != null) {
+      boxConstraints = boxConstraints.copyWith(minWidth: minWidth);
     }
     return boxConstraints;
   }
