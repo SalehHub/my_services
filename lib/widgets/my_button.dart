@@ -78,42 +78,28 @@ class MyButton extends ConsumerWidget {
     }
 
     if (isTextButton) {
-      return TextButton(
-        onPressed: () => _onPressed(context, ref),
-        child: _child(context, ref),
-      );
+      return TextButton(onPressed: () => _onPressed(context, ref), child: _child(context, ref));
     }
 
-    return ElevatedButton(
-      onPressed: () => _onPressed(context, ref),
-      child: _child(context, ref),
-    );
-  }
-
-  Widget _animated(BuildContext context, WidgetRef ref) {
-    if (withLoading) {
-      return AnimatedSize(
-        // alignment: Alignment.centerLeft,
-        duration: const Duration(milliseconds: 200),
-        child: _button(context, ref),
-      );
-    }
-
-    return _button(context, ref);
+    return ElevatedButton(onPressed: () => _onPressed(context, ref), child: _child(context, ref));
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Widget animated = _animated(context, ref);
+    Widget button = _button(context, ref);
+
+    if (withLoading) {
+      button = AnimatedSize(duration: const Duration(milliseconds: 200), child: button);
+    }
 
     if (center) {
-      animated = Center(child: animated);
+      button = Center(child: button);
     }
 
     if (margin != null) {
-      animated = Padding(padding: margin!, child: animated);
+      button = Padding(padding: margin!, child: button);
     }
 
-    return animated;
+    return button;
   }
 }
