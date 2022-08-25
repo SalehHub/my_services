@@ -5,12 +5,14 @@ class MyButton extends ConsumerWidget {
     super.key,
     this.id,
     required this.text,
+    this.margin,
     this.textStyle,
     this.child,
     this.onPressed,
     this.isTextButton = false,
     this.withLoading = true,
     this.circle = false,
+    this.center = false,
   });
   final String text;
   final TextStyle? textStyle;
@@ -18,9 +20,11 @@ class MyButton extends ConsumerWidget {
   final dynamic id;
   final bool withLoading;
   final bool circle;
+  final bool center;
   final bool isTextButton;
   final AsyncCallback? onPressed;
   final double progressIndicatorSize = 20;
+  final EdgeInsets? margin;
 
   String get _id => MyServices.helpers.getMd5((id ?? text).toString());
 
@@ -100,6 +104,16 @@ class MyButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return _animated(context, ref);
+    Widget animated = _animated(context, ref);
+
+    if (center) {
+      animated = Center(child: animated);
+    }
+
+    if (margin != null) {
+      animated = Padding(padding: margin!, child: animated);
+    }
+
+    return animated;
   }
 }

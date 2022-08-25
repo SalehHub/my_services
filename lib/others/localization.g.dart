@@ -56,6 +56,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccount: 'Delete Your Account',
     deleteYourAccountPermanently: 'Delete Your Account Permanently',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Your Phone Settings will be opened to change the app language',
+    send: 'Send',
     save: 'Save',
     add: 'Add',
     reject: 'Reject',
@@ -211,6 +212,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccount: 'حذف حسابك',
     deleteYourAccountPermanently: 'حذف الحساب بشكل نهائي',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'سيتم فتح إعدادات جهازك لتغيير لغة التطبيق',
+    send: 'إرسال',
     save: 'حفظ',
     add: 'إضافة',
     reject: 'رفض',
@@ -367,6 +369,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccount: 'Supprimer votre compte',
     deleteYourAccountPermanently: 'Supprimez votre compte en permanence',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Les paramètres de votre téléphone seront ouverts pour modifier le langage de l\'application',
+    send: 'Envoyer',
     save: 'sauvegarder',
     add: 'Ajouter',
     reject: 'Rejeter',
@@ -522,6 +525,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccount: 'Elimina tu cuenta',
     deleteYourAccountPermanently: 'Elimine su cuenta de forma permanente',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'La configuración de su teléfono se abrirá para cambiar el idioma de la aplicación',
+    send: 'Enviar',
     save: 'Ahorrar',
     add: 'Agregar',
     reject: 'Rechazar',
@@ -677,6 +681,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccount: 'Hesabını sil',
     deleteYourAccountPermanently: 'Hesabınızı kalıcı olarak silin',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Uygulama dilini değiştirmek için telefon ayarlarınız açılacak',
+    send: 'Göndermek',
     save: 'Kaydetmek',
     add: 'Ekle',
     reject: 'Reddetmek',
@@ -835,6 +840,7 @@ class MyServicesLocalizationsData {
     required this.deleteYourAccount,
     required this.deleteYourAccountPermanently,
     required this.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
+    required this.send,
     required this.save,
     required this.add,
     required this.reject,
@@ -990,6 +996,7 @@ class MyServicesLocalizationsData {
   final String deleteYourAccount;
   final String deleteYourAccountPermanently;
   final String yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage;
+  final String send;
   final String save;
   final String add;
   final String reject;
@@ -1144,6 +1151,7 @@ class MyServicesLocalizationsData {
         deleteYourAccount: map['deleteYourAccount']! as String,
         deleteYourAccountPermanently: map['deleteYourAccountPermanently']! as String,
         yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: map['yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage']! as String,
+        send: map['send']! as String,
         save: map['save']! as String,
         add: map['add']! as String,
         reject: map['reject']! as String,
@@ -1300,6 +1308,7 @@ class MyServicesLocalizationsData {
     String? deleteYourAccount,
     String? deleteYourAccountPermanently,
     String? yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
+    String? send,
     String? save,
     String? add,
     String? reject,
@@ -1457,6 +1466,7 @@ class MyServicesLocalizationsData {
         deleteYourAccount: deleteYourAccount ?? this.deleteYourAccount,
         deleteYourAccountPermanently: deleteYourAccountPermanently ?? this.deleteYourAccountPermanently,
         yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage ?? this.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage,
+        send: send ?? this.send,
         save: save ?? this.save,
         add: add ?? this.add,
         reject: reject ?? this.reject,
@@ -1616,6 +1626,7 @@ class MyServicesLocalizationsData {
           deleteYourAccount == other.deleteYourAccount &&
           deleteYourAccountPermanently == other.deleteYourAccountPermanently &&
           yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage == other.yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage &&
+          send == other.send &&
           save == other.save &&
           add == other.add &&
           reject == other.reject &&
@@ -1772,6 +1783,7 @@ class MyServicesLocalizationsData {
       deleteYourAccount.hashCode ^
       deleteYourAccountPermanently.hashCode ^
       yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage.hashCode ^
+      send.hashCode ^
       save.hashCode ^
       add.hashCode ^
       reject.hashCode ^
