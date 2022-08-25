@@ -47,6 +47,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourReview: 'Your review',
     accountsYouReviewed: 'Accounts you reviewed',
     optional: 'Optional',
+    showAll: 'Show all',
     showLess: 'Show less',
     showMore: 'Show more',
     continue1: 'Continue',
@@ -201,6 +202,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourReview: 'تقييمك',
     accountsYouReviewed: 'حسابات قمت بتقييمها',
     optional: 'إختياري',
+    showAll: 'عرض الكل',
     showLess: 'عرض اقل',
     showMore: 'عرض المزيد',
     continue1: 'متابعة',
@@ -356,6 +358,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourReview: 'Votre avis',
     accountsYouReviewed: 'Comptes que vous avez examinés',
     optional: 'Optionnel',
+    showAll: 'Afficher tout',
     showLess: 'Montrer moins',
     showMore: 'Montre plus',
     continue1: 'Continuer',
@@ -510,6 +513,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourReview: 'Tu reseña',
     accountsYouReviewed: 'Cuentas que revisó',
     optional: 'Opcional',
+    showAll: 'Mostrar todo',
     showLess: 'Muestra menos',
     showMore: 'Mostrar más',
     continue1: 'Continuar',
@@ -664,6 +668,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourReview: 'Yorumun',
     accountsYouReviewed: 'İncelediğiniz hesaplar',
     optional: 'İsteğe bağlı',
+    showAll: 'Hepsini Göster ↓',
     showLess: 'Daha az göster',
     showMore: 'Daha fazla göster',
     continue1: 'Devam et',
@@ -821,6 +826,7 @@ class MyServicesLocalizationsData {
     required this.yourReview,
     required this.accountsYouReviewed,
     required this.optional,
+    required this.showAll,
     required this.showLess,
     required this.showMore,
     required this.continue1,
@@ -975,6 +981,7 @@ class MyServicesLocalizationsData {
   final String yourReview;
   final String accountsYouReviewed;
   final String optional;
+  final String showAll;
   final String showLess;
   final String showMore;
   final String continue1;
@@ -1128,6 +1135,7 @@ class MyServicesLocalizationsData {
         yourReview: map['yourReview']! as String,
         accountsYouReviewed: map['accountsYouReviewed']! as String,
         optional: map['optional']! as String,
+        showAll: map['showAll']! as String,
         showLess: map['showLess']! as String,
         showMore: map['showMore']! as String,
         continue1: map['continue1']! as String,
@@ -1283,6 +1291,7 @@ class MyServicesLocalizationsData {
     String? yourReview,
     String? accountsYouReviewed,
     String? optional,
+    String? showAll,
     String? showLess,
     String? showMore,
     String? continue1,
@@ -1439,6 +1448,7 @@ class MyServicesLocalizationsData {
         yourReview: yourReview ?? this.yourReview,
         accountsYouReviewed: accountsYouReviewed ?? this.accountsYouReviewed,
         optional: optional ?? this.optional,
+        showAll: showAll ?? this.showAll,
         showLess: showLess ?? this.showLess,
         showMore: showMore ?? this.showMore,
         continue1: continue1 ?? this.continue1,
@@ -1597,6 +1607,7 @@ class MyServicesLocalizationsData {
           yourReview == other.yourReview &&
           accountsYouReviewed == other.accountsYouReviewed &&
           optional == other.optional &&
+          showAll == other.showAll &&
           showLess == other.showLess &&
           showMore == other.showMore &&
           continue1 == other.continue1 &&
@@ -1752,6 +1763,7 @@ class MyServicesLocalizationsData {
       yourReview.hashCode ^
       accountsYouReviewed.hashCode ^
       optional.hashCode ^
+      showAll.hashCode ^
       showLess.hashCode ^
       showMore.hashCode ^
       continue1.hashCode ^
