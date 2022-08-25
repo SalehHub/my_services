@@ -8,6 +8,7 @@ class MyTextInput extends StatefulWidget {
     this.validator,
     this.prefixText,
     this.labelText,
+    this.hintText,
     this.helperText,
     this.suffixIcon,
     this.prefixIcon,
@@ -50,6 +51,7 @@ class MyTextInput extends StatefulWidget {
   final String? prefixText;
   final String? labelText;
   final String? helperText;
+  final String? hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final ValueChanged<String>? onChanged;
@@ -311,15 +313,17 @@ class _MyTextInputState extends State<MyTextInput> {
 
   InputDecoration buildMyInputDecoration() {
     return InputDecoration(
+      hintText: widget.hintText,
+
+      helperText: widget.helperText,
+      helperMaxLines: 2,
+
       prefixText: widget.prefixText,
       alignLabelWithHint: true,
       labelStyle: widget.labelStyle,
       floatingLabelStyle: widget.floatingLabelStyle,
       labelText: widget.floatingLabel ? widget.labelText : null,
-      //
-      helperText: widget.helperText,
-      helperMaxLines: 2,
-      //
+
       contentPadding: buildContentPadding(),
       suffixIcon: widget.suffixIcon,
       prefixIcon: buildPrefixIcon(),
