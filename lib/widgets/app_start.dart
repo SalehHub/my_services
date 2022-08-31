@@ -1,5 +1,6 @@
 import '../my_services.dart';
 import '../providers/general_state_provider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_test/flutter_test.dart' show TestWidgetsFlutterBinding;
 
 typedef Overrides = Future<List<Override>> Function();
