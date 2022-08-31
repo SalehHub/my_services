@@ -27,8 +27,7 @@ abstract class _MainStateData<T extends ConsumerStatefulWidget> extends Consumer
 }
 
 abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _MainStateData<T>
-    with SafeSetStateMixin, SearchMixin, BannersMixin, HeadLoadingsMixin, LoadingsMixin, TabsMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin, BindingObserverMixin {
-  //
+    with SafeSetStateMixin, SearchMixin, BannersMixin, HeadLoadingsMixin, LoadingsMixin, TabsMixin, NestedScrollViewStateKeyMixin, LoadMoreMixin, ScaffoldKeyMixin, DrawerMixin, BindingObserverMixin {
   //
 
   List<Widget> bodyChildren = <Widget>[];
@@ -233,6 +232,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
               drawer: drawer,
               key: scaffoldKey,
               body: NestedScrollView(
+                key: globalKeyNestedScrollView,
                 floatHeaderSlivers: true,
                 headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
                   return <Widget>[
@@ -303,7 +303,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   Widget buildPage(BuildContext context) {
     final customScrollView = CustomScrollView(
-      controller: pageScrollController,
       slivers: <Widget>[
         if (showAppBar) SliverOverlapInjector(handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
 
@@ -367,6 +366,9 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 mixin ScaffoldKeyMixin {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 }
+mixin NestedScrollViewStateKeyMixin {
+  final GlobalKey<NestedScrollViewState> globalKeyNestedScrollView = GlobalKey<NestedScrollViewState>();
+}
 
 mixin DrawerMixin<T extends StatefulWidget> on State<T>, ScaffoldKeyMixin {
   Widget? drawer;
@@ -375,8 +377,7 @@ mixin DrawerMixin<T extends StatefulWidget> on State<T>, ScaffoldKeyMixin {
   void openDrawer() => scaffoldKey.currentState?.openDrawer();
 }
 
-mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
-  ScrollController? pageScrollController;
+mixin LoadMoreMixin<T extends StatefulWidget> on State<T>, NestedScrollViewStateKeyMixin {
   bool moreLoading = false;
   double moreTrigger = 0.8;
   AsyncCallback? loadMore;
@@ -385,24 +386,14 @@ mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => addLoadMoreListener());
+    WidgetsBinding.instance.addPostFrameCallback((_) => _addLoadMoreListener());
   }
 
-  @override
-  void dispose() {
-    pageScrollController?.dispose();
-    super.dispose();
-  }
-
-  void addLoadMoreListener() {
+  void _addLoadMoreListener() {
     if (loadMore != null) {
-      pageScrollController ??= ScrollController();
+      globalKeyNestedScrollView.currentState?.innerController.addListener(() async {
+        var pageScrollController = globalKeyNestedScrollView.currentState?.innerController;
 
-      if (pageScrollController == null) {
-        return;
-      }
-
-      pageScrollController?.addListener(() async {
         double maxScrollExtent = pageScrollController?.position.maxScrollExtent ?? 0;
         var nextPageTrigger = moreTrigger * maxScrollExtent;
         double pixels = pageScrollController?.position.pixels ?? 0;
@@ -410,6 +401,8 @@ mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
           setState(() => moreLoading = true);
           if (loadMore != null) {
             await loadMore!();
+            double maxScrollExtent = pageScrollController?.position.maxScrollExtent ?? 0;
+            nextPageTrigger = moreTrigger * maxScrollExtent;
             setState(() => moreLoading = false);
           }
         }
@@ -554,11 +547,8 @@ mixin SearchMixin<T extends StatefulWidget> on State<T> {
   GestureTapCallback? onSearchClear;
   String searchTerm = "";
 
-  // final TextEditingController searchController = TextEditingController();
-
   Widget get searchInput => SliverToBoxAdapter(
         child: MyTextInput(
-          // controller: searchController,
           value: searchTerm,
           textInputAction: TextInputAction.search,
           margin: const EdgeInsets.all(10),
