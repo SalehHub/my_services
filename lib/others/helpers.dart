@@ -196,7 +196,7 @@ class Helpers {
       return await availableMaps.first.showMarker(coords: coords, title: title ?? "");
     }
 
-    _buildIcon(map) {
+    buildIcon(map) {
       //start-flutterSvg
       return SvgPicture.asset(map.icon, fit: BoxFit.cover, height: 30, width: 30);
       //end-flutterSvg
@@ -225,7 +225,7 @@ class Helpers {
             padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
             child: ListTile(
               shape: MyServices.services.theme.circularBorderRadius,
-              leading: ClipRRect(borderRadius: MyServices.services.theme.borderRadius, child: _buildIcon(map)),
+              leading: ClipRRect(borderRadius: MyServices.services.theme.borderRadius, child: buildIcon(map)),
               title: Text(mapName),
               onTap: () => map.showMarker(coords: coords, title: title ?? ""),
             ),

@@ -396,7 +396,7 @@ mixin LoadMoreMixin<T extends StatefulWidget> on State<T> {
 
   void addLoadMoreListener() {
     if (loadMore != null) {
-      pageScrollController = ScrollController();
+      pageScrollController ??= ScrollController();
 
       if (pageScrollController == null) {
         return;
