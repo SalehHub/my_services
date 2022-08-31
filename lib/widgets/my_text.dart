@@ -14,6 +14,7 @@ class MyText extends StatelessWidget {
     this.color,
     this.shadows,
     this.overflow,
+    this.decoration,
   });
   final String? text;
   final bool bold;
@@ -26,6 +27,7 @@ class MyText extends StatelessWidget {
   final Color? color;
   final List<Shadow>? shadows;
   final TextOverflow? overflow;
+  final TextDecoration? decoration;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,10 @@ class MyText extends StatelessWidget {
     }
     if (fontSize != null) {
       textStyle = textStyle.copyWith(fontSize: fontSize);
+    }
+
+    if (decoration != null) {
+      textStyle = textStyle.copyWith(decoration: decoration);
     }
 
     return Padding(
