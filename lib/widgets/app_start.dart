@@ -1,5 +1,6 @@
 import '../my_services.dart';
 import '../providers/general_state_provider.dart';
+import 'package:flutter_test/flutter_test.dart' show TestWidgetsFlutterBinding;
 
 typedef Overrides = Future<List<Override>> Function();
 GeneralState _generalState = GeneralState();
@@ -92,6 +93,8 @@ class AppLauncher {
   Future<void> prepare() async {
     if (!testing) {
       WidgetsFlutterBinding.ensureInitialized();
+    } else {
+      TestWidgetsFlutterBinding.ensureInitialized();
     }
 
     if (MyServices.appConfig.withFirebase) {
@@ -102,7 +105,7 @@ class AppLauncher {
       await MyServices.services.firebaseCrashlytics.register(); //firebaseCrashlytics
     }
 
-    if (initGeneralState) {
+    if (initGeneralState && !testing) {
       _generalState = await getGeneralState();
     }
 
