@@ -1,9 +1,6 @@
 import '../my_services.dart';
 
 class ServiceAppDevice {
-  // const ServiceAppDevice._();
-  // static const ServiceAppDevice _s = ServiceAppDevice._();
-  // factory ServiceAppDevice() => _s;
   const ServiceAppDevice();
 
   //
@@ -11,6 +8,7 @@ class ServiceAppDevice {
   static PackageInfo? _packageInfo;
   static IosDeviceInfo? _iosInfo;
   static MacOsDeviceInfo? _macOsInfo;
+  // static WindowsDeviceInfo? _windowsInfo;
   static WebBrowserInfo? _webBrowserInfo;
   static final DeviceInfoPlugin _deviceInfoPlugin = DeviceInfoPlugin();
 
@@ -18,10 +16,10 @@ class ServiceAppDevice {
     final PackageInfo packageInfo = _packageInfo ?? (await PackageInfo.fromPlatform());
     String deviceIdCacheKey = "deviceIdStoredValue";
 
-    late String? deviceId;
-    late String? deviceOSVersion;
-    late String? deviceModel;
-    late String? deviceOS;
+    String? deviceId;
+    String? deviceOSVersion;
+    String? deviceModel;
+    String deviceOS = Platform.operatingSystem.toLowerCase();
     if (kIsWeb) {
       WebBrowserInfo webBrowserInfo = _webBrowserInfo ?? (await _deviceInfoPlugin.webBrowserInfo);
       deviceId = webBrowserInfo.userAgent;
@@ -33,13 +31,11 @@ class ServiceAppDevice {
       deviceId = null;
       deviceOSVersion = androidInfo.version.release;
       deviceModel = androidInfo.model;
-      deviceOS = Platform.operatingSystem.toLowerCase();
     } else if (Platform.isIOS) {
       final IosDeviceInfo iosInfo = _iosInfo ?? (await _deviceInfoPlugin.iosInfo);
       deviceId = iosInfo.identifierForVendor;
       deviceOSVersion = iosInfo.systemVersion;
       deviceModel = iosInfo.utsname.machine;
-      deviceOS = Platform.operatingSystem.toLowerCase();
       // print(iosInfo.name);
       // print(iosInfo.localizedModel);
       // print(iosInfo.systemName);
@@ -56,7 +52,11 @@ class ServiceAppDevice {
       deviceId = macOsInfo.systemGUID;
       deviceOSVersion = macOsInfo.osRelease;
       deviceModel = macOsInfo.model;
-      deviceOS = Platform.operatingSystem.toLowerCase();
+    } else if (Platform.isWindows) {
+      // final WindowsDeviceInfo windowsInfo = _windowsInfo ?? (await _deviceInfoPlugin.windowsInfo);
+      deviceId = null;
+      deviceOSVersion = null;
+      deviceModel = null;
     }
 
     //generate and store an uuid as device id when real device id is null
