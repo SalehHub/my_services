@@ -28,6 +28,36 @@ class CountriesData {
   }
 
   static final List<Map<String, dynamic>> _countryList = [
+    //TODO: correct the translations
+    {
+      "num_code": "all",
+      "alpha_2_code": "all",
+      "alpha_3_code": "all",
+      "en_short_name": "All",
+      "nationality": "All",
+      "dial_code": "all",
+      "nameTranslations": {
+        "sk": "All",
+        "se": "All",
+        "pl": "All",
+        "no": "All",
+        "ja": "All",
+        "it": "All",
+        "zh": "All",
+        "nl": "All",
+        "de": "All",
+        "fr": "All",
+        "es": "All",
+        "en": "All",
+        "pt_BR": "All",
+        "sr-Cyrl": "All",
+        "sr-Latn": "All",
+        "zh_TW": "All",
+        "tr": "All",
+        "ro": "All",
+        "ar": "الكل"
+      }
+    },
     {
       "num_code": "4",
       "alpha_2_code": "AF",

@@ -6,13 +6,19 @@ class MyCountryInput extends StatelessWidget {
     required this.selectedCountry,
     this.onCountrySelect,
     this.enabled = true,
+    this.showAllOption = true,
+    this.floatingLabel = true,
     this.labelText,
+    this.margin = const EdgeInsets.only(top: 5),
   });
 
   final ValueChanged<Country>? onCountrySelect;
   final Country selectedCountry;
   final String? labelText;
   final bool enabled;
+  final bool showAllOption;
+  final bool floatingLabel;
+  final EdgeInsetsGeometry margin;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +26,10 @@ class MyCountryInput extends StatelessWidget {
     return Builder(builder: (context) {
       return MyTextInput(
         enabled: enabled,
+        floatingLabel: floatingLabel,
         key: Key(selectedCountry.code),
         onTap: () => showPopup(context),
+        margin: margin,
         withController: false,
         digitsOnly: false,
         value: selectedCountry.localeName(),
@@ -53,6 +61,7 @@ class MyCountryInput extends StatelessWidget {
       child: CountriesListWidget(
         showDialCode: false,
         popOnSelect: true,
+        showAllOption: showAllOption,
         onCountrySelect: onCountrySelect,
       ),
     );

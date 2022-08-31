@@ -5,10 +5,12 @@ class CountriesListWidget extends StatefulWidget {
     super.key,
     this.showDialCode = true,
     this.popOnSelect = true,
+    this.showAllOption = false,
     this.onCountrySelect,
     this.topCountries,
   });
   final bool showDialCode;
+  final bool showAllOption;
   final ValueChanged<Country>? onCountrySelect;
   final List<Country>? topCountries;
   final bool popOnSelect;
@@ -43,7 +45,11 @@ class _CountriesListWidgetState extends State<CountriesListWidget> {
     ].whereType<Country>().toList();
   }
 
-  List<Country> get countries => [...topCountries, ...CountriesProvider.search(searchTerm)];
+  List<Country> get countries => [
+        if (widget.showAllOption && searchTerm.trim().isEmpty) ...[const Country(code: 'all')],
+        ...topCountries,
+        ...CountriesProvider.search(searchTerm),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -142,10 +148,12 @@ class CountryEmoji extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Text(
-            country.emoji,
-            style: getTextTheme(context).headline6?.copyWith(height: 0, fontWeight: FontWeight.bold),
-          ),
+          child: Builder(builder: (context) {
+            if (country.code == 'all') {
+              return const Icon(Mdi.earth);
+            }
+            return Text(country.emoji, style: getTextTheme(context).headline6?.copyWith(height: 0, fontWeight: FontWeight.bold));
+          }),
         ),
         if (showDialCode)
           Text(

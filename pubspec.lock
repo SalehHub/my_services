@@ -464,7 +464,7 @@ packages:
     description:
       path: flutter_sheet_localization
       ref: HEAD
-      resolved-ref: "165c209fa1bcb9cb2012e004c6db63a85e5965eb"
+      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.1"
@@ -473,7 +473,7 @@ packages:
     description:
       path: flutter_sheet_localization_generator
       ref: HEAD
-      resolved-ref: "165c209fa1bcb9cb2012e004c6db63a85e5965eb"
+      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.7"
@@ -716,7 +716,7 @@ packages:
     description:
       path: localization_builder
       ref: HEAD
-      resolved-ref: "165c209fa1bcb9cb2012e004c6db63a85e5965eb"
+      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.15.7"
@@ -1171,7 +1171,7 @@ packages:
     description:
       path: template_string
       ref: HEAD
-      resolved-ref: "165c209fa1bcb9cb2012e004c6db63a85e5965eb"
+      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.6.0"
