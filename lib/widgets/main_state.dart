@@ -207,12 +207,17 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       });
     }
 
-    if (onBack == null) {
+    if (onBack == null && !homePage) {
       return buildScaffold();
     }
 
     return WillPopScope(
-      onWillPop: onBack,
+      onWillPop: onBack == null && homePage
+          ? () {
+              MyServices.services.snackBar.showYesQuestion(questionText: getMyServicesLabels(context).areYouSureYouWantToCloseTheApp, onYes: SystemNavigator.pop);
+              return Future<bool>.value(false);
+            }
+          : onBack,
       child: buildScaffold(),
     );
   }
