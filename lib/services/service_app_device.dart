@@ -19,7 +19,12 @@ class ServiceAppDevice {
     String? deviceId;
     String? deviceOSVersion;
     String? deviceModel;
-    String deviceOS = Platform.operatingSystem.toLowerCase();
+    String? deviceOS;
+
+    if (!kIsWeb) {
+      deviceOS = Platform.operatingSystem.toLowerCase();
+    }
+
     if (kIsWeb) {
       WebBrowserInfo webBrowserInfo = _webBrowserInfo ?? (await _deviceInfoPlugin.webBrowserInfo);
       deviceId = webBrowserInfo.userAgent;
