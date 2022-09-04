@@ -19,7 +19,7 @@ _$_GeneralState _$$_GeneralStateFromJson(Map<String, dynamic> json) => _$_Genera
 Map<String, dynamic> _$$_GeneralStateToJson(_$_GeneralState instance) => <String, dynamic>{
       'accessToken': instance.accessToken,
       'notificationToken': instance.notificationToken,
-      'appDeviceData': instance.appDeviceData,
+      'appDeviceData': instance.appDeviceData?.toJson(),
       'locale': const LocaleConverter().toJson(instance.locale),
       'themeMode': _$JsonConverterToJson<String?, ThemeMode>(instance.themeMode, const ThemeModeConverter().toJson),
       'isFirstAppRun': instance.isFirstAppRun,
