@@ -541,18 +541,38 @@ mixin BindingObserverMixin<T extends StatefulWidget> on State<T>, WidgetsBinding
 
 mixin SearchMixin<T extends StatefulWidget> on State<T> {
   bool showSearchAppBar = false;
+  String searchTerm = "";
 
   ValueChanged<String>? onSearchChanged;
   ValueChanged<String>? onSearchSubmitted;
   GestureTapCallback? onSearchClear;
-  String searchTerm = "";
+  VoidCallback? onSearchBackPressed;
+  final FocusNode _searchFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _searchFocusNode.dispose();
+    super.dispose();
+  }
+
+  void focusSearchInput() => _searchFocusNode.requestFocus();
 
   Widget get searchInput => SliverToBoxAdapter(
         child: MyTextInput(
+          focusNode: _searchFocusNode,
           value: searchTerm,
           textInputAction: TextInputAction.search,
-          margin: const EdgeInsets.all(10),
-          prefixIcon: const BackButton(),
+          margin: const EdgeInsets.all(6),
+          contentPadding: const EdgeInsets.all(0),
+          prefixIcon: BackButton(
+            onPressed: () {
+              if (onSearchBackPressed != null) {
+                onSearchBackPressed!();
+              } else {
+                Navigator.maybePop(context);
+              }
+            },
+          ),
           suffixIcon: searchTerm == "" ? const Icon(iconSearch) : GestureDetector(onTap: onSearchClear, child: const Icon(Mdi.closeCircle)),
           labelText: getMyServicesLabels(context).search,
           onChanged: onSearchChanged,
