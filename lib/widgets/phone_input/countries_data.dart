@@ -16,7 +16,7 @@ class CountriesData {
   //     );
 
   static List<Map<String, dynamic>> search(String term) {
-    term = term.toLowerCase();
+    term = term.toLowerCase().trim();
     return getAll.where(
       (e) {
         List<String> names = (e['nameTranslations'] as Map<String, String>).values.toList();
