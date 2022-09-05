@@ -98,7 +98,7 @@ class AppLauncher {
       TestWidgetsFlutterBinding.ensureInitialized();
     }
 
-    if (MyServices.appConfig.withFirebase) {
+    if (MyServices.appConfig.withFirebase && !testing) {
       await Firebase.initializeApp(options: MyServices.appConfig.firebaseOptions); //firebaseCore
     }
 
