@@ -92,6 +92,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Text has been copied',
     areYouSure: 'Are you sure?',
     markAllAsRead: 'Mark all as read',
+    notificationSettings: 'Notification settings',
     deleteAllNotifications: 'Delete all notifications',
     deleteAll: 'Delete all',
     doYouWantToMarkAllNotificationsAsRead: 'Do you want to mark all notifications as read?',
@@ -248,6 +249,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'تم نسخ البيانات',
     areYouSure: 'هل انت متأكد؟',
     markAllAsRead: 'تعليم الكل كمقروء',
+    notificationSettings: 'إعداد الإشعارات',
     deleteAllNotifications: 'حذف كل الإشعارات',
     deleteAll: 'حذف الكل',
     doYouWantToMarkAllNotificationsAsRead: 'هل تريد تعليم جميع الإشعارات كمقروء؟',
@@ -405,6 +407,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Le texte a été copié',
     areYouSure: 'Êtes-vous sûr?',
     markAllAsRead: 'tout marquer comme lu',
+    notificationSettings: 'Paramètres de notification',
     deleteAllNotifications: 'Supprimer toutes les notifications',
     deleteAll: 'Supprimer tout',
     doYouWantToMarkAllNotificationsAsRead: 'Voulez-vous marquer toutes les notifications comme lue?',
@@ -561,6 +564,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Se ha copiado el texto',
     areYouSure: '¿Está seguro?',
     markAllAsRead: 'marcar todo como leido',
+    notificationSettings: 'Configuración de las notificaciones',
     deleteAllNotifications: 'Eliminar todas las notificaciones',
     deleteAll: 'Eliminar todos',
     doYouWantToMarkAllNotificationsAsRead: '¿Quieres marcar todas las notificaciones como leída?',
@@ -717,6 +721,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     markAllAsRead: 'Hepsini okuduğu gibi işaretleyin',
+    notificationSettings: 'Bildirim ayarları',
     deleteAllNotifications: 'Tüm bildirimleri sil',
     deleteAll: 'Hepsini sil',
     doYouWantToMarkAllNotificationsAsRead: 'Tüm bildirimleri okunur olarak işaretlemek ister misiniz?',
@@ -876,6 +881,7 @@ class MyServicesLocalizationsData {
     required this.textHasBeenCopied,
     required this.areYouSure,
     required this.markAllAsRead,
+    required this.notificationSettings,
     required this.deleteAllNotifications,
     required this.deleteAll,
     required this.doYouWantToMarkAllNotificationsAsRead,
@@ -1032,6 +1038,7 @@ class MyServicesLocalizationsData {
   final String textHasBeenCopied;
   final String areYouSure;
   final String markAllAsRead;
+  final String notificationSettings;
   final String deleteAllNotifications;
   final String deleteAll;
   final String doYouWantToMarkAllNotificationsAsRead;
@@ -1187,6 +1194,7 @@ class MyServicesLocalizationsData {
         textHasBeenCopied: map['textHasBeenCopied']! as String,
         areYouSure: map['areYouSure']! as String,
         markAllAsRead: map['markAllAsRead']! as String,
+        notificationSettings: map['notificationSettings']! as String,
         deleteAllNotifications: map['deleteAllNotifications']! as String,
         deleteAll: map['deleteAll']! as String,
         doYouWantToMarkAllNotificationsAsRead: map['doYouWantToMarkAllNotificationsAsRead']! as String,
@@ -1344,6 +1352,7 @@ class MyServicesLocalizationsData {
     String? textHasBeenCopied,
     String? areYouSure,
     String? markAllAsRead,
+    String? notificationSettings,
     String? deleteAllNotifications,
     String? deleteAll,
     String? doYouWantToMarkAllNotificationsAsRead,
@@ -1502,6 +1511,7 @@ class MyServicesLocalizationsData {
         textHasBeenCopied: textHasBeenCopied ?? this.textHasBeenCopied,
         areYouSure: areYouSure ?? this.areYouSure,
         markAllAsRead: markAllAsRead ?? this.markAllAsRead,
+        notificationSettings: notificationSettings ?? this.notificationSettings,
         deleteAllNotifications: deleteAllNotifications ?? this.deleteAllNotifications,
         deleteAll: deleteAll ?? this.deleteAll,
         doYouWantToMarkAllNotificationsAsRead: doYouWantToMarkAllNotificationsAsRead ?? this.doYouWantToMarkAllNotificationsAsRead,
@@ -1662,6 +1672,7 @@ class MyServicesLocalizationsData {
           textHasBeenCopied == other.textHasBeenCopied &&
           areYouSure == other.areYouSure &&
           markAllAsRead == other.markAllAsRead &&
+          notificationSettings == other.notificationSettings &&
           deleteAllNotifications == other.deleteAllNotifications &&
           deleteAll == other.deleteAll &&
           doYouWantToMarkAllNotificationsAsRead == other.doYouWantToMarkAllNotificationsAsRead &&
@@ -1819,6 +1830,7 @@ class MyServicesLocalizationsData {
       textHasBeenCopied.hashCode ^
       areYouSure.hashCode ^
       markAllAsRead.hashCode ^
+      notificationSettings.hashCode ^
       deleteAllNotifications.hashCode ^
       deleteAll.hashCode ^
       doYouWantToMarkAllNotificationsAsRead.hashCode ^

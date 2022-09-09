@@ -17,13 +17,13 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^1.21.1 #firebaseCore
+  firebase_core: ^1.22.0 #firebaseCore
 
-  firebase_messaging: ^13.0.0 #firebaseMessaging
+  firebase_messaging: ^13.0.1 #firebaseMessaging
 
-  firebase_crashlytics: ^2.8.9 #firebaseCrashlytics
+  firebase_crashlytics: ^2.8.10 #firebaseCrashlytics
   
-  firebase_auth: ^3.7.0 #firebaseAuth
+  firebase_auth: ^3.8.0 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -47,7 +47,7 @@ dependencies:
 
   app_links: ^3.2.0 #appLinks
 
-  share_plus: ^4.0.10+1 #sharePlus
+  share_plus: ^4.1.0 #sharePlus
 
   pinput: ^2.2.12 #pinCodeFields
 
