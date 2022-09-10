@@ -19,6 +19,7 @@ class AppLauncher {
   //theme
   final MyThemeData darkTheme;
   final MyThemeData lightTheme;
+  final bool useMaterial3;
 
   //storage
   // final MyStorage? storage;
@@ -44,6 +45,7 @@ class AppLauncher {
     //theme
     this.lightTheme = MyThemeData.light,
     this.darkTheme = MyThemeData.dark,
+    this.useMaterial3 = true,
 
     //storage
     // this.storage,
@@ -84,6 +86,7 @@ class AppLauncher {
 
     MyServices.services.theme.setDark(darkTheme);
     MyServices.services.theme.setLight(lightTheme);
+    MyServices.services.theme.setUseMaterial3(useMaterial3);
 
     MyServices.services.theme.setBorderRadius(borderRadius);
 
@@ -102,9 +105,7 @@ class AppLauncher {
       await Firebase.initializeApp(options: MyServices.appConfig.firebaseOptions); //firebaseCore
     }
 
-    if (MyServices.appConfig.withCrashlytics) {
-      await MyServices.services.firebaseCrashlytics.register(); //firebaseCrashlytics
-    }
+    if (MyServices.appConfig.withCrashlytics) {}
 
     if (initGeneralState && !testing) {
       _generalState = await getGeneralState();

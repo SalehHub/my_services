@@ -7,6 +7,7 @@ class ServiceTheme {
 
   static MyThemeData _dark = MyThemeData.dark;
   static MyThemeData _light = MyThemeData.light;
+  static bool _useMaterial3 = true;
 
   static BorderRadius _borderRadius = const BorderRadius.all(Radius.zero);
   BorderRadius get borderRadius => _borderRadius;
@@ -16,6 +17,7 @@ class ServiceTheme {
   void setDark(MyThemeData v) => _dark = v;
 
   void setLight(MyThemeData v) => _light = v;
+  void setUseMaterial3(bool v) => _useMaterial3 = v;
 
   void setBorderRadius(BorderRadius v) => _borderRadius = v;
 
@@ -140,7 +142,7 @@ class ServiceTheme {
     );
 
     final ThemeData themeData = mainThemeData.copyWith(
-      useMaterial3: true,
+      useMaterial3: _useMaterial3,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.background,
       toggleableActiveColor: colorScheme.primary, //TODO: [https://github.com/flutter/flutter/pull/97972]
