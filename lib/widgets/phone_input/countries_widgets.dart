@@ -48,7 +48,7 @@ class _CountriesListWidgetState extends State<CountriesListWidget> {
   List<Country> get countries => [
         if (widget.showAllOption && searchTerm.trim().isEmpty) ...[const Country(code: 'all')],
         ...topCountries,
-        ...CountriesProvider.search(searchTerm),
+        ...CountriesProvider.search(searchTerm, showAllOption: false),
       ];
 
   @override

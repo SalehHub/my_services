@@ -27,8 +27,8 @@ class CountriesProvider {
   //   return _dataToCountry(data);
   // }
 
-  static List<Country> search(String term) {
-    return CountriesData.search(term).map((data) => _dataToCountry(data)).whereType<Country>().toList();
+  static List<Country> search(String term, {bool showAllOption = false}) {
+    return CountriesData.search(term, showAllOption: showAllOption).map((data) => _dataToCountry(data)).whereType<Country>().toList();
   }
 
   static List<Country> getAll() {

@@ -15,16 +15,23 @@ class CountriesData {
   //       orElse: () => <String, dynamic>{},
   //     );
 
-  static List<Map<String, dynamic>> search(String term) {
+  static List<Map<String, dynamic>> search(String term, {bool showAllOption = false}) {
     term = term.toLowerCase().trim();
-    return getAll.where(
+    List<Map<String, dynamic>> results = getAll.where(
       (e) {
         List<String> names = (e['nameTranslations'] as Map<String, String>).values.toList();
+
         return e['alpha_2_code'].toString().toLowerCase() == term || //
             e['dial_code'].toString().toLowerCase().contains(term) || //
             names.where((e) => e.toLowerCase().contains(term)).isNotEmpty;
       },
     ).toList();
+
+    if (showAllOption == false) {
+      results = results.where((e) => e['alpha_2_code'].toString().toLowerCase() != 'all').toList();
+    }
+
+    return results;
   }
 
   static final List<Map<String, dynamic>> _countryList = [

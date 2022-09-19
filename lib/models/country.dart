@@ -29,6 +29,9 @@ class Country with _$Country {
   }
 
   String get emoji {
+    if (code == 'all') {
+      return '🌎';
+    }
     const base = 127397;
     return code.codeUnits.map((e) => String.fromCharCode(base + e)).toList().reduce((value, element) => value + element).toString();
   }
