@@ -17,13 +17,13 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^1.22.0 #firebaseCore
+  firebase_core: ^1.23.0 #firebaseCore
 
-  firebase_messaging: ^13.0.2 #firebaseMessaging
+  firebase_messaging: ^13.0.3 #firebaseMessaging
 
-  firebase_crashlytics: ^2.8.10 #firebaseCrashlytics
+  firebase_crashlytics: ^2.8.11 #firebaseCrashlytics
   
-  firebase_auth: ^3.9.0 #firebaseAuth
+  firebase_auth: ^3.10.0 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -47,7 +47,7 @@ dependencies:
 
   app_links: ^3.2.0 #appLinks
 
-  share_plus: ^4.2.0 #sharePlus
+  share_plus: ^4.4.0 #sharePlus
 
   pinput: ^2.2.12 #pinCodeFields
 
@@ -87,7 +87,7 @@ dependencies:
 
   freezed_annotation: ^2.1.0
 
-  json_annotation: ^4.6.0
+  json_annotation: ^4.7.0
 
   dio: ^4.0.6 #dio
   
@@ -103,9 +103,9 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.2.1
 
-  freezed: ^2.1.0+1
+  freezed: ^2.1.1
 
-  json_serializable: ^6.3.2
+  json_serializable: ^6.4.0
 
   flutter_lints: ^2.0.1
 

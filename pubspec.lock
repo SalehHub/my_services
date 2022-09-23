@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "47.0.0"
+    version: "48.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.7.0"
+    version: "5.0.0"
   app_links:
     dependency: "direct main"
     description:
@@ -464,7 +464,7 @@ packages:
     description:
       path: flutter_sheet_localization
       ref: HEAD
-      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
+      resolved-ref: "1b8c44255ddf992d9e9ff1a92f867b89a12bfdf8"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.1"
@@ -473,7 +473,7 @@ packages:
     description:
       path: flutter_sheet_localization_generator
       ref: HEAD
-      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
+      resolved-ref: "1b8c44255ddf992d9e9ff1a92f867b89a12bfdf8"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.7"
@@ -500,7 +500,7 @@ packages:
       name: freezed
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0+1"
+    version: "2.1.1"
   freezed_annotation:
     dependency: "direct main"
     description:
@@ -716,7 +716,7 @@ packages:
     description:
       path: localization_builder
       ref: HEAD
-      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
+      resolved-ref: "1b8c44255ddf992d9e9ff1a92f867b89a12bfdf8"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.15.7"
@@ -1171,7 +1171,7 @@ packages:
     description:
       path: template_string
       ref: HEAD
-      resolved-ref: "3589c199d16191bb05bdc19206aa0711295c0d20"
+      resolved-ref: "1b8c44255ddf992d9e9ff1a92f867b89a12bfdf8"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.6.0"
