@@ -54,7 +54,7 @@ export 'package:flutter_image/flutter_image.dart';
 export "package:collection/collection.dart";
 //
 export 'package:flutter_localizations/flutter_localizations.dart';
-export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError;
+export 'package:flutter_riverpod/flutter_riverpod.dart' hide AsyncError, describeIdentity, shortHash;
 export 'package:flutter_sheet_localization/flutter_sheet_localization.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:google_fonts/google_fonts.dart';

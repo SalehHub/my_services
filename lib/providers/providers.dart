@@ -1,8 +1,8 @@
 import '../my_services.dart';
 import 'general_state_provider.dart';
 
-final _initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
-final _generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) {
+final Provider<GeneralState> _initialGeneralStateProvider = Provider<GeneralState>((ref) => throw UnimplementedError(''));
+final StateNotifierProvider<GeneralStateNotifier, GeneralState> _generalStateProvider = StateNotifierProvider<GeneralStateNotifier, GeneralState>((ref) {
   return GeneralStateNotifier(ref.watch(_initialGeneralStateProvider), ref);
 });
 
