@@ -19,11 +19,11 @@ dependencies:
 
   firebase_core: ^1.24.0 #firebaseCore
 
-  firebase_messaging: ^13.0.4 #firebaseMessaging
+  firebase_messaging: ^13.1.0 #firebaseMessaging
 
-  firebase_crashlytics: ^2.8.12 #firebaseCrashlytics
+  firebase_crashlytics: ^2.8.13 #firebaseCrashlytics
   
-  firebase_auth: ^3.11.0 #firebaseAuth
+  firebase_auth: ^3.11.2 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -33,7 +33,7 @@ dependencies:
 
   image_cropper: ^3.0.0 #imagePicker
 
-  image_picker: ^0.8.5+3 #imagePicker
+  image_picker: ^0.8.6 #imagePicker
 
   flutter_image_compress: ^1.1.3 #imagePicker
 
@@ -47,15 +47,15 @@ dependencies:
 
   app_links: ^3.3.0 #appLinks
 
-  share_plus: ^4.4.0 #sharePlus
+  share_plus: ^4.5.3 #sharePlus
 
-  pinput: ^2.2.12 #pinCodeFields
+  pinput: ^2.2.16 #pinCodeFields
 
   hive: ^2.2.3 #hive
 
   hive_flutter: ^1.1.0 #hive
 
-  sqflite: ^2.1.0 #sqflite
+  sqflite: ^2.1.0+1 #sqflite
 
   flutter_app_badger: ^1.5.0 #flutterAppBadger
 
@@ -67,7 +67,7 @@ dependencies:
 
   intl: ^0.17.0
 
-  device_info_plus: ^4.1.2
+  device_info_plus: ^5.0.5
 
   package_info_plus: ^1.4.3+1
 
@@ -83,7 +83,7 @@ dependencies:
 
   cached_network_image: ^3.2.2
 
-  flutter_riverpod: ^2.0.0
+  flutter_riverpod: ^2.0.2
 
   freezed_annotation: ^2.1.0
 
@@ -105,7 +105,7 @@ dev_dependencies:
 
   freezed: ^2.1.1
 
-  json_serializable: ^6.4.1
+  json_serializable: ^6.5.0
 
   flutter_lints: ^2.0.1
 
