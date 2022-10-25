@@ -43,7 +43,7 @@ dependencies:
 
   map_launcher: ^2.4.0 #mapLauncher
 
-  flutter_svg: ^1.1.5 #flutterSvg
+  flutter_svg: ^1.1.6 #flutterSvg
 
   app_links: ^3.3.0 #appLinks
 
@@ -105,7 +105,7 @@ dev_dependencies:
 
   freezed: ^2.2.0
 
-  json_serializable: ^6.5.3
+  json_serializable: ^6.5.4
 
   flutter_lints: ^2.0.1
 
