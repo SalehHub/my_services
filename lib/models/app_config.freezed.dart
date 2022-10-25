@@ -30,7 +30,8 @@ mixin _$AppEvents {
 
 /// @nodoc
 abstract class $AppEventsCopyWith<$Res> {
-  factory $AppEventsCopyWith(AppEvents value, $Res Function(AppEvents) then) = _$AppEventsCopyWithImpl<$Res>;
+  factory $AppEventsCopyWith(AppEvents value, $Res Function(AppEvents) then) = _$AppEventsCopyWithImpl<$Res, AppEvents>;
+  @useResult
   $Res call(
       {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
@@ -42,13 +43,15 @@ abstract class $AppEventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
+class _$AppEventsCopyWithImpl<$Res, $Val extends AppEvents> implements $AppEventsCopyWith<$Res> {
   _$AppEventsCopyWithImpl(this._value, this._then);
 
-  final AppEvents _value;
   // ignore: unused_field
-  final $Res Function(AppEvents) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? onDynamicLink = freezed,
@@ -60,35 +63,35 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
     Object? onPop = freezed,
   }) {
     return _then(_value.copyWith(
-      onDynamicLink: onDynamicLink == freezed
+      onDynamicLink: freezed == onDynamicLink
           ? _value.onDynamicLink
           : onDynamicLink // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Uri, WidgetRef, BuildContext)?,
-      onFCMTokenRefresh: onFCMTokenRefresh == freezed
+      onFCMTokenRefresh: freezed == onFCMTokenRefresh
           ? _value.onFCMTokenRefresh
           : onFCMTokenRefresh // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String, WidgetRef, BuildContext)?,
-      onFirebaseNotification: onFirebaseNotification == freezed
+      onFirebaseNotification: freezed == onFirebaseNotification
           ? _value.onFirebaseNotification
           : onFirebaseNotification // ignore: cast_nullable_to_non_nullable
               as OnFirebaseNotification?,
-      onGenerateTitle: onGenerateTitle == freezed
+      onGenerateTitle: freezed == onGenerateTitle
           ? _value.onGenerateTitle
           : onGenerateTitle // ignore: cast_nullable_to_non_nullable
               as GenerateAppTitle?,
-      onLocaleChange: onLocaleChange == freezed
+      onLocaleChange: freezed == onLocaleChange
           ? _value.onLocaleChange
           : onLocaleChange // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)?,
-      onPush: onPush == freezed
+      onPush: freezed == onPush
           ? _value.onPush
           : onPush // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String?)?,
-      onPop: onPop == freezed
+      onPop: freezed == onPop
           ? _value.onPop
           : onPop // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String?)?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -96,6 +99,7 @@ class _$AppEventsCopyWithImpl<$Res> implements $AppEventsCopyWith<$Res> {
 abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
   factory _$$_AppEventsCopyWith(_$_AppEvents value, $Res Function(_$_AppEvents) then) = __$$_AppEventsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {dynamic Function(Uri, WidgetRef, BuildContext)? onDynamicLink,
       dynamic Function(String, WidgetRef, BuildContext)? onFCMTokenRefresh,
@@ -107,12 +111,10 @@ abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> implements _$$_AppEventsCopyWith<$Res> {
-  __$$_AppEventsCopyWithImpl(_$_AppEvents _value, $Res Function(_$_AppEvents) _then) : super(_value, (v) => _then(v as _$_AppEvents));
+class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res, _$_AppEvents> implements _$$_AppEventsCopyWith<$Res> {
+  __$$_AppEventsCopyWithImpl(_$_AppEvents _value, $Res Function(_$_AppEvents) _then) : super(_value, _then);
 
-  @override
-  _$_AppEvents get _value => super._value as _$_AppEvents;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? onDynamicLink = freezed,
@@ -124,31 +126,31 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res> imp
     Object? onPop = freezed,
   }) {
     return _then(_$_AppEvents(
-      onDynamicLink: onDynamicLink == freezed
+      onDynamicLink: freezed == onDynamicLink
           ? _value.onDynamicLink
           : onDynamicLink // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Uri, WidgetRef, BuildContext)?,
-      onFCMTokenRefresh: onFCMTokenRefresh == freezed
+      onFCMTokenRefresh: freezed == onFCMTokenRefresh
           ? _value.onFCMTokenRefresh
           : onFCMTokenRefresh // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String, WidgetRef, BuildContext)?,
-      onFirebaseNotification: onFirebaseNotification == freezed
+      onFirebaseNotification: freezed == onFirebaseNotification
           ? _value.onFirebaseNotification
           : onFirebaseNotification // ignore: cast_nullable_to_non_nullable
               as OnFirebaseNotification?,
-      onGenerateTitle: onGenerateTitle == freezed
+      onGenerateTitle: freezed == onGenerateTitle
           ? _value.onGenerateTitle
           : onGenerateTitle // ignore: cast_nullable_to_non_nullable
               as GenerateAppTitle?,
-      onLocaleChange: onLocaleChange == freezed
+      onLocaleChange: freezed == onLocaleChange
           ? _value.onLocaleChange
           : onLocaleChange // ignore: cast_nullable_to_non_nullable
               as dynamic Function(Locale?, Locale?, WidgetRef, BuildContext)?,
-      onPush: onPush == freezed
+      onPush: freezed == onPush
           ? _value.onPush
           : onPush // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String?)?,
-      onPop: onPop == freezed
+      onPop: freezed == onPop
           ? _value.onPop
           : onPop // ignore: cast_nullable_to_non_nullable
               as dynamic Function(String?)?,
@@ -201,6 +203,7 @@ class _$_AppEvents extends _AppEvents {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => __$$_AppEventsCopyWithImpl<_$_AppEvents>(this, _$identity);
 }
 
@@ -248,48 +251,51 @@ mixin _$AppConfig {
 
 /// @nodoc
 abstract class $AppConfigCopyWith<$Res> {
-  factory $AppConfigCopyWith(AppConfig value, $Res Function(AppConfig) then) = _$AppConfigCopyWithImpl<$Res>;
+  factory $AppConfigCopyWith(AppConfig value, $Res Function(AppConfig) then) = _$AppConfigCopyWithImpl<$Res, AppConfig>;
+  @useResult
   $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, bool nativeLocaleChange, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
-class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
+class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig> implements $AppConfigCopyWith<$Res> {
   _$AppConfigCopyWithImpl(this._value, this._then);
 
-  final AppConfig _value;
   // ignore: unused_field
-  final $Res Function(AppConfig) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? withFirebase = freezed,
-    Object? withFCM = freezed,
-    Object? withCrashlytics = freezed,
-    Object? nativeLocaleChange = freezed,
+    Object? withFirebase = null,
+    Object? withFCM = null,
+    Object? withCrashlytics = null,
+    Object? nativeLocaleChange = null,
     Object? firebaseOptions = freezed,
   }) {
     return _then(_value.copyWith(
-      withFirebase: withFirebase == freezed
+      withFirebase: null == withFirebase
           ? _value.withFirebase
           : withFirebase // ignore: cast_nullable_to_non_nullable
               as bool,
-      withFCM: withFCM == freezed
+      withFCM: null == withFCM
           ? _value.withFCM
           : withFCM // ignore: cast_nullable_to_non_nullable
               as bool,
-      withCrashlytics: withCrashlytics == freezed
+      withCrashlytics: null == withCrashlytics
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
-      nativeLocaleChange: nativeLocaleChange == freezed
+      nativeLocaleChange: null == nativeLocaleChange
           ? _value.nativeLocaleChange
           : nativeLocaleChange // ignore: cast_nullable_to_non_nullable
               as bool,
-      firebaseOptions: firebaseOptions == freezed
+      firebaseOptions: freezed == firebaseOptions
           ? _value.firebaseOptions
           : firebaseOptions // ignore: cast_nullable_to_non_nullable
               as FirebaseOptions?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -297,42 +303,41 @@ class _$AppConfigCopyWithImpl<$Res> implements $AppConfigCopyWith<$Res> {
 abstract class _$$_AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
   factory _$$_AppConfigCopyWith(_$_AppConfig value, $Res Function(_$_AppConfig) then) = __$$_AppConfigCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, bool nativeLocaleChange, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
-class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res> implements _$$_AppConfigCopyWith<$Res> {
-  __$$_AppConfigCopyWithImpl(_$_AppConfig _value, $Res Function(_$_AppConfig) _then) : super(_value, (v) => _then(v as _$_AppConfig));
+class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$_AppConfig> implements _$$_AppConfigCopyWith<$Res> {
+  __$$_AppConfigCopyWithImpl(_$_AppConfig _value, $Res Function(_$_AppConfig) _then) : super(_value, _then);
 
-  @override
-  _$_AppConfig get _value => super._value as _$_AppConfig;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? withFirebase = freezed,
-    Object? withFCM = freezed,
-    Object? withCrashlytics = freezed,
-    Object? nativeLocaleChange = freezed,
+    Object? withFirebase = null,
+    Object? withFCM = null,
+    Object? withCrashlytics = null,
+    Object? nativeLocaleChange = null,
     Object? firebaseOptions = freezed,
   }) {
     return _then(_$_AppConfig(
-      withFirebase: withFirebase == freezed
+      withFirebase: null == withFirebase
           ? _value.withFirebase
           : withFirebase // ignore: cast_nullable_to_non_nullable
               as bool,
-      withFCM: withFCM == freezed
+      withFCM: null == withFCM
           ? _value.withFCM
           : withFCM // ignore: cast_nullable_to_non_nullable
               as bool,
-      withCrashlytics: withCrashlytics == freezed
+      withCrashlytics: null == withCrashlytics
           ? _value.withCrashlytics
           : withCrashlytics // ignore: cast_nullable_to_non_nullable
               as bool,
-      nativeLocaleChange: nativeLocaleChange == freezed
+      nativeLocaleChange: null == nativeLocaleChange
           ? _value.nativeLocaleChange
           : nativeLocaleChange // ignore: cast_nullable_to_non_nullable
               as bool,
-      firebaseOptions: firebaseOptions == freezed
+      firebaseOptions: freezed == firebaseOptions
           ? _value.firebaseOptions
           : firebaseOptions // ignore: cast_nullable_to_non_nullable
               as FirebaseOptions?,
@@ -370,19 +375,19 @@ class _$_AppConfig extends _AppConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppConfig &&
-            const DeepCollectionEquality().equals(other.withFirebase, withFirebase) &&
-            const DeepCollectionEquality().equals(other.withFCM, withFCM) &&
-            const DeepCollectionEquality().equals(other.withCrashlytics, withCrashlytics) &&
-            const DeepCollectionEquality().equals(other.nativeLocaleChange, nativeLocaleChange) &&
-            const DeepCollectionEquality().equals(other.firebaseOptions, firebaseOptions));
+            (identical(other.withFirebase, withFirebase) || other.withFirebase == withFirebase) &&
+            (identical(other.withFCM, withFCM) || other.withFCM == withFCM) &&
+            (identical(other.withCrashlytics, withCrashlytics) || other.withCrashlytics == withCrashlytics) &&
+            (identical(other.nativeLocaleChange, nativeLocaleChange) || other.nativeLocaleChange == nativeLocaleChange) &&
+            (identical(other.firebaseOptions, firebaseOptions) || other.firebaseOptions == firebaseOptions));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(withFirebase), const DeepCollectionEquality().hash(withFCM), const DeepCollectionEquality().hash(withCrashlytics),
-      const DeepCollectionEquality().hash(nativeLocaleChange), const DeepCollectionEquality().hash(firebaseOptions));
+  int get hashCode => Object.hash(runtimeType, withFirebase, withFCM, withCrashlytics, nativeLocaleChange, firebaseOptions);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => __$$_AppConfigCopyWithImpl<_$_AppConfig>(this, _$identity);
 }
 

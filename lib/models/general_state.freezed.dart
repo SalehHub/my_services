@@ -37,7 +37,8 @@ mixin _$GeneralState {
 
 /// @nodoc
 abstract class $GeneralStateCopyWith<$Res> {
-  factory $GeneralStateCopyWith(GeneralState value, $Res Function(GeneralState) then) = _$GeneralStateCopyWithImpl<$Res>;
+  factory $GeneralStateCopyWith(GeneralState value, $Res Function(GeneralState) then) = _$GeneralStateCopyWithImpl<$Res, GeneralState>;
+  @useResult
   $Res call(
       {String? accessToken,
       String? notificationToken,
@@ -51,13 +52,15 @@ abstract class $GeneralStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GeneralStateCopyWithImpl<$Res> implements $GeneralStateCopyWith<$Res> {
+class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState> implements $GeneralStateCopyWith<$Res> {
   _$GeneralStateCopyWithImpl(this._value, this._then);
 
-  final GeneralState _value;
   // ignore: unused_field
-  final $Res Function(GeneralState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? accessToken = freezed,
@@ -65,49 +68,50 @@ class _$GeneralStateCopyWithImpl<$Res> implements $GeneralStateCopyWith<$Res> {
     Object? appDeviceData = freezed,
     Object? locale = freezed,
     Object? themeMode = freezed,
-    Object? isFirstAppRun = freezed,
-    Object? isFirstAppBuildRun = freezed,
+    Object? isFirstAppRun = null,
+    Object? isFirstAppBuildRun = null,
   }) {
     return _then(_value.copyWith(
-      accessToken: accessToken == freezed
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      notificationToken: notificationToken == freezed
+      notificationToken: freezed == notificationToken
           ? _value.notificationToken
           : notificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      appDeviceData: appDeviceData == freezed
+      appDeviceData: freezed == appDeviceData
           ? _value.appDeviceData
           : appDeviceData // ignore: cast_nullable_to_non_nullable
               as AppDeviceData?,
-      locale: locale == freezed
+      locale: freezed == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
-      themeMode: themeMode == freezed
+      themeMode: freezed == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode?,
-      isFirstAppRun: isFirstAppRun == freezed
+      isFirstAppRun: null == isFirstAppRun
           ? _value.isFirstAppRun
           : isFirstAppRun // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFirstAppBuildRun: isFirstAppBuildRun == freezed
+      isFirstAppBuildRun: null == isFirstAppBuildRun
           ? _value.isFirstAppBuildRun
           : isFirstAppBuildRun // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AppDeviceDataCopyWith<$Res>? get appDeviceData {
     if (_value.appDeviceData == null) {
       return null;
     }
 
     return $AppDeviceDataCopyWith<$Res>(_value.appDeviceData!, (value) {
-      return _then(_value.copyWith(appDeviceData: value));
+      return _then(_value.copyWith(appDeviceData: value) as $Val);
     });
   }
 }
@@ -116,6 +120,7 @@ class _$GeneralStateCopyWithImpl<$Res> implements $GeneralStateCopyWith<$Res> {
 abstract class _$$_GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Res> {
   factory _$$_GeneralStateCopyWith(_$_GeneralState value, $Res Function(_$_GeneralState) then) = __$$_GeneralStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? accessToken,
       String? notificationToken,
@@ -130,12 +135,10 @@ abstract class _$$_GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$
 }
 
 /// @nodoc
-class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res> implements _$$_GeneralStateCopyWith<$Res> {
-  __$$_GeneralStateCopyWithImpl(_$_GeneralState _value, $Res Function(_$_GeneralState) _then) : super(_value, (v) => _then(v as _$_GeneralState));
+class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res, _$_GeneralState> implements _$$_GeneralStateCopyWith<$Res> {
+  __$$_GeneralStateCopyWithImpl(_$_GeneralState _value, $Res Function(_$_GeneralState) _then) : super(_value, _then);
 
-  @override
-  _$_GeneralState get _value => super._value as _$_GeneralState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? accessToken = freezed,
@@ -143,35 +146,35 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
     Object? appDeviceData = freezed,
     Object? locale = freezed,
     Object? themeMode = freezed,
-    Object? isFirstAppRun = freezed,
-    Object? isFirstAppBuildRun = freezed,
+    Object? isFirstAppRun = null,
+    Object? isFirstAppBuildRun = null,
   }) {
     return _then(_$_GeneralState(
-      accessToken: accessToken == freezed
+      accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      notificationToken: notificationToken == freezed
+      notificationToken: freezed == notificationToken
           ? _value.notificationToken
           : notificationToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      appDeviceData: appDeviceData == freezed
+      appDeviceData: freezed == appDeviceData
           ? _value.appDeviceData
           : appDeviceData // ignore: cast_nullable_to_non_nullable
               as AppDeviceData?,
-      locale: locale == freezed
+      locale: freezed == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
-      themeMode: themeMode == freezed
+      themeMode: freezed == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
               as ThemeMode?,
-      isFirstAppRun: isFirstAppRun == freezed
+      isFirstAppRun: null == isFirstAppRun
           ? _value.isFirstAppRun
           : isFirstAppRun // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFirstAppBuildRun: isFirstAppBuildRun == freezed
+      isFirstAppBuildRun: null == isFirstAppBuildRun
           ? _value.isFirstAppBuildRun
           : isFirstAppBuildRun // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -217,29 +220,22 @@ class _$_GeneralState extends _GeneralState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GeneralState &&
-            const DeepCollectionEquality().equals(other.accessToken, accessToken) &&
-            const DeepCollectionEquality().equals(other.notificationToken, notificationToken) &&
-            const DeepCollectionEquality().equals(other.appDeviceData, appDeviceData) &&
-            const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality().equals(other.themeMode, themeMode) &&
-            const DeepCollectionEquality().equals(other.isFirstAppRun, isFirstAppRun) &&
-            const DeepCollectionEquality().equals(other.isFirstAppBuildRun, isFirstAppBuildRun));
+            (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
+            (identical(other.notificationToken, notificationToken) || other.notificationToken == notificationToken) &&
+            (identical(other.appDeviceData, appDeviceData) || other.appDeviceData == appDeviceData) &&
+            (identical(other.locale, locale) || other.locale == locale) &&
+            (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
+            (identical(other.isFirstAppRun, isFirstAppRun) || other.isFirstAppRun == isFirstAppRun) &&
+            (identical(other.isFirstAppBuildRun, isFirstAppBuildRun) || other.isFirstAppBuildRun == isFirstAppBuildRun));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(accessToken),
-      const DeepCollectionEquality().hash(notificationToken),
-      const DeepCollectionEquality().hash(appDeviceData),
-      const DeepCollectionEquality().hash(locale),
-      const DeepCollectionEquality().hash(themeMode),
-      const DeepCollectionEquality().hash(isFirstAppRun),
-      const DeepCollectionEquality().hash(isFirstAppBuildRun));
+  int get hashCode => Object.hash(runtimeType, accessToken, notificationToken, appDeviceData, locale, themeMode, isFirstAppRun, isFirstAppBuildRun);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => __$$_GeneralStateCopyWithImpl<_$_GeneralState>(this, _$identity);
 
   @override

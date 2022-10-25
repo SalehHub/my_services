@@ -34,78 +34,81 @@ mixin _$MyThemeData {
 
 /// @nodoc
 abstract class $MyThemeDataCopyWith<$Res> {
-  factory $MyThemeDataCopyWith(MyThemeData value, $Res Function(MyThemeData) then) = _$MyThemeDataCopyWithImpl<$Res>;
+  factory $MyThemeDataCopyWith(MyThemeData value, $Res Function(MyThemeData) then) = _$MyThemeDataCopyWithImpl<$Res, MyThemeData>;
+  @useResult
   $Res call({Color background, Color onBackground, Color primary, Color onPrimary, Color card, Color onCard, Color error, Color onError, Color success, Color onSuccess, AppBarTheme? appBar});
 }
 
 /// @nodoc
-class _$MyThemeDataCopyWithImpl<$Res> implements $MyThemeDataCopyWith<$Res> {
+class _$MyThemeDataCopyWithImpl<$Res, $Val extends MyThemeData> implements $MyThemeDataCopyWith<$Res> {
   _$MyThemeDataCopyWithImpl(this._value, this._then);
 
-  final MyThemeData _value;
   // ignore: unused_field
-  final $Res Function(MyThemeData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? background = freezed,
-    Object? onBackground = freezed,
-    Object? primary = freezed,
-    Object? onPrimary = freezed,
-    Object? card = freezed,
-    Object? onCard = freezed,
-    Object? error = freezed,
-    Object? onError = freezed,
-    Object? success = freezed,
-    Object? onSuccess = freezed,
+    Object? background = null,
+    Object? onBackground = null,
+    Object? primary = null,
+    Object? onPrimary = null,
+    Object? card = null,
+    Object? onCard = null,
+    Object? error = null,
+    Object? onError = null,
+    Object? success = null,
+    Object? onSuccess = null,
     Object? appBar = freezed,
   }) {
     return _then(_value.copyWith(
-      background: background == freezed
+      background: null == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color,
-      onBackground: onBackground == freezed
+      onBackground: null == onBackground
           ? _value.onBackground
           : onBackground // ignore: cast_nullable_to_non_nullable
               as Color,
-      primary: primary == freezed
+      primary: null == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as Color,
-      onPrimary: onPrimary == freezed
+      onPrimary: null == onPrimary
           ? _value.onPrimary
           : onPrimary // ignore: cast_nullable_to_non_nullable
               as Color,
-      card: card == freezed
+      card: null == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
               as Color,
-      onCard: onCard == freezed
+      onCard: null == onCard
           ? _value.onCard
           : onCard // ignore: cast_nullable_to_non_nullable
               as Color,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Color,
-      onError: onError == freezed
+      onError: null == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as Color,
-      success: success == freezed
+      success: null == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as Color,
-      onSuccess: onSuccess == freezed
+      onSuccess: null == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as Color,
-      appBar: appBar == freezed
+      appBar: freezed == appBar
           ? _value.appBar
           : appBar // ignore: cast_nullable_to_non_nullable
               as AppBarTheme?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -113,72 +116,71 @@ class _$MyThemeDataCopyWithImpl<$Res> implements $MyThemeDataCopyWith<$Res> {
 abstract class _$$_MyThemeDataCopyWith<$Res> implements $MyThemeDataCopyWith<$Res> {
   factory _$$_MyThemeDataCopyWith(_$_MyThemeData value, $Res Function(_$_MyThemeData) then) = __$$_MyThemeDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Color background, Color onBackground, Color primary, Color onPrimary, Color card, Color onCard, Color error, Color onError, Color success, Color onSuccess, AppBarTheme? appBar});
 }
 
 /// @nodoc
-class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res> implements _$$_MyThemeDataCopyWith<$Res> {
-  __$$_MyThemeDataCopyWithImpl(_$_MyThemeData _value, $Res Function(_$_MyThemeData) _then) : super(_value, (v) => _then(v as _$_MyThemeData));
+class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res, _$_MyThemeData> implements _$$_MyThemeDataCopyWith<$Res> {
+  __$$_MyThemeDataCopyWithImpl(_$_MyThemeData _value, $Res Function(_$_MyThemeData) _then) : super(_value, _then);
 
-  @override
-  _$_MyThemeData get _value => super._value as _$_MyThemeData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? background = freezed,
-    Object? onBackground = freezed,
-    Object? primary = freezed,
-    Object? onPrimary = freezed,
-    Object? card = freezed,
-    Object? onCard = freezed,
-    Object? error = freezed,
-    Object? onError = freezed,
-    Object? success = freezed,
-    Object? onSuccess = freezed,
+    Object? background = null,
+    Object? onBackground = null,
+    Object? primary = null,
+    Object? onPrimary = null,
+    Object? card = null,
+    Object? onCard = null,
+    Object? error = null,
+    Object? onError = null,
+    Object? success = null,
+    Object? onSuccess = null,
     Object? appBar = freezed,
   }) {
     return _then(_$_MyThemeData(
-      background: background == freezed
+      background: null == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
               as Color,
-      onBackground: onBackground == freezed
+      onBackground: null == onBackground
           ? _value.onBackground
           : onBackground // ignore: cast_nullable_to_non_nullable
               as Color,
-      primary: primary == freezed
+      primary: null == primary
           ? _value.primary
           : primary // ignore: cast_nullable_to_non_nullable
               as Color,
-      onPrimary: onPrimary == freezed
+      onPrimary: null == onPrimary
           ? _value.onPrimary
           : onPrimary // ignore: cast_nullable_to_non_nullable
               as Color,
-      card: card == freezed
+      card: null == card
           ? _value.card
           : card // ignore: cast_nullable_to_non_nullable
               as Color,
-      onCard: onCard == freezed
+      onCard: null == onCard
           ? _value.onCard
           : onCard // ignore: cast_nullable_to_non_nullable
               as Color,
-      error: error == freezed
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Color,
-      onError: onError == freezed
+      onError: null == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as Color,
-      success: success == freezed
+      success: null == success
           ? _value.success
           : success // ignore: cast_nullable_to_non_nullable
               as Color,
-      onSuccess: onSuccess == freezed
+      onSuccess: null == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as Color,
-      appBar: appBar == freezed
+      appBar: freezed == appBar
           ? _value.appBar
           : appBar // ignore: cast_nullable_to_non_nullable
               as AppBarTheme?,
@@ -250,36 +252,25 @@ class _$_MyThemeData extends _MyThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MyThemeData &&
-            const DeepCollectionEquality().equals(other.background, background) &&
-            const DeepCollectionEquality().equals(other.onBackground, onBackground) &&
-            const DeepCollectionEquality().equals(other.primary, primary) &&
-            const DeepCollectionEquality().equals(other.onPrimary, onPrimary) &&
-            const DeepCollectionEquality().equals(other.card, card) &&
-            const DeepCollectionEquality().equals(other.onCard, onCard) &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality().equals(other.onError, onError) &&
-            const DeepCollectionEquality().equals(other.success, success) &&
-            const DeepCollectionEquality().equals(other.onSuccess, onSuccess) &&
-            const DeepCollectionEquality().equals(other.appBar, appBar));
+            (identical(other.background, background) || other.background == background) &&
+            (identical(other.onBackground, onBackground) || other.onBackground == onBackground) &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.onPrimary, onPrimary) || other.onPrimary == onPrimary) &&
+            (identical(other.card, card) || other.card == card) &&
+            (identical(other.onCard, onCard) || other.onCard == onCard) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.onError, onError) || other.onError == onError) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess) &&
+            (identical(other.appBar, appBar) || other.appBar == appBar));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(background),
-      const DeepCollectionEquality().hash(onBackground),
-      const DeepCollectionEquality().hash(primary),
-      const DeepCollectionEquality().hash(onPrimary),
-      const DeepCollectionEquality().hash(card),
-      const DeepCollectionEquality().hash(onCard),
-      const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(onError),
-      const DeepCollectionEquality().hash(success),
-      const DeepCollectionEquality().hash(onSuccess),
-      const DeepCollectionEquality().hash(appBar));
+  int get hashCode => Object.hash(runtimeType, background, onBackground, primary, onPrimary, card, onCard, error, onError, success, onSuccess, appBar);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => __$$_MyThemeDataCopyWithImpl<_$_MyThemeData>(this, _$identity);
 }
 

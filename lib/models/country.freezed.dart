@@ -29,28 +29,31 @@ mixin _$Country {
 
 /// @nodoc
 abstract class $CountryCopyWith<$Res> {
-  factory $CountryCopyWith(Country value, $Res Function(Country) then) = _$CountryCopyWithImpl<$Res>;
+  factory $CountryCopyWith(Country value, $Res Function(Country) then) = _$CountryCopyWithImpl<$Res, Country>;
+  @useResult
   $Res call({String code});
 }
 
 /// @nodoc
-class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
+class _$CountryCopyWithImpl<$Res, $Val extends Country> implements $CountryCopyWith<$Res> {
   _$CountryCopyWithImpl(this._value, this._then);
 
-  final Country _value;
   // ignore: unused_field
-  final $Res Function(Country) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? code = null,
   }) {
     return _then(_value.copyWith(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -58,22 +61,21 @@ class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
 abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
   factory _$$_CountryCopyWith(_$_Country value, $Res Function(_$_Country) then) = __$$_CountryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String code});
 }
 
 /// @nodoc
-class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res> implements _$$_CountryCopyWith<$Res> {
-  __$$_CountryCopyWithImpl(_$_Country _value, $Res Function(_$_Country) _then) : super(_value, (v) => _then(v as _$_Country));
+class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res, _$_Country> implements _$$_CountryCopyWith<$Res> {
+  __$$_CountryCopyWithImpl(_$_Country _value, $Res Function(_$_Country) _then) : super(_value, _then);
 
-  @override
-  _$_Country get _value => super._value as _$_Country;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
+    Object? code = null,
   }) {
     return _then(_$_Country(
-      code: code == freezed
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as String,
@@ -98,15 +100,16 @@ class _$_Country extends _Country {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Country && const DeepCollectionEquality().equals(other.code, code));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Country && (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(code));
+  int get hashCode => Object.hash(runtimeType, code);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CountryCopyWith<_$_Country> get copyWith => __$$_CountryCopyWithImpl<_$_Country>(this, _$identity);
 
   @override

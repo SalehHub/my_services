@@ -34,53 +34,56 @@ mixin _$AppDeviceData {
 
 /// @nodoc
 abstract class $AppDeviceDataCopyWith<$Res> {
-  factory $AppDeviceDataCopyWith(AppDeviceData value, $Res Function(AppDeviceData) then) = _$AppDeviceDataCopyWithImpl<$Res>;
+  factory $AppDeviceDataCopyWith(AppDeviceData value, $Res Function(AppDeviceData) then) = _$AppDeviceDataCopyWithImpl<$Res, AppDeviceData>;
+  @useResult
   $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
-class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> {
+class _$AppDeviceDataCopyWithImpl<$Res, $Val extends AppDeviceData> implements $AppDeviceDataCopyWith<$Res> {
   _$AppDeviceDataCopyWithImpl(this._value, this._then);
 
-  final AppDeviceData _value;
   // ignore: unused_field
-  final $Res Function(AppDeviceData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appVersion = freezed,
-    Object? appBuild = freezed,
+    Object? appVersion = null,
+    Object? appBuild = null,
     Object? deviceID = freezed,
     Object? deviceOSVersion = freezed,
     Object? deviceModel = freezed,
     Object? deviceOS = freezed,
   }) {
     return _then(_value.copyWith(
-      appVersion: appVersion == freezed
+      appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      appBuild: appBuild == freezed
+      appBuild: null == appBuild
           ? _value.appBuild
           : appBuild // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceID: deviceID == freezed
+      deviceID: freezed == deviceID
           ? _value.deviceID
           : deviceID // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceOSVersion: deviceOSVersion == freezed
+      deviceOSVersion: freezed == deviceOSVersion
           ? _value.deviceOSVersion
           : deviceOSVersion // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceModel: deviceModel == freezed
+      deviceModel: freezed == deviceModel
           ? _value.deviceModel
           : deviceModel // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceOS: deviceOS == freezed
+      deviceOS: freezed == deviceOS
           ? _value.deviceOS
           : deviceOS // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -88,47 +91,46 @@ class _$AppDeviceDataCopyWithImpl<$Res> implements $AppDeviceDataCopyWith<$Res> 
 abstract class _$$_AppDeviceDataCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
   factory _$$_AppDeviceDataCopyWith(_$_AppDeviceData value, $Res Function(_$_AppDeviceData) then) = __$$_AppDeviceDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
-class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res> implements _$$_AppDeviceDataCopyWith<$Res> {
-  __$$_AppDeviceDataCopyWithImpl(_$_AppDeviceData _value, $Res Function(_$_AppDeviceData) _then) : super(_value, (v) => _then(v as _$_AppDeviceData));
+class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res, _$_AppDeviceData> implements _$$_AppDeviceDataCopyWith<$Res> {
+  __$$_AppDeviceDataCopyWithImpl(_$_AppDeviceData _value, $Res Function(_$_AppDeviceData) _then) : super(_value, _then);
 
-  @override
-  _$_AppDeviceData get _value => super._value as _$_AppDeviceData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appVersion = freezed,
-    Object? appBuild = freezed,
+    Object? appVersion = null,
+    Object? appBuild = null,
     Object? deviceID = freezed,
     Object? deviceOSVersion = freezed,
     Object? deviceModel = freezed,
     Object? deviceOS = freezed,
   }) {
     return _then(_$_AppDeviceData(
-      appVersion: appVersion == freezed
+      appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as String,
-      appBuild: appBuild == freezed
+      appBuild: null == appBuild
           ? _value.appBuild
           : appBuild // ignore: cast_nullable_to_non_nullable
               as String,
-      deviceID: deviceID == freezed
+      deviceID: freezed == deviceID
           ? _value.deviceID
           : deviceID // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceOSVersion: deviceOSVersion == freezed
+      deviceOSVersion: freezed == deviceOSVersion
           ? _value.deviceOSVersion
           : deviceOSVersion // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceModel: deviceModel == freezed
+      deviceModel: freezed == deviceModel
           ? _value.deviceModel
           : deviceModel // ignore: cast_nullable_to_non_nullable
               as String?,
-      deviceOS: deviceOS == freezed
+      deviceOS: freezed == deviceOS
           ? _value.deviceOS
           : deviceOS // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -166,21 +168,21 @@ class _$_AppDeviceData extends _AppDeviceData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppDeviceData &&
-            const DeepCollectionEquality().equals(other.appVersion, appVersion) &&
-            const DeepCollectionEquality().equals(other.appBuild, appBuild) &&
-            const DeepCollectionEquality().equals(other.deviceID, deviceID) &&
-            const DeepCollectionEquality().equals(other.deviceOSVersion, deviceOSVersion) &&
-            const DeepCollectionEquality().equals(other.deviceModel, deviceModel) &&
-            const DeepCollectionEquality().equals(other.deviceOS, deviceOS));
+            (identical(other.appVersion, appVersion) || other.appVersion == appVersion) &&
+            (identical(other.appBuild, appBuild) || other.appBuild == appBuild) &&
+            (identical(other.deviceID, deviceID) || other.deviceID == deviceID) &&
+            (identical(other.deviceOSVersion, deviceOSVersion) || other.deviceOSVersion == deviceOSVersion) &&
+            (identical(other.deviceModel, deviceModel) || other.deviceModel == deviceModel) &&
+            (identical(other.deviceOS, deviceOS) || other.deviceOS == deviceOS));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(appVersion), const DeepCollectionEquality().hash(appBuild), const DeepCollectionEquality().hash(deviceID),
-      const DeepCollectionEquality().hash(deviceOSVersion), const DeepCollectionEquality().hash(deviceModel), const DeepCollectionEquality().hash(deviceOS));
+  int get hashCode => Object.hash(runtimeType, appVersion, appBuild, deviceID, deviceOSVersion, deviceModel, deviceOS);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => __$$_AppDeviceDataCopyWithImpl<_$_AppDeviceData>(this, _$identity);
 
   @override
