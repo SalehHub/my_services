@@ -106,9 +106,11 @@ class AppLauncher {
     }
 
     //start-firebaseCrashlytics
+    //
     if (MyServices.appConfig.withCrashlytics && !testing) {
       MyServices.services.firebaseCrashlytics.register();
     }
+    //
     //end-firebaseCrashlytics
 
     if (initGeneralState && !testing) {
