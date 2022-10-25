@@ -105,7 +105,11 @@ class AppLauncher {
       await Firebase.initializeApp(options: MyServices.appConfig.firebaseOptions); //firebaseCore
     }
 
-    if (MyServices.appConfig.withCrashlytics) {}
+    //start-firebaseCrashlytics
+    if (MyServices.appConfig.withCrashlytics && !testing) {
+      MyServices.services.firebaseCrashlytics.register();
+    }
+    //end-firebaseCrashlytics
 
     if (initGeneralState && !testing) {
       _generalState = await getGeneralState();
@@ -134,7 +138,13 @@ class AppLauncher {
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     });
 
-    runApp(mainWidget(homePage: homePage));
+    //start-firebaseCrashlytics
+    if (MyServices.appConfig.withCrashlytics && !testing) {
+      MyServices.services.firebaseCrashlytics.runInZone(() async => runApp(mainWidget(homePage: homePage)));
+    } else {
+      //end-firebaseCrashlytics
+      runApp(mainWidget(homePage: homePage));
+    } //firebaseCrashlytics
   }
 }
 
