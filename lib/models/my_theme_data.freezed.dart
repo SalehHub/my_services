@@ -252,21 +252,33 @@ class _$_MyThemeData extends _MyThemeData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MyThemeData &&
-            (identical(other.background, background) || other.background == background) &&
-            (identical(other.onBackground, onBackground) || other.onBackground == onBackground) &&
-            (identical(other.primary, primary) || other.primary == primary) &&
-            (identical(other.onPrimary, onPrimary) || other.onPrimary == onPrimary) &&
-            (identical(other.card, card) || other.card == card) &&
-            (identical(other.onCard, onCard) || other.onCard == onCard) &&
-            (identical(other.error, error) || other.error == error) &&
-            (identical(other.onError, onError) || other.onError == onError) &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.onSuccess, onSuccess) || other.onSuccess == onSuccess) &&
+            const DeepCollectionEquality().equals(other.background, background) &&
+            const DeepCollectionEquality().equals(other.onBackground, onBackground) &&
+            const DeepCollectionEquality().equals(other.primary, primary) &&
+            const DeepCollectionEquality().equals(other.onPrimary, onPrimary) &&
+            const DeepCollectionEquality().equals(other.card, card) &&
+            const DeepCollectionEquality().equals(other.onCard, onCard) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality().equals(other.onError, onError) &&
+            const DeepCollectionEquality().equals(other.success, success) &&
+            const DeepCollectionEquality().equals(other.onSuccess, onSuccess) &&
             (identical(other.appBar, appBar) || other.appBar == appBar));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, background, onBackground, primary, onPrimary, card, onCard, error, onError, success, onSuccess, appBar);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(background),
+      const DeepCollectionEquality().hash(onBackground),
+      const DeepCollectionEquality().hash(primary),
+      const DeepCollectionEquality().hash(onPrimary),
+      const DeepCollectionEquality().hash(card),
+      const DeepCollectionEquality().hash(onCard),
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(onError),
+      const DeepCollectionEquality().hash(success),
+      const DeepCollectionEquality().hash(onSuccess),
+      appBar);
 
   @JsonKey(ignore: true)
   @override

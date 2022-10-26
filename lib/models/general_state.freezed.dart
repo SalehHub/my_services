@@ -66,7 +66,7 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState> implements $Ge
     Object? accessToken = freezed,
     Object? notificationToken = freezed,
     Object? appDeviceData = freezed,
-    Object? locale = freezed,
+    Object? locale = null,
     Object? themeMode = freezed,
     Object? isFirstAppRun = null,
     Object? isFirstAppBuildRun = null,
@@ -84,7 +84,7 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState> implements $Ge
           ? _value.appDeviceData
           : appDeviceData // ignore: cast_nullable_to_non_nullable
               as AppDeviceData?,
-      locale: freezed == locale
+      locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
@@ -144,7 +144,7 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
     Object? accessToken = freezed,
     Object? notificationToken = freezed,
     Object? appDeviceData = freezed,
-    Object? locale = freezed,
+    Object? locale = null,
     Object? themeMode = freezed,
     Object? isFirstAppRun = null,
     Object? isFirstAppBuildRun = null,
@@ -162,7 +162,7 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
           ? _value.appDeviceData
           : appDeviceData // ignore: cast_nullable_to_non_nullable
               as AppDeviceData?,
-      locale: freezed == locale
+      locale: null == locale
           ? _value.locale
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
@@ -223,7 +223,7 @@ class _$_GeneralState extends _GeneralState {
             (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
             (identical(other.notificationToken, notificationToken) || other.notificationToken == notificationToken) &&
             (identical(other.appDeviceData, appDeviceData) || other.appDeviceData == appDeviceData) &&
-            (identical(other.locale, locale) || other.locale == locale) &&
+            const DeepCollectionEquality().equals(other.locale, locale) &&
             (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
             (identical(other.isFirstAppRun, isFirstAppRun) || other.isFirstAppRun == isFirstAppRun) &&
             (identical(other.isFirstAppBuildRun, isFirstAppBuildRun) || other.isFirstAppBuildRun == isFirstAppBuildRun));
@@ -231,7 +231,7 @@ class _$_GeneralState extends _GeneralState {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, notificationToken, appDeviceData, locale, themeMode, isFirstAppRun, isFirstAppBuildRun);
+  int get hashCode => Object.hash(runtimeType, accessToken, notificationToken, appDeviceData, const DeepCollectionEquality().hash(locale), themeMode, isFirstAppRun, isFirstAppBuildRun);
 
   @JsonKey(ignore: true)
   @override
