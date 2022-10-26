@@ -32,10 +32,10 @@ class MyServices {
   static Services get services => GetIt.I<Services>();
 
   // App Config
-  static AppConfig appConfig = AppConfig();
+  static AppConfig appConfig = const AppConfig();
 
   // App Events
-  static AppEvents appEvents = AppEvents();
+  static AppEvents appEvents = const AppEvents();
 
   //
   static BuildContext get context => services.nav.context;

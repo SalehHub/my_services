@@ -124,8 +124,8 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$_
 
 /// @nodoc
 
-class _$_AppConfig extends _AppConfig {
-  _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions}) : super._();
+class _$_AppConfig implements _AppConfig {
+  const _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions});
 
   @override
   @JsonKey()
@@ -168,9 +168,8 @@ class _$_AppConfig extends _AppConfig {
   _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => __$$_AppConfigCopyWithImpl<_$_AppConfig>(this, _$identity);
 }
 
-abstract class _AppConfig extends AppConfig {
-  factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final bool nativeLocaleChange, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
-  _AppConfig._() : super._();
+abstract class _AppConfig implements AppConfig {
+  const factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final bool nativeLocaleChange, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
 
   @override
   bool get withFirebase;
