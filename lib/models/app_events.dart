@@ -3,7 +3,7 @@ import '../services/service_firebase_messaging.dart'; //firebaseMessaging
 
 part 'app_events.freezed.dart';
 
-@Freezed(genericArgumentFactories: true)
+@freezed
 class AppEvents with _$AppEvents {
   const AppEvents._();
 
