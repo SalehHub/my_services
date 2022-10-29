@@ -19,7 +19,7 @@ Future<void> main() async {
       //
       testing: true,
       initGeneralState: false,
-      config: AppConfig(
+      config: const AppConfig(
         withFirebase: false,
         nativeLocaleChange: true,
       ),

@@ -16,29 +16,31 @@ class ServiceShare {
     }
   }
 
-  Future<void> image(String path, {String? subject, String? text}) async {
+  Future<ShareResult> fileFromPathOrUrl(String pathOrUrl, {String? subject, String? text}) async {
     try {
-      if (path.startsWith("http")) {
-        path = await MyServices.services.api.download(path);
+      if (pathOrUrl.startsWith("http")) {
+        pathOrUrl = await MyServices.services.api.download(pathOrUrl);
       }
 
-      List<String> mimeTypes = [];
-      if (Platform.isAndroid) {
-        mimeTypes = ['image/*'];
-      } else {
-        String ext = extension(path);
-        if (ext.contains(".jpg")) {
-          mimeTypes = ['image/jpg'];
-        } else if (ext.contains(".jpeg")) {
-          mimeTypes = ['image/jpeg'];
-        } else if (ext.contains(".png")) {
-          mimeTypes = ['image/png'];
-        }
-      }
+      // List<String> mimeTypes = [];
+      // if (Platform.isAndroid) {
+      //   mimeTypes = ['image/*'];
+      // } else {
+      //   String ext = extension(path);
+      //   if (ext.contains(".jpg")) {
+      //     mimeTypes = ['image/jpg'];
+      //   } else if (ext.contains(".jpeg")) {
+      //     mimeTypes = ['image/jpeg'];
+      //   } else if (ext.contains(".png")) {
+      //     mimeTypes = ['image/png'];
+      //   }
+      // }
 
-      await Share.shareFiles([path], text: text, subject: subject, mimeTypes: mimeTypes);
+      return await Share.shareXFiles([XFile(pathOrUrl)], text: text, subject: subject);
+      // await Share.shareFiles([path], text: text, subject: subject, mimeTypes: mimeTypes);
     } catch (e, s) {
       logger.e(e, e, s);
+      return ShareResult(e.toString(), ShareResultStatus.unavailable);
     }
   }
 }
