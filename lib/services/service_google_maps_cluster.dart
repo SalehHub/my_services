@@ -34,7 +34,7 @@ class GoogleMapsCluster<T extends ClusterItem> {
   }
 
   void _updateMarkers(Set<Marker> markers) {
-    _ref.read(_markersProvider.state).update((state) => markers);
+    _ref.read(_markersProvider.notifier).update((state) => markers);
   }
 
   Set<Marker> watchMarkers() {

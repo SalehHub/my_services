@@ -14,11 +14,11 @@ dependencies:
 
   firebase_core: ^2.1.1 #firebaseCore
 
-  firebase_messaging: ^14.0.3 #firebaseMessaging
+  firebase_messaging: ^14.0.4 #firebaseMessaging
 
-  firebase_crashlytics: ^3.0.3 #firebaseCrashlytics
+  firebase_crashlytics: ^3.0.4 #firebaseCrashlytics
   
-  firebase_auth: ^4.1.0 #firebaseAuth
+  firebase_auth: ^4.1.1 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -26,7 +26,7 @@ dependencies:
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
-  image_cropper: ^3.0.0 #imagePicker
+  image_cropper: ^3.0.1 #imagePicker
 
   image_picker: ^0.8.6 #imagePicker
 
@@ -42,7 +42,7 @@ dependencies:
 
   app_links: ^3.3.0 #appLinks
 
-  share_plus: ^6.1.0 #sharePlus
+  share_plus: ^6.2.0 #sharePlus
 
   pinput: ^2.2.16 #pinCodeFields
 
@@ -50,7 +50,7 @@ dependencies:
 
   hive_flutter: ^1.1.0 #hive
 
-  sqflite: ^2.2.0+2 #sqflite
+  sqflite: ^2.2.0+3 #sqflite
 
   flutter_app_badger: ^1.5.0 #flutterAppBadger
 
@@ -78,7 +78,7 @@ dependencies:
 
   cached_network_image: ^3.2.2
 
-  flutter_riverpod: ^2.0.2
+  flutter_riverpod: ^2.1.1
 
   freezed_annotation: ^2.2.0
 
