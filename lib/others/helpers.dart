@@ -106,6 +106,24 @@ class Helpers {
   }
 
 //////////
+  bool empty(dynamic value) {
+    if (value == null) {
+      return true;
+    } else if (value is String) {
+      return value.trim().isEmpty;
+    } else if (value is List) {
+      return value.isEmpty;
+    } else if (value is Map) {
+      return value.isEmpty;
+    } else if (value is Set) {
+      return value.isEmpty;
+    } else if (value is bool) {
+      return value == false;
+    }
+
+    return false;
+  }
+//////////
 
   double bytesToMegabytes(int sizeInBits) {
     return sizeInBits / (1024 * 1000);
