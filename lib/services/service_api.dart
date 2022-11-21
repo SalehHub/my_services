@@ -1,4 +1,6 @@
 //dio
+// ignore_for_file: unused_element
+
 import '../my_services.dart' hide url;
 // ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
@@ -152,6 +154,11 @@ class ServiceApi {
     if (data != null) return data;
 
     try {
+      //to slove certificate problem when using localhost urls
+      if (kDebugMode) {
+        HttpOverrides.global = _MyHttpOverrides();
+      }
+
       Response<Map<String, dynamic>> res = await Dio().requestUri<Map<String, dynamic>>(
         Uri.parse('$_domain$_url'),
         data: await getFormData(_formData),
@@ -218,4 +225,9 @@ class ServiceApi {
 
     return false;
   }
+}
+
+class _MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) => super.createHttpClient(context)..badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
 }
