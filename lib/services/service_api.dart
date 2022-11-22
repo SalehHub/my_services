@@ -254,47 +254,6 @@ class ServiceApi {
   }
 }
 
-void showTextSnackBar(Map<String, dynamic>? data, {bool hideShownSnackBars = false, int seconds = 3}) {
-  if (data != null) {
-    final String msg = getMsg(data);
-    if (msg.trim() != '') {
-      final bool success = getSuccess(data);
-      MyServices.services.snackBar.showText(text: msg, hideShownSnackBars: hideShownSnackBars, success: success, seconds: seconds);
-    }
-  }
-}
-
-String getMsg(Map<String, dynamic>? data) {
-  if (data != null) {
-    final String? msg = data['msg'] as String?;
-    if (msg != null && msg.trim() != '') {
-      return msg.trim();
-    }
-  }
-
-  return "";
-}
-
-bool getSuccess(Map<String, dynamic>? data) {
-  if (data != null) {
-    final bool? success = data['success'] as bool?;
-    if (success == true) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
-void popOnSuccess(Map<String, dynamic>? data) {
-  if (data != null) {
-    final bool success = getSuccess(data);
-    if (success == true) {
-      pop();
-    }
-  }
-}
-
 class _MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) => super.createHttpClient(context)..badCertificateCallback = ((X509Certificate cert, String host, int port) => true);

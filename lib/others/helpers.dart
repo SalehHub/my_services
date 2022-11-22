@@ -271,3 +271,45 @@ Color getColor(BuildContext context, {Color colorWhenDark = Colors.white, Color 
 Color whiteWhenDarkBlackWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.white, colorWhenLight: Colors.black);
 
 Color blackWhenDarkWhiteWhenLight(BuildContext context) => getColor(context, colorWhenDark: Colors.black, colorWhenLight: Colors.white);
+
+//for service api
+void showTextSnackBar(Map<String, dynamic>? data, {bool hideShownSnackBars = false, int seconds = 3}) {
+  if (data != null) {
+    final String msg = getMsg(data);
+    if (msg.trim() != '') {
+      final bool success = getSuccess(data);
+      MyServices.services.snackBar.showText(text: msg, hideShownSnackBars: hideShownSnackBars, success: success, seconds: seconds);
+    }
+  }
+}
+//for service api
+String getMsg(Map<String, dynamic>? data) {
+  if (data != null) {
+    final String? msg = data['msg'] as String?;
+    if (msg != null && msg.trim() != '') {
+      return msg.trim();
+    }
+  }
+
+  return "";
+}
+//for service api
+bool getSuccess(Map<String, dynamic>? data) {
+  if (data != null) {
+    final bool? success = data['success'] as bool?;
+    if (success == true) {
+      return true;
+    }
+  }
+
+  return false;
+}
+//for service api
+void popOnSuccess(Map<String, dynamic>? data) {
+  if (data != null) {
+    final bool success = getSuccess(data);
+    if (success == true) {
+      pop();
+    }
+  }
+}
