@@ -30,9 +30,9 @@ class ServiceApi {
   bool _showMsgSnackbar = true;
   bool _hideShownSnackbars = true;
   int _msgSnackbarSeconds = 3;
-  void setShowMsgSnackbar(bool showMsgSnackbar, {bool hideCurrentSnackbar = true, int msgSnackbarSeconds = 3}) {
+  void setShowMsgSnackbar(bool showMsgSnackbar, {bool hideShownSnackbar = true, int msgSnackbarSeconds = 3}) {
     _showMsgSnackbar = showMsgSnackbar;
-    _hideShownSnackbars = hideCurrentSnackbar;
+    _hideShownSnackbars = hideShownSnackbar;
     _msgSnackbarSeconds = msgSnackbarSeconds;
   }
 
