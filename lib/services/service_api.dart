@@ -6,6 +6,8 @@ import '../my_services.dart' hide url;
 import 'package:http/http.dart' as http;
 
 class ServiceApi {
+  Map<String, dynamic>? responseData;
+
   static final Map<String, CancelToken> cancelTokens = {};
 
   bool _enableEndpointLog = true;
@@ -25,6 +27,15 @@ class ServiceApi {
 
   bool _withRetry = true;
   void setWithRetry(bool withRetry) => _withRetry = withRetry;
+
+  bool _showMsgSnackbar = true;
+  bool _hideShownSnackbars = true;
+  int _msgSnackbarSeconds = 3;
+  void setShowMsgSnackbar(bool showMsgSnackbar, {bool hideCurrentSnackbar = true, int msgSnackbarSeconds = 3}) {
+    _showMsgSnackbar = showMsgSnackbar;
+    _hideShownSnackbars = hideCurrentSnackbar;
+    _msgSnackbarSeconds = msgSnackbarSeconds;
+  }
 
   int _cacheMinutes = 5;
   void setCacheMinutes(int cacheMinutes) => _cacheMinutes = cacheMinutes;
@@ -49,9 +60,17 @@ class ServiceApi {
 
   Future<Map<String, dynamic>?> getCache() async => await MyServices.storage.get(getCacheKey(), _cacheMinutes);
 
-  Future<bool> setCache(Map<String, dynamic>? data) async => (data != null && _withCache == true) ? await MyServices.storage.set(getCacheKey(), data) : false;
+  Future<bool> setCache() async => (responseData != null && _withCache == true) ? await MyServices.storage.set(getCacheKey(), responseData) : false;
 
   Future<bool> deleteCache() async => await MyServices.storage.delete(getCacheKey());
+  //--------------------------------------------------------------------------//
+  void logResponseData() {
+    if (_enableResponseLog) logger.d(responseData);
+  }
+
+  void logFormData() {
+    if (_enableFormDataLog) logger.d(_formData);
+  }
   //--------------------------------------------------------------------------//
 
   Future<String> download(String url) async {
@@ -135,6 +154,12 @@ class ServiceApi {
     return null;
   }
 
+  void showMsgSnackBar() {
+    if (_showMsgSnackbar) {
+      showTextSnackBar(responseData, hideShownSnackBars: _hideShownSnackbars, seconds: _msgSnackbarSeconds);
+    }
+  }
+
   void tryCancelPrevious() {
     if (_cancelPrevious) {
       cancelTokens[_url]?.cancel();
@@ -145,13 +170,13 @@ class ServiceApi {
   Future<Map<String, dynamic>?> request(String requestType, {int currentTry = 1, int tries = 6}) async {
     if (_enableEndpointLog) logger.d('$requestType: $_domain$_url');
 
-    if (_enableFormDataLog) logger.d(_formData);
+    logFormData();
 
     tryCancelPrevious();
 
     //cache
-    Map<String, dynamic>? data = await tryGetFromCache();
-    if (data != null) return data;
+    responseData = await tryGetFromCache();
+    if (responseData != null) return responseData;
 
     try {
       //to slove certificate problem when using localhost urls
@@ -166,12 +191,14 @@ class ServiceApi {
         options: _dioOptions(requestType),
       );
 
-      if (_enableResponseLog) logger.d(res.data);
+      responseData = res.data;
 
-      //cache if withCache = true and data not null
-      await setCache(res.data);
+      logResponseData();
 
-      return res.data;
+      //cache if withCache = true and responseData not null
+      await setCache();
+
+      return responseData;
     } on DioError catch (e, s) {
       if (e.type == DioErrorType.cancel) {
         logger.d("Dio request canceled");
@@ -224,6 +251,47 @@ class ServiceApi {
     }
 
     return false;
+  }
+}
+
+void showTextSnackBar(Map<String, dynamic>? data, {bool hideShownSnackBars = false, int seconds = 3}) {
+  if (data != null) {
+    final String msg = getMsg(data);
+    if (msg.trim() != '') {
+      final bool success = getSuccess(data);
+      MyServices.services.snackBar.showText(text: msg, hideShownSnackBars: hideShownSnackBars, success: success, seconds: seconds);
+    }
+  }
+}
+
+String getMsg(Map<String, dynamic>? data) {
+  if (data != null) {
+    final String? msg = data['msg'] as String?;
+    if (msg != null && msg.trim() != '') {
+      return msg.trim();
+    }
+  }
+
+  return "";
+}
+
+bool getSuccess(Map<String, dynamic>? data) {
+  if (data != null) {
+    final bool? success = data['success'] as bool?;
+    if (success == true) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+void popOnSuccess(Map<String, dynamic>? data) {
+  if (data != null) {
+    final bool success = getSuccess(data);
+    if (success == true) {
+      pop();
+    }
   }
 }
 
