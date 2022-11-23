@@ -70,6 +70,10 @@ class ServiceApi {
   void logFormData() {
     if (_enableFormDataLog) logger.d(_formData);
   }
+
+  void logUrl(String requestType, String source) {
+    if (_enableEndpointLog) logger.d('$requestType: $_domain$_url  -  $source');
+  }
   //--------------------------------------------------------------------------//
 
   Future<String> download(String url) async {
@@ -140,9 +144,7 @@ class ServiceApi {
 
       //fake wait if cache exist
       if (data != null) {
-        logger.d("FromCache");
         await MyServices.helpers.waitForSeconds(1);
-        if (_enableResponseLog) logger.d(data);
       }
 
       return data;
@@ -167,15 +169,16 @@ class ServiceApi {
   }
 
   Future<Map<String, dynamic>?> request(String requestType, {int currentTry = 1, int tries = 6}) async {
-    if (_enableEndpointLog) logger.d('$requestType: $_domain$_url');
-
-    logFormData();
-
     tryCancelPrevious();
 
     //cache
     responseData = await tryGetFromCache();
-    if (responseData != null) return responseData;
+    if (responseData != null) {
+      logUrl(requestType, 'From Cache');
+      logFormData();
+      logResponseData();
+      return responseData;
+    }
 
     try {
       //to slove certificate problem when using localhost urls
@@ -192,6 +195,8 @@ class ServiceApi {
 
       responseData = res.data;
 
+      logUrl(requestType, 'From Web');
+      logFormData();
       logResponseData();
 
       showMsgSnackBar();
