@@ -194,6 +194,8 @@ class ServiceApi {
 
       logResponseData();
 
+      showMsgSnackBar();
+
       //cache if withCache = true and responseData not null
       await setCache();
 
