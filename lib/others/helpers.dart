@@ -285,11 +285,15 @@ void showTextSnackBar(Map<String, dynamic>? data, {bool hideShownSnackBars = fal
 
 //for service api
 String getMsg(Map<String, dynamic>? data) {
-  if (data != null) {
-    final String? msg = data['msg'] as String?;
-    if (msg != null && msg.trim() != '') {
-      return msg.trim();
+  try {
+    if (data != null) {
+      final String? msg = data['msg'] as String?;
+      if (msg != null && msg.trim() != '') {
+        return msg.trim();
+      }
     }
+  } catch (e, s) {
+    logger.e(e, e, s);
   }
 
   return "";
@@ -297,13 +301,16 @@ String getMsg(Map<String, dynamic>? data) {
 
 //for service api
 bool getSuccess(Map<String, dynamic>? data) {
-  if (data != null) {
-    final bool? success = data['success'] as bool?;
-    if (success == true) {
-      return true;
+  try {
+    if (data != null) {
+      final bool? success = data['success'] as bool?;
+      if (success == true) {
+        return true;
+      }
     }
+  } catch (e, s) {
+    logger.e(e, e, s);
   }
-
   return false;
 }
 
