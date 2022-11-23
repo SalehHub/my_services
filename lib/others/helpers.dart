@@ -282,6 +282,7 @@ void showTextSnackBar(Map<String, dynamic>? data, {bool hideShownSnackBars = fal
     }
   }
 }
+
 //for service api
 String getMsg(Map<String, dynamic>? data) {
   if (data != null) {
@@ -293,6 +294,7 @@ String getMsg(Map<String, dynamic>? data) {
 
   return "";
 }
+
 //for service api
 bool getSuccess(Map<String, dynamic>? data) {
   if (data != null) {
@@ -304,6 +306,7 @@ bool getSuccess(Map<String, dynamic>? data) {
 
   return false;
 }
+
 //for service api
 void popOnSuccess(Map<String, dynamic>? data) {
   if (data != null) {
