@@ -5,6 +5,13 @@ import '../my_services.dart' hide url;
 import 'package:http/http.dart' as http;
 
 class ServiceApi {
+  ServiceApi() {
+    //to slove certificate problem when using localhost urls
+    if (kDebugMode) {
+      HttpOverrides.global = _MyHttpOverrides();
+    }
+  }
+
   Map<String, dynamic>? responseData;
 
   static final Map<String, CancelToken> cancelTokens = {};
@@ -181,11 +188,6 @@ class ServiceApi {
     }
 
     try {
-      //to slove certificate problem when using localhost urls
-      if (kDebugMode) {
-        HttpOverrides.global = _MyHttpOverrides();
-      }
-
       Response<Map<String, dynamic>> res = await Dio().requestUri<Map<String, dynamic>>(
         Uri.parse('$_domain$_url'),
         data: await getFormData(_formData),
