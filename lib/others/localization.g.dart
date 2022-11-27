@@ -8,6 +8,7 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    only: 'only',
     contactUs: 'Contact us',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'We are sorry, our servers are not responding at this time, please try again later',
     noInternetConnection: 'No internet connection',
@@ -166,6 +167,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    only: 'فقط',
     contactUs: 'تواصل معنا',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'نعتذر منك ، خوادمنا لا تستجيب في الوقت الحالي ، يرجى المحاولة مرة أخرى لاحقًا',
     noInternetConnection: 'لايوجد إتصال بالانترنت',
@@ -324,6 +326,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    only: 'seulement',
     contactUs: 'Contactez-nous',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Nous sommes désolés, nos serveurs ne répondent pas en ce moment, veuillez réessayer plus tard',
     noInternetConnection: 'Pas de connexion Internet',
@@ -483,6 +486,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
+    only: 'solamente',
     contactUs: 'Contáctenos',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Lo sentimos, nuestros servidores no están respondiendo en este momento, inténtelo de nuevo más tarde',
     noInternetConnection: 'Sin conexión a Internet',
@@ -641,6 +645,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    only: 'sadece',
     contactUs: 'Bize Ulaşın',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Üzgünüz, sunucularımız şu anda yanıt vermiyor, lütfen daha sonra tekrar deneyin',
     noInternetConnection: 'İnternet bağlantısı yok',
@@ -802,6 +807,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.only,
     required this.contactUs,
     required this.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
     required this.noInternetConnection,
@@ -960,6 +966,7 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String only;
   final String contactUs;
   final String weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater;
   final String noInternetConnection;
@@ -1117,6 +1124,7 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        only: map['only']! as String,
         contactUs: map['contactUs']! as String,
         weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: map['weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater']! as String,
         noInternetConnection: map['noInternetConnection']! as String,
@@ -1276,6 +1284,7 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? only,
     String? contactUs,
     String? weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
     String? noInternetConnection,
@@ -1434,6 +1443,7 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        only: only ?? this.only,
         contactUs: contactUs ?? this.contactUs,
         weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater:
             weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater ?? this.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater,
@@ -1598,6 +1608,7 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          only == other.only &&
           contactUs == other.contactUs &&
           weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater == other.weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater &&
           noInternetConnection == other.noInternetConnection &&
@@ -1757,6 +1768,7 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      only.hashCode ^
       contactUs.hashCode ^
       weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater.hashCode ^
       noInternetConnection.hashCode ^

@@ -14,11 +14,11 @@ dependencies:
 
   firebase_core: ^2.3.0 #firebaseCore
 
-  firebase_messaging: ^14.1.1 #firebaseMessaging
+  firebase_messaging: ^14.1.2 #firebaseMessaging
 
   firebase_crashlytics: ^3.0.6 #firebaseCrashlytics
   
-  firebase_auth: ^4.1.3 #firebaseAuth
+  firebase_auth: ^4.1.4 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -76,7 +76,7 @@ dependencies:
 
   flutter_image: ^4.1.4
 
-  cached_network_image: ^3.2.2
+  cached_network_image: ^3.2.3
 
   flutter_riverpod: ^2.1.1
 
