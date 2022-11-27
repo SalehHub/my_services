@@ -14,7 +14,7 @@ Future<void> main() async {
       }
     });
 
-    await tester.pumpWidget(appLauncher.mainWidget(homePage: const Scaffold(body: CopyTextWidget(textToCopy: "MyTestCopyText", child: Text("MyTestText")))));
+    await tester.pumpWidget(appLauncher.mainWidget(homePage: Scaffold(body: CopyTextWidget(textToCopy: () => "MyTestCopyText", child: const Text("MyTestText")))));
 
     final textFinder = find.text('MyTestText');
     expect(textFinder, findsNWidgets(1));
