@@ -13,6 +13,7 @@ class MyButton extends ConsumerWidget {
     this.withLoading = true,
     this.circle = false,
     this.center = false,
+    this.loaderColor,
   });
   final String text;
   final TextStyle? textStyle;
@@ -25,13 +26,14 @@ class MyButton extends ConsumerWidget {
   final AsyncCallback? onPressed;
   final double progressIndicatorSize = 20;
   final EdgeInsets? margin;
+  final Color? loaderColor;
 
   String get _id => MyServices.helpers.getMd5((id ?? text).toString());
 
   Widget _child(BuildContext context, WidgetRef ref) {
     if (withLoading) {
       if (MyServices.services.loader.isLoading(ref, _id)) {
-        return MyProgressIndicator(size: progressIndicatorSize);
+        return MyProgressIndicator(size: progressIndicatorSize, backgroundColor: loaderColor);
       }
     }
 

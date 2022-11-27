@@ -128,12 +128,11 @@ class MySideMenuTile extends StatelessWidget {
     this.trailing,
   });
 
-  const MySideMenuTile.divider({super.key})
+  const MySideMenuTile.divider({this.show = true, super.key})
       : icon = null,
         title = null,
         onTap = null,
         isDivider = true,
-        show = true,
         child = null,
         trailing = null,
         children = null;

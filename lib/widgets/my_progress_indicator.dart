@@ -5,10 +5,12 @@ class MyProgressIndicator extends StatelessWidget {
     super.key,
     this.margin = EdgeInsets.zero,
     this.size,
+    this.backgroundColor,
   });
 
   final EdgeInsets margin;
   final double? size;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +43,17 @@ class MyProgressIndicator extends StatelessWidget {
               return SizedBox(
                 width: width,
                 height: height,
-                child: const CircularProgressIndicator(),
+                child: CircularProgressIndicator(backgroundColor: backgroundColor),
               );
             }
 
             return CircularProgressIndicator.adaptive(
-              backgroundColor: getColor(
-                context,
-                colorWhenDark: getColorScheme(context).primaryContainer,
-                colorWhenLight: getColorScheme(context).onPrimaryContainer,
-              ),
+              backgroundColor: backgroundColor ??
+                  getColor(
+                    context,
+                    colorWhenDark: getColorScheme(context).primaryContainer,
+                    colorWhenLight: getColorScheme(context).onPrimaryContainer,
+                  ),
             );
           }),
         ),
