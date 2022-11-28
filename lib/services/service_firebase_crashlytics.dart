@@ -11,7 +11,7 @@ class ServiceFirebaseCrashlytics {
 
   runInZone(body) {
     runZonedGuarded<Future<void>>(
-      body(),
+      body,
       (error, stack) => _firebaseCrashlytics.recordError(error, stack, fatal: true),
     );
   }
