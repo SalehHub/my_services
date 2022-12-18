@@ -19,6 +19,7 @@ class MyLoadingImage extends StatelessWidget {
     this.fetchStrategy,
     this.errorBuilder,
     this.placeholderBuilder,
+    this.margin = EdgeInsets.zero,
   });
 
   final String url;
@@ -37,6 +38,7 @@ class MyLoadingImage extends StatelessWidget {
   final Future<FetchInstructions> Function(Uri uri, FetchFailure? failure)? fetchStrategy;
   final OctoErrorBuilder? errorBuilder;
   final OctoPlaceholderBuilder? placeholderBuilder;
+  final EdgeInsets margin;
 
   // final PlaceholderWidgetBuilder? placeholderBuilder;
   // final LoadingErrorWidgetBuilder? errorBuilder;
@@ -91,6 +93,7 @@ class MyLoadingImage extends StatelessWidget {
       borderColor: borderColor,
       borderWidth: borderWidth,
       circle: circle,
+      margin: margin,
       child: Image(
         width: width,
         height: height,
@@ -118,6 +121,7 @@ class MyLoadingImage extends StatelessWidget {
         borderColor: borderColor,
         borderWidth: borderWidth,
         circle: circle,
+        margin: margin,
         child: child,
       ),
       image: image,
@@ -156,6 +160,7 @@ class ImageContainer extends StatelessWidget {
     required this.borderColor,
     required this.borderWidth,
     required this.circle,
+    required this.margin,
   });
 
   final double width;
@@ -166,6 +171,7 @@ class ImageContainer extends StatelessWidget {
   final bool circle;
   final GestureTapCallback? onTap;
   final Widget child;
+  final EdgeInsets margin;
 
   @override
   Widget build(BuildContext context) {
@@ -174,6 +180,7 @@ class ImageContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      margin: margin,
       decoration: BoxDecoration(
         color: borderColor,
         borderRadius: circle == true ? circleBorderRadius : borderRadius,
