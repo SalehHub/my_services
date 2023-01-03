@@ -21,6 +21,7 @@ class ServiceDialog {
     String? questionText,
     String? buttonText,
     required VoidCallback onYes,
+    VoidCallback? onNo,
     bool? success = false,
     bool barrierDismissible = true,
   }) {
@@ -43,7 +44,10 @@ class ServiceDialog {
                       getMyServicesLabels(context).cancel,
                       style: getTextTheme(context).titleMedium?.copyWith(color: Colors.green),
                     ),
-                    onPressed: () => pop(false),
+                    onPressed: () {
+                      pop(false);
+                      onNo?.call();
+                    },
                   ),
                   const Spacer(),
                   TextButton(
@@ -52,7 +56,7 @@ class ServiceDialog {
                       pop(true);
                     },
                     child: Text(
-                      getMyServicesLabels(context).continue1,
+                      buttonText ?? getMyServicesLabels(context).continue1,
                       style: getTextTheme(context).titleMedium?.copyWith(color: Colors.red.shade800),
                     ),
                   ),
