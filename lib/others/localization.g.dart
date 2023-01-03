@@ -8,6 +8,10 @@ part of 'localization.dart';
 
 final localizedLabels = <Locale, MyServicesLocalizationsData>{
   Locale.fromSubtags(languageCode: 'en'): const MyServicesLocalizationsData(
+    pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+        'Please notice that we cannot reply to suggestions, if you having an issue please use the "contact us" option instead',
+    yourSuggestionToImproveTheApp: 'Your suggestion to improve the app',
+    yourSuggestion: 'Your suggestion',
     time: 'Time',
     date: 'Date',
     only: 'only',
@@ -169,6 +173,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'An error occurred. Please take a screenshot and contact us',
   ),
   Locale.fromSubtags(languageCode: 'ar'): const MyServicesLocalizationsData(
+    pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+        'يرجى ملاحظة أنه لا يمكننا الرد على الاقتراحات ، إذا كانت لديك مشكلة ، فيرجى استخدام خيار "اتصل بنا" بدلاً من ذلك',
+    yourSuggestionToImproveTheApp: 'اقتراحك لتحسين التطبيق',
+    yourSuggestion: 'اقتراحك',
     time: 'الوقت',
     date: 'التاريخ',
     only: 'فقط',
@@ -330,10 +338,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'حدث خطأ نعتذر منك - صور الشاشة وتواصل معنا',
   ),
   Locale.fromSubtags(languageCode: 'fr'): const MyServicesLocalizationsData(
+    pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+        'Veuillez noter que nous ne pouvons pas répondre aux suggestions, si vous avez un problème, veuillez utiliser l\'option "Contactez-nous" à la place',
+    yourSuggestionToImproveTheApp: 'Votre suggestion pour améliorer l\'application',
+    yourSuggestion: 'Votre suggestion',
     time: 'Temps',
     date: 'Date',
-    only: 'seulement',
-    contactUs: 'Contactez-nous',
+    only: 'seul',
+    contactUs: 'Nous contacter',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Nous sommes désolés, nos serveurs ne répondent pas en ce moment, veuillez réessayer plus tard',
     noInternetConnection: 'Pas de connexion Internet',
     changePhoneNumber: 'Modifier le numéro de téléphone',
@@ -346,7 +358,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     accessToYourLocationIsDisabledHoweverYouCanEnableItFromYourDeviceSettings:
         'L\'accès à votre emplacement est désactivé. Cependant, vous pouvez l\'activer à partir des paramètres de votre appareil.',
     copy: 'Copie',
-    open: 'Ouvert',
+    open: 'Ouvrir',
     warring: 'En guerre',
     privacyPolicy: 'Politique de confidentialité',
     and: 'et',
@@ -370,10 +382,10 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourProfileReviews: 'Vos critiques de profil',
     yourReviews: 'Vos avis',
     noReviewsYet: 'Aucune critique encore',
-    review: 'Examen',
+    review: 'Passer en revue',
     yourReview: 'Votre avis',
     accountsYouReviewed: 'Comptes que vous avez examinés',
-    optional: 'Optionnel',
+    optional: 'Facultatif',
     showAll: 'Afficher tout',
     showLess: 'Montrer moins',
     showMore: 'Montre plus',
@@ -384,7 +396,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     deleteYourAccountPermanently: 'Supprimez votre compte en permanence',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Les paramètres de votre téléphone seront ouverts pour modifier le langage de l\'application',
     send: 'Envoyer',
-    save: 'sauvegarder',
+    save: 'Sauver',
     add: 'Ajouter',
     reject: 'Rejeter',
     accept: 'Accepter',
@@ -392,7 +404,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     accountType: 'Type de compte',
     selectYourLocation: 'Sélectionnez votre emplacement',
     yourLocation: 'Votre emplacement',
-    location: 'Emplacement',
+    location: 'Lieu',
     countryDialCode: 'Code de numérotation du pays',
     searchByCountryNameOrDialCode: 'Recherche par nom ou code de numérotation du pays',
     mobileNumber: 'Numéro de portable',
@@ -403,7 +415,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     shareTheProfile: 'Partagez le profil',
     shareYourProfile: 'Partagez votre profil',
     city: 'Ville',
-    country: 'Pays',
+    country: 'De campagne',
     openInMap: 'Ouvrir en carte',
     appleMaps: 'Cartes de pomme',
     googleMaps: 'Google Maps',
@@ -411,13 +423,13 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     noResultTryWithDifferentWords: 'Aucun résultat, essayez avec différents mots.',
     yourDevices: 'Vos appareils',
     edit: 'Éditer',
-    thisFieldIsRequired: 'Ce champ est requis',
+    thisFieldIsRequired: 'Ce champ est obligatoire',
     price: 'Prix',
-    description: 'La description',
+    description: 'Description',
     addNewImage: 'Ajouter une nouvelle image',
     search: 'Chercher',
     textHasBeenCopied: 'Le texte a été copié',
-    areYouSure: 'Êtes-vous sûr?',
+    areYouSure: 'Es-tu sûr?',
     markAllAsRead: 'tout marquer comme lu',
     notificationSettings: 'Paramètres de notification',
     deleteAllNotifications: 'Supprimer toutes les notifications',
@@ -467,7 +479,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     incorrectEmail: 'Adresse Email incorrecte',
     login: 'Connexion',
     newAccount: 'Nouveau compte',
-    profile: 'Profil',
+    profile: 'Le profil',
     thereAreNoDataYet: 'Il n\'y a pas encore de données',
     appVersion: 'Version de l\'application',
     darkMode: 'Mode sombre',
@@ -481,7 +493,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     arabic: 'arabe',
     appLanguage: 'Langage de l\'application',
     settings: 'Réglages',
-    updated: 'Actualisé',
+    updated: 'Mis à jour',
     updateNow: 'Mettez à jour maintenant',
     toEnjoyLatestFeaturesPleaseUpdate: 'Pour profiter des dernières fonctionnalités, veuillez mettre à jour',
     newAppVersionIsAvailable: 'La nouvelle version de l\'application est disponible',
@@ -492,7 +504,11 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Une erreur s\'est produite. Veuillez prendre une capture d\'écran et nous contacter',
   ),
   Locale.fromSubtags(languageCode: 'es'): const MyServicesLocalizationsData(
-    time: 'Tiempo',
+    pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+        'Tenga en cuenta que no podemos responder a sugerencias, si tiene un problema, use la opción "Contáctenos" en su lugar',
+    yourSuggestionToImproveTheApp: 'Su sugerencia para mejorar la aplicación',
+    yourSuggestion: 'Tu sugerencia',
+    time: 'Hora',
     date: 'Fecha',
     only: 'solamente',
     contactUs: 'Contáctenos',
@@ -525,7 +541,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     yourAccountIsBlocked: 'Su cuenta está bloqueada',
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
-    block: 'Bloquear',
+    block: 'Cuadra',
     youHaventReviewedAnyAccountYet: 'Aún no has revisado ninguna cuenta',
     noReviewsForYourAccountYetCheckBackLater: 'No hay revisiones para su cuenta todavía. Vuelva más tarde',
     yourProfileReviews: 'Sus reseñas de perfil',
@@ -553,7 +569,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     accountType: 'Tipo de cuenta',
     selectYourLocation: 'Seleccione su ubicación',
     yourLocation: 'Tu ubicación',
-    location: 'Ubicación',
+    location: 'Localización',
     countryDialCode: 'Código de marcado de país',
     searchByCountryNameOrDialCode: 'Buscar por nombre de país o código de marcación',
     mobileNumber: 'Número de teléfono móvil',
@@ -653,9 +669,13 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
+    pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+        'Lütfen önerilere cevap veremeyeceğimize dikkat edin, bir sorun yaşıyorsanız lütfen "Bize Ulaşın" seçeneğini kullanın',
+    yourSuggestionToImproveTheApp: 'Uygulamayı geliştirme öneriniz',
+    yourSuggestion: 'Senin önerin',
     time: 'Zaman',
     date: 'Tarih',
-    only: 'sadece',
+    only: 'bir tek',
     contactUs: 'Bize Ulaşın',
     weAreSorryOurServersAreNotRespondingAtThisTimePleaseTryAgainLater: 'Üzgünüz, sunucularımız şu anda yanıt vermiyor, lütfen daha sonra tekrar deneyin',
     noInternetConnection: 'İnternet bağlantısı yok',
@@ -684,7 +704,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     customer: 'Müşteri',
     impersonate: 'Taklit etmek',
     yourAccountIsBlocked: 'Hesabınız engellendi',
-    blockedAccount: 'Bloke olmuş hesap',
+    blockedAccount: 'Bloke edilmiş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
     youHaventReviewedAnyAccountYet: 'Henüz herhangi bir hesabı incelemediniz',
@@ -700,14 +720,14 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     showLess: 'Daha az göster',
     showMore: 'Daha fazla göster',
     continue1: 'Devam et',
-    cancel: 'İptal',
+    cancel: 'İptal etmek',
     thisWillDeleteYourAccountAndAllYourDataPermanently: 'Bu, hesabınızı ve tüm verilerinizi kalıcı olarak silecektir',
     deleteYourAccount: 'Hesabını sil',
     deleteYourAccountPermanently: 'Hesabınızı kalıcı olarak silin',
     yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage: 'Uygulama dilini değiştirmek için telefon ayarlarınız açılacak',
     send: 'Göndermek',
-    save: 'Kaydetmek',
-    add: 'Ekle',
+    save: 'Kayıt etmek',
+    add: 'Eklemek',
     reject: 'Reddetmek',
     accept: 'Kabul',
     theMap: 'Harita',
@@ -735,9 +755,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     edit: 'Düzenlemek',
     thisFieldIsRequired: 'Bu alan gereklidir',
     price: 'Fiyat',
-    description: 'Tanım',
+    description: 'Açıklama',
     addNewImage: 'Yeni resim ekle',
-    search: 'Arama',
+    search: 'Aramak',
     textHasBeenCopied: 'Metin kopyalandı',
     areYouSure: 'Emin misin?',
     markAllAsRead: 'Hepsini okuduğu gibi işaretleyin',
@@ -785,7 +805,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     enterTheCurrentPassword: 'Mevcut şifreyi girin',
     enterAPassword: 'Bir parola girin',
     currentPassword: 'Mevcut Şifre',
-    password: 'Şifre',
+    password: 'Parola',
     incorrectEmail: 'Yanlış E-posta',
     login: 'Giriş yapmak',
     newAccount: 'Yeni hesap',
@@ -796,7 +816,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     lightMode: 'Işık Modu',
     dependsOnSystem: 'Sisteme bağlı',
     appTheme: 'Uygulama teması',
-    turkish: 'Türk',
+    turkish: 'Türkçe',
     spanish: 'İspanyol',
     french: 'Fransızca',
     english: 'ingilizce',
@@ -817,6 +837,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
 
 class MyServicesLocalizationsData {
   const MyServicesLocalizationsData({
+    required this.pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead,
+    required this.yourSuggestionToImproveTheApp,
+    required this.yourSuggestion,
     required this.time,
     required this.date,
     required this.only,
@@ -978,6 +1001,9 @@ class MyServicesLocalizationsData {
     required this.anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   });
 
+  final String pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead;
+  final String yourSuggestionToImproveTheApp;
+  final String yourSuggestion;
   final String time;
   final String date;
   final String only;
@@ -1138,6 +1164,10 @@ class MyServicesLocalizationsData {
   final String notificationsAreDisabledForThisApp;
   final String anErrorOccurredPleaseTakeAScreenshotAndContactUs;
   factory MyServicesLocalizationsData.fromJson(Map<String, Object?> map) => MyServicesLocalizationsData(
+        pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+            map['pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead']! as String,
+        yourSuggestionToImproveTheApp: map['yourSuggestionToImproveTheApp']! as String,
+        yourSuggestion: map['yourSuggestion']! as String,
         time: map['time']! as String,
         date: map['date']! as String,
         only: map['only']! as String,
@@ -1300,6 +1330,9 @@ class MyServicesLocalizationsData {
       );
 
   MyServicesLocalizationsData copyWith({
+    String? pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead,
+    String? yourSuggestionToImproveTheApp,
+    String? yourSuggestion,
     String? time,
     String? date,
     String? only,
@@ -1461,6 +1494,11 @@ class MyServicesLocalizationsData {
     String? anErrorOccurredPleaseTakeAScreenshotAndContactUs,
   }) =>
       MyServicesLocalizationsData(
+        pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
+            pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead ??
+                this.pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead,
+        yourSuggestionToImproveTheApp: yourSuggestionToImproveTheApp ?? this.yourSuggestionToImproveTheApp,
+        yourSuggestion: yourSuggestion ?? this.yourSuggestion,
         time: time ?? this.time,
         date: date ?? this.date,
         only: only ?? this.only,
@@ -1628,6 +1666,10 @@ class MyServicesLocalizationsData {
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MyServicesLocalizationsData &&
+          pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead ==
+              other.pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead &&
+          yourSuggestionToImproveTheApp == other.yourSuggestionToImproveTheApp &&
+          yourSuggestion == other.yourSuggestion &&
           time == other.time &&
           date == other.date &&
           only == other.only &&
@@ -1790,6 +1832,9 @@ class MyServicesLocalizationsData {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead.hashCode ^
+      yourSuggestionToImproveTheApp.hashCode ^
+      yourSuggestion.hashCode ^
       time.hashCode ^
       date.hashCode ^
       only.hashCode ^
