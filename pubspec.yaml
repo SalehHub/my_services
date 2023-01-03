@@ -12,13 +12,13 @@ dependencies:
 
   google_fonts: ^3.0.1
 
-  firebase_core: ^2.4.0 #firebaseCore
+  firebase_core: ^2.4.1 #firebaseCore
 
-  firebase_messaging: ^14.1.4 #firebaseMessaging
+  firebase_messaging: ^14.2.1 #firebaseMessaging
 
-  firebase_crashlytics: ^3.0.7 #firebaseCrashlytics
+  firebase_crashlytics: ^3.0.9 #firebaseCrashlytics
   
-  firebase_auth: ^4.2.1 #firebaseAuth
+  firebase_auth: ^4.2.4 #firebaseAuth
 
   app_settings: ^4.1.8 #appSettings
 
@@ -44,7 +44,7 @@ dependencies:
 
   share_plus: ^6.3.0 #sharePlus
 
-  pinput: ^2.2.16 #pinCodeFields
+  pinput: ^2.2.21 #pinCodeFields
 
   hive: ^2.2.3 #hive
 
@@ -78,7 +78,7 @@ dependencies:
 
   cached_network_image: ^3.2.3
 
-  flutter_riverpod: ^2.1.1
+  flutter_riverpod: ^2.1.3
 
   freezed_annotation: ^2.2.0
 
