@@ -192,7 +192,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     init();
   }
 
-  void init() {}
+  Future<void> init() async {}
 
   Future<void> onRefresh() async {}
 
@@ -329,7 +329,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         const SliverPadding(padding: EdgeInsets.only(top: 20)),
 
         //bottom banner
-        if (!hideBottomBanner) bottomBanner,
+        if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
 
         const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
       ],
@@ -492,8 +492,8 @@ mixin HeadLoadingsMixin<T extends StatefulWidget> on State<T> {
 }
 
 mixin BannersMixin<T extends StatefulWidget> on State<T> {
-  bool hideTopBanner = false;
-  bool hideBottomBanner = false;
+  bool hideTopBanner = true;
+  bool hideBottomBanner = true;
 
   Widget topBanner = const SizedBox();
   Widget bottomBanner = const SizedBox();

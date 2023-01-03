@@ -75,6 +75,7 @@ class MyButton extends ConsumerWidget {
         height: progressIndicatorSize * 1.5,
         bgColor: Colors.black45,
         margin: const EdgeInsets.all(2),
+        alignment: Alignment.center,
         child: _child(context, ref),
       );
     }

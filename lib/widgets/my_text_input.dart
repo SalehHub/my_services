@@ -160,7 +160,7 @@ class _MyTextInputState extends State<MyTextInput> {
                             double width = constraints.maxWidth == double.infinity ? MyServices.helpers.getPageWidth(context) : constraints.maxWidth;
                             // print(width);
 
-                            width = width * 0.6;
+                            width = width * ((e.icon != null) ? 0.54 : 0.6);
 
                             // print(width);
 
