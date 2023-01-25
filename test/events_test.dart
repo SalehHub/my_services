@@ -15,7 +15,7 @@ class UserWasCreated {
 
 Future<void> main() async {
   test('Test events', () {
-    ServiceEvents events = const ServiceEvents();
+    ServiceEvents events =  ServiceEvents();
 
     String data = "no";
     String data1 = "no";

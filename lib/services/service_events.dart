@@ -1,11 +1,8 @@
-//appLinks
-import '../my_services.dart';
-
 class ServiceEvents {
-  // static const ServiceEvents _s = ServiceEvents._();
-  // factory ServiceEvents() => _s;
-  // const ServiceEvents._();
-  const ServiceEvents();
+  static const ServiceEvents _s = ServiceEvents._();
+  factory ServiceEvents() => _s;
+  const ServiceEvents._();
+  // const ServiceEvents();
 
   static final Map<String, List> _listeners = {};
 
