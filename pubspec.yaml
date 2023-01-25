@@ -36,7 +36,7 @@ dependencies:
 
   smooth_page_indicator: ^1.0.0+2 #photoView
 
-  map_launcher: ^2.4.0 #mapLauncher
+  map_launcher: ^2.4.0 #mapLauncherff
 
   flutter_svg: ^1.1.6 #flutterSvg
 
@@ -60,7 +60,7 @@ dependencies:
 
   url_launcher: ^6.1.8
 
-  intl: ^0.18.0
+  intl: ^0.17.0
 
   device_info_plus: ^8.0.0
 
@@ -125,7 +125,3 @@ flutter:
   assets:
     - flags/
     - google_fonts/
-
-
-dependency_overrides:
-  intl: ^0.18.0
