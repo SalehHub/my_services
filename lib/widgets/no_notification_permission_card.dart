@@ -66,21 +66,24 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
           decoration: BoxDecoration(
             //border: Border.all(color: Colors.purple.shade900, width: 2),
             borderRadius: MyServices.services.theme.borderRadius,
-            color: Colors.blue.shade600,
+            color: getColorScheme(context).primary,
           ),
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Text(
                   labels.notificationsAreDisabledForThisApp,
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
               const IconButton(
                 color: Colors.white,
                 onPressed: null,
-                icon: Icon(iconSettings),
+                icon: Icon(iconSettings, color: Colors.white),
               )
             ],
           ),
