@@ -46,6 +46,17 @@ class ServiceApi {
   int _cacheMinutes = 5;
   void setCacheMinutes(int cacheMinutes) => _cacheMinutes = cacheMinutes;
 
+  int _refreshCacheAfterMinutes = 5;
+  void setRefreshCacheAfterMinutes(int refreshCacheAfterMinutes) => _refreshCacheAfterMinutes = refreshCacheAfterMinutes;
+
+  Function(dynamic data)? _afterResponse;
+  void setAfterResponse(Function(dynamic data)? afterResponse) => _afterResponse = afterResponse;
+  void afterResponse() {
+    if (_afterResponse != null) {
+      _afterResponse!(responseData);
+    }
+  }
+
   String _domain = '';
   void setDoamin(String domain) => _domain = domain;
 
@@ -54,15 +65,28 @@ class ServiceApi {
 
   Map<String, dynamic> _formData = {}; //can be FormData or Map<String, dynamic>
   void setFormData(Map<String, dynamic> formData) => _formData = {
-        ...MyServices.providers.asMap(),
         ...formData,
+      };
+  Map<String, dynamic> get formData => {
+        ...MyServices.providers.asMap(),
+        ..._formData,
       };
 
   Map<String, dynamic> _headers = {};
   void setHeaders(Map<String, dynamic> headers) => _headers = headers;
 
   //-------------------------------------Cache-------------------------------------//
-  String getCacheKey() => MyServices.helpers.getMd5(_url + _formData.toString() + _headers.toString());
+  String getCacheKey() {
+    String? accessToken = formData['accessToken'] as String?;
+    String? lang = formData['appLang'] as String?;
+    String? appBuild = formData['appBuild'] as String?;
+
+    String key = _url + _formData.toString() + _headers.toString() + accessToken.toString() + lang.toString() + appBuild.toString();
+    // print(key);
+    return MyServices.helpers.getMd5(key);
+  }
+
+  Future<bool> isCacheExpired() async => (await MyServices.storage.get(getCacheKey(), _refreshCacheAfterMinutes)) == null;
 
   Future<Map<String, dynamic>?> getCache() async => await MyServices.storage.get(getCacheKey(), _cacheMinutes);
 
@@ -75,7 +99,7 @@ class ServiceApi {
   }
 
   void logFormData() {
-    if (_enableFormDataLog) logger.d(_formData);
+    if (_enableFormDataLog) logger.d(formData);
   }
 
   void logUrl(String requestType, String source) {
@@ -97,8 +121,8 @@ class ServiceApi {
     String? accessToken;
     String? lang;
 
-    accessToken = _formData['accessToken'] as String?;
-    lang = _formData['appLang'] as String?;
+    accessToken = formData['accessToken'] as String?;
+    lang = formData['appLang'] as String?;
 
     Map<String, dynamic> allHeaders = <String, dynamic>{
       if (accessToken != null) ...{
@@ -146,12 +170,10 @@ class ServiceApi {
 
   Future<Map<String, dynamic>?> tryGetFromCache() async {
     if (_withCache) {
-      // data = null;
       Map<String, dynamic>? data = await getCache();
-
-      //fake wait if cache exist
-      if (data != null) {
-        await MyServices.helpers.waitForSeconds(1);
+      //fake wait if cache exist in debug mode
+      if (data != null && kDebugMode) {
+        await MyServices.helpers.waitForMilliseconds(200);
       }
 
       return data;
@@ -180,17 +202,23 @@ class ServiceApi {
 
     //cache
     responseData = await tryGetFromCache();
+
     if (responseData != null) {
       logUrl(requestType, 'From Cache');
       logFormData();
       logResponseData();
-      return responseData;
+
+      afterResponse();
+
+      if (!(await isCacheExpired())) {
+        return responseData;
+      }
     }
 
     try {
       Response<Map<String, dynamic>> res = await Dio().requestUri<Map<String, dynamic>>(
         Uri.parse('$_domain$_url'),
-        data: await getFormData(_formData),
+        data: await getFormData(formData),
         cancelToken: cancelTokens[_url],
         options: _dioOptions(requestType),
       );
@@ -200,6 +228,8 @@ class ServiceApi {
       logUrl(requestType, 'From Web');
       logFormData();
       logResponseData();
+
+      afterResponse();
 
       showMsgSnackBar();
 
