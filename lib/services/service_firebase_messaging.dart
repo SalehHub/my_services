@@ -35,4 +35,13 @@ class ServiceFirebaseMessaging {
       onFirebaseNotification(ref, message, FirebaseMessagingPlace.onMessage);
     });
   }
+
+  static Function? _initialMessage;
+  void setInitialMessage(Function initialMessage) => _initialMessage = initialMessage;
+  void callInitialMessage() {
+    if (_initialMessage != null) {
+      _initialMessage!();
+      _initialMessage = null;
+    }
+  }
 }

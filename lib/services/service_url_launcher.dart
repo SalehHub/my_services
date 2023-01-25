@@ -67,6 +67,15 @@ class ServiceURLLauncher {
     return launchStringUrl('https://twitter.com/hashtag/$cleanTag?src=hashtag_click');
   }
 
+  Future<void> openTwitterSearch(String text) async {
+    String cleanText = text.replaceAll('#', '');
+
+    cleanText = Uri.encodeFull(cleanText);
+
+    // print(_tag);
+    return launchStringUrl('https://twitter.com/search?q=$cleanText');
+  }
+
   Future<void> launchStringUrl(String url) async {
     final bool result = await launchUniversalLinkIos(url);
 
