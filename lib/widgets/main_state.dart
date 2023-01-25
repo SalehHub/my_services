@@ -124,6 +124,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         ),
         child: appBarLeading,
       );
+    } else if (drawerIcon != null && hasDrawer) {
+      return drawerIcon;
     }
     return null;
   }
@@ -181,11 +183,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       }
       //end-firebaseMessaging
 
-      //start-appLinks
-      if (MyServices.appEvents.onDynamicLink != null) {
-        MyServices.services.dynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context));
-      }
-      //end-appLinks
+      //
     }
 
     init();
@@ -356,7 +354,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
       stackTrace = s;
       logger.e(e, e, s);
     } finally {
-      if (showPageLoading) stopPageLoading();
+      if (showPageLoading || startPageInLoadingState) stopPageLoading();
       if (showActionBarLoading) stopActionBarLoading();
     }
   }
@@ -371,6 +369,7 @@ mixin NestedScrollViewStateKeyMixin {
 
 mixin DrawerMixin<T extends StatefulWidget> on State<T>, ScaffoldKeyMixin {
   Widget? drawer;
+  Widget? drawerIcon;
   bool get isDrawerOpen => scaffoldKey.currentState?.isDrawerOpen ?? false;
   bool get hasDrawer => scaffoldKey.currentState?.hasDrawer ?? false;
   void openDrawer() => scaffoldKey.currentState?.openDrawer();
@@ -509,11 +508,17 @@ mixin SafeSetStateMixin<T extends StatefulWidget> on State<T> {
 
 mixin BindingObserverMixin<T extends StatefulWidget> on State<T>, WidgetsBindingObserver {
   Function? onResumed;
+  bool _firstResume = true;
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (onResumed != null) {
       if (state == AppLifecycleState.resumed) {
+        if (_firstResume) {
+          _firstResume = false;
+          return;
+        }
+
         onResumed?.call();
       }
     }
