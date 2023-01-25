@@ -35,7 +35,7 @@ class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
                   child: Text(
                     labels.newAppVersionIsAvailable,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline6!.copyWith(color: Colors.green),
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.green),
                   ),
                 ),
                 const SizedBox(height: 50),
@@ -43,7 +43,7 @@ class _PageNewAppVersionState extends MainStateTemplate<PageNewAppVersion> {
                   child: Text(
                     labels.toEnjoyLatestFeaturesPleaseUpdate,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
                 const SizedBox(height: 50),

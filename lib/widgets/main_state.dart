@@ -186,7 +186,6 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         MyServices.services.dynamicLink.register((Uri uri) => MyServices.appEvents.onDynamicLink!(uri, ref, context));
       }
       //end-appLinks
-
     }
 
     init();

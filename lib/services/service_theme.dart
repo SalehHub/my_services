@@ -81,27 +81,27 @@ class ServiceTheme {
     // return textTheme;
     const double height = 1.8;
     const double letterSpacing = 0.1;
-    final TextStyle? bodyText1 = textTheme.bodyText1?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? bodyText2 = textTheme.bodyText2?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? caption = textTheme.caption?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? overline = textTheme.overline?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline1 = textTheme.headline1?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline2 = textTheme.headline2?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline3 = textTheme.headline3?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline4 = textTheme.headline4?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline5 = textTheme.headline5?.copyWith(height: height, letterSpacing: letterSpacing);
-    final TextStyle? headline6 = textTheme.headline6?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? bodyText1 = textTheme.bodyLarge?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? bodyText2 = textTheme.bodyMedium?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? caption = textTheme.bodySmall?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? overline = textTheme.labelSmall?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline1 = textTheme.displayLarge?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline2 = textTheme.displayMedium?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline3 = textTheme.displaySmall?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline4 = textTheme.headlineMedium?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline5 = textTheme.headlineSmall?.copyWith(height: height, letterSpacing: letterSpacing);
+    final TextStyle? headline6 = textTheme.titleLarge?.copyWith(height: height, letterSpacing: letterSpacing);
     return textTheme.copyWith(
-      bodyText1: bodyText1,
-      bodyText2: bodyText2,
-      caption: caption,
-      overline: overline,
-      headline1: headline1,
-      headline2: headline2,
-      headline3: headline3,
-      headline4: headline4,
-      headline5: headline5,
-      headline6: headline6,
+      bodyLarge: bodyText1,
+      bodyMedium: bodyText2,
+      bodySmall: caption,
+      labelSmall: overline,
+      displayLarge: headline1,
+      displayMedium: headline2,
+      displaySmall: headline3,
+      headlineMedium: headline4,
+      headlineSmall: headline5,
+      titleLarge: headline6,
     );
   }
 
@@ -153,14 +153,14 @@ class ServiceTheme {
       appBarTheme: mainThemeData.appBarTheme.copyWith(
         backgroundColor: myThemeData.appBar?.backgroundColor ?? colorScheme.background,
         elevation: myThemeData.appBar?.elevation ?? 0,
-        titleTextStyle: textTheme.bodyText2?.copyWith(color: colorScheme.onBackground),
+        titleTextStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.onBackground),
         iconTheme: iconTheme,
         shape: myThemeData.appBar?.shape ?? circularBorderRadius,
       ),
       chipTheme: mainThemeData.chipTheme.copyWith(
         backgroundColor: colorScheme.primary,
         deleteIconColor: colorScheme.onPrimary,
-        labelStyle: textTheme.bodyText2?.copyWith(color: colorScheme.onPrimary),
+        labelStyle: textTheme.bodyMedium?.copyWith(color: colorScheme.onPrimary),
       ),
       listTileTheme: mainThemeData.listTileTheme.copyWith(
         shape: circularBorderRadius,
@@ -218,7 +218,7 @@ class ServiceTheme {
       ),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          textStyle: textTheme.bodyText1,
+          textStyle: textTheme.bodyLarge,
           shape: circularBorderRadius,
         ),
       ),
@@ -227,13 +227,13 @@ class ServiceTheme {
           elevation: 0,
           backgroundColor: colorScheme.primary,
           foregroundColor: colorScheme.onPrimary,
-          textStyle: textTheme.bodyText1,
+          textStyle: textTheme.bodyLarge,
           shape: circularBorderRadius,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          textStyle: textTheme.bodyText1,
+          textStyle: textTheme.bodyLarge,
           shape: circularBorderRadius,
         ),
       ),
@@ -256,7 +256,7 @@ class ServiceTheme {
       snackBarTheme: mainThemeData.snackBarTheme.copyWith(
         behavior: SnackBarBehavior.floating,
         backgroundColor: colorScheme.surface,
-        contentTextStyle: textTheme.subtitle1?.copyWith(color: colorScheme.onInverseSurface),
+        contentTextStyle: textTheme.titleMedium?.copyWith(color: colorScheme.onInverseSurface),
         elevation: elevation,
         shape: circularBorderRadius.copyWith(side: BorderSide(width: 0.5, color: colorScheme.onInverseSurface)),
       ),
@@ -270,14 +270,14 @@ class ServiceTheme {
       return Column(
         children: [
           const SizedBox(height: 20),
-          Text(getMyServicesLabels(context).appTheme, style: getTextTheme(context).headline6),
+          Text(getMyServicesLabels(context).appTheme, style: getTextTheme(context).titleLarge),
           const Divider(),
           Consumer(builder: (BuildContext context, ref, Widget? child) {
             final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
 
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconCellphone),
-              title: Text(getMyServicesLabels(context).dependsOnSystem, style: getTextTheme(context).bodyText2),
+              title: Text(getMyServicesLabels(context).dependsOnSystem, style: getTextTheme(context).bodyMedium),
               value: ThemeMode.system,
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
@@ -291,7 +291,7 @@ class ServiceTheme {
             final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconLight),
-              title: Text(getMyServicesLabels(context).lightMode, style: getTextTheme(context).bodyText2),
+              title: Text(getMyServicesLabels(context).lightMode, style: getTextTheme(context).bodyMedium),
               value: ThemeMode.light,
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {
@@ -305,7 +305,7 @@ class ServiceTheme {
             final ThemeMode? themeMode = MyServices.providers.watchThemeMode(ref);
             return RadioListTile<ThemeMode>(
               secondary: const Icon(iconDark),
-              title: Text(getMyServicesLabels(context).darkMode, style: getTextTheme(context).bodyText2),
+              title: Text(getMyServicesLabels(context).darkMode, style: getTextTheme(context).bodyMedium),
               value: ThemeMode.dark,
               groupValue: themeMode,
               onChanged: (ThemeMode? value) {

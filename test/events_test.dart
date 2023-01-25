@@ -6,16 +6,13 @@ class UserWasLoggedIn {
   UserWasLoggedIn(this.name);
 }
 
-class UserWasLoggedOut {
-}
+class UserWasLoggedOut {}
 
-
-class UserWasCreated {
-}
+class UserWasCreated {}
 
 Future<void> main() async {
   test('Test events', () {
-    ServiceEvents events =  ServiceEvents();
+    ServiceEvents events = ServiceEvents();
 
     String data = "no";
     String data1 = "no";

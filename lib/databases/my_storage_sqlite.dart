@@ -222,5 +222,4 @@ class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   //   }
   //   return null;
   // }
-
 }

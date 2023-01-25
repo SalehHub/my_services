@@ -92,7 +92,7 @@ class _MyPopupMenuItemWidget extends ConsumerWidget {
       children: <Widget>[
         widget ?? Padding(padding: const EdgeInsets.all(0.0), child: Icon(icon)),
         const SizedBox(width: 4),
-        Expanded(child: Text(title, style: getTextTheme(context).bodyText1?.copyWith(height: 2))),
+        Expanded(child: Text(title, style: getTextTheme(context).bodyLarge?.copyWith(height: 2))),
         // const Spacer(),
         if (tail != null) tail!,
       ],
@@ -152,7 +152,7 @@ class _PopupMenuItemState<T, W extends _PopupMenuItemWidget<T>> extends State<W>
 
     final ThemeData theme = Theme.of(context);
     final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
-    TextStyle style = widget.textStyle ?? popupMenuTheme.textStyle ?? theme.textTheme.subtitle1!;
+    TextStyle style = widget.textStyle ?? popupMenuTheme.textStyle ?? theme.textTheme.titleMedium!;
 
     if (!widget.enabled) {
       style = style.copyWith(color: theme.disabledColor);

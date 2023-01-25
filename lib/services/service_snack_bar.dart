@@ -49,7 +49,7 @@ class ServiceSnackBar {
           text,
           textAlign: TextAlign.center,
           textDirection: MyServices.helpers.getTextDirection(text),
-          style: getTextTheme(MyServices.context).bodyText1?.copyWith(color: fgColor(success)),
+          style: getTextTheme(MyServices.context).bodyLarge?.copyWith(color: fgColor(success)),
         ),
       ),
     );

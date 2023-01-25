@@ -64,7 +64,7 @@ class _CountriesListWidgetState extends State<CountriesListWidget> {
             margin: const EdgeInsets.only(top: 0, bottom: 5, left: 20, right: 20),
             prefixIcon: const Icon(iconSearch),
             labelText: getMyServicesLabels(context).searchByCountryNameOrDialCode,
-            labelStyle: getTextTheme(context).caption,
+            labelStyle: getTextTheme(context).bodySmall,
             onChanged: (t) => setState(() => searchTerm = t),
           ),
           Expanded(
@@ -152,13 +152,13 @@ class CountryEmoji extends StatelessWidget {
             if (country.code == 'all') {
               return const Icon(Mdi.earth);
             }
-            return Text(country.emoji, style: getTextTheme(context).headline6?.copyWith(height: 0, fontWeight: FontWeight.bold));
+            return Text(country.emoji, style: getTextTheme(context).titleLarge?.copyWith(height: 0, fontWeight: FontWeight.bold));
           }),
         ),
         if (showDialCode)
           Text(
             country.dialCode ?? "",
-            style: getTextTheme(context).subtitle1?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
+            style: getTextTheme(context).titleMedium?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
           ),
       ],
     );

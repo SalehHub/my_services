@@ -27,5 +27,4 @@ export 'yes_snack_bar_message.dart';
 export 'phone_input/countries_data.dart';
 export 'phone_input/countries_provider.dart';
 export 'phone_input/countries_widgets.dart';
-export 'phone_input/my_phone_input.dart';
 export 'phone_input/my_country_input.dart';

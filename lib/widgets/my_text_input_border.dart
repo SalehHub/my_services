@@ -51,7 +51,7 @@
 //   //       color: getTheme(context).scaffoldBackgroundColor,
 //   //       child: Text(
 //   //         label,
-//   //         style: getTextTheme(context).caption,
+//   //         style: getTextTheme(context).bodySmall,
 //   //       ),
 //   //     ),
 //   //   );

@@ -226,7 +226,7 @@ class _MyTextInputState extends State<MyTextInput> {
                 MyText(
                   widget.helperText ?? "",
                   color: Colors.grey.shade600,
-                  style: getTextTheme(context).caption?.copyWith(fontSize: 12.9),
+                  style: getTextTheme(context).bodySmall?.copyWith(fontSize: 12.9),
                   margin: const EdgeInsets.only(
                     top: 5,
                     left: 10,

@@ -25,10 +25,10 @@ class ServiceLocale {
       return Column(
         children: [
           const SizedBox(height: 20),
-          Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).headline6),
+          Text(getMyServicesLabels(context).appLanguage, style: getTextTheme(context).titleLarge),
           const Divider(),
           //when nativeLocaleChange is true, show helper text
-          if (MyServices.appConfig.nativeLocaleChange) Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).caption),
+          if (MyServices.appConfig.nativeLocaleChange) Text(getMyServicesLabels(context).yourPhoneSettingsWillBeOpenedToChangeTheAppLanguage, style: getTextTheme(context).bodySmall),
           //
           ...supportedLocales.map((Locale locale) {
             return Consumer(builder: (BuildContext context, WidgetRef ref, Widget? child) {
@@ -36,7 +36,7 @@ class ServiceLocale {
                 secondary: getLanguageIcon(locale),
                 title: Text(
                   getLanguageLabel(locale),
-                  style: getTextTheme(context).bodyText2,
+                  style: getTextTheme(context).bodyMedium,
                 ),
                 value: locale,
                 groupValue: currentLocale(context), // watchLocale(ref),
