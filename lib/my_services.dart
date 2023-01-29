@@ -77,5 +77,6 @@ export 'src/others/exports.dart';
 export 'src/providers/exports.dart' show readProviderNotifier, readProviderState;
 export 'src/services/service_nav.dart' show pop, push, popToHome;
 export 'src/services/service_firebase_messaging.dart' show FirebaseMessagingPlace; //firebaseMessaging
+export 'src/services/service_google_maps_cluster.dart' show GoogleMapsCluster; //googleMaps
 export 'src/widgets/exports.dart';
 export 'main.dart';
