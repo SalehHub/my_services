@@ -76,6 +76,6 @@ export 'src/models/exports.dart';
 export 'src/others/exports.dart';
 export 'src/providers/exports.dart' show readProviderNotifier, readProviderState;
 export 'src/services/service_nav.dart' show pop, push, popToHome;
-export 'src/services/service_firebase_messaging.dart' show FirebaseMessagingPlace;
+export 'src/services/service_firebase_messaging.dart' show FirebaseMessagingPlace; //firebaseMessaging
 export 'src/widgets/exports.dart';
 export 'main.dart';
