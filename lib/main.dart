@@ -1,5 +1,6 @@
 import 'my_services.dart';
 import 'src/databases/exports.dart';
+import 'src/providers/providers.dart';
 import 'src/services/services.dart';
 
 //an alias to MyServices class
