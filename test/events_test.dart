@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_services/services/service_events.dart';
+import 'package:my_services/src/services/service_events.dart';
 
 class UserWasLoggedIn {
   final String name;

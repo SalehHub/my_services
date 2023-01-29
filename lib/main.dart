@@ -1,5 +1,5 @@
 import 'my_services.dart';
-import 'services/services.dart';
+import 'src/services/services.dart';
 
 //an alias to MyServices class
 typedef MyS = MyServices;
