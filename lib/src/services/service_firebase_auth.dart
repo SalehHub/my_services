@@ -1,6 +1,5 @@
 //firebaseAuth
 import '../../my_services.dart';
-import '../providers/providers.dart';
 
 StateProvider<bool> _showSmsCodeInputStateProvider = StateProvider<bool>((r) => false);
 StateProvider<bool> _showResendSmsCodeButtonStateProvider = StateProvider<bool>((r) => false);
