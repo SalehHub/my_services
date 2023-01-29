@@ -1,5 +1,6 @@
 //hive
 import '../../my_services.dart';
+import 'my_storage.dart';
 
 class MyStorageHive extends MyStorageKeys implements MyStorage {
   MyStorageHive._();

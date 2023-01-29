@@ -1,5 +1,6 @@
 //sqflite
 import '../../my_services.dart';
+import 'my_storage.dart';
 
 class MyStorageSQLite extends MyStorageKeys implements MyStorage {
   MyStorageSQLite._();

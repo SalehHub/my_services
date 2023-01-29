@@ -1,4 +1,6 @@
 import 'my_services.dart';
+import 'src/databases/exports.dart';
+import 'src/providers/exports.dart';
 import 'src/services/services.dart';
 
 //an alias to MyServices class
@@ -30,6 +32,7 @@ class MyServices {
   static Helpers get helpers => GetIt.I<Helpers>();
   static Providers get providers => GetIt.I<Providers>();
   static Services get services => GetIt.I<Services>();
+  static get events => services.events;
 
   // App Config
   static AppConfig appConfig = const AppConfig();

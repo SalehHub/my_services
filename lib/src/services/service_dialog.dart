@@ -1,4 +1,5 @@
 import '../../my_services.dart';
+import 'service_nav.dart';
 
 class ServiceDialog {
   const ServiceDialog();

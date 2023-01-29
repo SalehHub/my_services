@@ -8,6 +8,7 @@ import 'service_dialog.dart';
 //
 import 'service_dynamic_link.dart'; //appLinks
 //
+import 'service_events.dart';
 import 'service_firebase_crashlytics.dart'; //firebaseCrashlytics
 import 'service_firebase_messaging.dart'; //firebaseMessaging
 import 'service_firebase_auth.dart'; //firebaseAuth
@@ -40,6 +41,7 @@ class Services {
     GetIt.I.registerLazySingleton<ServiceDebounce>(() => const ServiceDebounce());
     GetIt.I.registerLazySingleton<ServiceColor>(() => const ServiceColor());
     GetIt.I.registerLazySingleton<ServiceAppDevice>(() => const ServiceAppDevice());
+    GetIt.I.registerLazySingleton<ServiceEvents>(() => const ServiceEvents());
     //not Singleton
     GetIt.I.registerFactory<ServiceApi>(() => ServiceApi()); //dio
     //
@@ -67,6 +69,7 @@ class Services {
   ServiceDebounce get debounce => GetIt.I<ServiceDebounce>();
   ServiceColor get color => GetIt.I<ServiceColor>();
   ServiceAppDevice get appDevice => GetIt.I<ServiceAppDevice>();
+  ServiceEvents get events => GetIt.I<ServiceEvents>();
   ServiceApi get api => GetIt.I<ServiceApi>(); //dio
   //
   ServiceShare get share => GetIt.I<ServiceShare>(); //sharePlus
