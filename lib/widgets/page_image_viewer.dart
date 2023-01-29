@@ -151,7 +151,7 @@ class _PageImageViewerState extends MainStateTemplate<PageImageViewer> {
             count: imageList.length,
             activeIndex: index,
             onDotClicked: (index) => pageController.jumpToPage(index),
-            effect: WormEffect(spacing: 1, dotWidth: 7, dotHeight: 7, activeDotColor: getTheme(context).toggleableActiveColor),
+            effect: WormEffect(spacing: 1, dotWidth: 7, dotHeight: 7, activeDotColor: getColorScheme(context).onPrimary),
           ),
         ),
       ),
