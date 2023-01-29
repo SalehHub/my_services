@@ -10,7 +10,7 @@ dependencies:
 
   cupertino_icons: ^1.0.5
 
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.1
 
   firebase_core: ^2.4.1 #firebaseCore
 
@@ -50,7 +50,7 @@ dependencies:
 
   hive_flutter: ^1.1.0 #hive
 
-  sqflite: ^2.2.3 #sqflite
+  sqflite: ^2.2.4+1 #sqflite
 
   flutter_app_badger: ^1.5.0 #flutterAppBadger
 
