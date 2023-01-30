@@ -306,7 +306,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         if (underAppBarWidget != null) underAppBarWidget!,
 
         //top banner
-        if (!hideTopBanner) SliverToBoxAdapter(child: topBanner),
+        //dont use SliverToBoxAdapter here
+        if (!hideTopBanner) topBanner,
 
         //show loading
         if (pageLoading)
@@ -326,7 +327,8 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
         const SliverPadding(padding: EdgeInsets.only(top: 20)),
 
         //bottom banner
-        if (!hideBottomBanner) SliverToBoxAdapter(child: bottomBanner),
+        //dont use SliverToBoxAdapter here
+        if (!hideBottomBanner) bottomBanner,
 
         const SliverPadding(padding: EdgeInsets.only(bottom: 80)),
       ],
@@ -493,8 +495,8 @@ mixin BannersMixin<T extends StatefulWidget> on State<T> {
   bool hideTopBanner = true;
   bool hideBottomBanner = true;
 
-  Widget topBanner = const SizedBox();
-  Widget bottomBanner = const SizedBox();
+  Widget topBanner = const SliverToBoxAdapter(child: SizedBox());
+  Widget bottomBanner = const SliverToBoxAdapter(child: SizedBox());
 }
 
 mixin SafeSetStateMixin<T extends StatefulWidget> on State<T> {
