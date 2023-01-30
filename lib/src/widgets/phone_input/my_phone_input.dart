@@ -23,6 +23,7 @@ class MyPhoneInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var myServicesLabels = getMyServicesLabels(context);
+    TextStyle? style = getTextTheme(context).titleMedium?.copyWith(height: 2.0, fontWeight: FontWeight.bold);
     return MyTextInput(
       autofillHints: const [AutofillHints.telephoneNumberNational],
       keyboardType: TextInputType.phone,
@@ -30,6 +31,7 @@ class MyPhoneInput extends StatelessWidget {
       //
       value: value,
       digitsOnly: true,
+      style: style,
       length: 12,
       controller: controller,
       // prefixText: selectedCountry.dialCode,
@@ -37,7 +39,7 @@ class MyPhoneInput extends StatelessWidget {
       validator: defaultFieldRequiredValidator,
       textDirection: TextDirection.ltr,
       directionalityTextDirection: TextDirection.ltr,
-      prefixIcon: buildSuffix(context),
+      prefixIcon: buildSuffix(context, style),
       suffixIcon: buildPrefix(),
       contentPadding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
       onChanged: onChanged,
@@ -47,7 +49,7 @@ class MyPhoneInput extends StatelessWidget {
 
   Icon buildPrefix() => const Icon(Icons.phone_android);
 
-  Widget buildSuffix(BuildContext context) {
+  Widget buildSuffix(BuildContext context, TextStyle? style) {
     var myServicesLabels = getMyServicesLabels(context);
     return GestureDetector(
       onTap: () {
@@ -60,7 +62,7 @@ class MyPhoneInput extends StatelessWidget {
           ),
         );
       },
-      child: CountryEmoji(country: selectedCountry),
+      child: CountryEmoji(country: selectedCountry, dialCodeTextStyle: style),
     );
   }
 }
