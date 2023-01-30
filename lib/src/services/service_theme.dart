@@ -142,6 +142,7 @@ class ServiceTheme {
     );
 
     final ThemeData themeData = mainThemeData.copyWith(
+      primaryColor: _light.primary,
       useMaterial3: _useMaterial3,
       colorScheme: colorScheme,
       scaffoldBackgroundColor: colorScheme.background,
