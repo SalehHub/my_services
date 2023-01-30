@@ -137,9 +137,11 @@ class CountryEmoji extends StatelessWidget {
     super.key,
     required this.country,
     this.showDialCode = true,
+    this.dialCodeTextStyle,
   });
   final Country country;
   final bool showDialCode;
+  final TextStyle? dialCodeTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +160,7 @@ class CountryEmoji extends StatelessWidget {
         if (showDialCode)
           Text(
             country.dialCode ?? "",
-            style: getTextTheme(context).titleMedium?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
+            style: dialCodeTextStyle ?? getTextTheme(context).titleMedium?.copyWith(height: 2.0, fontWeight: FontWeight.bold),
           ),
       ],
     );
