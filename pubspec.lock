@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: e440ac42679dfc04bbbefb58ed225c994bc7e07fccc8a68ec7d3631a127e5da9
+      sha256: "98d1d33ed129b372846e862de23a0fc365745f4d7b5e786ce667fcbbb7ac5c07"
       url: "https://pub.dev"
     source: hosted
-    version: "54.0.0"
+    version: "55.0.0"
   _flutterfire_internals:
     dependency: transitive
     description:
@@ -21,10 +21,10 @@ packages:
     dependency: transitive
     description:
       name: analyzer
-      sha256: "2c2e3721ee9fb36de92faa060f3480c81b23e904352b087e5c64224b1a044427"
+      sha256: "881348aed9b0b425882c97732629a6a31093c8ff20fc4b3b03fb9d3d50a3a126"
       url: "https://pub.dev"
     source: hosted
-    version: "5.6.0"
+    version: "5.7.1"
   app_links:
     dependency: "direct main"
     description:
@@ -455,10 +455,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
-      sha256: "4bef634684b2c7f3468c77c766c831229af829a0cd2d4ee6c1b99558bd14e5d2"
+      sha256: c224ac897bed083dabf11f238dd11a239809b446740be0c2044608c50029ffdf
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.8"
+    version: "2.0.9"
   flutter_riverpod:
     dependency: "direct main"
     description:
@@ -472,7 +472,7 @@ packages:
     description:
       path: flutter_sheet_localization
       ref: HEAD
-      resolved-ref: "7cd967017fdbe91b11474f7f545f30bdb6a3ca50"
+      resolved-ref: "29bac32c50cd2070f34a75bd375584bdf734317b"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.1"
@@ -481,7 +481,7 @@ packages:
     description:
       path: flutter_sheet_localization_generator
       ref: HEAD
-      resolved-ref: "7cd967017fdbe91b11474f7f545f30bdb6a3ca50"
+      resolved-ref: "29bac32c50cd2070f34a75bd375584bdf734317b"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "5.1.7"
@@ -571,10 +571,10 @@ packages:
     dependency: transitive
     description:
       name: google_maps_flutter_android
-      sha256: "69bac3fd18db5638763b06e04c2f2ff2e65e0a76fe93e0e211d8a77afaca033f"
+      sha256: "7829c13b90edb8b31861bf496616cf8582618f617951d16cb1e191699c586dfc"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.6"
+    version: "2.4.7"
   google_maps_flutter_ios:
     dependency: transitive
     description:
@@ -756,7 +756,7 @@ packages:
     description:
       path: localization_builder
       ref: HEAD
-      resolved-ref: "7cd967017fdbe91b11474f7f545f30bdb6a3ca50"
+      resolved-ref: "29bac32c50cd2070f34a75bd375584bdf734317b"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.15.7"
@@ -1194,7 +1194,7 @@ packages:
     description:
       path: template_string
       ref: HEAD
-      resolved-ref: "7cd967017fdbe91b11474f7f545f30bdb6a3ca50"
+      resolved-ref: "29bac32c50cd2070f34a75bd375584bdf734317b"
       url: "https://github.com/salehahmedZ/flutter_sheet_localization.git"
     source: git
     version: "0.6.0"
