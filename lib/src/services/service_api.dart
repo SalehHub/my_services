@@ -105,6 +105,10 @@ class ServiceApi {
   void logUrl(String requestType, String source) {
     if (_enableEndpointLog) logger.d('$requestType: $_domain$_url  -  $source');
   }
+
+  void logHeaders(Map<String, dynamic> allHeaders) {
+    if (_enableHeadersLog) logger.d(allHeaders);
+  }
   //--------------------------------------------------------------------------//
 
   Future<String> download(String url) async {
@@ -135,7 +139,7 @@ class ServiceApi {
       ..._headers
     };
 
-    if (_enableHeadersLog) logger.d(allHeaders);
+    logHeaders(allHeaders);
 
     return Options(method: method, headers: allHeaders, contentType: 'application/json');
   }
