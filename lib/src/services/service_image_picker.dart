@@ -13,6 +13,8 @@ class MyFile {
       file = File(maybeFile);
     } else if (maybeFile is File) {
       file = maybeFile;
+    } else if (maybeFile is XFile) {
+      file = File(maybeFile.path);
     } else if (maybeFile is CroppedFile) {
       file = File(maybeFile.path);
     }
@@ -83,7 +85,7 @@ class ServiceImagePicker {
         int i = 0;
         while (compressedFile.sizeInMegabytes > sizeInMB) {
           i++;
-          File? newFile = await FlutterImageCompress.compressAndGetFile(
+          XFile? newFile = await FlutterImageCompress.compressAndGetFile(
             compressedFile.path,
             compressedFile.path.replaceFirst('.', '$i.', compressedFile.path.length - 6),
             quality: 95 - (i + 5),
