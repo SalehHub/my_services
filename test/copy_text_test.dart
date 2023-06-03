@@ -8,10 +8,12 @@ Future<void> main() async {
     await appLauncher.prepare();
 
     String copiedText = '';
-    SystemChannels.platform.setMockMethodCallHandler((MethodCall methodCall) async {
+
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, (MethodCall methodCall) async {
       if (methodCall.method == "Clipboard.setData") {
         copiedText = methodCall.arguments['text'];
       }
+      return null;
     });
 
     await tester.pumpWidget(appLauncher.mainWidget(homePage: Scaffold(body: CopyTextWidget(textToCopy: () => "MyTestCopyText", child: const Text("MyTestText")))));

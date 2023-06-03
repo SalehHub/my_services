@@ -60,7 +60,7 @@ dependencies:
 
   url_launcher: ^6.1.10
 
-  intl: ^0.17.0
+  intl: ^0.18.0
 
   device_info_plus: ^8.2.2
 
