@@ -168,14 +168,20 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     WidgetsBinding.instance.addPostFrameCallback((_) => _myInitState());
   }
 
-  void _myInitState() {
+  Future<void> _myInitState() async {
     if (homePage) {
       //start-firebaseMessaging
       if (MyServices.appConfig.withFCM) {
-        MyServices.services.firebaseMessaging.requestPermission();
+        await MyServices.services.firebaseMessaging.requestPermission();
+
+        //Make sure token is set in general state
+        String? token = await MyServices.services.firebaseMessaging.getToken();
+        if (token != null) {
+          MyServices.providers.setNotificationToken(token);
+        }
 
         if (MyServices.appEvents.onFirebaseNotification != null) {
-          MyServices.services.firebaseMessaging.registerFirebaseMessaging(ref, onFirebaseNotification: MyServices.appEvents.onFirebaseNotification!);
+          await MyServices.services.firebaseMessaging.registerFirebaseMessaging(ref, onFirebaseNotification: MyServices.appEvents.onFirebaseNotification!);
         }
         if (MyServices.appEvents.onFCMTokenRefresh != null) {
           MyServices.services.firebaseMessaging.onTokenRefresh((token) => MyServices.appEvents.onFCMTokenRefresh!(token, ref, context));

@@ -17,11 +17,29 @@ class ServiceFirebaseMessaging {
   //
   static final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
-  Future<String?> getToken() => _firebaseMessaging.getToken();
+  Future<String?> getToken() async {
+    try {
+      return (await _firebaseMessaging.getToken());
+    } on PlatformException catch (e, s) {
+      logger.e(e, e, s);
+    } catch (e, s) {
+      logger.e(e, e, s);
+    }
+    return Future.value(null);
+  }
 
   StreamSubscription<String> onTokenRefresh(Function(String) fun) => _firebaseMessaging.onTokenRefresh.listen(fun);
 
-  Future<NotificationSettings> requestPermission() => _firebaseMessaging.requestPermission();
+  Future<NotificationSettings?> requestPermission() async {
+    try {
+      return (await _firebaseMessaging.requestPermission());
+    } on PlatformException catch (e, s) {
+      logger.e(e, e, s);
+    } catch (e, s) {
+      logger.e(e, e, s);
+    }
+    return Future.value(null);
+  }
 
   Future<void> registerFirebaseMessaging(WidgetRef ref, {required OnFirebaseNotification onFirebaseNotification}) async {
     final RemoteMessage? message = await _firebaseMessaging.getInitialMessage();

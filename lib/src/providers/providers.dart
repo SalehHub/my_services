@@ -43,6 +43,7 @@ class Providers {
 
   //
   Future<void> setAccessToken(String? value) => _generalStateNotifier.setAccessToken(value);
+  Future<void> setNotificationToken(String? value) => _generalStateNotifier.setNotificationToken(value);
   Future<void> setThemeMode(BuildContext context, ThemeMode value) => _generalStateNotifier.setThemeMode(context, value);
   Future<void> toggleThemeMode(BuildContext context) => _generalStateNotifier.toggleThemeMode(context);
   Future<void> setLocale(Locale value) {
