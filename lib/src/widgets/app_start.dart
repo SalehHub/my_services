@@ -138,13 +138,7 @@ class AppLauncher {
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     });
 
-    //start-firebaseCrashlytics
-    if (MyServices.appConfig.withCrashlytics && !testing) {
-      MyServices.services.firebaseCrashlytics.runInZone(() async => runApp(mainWidget(homePage: homePage)));
-    } else {
-      //end-firebaseCrashlytics
-      runApp(mainWidget(homePage: homePage));
-    } //firebaseCrashlytics
+    runApp(mainWidget(homePage: homePage));
   }
 }
 

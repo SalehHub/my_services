@@ -9,25 +9,16 @@ class ServiceFirebaseCrashlytics {
   //
   static final FirebaseCrashlytics _firebaseCrashlytics = FirebaseCrashlytics.instance;
 
-  runInZone(body) {
-    runZonedGuarded<Future<void>>(
-      body,
-      (error, stack) => _firebaseCrashlytics.recordError(error, stack, fatal: true),
-    );
-  }
-
   Future<void> register() async {
     if (kDebugMode) {
       await _firebaseCrashlytics.setCrashlyticsCollectionEnabled(false);
     } else {
       await _firebaseCrashlytics.setCrashlyticsCollectionEnabled(true);
-      FlutterError.onError = _firebaseCrashlytics.recordFlutterError;
-
-      // final RawReceivePort rawReceivePort = RawReceivePort((List<dynamic> errorAndStacktrace) async {
-      //   await _firebaseCrashlytics.recordError(errorAndStacktrace.first, errorAndStacktrace.last as StackTrace);
-      // });
-
-      // Isolate.current.addErrorListener(rawReceivePort.sendPort);
+      FlutterError.onError = _firebaseCrashlytics.recordFlutterFatalError;
+      PlatformDispatcher.instance.onError = (error, stack) {
+        _firebaseCrashlytics.recordError(error, stack, fatal: true);
+        return true;
+      };
     }
   }
 
