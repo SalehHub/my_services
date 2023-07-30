@@ -46,6 +46,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Blocked account',
     unblock: 'Unblock',
     block: 'Block',
+    noReviewsForThisAccountYetCheckBackLater: 'No reviews for this account yet. Check back later',
     reviews: 'Reviews',
     accountReviews: 'Account reviews',
     youHaventReviewedAnyAccountYet: 'You haven\'t reviewed any account yet',
@@ -213,6 +214,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'حساب محجوب',
     unblock: 'إلغاء الحجب',
     block: 'حجب',
+    noReviewsForThisAccountYetCheckBackLater: 'لايوجد تقييمات لهذا الحساب حالياً',
     reviews: 'التقييمات',
     accountReviews: 'تقييمات الحساب',
     youHaventReviewedAnyAccountYet: 'لم تقم يتقييم أي حساب حتى الآن. عندما تقيم أحد الحسابات سيظهر تقييمك هنا',
@@ -354,7 +356,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     noInternetConnection: 'Pas de connexion Internet',
     changePhoneNumber: 'Modifier le numéro de téléphone',
     resendSmsVerificationCode: 'Reendez le code de vérification SMS',
-    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez revoir le code de vérification pour réessayer',
+    theCodeHasExpiredPleaseResendTheVerificationCodeToTryAgain: 'Le code a expiré. Veuillez repenser le code de vérification pour réessayer',
     theCodeIsInccorectPleaseTryAgain: 'Le code est incoréct. Veuillez réessayer',
     phoneNumberIsInvalid: 'Le numéro de téléphone n\'est pas valide',
     phoneNumberIsTooLong: 'Le numéro de téléphone est trop long',
@@ -381,8 +383,9 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Compte bloqué',
     unblock: 'Débloquer',
     block: 'Bloc',
+    noReviewsForThisAccountYetCheckBackLater: 'Aucune critique pour ce compte encore. Revenez plus tard',
     reviews: 'Commentaires',
-    accountReviews: 'Révisions de compte',
+    accountReviews: 'Révision des comptes',
     youHaventReviewedAnyAccountYet: 'Vous n\'avez pas encore examiné de compte',
     noReviewsForYourAccountYetCheckBackLater: 'Aucune avis pour votre compte. Revenez plus tard',
     yourProfileReviews: 'Vos critiques de profil',
@@ -541,20 +544,21 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     product: 'Producto',
     users: 'Usuarios',
     user: 'Usuario',
-    loginUsingPhoneNumber: 'Iniciar sesión usando el número de teléfono',
+    loginUsingPhoneNumber: 'Iniciar sesión con el número de teléfono',
     customer: 'Cliente',
     impersonate: 'Personificar',
     yourAccountIsBlocked: 'Su cuenta está bloqueada',
     blockedAccount: 'Cuenta bloqueada',
     unblock: 'Desatascar',
     block: 'Bloquear',
+    noReviewsForThisAccountYetCheckBackLater: 'No hay revisiones para esta cuenta todavía. Vuelva más tarde',
     reviews: 'Reseñas',
     accountReviews: 'Revisiones de cuentas',
     youHaventReviewedAnyAccountYet: 'Aún no has revisado ninguna cuenta',
     noReviewsForYourAccountYetCheckBackLater: 'No hay revisiones para su cuenta todavía. Vuelva más tarde',
     yourProfileReviews: 'Sus reseñas de perfil',
     yourReviews: 'Tus reseñas',
-    noReviewsYet: 'Todavía no hay críticas',
+    noReviewsYet: 'No hay críticas todavía',
     review: 'Revisar',
     yourReview: 'Tu reseña',
     accountsYouReviewed: 'Cuentas que revisó',
@@ -613,7 +617,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     markAsRead: 'Marcar como leído',
     delete: 'Borrar',
     avatar: 'Avatar',
-    changeProfileImage: 'Cambiar la imagen de perfil',
+    changeProfileImage: 'Cambiar imagen de perfil',
     theAppDoesntHavePhotoAccessPermission: 'La aplicación no tiene permiso de acceso a la foto',
     stillDidntReceiveTheVerificationCode: '¿Todavía no recibió el código de verificación?',
     resendVerificationCode: 'Vuelva a enviar el código de verificación',
@@ -634,7 +638,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     invalidRecoveryCode: 'Código de recuperación no válido',
     hello: 'Hola',
     yourNotifications: 'Tus notificaciones',
-    logoutAllDevices: 'INICIO TODOS LOS DISPOSITIVOS',
+    logoutAllDevices: 'INCOGAR COMPIENTO TODOS LOS DISPOSITIVOS',
     logout: 'Cerrar sesión',
     yourEmailAddressIsNotVerifiedClickHereToVerifyIt: 'No se verifica su dirección de correo electrónico, haga clic aquí para verificarla',
     restorePassword: 'Restaurar contraseña',
@@ -668,13 +672,13 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     settings: 'Ajustes',
     updated: 'Actualizado',
     updateNow: 'Actualizar ahora',
-    toEnjoyLatestFeaturesPleaseUpdate: 'Para disfrutar de las últimas funciones, actualice',
+    toEnjoyLatestFeaturesPleaseUpdate: 'Para disfrutar de las últimas funciones, por favor actualice',
     newAppVersionIsAvailable: 'Nueva versión de la aplicación está disponible',
     newVersion: 'Nueva versión',
     yes: 'Sí',
     areYouSureYouWantToCloseTheApp: '¿Estás seguro de que quieres cerrar la aplicación?',
     notificationsAreDisabledForThisApp: 'Las notificaciones están deshabilitadas para esta aplicación',
-    anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Tome una captura de pantalla y contáctenos',
+    anErrorOccurredPleaseTakeAScreenshotAndContactUs: 'Ocurrió un error. Por favor tome una captura de pantalla y contáctenos',
   ),
   Locale.fromSubtags(languageCode: 'tr'): const MyServicesLocalizationsData(
     pleaseNoticeThatWeCannotReplyToSuggestionsIfYouHavingAnIssuePleaseUseTheContactUsOptionInstead:
@@ -715,6 +719,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     blockedAccount: 'Bloke edilmiş hesap',
     unblock: 'engeli kaldırmak',
     block: 'Engellemek',
+    noReviewsForThisAccountYetCheckBackLater: 'Bu hesap için henüz inceleme yok. Daha sonra kontrol et',
     reviews: 'İncelemeler',
     accountReviews: 'Hesap İncelemeleri',
     youHaventReviewedAnyAccountYet: 'Henüz herhangi bir hesabı incelemediniz',
@@ -831,7 +836,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     french: 'Fransızca',
     english: 'İngilizce',
     arabic: 'Arapça',
-    appLanguage: 'Uygulama dili',
+    appLanguage: 'Uygulama Dili',
     settings: 'Ayarlar',
     updated: 'Güncellenmiş',
     updateNow: 'Şimdi güncelle',
@@ -884,6 +889,7 @@ class MyServicesLocalizationsData {
     required this.blockedAccount,
     required this.unblock,
     required this.block,
+    required this.noReviewsForThisAccountYetCheckBackLater,
     required this.reviews,
     required this.accountReviews,
     required this.youHaventReviewedAnyAccountYet,
@@ -1050,6 +1056,7 @@ class MyServicesLocalizationsData {
   final String blockedAccount;
   final String unblock;
   final String block;
+  final String noReviewsForThisAccountYetCheckBackLater;
   final String reviews;
   final String accountReviews;
   final String youHaventReviewedAnyAccountYet;
@@ -1216,6 +1223,7 @@ class MyServicesLocalizationsData {
         blockedAccount: map['blockedAccount']! as String,
         unblock: map['unblock']! as String,
         block: map['block']! as String,
+        noReviewsForThisAccountYetCheckBackLater: map['noReviewsForThisAccountYetCheckBackLater']! as String,
         reviews: map['reviews']! as String,
         accountReviews: map['accountReviews']! as String,
         youHaventReviewedAnyAccountYet: map['youHaventReviewedAnyAccountYet']! as String,
@@ -1383,6 +1391,7 @@ class MyServicesLocalizationsData {
     String? blockedAccount,
     String? unblock,
     String? block,
+    String? noReviewsForThisAccountYetCheckBackLater,
     String? reviews,
     String? accountReviews,
     String? youHaventReviewedAnyAccountYet,
@@ -1553,6 +1562,7 @@ class MyServicesLocalizationsData {
         blockedAccount: blockedAccount ?? this.blockedAccount,
         unblock: unblock ?? this.unblock,
         block: block ?? this.block,
+        noReviewsForThisAccountYetCheckBackLater: noReviewsForThisAccountYetCheckBackLater ?? this.noReviewsForThisAccountYetCheckBackLater,
         reviews: reviews ?? this.reviews,
         accountReviews: accountReviews ?? this.accountReviews,
         youHaventReviewedAnyAccountYet: youHaventReviewedAnyAccountYet ?? this.youHaventReviewedAnyAccountYet,
@@ -1724,6 +1734,7 @@ class MyServicesLocalizationsData {
           blockedAccount == other.blockedAccount &&
           unblock == other.unblock &&
           block == other.block &&
+          noReviewsForThisAccountYetCheckBackLater == other.noReviewsForThisAccountYetCheckBackLater &&
           reviews == other.reviews &&
           accountReviews == other.accountReviews &&
           youHaventReviewedAnyAccountYet == other.youHaventReviewedAnyAccountYet &&
@@ -1891,6 +1902,7 @@ class MyServicesLocalizationsData {
       blockedAccount.hashCode ^
       unblock.hashCode ^
       block.hashCode ^
+      noReviewsForThisAccountYetCheckBackLater.hashCode ^
       reviews.hashCode ^
       accountReviews.hashCode ^
       youHaventReviewedAnyAccountYet.hashCode ^
