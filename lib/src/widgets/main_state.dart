@@ -170,6 +170,16 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
 
   Future<void> _myInitState() async {
     if (homePage) {
+      //start-appLinks
+      OnDynamicLink? onDynamicLink = MyServices.appEvents.onDynamicLink;
+
+      if (onDynamicLink != null) {
+        MyServices.services.dynamicLink.register((uri) {
+          onDynamicLink(uri, ref, context);
+        });
+      }
+      //end-appLinks
+
       //start-firebaseMessaging
       if (MyServices.appConfig.withFCM) {
         await MyServices.services.firebaseMessaging.requestPermission();
