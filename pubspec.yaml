@@ -20,7 +20,7 @@ dependencies:
   
   firebase_auth: ^4.6.2 #firebaseAuth
 
-  app_settings: ^4.2.0 #appSettings
+  app_settings: 4.2.0 #appSettings
 
   google_maps_flutter: ^2.2.8 #googleMaps
 
