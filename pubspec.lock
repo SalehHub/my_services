@@ -541,7 +541,7 @@ packages:
     source: git
     version: "5.1.1"
   flutter_sheet_localization_generator:
-    dependency: "direct overridden"
+    dependency: "direct dev"
     description:
       path: flutter_sheet_localization_generator
       ref: HEAD

@@ -3,10 +3,14 @@ targets:
     builders:
       freezed:
         generate_for:
-          - lib/models/**.dart
+          - lib/src/models/**.dart
+      
       flutter_sheet_localization_generator|flutter_sheet_localization:
         generate_for:
           - lib/src/others/localization.dart
+
       json_serializable:
+        generate_for:
+          - lib/src/models/**.dart
         options:
           explicit_to_json: true
