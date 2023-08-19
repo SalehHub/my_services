@@ -155,7 +155,7 @@ class ImageContainer extends StatelessWidget {
     required this.child,
     required this.width,
     required this.height,
-    required this.borderRadius,
+    this.borderRadius = BorderRadius.zero,
     required this.onTap,
     required this.borderColor,
     required this.borderWidth,
@@ -167,7 +167,7 @@ class ImageContainer extends StatelessWidget {
   final double height;
   final Color? borderColor;
   final double borderWidth;
-  final BorderRadius? borderRadius;
+  final BorderRadius borderRadius;
   final bool circle;
   final GestureTapCallback? onTap;
   final Widget child;

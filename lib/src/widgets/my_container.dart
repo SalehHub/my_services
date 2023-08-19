@@ -17,7 +17,7 @@ class MyContainer extends StatelessWidget {
   final String? bgImageUrl;
   final String? bgImageBlurHash;
   final Gradient? gradient;
-  final BorderRadius? borderRadius;
+  final BorderRadius borderRadius;
   final double? bgImageOpacity;
   final double? elevation;
   final AlignmentGeometry? alignment;
@@ -35,7 +35,7 @@ class MyContainer extends StatelessWidget {
     required this.child,
     this.gradient,
     this.bgImageUrl,
-    this.borderRadius,
+    this.borderRadius = BorderRadius.zero,
     this.bgImageOpacity,
     this.bgImageBlurHash,
     this.elevation,
@@ -117,7 +117,7 @@ class MyContainer extends StatelessWidget {
       tempChild = MyInk(onTap: onTap, child: tempChild);
     }
 
-    if (borderRadius != null) {
+    if (borderRadius != BorderRadius.zero) {
       tempChild = ClipRRect(borderRadius: borderRadius, child: tempChild);
     }
 
@@ -139,7 +139,7 @@ class MyContainer extends StatelessWidget {
   }
 
   BoxDecoration? getBoxDecoration() {
-    bool disabled = (bgColor == null && borderRadius == null && borderWidth == null && borderColor == null);
+    bool disabled = (bgColor == null && borderRadius == BorderRadius.zero && borderWidth == null && borderColor == null);
 
     if (!disabled) {
       return BoxDecoration(
