@@ -252,7 +252,7 @@ class ServiceApi {
         logger.d(e.response?.statusCode);
         logger.d(e.response?.statusMessage);
 
-        logger.e(e, e, s);
+        logger.e(e, error: e, stackTrace: s);
 
         if (currentTry == 1) await _handleNoInternet(e);
 

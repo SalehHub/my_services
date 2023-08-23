@@ -370,7 +370,7 @@ abstract class MainStateTemplate<T extends ConsumerStatefulWidget> extends _Main
     } catch (e, s) {
       error = e;
       stackTrace = s;
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     } finally {
       if (showPageLoading || startPageInLoadingState) stopPageLoading();
       if (showActionBarLoading) stopActionBarLoading();

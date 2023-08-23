@@ -16,9 +16,9 @@ class ServiceAppBadger {
         }
       }
     } on PlatformException catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
   }
 

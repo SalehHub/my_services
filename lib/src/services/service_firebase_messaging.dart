@@ -21,9 +21,9 @@ class ServiceFirebaseMessaging {
     try {
       return (await _firebaseMessaging.getToken());
     } on PlatformException catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
     return Future.value(null);
   }
@@ -34,9 +34,9 @@ class ServiceFirebaseMessaging {
     try {
       return (await _firebaseMessaging.requestPermission());
     } on PlatformException catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
     return Future.value(null);
   }

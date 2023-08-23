@@ -42,10 +42,10 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
       try {
         return jsonDecode(value);
       } on FormatException catch (e, s) {
-        logger.e(e, e, s);
+        logger.e(e, error: e, stackTrace: s);
         return value;
       } catch (e, s) {
-        logger.e(e, e, s);
+        logger.e(e, error: e, stackTrace: s);
       }
     }
     return null;
@@ -87,7 +87,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
         }
       }
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
     return null;
   }
@@ -168,7 +168,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
         return Locale(deviceLocale.languageCode);
       }
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
 
     return MyServices.services.locale.defaultLocale;
@@ -199,7 +199,7 @@ class MyStorageHive extends MyStorageKeys implements MyStorage {
   //       return GeneralState.fromJson(data);
   //     }
   //   } catch (e, s) {
-  //     logger.e(e, e, s);
+  //     logger.e(e, error: e, stackTrace: s);
   //   }
   //   return null;
   // }

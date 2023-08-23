@@ -12,7 +12,7 @@ class ServiceShare {
     try {
       await Share.share(text);
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
   }
 
@@ -39,7 +39,7 @@ class ServiceShare {
       return await Share.shareXFiles([XFile(pathOrUrl)], text: text, subject: subject);
       // await Share.shareFiles([path], text: text, subject: subject, mimeTypes: mimeTypes);
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
       return ShareResult(e.toString(), ShareResultStatus.unavailable);
     }
   }

@@ -105,9 +105,10 @@ class ServiceImagePicker {
 
       return compressedFile.file;
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
 
       if (e.toString().toLowerCase().contains('photo_access_denied')) {
+        // ignore: use_build_context_synchronously
         MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
         MyServices.services.snackBar.showText(
           text: myServicesLabels.theAppDoesntHavePhotoAccessPermission,

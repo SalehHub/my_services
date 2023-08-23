@@ -56,7 +56,7 @@ class MyButton extends ConsumerWidget {
       try {
         await onPressed!();
       } catch (e, s) {
-        logger.e(e, e, s);
+        logger.e(e, error: e, stackTrace: s);
       }
 
       if (withLoading) {

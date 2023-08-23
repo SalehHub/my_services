@@ -48,7 +48,7 @@ class ServiceURLLauncher {
         }
       }
     } catch (e, s) {
-      logger.e(e, e, s);
+      logger.e(e, error: e, stackTrace: s);
     }
 
     return false;
