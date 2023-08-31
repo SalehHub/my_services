@@ -121,7 +121,7 @@ dev_dependencies:
 
 #override dependeinces
 dependency_overrides:
-  http: ^1.0.0
+  http: ^1.1.0
 
 flutter:
   assets:
