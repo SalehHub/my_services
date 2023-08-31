@@ -8,27 +8,27 @@ environment:
 
 dependencies:
 
-  cupertino_icons: ^1.0.5
+  cupertino_icons: ^1.0.6
 
   google_fonts: ^5.1.0
 
   firebase_core: ^2.15.1 #firebaseCore
 
-  firebase_messaging: ^14.6.6 #firebaseMessaging
+  firebase_messaging: ^14.6.7 #firebaseMessaging
 
   firebase_crashlytics: ^3.3.5 #firebaseCrashlytics
   
-  firebase_auth: ^4.7.3 #firebaseAuth
+  firebase_auth: ^4.9.0 #firebaseAuth
 
   app_settings: 4.2.0 #appSettings
 
-  google_maps_flutter: ^2.4.0 #googleMaps
+  google_maps_flutter: ^2.4.1 #googleMaps
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
   image_cropper: ^5.0.0 #imagePicker
 
-  image_picker: ^1.0.2 #imagePicker
+  image_picker: ^1.0.4 #imagePicker
 
   flutter_image_compress: ^2.0.4 #imagePicker
 
@@ -44,7 +44,7 @@ dependencies:
 
   share_plus: ^7.1.0 #sharePlus
 
-  pinput: ^3.0.0 #pinCodeFields
+  pinput: ^3.0.1 #pinCodeFields
 
   hive: ^2.2.3 #hive
 
@@ -58,7 +58,7 @@ dependencies:
 
   logger: ^2.0.1
 
-  url_launcher: ^6.1.12
+  url_launcher: ^6.1.13
 
   intl: ^0.18.1
 
@@ -66,7 +66,7 @@ dependencies:
 
   package_info_plus: ^4.1.0
 
-  path_provider: ^2.1.0
+  path_provider: ^2.1.1
 
   mdi: ^5.0.0-nullsafety.0
 
@@ -74,11 +74,11 @@ dependencies:
 
   octo_image: ^1.0.2
 
-  flutter_image: ^4.1.7
+  flutter_image: ^4.1.8
 
   cached_network_image: ^3.2.3
 
-  flutter_riverpod: ^2.3.7
+  flutter_riverpod: ^2.3.10
 
   freezed_annotation: ^2.4.1
 
@@ -109,7 +109,7 @@ dev_dependencies:
 
   json_serializable: ^6.7.1
 
-  flutter_lints: ^2.0.2
+  flutter_lints: ^2.0.3
 
   flutter_test:
     sdk: flutter
