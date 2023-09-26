@@ -37,7 +37,7 @@ export 'package:sqflite/sqflite.dart'; //sqflite
 export 'package:map_launcher/map_launcher.dart'; //mapLauncher
 export 'package:location/location.dart'; //location
 //
-export 'package:cached_network_image/cached_network_image.dart' hide ErrorListener;
+export 'package:cached_network_image/cached_network_image.dart';
 export 'package:crypto/crypto.dart';
 export 'package:device_info_plus/device_info_plus.dart';
 export 'package:package_info_plus/package_info_plus.dart';
