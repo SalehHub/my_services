@@ -10,19 +10,19 @@ dependencies:
 
   cupertino_icons: ^1.0.6
 
-  google_fonts: ^5.1.0
+  google_fonts: ^6.1.0
 
-  firebase_core: ^2.15.1 #firebaseCore
+  firebase_core: ^2.16.0 #firebaseCore
 
-  firebase_messaging: ^14.6.7 #firebaseMessaging
+  firebase_messaging: ^14.6.8 #firebaseMessaging
 
-  firebase_crashlytics: ^3.3.5 #firebaseCrashlytics
+  firebase_crashlytics: ^3.3.6 #firebaseCrashlytics
   
-  firebase_auth: ^4.9.0 #firebaseAuth
+  firebase_auth: ^4.10.0 #firebaseAuth
 
   app_settings: 4.2.0 #appSettings
 
-  google_maps_flutter: ^2.4.1 #googleMaps
+  google_maps_flutter: ^2.5.0 #googleMaps
 
   google_maps_cluster_manager: ^3.0.0+1 #googleMaps
 
@@ -40,7 +40,7 @@ dependencies:
 
   flutter_svg: ^2.0.7 #flutterSvg
 
-  app_links: ^3.4.3 #appLinks
+  app_links: ^3.4.5 #appLinks
 
   share_plus: ^7.1.0 #sharePlus
 
@@ -56,9 +56,9 @@ dependencies:
 
   location: ^5.0.3 #location
 
-  logger: ^2.0.1
+  logger: ^2.0.2
 
-  url_launcher: ^6.1.13
+  url_launcher: ^6.1.14
 
   intl: ^0.18.1
 
@@ -72,13 +72,15 @@ dependencies:
 
   timeago: 3.0.2
 
-  octo_image: ^1.0.2
+  octo_image: ^2.0.0
 
+  flutter_blurhash: ^0.7.0
+  
   flutter_image: ^4.1.8
 
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.0
 
-  flutter_riverpod: ^2.3.10
+  flutter_riverpod: ^2.4.0
 
   freezed_annotation: ^2.4.1
 
