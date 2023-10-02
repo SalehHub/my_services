@@ -77,16 +77,16 @@ class _$AppConfigCopyWithImpl<$Res, $Val extends AppConfig> implements $AppConfi
 }
 
 /// @nodoc
-abstract class _$$_AppConfigCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
-  factory _$$_AppConfigCopyWith(_$_AppConfig value, $Res Function(_$_AppConfig) then) = __$$_AppConfigCopyWithImpl<$Res>;
+abstract class _$$AppConfigImplCopyWith<$Res> implements $AppConfigCopyWith<$Res> {
+  factory _$$AppConfigImplCopyWith(_$AppConfigImpl value, $Res Function(_$AppConfigImpl) then) = __$$AppConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool withFirebase, bool withFCM, bool withCrashlytics, bool nativeLocaleChange, FirebaseOptions? firebaseOptions});
 }
 
 /// @nodoc
-class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$_AppConfig> implements _$$_AppConfigCopyWith<$Res> {
-  __$$_AppConfigCopyWithImpl(_$_AppConfig _value, $Res Function(_$_AppConfig) _then) : super(_value, _then);
+class __$$AppConfigImplCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$AppConfigImpl> implements _$$AppConfigImplCopyWith<$Res> {
+  __$$AppConfigImplCopyWithImpl(_$AppConfigImpl _value, $Res Function(_$AppConfigImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -97,7 +97,7 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$_
     Object? nativeLocaleChange = null,
     Object? firebaseOptions = freezed,
   }) {
-    return _then(_$_AppConfig(
+    return _then(_$AppConfigImpl(
       withFirebase: null == withFirebase
           ? _value.withFirebase
           : withFirebase // ignore: cast_nullable_to_non_nullable
@@ -124,8 +124,8 @@ class __$$_AppConfigCopyWithImpl<$Res> extends _$AppConfigCopyWithImpl<$Res, _$_
 
 /// @nodoc
 
-class _$_AppConfig implements _AppConfig {
-  const _$_AppConfig({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions});
+class _$AppConfigImpl implements _AppConfig {
+  const _$AppConfigImpl({this.withFirebase = true, this.withFCM = true, this.withCrashlytics = true, this.nativeLocaleChange = false, this.firebaseOptions});
 
   @override
   @JsonKey()
@@ -151,7 +151,7 @@ class _$_AppConfig implements _AppConfig {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppConfig &&
+            other is _$AppConfigImpl &&
             (identical(other.withFirebase, withFirebase) || other.withFirebase == withFirebase) &&
             (identical(other.withFCM, withFCM) || other.withFCM == withFCM) &&
             (identical(other.withCrashlytics, withCrashlytics) || other.withCrashlytics == withCrashlytics) &&
@@ -165,11 +165,11 @@ class _$_AppConfig implements _AppConfig {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => __$$_AppConfigCopyWithImpl<_$_AppConfig>(this, _$identity);
+  _$$AppConfigImplCopyWith<_$AppConfigImpl> get copyWith => __$$AppConfigImplCopyWithImpl<_$AppConfigImpl>(this, _$identity);
 }
 
 abstract class _AppConfig implements AppConfig {
-  const factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final bool nativeLocaleChange, final FirebaseOptions? firebaseOptions}) = _$_AppConfig;
+  const factory _AppConfig({final bool withFirebase, final bool withFCM, final bool withCrashlytics, final bool nativeLocaleChange, final FirebaseOptions? firebaseOptions}) = _$AppConfigImpl;
 
   @override
   bool get withFirebase;
@@ -183,5 +183,5 @@ abstract class _AppConfig implements AppConfig {
   FirebaseOptions? get firebaseOptions;
   @override
   @JsonKey(ignore: true)
-  _$$_AppConfigCopyWith<_$_AppConfig> get copyWith => throw _privateConstructorUsedError;
+  _$$AppConfigImplCopyWith<_$AppConfigImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -58,23 +58,23 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country> implements $CountryCopyW
 }
 
 /// @nodoc
-abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
-  factory _$$_CountryCopyWith(_$_Country value, $Res Function(_$_Country) then) = __$$_CountryCopyWithImpl<$Res>;
+abstract class _$$CountryImplCopyWith<$Res> implements $CountryCopyWith<$Res> {
+  factory _$$CountryImplCopyWith(_$CountryImpl value, $Res Function(_$CountryImpl) then) = __$$CountryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String code});
 }
 
 /// @nodoc
-class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res, _$_Country> implements _$$_CountryCopyWith<$Res> {
-  __$$_CountryCopyWithImpl(_$_Country _value, $Res Function(_$_Country) _then) : super(_value, _then);
+class __$$CountryImplCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res, _$CountryImpl> implements _$$CountryImplCopyWith<$Res> {
+  __$$CountryImplCopyWithImpl(_$CountryImpl _value, $Res Function(_$CountryImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? code = null,
   }) {
-    return _then(_$_Country(
+    return _then(_$CountryImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -85,10 +85,10 @@ class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res, _$_Coun
 
 /// @nodoc
 @JsonSerializable()
-class _$_Country extends _Country {
-  const _$_Country({required this.code}) : super._();
+class _$CountryImpl extends _Country {
+  const _$CountryImpl({required this.code}) : super._();
 
-  factory _$_Country.fromJson(Map<String, dynamic> json) => _$$_CountryFromJson(json);
+  factory _$CountryImpl.fromJson(Map<String, dynamic> json) => _$$CountryImplFromJson(json);
 
   @override
   final String code;
@@ -100,7 +100,7 @@ class _$_Country extends _Country {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other.runtimeType == runtimeType && other is _$_Country && (identical(other.code, code) || other.code == code));
+    return identical(this, other) || (other.runtimeType == runtimeType && other is _$CountryImpl && (identical(other.code, code) || other.code == code));
   }
 
   @JsonKey(ignore: true)
@@ -110,25 +110,25 @@ class _$_Country extends _Country {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CountryCopyWith<_$_Country> get copyWith => __$$_CountryCopyWithImpl<_$_Country>(this, _$identity);
+  _$$CountryImplCopyWith<_$CountryImpl> get copyWith => __$$CountryImplCopyWithImpl<_$CountryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CountryToJson(
+    return _$$CountryImplToJson(
       this,
     );
   }
 }
 
 abstract class _Country extends Country {
-  const factory _Country({required final String code}) = _$_Country;
+  const factory _Country({required final String code}) = _$CountryImpl;
   const _Country._() : super._();
 
-  factory _Country.fromJson(Map<String, dynamic> json) = _$_Country.fromJson;
+  factory _Country.fromJson(Map<String, dynamic> json) = _$CountryImpl.fromJson;
 
   @override
   String get code;
   @override
   @JsonKey(ignore: true)
-  _$$_CountryCopyWith<_$_Country> get copyWith => throw _privateConstructorUsedError;
+  _$$CountryImplCopyWith<_$CountryImpl> get copyWith => throw _privateConstructorUsedError;
 }

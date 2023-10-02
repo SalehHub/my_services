@@ -88,16 +88,16 @@ class _$AppDeviceDataCopyWithImpl<$Res, $Val extends AppDeviceData> implements $
 }
 
 /// @nodoc
-abstract class _$$_AppDeviceDataCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
-  factory _$$_AppDeviceDataCopyWith(_$_AppDeviceData value, $Res Function(_$_AppDeviceData) then) = __$$_AppDeviceDataCopyWithImpl<$Res>;
+abstract class _$$AppDeviceDataImplCopyWith<$Res> implements $AppDeviceDataCopyWith<$Res> {
+  factory _$$AppDeviceDataImplCopyWith(_$AppDeviceDataImpl value, $Res Function(_$AppDeviceDataImpl) then) = __$$AppDeviceDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String appVersion, String appBuild, String? deviceID, String? deviceOSVersion, String? deviceModel, String? deviceOS});
 }
 
 /// @nodoc
-class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res, _$_AppDeviceData> implements _$$_AppDeviceDataCopyWith<$Res> {
-  __$$_AppDeviceDataCopyWithImpl(_$_AppDeviceData _value, $Res Function(_$_AppDeviceData) _then) : super(_value, _then);
+class __$$AppDeviceDataImplCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$Res, _$AppDeviceDataImpl> implements _$$AppDeviceDataImplCopyWith<$Res> {
+  __$$AppDeviceDataImplCopyWithImpl(_$AppDeviceDataImpl _value, $Res Function(_$AppDeviceDataImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -109,7 +109,7 @@ class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$
     Object? deviceModel = freezed,
     Object? deviceOS = freezed,
   }) {
-    return _then(_$_AppDeviceData(
+    return _then(_$AppDeviceDataImpl(
       appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
@@ -140,10 +140,10 @@ class __$$_AppDeviceDataCopyWithImpl<$Res> extends _$AppDeviceDataCopyWithImpl<$
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppDeviceData extends _AppDeviceData {
-  _$_AppDeviceData({required this.appVersion, required this.appBuild, this.deviceID, this.deviceOSVersion, this.deviceModel, this.deviceOS}) : super._();
+class _$AppDeviceDataImpl extends _AppDeviceData {
+  _$AppDeviceDataImpl({required this.appVersion, required this.appBuild, this.deviceID, this.deviceOSVersion, this.deviceModel, this.deviceOS}) : super._();
 
-  factory _$_AppDeviceData.fromJson(Map<String, dynamic> json) => _$$_AppDeviceDataFromJson(json);
+  factory _$AppDeviceDataImpl.fromJson(Map<String, dynamic> json) => _$$AppDeviceDataImplFromJson(json);
 
   @override
   final String appVersion;
@@ -167,7 +167,7 @@ class _$_AppDeviceData extends _AppDeviceData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppDeviceData &&
+            other is _$AppDeviceDataImpl &&
             (identical(other.appVersion, appVersion) || other.appVersion == appVersion) &&
             (identical(other.appBuild, appBuild) || other.appBuild == appBuild) &&
             (identical(other.deviceID, deviceID) || other.deviceID == deviceID) &&
@@ -183,11 +183,11 @@ class _$_AppDeviceData extends _AppDeviceData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => __$$_AppDeviceDataCopyWithImpl<_$_AppDeviceData>(this, _$identity);
+  _$$AppDeviceDataImplCopyWith<_$AppDeviceDataImpl> get copyWith => __$$AppDeviceDataImplCopyWithImpl<_$AppDeviceDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppDeviceDataToJson(
+    return _$$AppDeviceDataImplToJson(
       this,
     );
   }
@@ -195,10 +195,10 @@ class _$_AppDeviceData extends _AppDeviceData {
 
 abstract class _AppDeviceData extends AppDeviceData {
   factory _AppDeviceData({required final String appVersion, required final String appBuild, final String? deviceID, final String? deviceOSVersion, final String? deviceModel, final String? deviceOS}) =
-      _$_AppDeviceData;
+      _$AppDeviceDataImpl;
   _AppDeviceData._() : super._();
 
-  factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$_AppDeviceData.fromJson;
+  factory _AppDeviceData.fromJson(Map<String, dynamic> json) = _$AppDeviceDataImpl.fromJson;
 
   @override
   String get appVersion;
@@ -214,5 +214,5 @@ abstract class _AppDeviceData extends AppDeviceData {
   String? get deviceOS;
   @override
   @JsonKey(ignore: true)
-  _$$_AppDeviceDataCopyWith<_$_AppDeviceData> get copyWith => throw _privateConstructorUsedError;
+  _$$AppDeviceDataImplCopyWith<_$AppDeviceDataImpl> get copyWith => throw _privateConstructorUsedError;
 }

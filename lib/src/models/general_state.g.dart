@@ -6,7 +6,7 @@ part of 'general_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GeneralState _$$_GeneralStateFromJson(Map<String, dynamic> json) => _$_GeneralState(
+_$GeneralStateImpl _$$GeneralStateImplFromJson(Map<String, dynamic> json) => _$GeneralStateImpl(
       accessToken: json['accessToken'] as String?,
       notificationToken: json['notificationToken'] as String?,
       appDeviceData: json['appDeviceData'] == null ? null : AppDeviceData.fromJson(json['appDeviceData'] as Map<String, dynamic>),
@@ -16,7 +16,7 @@ _$_GeneralState _$$_GeneralStateFromJson(Map<String, dynamic> json) => _$_Genera
       isFirstAppBuildRun: json['isFirstAppBuildRun'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$_GeneralStateToJson(_$_GeneralState instance) => <String, dynamic>{
+Map<String, dynamic> _$$GeneralStateImplToJson(_$GeneralStateImpl instance) => <String, dynamic>{
       'accessToken': instance.accessToken,
       'notificationToken': instance.notificationToken,
       'appDeviceData': instance.appDeviceData?.toJson(),

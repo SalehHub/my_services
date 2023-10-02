@@ -6,7 +6,7 @@ part of 'app_device_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppDeviceData _$$_AppDeviceDataFromJson(Map<String, dynamic> json) => _$_AppDeviceData(
+_$AppDeviceDataImpl _$$AppDeviceDataImplFromJson(Map<String, dynamic> json) => _$AppDeviceDataImpl(
       appVersion: json['appVersion'] as String,
       appBuild: json['appBuild'] as String,
       deviceID: json['deviceID'] as String?,
@@ -15,7 +15,7 @@ _$_AppDeviceData _$$_AppDeviceDataFromJson(Map<String, dynamic> json) => _$_AppD
       deviceOS: json['deviceOS'] as String?,
     );
 
-Map<String, dynamic> _$$_AppDeviceDataToJson(_$_AppDeviceData instance) => <String, dynamic>{
+Map<String, dynamic> _$$AppDeviceDataImplToJson(_$AppDeviceDataImpl instance) => <String, dynamic>{
       'appVersion': instance.appVersion,
       'appBuild': instance.appBuild,
       'deviceID': instance.deviceID,

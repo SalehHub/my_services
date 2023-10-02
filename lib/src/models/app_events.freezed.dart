@@ -96,8 +96,8 @@ class _$AppEventsCopyWithImpl<$Res, $Val extends AppEvents> implements $AppEvent
 }
 
 /// @nodoc
-abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
-  factory _$$_AppEventsCopyWith(_$_AppEvents value, $Res Function(_$_AppEvents) then) = __$$_AppEventsCopyWithImpl<$Res>;
+abstract class _$$AppEventsImplCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
+  factory _$$AppEventsImplCopyWith(_$AppEventsImpl value, $Res Function(_$AppEventsImpl) then) = __$$AppEventsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -111,8 +111,8 @@ abstract class _$$_AppEventsCopyWith<$Res> implements $AppEventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res, _$_AppEvents> implements _$$_AppEventsCopyWith<$Res> {
-  __$$_AppEventsCopyWithImpl(_$_AppEvents _value, $Res Function(_$_AppEvents) _then) : super(_value, _then);
+class __$$AppEventsImplCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res, _$AppEventsImpl> implements _$$AppEventsImplCopyWith<$Res> {
+  __$$AppEventsImplCopyWithImpl(_$AppEventsImpl _value, $Res Function(_$AppEventsImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -125,7 +125,7 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res, _$_
     Object? onPush = freezed,
     Object? onPop = freezed,
   }) {
-    return _then(_$_AppEvents(
+    return _then(_$AppEventsImpl(
       onDynamicLink: freezed == onDynamicLink
           ? _value.onDynamicLink
           : onDynamicLink // ignore: cast_nullable_to_non_nullable
@@ -160,8 +160,8 @@ class __$$_AppEventsCopyWithImpl<$Res> extends _$AppEventsCopyWithImpl<$Res, _$_
 
 /// @nodoc
 
-class _$_AppEvents implements _AppEvents {
-  const _$_AppEvents({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange, this.onPush, this.onPop});
+class _$AppEventsImpl implements _AppEvents {
+  const _$AppEventsImpl({this.onDynamicLink, this.onFCMTokenRefresh, this.onFirebaseNotification, this.onGenerateTitle, this.onLocaleChange, this.onPush, this.onPop});
 
   @override
   final OnDynamicLink? onDynamicLink;
@@ -188,7 +188,7 @@ class _$_AppEvents implements _AppEvents {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppEvents &&
+            other is _$AppEventsImpl &&
             (identical(other.onDynamicLink, onDynamicLink) || other.onDynamicLink == onDynamicLink) &&
             (identical(other.onFCMTokenRefresh, onFCMTokenRefresh) || other.onFCMTokenRefresh == onFCMTokenRefresh) &&
             (identical(other.onFirebaseNotification, onFirebaseNotification) || other.onFirebaseNotification == onFirebaseNotification) &&
@@ -204,7 +204,7 @@ class _$_AppEvents implements _AppEvents {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => __$$_AppEventsCopyWithImpl<_$_AppEvents>(this, _$identity);
+  _$$AppEventsImplCopyWith<_$AppEventsImpl> get copyWith => __$$AppEventsImplCopyWithImpl<_$AppEventsImpl>(this, _$identity);
 }
 
 abstract class _AppEvents implements AppEvents {
@@ -215,7 +215,7 @@ abstract class _AppEvents implements AppEvents {
       final GenerateAppTitle? onGenerateTitle,
       final OnLocaleChange? onLocaleChange,
       final dynamic Function(String?)? onPush,
-      final dynamic Function(String?)? onPop}) = _$_AppEvents;
+      final dynamic Function(String?)? onPop}) = _$AppEventsImpl;
 
   @override
   OnDynamicLink? get onDynamicLink;
@@ -233,5 +233,5 @@ abstract class _AppEvents implements AppEvents {
   dynamic Function(String?)? get onPop;
   @override
   @JsonKey(ignore: true)
-  _$$_AppEventsCopyWith<_$_AppEvents> get copyWith => throw _privateConstructorUsedError;
+  _$$AppEventsImplCopyWith<_$AppEventsImpl> get copyWith => throw _privateConstructorUsedError;
 }

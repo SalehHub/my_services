@@ -113,16 +113,16 @@ class _$MyThemeDataCopyWithImpl<$Res, $Val extends MyThemeData> implements $MyTh
 }
 
 /// @nodoc
-abstract class _$$_MyThemeDataCopyWith<$Res> implements $MyThemeDataCopyWith<$Res> {
-  factory _$$_MyThemeDataCopyWith(_$_MyThemeData value, $Res Function(_$_MyThemeData) then) = __$$_MyThemeDataCopyWithImpl<$Res>;
+abstract class _$$MyThemeDataImplCopyWith<$Res> implements $MyThemeDataCopyWith<$Res> {
+  factory _$$MyThemeDataImplCopyWith(_$MyThemeDataImpl value, $Res Function(_$MyThemeDataImpl) then) = __$$MyThemeDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Color background, Color onBackground, Color primary, Color onPrimary, Color card, Color onCard, Color error, Color onError, Color success, Color onSuccess, AppBarTheme? appBar});
 }
 
 /// @nodoc
-class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res, _$_MyThemeData> implements _$$_MyThemeDataCopyWith<$Res> {
-  __$$_MyThemeDataCopyWithImpl(_$_MyThemeData _value, $Res Function(_$_MyThemeData) _then) : super(_value, _then);
+class __$$MyThemeDataImplCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res, _$MyThemeDataImpl> implements _$$MyThemeDataImplCopyWith<$Res> {
+  __$$MyThemeDataImplCopyWithImpl(_$MyThemeDataImpl _value, $Res Function(_$MyThemeDataImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -139,7 +139,7 @@ class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res,
     Object? onSuccess = null,
     Object? appBar = freezed,
   }) {
-    return _then(_$_MyThemeData(
+    return _then(_$MyThemeDataImpl(
       background: null == background
           ? _value.background
           : background // ignore: cast_nullable_to_non_nullable
@@ -190,8 +190,8 @@ class __$$_MyThemeDataCopyWithImpl<$Res> extends _$MyThemeDataCopyWithImpl<$Res,
 
 /// @nodoc
 
-class _$_MyThemeData extends _MyThemeData {
-  const _$_MyThemeData(
+class _$MyThemeDataImpl extends _MyThemeData {
+  const _$MyThemeDataImpl(
       {this.background = Colors.black,
       this.onBackground = Colors.white,
       this.primary = Colors.green,
@@ -251,7 +251,7 @@ class _$_MyThemeData extends _MyThemeData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MyThemeData &&
+            other is _$MyThemeDataImpl &&
             (identical(other.background, background) || other.background == background) &&
             (identical(other.onBackground, onBackground) || other.onBackground == onBackground) &&
             (identical(other.primary, primary) || other.primary == primary) &&
@@ -271,7 +271,7 @@ class _$_MyThemeData extends _MyThemeData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => __$$_MyThemeDataCopyWithImpl<_$_MyThemeData>(this, _$identity);
+  _$$MyThemeDataImplCopyWith<_$MyThemeDataImpl> get copyWith => __$$MyThemeDataImplCopyWithImpl<_$MyThemeDataImpl>(this, _$identity);
 }
 
 abstract class _MyThemeData extends MyThemeData {
@@ -286,7 +286,7 @@ abstract class _MyThemeData extends MyThemeData {
       final Color onError,
       final Color success,
       final Color onSuccess,
-      final AppBarTheme? appBar}) = _$_MyThemeData;
+      final AppBarTheme? appBar}) = _$MyThemeDataImpl;
   const _MyThemeData._() : super._();
 
   @override
@@ -313,5 +313,5 @@ abstract class _MyThemeData extends MyThemeData {
   AppBarTheme? get appBar;
   @override
   @JsonKey(ignore: true)
-  _$$_MyThemeDataCopyWith<_$_MyThemeData> get copyWith => throw _privateConstructorUsedError;
+  _$$MyThemeDataImplCopyWith<_$MyThemeDataImpl> get copyWith => throw _privateConstructorUsedError;
 }

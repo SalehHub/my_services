@@ -117,8 +117,8 @@ class _$GeneralStateCopyWithImpl<$Res, $Val extends GeneralState> implements $Ge
 }
 
 /// @nodoc
-abstract class _$$_GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$Res> {
-  factory _$$_GeneralStateCopyWith(_$_GeneralState value, $Res Function(_$_GeneralState) then) = __$$_GeneralStateCopyWithImpl<$Res>;
+abstract class _$$GeneralStateImplCopyWith<$Res> implements $GeneralStateCopyWith<$Res> {
+  factory _$$GeneralStateImplCopyWith(_$GeneralStateImpl value, $Res Function(_$GeneralStateImpl) then) = __$$GeneralStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -135,8 +135,8 @@ abstract class _$$_GeneralStateCopyWith<$Res> implements $GeneralStateCopyWith<$
 }
 
 /// @nodoc
-class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res, _$_GeneralState> implements _$$_GeneralStateCopyWith<$Res> {
-  __$$_GeneralStateCopyWithImpl(_$_GeneralState _value, $Res Function(_$_GeneralState) _then) : super(_value, _then);
+class __$$GeneralStateImplCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Res, _$GeneralStateImpl> implements _$$GeneralStateImplCopyWith<$Res> {
+  __$$GeneralStateImplCopyWithImpl(_$GeneralStateImpl _value, $Res Function(_$GeneralStateImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -149,7 +149,7 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
     Object? isFirstAppRun = null,
     Object? isFirstAppBuildRun = null,
   }) {
-    return _then(_$_GeneralState(
+    return _then(_$GeneralStateImpl(
       accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -184,12 +184,12 @@ class __$$_GeneralStateCopyWithImpl<$Res> extends _$GeneralStateCopyWithImpl<$Re
 
 /// @nodoc
 @JsonSerializable()
-class _$_GeneralState extends _GeneralState {
-  _$_GeneralState(
+class _$GeneralStateImpl extends _GeneralState {
+  _$GeneralStateImpl(
       {this.accessToken, this.notificationToken, this.appDeviceData, @LocaleConverter() this.locale, @ThemeModeConverter() this.themeMode, this.isFirstAppRun = false, this.isFirstAppBuildRun = false})
       : super._();
 
-  factory _$_GeneralState.fromJson(Map<String, dynamic> json) => _$$_GeneralStateFromJson(json);
+  factory _$GeneralStateImpl.fromJson(Map<String, dynamic> json) => _$$GeneralStateImplFromJson(json);
 
   @override
   final String? accessToken;
@@ -219,7 +219,7 @@ class _$_GeneralState extends _GeneralState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GeneralState &&
+            other is _$GeneralStateImpl &&
             (identical(other.accessToken, accessToken) || other.accessToken == accessToken) &&
             (identical(other.notificationToken, notificationToken) || other.notificationToken == notificationToken) &&
             (identical(other.appDeviceData, appDeviceData) || other.appDeviceData == appDeviceData) &&
@@ -236,11 +236,11 @@ class _$_GeneralState extends _GeneralState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => __$$_GeneralStateCopyWithImpl<_$_GeneralState>(this, _$identity);
+  _$$GeneralStateImplCopyWith<_$GeneralStateImpl> get copyWith => __$$GeneralStateImplCopyWithImpl<_$GeneralStateImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GeneralStateToJson(
+    return _$$GeneralStateImplToJson(
       this,
     );
   }
@@ -254,10 +254,10 @@ abstract class _GeneralState extends GeneralState {
       @LocaleConverter() final Locale? locale,
       @ThemeModeConverter() final ThemeMode? themeMode,
       final bool isFirstAppRun,
-      final bool isFirstAppBuildRun}) = _$_GeneralState;
+      final bool isFirstAppBuildRun}) = _$GeneralStateImpl;
   _GeneralState._() : super._();
 
-  factory _GeneralState.fromJson(Map<String, dynamic> json) = _$_GeneralState.fromJson;
+  factory _GeneralState.fromJson(Map<String, dynamic> json) = _$GeneralStateImpl.fromJson;
 
   @override
   String? get accessToken;
@@ -277,5 +277,5 @@ abstract class _GeneralState extends GeneralState {
   bool get isFirstAppBuildRun;
   @override
   @JsonKey(ignore: true)
-  _$$_GeneralStateCopyWith<_$_GeneralState> get copyWith => throw _privateConstructorUsedError;
+  _$$GeneralStateImplCopyWith<_$GeneralStateImpl> get copyWith => throw _privateConstructorUsedError;
 }
