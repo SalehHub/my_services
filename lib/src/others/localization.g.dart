@@ -544,7 +544,7 @@ final localizedLabels = <Locale, MyServicesLocalizationsData>{
     product: 'Producto',
     users: 'Usuarios',
     user: 'Usuario',
-    loginUsingPhoneNumber: 'Iniciar sesión con el número de teléfono',
+    loginUsingPhoneNumber: 'Iniciar sesión usando el número de teléfono',
     customer: 'Cliente',
     impersonate: 'Personificar',
     yourAccountIsBlocked: 'Su cuenta está bloqueada',
