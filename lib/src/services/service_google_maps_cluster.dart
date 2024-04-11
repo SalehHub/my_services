@@ -41,7 +41,7 @@ class GoogleMapsCluster<T extends ClusterItem> {
     return _ref.watch(_markersProvider);
   }
 
-  Future<Marker> Function(Cluster<T>) get _markerBuilder => (Cluster<T> cluster) async {
+  Future<Marker> Function(dynamic) get _markerBuilder => (cluster) async {
         BitmapDescriptor icon = BitmapDescriptor.defaultMarker;
         if (_markerIconBuilder != null) {
           icon = await _markerIconBuilder!(cluster.items, cluster.isMultiple);

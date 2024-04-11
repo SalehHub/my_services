@@ -51,7 +51,7 @@ class ServiceLocale {
                 },
               );
             });
-          }).toList(),
+          }),
           const SizedBox(height: 20),
         ],
       );
