@@ -266,8 +266,8 @@ class ServiceApi {
     return null;
   }
 
-  Future<bool> _handleNoInternet(DioError e) async {
-    if (e.message.contains("SocketException")) {
+  Future<bool> _handleNoInternet(DioException e) async {
+    if (e.message?.contains("SocketException") ?? false) {
       logger.d("SocketException");
       http.Response? response;
       try {

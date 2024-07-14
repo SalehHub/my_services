@@ -16,7 +16,7 @@ class ServiceDynamicLink {
           onAppLink(uri);
         });
 
-        await appLinks.getInitialAppLink().then((Uri? uri) {
+        await appLinks.getInitialLink().then((Uri? uri) {
           if (uri != null) {
             onAppLink(uri);
           }

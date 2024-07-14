@@ -36,11 +36,18 @@ class ServiceImagePicker {
   // const ServiceImagePicker._();
   //
   const ServiceImagePicker();
+
   //
 
   static final ImagePicker _imagePicker = ImagePicker();
 
-  Future<File?> pickImage(BuildContext context, {bool withCrop = true, bool withCompress = true, double sizeInMB = 1.0, bool square = false, bool circle = false, bool forceCut = false}) async {
+  Future<File?> pickImage(BuildContext context,
+      {bool withCrop = true,
+      bool withCompress = true,
+      double sizeInMB = 1.0,
+      bool square = false,
+      bool circle = false,
+      bool forceCut = false}) async {
     try {
       final XFile? pickedFile = await _imagePicker.pickImage(
         source: ImageSource.gallery,
@@ -63,8 +70,15 @@ class ServiceImagePicker {
         final CroppedFile? croppedFile = await ImageCropper().cropImage(
           sourcePath: originalFile.path,
           compressQuality: originalFile.sizeInMegabytes > sizeInMB ? 50 : 80,
-          aspectRatio: square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
-          cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
+          aspectRatio:
+              square ? const CropAspectRatio(ratioX: 1, ratioY: 1) : null,
+          uiSettings: [
+            AndroidUiSettings(
+              cropStyle: circle ? CropStyle.circle : CropStyle.rectangle,
+            ),
+            IOSUiSettings(
+                cropStyle: circle ? CropStyle.circle : CropStyle.rectangle)
+          ],
         );
 
         if (forceCut && croppedFile == null) {
@@ -87,7 +101,8 @@ class ServiceImagePicker {
           i++;
           XFile? newFile = await FlutterImageCompress.compressAndGetFile(
             compressedFile.path,
-            compressedFile.path.replaceFirst('.', '$i.', compressedFile.path.length - 6),
+            compressedFile.path
+                .replaceFirst('.', '$i.', compressedFile.path.length - 6),
             quality: 95 - (i + 5),
             minHeight: 500,
             minWidth: 500,
@@ -101,7 +116,8 @@ class ServiceImagePicker {
         }
       }
 
-      logger.i(originalFile.printSize("Original File") + compressedFile.printSize("Compressed File"));
+      logger.i(originalFile.printSize("Original File") +
+          compressedFile.printSize("Compressed File"));
 
       return compressedFile.file;
     } catch (e, s) {
@@ -109,7 +125,8 @@ class ServiceImagePicker {
 
       if (e.toString().toLowerCase().contains('photo_access_denied')) {
         // ignore: use_build_context_synchronously
-        MyServicesLocalizationsData myServicesLabels = getMyServicesLabels(MyServices.context);
+        MyServicesLocalizationsData myServicesLabels =
+            getMyServicesLabels(MyServices.context);
         MyServices.services.snackBar.showText(
           text: myServicesLabels.theAppDoesntHavePhotoAccessPermission,
           success: false,

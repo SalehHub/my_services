@@ -57,8 +57,8 @@ class _NoNotificationPermissionCardState extends State<NoNotificationPermissionC
 
       return GestureDetector(
         onTap: () {
-          AppSettings.openNotificationSettings(); //appSettings
-        },
+          AppSettings.openAppSettings(type: AppSettingsType.notification);
+          },
         child: Container(
           width: MediaQuery.of(context).size.width * 0.9,
           padding: const EdgeInsets.all(20),

@@ -42,7 +42,7 @@ class ServiceLocale {
                 groupValue: currentLocale(context), // watchLocale(ref),
                 onChanged: (Locale? value) {
                   if (MyServices.appConfig.nativeLocaleChange) {
-                    AppSettings.openNotificationSettings(); //appSettings
+                    AppSettings.openAppSettings(type: AppSettingsType.appLocale);
                   } else {
                     if (value != null) {
                       MyServices.providers.setLocale(value);

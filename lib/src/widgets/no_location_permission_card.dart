@@ -88,7 +88,7 @@ class _NoLocationPermissionCardState extends State<NoLocationPermissionCard> wit
     final bool deniedForever = locationPermissionStatus == PermissionStatus.deniedForever;
 
     if (denied || deniedForever) {
-      await AppSettings.openLocationSettings();
+      await AppSettings.openAppSettings(type: AppSettingsType.location);
     } else {
       if (mounted) {
         setState(() {});
